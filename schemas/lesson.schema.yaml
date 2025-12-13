@@ -1,0 +1,196 @@
+# Lesson Schema
+# Defines the structure for PRIMM-based programming lessons
+# Based on research by Dr Sue Sentance and Dr Jane Waite
+
+schema_version: "1.0"
+description: |
+  PRIMM lesson structure ensuring comprehension-first approach.
+  Not every lesson needs all five stages - teachers can focus on
+  one or two stages depending on learning objectives.
+
+lesson:
+  # Metadata
+  id: string                    # Unique identifier e.g., "ks3-loops-001"
+  title: string                 # Human-readable title
+  topic: string                 # Programming concept
+  stage: enum [ks3, ks4]        # Key stage
+  year_group: integer           # 7, 8, 9, 10, or 11
+  duration_minutes: integer     # Suggested duration
+
+  # Learning objectives
+  objectives:
+    - string                    # What students will learn
+
+  # Success criteria
+  success_criteria:
+    - string                    # How we know they've learned it
+
+  # Prerequisites
+  prerequisites:
+    concepts: [string]          # Prior knowledge needed
+    lessons: [string]           # Prior lesson IDs (optional)
+
+  # Key vocabulary
+  vocabulary:
+    - term: string
+      definition: string
+      example: string           # Optional code example
+
+  # PRIMM Framework Stages
+  primm:
+
+    # PREDICT: Students examine code and predict output
+    predict:
+      enabled: boolean          # Whether this stage is included
+      code_snippet: string      # Short program to examine
+      language: enum [python, scratch, pseudocode]
+
+      # Discussion structure
+      discussion:
+        individual_think_time: integer  # Seconds for private thought
+        pair_discussion: boolean        # Share with partner?
+        whole_class: boolean            # Class discussion?
+
+      # Prompts to guide prediction
+      prompts:
+        - string                # e.g., "What will be printed?"
+
+      # Common misconceptions to watch for
+      misconceptions:
+        - prediction: string    # What students might wrongly predict
+          why: string           # Why they might think this
+          address: string       # How to address it
+
+    # RUN: Execute code and compare with predictions
+    run:
+      enabled: boolean
+      expected_output: string   # What actually happens
+
+      # Metacognitive questions
+      reflection_prompts:
+        - string                # e.g., "Was your prediction correct?"
+
+      # What to do if prediction was wrong
+      misconception_intervention: string
+
+    # INVESTIGATE: Deepen understanding through structured activities
+    investigate:
+      enabled: boolean
+      duration_minutes: integer
+
+      activities:
+        # Tracing activity
+        - type: tracing
+          instructions: string
+          trace_table:
+            variables: [string]
+            include_output: boolean
+
+        # Annotation activity
+        - type: annotation
+          instructions: string
+          code_to_annotate: string
+          annotation_prompts:
+            - line: integer
+              prompt: string
+
+        # Peer explanation
+        - type: peer_explanation
+          instructions: string
+          explanation_scaffold: string
+
+        # Construct identification
+        - type: identify_constructs
+          instructions: string
+          constructs_to_find:
+            - construct: string   # e.g., "variable assignment"
+              line: integer
+
+    # MODIFY: Make targeted changes to existing code
+    modify:
+      enabled: boolean
+      base_code: string         # Starting code to modify
+
+      # Differentiated modifications
+      modifications:
+        foundation:             # For struggling learners
+          - instruction: string
+            hint: string        # Optional scaffolding
+            solution: string    # Expected result
+
+        core:                   # Standard curriculum
+          - instruction: string
+            hint: string
+            solution: string
+
+        extension:              # For advanced students
+          - instruction: string
+            hint: string
+            solution: string
+
+      # Common errors to watch for
+      common_errors:
+        - error: string
+          feedback: string
+
+    # MAKE: Create new programs using learned concepts
+    make:
+      enabled: boolean
+
+      # Challenge description
+      challenge: string
+
+      # Differentiated challenges
+      differentiation:
+        foundation:
+          description: string
+          starter_code: string  # More scaffolding
+
+        core:
+          description: string
+          starter_code: string
+
+        extension:
+          description: string
+          starter_code: string  # Less scaffolding
+
+      # Success criteria for the make task
+      success_criteria:
+        - string
+
+      # Assessment rubric
+      rubric:
+        - criterion: string
+          levels:
+            emerging: string
+            developing: string
+            secure: string
+            mastering: string
+
+  # Pair programming configuration (optional)
+  pair_programming:
+    enabled: boolean
+    rotation_minutes: integer   # 15-20 recommended
+    driver_prompts: [string]
+    navigator_prompts: [string]
+
+  # Teacher notes
+  teacher_notes:
+    preparation: string         # What to prepare before lesson
+    common_issues: [string]     # What often goes wrong
+    timing_notes: string        # Pacing guidance
+
+  # Links to external resources
+  resources:
+    ncce: [string]              # Teach Computing Curriculum links
+    isaac: [string]             # Isaac Computer Science links
+    other: [string]             # Other useful resources
+
+  # Assessment alignment
+  assessment:
+    formative:                  # During lesson
+      - method: string
+        description: string
+    summative:                  # End of lesson/unit
+      - method: string
+        description: string

@@ -1,0 +1,425 @@
+# Parsons Problems: For Loops Basics
+# A progression of Parsons problems for learning for loops
+
+---
+# Problem 1: Foundation - Print Hello 3 times
+
+parsons_problem:
+  id: parsons-for-loop-001
+  title: "Print Hello Three Times"
+  topic: for-loops
+  stage: ks3
+  difficulty: foundation
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to create a program that prints
+    "Hello" three times, each on a new line.
+
+    Expected output:
+    Hello
+    Hello
+    Hello
+
+  expected_output: "Hello\nHello\nHello"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'for i in range(3):'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'print("Hello")'
+      indent_level: 1
+      is_distractor: false
+
+  solution:
+    order: [1, 2]
+
+  distractors:
+    enabled: false
+
+  hints:
+    - level: 1
+      hint: "The for loop line always comes first"
+    - level: 2
+      hint: "The print line needs to be inside the loop (indented)"
+    - level: 3
+      hint: "In Python, code inside a loop is indented to the right"
+
+  differentiation:
+    foundation:
+      notes: "Pre-place the for loop line; student only arranges print"
+      blocks_to_pre_place: [1]
+    extension:
+      notes: "Add distractor blocks or require typing the number"
+      additional_distractors: []
+
+  objectives:
+    - "Understand that for loops repeat code"
+    - "Recognise the structure of a for loop"
+
+  common_errors:
+    - error_pattern: "print before for"
+      feedback: "The for line creates the loop - it must come first"
+    - error_pattern: "print not indented"
+      feedback: "In Python, code inside a loop must be indented"
+
+  related:
+    lesson_id: ks3-for-loops-001
+    prerequisites: []
+    next: [parsons-for-loop-002]
+
+---
+# Problem 2: Foundation - Print numbers 0 to 4
+
+parsons_problem:
+  id: parsons-for-loop-002
+  title: "Print Numbers 0 to 4"
+  topic: for-loops
+  stage: ks3
+  difficulty: foundation
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to create a program that prints
+    the numbers 0, 1, 2, 3, 4 on separate lines.
+
+    Expected output:
+    0
+    1
+    2
+    3
+    4
+
+  expected_output: "0\n1\n2\n3\n4"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'for i in range(5):'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'print(i)'
+      indent_level: 1
+      is_distractor: false
+
+  solution:
+    order: [1, 2]
+
+  distractors:
+    enabled: false
+
+  hints:
+    - level: 1
+      hint: "range(5) gives the numbers 0, 1, 2, 3, 4"
+    - level: 2
+      hint: "The variable i holds each number in turn"
+    - level: 3
+      hint: "print(i) will display the current value of i"
+
+  objectives:
+    - "Understand that the loop variable changes each iteration"
+    - "Recognise that range(5) produces 0 to 4"
+
+  common_errors:
+    - error_pattern: "Expecting range(5) to give 1-5"
+      feedback: "range(5) starts at 0, not 1. It gives 0, 1, 2, 3, 4"
+
+  related:
+    lesson_id: ks3-for-loops-001
+    prerequisites: [parsons-for-loop-001]
+    next: [parsons-for-loop-003]
+
+---
+# Problem 3: Core - Print a message with counter
+
+parsons_problem:
+  id: parsons-for-loop-003
+  title: "Numbered Messages"
+  topic: for-loops
+  stage: ks3
+  difficulty: core
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to create a program that prints:
+
+    Lap 1
+    Lap 2
+    Lap 3
+
+    (Numbers 1 to 3, not 0 to 2)
+
+  expected_output: "Lap 1\nLap 2\nLap 3"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'for i in range(1, 4):'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'print("Lap", i)'
+      indent_level: 1
+      is_distractor: false
+
+  solution:
+    order: [1, 2]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 3
+        code: 'for i in range(3):'
+        why_wrong: "This gives 0, 1, 2 - we need 1, 2, 3"
+
+  hints:
+    - level: 1
+      hint: "range(1, 4) gives 1, 2, 3 (starts at 1, stops before 4)"
+    - level: 2
+      hint: "We want to start counting at 1, not 0"
+
+  objectives:
+    - "Use range() with start and stop values"
+    - "Combine text and variables in output"
+
+  common_errors:
+    - error_pattern: "Using range(3) instead of range(1, 4)"
+      feedback: "range(3) starts at 0. Use range(1, 4) to start at 1"
+    - error_pattern: "Using range(1, 3) expecting 1, 2, 3"
+      feedback: "range(1, 3) gives 1, 2. To include 3, use range(1, 4)"
+
+  related:
+    lesson_id: ks3-for-loops-001
+    prerequisites: [parsons-for-loop-002]
+    next: [parsons-for-loop-004]
+
+---
+# Problem 4: Core - Accumulator pattern
+
+parsons_problem:
+  id: parsons-for-loop-004
+  title: "Calculate a Total"
+  topic: for-loops
+  stage: ks3
+  difficulty: core
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to create a program that
+    calculates the total of the numbers 1, 2, 3, 4, 5
+    and prints the result.
+
+    Expected output:
+    15
+
+  expected_output: "15"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'total = 0'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'for i in range(1, 6):'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'total = total + i'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 4
+      code: 'print(total)'
+      indent_level: 0
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 5
+        code: 'total = i'
+        why_wrong: "This replaces total with i instead of adding"
+
+  hints:
+    - level: 1
+      hint: "We need to set up a total variable before the loop"
+    - level: 2
+      hint: "Inside the loop, we add each number to the total"
+    - level: 3
+      hint: "After the loop finishes, we print the final total"
+
+  objectives:
+    - "Implement the accumulator pattern"
+    - "Understand variable scope inside and outside loops"
+
+  common_errors:
+    - error_pattern: "print inside the loop"
+      feedback: "print(total) should be after the loop to show the final answer"
+    - error_pattern: "total = 0 inside the loop"
+      feedback: "Resetting total inside the loop would erase previous additions"
+    - error_pattern: "Using total = i instead of total = total + i"
+      feedback: "This replaces the total instead of adding to it"
+
+  related:
+    lesson_id: ks3-for-loops-001
+    prerequisites: [parsons-for-loop-003]
+    next: [parsons-for-loop-005]
+
+---
+# Problem 5: Extension - Nested concepts
+
+parsons_problem:
+  id: parsons-for-loop-005
+  title: "Countdown with Message"
+  topic: for-loops
+  stage: ks3
+  difficulty: extension
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to create a countdown program:
+
+    Expected output:
+    5
+    4
+    3
+    2
+    1
+    Blast off!
+
+  expected_output: "5\n4\n3\n2\n1\nBlast off!"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'for i in range(5, 0, -1):'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'print(i)'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 3
+      code: 'print("Blast off!")'
+      indent_level: 0
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 4
+        code: 'for i in range(1, 6):'
+        why_wrong: "This counts up from 1 to 5, not down from 5 to 1"
+      - id: 5
+        code: 'for i in range(5, 1, -1):'
+        why_wrong: "This gives 5, 4, 3, 2 - missing the 1"
+
+  hints:
+    - level: 1
+      hint: "range(start, stop, step) - use -1 as step to count down"
+    - level: 2
+      hint: "range(5, 0, -1) gives 5, 4, 3, 2, 1 (stops before 0)"
+    - level: 3
+      hint: "The 'Blast off!' message comes after the loop"
+
+  objectives:
+    - "Use range() with a negative step"
+    - "Understand stop value in countdown (stops before, not at)"
+
+  common_errors:
+    - error_pattern: "Using range(5, 1, -1)"
+      feedback: "This stops before 1, giving 5, 4, 3, 2. Use range(5, 0, -1)"
+    - error_pattern: "'Blast off!' inside the loop"
+      feedback: "This would print 'Blast off!' after every number"
+
+  related:
+    lesson_id: ks3-for-loops-001
+    prerequisites: [parsons-for-loop-004]
+    next: []
+
+---
+# Faded Parsons Problem (transition to writing)
+
+parsons_problem:
+  id: parsons-for-loop-006-faded
+  title: "Complete the Loop (Faded)"
+  topic: for-loops
+  stage: ks3
+  difficulty: extension
+  type: faded
+
+  problem_statement: |
+    Some parts of the code blocks are incomplete.
+    Arrange the blocks AND fill in the missing parts
+    to create a program that prints "Star 1" to "Star 5".
+
+    Expected output:
+    Star 1
+    Star 2
+    Star 3
+    Star 4
+    Star 5
+
+  expected_output: "Star 1\nStar 2\nStar 3\nStar 4\nStar 5"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'for i in range(___, ___):'
+      indent_level: 0
+      is_distractor: false
+      faded_parts:
+        - placeholder: "___"
+          answer: "1"
+          hint: "What number should we start from?"
+        - placeholder: "___"
+          answer: "6"
+          hint: "To include 5, what must the stop value be?"
+
+    - id: 2
+      code: 'print("Star", ___)'
+      indent_level: 1
+      is_distractor: false
+      faded_parts:
+        - placeholder: "___"
+          answer: "i"
+          hint: "What variable holds the current number?"
+
+  solution:
+    order: [1, 2]
+
+  distractors:
+    enabled: false
+
+  hints:
+    - level: 1
+      hint: "We want numbers 1 to 5"
+    - level: 2
+      hint: "range(1, 6) gives 1, 2, 3, 4, 5"
+
+  objectives:
+    - "Transition from arranging to writing code"
+    - "Reinforce range() parameters"
+
+  related:
+    lesson_id: ks3-for-loops-001
+    prerequisites: [parsons-for-loop-005]
+    next: []

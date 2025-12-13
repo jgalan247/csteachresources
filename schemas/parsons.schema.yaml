@@ -1,0 +1,140 @@
+# Parsons Problem Schema
+# Based on research by Barbara Ericson and colleagues
+#
+# Key findings:
+# - Students spend ~50% less time vs writing equivalent code
+# - Students with low self-efficacy benefit most
+# - Distractors decrease learning efficiency for young novices
+# - Start distractor-free for KS3 foundation groups
+
+schema_version: "1.0"
+description: |
+  Parsons problems are drag-and-drop exercises where students arrange
+  scrambled code blocks into correct order. They reduce cognitive load
+  by eliminating syntax errors and constraining the problem space.
+
+parsons_problem:
+  # Metadata
+  id: string                    # Unique identifier
+  title: string                 # Problem title
+  topic: string                 # Programming concept tested
+  stage: enum [ks3, ks4]
+  difficulty: enum [foundation, core, extension]
+
+  # Problem type
+  type: enum [
+    standard,                   # Vertical ordering only
+    2d,                         # Requires indentation (essential for Python)
+    faded,                      # Some blocks need completion
+    adaptive                    # Difficulty adjusts based on performance
+  ]
+
+  # Problem description
+  problem_statement: string     # What the code should do
+
+  # Expected output (for verification)
+  expected_output: string
+
+  # Language
+  language: enum [python, javascript, pseudocode]
+
+  # Code blocks
+  blocks:
+    - id: integer               # Block identifier
+      code: string              # The code in this block
+      indent_level: integer     # Correct indentation (0, 1, 2, etc.)
+      is_distractor: boolean    # False for foundation groups
+
+      # For faded Parsons problems
+      faded_parts:
+        - placeholder: string   # What student sees e.g., "___"
+          answer: string        # Correct completion
+          hint: string          # Optional hint
+
+  # Correct solution
+  solution:
+    order: [integer]            # Correct block order by ID
+
+  # Distractors (use sparingly, avoid for foundation)
+  distractors:
+    enabled: boolean            # Should be false for foundation
+
+    # If enabled, define distractor blocks
+    distractor_blocks:
+      - id: integer
+        code: string
+        why_wrong: string       # Teacher note: why this is wrong
+
+  # Scaffolding
+  hints:
+    - level: integer            # 1 = first hint, 2 = more help, etc.
+      hint: string
+
+  # For adaptive problems
+  adaptation:
+    initial_blocks_placed: integer  # How many blocks pre-placed
+    reduce_on_success: boolean      # Remove scaffolding on success
+    add_distractors_on_success: boolean
+
+  # Differentiation notes
+  differentiation:
+    foundation:
+      notes: string             # How to simplify
+      blocks_to_pre_place: [integer]
+    extension:
+      notes: string             # How to extend
+      additional_distractors: [integer]
+
+  # Learning objectives addressed
+  objectives:
+    - string
+
+  # Common errors
+  common_errors:
+    - error_pattern: string     # What students often do wrong
+      feedback: string          # How to help
+
+  # Related resources
+  related:
+    lesson_id: string           # Parent lesson if applicable
+    prerequisites: [string]     # Prior Parsons problems
+    next: [string]              # Follow-up problems
+
+# Example usage:
+#
+# parsons_problem:
+#   id: "parsons-for-loop-001"
+#   title: "Print numbers 1 to 5"
+#   topic: "for-loops"
+#   stage: ks3
+#   difficulty: foundation
+#   type: 2d
+#
+#   problem_statement: |
+#     Arrange the blocks to create a program that prints
+#     the numbers 1, 2, 3, 4, 5 on separate lines.
+#
+#   expected_output: "1\n2\n3\n4\n5"
+#   language: python
+#
+#   blocks:
+#     - id: 1
+#       code: "for i in range(1, 6):"
+#       indent_level: 0
+#       is_distractor: false
+#     - id: 2
+#       code: "print(i)"
+#       indent_level: 1
+#       is_distractor: false
+#
+#   solution:
+#     order: [1, 2]
+#
+#   distractors:
+#     enabled: false
+#
+#   hints:
+#     - level: 1
+#       hint: "The for loop line comes first"
+#     - level: 2
+#       hint: "The print statement needs to be indented inside the loop"

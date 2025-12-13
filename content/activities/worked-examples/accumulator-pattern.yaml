@@ -1,0 +1,359 @@
+# Worked Example: The Accumulator Pattern
+# With subgoal labels for making expert thinking visible
+
+---
+worked_example:
+  id: we-accumulator-001
+  title: "The Accumulator Pattern: Summing Numbers"
+  topic: accumulator-pattern
+  stage: ks3
+  difficulty: core
+
+  problem:
+    statement: "Calculate the sum of all numbers from 1 to 5"
+    context: |
+      A teacher wants to add up five test scores quickly.
+      Rather than using a calculator, they write a program
+      that can add up any list of numbers.
+    inputs: "The numbers 1, 2, 3, 4, 5"
+    outputs: "The total: 15"
+
+  language: python
+
+  subgoals:
+    - label: "Set up accumulator variable"
+      code: "total = 0"
+      explanation: |
+        Before we start adding numbers, we need somewhere to
+        store our running total. We call this an 'accumulator'
+        because it accumulates (collects) values.
+
+        We start at 0 because we haven't added anything yet.
+      highlight: true
+
+      variations:
+        - description: "Different starting values"
+          alternative_code: "total = 10  # if we already had 10"
+
+      prior_knowledge: "Variable assignment (x = value)"
+
+      misconceptions:
+        - wrong_approach: "Not creating a total variable first"
+          why_wrong: "Without total, we have nowhere to store the sum"
+          correction: "Always create the accumulator before the loop"
+
+        - wrong_approach: "Starting total at 1"
+          why_wrong: "This would give us 16 instead of 15"
+          correction: "Start at 0 for addition, 1 for multiplication"
+
+    - label: "Loop through each number"
+      code: "for i in range(1, 6):"
+      explanation: |
+        We use a for loop to visit each number from 1 to 5.
+
+        range(1, 6) gives us 1, 2, 3, 4, 5
+        (Remember: range stops BEFORE the second number)
+
+        The variable i will hold each number in turn.
+      highlight: true
+
+      variations:
+        - description: "Different ranges"
+          alternative_code: "for i in range(1, 11):  # for 1 to 10"
+
+      prior_knowledge: "for loops, range() function"
+
+      misconceptions:
+        - wrong_approach: "Using range(1, 5)"
+          why_wrong: "This gives 1, 2, 3, 4 - missing 5"
+          correction: "To include 5, use range(1, 6)"
+
+        - wrong_approach: "Using range(5)"
+          why_wrong: "This gives 0, 1, 2, 3, 4 - wrong numbers"
+          correction: "Use range(1, 6) to start from 1"
+
+    - label: "Update the accumulator"
+      code: "    total = total + i"
+      explanation: |
+        This is the key line - the accumulator pattern!
+
+        We take the current total, add the current number (i),
+        and store the result back in total.
+
+        Step by step:
+        - When i = 1: total = 0 + 1 = 1
+        - When i = 2: total = 1 + 2 = 3
+        - When i = 3: total = 3 + 3 = 6
+        - When i = 4: total = 6 + 4 = 10
+        - When i = 5: total = 10 + 5 = 15
+      highlight: true
+
+      variations:
+        - description: "Shorthand version"
+          alternative_code: "    total += i  # same meaning"
+
+      prior_knowledge: "Arithmetic operators, assignment"
+
+      misconceptions:
+        - wrong_approach: "Using total = i"
+          why_wrong: "This replaces total instead of adding to it"
+          correction: "Use total = total + i to add, not replace"
+
+        - wrong_approach: "Forgetting the indentation"
+          why_wrong: "Without indent, this isn't inside the loop"
+          correction: "Indented code runs for each iteration"
+
+    - label: "Output the result"
+      code: "print(total)"
+      explanation: |
+        After the loop finishes, total contains our answer.
+
+        This line is NOT indented, so it runs once, after
+        all the additions are complete.
+
+        We print 15 - the sum of 1 + 2 + 3 + 4 + 5.
+      highlight: false
+
+      prior_knowledge: "print() function"
+
+      misconceptions:
+        - wrong_approach: "Putting print inside the loop"
+          why_wrong: "This prints after every addition, not just at the end"
+          correction: "Unindent print to run it after the loop"
+
+  complete_code: |
+    # Set up accumulator variable
+    total = 0
+
+    # Loop through each number
+    for i in range(1, 6):
+        # Update the accumulator
+        total = total + i
+
+    # Output the result
+    print(total)
+
+  expected_output: "15"
+
+  fading:
+    faded_versions:
+      - level: 1
+        blanked_subgoals: [4]
+        hints_available: true
+
+      - level: 2
+        blanked_subgoals: [3, 4]
+        hints_available: true
+
+      - level: 3
+        blanked_subgoals: [2, 3, 4]
+        hints_available: false
+
+    progression_notes: |
+      Level 1: Students see setup, loop, update; write output
+      Level 2: Students see setup, loop; write update and output
+      Level 3: Students see only setup; write rest
+      Final: Students write entire solution
+
+  differentiation:
+    foundation:
+      additional_subgoals: true
+      extra_explanations:
+        - subgoal_index: 3
+          additional_explanation: |
+            Let's trace through what happens to total:
+
+            Before loop: total = 0
+            After i = 1: total = 0 + 1 = 1
+            After i = 2: total = 1 + 2 = 3
+            After i = 3: total = 3 + 3 = 6
+            After i = 4: total = 6 + 4 = 10
+            After i = 5: total = 10 + 5 = 15
+      visual_supports:
+        - subgoal_index: 3
+          diagram: "accumulator-diagram.png"
+
+    extension:
+      challenges:
+        - description: |
+            Modify the pattern to calculate the product (multiply)
+            instead of the sum. What should total start at?
+          hints:
+            - "For multiplication, starting at 0 would give 0"
+            - "Start total at 1 for multiplication"
+
+        - description: |
+            Calculate the sum of all even numbers from 2 to 20
+          hints:
+            - "Use range(2, 21, 2) to get even numbers"
+
+  practice_problems:
+    - id: practice-accum-001
+      description: "Calculate the sum of numbers 1 to 10"
+      similarity: identical_structure
+      starter_code: |
+        # Set up accumulator
+
+        # Loop through numbers
+
+        # Update accumulator
+
+        # Output result
+      solution: |
+        total = 0
+        for i in range(1, 11):
+            total = total + i
+        print(total)
+
+    - id: practice-accum-002
+      description: "Calculate the total cost of 5 items priced at £3 each"
+      similarity: varied_context
+      starter_code: |
+        price = 3
+        # Your code here
+      solution: |
+        price = 3
+        total = 0
+        for i in range(5):
+            total = total + price
+        print(total)
+
+    - id: practice-accum-003
+      description: "Count down from 10 to 1 and keep a running total"
+      similarity: increased_complexity
+      starter_code: "# Your code here"
+      solution: |
+        total = 0
+        for i in range(10, 0, -1):
+            total = total + i
+            print("Added", i, "- total is now", total)
+        print("Final total:", total)
+
+  self_explanation_prompts:
+    - after_subgoal: 1
+      prompt: "Why do we start total at 0 and not at 1?"
+
+    - after_subgoal: 2
+      prompt: "Why do we use range(1, 6) instead of range(5)?"
+
+    - after_subgoal: 3
+      prompt: "What would happen if we wrote total = i instead?"
+
+    - after_subgoal: 4
+      prompt: "Why is the print statement not indented?"
+
+  objectives:
+    - "Understand the accumulator pattern structure"
+    - "Recognise when to use an accumulator"
+    - "Apply the pattern to new problems"
+
+  related:
+    lesson_id: ks3-for-loops-001
+    tracing_exercise: trace-for-loop-002
+    parsons_problem: parsons-for-loop-004
+
+---
+# Additional worked example: Counting pattern
+
+worked_example:
+  id: we-counting-001
+  title: "The Counting Pattern"
+  topic: counting-pattern
+  stage: ks3
+  difficulty: core
+
+  problem:
+    statement: "Count how many numbers between 1 and 20 are even"
+    context: |
+      We often need to count how many items meet certain criteria.
+      This is similar to accumulation, but we add 1 each time
+      something matches our condition.
+    inputs: "Numbers 1 to 20"
+    outputs: "Count of even numbers: 10"
+
+  language: python
+
+  subgoals:
+    - label: "Set up counter variable"
+      code: "count = 0"
+      explanation: |
+        Like the accumulator, we start with a variable.
+        This time it's a counter - we'll add 1 each time
+        we find an even number.
+      highlight: true
+
+      prior_knowledge: "Variable assignment"
+
+    - label: "Loop through all numbers"
+      code: "for i in range(1, 21):"
+      explanation: |
+        We check each number from 1 to 20.
+        range(1, 21) gives us exactly these numbers.
+      highlight: true
+
+      prior_knowledge: "for loops, range()"
+
+    - label: "Check the condition"
+      code: "    if i % 2 == 0:"
+      explanation: |
+        The % operator gives the remainder after division.
+        If a number divided by 2 has remainder 0, it's even.
+
+        Examples:
+        - 4 % 2 = 0 (even)
+        - 7 % 2 = 1 (odd)
+      highlight: true
+
+      prior_knowledge: "if statements, modulo operator"
+
+      misconceptions:
+        - wrong_approach: "Using i / 2 == 0"
+          why_wrong: "Division gives a result, not a remainder"
+          correction: "Use % for remainder (modulo)"
+
+    - label: "Update counter when condition is true"
+      code: "        count = count + 1"
+      explanation: |
+        Only when the number is even, we add 1 to our count.
+        Note the double indent - inside the loop AND inside the if.
+      highlight: true
+
+      prior_knowledge: "Accumulator pattern"
+
+    - label: "Output the result"
+      code: "print(count)"
+      explanation: |
+        After checking all 20 numbers, count holds
+        how many were even.
+      highlight: false
+
+  complete_code: |
+    # Set up counter variable
+    count = 0
+
+    # Loop through all numbers
+    for i in range(1, 21):
+        # Check the condition
+        if i % 2 == 0:
+            # Update counter when condition is true
+            count = count + 1
+
+    # Output the result
+    print(count)
+
+  expected_output: "10"
+
+  self_explanation_prompts:
+    - after_subgoal: 3
+      prompt: "What does 15 % 2 equal? Is 15 even or odd?"
+
+    - after_subgoal: 4
+      prompt: "Why is count = count + 1 indented twice?"
+
+  objectives:
+    - "Understand the counting pattern"
+    - "Combine loops with selection"
+    - "Use the modulo operator"
+
+  related:
+    lesson_id: ks3-selection-loops-001

@@ -1,0 +1,381 @@
+# KS3 Programming Progression
+# Learning pathways for Year 7-9 programming
+
+---
+progression:
+  id: ks3-programming-main
+  name: "KS3 Programming Pathway"
+  stage: ks3
+  description: |
+    Main progression through text-based programming for KS3.
+    Builds from block-based experience (Scratch) to Python.
+    Follows comprehension-first approach using PRIMM.
+
+  # Entry expectations
+  prerequisites:
+    assumed_knowledge:
+      - "Basic use of block-based programming (Scratch)"
+      - "Understanding of sequence (instructions in order)"
+      - "Familiarity with simple selection (if blocks)"
+      - "Experience with simple iteration (repeat blocks)"
+
+    assessment_entry:
+      - "Can create a simple Scratch program with sequence"
+      - "Can explain what a simple Scratch program does"
+      - "Basic keyboard and mouse skills"
+
+  # Strands within the progression
+  strands:
+    - name: "Sequence and Output"
+      description: "Foundation of sequential execution and producing output"
+      concepts:
+        - print statements
+        - strings
+        - escape sequences
+        - comments
+
+    - name: "Variables and Input"
+      description: "Storing and retrieving data"
+      concepts:
+        - variable assignment
+        - data types (integer, string, float)
+        - user input
+        - type conversion
+
+    - name: "Selection"
+      description: "Making decisions in code"
+      concepts:
+        - if statements
+        - comparison operators
+        - boolean expressions
+        - if-else
+        - if-elif-else
+
+    - name: "Iteration"
+      description: "Repeating code"
+      concepts:
+        - for loops (count-controlled)
+        - range function
+        - while loops (condition-controlled)
+        - loop patterns (accumulator, counting)
+
+    - name: "Data Structures"
+      description: "Organising collections of data"
+      concepts:
+        - lists
+        - indexing
+        - list operations
+        - iterating through lists
+
+    - name: "Functions"
+      description: "Organising code into reusable blocks"
+      concepts:
+        - defining functions
+        - parameters
+        - return values
+        - scope
+
+  # Unit sequence
+  units:
+    - id: unit-1
+      name: "From Blocks to Text"
+      year_group: 7
+      term: autumn
+      duration_weeks: 6
+      strand: "Sequence and Output"
+
+      description: |
+        Transition from Scratch to Python. Focus on reading
+        and tracing code before writing. Heavy use of PRIMM
+        Predict and Investigate stages.
+
+      learning_objectives:
+        - "Recognise Python syntax compared to Scratch blocks"
+        - "Trace simple sequential programs"
+        - "Write programs with print statements"
+        - "Use comments to explain code"
+
+      lessons:
+        - ks3-transition-001  # Block-to-text comparison
+        - ks3-output-001      # print statements
+        - ks3-output-002      # strings and escape sequences
+        - ks3-output-003      # comments and readability
+
+      key_vocabulary:
+        - syntax
+        - print
+        - string
+        - comment
+        - execute
+
+      differentiation:
+        foundation:
+          - "Extended use of block-text comparison"
+          - "More prediction activities, fewer Make tasks"
+          - "Parsons problems before free writing"
+        extension:
+          - "Multi-line programs earlier"
+          - "Creative output challenges"
+
+    - id: unit-2
+      name: "Variables and Data"
+      year_group: 7
+      term: autumn
+      duration_weeks: 6
+      strand: "Variables and Input"
+
+      description: |
+        Introduction to variables as named storage.
+        Focus on tracing variable values through execution.
+
+      learning_objectives:
+        - "Explain what a variable is"
+        - "Create and use variables"
+        - "Trace variable values through a program"
+        - "Get input from users"
+        - "Convert between data types"
+
+      lessons:
+        - ks3-variables-001   # Introduction to variables
+        - ks3-variables-002   # Variable naming and assignment
+        - ks3-variables-003   # Data types
+        - ks3-input-001       # User input
+        - ks3-types-001       # Type conversion
+
+      key_vocabulary:
+        - variable
+        - assignment
+        - data type
+        - integer
+        - string
+        - float
+        - input
+
+      differentiation:
+        foundation:
+          - "Extensive tracing activities"
+          - "Consistent variable names"
+          - "Physical computing integration (micro:bit)"
+        extension:
+          - "Multiple data types in one program"
+          - "Error handling for input"
+
+    - id: unit-3
+      name: "Making Decisions"
+      year_group: 7
+      term: spring
+      duration_weeks: 6
+      strand: "Selection"
+
+      description: |
+        Selection statements for decision making.
+        Build on Scratch if-block experience.
+
+      learning_objectives:
+        - "Use if statements to make decisions"
+        - "Write boolean expressions with comparison operators"
+        - "Use if-else for two-way decisions"
+        - "Use if-elif-else for multi-way decisions"
+
+      lessons:
+        - ks3-selection-001   # if statements
+        - ks3-selection-002   # Comparison operators
+        - ks3-selection-003   # if-else
+        - ks3-selection-004   # if-elif-else
+        - ks3-selection-005   # Combining conditions
+
+      key_vocabulary:
+        - selection
+        - condition
+        - boolean
+        - comparison operator
+        - if
+        - else
+        - elif
+
+    - id: unit-4
+      name: "Repetition with For Loops"
+      year_group: 7
+      term: spring
+      duration_weeks: 6
+      strand: "Iteration"
+
+      description: |
+        Count-controlled iteration using for loops.
+        Heavy emphasis on tracing loop execution.
+
+      learning_objectives:
+        - "Explain why loops are useful"
+        - "Use for loops to repeat code"
+        - "Trace loop variable values"
+        - "Use range() with different parameters"
+        - "Apply the accumulator pattern"
+
+      lessons:
+        - ks3-for-loops-001   # Introduction to for loops
+        - ks3-for-loops-002   # range() function
+        - ks3-for-loops-003   # Accumulator pattern
+        - ks3-for-loops-004   # Counting patterns
+        - ks3-for-loops-005   # Nested concepts introduction
+
+      key_vocabulary:
+        - iteration
+        - for loop
+        - range
+        - loop variable
+        - accumulator
+
+    - id: unit-5
+      name: "While Loops and Validation"
+      year_group: 8
+      term: autumn
+      duration_weeks: 6
+      strand: "Iteration"
+
+      description: |
+        Condition-controlled iteration.
+        Input validation as practical application.
+
+      learning_objectives:
+        - "Distinguish for and while loops"
+        - "Use while loops for indefinite iteration"
+        - "Validate user input using loops"
+        - "Avoid infinite loops"
+
+      lessons:
+        - ks3-while-001       # Introduction to while
+        - ks3-while-002       # Comparison with for
+        - ks3-while-003       # Input validation
+        - ks3-while-004       # Sentinel values
+        - ks3-while-005       # Common patterns
+
+      key_vocabulary:
+        - while loop
+        - condition
+        - infinite loop
+        - validation
+        - sentinel value
+
+    - id: unit-6
+      name: "Working with Lists"
+      year_group: 8
+      term: autumn
+      duration_weeks: 6
+      strand: "Data Structures"
+
+      description: |
+        Introduction to lists as data structures.
+        Combining loops with lists.
+
+      learning_objectives:
+        - "Create and manipulate lists"
+        - "Access list elements by index"
+        - "Iterate through lists"
+        - "Apply accumulator patterns to lists"
+
+      lessons:
+        - ks3-lists-001       # Introduction to lists
+        - ks3-lists-002       # Indexing
+        - ks3-lists-003       # List operations
+        - ks3-lists-004       # Iterating through lists
+        - ks3-lists-005       # List patterns
+
+      key_vocabulary:
+        - list
+        - index
+        - element
+        - append
+        - length
+
+    - id: unit-7
+      name: "Functions and Modularity"
+      year_group: 8
+      term: spring
+      duration_weeks: 6
+      strand: "Functions"
+
+      description: |
+        Organising code into reusable functions.
+        Introduction to abstraction and decomposition.
+
+      learning_objectives:
+        - "Explain why functions are useful"
+        - "Define and call functions"
+        - "Use parameters to make functions flexible"
+        - "Return values from functions"
+
+      lessons:
+        - ks3-functions-001   # Why functions
+        - ks3-functions-002   # Defining functions
+        - ks3-functions-003   # Parameters
+        - ks3-functions-004   # Return values
+        - ks3-functions-005   # Scope
+
+      key_vocabulary:
+        - function
+        - define
+        - call
+        - parameter
+        - argument
+        - return
+        - scope
+
+  # Assessment points
+  assessment:
+    formative:
+      - type: "Code prediction"
+        frequency: "Every lesson (PRIMM Predict stage)"
+        purpose: "Check conceptual understanding"
+
+      - type: "Trace tables"
+        frequency: "Weekly"
+        purpose: "Verify execution understanding"
+
+      - type: "Parsons problems"
+        frequency: "As needed"
+        purpose: "Scaffold before free writing"
+
+    summative:
+      - type: "End of unit assessment"
+        frequency: "End of each unit"
+        components:
+          - "Code tracing questions (25%)"
+          - "Code explanation (20%)"
+          - "Code modification (25%)"
+          - "Code writing (30%)"
+
+      - type: "Programming project"
+        frequency: "End of Year 7, Year 8"
+        components:
+          - "Planning/design"
+          - "Implementation"
+          - "Testing"
+          - "Evaluation"
+
+  # Differentiation pathways
+  pathways:
+    foundation:
+      description: "For students needing additional support"
+      adaptations:
+        - "Extended time on each unit"
+        - "More PRIMM Predict/Investigate, less Make"
+        - "Parsons problems before all code writing"
+        - "Physical computing integration throughout"
+        - "Smaller code examples (3-5 lines)"
+        - "Pre-filled trace tables"
+
+    core:
+      description: "Standard pathway"
+      adaptations:
+        - "Full PRIMM cycle in each lesson"
+        - "Balance of scaffolded and independent work"
+        - "Code examples 5-10 lines"
+
+    extension:
+      description: "For students ready for challenge"
+      adaptations:
+        - "Quicker progression through PRIMM stages"
+        - "More complex Make challenges"
+        - "Earlier introduction of advanced concepts"
+        - "Peer teaching opportunities"
+        - "Competition preparation (Bebras, etc.)"

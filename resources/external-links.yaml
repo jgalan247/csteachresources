@@ -1,0 +1,287 @@
+# External Resources
+# Curated links to research-validated teaching resources
+
+---
+# National Centre for Computing Education (NCCE)
+
+ncce:
+  name: "National Centre for Computing Education"
+  url: "https://teachcomputing.org"
+  description: |
+    The NCCE provides the Teach Computing Curriculum with
+    complete coverage for KS1-KS4. Free, high-quality resources
+    aligned with England's National Curriculum.
+
+  key_resources:
+    curriculum:
+      name: "Teach Computing Curriculum"
+      url: "https://teachcomputing.org/curriculum"
+      description: |
+        KS3: 20 units, 124 lessons
+        KS4: 22 units, 178 lessons
+        Includes lesson plans, slides, activity sheets, assessments
+
+    cpd:
+      name: "CPD Courses"
+      url: "https://teachcomputing.org/courses"
+      description: "Free professional development for computing teachers"
+
+    send_course:
+      name: "CO700: Supporting Learners with SEND"
+      url: "https://teachcomputing.org/courses/CO700"
+      description: |
+        Creating an Inclusive Classroom: Approaches to Supporting
+        Learners with SEND in Computing
+
+    pedagogy:
+      name: "12 Pedagogy Principles"
+      url: "https://blog.teachcomputing.org/tag/pedagogy/"
+      description: "Research-based teaching approaches"
+
+  ks3_units:
+    - name: "Programming Sequence, Selection, Iteration"
+      url: "https://teachcomputing.org/curriculum/key-stage-3/programming-sequence-selection-iteration"
+    - name: "Programming with Python"
+      url: "https://teachcomputing.org/curriculum/key-stage-3/programming-python"
+    - name: "Introduction to Python"
+      url: "https://teachcomputing.org/curriculum/key-stage-3/introduction-to-python"
+
+---
+# Isaac Computer Science
+
+isaac:
+  name: "Isaac Computer Science"
+  url: "https://isaaccomputerscience.org"
+  description: |
+    Free GCSE and A Level computer science platform with
+    interactive questions and self-marking. Saves teachers
+    up to 3 hours per week.
+
+  key_features:
+    - "Interactive study materials"
+    - "Self-marking questions"
+    - "Question finders for creating gameboards"
+    - "Progress tracking for teachers"
+
+  programming_topics:
+    - name: "For Loops"
+      url: "https://isaaccomputerscience.org/concepts/prog_itertic_for"
+    - name: "While Loops"
+      url: "https://isaaccomputerscience.org/concepts/prog_itertic_while"
+    - name: "Variables"
+      url: "https://isaaccomputerscience.org/concepts/prog_var"
+    - name: "Selection"
+      url: "https://isaaccomputerscience.org/concepts/prog_sel"
+    - name: "Functions"
+      url: "https://isaaccomputerscience.org/concepts/prog_func"
+
+---
+# PRIMM Resources
+
+primm:
+  name: "PRIMM Portal"
+  url: "https://primmportal.com"
+  description: |
+    Official resources for the PRIMM framework developed by
+    Dr Sue Sentance and Dr Jane Waite.
+
+  research_papers:
+    - title: "Teaching programming in schools: A review of approaches and strategies"
+      authors: "Sentance, S. & Waite, J."
+      year: 2017
+
+    - title: "PRIMM: Exploring pedagogical approaches for teaching text-based programming in school"
+      authors: "Sentance, S., Waite, J., & Kallia, M."
+      year: 2019
+
+  key_resources:
+    - name: "PRIMM Activities"
+      url: "https://primmportal.com/resources"
+    - name: "Research Background"
+      url: "https://primmportal.com/research"
+
+---
+# Python Tutor
+
+pythontutor:
+  name: "Python Tutor"
+  url: "https://pythontutor.com"
+  description: |
+    Visualise code execution step by step. Shows memory state,
+    variable values, and execution flow. Excellent for supporting
+    code tracing activities.
+
+  features:
+    - "Step-by-step execution visualisation"
+    - "Memory/variable state display"
+    - "Supports Python, Java, JavaScript, C, C++"
+    - "Shareable links for specific programs"
+
+  usage_notes: |
+    - Use for demonstration during live coding
+    - Provide links to students for independent tracing support
+    - Works well for debugging misconceptions
+    - Can slow down execution to match verbal explanation
+
+---
+# CS Unplugged
+
+csunplugged:
+  name: "CS Unplugged"
+  url: "https://csunplugged.org"
+  description: |
+    Free activities for teaching computer science concepts
+    without computers. Research shows students who do unplugged
+    activities first demonstrate more self-efficacy.
+
+  benefits:
+    - "No technical barriers"
+    - "Builds conceptual vocabulary"
+    - "Accessible to students with motor difficulties"
+    - "Reveals thinking through physical activity"
+
+  key_topics:
+    - name: "Binary Numbers"
+      url: "https://csunplugged.org/en/topics/binary-numbers/"
+    - name: "Sorting Networks"
+      url: "https://csunplugged.org/en/topics/sorting-networks/"
+    - name: "Searching Algorithms"
+      url: "https://csunplugged.org/en/topics/searching-algorithms/"
+
+---
+# Computing at School (CAS)
+
+cas:
+  name: "Computing at School"
+  url: "https://www.computingatschool.org.uk"
+  description: |
+    Community of computing educators. Provides shared resources,
+    local hubs, and the CAS community resource library.
+
+  key_resources:
+    community:
+      name: "CAS Community"
+      url: "https://community.computingatschool.org.uk"
+      description: "Shared teaching resources and discussions"
+
+    barefoot:
+      name: "Barefoot Computing"
+      url: "https://www.barefootcomputing.org"
+      description: "Primary computing resources and CPD"
+
+---
+# Raspberry Pi Foundation
+
+raspberrypi:
+  name: "Raspberry Pi Foundation"
+  url: "https://www.raspberrypi.org"
+  description: |
+    Physical computing resources and research into computing
+    education. Research shows pair programming and physical
+    computing particularly benefit underrepresented groups.
+
+  key_resources:
+    projects:
+      name: "Projects"
+      url: "https://projects.raspberrypi.org"
+      description: "Step-by-step coding projects"
+
+    research:
+      name: "Research"
+      url: "https://www.raspberrypi.org/research"
+      description: "Computing education research publications"
+
+    codeclubs:
+      name: "Code Club"
+      url: "https://codeclub.org"
+      description: "After-school coding clubs"
+
+---
+# micro:bit
+
+microbit:
+  name: "micro:bit Educational Foundation"
+  url: "https://microbit.org"
+  description: |
+    Physical computing device ideal for KS2-KS4. Supports
+    block-to-text transition through MakeCode environment.
+    "Extremely engaging and accessible" for SEND students.
+
+  key_resources:
+    makecode:
+      name: "MakeCode Editor"
+      url: "https://makecode.microbit.org"
+      description: "Block and JavaScript programming environment"
+
+    classroom:
+      name: "Classroom Resources"
+      url: "https://microbit.org/teach/"
+      description: "Lesson plans and teaching materials"
+
+    python:
+      name: "Python Editor"
+      url: "https://python.microbit.org"
+      description: "Python programming for micro:bit"
+
+---
+# Parsons Problems Tools
+
+parsons_tools:
+  name: "Parsons Problems Tools"
+  description: "Interactive tools for creating Parsons problems"
+
+  tools:
+    - name: "js-parsons"
+      url: "https://js-parsons.github.io"
+      description: "JavaScript library for Parsons problems"
+
+    - name: "Runestone Interactive"
+      url: "https://runestone.academy"
+      description: "Interactive textbooks with Parsons problems"
+
+    - name: "PrairieLearn"
+      url: "https://prairielearn.org"
+      description: "Assessment platform with Parsons support"
+
+---
+# Research Sources
+
+research:
+  name: "Key Research Sources"
+  description: "Academic conferences and journals for computing education research"
+
+  conferences:
+    - name: "SIGCSE"
+      fullname: "ACM Special Interest Group on Computer Science Education"
+      url: "https://sigcse.org"
+
+    - name: "ICER"
+      fullname: "International Computing Education Research Conference"
+      url: "https://icer.acm.org"
+
+    - name: "ITiCSE"
+      fullname: "Innovation and Technology in Computer Science Education"
+      url: "https://iticse.acm.org"
+
+  journals:
+    - name: "ACM Transactions on Computing Education"
+      url: "https://dl.acm.org/journal/toce"
+
+    - name: "Computer Science Education"
+      url: "https://www.tandfonline.com/toc/ncse20/current"
+
+  key_researchers:
+    - name: "Dr Sue Sentance"
+      contribution: "PRIMM framework, computing pedagogy"
+
+    - name: "Dr Jane Waite"
+      contribution: "PRIMM framework, block-based programming"
+
+    - name: "Barbara Ericson"
+      contribution: "Parsons problems research"
+
+    - name: "Lauren Margulieux"
+      contribution: "Subgoal labeling in programming"
+
+    - name: "Raymond Lister"
+      contribution: "Code tracing and novice programmers"

@@ -1,0 +1,181 @@
+# Code Tracing Exercise Schema
+# Based on research by Lopez, Whalley, Robbins, Lister and others
+#
+# Key findings:
+# - Tracing ability correlates strongly with code writing ability
+# - Novices must trace at least 50% of code accurately before writing
+# - Skill hierarchy: knowledge → tracing → explaining → writing
+# - Recommended: 10-15 min demo + 15-20 min practice
+
+schema_version: "1.0"
+description: |
+  Code tracing exercises have students track variable values through
+  program execution. This builds the comprehension skills that are
+  prerequisite to code writing. Tracing should be treated as
+  "showing work" like in mathematics.
+
+tracing_exercise:
+  # Metadata
+  id: string                    # Unique identifier
+  title: string                 # Exercise title
+  topic: string                 # Programming concept
+  stage: enum [ks3, ks4]
+  difficulty: enum [foundation, core, extension]
+
+  # The code to trace
+  code: string                  # Complete program
+  language: enum [python, javascript, pseudocode]
+
+  # Line numbers to focus on (optional, for complex code)
+  focus_lines:
+    start: integer
+    end: integer
+
+  # Trace table configuration
+  trace_table:
+    # Variables to track
+    variables:
+      - name: string            # Variable name
+        type: string            # Data type (for teacher reference)
+        initial_value: any      # Starting value (often null/undefined)
+
+    # Include output column?
+    include_output: boolean     # Track what gets printed
+
+    # Include line number column?
+    include_line_numbers: boolean
+
+    # Complete solution trace
+    solution:
+      - step: integer           # Step number
+        line: integer           # Line being executed
+        variables:              # Variable values after this line
+          variable_name: any    # Key-value pairs
+        output: string          # What was printed (if anything)
+        notes: string           # Teacher notes about this step
+
+  # Scaffolding options
+  scaffolding:
+    # Pre-filled rows (for foundation)
+    prefilled_steps: [integer]  # Which steps to pre-fill
+
+    # Hints for each step
+    step_hints:
+      - step: integer
+        hint: string
+
+    # Visual support
+    visualisation:
+      python_tutor_link: string # Link to pythontutor.com
+      diagram: string           # Path to visual diagram
+
+  # Differentiation
+  differentiation:
+    foundation:
+      # Simpler version
+      simplified_code: string   # Fewer variables/lines
+      additional_scaffolding: string
+
+    extension:
+      # Extended challenges
+      prediction_questions:
+        - string                # e.g., "What if we changed x to 10?"
+      modification_challenge: string
+
+  # Common errors
+  common_errors:
+    - step: integer             # Where students often go wrong
+      error: string             # What they do wrong
+      misconception: string     # Why they might do this
+      feedback: string          # How to help
+
+  # Learning objectives
+  objectives:
+    - string
+
+  # Assessment criteria
+  assessment:
+    # What percentage correct indicates mastery?
+    mastery_threshold: integer  # Research suggests 50% minimum
+
+    # Rubric
+    rubric:
+      - criterion: string
+        marks: integer
+
+  # Related resources
+  related:
+    lesson_id: string
+    parsons_problem: string     # Related Parsons problem
+    worked_example: string      # Related worked example
+
+# Blank trace table template for students:
+#
+# | Step | Line | variable1 | variable2 | Output |
+# |------|------|-----------|-----------|--------|
+# | 1    |      |           |           |        |
+# | 2    |      |           |           |        |
+# | ...  |      |           |           |        |
+
+# Example usage:
+#
+# tracing_exercise:
+#   id: "trace-accumulator-001"
+#   title: "Trace an accumulator pattern"
+#   topic: "accumulator-pattern"
+#   stage: ks3
+#   difficulty: core
+#
+#   code: |
+#     total = 0
+#     for i in range(1, 4):
+#         total = total + i
+#     print(total)
+#
+#   language: python
+#
+#   trace_table:
+#     variables:
+#       - name: total
+#         type: integer
+#         initial_value: null
+#       - name: i
+#         type: integer
+#         initial_value: null
+#
+#     include_output: true
+#     include_line_numbers: true
+#
+#     solution:
+#       - step: 1
+#         line: 1
+#         variables: {total: 0, i: null}
+#         output: ""
+#       - step: 2
+#         line: 2
+#         variables: {total: 0, i: 1}
+#         output: ""
+#       - step: 3
+#         line: 3
+#         variables: {total: 1, i: 1}
+#         output: ""
+#       - step: 4
+#         line: 2
+#         variables: {total: 1, i: 2}
+#         output: ""
+#       - step: 5
+#         line: 3
+#         variables: {total: 3, i: 2}
+#         output: ""
+#       - step: 6
+#         line: 2
+#         variables: {total: 3, i: 3}
+#         output: ""
+#       - step: 7
+#         line: 3
+#         variables: {total: 6, i: 3}
+#         output: ""
+#       - step: 8
+#         line: 4
+#         variables: {total: 6, i: 3}
+#         output: "6"

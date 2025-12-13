@@ -1,0 +1,447 @@
+# Code Tracing Exercises: For Loops
+# Progressive tracing exercises for count-controlled iteration
+
+---
+# Exercise 1: Foundation - Simple counting
+
+tracing_exercise:
+  id: trace-for-loop-001
+  title: "Trace a Simple For Loop"
+  topic: for-loops
+  stage: ks3
+  difficulty: foundation
+
+  code: |
+    for i in range(3):
+        print(i)
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: i
+        type: integer
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {i: 0}
+        output: ""
+        notes: "Loop starts, i gets first value from range(3)"
+
+      - step: 2
+        line: 2
+        variables: {i: 0}
+        output: "0"
+        notes: "Print the current value of i"
+
+      - step: 3
+        line: 1
+        variables: {i: 1}
+        output: ""
+        notes: "Loop continues, i gets next value"
+
+      - step: 4
+        line: 2
+        variables: {i: 1}
+        output: "1"
+        notes: "Print the current value of i"
+
+      - step: 5
+        line: 1
+        variables: {i: 2}
+        output: ""
+        notes: "Loop continues, i gets next value"
+
+      - step: 6
+        line: 2
+        variables: {i: 2}
+        output: "2"
+        notes: "Print the current value of i"
+
+      - step: 7
+        line: 1
+        variables: {i: null}
+        output: ""
+        notes: "Loop ends - no more values in range(3)"
+
+  scaffolding:
+    prefilled_steps: [1, 2]
+
+    step_hints:
+      - step: 3
+        hint: "What is the next number after 0 in range(3)?"
+      - step: 5
+        hint: "What is the last number in range(3)?"
+      - step: 7
+        hint: "range(3) only has 3 numbers: 0, 1, 2"
+
+    visualisation:
+      python_tutor_link: "https://pythontutor.com/render.html#code=for%20i%20in%20range%283%29%3A%0A%20%20%20%20print%28i%29&mode=display"
+
+  differentiation:
+    foundation:
+      simplified_code: null
+      additional_scaffolding: |
+        Remember: range(3) gives the numbers 0, 1, 2
+        The loop runs once for each number
+
+    extension:
+      prediction_questions:
+        - "What would change if we used range(5)?"
+        - "What would the output be for range(1, 4)?"
+      modification_challenge: "Predict and trace: for i in range(2, 5)"
+
+  common_errors:
+    - step: 1
+      error: "Writing i = 3 instead of i = 0"
+      misconception: "Thinking range(3) means 'start at 3'"
+      feedback: "range(3) starts at 0 and counts 3 numbers: 0, 1, 2"
+
+    - step: 7
+      error: "Adding a step for i = 3"
+      misconception: "Thinking range(3) includes 3"
+      feedback: "range(3) stops before 3. It gives 0, 1, 2 only"
+
+  objectives:
+    - "Trace values of loop variable through iterations"
+    - "Understand that range(n) starts at 0"
+    - "Recognise when a loop terminates"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct values of i"
+        marks: 3
+      - criterion: "Correct output at each step"
+        marks: 2
+      - criterion: "Correct loop termination"
+        marks: 1
+
+  related:
+    lesson_id: ks3-for-loops-001
+    parsons_problem: parsons-for-loop-001
+
+---
+# Exercise 2: Core - Accumulator pattern
+
+tracing_exercise:
+  id: trace-for-loop-002
+  title: "Trace an Accumulator"
+  topic: for-loops
+  stage: ks3
+  difficulty: core
+
+  code: |
+    total = 0
+    for i in range(1, 4):
+        total = total + i
+    print(total)
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: total
+        type: integer
+        initial_value: null
+      - name: i
+        type: integer
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {total: 0, i: null}
+        output: ""
+        notes: "Initialise total to 0"
+
+      - step: 2
+        line: 2
+        variables: {total: 0, i: 1}
+        output: ""
+        notes: "Start loop, i gets 1 (first value of range(1,4))"
+
+      - step: 3
+        line: 3
+        variables: {total: 1, i: 1}
+        output: ""
+        notes: "total = 0 + 1 = 1"
+
+      - step: 4
+        line: 2
+        variables: {total: 1, i: 2}
+        output: ""
+        notes: "Next iteration, i gets 2"
+
+      - step: 5
+        line: 3
+        variables: {total: 3, i: 2}
+        output: ""
+        notes: "total = 1 + 2 = 3"
+
+      - step: 6
+        line: 2
+        variables: {total: 3, i: 3}
+        output: ""
+        notes: "Next iteration, i gets 3"
+
+      - step: 7
+        line: 3
+        variables: {total: 6, i: 3}
+        output: ""
+        notes: "total = 3 + 3 = 6"
+
+      - step: 8
+        line: 2
+        variables: {total: 6, i: null}
+        output: ""
+        notes: "Loop ends - no more values"
+
+      - step: 9
+        line: 4
+        variables: {total: 6, i: null}
+        output: "6"
+        notes: "Print the final total"
+
+  scaffolding:
+    prefilled_steps: [1, 2, 3]
+
+    step_hints:
+      - step: 5
+        hint: "total = 1 + 2. What does that equal?"
+      - step: 7
+        hint: "total = 3 + 3. What does that equal?"
+
+    visualisation:
+      python_tutor_link: "https://pythontutor.com/render.html#code=total%20%3D%200%0Afor%20i%20in%20range%281%2C%204%29%3A%0A%20%20%20%20total%20%3D%20total%20%2B%20i%0Aprint%28total%29&mode=display"
+
+  differentiation:
+    foundation:
+      simplified_code: |
+        total = 0
+        for i in range(1, 3):
+            total = total + i
+        print(total)
+      additional_scaffolding: |
+        Work out total = total + i step by step:
+        - What is total right now?
+        - What is i right now?
+        - Add them together - that's the new total
+
+    extension:
+      prediction_questions:
+        - "What would total be after range(1, 6)?"
+        - "What if we started with total = 10?"
+      modification_challenge: "Trace: for i in range(2, 5): total = total * i"
+
+  common_errors:
+    - step: 3
+      error: "Writing total = 1 without showing the calculation"
+      misconception: "Skipping the mental arithmetic"
+      feedback: "Write total = 0 + 1 = 1 to show your working"
+
+    - step: 5
+      error: "Writing total = 2 instead of total = 3"
+      misconception: "Replacing total with i instead of adding"
+      feedback: "total = total + i means: old total (1) + i (2) = 3"
+
+  objectives:
+    - "Trace the accumulator pattern"
+    - "Understand that total updates each iteration"
+    - "Distinguish between replacing and accumulating"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct total values"
+        marks: 4
+      - criterion: "Correct i values"
+        marks: 2
+      - criterion: "Correct final output"
+        marks: 1
+
+  related:
+    lesson_id: ks3-for-loops-001
+    parsons_problem: parsons-for-loop-004
+    worked_example: we-accumulator-001
+
+---
+# Exercise 3: Extension - Countdown and conditional
+
+tracing_exercise:
+  id: trace-for-loop-003
+  title: "Trace a Countdown"
+  topic: for-loops
+  stage: ks3
+  difficulty: extension
+
+  code: |
+    for i in range(3, 0, -1):
+        print(i)
+    print("Done!")
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: i
+        type: integer
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {i: 3}
+        output: ""
+        notes: "range(3, 0, -1) starts at 3"
+
+      - step: 2
+        line: 2
+        variables: {i: 3}
+        output: "3"
+        notes: "Print current value"
+
+      - step: 3
+        line: 1
+        variables: {i: 2}
+        output: ""
+        notes: "i decreases by 1 (the step is -1)"
+
+      - step: 4
+        line: 2
+        variables: {i: 2}
+        output: "2"
+        notes: "Print current value"
+
+      - step: 5
+        line: 1
+        variables: {i: 1}
+        output: ""
+        notes: "i decreases by 1"
+
+      - step: 6
+        line: 2
+        variables: {i: 1}
+        output: "1"
+        notes: "Print current value"
+
+      - step: 7
+        line: 1
+        variables: {i: null}
+        output: ""
+        notes: "Loop ends - 0 is the stop value"
+
+      - step: 8
+        line: 3
+        variables: {i: null}
+        output: "Done!"
+        notes: "Code after loop runs once"
+
+  scaffolding:
+    prefilled_steps: []
+
+    step_hints:
+      - step: 1
+        hint: "range(start, stop, step) - what is start?"
+      - step: 3
+        hint: "The step is -1, so i goes down"
+      - step: 7
+        hint: "The loop stops before reaching 0"
+
+    visualisation:
+      python_tutor_link: "https://pythontutor.com/render.html#code=for%20i%20in%20range%283%2C%200%2C%20-1%29%3A%0A%20%20%20%20print%28i%29%0Aprint%28%22Done!%22%29&mode=display"
+
+  differentiation:
+    foundation:
+      simplified_code: null
+      additional_scaffolding: |
+        range(3, 0, -1) means:
+        - Start at 3
+        - Stop before 0
+        - Step by -1 (count down)
+        So it gives: 3, 2, 1
+
+    extension:
+      prediction_questions:
+        - "What would range(5, 0, -2) give?"
+        - "How would you count from 10 to 0 by 2s?"
+      modification_challenge: "Trace: for i in range(10, 0, -3)"
+
+  common_errors:
+    - step: 1
+      error: "Writing i = 0"
+      misconception: "Confusing start and stop in countdown"
+      feedback: "In range(3, 0, -1), we START at 3, not 0"
+
+    - step: 6
+      error: "Including i = 0 as a step"
+      misconception: "Thinking stop value is included"
+      feedback: "range() stops BEFORE the stop value. 0 is not printed."
+
+  objectives:
+    - "Trace loops with negative step values"
+    - "Understand range(start, stop, step) fully"
+    - "Distinguish loop body from post-loop code"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct i values in countdown order"
+        marks: 3
+      - criterion: "Correct termination (not including 0)"
+        marks: 2
+      - criterion: "Correct post-loop output"
+        marks: 1
+
+  related:
+    lesson_id: ks3-for-loops-001
+    parsons_problem: parsons-for-loop-005
+
+---
+# Blank trace table template for printing
+
+trace_table_template:
+  title: "Trace Table Template"
+  instructions: |
+    Use this template for any tracing exercise.
+    Add columns for each variable in the program.
+    Fill in values step by step as the code executes.
+
+  template: |
+    Code to trace:
+    _______________________________________________
+    _______________________________________________
+    _______________________________________________
+    _______________________________________________
+
+    | Step | Line | var1 | var2 | Output |
+    |------|------|------|------|--------|
+    | 1    |      |      |      |        |
+    | 2    |      |      |      |        |
+    | 3    |      |      |      |        |
+    | 4    |      |      |      |        |
+    | 5    |      |      |      |        |
+    | 6    |      |      |      |        |
+    | 7    |      |      |      |        |
+    | 8    |      |      |      |        |
+    | 9    |      |      |      |        |
+    | 10   |      |      |      |        |
+
+    Final output: ________________________________
+
+  tips:
+    - "Write the variable names at the top of each column"
+    - "Use - or null for variables that don't exist yet"
+    - "Track output separately from variable values"
+    - "Circle the line numbers when you return to the loop header"

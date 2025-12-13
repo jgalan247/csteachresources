@@ -1,0 +1,304 @@
+# KS3 For Loops Introduction
+# A complete PRIMM lesson for introducing count-controlled iteration
+
+id: ks3-for-loops-001
+title: "Introduction to For Loops"
+topic: for-loops
+stage: ks3
+year_group: 8
+duration_minutes: 60
+
+objectives:
+  - Understand that for loops repeat code a specific number of times
+  - Trace the execution of a simple for loop
+  - Modify a for loop to change the number of iterations
+  - Write a for loop to solve a simple repetition problem
+
+success_criteria:
+  - I can predict what a for loop will output
+  - I can trace the values of the loop variable through each iteration
+  - I can change how many times a loop runs
+  - I can write a for loop to repeat an action
+
+prerequisites:
+  concepts:
+    - Variables and assignment
+    - Print statements
+    - Sequential execution
+  lessons:
+    - ks3-variables-001
+    - ks3-output-001
+
+vocabulary:
+  - term: iteration
+    definition: One pass through a loop; doing something repeatedly
+    example: "Printing 'Hello' 5 times requires 5 iterations"
+
+  - term: for loop
+    definition: A loop that repeats a specific number of times
+    example: "for i in range(5):"
+
+  - term: loop variable
+    definition: The variable that changes each time through the loop
+    example: "In 'for i in range(5)', i is the loop variable"
+
+  - term: range
+    definition: A function that generates a sequence of numbers
+    example: "range(5) gives 0, 1, 2, 3, 4"
+
+primm:
+  predict:
+    enabled: true
+    code_snippet: |
+      for i in range(3):
+          print("Hello")
+    language: python
+
+    discussion:
+      individual_think_time: 30
+      pair_discussion: true
+      whole_class: true
+
+    prompts:
+      - "How many times will 'Hello' be printed?"
+      - "What does 'range(3)' do?"
+      - "What values will i have during execution?"
+
+    misconceptions:
+      - prediction: "'Hello' prints 1 time"
+        why: "Student doesn't recognise loop structure"
+        address: "Highlight the for keyword and explain it means repetition"
+
+      - prediction: "'Hello' prints 4 times (0,1,2,3)"
+        why: "Confusing range count with starting from 0"
+        address: "Count the numbers: 0, 1, 2 - that's 3 numbers"
+
+      - prediction: "The number 3 will be printed"
+        why: "Confusing the loop variable with the output"
+        address: "We print 'Hello' (a string), not i (the variable)"
+
+  run:
+    enabled: true
+    expected_output: |
+      Hello
+      Hello
+      Hello
+
+    reflection_prompts:
+      - "Was your prediction correct?"
+      - "How many times did 'Hello' actually print?"
+      - "What did range(3) actually produce?"
+
+    misconception_intervention: |
+      If students predicted wrong, trace through together:
+      "Let's follow what Python does step by step..."
+
+  investigate:
+    enabled: true
+    duration_minutes: 15
+
+    activities:
+      - type: tracing
+        instructions: |
+          Complete the trace table for this program.
+          Track the value of i and what gets printed at each step.
+        trace_table:
+          variables: [i]
+          include_output: true
+
+      - type: annotation
+        instructions: |
+          Label each part of the for loop on your printed copy.
+        code_to_annotate: |
+          for i in range(3):
+              print("Hello")
+        annotation_prompts:
+          - line: 1
+            prompt: "Label: the loop keyword, the loop variable, and the range"
+          - line: 2
+            prompt: "Label: the loop body (what gets repeated)"
+
+      - type: identify_constructs
+        instructions: |
+          In the code below, identify:
+          1. The loop variable
+          2. How many times the loop runs
+          3. The loop body
+        constructs_to_find:
+          - construct: "loop variable"
+            line: 1
+          - construct: "iteration count"
+            line: 1
+          - construct: "loop body"
+            line: 2
+
+  modify:
+    enabled: true
+    base_code: |
+      for i in range(3):
+          print("Hello")
+
+    modifications:
+      foundation:
+        - instruction: "Change the program to print 'Hello' 5 times instead of 3"
+          hint: "Look at the number in range() - what should it be?"
+          solution: |
+            for i in range(5):
+                print("Hello")
+
+        - instruction: "Change the program to print 'Goodbye' instead of 'Hello'"
+          hint: "Look at what's inside the print() function"
+          solution: |
+            for i in range(3):
+                print("Goodbye")
+
+      core:
+        - instruction: "Modify the program to print the numbers 0, 1, 2 (one per line)"
+          hint: "What variable already contains these numbers?"
+          solution: |
+            for i in range(3):
+                print(i)
+
+        - instruction: "Modify the program to print 'Hello' followed by the number (Hello 0, Hello 1, Hello 2)"
+          hint: "You can print multiple things: print('Hello', i)"
+          solution: |
+            for i in range(3):
+                print("Hello", i)
+
+      extension:
+        - instruction: "Modify the program to print the numbers 1 to 5 (not 0 to 4)"
+          hint: "range() can take two numbers: range(start, stop)"
+          solution: |
+            for i in range(1, 6):
+                print(i)
+
+        - instruction: "Make the program print 'Iteration X of 5' for each iteration"
+          hint: "Think about how to construct the message"
+          solution: |
+            for i in range(1, 6):
+                print("Iteration", i, "of 5")
+
+    common_errors:
+      - error: "for i in range(3) (missing colon)"
+        feedback: "In Python, loop headers end with a colon (:)"
+
+      - error: "print('Hello') not indented"
+        feedback: "Code inside the loop must be indented (press Tab)"
+
+      - error: "for i in range(1, 5): when wanting 1-5"
+        feedback: "range(1, 5) gives 1, 2, 3, 4. To include 5, use range(1, 6)"
+
+  make:
+    enabled: true
+    challenge: |
+      Create a program that displays a countdown from 5 to 1,
+      then prints "Blast off!"
+
+      Expected output:
+      5
+      4
+      3
+      2
+      1
+      Blast off!
+
+    differentiation:
+      foundation:
+        description: "Complete the starter code to make the countdown work"
+        starter_code: |
+          # Print numbers 5 down to 1
+          for i in range(__, __, __):
+              print(__)
+
+          # Print the final message
+          print("Blast off!")
+
+      core:
+        description: "Create the countdown program"
+        starter_code: |
+          # Your countdown code here
+
+          print("Blast off!")
+
+      extension:
+        description: |
+          Create the countdown program, then extend it to:
+          1. Ask the user what number to count down from
+          2. Display "T-minus X seconds" for each number
+        starter_code: |
+          # Your code here
+
+    success_criteria:
+      - Program prints numbers from 5 to 1
+      - Numbers appear in descending order
+      - "Blast off!" appears after the countdown
+      - Code uses a for loop (not 5 separate print statements)
+
+    rubric:
+      - criterion: "Countdown displays correctly"
+        levels:
+          emerging: "Some numbers display but not in correct order"
+          developing: "Numbers 5-1 display but 'Blast off' missing or wrong"
+          secure: "Full countdown works correctly"
+          mastering: "Countdown works with user input and enhanced messages"
+
+      - criterion: "For loop used correctly"
+        levels:
+          emerging: "Attempted loop but syntax incorrect"
+          developing: "Loop works but doesn't produce countdown"
+          secure: "Loop correctly produces countdown"
+          mastering: "Loop uses variables effectively"
+
+pair_programming:
+  enabled: true
+  rotation_minutes: 15
+  driver_prompts:
+    - "I'm going to type the for keyword first..."
+    - "What number should I put in range()?"
+    - "Should this line be indented?"
+  navigator_prompts:
+    - "Let's trace through to check our answer"
+    - "I think we need a colon at the end of that line"
+    - "Can you run it to see if our prediction was right?"
+
+teacher_notes:
+  preparation: |
+    - Load Python environment with code ready to display
+    - Print trace table templates (see investigate activities)
+    - Prepare mini-whiteboards or voting cards for predictions
+    - Have Python Tutor open as backup visualisation
+
+  common_issues:
+    - "Students often confuse range(5) counting 5 times with counting to 5"
+    - "Indentation errors are common - demonstrate Tab key explicitly"
+    - "Some students will try to write the loop variable inside range()"
+
+  timing_notes: |
+    Predict/Run: 10 minutes
+    Investigate: 15 minutes
+    Modify: 15 minutes
+    Make: 20 minutes
+    Allow flexibility - not all students will reach Make stage
+
+resources:
+  ncce:
+    - "https://teachcomputing.org/curriculum/key-stage-3/programming-sequence-selection-iteration"
+  isaac:
+    - "https://isaaccomputerscience.org/concepts/prog_itertic_for"
+  other:
+    - "https://pythontutor.com - for visualising loop execution"
+
+assessment:
+  formative:
+    - method: "Prediction accuracy"
+      description: "Note how many students correctly predict loop output"
+    - method: "Trace table review"
+      description: "Check trace tables during Investigate for misconceptions"
+    - method: "Modification success"
+      description: "Observe which modification level students achieve"
+
+  summative:
+    - method: "Make task completion"
+      description: "Assess against rubric criteria"
+    - method: "Exit ticket"
+      description: "Quick prediction question on new for loop code"

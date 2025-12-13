@@ -1,0 +1,200 @@
+# Worked Example Schema (with Subgoal Labels)
+# Based on research by Lauren Margulieux and colleagues
+#
+# Key findings:
+# - Subgoal labels make expert problem-solving visible to novices
+# - Reduces dropout and failure rates in programming courses
+# - Struggling students benefit most from this approach
+# - Labels help students see structural (not surface) features
+
+schema_version: "1.0"
+description: |
+  Worked examples with subgoal labels break down solutions into
+  meaningful chunks with brief, functional descriptions. This makes
+  the usually tacit expert problem-solving process visible to novices.
+
+worked_example:
+  # Metadata
+  id: string                    # Unique identifier
+  title: string                 # Example title
+  topic: string                 # Programming concept
+  stage: enum [ks3, ks4]
+  difficulty: enum [foundation, core, extension]
+
+  # Problem being solved
+  problem:
+    statement: string           # What we're trying to do
+    context: string             # Real-world context (optional)
+    inputs: string              # What inputs the program takes
+    outputs: string             # What it should produce
+
+  # Language
+  language: enum [python, javascript, pseudocode]
+
+  # The worked example with subgoal labels
+  subgoals:
+    - label: string             # Brief functional description
+                                # e.g., "Set up accumulator variable"
+
+      code: string              # Code for this subgoal
+
+      explanation: string       # Why we do this step
+
+      # Visual emphasis (optional)
+      highlight: boolean        # Highlight this code?
+
+      # Common variations
+      variations:
+        - description: string   # When you might do this differently
+          alternative_code: string
+
+      # Connect to prior knowledge
+      prior_knowledge: string   # What this builds on
+
+      # Potential misconceptions
+      misconceptions:
+        - wrong_approach: string
+          why_wrong: string
+          correction: string
+
+  # Complete code (all subgoals combined)
+  complete_code: string
+
+  # Expected output
+  expected_output: string
+
+  # Fading schedule
+  # Research shows worked examples should fade as expertise develops
+  fading:
+    # Version with some subgoals blanked for practice
+    faded_versions:
+      - level: integer          # 1 = most scaffolded, higher = less
+        blanked_subgoals: [integer]  # Which subgoal indices to blank
+        hints_available: boolean
+
+    # When to use each fading level
+    progression_notes: string
+
+  # Differentiation
+  differentiation:
+    foundation:
+      additional_subgoals: boolean  # Break into smaller steps?
+      extra_explanations:
+        - subgoal_index: integer
+          additional_explanation: string
+      visual_supports:
+        - subgoal_index: integer
+          diagram: string       # Path to visual aid
+
+    extension:
+      # Challenges based on the example
+      challenges:
+        - description: string
+          hints: [string]
+
+  # Practice problems
+  # After studying the example, students try similar problems
+  practice_problems:
+    - id: string
+      description: string
+      similarity: enum [identical_structure, varied_context, increased_complexity]
+      starter_code: string      # Optional scaffolding
+      solution: string
+
+  # Self-explanation prompts
+  # Research shows these enhance learning from examples
+  self_explanation_prompts:
+    - after_subgoal: integer    # Which subgoal this follows
+      prompt: string            # e.g., "Why do we need this step?"
+
+  # Learning objectives
+  objectives:
+    - string
+
+  # Related resources
+  related:
+    lesson_id: string
+    tracing_exercise: string
+    parsons_problem: string
+
+# Standard subgoal label categories for programming:
+#
+# Setup/Initialisation:
+# - "Set up variables"
+# - "Import required modules"
+# - "Define constants"
+#
+# Input:
+# - "Get user input"
+# - "Read from file"
+# - "Receive parameters"
+#
+# Processing:
+# - "Check condition"
+# - "Loop through items"
+# - "Calculate result"
+# - "Transform data"
+#
+# Output:
+# - "Display result"
+# - "Return value"
+# - "Write to file"
+#
+# Error handling:
+# - "Validate input"
+# - "Handle edge cases"
+
+# Example usage:
+#
+# worked_example:
+#   id: "we-sum-list-001"
+#   title: "Calculate the sum of a list"
+#   topic: "accumulator-pattern"
+#   stage: ks3
+#   difficulty: core
+#
+#   problem:
+#     statement: "Calculate the sum of all numbers in a list"
+#     context: "A teacher wants to add up all the test scores"
+#     inputs: "A list of numbers"
+#     outputs: "The total of all numbers"
+#
+#   language: python
+#
+#   subgoals:
+#     - label: "Set up accumulator variable"
+#       code: "total = 0"
+#       explanation: |
+#         We need a variable to store our running total.
+#         It starts at 0 because we haven't added anything yet.
+#       prior_knowledge: "Variable assignment"
+#
+#     - label: "Loop through each item"
+#       code: "for number in scores:"
+#       explanation: |
+#         We visit each number in the list one at a time.
+#         The variable 'number' takes on each value in turn.
+#       prior_knowledge: "For loops"
+#
+#     - label: "Update accumulator"
+#       code: "    total = total + number"
+#       explanation: |
+#         Add the current number to our running total.
+#         This is the 'accumulator pattern' - we accumulate values.
+#       misconceptions:
+#         - wrong_approach: "total = number"
+#           why_wrong: "This overwrites the total instead of adding"
+#           correction: "Use total = total + number to keep the running sum"
+#
+#     - label: "Return result"
+#       code: "print(total)"
+#       explanation: |
+#         After processing all numbers, we output the final total.
+#
+#   complete_code: |
+#     total = 0
+#     for number in scores:
+#         total = total + number
+#     print(total)
+#
+#   expected_output: "Depends on the scores list"
