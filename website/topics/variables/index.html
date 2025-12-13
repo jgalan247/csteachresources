@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Variables</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">📦</span> Variables</h1>
+            <p>Learn how to store and use data in your programs using variables.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>What a variable is and why we use them</li>
+                    <li>How to create and assign values to variables</li>
+                    <li>Different data types: strings, integers, and floats</li>
+                    <li>How to use variables in output with print()</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="learning-path">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="variables-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: What's in the box?</h4>
+                        <p>Predict what values variables will hold after code runs.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="variables-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See how to create and use variables step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="variables-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Variables</h4>
+                        <p>Track how variable values change through a program.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="variables-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order to create programs with variables.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="variables-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of variables.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>variable</h4>
+                    <p>A named container that stores a value. Like a labelled box that holds data.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>assignment</h4>
+                    <p>Giving a value to a variable using the = sign. <code>name = "Alice"</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>string</h4>
+                    <p>Text data, written in quotes. <code>"Hello"</code> or <code>'Hello'</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>integer</h4>
+                    <p>A whole number (no decimal point). <code>42</code>, <code>-7</code>, <code>0</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>float</h4>
+                    <p>A decimal number. <code>3.14</code>, <code>-0.5</code>, <code>100.0</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>data type</h4>
+                    <p>The kind of data a variable holds: string, integer, float, etc.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">variables_examples.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Creating variables</span>
+name = <span class="syntax-string">"Alice"</span>        <span class="syntax-comment"># string</span>
+age = <span class="syntax-number">15</span>               <span class="syntax-comment"># integer</span>
+height = <span class="syntax-number">1.65</span>          <span class="syntax-comment"># float</span>
+
+<span class="syntax-comment"># Using variables in print</span>
+<span class="syntax-keyword">print</span>(name)            <span class="syntax-comment"># Prints: Alice</span>
+<span class="syntax-keyword">print</span>(<span class="syntax-string">"Hello"</span>, name)   <span class="syntax-comment"># Prints: Hello Alice</span>
+
+<span class="syntax-comment"># Changing a variable's value</span>
+score = <span class="syntax-number">10</span>
+score = score + <span class="syntax-number">5</span>      <span class="syntax-comment"># Now score is 15</span>
+
+<span class="syntax-comment"># Variable names: use lowercase, underscores for spaces</span>
+player_name = <span class="syntax-string">"Bob"</span>    <span class="syntax-comment"># Good!</span>
+highScore = <span class="syntax-number">100</span>        <span class="syntax-comment"># Works, but prefer snake_case</span></code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+    </style>
+</body>
+</html>

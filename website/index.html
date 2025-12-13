@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Learning - KS3 Programming</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="topics/index.html">Topics</a></li>
+            <li><a href="progress.html">My Progress</a></li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Learn Python Programming</h1>
+            <p class="hero-subtitle">Interactive exercises to help you understand code step by step</p>
+        </header>
+
+        <section class="intro-section">
+            <div class="intro-card">
+                <h2>How to Learn Programming</h2>
+                <p>The best way to learn programming is to <strong>understand code before you write it</strong>.</p>
+                <p>Each topic follows these steps:</p>
+                <ol class="learning-steps">
+                    <li><span class="step-icon">🔮</span> <strong>Predict</strong> - Look at code and guess what it does</li>
+                    <li><span class="step-icon">▶️</span> <strong>Run</strong> - See what actually happens</li>
+                    <li><span class="step-icon">🔍</span> <strong>Investigate</strong> - Trace through the code step by step</li>
+                    <li><span class="step-icon">🔧</span> <strong>Modify</strong> - Make small changes to existing code</li>
+                    <li><span class="step-icon">🏗️</span> <strong>Make</strong> - Create your own programs</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="topics-section">
+            <h2>Choose a Topic</h2>
+            <div class="topic-grid">
+                <a href="topics/variables/index.html" class="topic-card">
+                    <div class="topic-icon">📦</div>
+                    <h3>Variables</h3>
+                    <p>Store and use data in your programs</p>
+                    <div class="topic-progress" data-topic="variables">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="topics/selection/index.html" class="topic-card">
+                    <div class="topic-icon">🔀</div>
+                    <h3>Selection</h3>
+                    <p>Make decisions with if statements</p>
+                    <div class="topic-progress" data-topic="selection">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="topics/for-loops/index.html" class="topic-card featured">
+                    <div class="topic-icon">🔄</div>
+                    <h3>For Loops</h3>
+                    <p>Repeat code a specific number of times</p>
+                    <div class="topic-progress" data-topic="for-loops">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge">Start Here</span>
+                </a>
+
+                <a href="topics/while-loops/index.html" class="topic-card">
+                    <div class="topic-icon">🔁</div>
+                    <h3>While Loops</h3>
+                    <p>Repeat code while a condition is true</p>
+                    <div class="topic-progress" data-topic="while-loops">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="topics/lists/index.html" class="topic-card">
+                    <div class="topic-icon">📋</div>
+                    <h3>Lists</h3>
+                    <p>Work with collections of data</p>
+                    <div class="topic-progress" data-topic="lists">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="topics/functions/index.html" class="topic-card">
+                    <div class="topic-icon">⚡</div>
+                    <h3>Functions</h3>
+                    <p>Organise code into reusable blocks</p>
+                    <div class="topic-progress" data-topic="functions">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="activity-types-section">
+            <h2>Types of Activities</h2>
+            <div class="activity-grid">
+                <div class="activity-type-card">
+                    <div class="activity-icon">🧩</div>
+                    <h3>Parsons Problems</h3>
+                    <p>Drag and drop code blocks into the correct order. Great for learning without worrying about typing!</p>
+                </div>
+
+                <div class="activity-type-card">
+                    <div class="activity-icon">📊</div>
+                    <h3>Code Tracing</h3>
+                    <p>Follow code line by line and track what happens to variables. Like being a detective!</p>
+                </div>
+
+                <div class="activity-type-card">
+                    <div class="activity-icon">🎯</div>
+                    <h3>Prediction Quizzes</h3>
+                    <p>Look at code and predict what it will output. Test your understanding!</p>
+                </div>
+
+                <div class="activity-type-card">
+                    <div class="activity-icon">📖</div>
+                    <h3>Worked Examples</h3>
+                    <p>Step-by-step explanations showing how to solve problems.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+        <p>PRIMM Framework | Parsons Problems | Subgoal Labels</p>
+    </footer>
+
+    <script src="js/progress.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: For Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">For Loops</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: For Loops</h1>
+            <p>Test your understanding of for loops! Answer all questions to see your score.</p>
+        </header>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to For Loops</a>
+            <a href="../../topics/index.html" class="btn btn-secondary">All Topics</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'quiz-1',
+                title: 'Question 1: Understanding range()',
+                code: `for i in range(4):
+    print(i)`,
+                question: 'What numbers will be printed?',
+                options: ['1, 2, 3, 4', '0, 1, 2, 3', '0, 1, 2, 3, 4', '1, 2, 3'],
+                correctIndex: 1,
+                explanation: 'range(4) starts at 0 by default and stops BEFORE 4. So it gives: 0, 1, 2, 3. Four numbers total, starting from zero.'
+            },
+            {
+                id: 'quiz-2',
+                title: 'Question 2: Loop with message',
+                code: `for i in range(2):
+    print("Loop", i)`,
+                question: 'What will be the output?',
+                options: [
+                    'Loop 1\\nLoop 2',
+                    'Loop 0\\nLoop 1',
+                    'Loop 0\\nLoop 1\\nLoop 2',
+                    'Loop 2'
+                ],
+                correctIndex: 1,
+                explanation: 'range(2) gives 0, 1. So we print "Loop 0" then "Loop 1".'
+            },
+            {
+                id: 'quiz-3',
+                title: 'Question 3: range() with start and stop',
+                code: `for i in range(2, 5):
+    print(i)`,
+                question: 'What will be printed?',
+                options: ['2, 3, 4, 5', '2, 3, 4', '0, 1, 2, 3, 4', '3, 4, 5'],
+                correctIndex: 1,
+                explanation: 'range(2, 5) starts at 2 and stops BEFORE 5. So it gives: 2, 3, 4.'
+            },
+            {
+                id: 'quiz-4',
+                title: 'Question 4: Loop iterations',
+                code: `count = 0
+for i in range(5):
+    count = count + 1
+print(count)`,
+                question: 'What will be printed?',
+                options: ['0', '4', '5', '6'],
+                correctIndex: 2,
+                explanation: 'The loop runs 5 times (for i = 0, 1, 2, 3, 4). Each time, count increases by 1. Starting at 0 and adding 1 five times gives 5.'
+            },
+            {
+                id: 'quiz-5',
+                title: 'Question 5: Accumulator pattern',
+                code: `total = 0
+for i in range(1, 4):
+    total = total + i
+print(total)`,
+                question: 'What will total equal at the end?',
+                options: ['3', '4', '6', '10'],
+                correctIndex: 2,
+                explanation: 'range(1, 4) gives 1, 2, 3. We add each to total: 0 + 1 = 1, 1 + 2 = 3, 3 + 3 = 6. Final answer: 6.'
+            },
+            {
+                id: 'quiz-6',
+                title: 'Question 6: Counting down',
+                code: `for i in range(3, 0, -1):
+    print(i)`,
+                question: 'What will be printed?',
+                options: ['3, 2, 1, 0', '3, 2, 1', '0, 1, 2, 3', '1, 2, 3'],
+                correctIndex: 1,
+                explanation: 'range(3, 0, -1) starts at 3, stops before 0, stepping by -1. So it gives: 3, 2, 1.'
+            },
+            {
+                id: 'quiz-7',
+                title: 'Question 7: What\'s wrong?',
+                code: `for i in range(3):
+print(i)`,
+                question: 'What is wrong with this code?',
+                options: [
+                    'Nothing, it will work fine',
+                    'The print statement is not indented',
+                    'range(3) should be range(1, 3)',
+                    'The variable i should be called x'
+                ],
+                correctIndex: 1,
+                explanation: 'In Python, the code inside a loop MUST be indented. Without indentation, Python doesn\'t know what code belongs to the loop.'
+            },
+            {
+                id: 'quiz-8',
+                title: 'Question 8: How many iterations?',
+                code: `for i in range(10):
+    print("Hello")`,
+                question: 'How many times will "Hello" be printed?',
+                options: ['9 times', '10 times', '11 times', '0 times'],
+                correctIndex: 1,
+                explanation: 'range(10) gives 10 numbers (0 through 9), so the loop runs 10 times.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'for-loops'
+            }
+        );
+    </script>
+</body>
+</html>

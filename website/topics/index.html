@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topics - Python Learning</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html" class="active">Topics</a></li>
+            <li><a href="../progress.html">My Progress</a></li>
+            <li><a href="../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>All Topics</h1>
+            <p class="hero-subtitle">Choose a topic to start learning Python programming</p>
+        </header>
+
+        <section class="topics-overview">
+            <h2>Recommended Order</h2>
+            <p>We suggest learning topics in this order, as each one builds on the previous:</p>
+
+            <div class="topic-grid">
+                <a href="variables/index.html" class="topic-card">
+                    <div class="topic-number">1</div>
+                    <div class="topic-icon">📦</div>
+                    <h3>Variables</h3>
+                    <p>Learn to store and use data in your programs. The foundation of all programming!</p>
+                    <ul class="topic-concepts">
+                        <li>Variable assignment</li>
+                        <li>Data types (strings, integers)</li>
+                        <li>Using variables in output</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="variables">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="selection/index.html" class="topic-card">
+                    <div class="topic-number">2</div>
+                    <div class="topic-icon">🔀</div>
+                    <h3>Selection</h3>
+                    <p>Make decisions in your code using if statements and conditions.</p>
+                    <ul class="topic-concepts">
+                        <li>if statements</li>
+                        <li>Comparison operators</li>
+                        <li>if-else and if-elif-else</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="selection">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="for-loops/index.html" class="topic-card featured">
+                    <div class="topic-number">3</div>
+                    <div class="topic-icon">🔄</div>
+                    <h3>For Loops</h3>
+                    <p>Repeat code a specific number of times. Essential for automation!</p>
+                    <ul class="topic-concepts">
+                        <li>for loops and range()</li>
+                        <li>Loop variables</li>
+                        <li>Accumulator pattern</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="for-loops">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge">Most Content</span>
+                </a>
+
+                <a href="while-loops/index.html" class="topic-card">
+                    <div class="topic-number">4</div>
+                    <div class="topic-icon">🔁</div>
+                    <h3>While Loops</h3>
+                    <p>Repeat code while a condition is true. Great for input validation!</p>
+                    <ul class="topic-concepts">
+                        <li>while loops</li>
+                        <li>Condition-controlled iteration</li>
+                        <li>Input validation</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="while-loops">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge" style="background: var(--gray-400);">Coming Soon</span>
+                </a>
+
+                <a href="lists/index.html" class="topic-card">
+                    <div class="topic-number">5</div>
+                    <div class="topic-icon">📋</div>
+                    <h3>Lists</h3>
+                    <p>Work with collections of data. Store multiple values in one variable!</p>
+                    <ul class="topic-concepts">
+                        <li>Creating lists</li>
+                        <li>Indexing and slicing</li>
+                        <li>Iterating through lists</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="lists">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge" style="background: var(--gray-400);">Coming Soon</span>
+                </a>
+
+                <a href="functions/index.html" class="topic-card">
+                    <div class="topic-number">6</div>
+                    <div class="topic-icon">⚡</div>
+                    <h3>Functions</h3>
+                    <p>Organise code into reusable blocks. Write once, use many times!</p>
+                    <ul class="topic-concepts">
+                        <li>Defining functions</li>
+                        <li>Parameters and arguments</li>
+                        <li>Return values</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="functions">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge" style="background: var(--gray-400);">Coming Soon</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../js/progress.js"></script>
+    <script src="../js/main.js"></script>
+    <style>
+        .topic-number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .topic-card {
+            position: relative;
+        }
+        .topic-concepts {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            padding-left: var(--space-md);
+            margin: var(--space-sm) 0;
+        }
+        .topic-concepts li {
+            margin-bottom: var(--space-xs);
+        }
+    </style>
+</body>
+</html>

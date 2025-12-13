@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">For Loops</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">🔄</span> For Loops</h1>
+            <p>Learn how to repeat code a specific number of times using for loops.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>Understand that for loops repeat code a specific number of times</li>
+                    <li>Trace the execution of a for loop step by step</li>
+                    <li>Use the <code>range()</code> function to control iterations</li>
+                    <li>Apply the accumulator pattern to calculate totals</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="learning-path">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order. Each builds on the previous one.</p>
+
+            <div class="activity-list">
+                <!-- 1. Prediction Quiz -->
+                <a href="predict.html" class="activity-card" data-activity-id="for-loops-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: What will happen?</h4>
+                        <p>Look at for loop code and predict what it will output.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <!-- 2. Worked Example -->
+                <a href="example.html" class="activity-card" data-activity-id="for-loops-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>Step through a for loop example with explanations.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <!-- 3. Code Tracing -->
+                <a href="trace.html" class="activity-card" data-activity-id="for-loops-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace the Code</h4>
+                        <p>Track variable values as a for loop executes.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <!-- 4. Parsons Problems -->
+                <a href="parsons.html" class="activity-card" data-activity-id="for-loops-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Blocks</h4>
+                        <p>Drag and drop code blocks into the correct order.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <!-- 5. Accumulator Pattern -->
+                <a href="accumulator.html" class="activity-card" data-activity-id="for-loops-accumulator">
+                    <div class="activity-card-icon">➕</div>
+                    <div class="activity-card-content">
+                        <h4>5. Learn: The Accumulator Pattern</h4>
+                        <p>Learn how to use loops to calculate totals.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge extension">Extension</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <!-- 6. Quiz -->
+                <a href="quiz.html" class="activity-card" data-activity-id="for-loops-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>6. Test: Knowledge Quiz</h4>
+                        <p>Test your understanding of for loops.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>iteration</h4>
+                    <p>One pass through a loop. If a loop runs 5 times, that's 5 iterations.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>for loop</h4>
+                    <p>A loop that repeats a specific number of times.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>range()</h4>
+                    <p>A function that generates a sequence of numbers. <code>range(5)</code> gives 0, 1, 2, 3, 4.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>loop variable</h4>
+                    <p>The variable that changes each time through the loop. In <code>for i in range(5)</code>, <code>i</code> is the loop variable.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>loop body</h4>
+                    <p>The indented code that gets repeated. It runs once for each iteration.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>accumulator</h4>
+                    <p>A variable that collects values during a loop, like a running total.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">for_loop_syntax.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Basic for loop</span>
+<span class="syntax-keyword">for</span> i <span class="syntax-keyword">in</span> <span class="syntax-keyword">range</span>(<span class="syntax-number">5</span>):
+    <span class="syntax-keyword">print</span>(i)    <span class="syntax-comment"># Prints: 0, 1, 2, 3, 4</span>
+
+<span class="syntax-comment"># range(start, stop)</span>
+<span class="syntax-keyword">for</span> i <span class="syntax-keyword">in</span> <span class="syntax-keyword">range</span>(<span class="syntax-number">1</span>, <span class="syntax-number">6</span>):
+    <span class="syntax-keyword">print</span>(i)    <span class="syntax-comment"># Prints: 1, 2, 3, 4, 5</span>
+
+<span class="syntax-comment"># range(start, stop, step)</span>
+<span class="syntax-keyword">for</span> i <span class="syntax-keyword">in</span> <span class="syntax-keyword">range</span>(<span class="syntax-number">10</span>, <span class="syntax-number">0</span>, <span class="syntax-number">-1</span>):
+    <span class="syntax-keyword">print</span>(i)    <span class="syntax-comment"># Counts down: 10, 9, 8, ... 1</span></code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+    </style>
+</body>
+</html>

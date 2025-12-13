@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: For Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">For Loops</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: What Will Happen?</h1>
+            <p>Before running code, programmers think about what it will do. This helps you understand code better and catch mistakes early.</p>
+        </header>
+
+        <!-- Quiz Container -->
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Study a Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">Back to For Loops</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Initialize prediction quiz series
+        const quizQuestions = [
+            {
+                id: 'for-predict-1',
+                title: 'Question 1 of 4',
+                code: `for i in range(3):
+    print("Hello")`,
+                question: 'How many times will "Hello" be printed?',
+                options: ['1 time', '2 times', '3 times', '4 times'],
+                correctIndex: 2,
+                explanation: 'range(3) gives the numbers 0, 1, 2 - that\'s 3 numbers. So the loop runs 3 times, printing "Hello" each time.',
+                misconceptions: {
+                    0: 'The loop runs once for EACH number in range(3), not just once total.',
+                    3: 'range(3) gives 0, 1, 2 - only 3 numbers, not 4. It stops BEFORE 3.'
+                }
+            },
+            {
+                id: 'for-predict-2',
+                title: 'Question 2 of 4',
+                code: `for i in range(3):
+    print(i)`,
+                question: 'What will be printed?',
+                options: ['1 2 3', '0 1 2', '0 1 2 3', '1 2'],
+                correctIndex: 1,
+                explanation: 'range(3) produces 0, 1, 2. The variable i takes each value in turn, and we print i. So we print 0, then 1, then 2.',
+                misconceptions: {
+                    0: 'range(3) starts at 0, not 1!',
+                    2: 'range(3) stops BEFORE 3, so 3 is never printed.',
+                    3: 'range(3) gives three numbers starting from 0: 0, 1, 2.'
+                }
+            },
+            {
+                id: 'for-predict-3',
+                title: 'Question 3 of 4',
+                code: `for i in range(1, 4):
+    print(i)`,
+                question: 'What will be printed?',
+                options: ['0 1 2 3', '1 2 3', '1 2 3 4', '0 1 2 3 4'],
+                correctIndex: 1,
+                explanation: 'range(1, 4) starts at 1 and stops BEFORE 4. So it gives 1, 2, 3.',
+                misconceptions: {
+                    0: 'When you give two numbers to range(), the first is the START value. So we start at 1, not 0.',
+                    2: 'range() always stops BEFORE the second number. range(1, 4) stops before 4.',
+                    3: 'range(1, 4) only has 3 numbers: 1, 2, 3.'
+                }
+            },
+            {
+                id: 'for-predict-4',
+                title: 'Question 4 of 4',
+                code: `total = 0
+for i in range(1, 4):
+    total = total + i
+print(total)`,
+                question: 'What will be printed?',
+                options: ['0', '3', '6', '10'],
+                correctIndex: 2,
+                explanation: 'We start with total = 0. Then we add 1 (total = 1), add 2 (total = 3), add 3 (total = 6). After the loop, we print 6.',
+                misconceptions: {
+                    0: 'total starts at 0, but we add numbers to it in the loop.',
+                    1: '3 is just the last value of i. We\'re adding all the values: 1 + 2 + 3 = 6.',
+                    3: 'range(1, 4) gives 1, 2, 3 (not 1, 2, 3, 4). 1 + 2 + 3 = 6.'
+                }
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'for-loops'
+            }
+        );
+    </script>
+</body>
+</html>

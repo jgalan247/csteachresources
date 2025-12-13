@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: For Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">For Loops</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Print Numbers</h1>
+            <p>Let's walk through a for loop step by step to understand how it works.</p>
+        </header>
+
+        <!-- Worked Example Container -->
+        <div id="worked-example"></div>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace the Code →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'for-loops-example',
+                title: 'Printing Numbers with a For Loop',
+                topicId: 'for-loops',
+                problem: {
+                    statement: 'Print the numbers 1 to 5, each on a new line.',
+                    context: 'We want the program to output: 1, 2, 3, 4, 5 (each on separate lines).'
+                },
+                subgoals: [
+                    {
+                        label: 'Create the loop header',
+                        code: 'for i in range(1, 6):',
+                        explanation: `This line creates a for loop. Let's break it down:
+
+<strong>for</strong> - tells Python we want to repeat some code
+<strong>i</strong> - the loop variable that will hold each number
+<strong>in range(1, 6)</strong> - the numbers to loop through
+
+range(1, 6) gives us: 1, 2, 3, 4, 5
+(It starts at 1 and stops BEFORE 6)
+
+The colon : at the end tells Python the loop body comes next.`,
+                        misconceptions: [
+                            {
+                                wrongApproach: 'range(1, 5)',
+                                whyWrong: 'This gives 1, 2, 3, 4 - missing the 5!',
+                                correction: 'To include 5, use range(1, 6) because range stops BEFORE the second number.'
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Write the loop body',
+                        code: '    print(i)',
+                        explanation: `This line is the loop body - it's indented to show it's inside the loop.
+
+<strong>print(i)</strong> - outputs the current value of i
+
+This line runs 5 times (once for each number in range).
+- First time: i = 1, so we print 1
+- Second time: i = 2, so we print 2
+- Third time: i = 3, so we print 3
+- Fourth time: i = 4, so we print 4
+- Fifth time: i = 5, so we print 5
+
+The indentation (4 spaces) is required in Python!`,
+                        misconceptions: [
+                            {
+                                wrongApproach: 'print(i) without indent',
+                                whyWrong: 'Without indentation, Python thinks the loop has no body.',
+                                correction: 'Always indent code inside a loop with 4 spaces or 1 tab.'
+                            }
+                        ]
+                    }
+                ],
+                completeCode: `# Create the loop header
+for i in range(1, 6):
+    # Write the loop body
+    print(i)`,
+                expectedOutput: '1\n2\n3\n4\n5'
+            }
+        );
+    </script>
+</body>
+</html>

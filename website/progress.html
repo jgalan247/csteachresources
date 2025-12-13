@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Progress - Python Learning</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="topics/index.html">Topics</a></li>
+            <li><a href="progress.html" class="active">My Progress</a></li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>My Progress</h1>
+            <p class="hero-subtitle">Track your learning journey</p>
+        </header>
+
+        <section class="progress-overview">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-activities">0</div>
+                    <div class="stat-label">Activities Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-topics">0</div>
+                    <div class="stat-label">Topics Started</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="best-score">-</div>
+                    <div class="stat-label">Best Quiz Score</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="topic-progress-section mt-xl">
+            <h2>Progress by Topic</h2>
+            <div id="topic-progress-list" class="topic-progress-list">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="recent-activity mt-xl">
+            <h2>Recent Activity</h2>
+            <div id="recent-activities" class="activity-list">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="progress-actions mt-xl">
+            <h2>Manage Progress</h2>
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="export-progress">
+                    📥 Export Progress
+                </button>
+                <button class="btn btn-secondary" id="import-progress">
+                    📤 Import Progress
+                </button>
+                <button class="btn btn-secondary" id="reset-progress" style="color: var(--error);">
+                    🗑️ Reset All Progress
+                </button>
+            </div>
+            <input type="file" id="import-file" accept=".json" style="display: none;">
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="js/progress.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        const topics = [
+            { id: 'variables', name: 'Variables', icon: '📦' },
+            { id: 'selection', name: 'Selection', icon: '🔀' },
+            { id: 'for-loops', name: 'For Loops', icon: '🔄' },
+            { id: 'while-loops', name: 'While Loops', icon: '🔁' },
+            { id: 'lists', name: 'Lists', icon: '📋' },
+            { id: 'functions', name: 'Functions', icon: '⚡' }
+        ];
+
+        function updateProgressPage() {
+            const data = Progress.getAll();
+
+            // Count completed activities
+            const completedActivities = Object.values(data.activities)
+                .filter(a => a.status === 'completed').length;
+            document.getElementById('total-activities').textContent = completedActivities;
+
+            // Count started topics
+            const startedTopics = Object.keys(data.topics).length;
+            document.getElementById('total-topics').textContent = startedTopics;
+
+            // Find best score
+            const scores = Object.values(data.activities)
+                .map(a => a.bestScore)
+                .filter(s => s !== null);
+            const bestScore = scores.length > 0 ? Math.max(...scores) : null;
+            document.getElementById('best-score').textContent = bestScore ? bestScore + '%' : '-';
+
+            // Topic progress list
+            const topicList = document.getElementById('topic-progress-list');
+            topicList.innerHTML = topics.map(topic => {
+                const progress = Progress.getTopicProgress(topic.id);
+                return `
+                    <div class="topic-progress-item">
+                        <div class="topic-info">
+                            <span class="topic-icon">${topic.icon}</span>
+                            <span class="topic-name">${topic.name}</span>
+                        </div>
+                        <div class="topic-progress-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: ${progress.progress}%"></div>
+                            </div>
+                            <span class="progress-text">${progress.progress}%</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Recent activities
+            const recentList = document.getElementById('recent-activities');
+            const activities = Object.entries(data.activities)
+                .sort((a, b) => {
+                    const dateA = new Date(a[1].completedAt || a[1].startedAt);
+                    const dateB = new Date(b[1].completedAt || b[1].startedAt);
+                    return dateB - dateA;
+                })
+                .slice(0, 10);
+
+            if (activities.length === 0) {
+                recentList.innerHTML = '<p class="text-muted">No activities yet. Start learning to track your progress!</p>';
+            } else {
+                recentList.innerHTML = activities.map(([id, activity]) => `
+                    <div class="activity-item">
+                        <span class="activity-name">${id}</span>
+                        <span class="status-badge ${activity.status}">${formatStatus(activity.status)}</span>
+                        ${activity.bestScore !== null ? `<span class="activity-score">${activity.bestScore}%</span>` : ''}
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Export progress
+        document.getElementById('export-progress').addEventListener('click', () => {
+            const data = Progress.export();
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'python-learning-progress.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Progress exported!', 'success');
+        });
+
+        // Import progress
+        document.getElementById('import-progress').addEventListener('click', () => {
+            document.getElementById('import-file').click();
+        });
+
+        document.getElementById('import-file').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    if (Progress.import(event.target.result)) {
+                        showToast('Progress imported!', 'success');
+                        updateProgressPage();
+                    } else {
+                        showToast('Failed to import progress', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Reset progress
+        document.getElementById('reset-progress').addEventListener('click', () => {
+            if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+                Progress.reset();
+                showToast('Progress reset', 'info');
+                updateProgressPage();
+            }
+        });
+
+        // Initialize
+        updateProgressPage();
+    </script>
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-lg);
+        }
+        .stat-card {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+        .topic-progress-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .topic-progress-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: var(--space-md);
+            background: white;
+            border-radius: var(--radius-md);
+        }
+        .topic-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-width: 150px;
+        }
+        .topic-progress-bar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        .topic-progress-bar .progress-bar {
+            flex: 1;
+        }
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: white;
+            border-radius: var(--radius-md);
+        }
+        .activity-name {
+            flex: 1;
+        }
+        .activity-score {
+            font-weight: bold;
+            color: var(--success);
+        }
+        .action-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+    </style>
+</body>
+</html>

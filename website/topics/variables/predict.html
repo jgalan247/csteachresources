@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Variables - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Variables</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: What's in the Box?</h1>
+            <p>Variables are like labelled boxes that store values. Look at each piece of code and predict what will be stored or printed.</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">Back to Variables</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'var-predict-1',
+                title: 'Question 1 of 5',
+                code: `name = "Sam"
+print(name)`,
+                question: 'What will be printed?',
+                options: ['name', 'Sam', '"Sam"', 'Nothing'],
+                correctIndex: 1,
+                explanation: 'The variable "name" holds the string "Sam". When we print(name), we print the VALUE stored in the variable, not the variable\'s name.',
+                misconceptions: {
+                    0: 'print(name) prints the VALUE inside the variable, not the word "name".',
+                    2: 'The quotes are just to tell Python it\'s a string. They don\'t get printed.'
+                }
+            },
+            {
+                id: 'var-predict-2',
+                title: 'Question 2 of 5',
+                code: `x = 5
+y = 3
+print(x + y)`,
+                question: 'What will be printed?',
+                options: ['x + y', '53', '8', 'xy'],
+                correctIndex: 2,
+                explanation: 'x holds 5, y holds 3. The + operator adds them together: 5 + 3 = 8. Python calculates first, then prints the result.',
+                misconceptions: {
+                    0: 'Python calculates x + y first (using their values), then prints the result.',
+                    1: '"53" would happen if x and y were strings. With numbers, + means addition.'
+                }
+            },
+            {
+                id: 'var-predict-3',
+                title: 'Question 3 of 5',
+                code: `score = 10
+score = 25
+print(score)`,
+                question: 'What will be printed?',
+                options: ['10', '25', '35', 'Error'],
+                correctIndex: 1,
+                explanation: 'When you assign a new value to a variable, the old value is replaced. score starts as 10, then becomes 25. We print 25.',
+                misconceptions: {
+                    0: 'The second line REPLACES the value, not adds to it.',
+                    2: 'score = 25 doesn\'t add 25 to score. It REPLACES whatever was there.'
+                }
+            },
+            {
+                id: 'var-predict-4',
+                title: 'Question 4 of 5',
+                code: `a = 5
+b = a
+a = 10
+print(b)`,
+                question: 'What will b equal?',
+                options: ['5', '10', '15', 'Error'],
+                correctIndex: 0,
+                explanation: 'When we say b = a, we copy the VALUE of a (which is 5) into b. Later changing a to 10 doesn\'t affect b - b still holds its own copy: 5.',
+                misconceptions: {
+                    1: 'b = a copies the VALUE at that moment. Later changes to a don\'t affect b.'
+                }
+            },
+            {
+                id: 'var-predict-5',
+                title: 'Question 5 of 5',
+                code: `message = "Hello"
+print("message")`,
+                question: 'What will be printed?',
+                options: ['Hello', 'message', '"Hello"', 'Error'],
+                correctIndex: 1,
+                explanation: 'Notice the quotes around "message" in the print statement! This prints the literal text "message", not the value of the variable message.',
+                misconceptions: {
+                    0: 'To print the variable\'s value, don\'t use quotes: print(message)'
+                }
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'variables'
+            }
+        );
+    </script>
+</body>
+</html>

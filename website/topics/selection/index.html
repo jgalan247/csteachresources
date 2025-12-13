@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Selection</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">🔀</span> Selection</h1>
+            <p>Learn how to make decisions in your code using if statements.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>How to use if statements to make decisions</li>
+                    <li>Comparison operators: ==, !=, <, >, <=, >=</li>
+                    <li>Using if-else for two-way decisions</li>
+                    <li>Using if-elif-else for multiple options</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="coming-soon">
+            <div class="coming-soon-card">
+                <div class="coming-soon-icon">🚧</div>
+                <h2>Coming Soon!</h2>
+                <p>This topic is currently being developed. Check back soon for:</p>
+                <ul>
+                    <li>Prediction quizzes for if statements</li>
+                    <li>Worked examples with explanations</li>
+                    <li>Code tracing exercises</li>
+                    <li>Parsons problems for selection</li>
+                    <li>Knowledge quiz</li>
+                </ul>
+                <p class="mt-lg">In the meantime, try the <a href="../for-loops/index.html">For Loops</a> topic!</p>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference (Preview)</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">selection_preview.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Simple if statement</span>
+age = <span class="syntax-number">15</span>
+<span class="syntax-keyword">if</span> age >= <span class="syntax-number">13</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"You're a teenager!"</span>)
+
+<span class="syntax-comment"># if-else: two options</span>
+score = <span class="syntax-number">45</span>
+<span class="syntax-keyword">if</span> score >= <span class="syntax-number">50</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Pass"</span>)
+<span class="syntax-keyword">else</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Fail"</span>)
+
+<span class="syntax-comment"># if-elif-else: multiple options</span>
+grade = <span class="syntax-number">75</span>
+<span class="syntax-keyword">if</span> grade >= <span class="syntax-number">90</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"A"</span>)
+<span class="syntax-keyword">elif</span> grade >= <span class="syntax-number">70</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"B"</span>)
+<span class="syntax-keyword">elif</span> grade >= <span class="syntax-number">50</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"C"</span>)
+<span class="syntax-keyword">else</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Fail"</span>)</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .coming-soon-card {
+            background: white;
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            margin: var(--space-xl) 0;
+        }
+        .coming-soon-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-md);
+        }
+        .coming-soon-card ul {
+            text-align: left;
+            max-width: 400px;
+            margin: var(--space-md) auto;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: For Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">For Loops</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks from the left into the solution area on the right. Put them in the correct order to solve the problem!</p>
+            <div class="alert alert-info">
+                <strong>Tip:</strong> In Python, indentation matters! Make sure code inside the loop is indented.
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="accumulator.html" class="btn btn-primary">Next: Accumulator Pattern →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Print Hello 3 times
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'for-parsons-1',
+                topicId: 'for-loops',
+                title: 'Print Hello Three Times',
+                instructions: 'Arrange the code blocks to create a program that prints "Hello" three times.',
+                expectedOutput: 'Hello\nHello\nHello',
+                blocks: [
+                    { id: 1, code: 'for i in range(3):', indentLevel: 0 },
+                    { id: 2, code: 'print("Hello")', indentLevel: 1 }
+                ],
+                solution: [1, 2],
+                hints: [
+                    'The for loop line always comes first.',
+                    'The print line needs to be inside the loop (indented).',
+                    'In Python, code inside a loop is indented to the right.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 2: Core - Print numbers
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'for-parsons-2',
+                topicId: 'for-loops',
+                title: 'Print Numbers 1 to 5',
+                instructions: 'Arrange the code blocks to create a program that prints the numbers 1, 2, 3, 4, 5 on separate lines.',
+                expectedOutput: '1\n2\n3\n4\n5',
+                blocks: [
+                    { id: 1, code: 'for i in range(1, 6):', indentLevel: 0 },
+                    { id: 2, code: 'print(i)', indentLevel: 1 },
+                    { id: 3, code: 'for i in range(5):', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2],
+                hints: [
+                    'We want to start at 1, not 0.',
+                    'range(1, 6) gives 1, 2, 3, 4, 5.',
+                    'One of the blocks is a distractor - it won\'t give the right output!'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 3: Extension - Accumulator
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'for-parsons-3',
+                topicId: 'for-loops',
+                title: 'Calculate a Total',
+                instructions: 'Arrange the code blocks to calculate and print the sum of the numbers 1, 2, 3, 4, 5.',
+                expectedOutput: '15',
+                blocks: [
+                    { id: 1, code: 'total = 0', indentLevel: 0 },
+                    { id: 2, code: 'for i in range(1, 6):', indentLevel: 0 },
+                    { id: 3, code: 'total = total + i', indentLevel: 1 },
+                    { id: 4, code: 'print(total)', indentLevel: 0 },
+                    { id: 5, code: 'total = i', indentLevel: 1, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4],
+                hints: [
+                    'We need to set up a total variable before the loop.',
+                    'Inside the loop, we add each number to the total.',
+                    'After the loop finishes, we print the final total.',
+                    'total = i would replace the total, not add to it!'
+                ],
+                type: '2d'
+            }
+        );
+    </script>
+</body>
+</html>
