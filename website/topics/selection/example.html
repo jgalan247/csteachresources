@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: Selection - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Selection</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Making Decisions</h1>
+            <p>Follow along as we build programs that make decisions using if statements.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <section class="mt-xl">
+            <h2>More Practice: Multiple Conditions</h2>
+            <div id="worked-example-2" class="mt-lg"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Conditions →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Worked Example 1: Simple if-else
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'we-selection-001',
+                topicId: 'selection',
+                title: 'Pass or Fail?',
+                problem: {
+                    statement: 'Create a program that tells a student if they passed or failed based on their test score. A score of 50 or more is a pass.',
+                    context: 'Programs often need to make decisions based on data. An if-else statement lets us run different code depending on whether a condition is true or false.',
+                    expectedOutput: 'Your score: 65\nPass! Well done.'
+                },
+                subgoals: [
+                    {
+                        label: 'Store the test score',
+                        code: 'score = 65',
+                        explanation: 'First, we store the score in a variable. Later, we could change this to get input from the user.',
+                        selfExplanation: 'Why do we store the score in a variable instead of using the number directly?'
+                    },
+                    {
+                        label: 'Write the condition to check',
+                        code: 'if score >= 50:',
+                        explanation: 'The if statement starts with "if", then a condition, then a colon. The condition score >= 50 will be True if the score is 50 or higher.',
+                        selfExplanation: 'What operator would we use if only scores above 50 (not equal to) should pass?'
+                    },
+                    {
+                        label: 'Add the code for when condition is True',
+                        code: '    print("Pass! Well done.")',
+                        explanation: 'This indented code runs ONLY if the condition is True. The indentation (4 spaces) tells Python this belongs to the if statement.',
+                        selfExplanation: 'What happens if you forget to indent this line?'
+                    },
+                    {
+                        label: 'Add else for when condition is False',
+                        code: `else:
+    print("Fail. Keep trying!")`,
+                        explanation: 'The else block runs when the if condition is False. No condition needed - it catches everything that didn\'t match the if.',
+                        selfExplanation: 'Can you have an else without an if?'
+                    },
+                    {
+                        label: 'Add a display of the score',
+                        code: 'print("Your score:", score)',
+                        explanation: 'This line is NOT indented, so it runs regardless of the if-else result. It shows the student their score.',
+                        selfExplanation: 'Why is this print statement not indented?'
+                    }
+                ],
+                completeCode: `score = 65
+print("Your score:", score)
+if score >= 50:
+    print("Pass! Well done.")
+else:
+    print("Fail. Keep trying!")`,
+                tips: [
+                    'The condition must evaluate to True or False',
+                    'Indentation is crucial - it shows which code belongs to which block',
+                    'The else is optional - you can have if without else'
+                ]
+            }
+        );
+
+        // Worked Example 2: if-elif-else
+        new WorkedExample(
+            document.getElementById('worked-example-2'),
+            {
+                id: 'we-selection-002',
+                topicId: 'selection',
+                title: 'Grade Calculator',
+                problem: {
+                    statement: 'Create a program that converts a percentage score into a letter grade: A (90+), B (70-89), C (50-69), Fail (below 50).',
+                    context: 'Sometimes we need more than two options. elif (short for "else if") lets us check multiple conditions in order.',
+                    expectedOutput: 'Score: 75\nGrade: B'
+                },
+                subgoals: [
+                    {
+                        label: 'Store the percentage score',
+                        code: 'percentage = 75',
+                        explanation: 'We store the percentage to check against our grade boundaries.',
+                        selfExplanation: 'What grade should 75% get according to our rules?'
+                    },
+                    {
+                        label: 'Check for the highest grade first',
+                        code: `if percentage >= 90:
+    grade = "A"`,
+                        explanation: 'We check the highest grade first. If percentage is 90 or more, it\'s an A. We store the grade in a variable for later use.',
+                        selfExplanation: 'Why do we check for A first instead of checking for Fail first?'
+                    },
+                    {
+                        label: 'Check for B grade',
+                        code: `elif percentage >= 70:
+    grade = "B"`,
+                        explanation: 'elif means "else if". This only runs if the first condition was False. So we know it\'s less than 90. If it\'s >= 70, it\'s a B.',
+                        selfExplanation: 'If percentage is 95, will this elif be checked?'
+                    },
+                    {
+                        label: 'Check for C grade',
+                        code: `elif percentage >= 50:
+    grade = "C"`,
+                        explanation: 'Another elif for C grades. This runs if both previous conditions were False (so we know it\'s < 70). If >= 50, it\'s a C.',
+                        selfExplanation: 'Why don\'t we need to write "percentage < 70 and percentage >= 50"?'
+                    },
+                    {
+                        label: 'Handle failing grades',
+                        code: `else:
+    grade = "Fail"`,
+                        explanation: 'If none of the conditions above were True, it must be below 50, so it\'s a fail. else catches everything that didn\'t match.',
+                        selfExplanation: 'What percentage values will reach this else block?'
+                    },
+                    {
+                        label: 'Display the result',
+                        code: `print("Score:", percentage)
+print("Grade:", grade)`,
+                        explanation: 'Finally, we display both the score and the calculated grade. This runs after the if-elif-else completes.',
+                        selfExplanation: 'Where is the grade variable created? Can we use it here?'
+                    }
+                ],
+                completeCode: `percentage = 75
+
+if percentage >= 90:
+    grade = "A"
+elif percentage >= 70:
+    grade = "B"
+elif percentage >= 50:
+    grade = "C"
+else:
+    grade = "Fail"
+
+print("Score:", percentage)
+print("Grade:", grade)`,
+                tips: [
+                    'Check conditions from highest to lowest (or vice versa)',
+                    'Each elif is only checked if all previous conditions were False',
+                    'Only ONE block in an if-elif-else chain will execute'
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

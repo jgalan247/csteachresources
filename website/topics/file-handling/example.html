@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: File Handling - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">File Handling</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <div class="ks-badge">KS4</div>
+            <h1><span>📖</span> Worked Example: Reading and Writing Files</h1>
+            <p>Follow along as we build file handling programs step by step.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <section class="mt-xl">
+            <h2>More Practice: Processing File Data</h2>
+            <div id="worked-example-2" class="mt-lg"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace File Operations →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Worked Example 1: Reading a file
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'we-files-001',
+                topicId: 'file-handling',
+                title: 'Reading Names from a File',
+                problem: {
+                    statement: 'Read names from a file and greet each person.',
+                    context: 'Programs often need to read data from files. This lets us process data without typing it all into the code.',
+                    expectedOutput: 'Hello, Alice!\nHello, Bob!\nHello, Charlie!'
+                },
+                subgoals: [
+                    {
+                        label: 'Open the file for reading',
+                        code: 'with open("names.txt", "r") as file:',
+                        explanation: 'The "with" statement opens the file and automatically closes it when we\'re done. "r" means read mode. The file object is stored in the variable "file".',
+                        selfExplanation: 'Why do we use "with" instead of just open()?'
+                    },
+                    {
+                        label: 'Read all lines from the file',
+                        code: '    lines = file.readlines()',
+                        explanation: 'readlines() returns a list where each element is one line from the file. Note this is indented because it\'s inside the "with" block.',
+                        selfExplanation: 'What would file.read() return instead?'
+                    },
+                    {
+                        label: 'Loop through each line',
+                        code: '    for line in lines:',
+                        explanation: 'We iterate through the list of lines. Each line is a string containing the text from that line of the file.',
+                        selfExplanation: 'Could we combine this with the previous line?'
+                    },
+                    {
+                        label: 'Clean and use the line',
+                        code: '        name = line.strip()\n        print("Hello, " + name + "!")',
+                        explanation: 'strip() removes whitespace (including the newline \\n at the end of each line). Then we use the clean name in our greeting.',
+                        selfExplanation: 'What would happen without strip()?'
+                    }
+                ],
+                completeCode: `# File "names.txt" contains:
+# Alice
+# Bob
+# Charlie
+
+with open("names.txt", "r") as file:
+    lines = file.readlines()
+    for line in lines:
+        name = line.strip()
+        print("Hello, " + name + "!")`,
+                tips: [
+                    'Always use "with" to ensure files are closed properly',
+                    'Use strip() to remove newline characters from lines',
+                    '"r" is the default mode, but it\'s good practice to include it'
+                ]
+            }
+        );
+
+        // Worked Example 2: Writing to a file
+        new WorkedExample(
+            document.getElementById('worked-example-2'),
+            {
+                id: 'we-files-002',
+                topicId: 'file-handling',
+                title: 'Saving Scores to a File',
+                problem: {
+                    statement: 'Save a list of player scores to a file, one per line.',
+                    context: 'Writing to files lets programs save data that persists after the program ends. This is essential for games, logs, and data processing.',
+                    expectedOutput: 'File contents:\n85\n92\n78\n95'
+                },
+                subgoals: [
+                    {
+                        label: 'Create the data to save',
+                        code: 'scores = [85, 92, 78, 95]',
+                        explanation: 'We have a list of scores that we want to save to a file. In a real program, these might come from user input or calculations.',
+                        selfExplanation: 'What data type are these scores?'
+                    },
+                    {
+                        label: 'Open the file for writing',
+                        code: 'with open("scores.txt", "w") as file:',
+                        explanation: '"w" means write mode. This creates the file if it doesn\'t exist, or OVERWRITES it if it does. Be careful!',
+                        selfExplanation: 'What mode would you use to add to an existing file?'
+                    },
+                    {
+                        label: 'Loop through the data',
+                        code: '    for score in scores:',
+                        explanation: 'We iterate through each score in our list so we can write them one at a time.',
+                        selfExplanation: 'Why can\'t we just write the whole list at once?'
+                    },
+                    {
+                        label: 'Convert and write each item',
+                        code: '        file.write(str(score) + "\\n")',
+                        explanation: 'write() only accepts strings, so we convert the integer score with str(). We add \\n to create a new line after each score.',
+                        selfExplanation: 'What would happen without str()?'
+                    }
+                ],
+                completeCode: `scores = [85, 92, 78, 95]
+
+with open("scores.txt", "w") as file:
+    for score in scores:
+        file.write(str(score) + "\\n")
+
+print("Scores saved!")`,
+                tips: [
+                    '"w" mode overwrites existing files - use "a" to append',
+                    'Always convert non-strings with str() before writing',
+                    'Remember to add \\n for newlines between items'
+                ]
+            }
+        );
+    </script>
+    <style>
+        .ks-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</body>
+</html>

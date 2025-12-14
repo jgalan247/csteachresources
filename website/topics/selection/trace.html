@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Tracing: Selection - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Selection</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Investigate: Trace the Conditions</h1>
+            <p>Follow the code step by step, noting which branches are taken and which are skipped.</p>
+            <div class="alert alert-info">
+                <strong>How to trace selection:</strong> Evaluate each condition as True or False. Only trace lines that actually execute!
+            </div>
+        </header>
+
+        <!-- Code Tracing Container 1 -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="tracing-exercise-1"></div>
+        </section>
+
+        <!-- Code Tracing Container 2 -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="tracing-exercise-2"></div>
+        </section>
+
+        <!-- Code Tracing Container 3 -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="tracing-exercise-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Tracing Exercise 1: Foundation - Simple if-else
+        new CodeTracing(
+            document.getElementById('tracing-exercise-1'),
+            {
+                id: 'selection-trace-1',
+                title: 'Trace a Simple If-Else',
+                topicId: 'selection',
+                code: `age = 16
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")`,
+                variables: ['age'],
+                includeOutput: true,
+                prefilled: [0, 1],
+                solution: [
+                    { step: 1, line: 1, variables: { age: 16 }, output: '', notes: 'Store 16 in age' },
+                    { step: 2, line: 2, variables: { age: 16 }, output: '', notes: 'Check: 16 >= 18? False - skip to else' },
+                    { step: 3, line: 5, variables: { age: 16 }, output: 'Minor', notes: 'else branch executes' }
+                ]
+            }
+        );
+
+        // Tracing Exercise 2: Core - if-elif-else
+        new CodeTracing(
+            document.getElementById('tracing-exercise-2'),
+            {
+                id: 'selection-trace-2',
+                title: 'Trace Multiple Conditions',
+                topicId: 'selection',
+                code: `score = 72
+if score >= 90:
+    grade = "A"
+elif score >= 70:
+    grade = "B"
+elif score >= 50:
+    grade = "C"
+else:
+    grade = "Fail"
+print(grade)`,
+                variables: ['score', 'grade'],
+                includeOutput: true,
+                prefilled: [0, 1],
+                solution: [
+                    { step: 1, line: 1, variables: { score: 72, grade: null }, output: '', notes: 'Store 72 in score' },
+                    { step: 2, line: 2, variables: { score: 72, grade: null }, output: '', notes: 'Check: 72 >= 90? False - check next' },
+                    { step: 3, line: 4, variables: { score: 72, grade: null }, output: '', notes: 'Check: 72 >= 70? True!' },
+                    { step: 4, line: 5, variables: { score: 72, grade: '"B"' }, output: '', notes: 'Set grade to "B", skip rest' },
+                    { step: 5, line: 10, variables: { score: 72, grade: '"B"' }, output: 'B', notes: 'Print the grade' }
+                ]
+            }
+        );
+
+        // Tracing Exercise 3: Extension - Nested conditions
+        new CodeTracing(
+            document.getElementById('tracing-exercise-3'),
+            {
+                id: 'selection-trace-3',
+                title: 'Trace Nested Conditions',
+                topicId: 'selection',
+                code: `age = 15
+has_ticket = True
+if age >= 12:
+    if has_ticket:
+        print("Welcome!")
+    else:
+        print("Buy a ticket")
+else:
+    print("Too young")`,
+                variables: ['age', 'has_ticket'],
+                includeOutput: true,
+                prefilled: [0],
+                solution: [
+                    { step: 1, line: 1, variables: { age: 15, has_ticket: null }, output: '', notes: 'Store 15 in age' },
+                    { step: 2, line: 2, variables: { age: 15, has_ticket: 'True' }, output: '', notes: 'Store True in has_ticket' },
+                    { step: 3, line: 3, variables: { age: 15, has_ticket: 'True' }, output: '', notes: 'Check: 15 >= 12? True - enter if' },
+                    { step: 4, line: 4, variables: { age: 15, has_ticket: 'True' }, output: '', notes: 'Check: has_ticket? True - enter inner if' },
+                    { step: 5, line: 5, variables: { age: 15, has_ticket: 'True' }, output: 'Welcome!', notes: 'Print Welcome!' }
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

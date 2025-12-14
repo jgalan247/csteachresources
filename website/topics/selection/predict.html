@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Selection - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Selection</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: Which Path?</h1>
+            <p>If statements let programs make decisions. Look at the code and predict which branch will run!</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">Back to Selection</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'sel-predict-1',
+                title: 'Question 1 of 5',
+                code: `age = 15
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")`,
+                question: 'What will be printed?',
+                options: ['Adult', 'Minor', 'Both', 'Nothing'],
+                correctIndex: 1,
+                explanation: 'age is 15. The condition age >= 18 checks if 15 >= 18, which is False. So the else branch runs, printing "Minor".',
+                misconceptions: {
+                    0: '15 is NOT >= 18, so the if branch does not run.',
+                    2: 'Only ONE branch runs - either the if or the else, never both.'
+                }
+            },
+            {
+                id: 'sel-predict-2',
+                title: 'Question 2 of 5',
+                code: `score = 75
+if score >= 50:
+    print("Pass")`,
+                question: 'What will be printed?',
+                options: ['Pass', 'Fail', 'Nothing', 'Error'],
+                correctIndex: 0,
+                explanation: 'score is 75. The condition score >= 50 checks if 75 >= 50, which is True. So "Pass" is printed. (Note: there\'s no else, so nothing happens if the condition is False.)',
+                misconceptions: {
+                    1: 'There\'s no else clause, so "Fail" is never printed.',
+                    2: 'The condition is True, so the indented code runs.'
+                }
+            },
+            {
+                id: 'sel-predict-3',
+                title: 'Question 3 of 5',
+                code: `x = 5
+y = 5
+if x == y:
+    print("Equal")
+else:
+    print("Different")`,
+                question: 'What will be printed?',
+                options: ['Equal', 'Different', 'True', 'Error'],
+                correctIndex: 0,
+                explanation: 'x and y are both 5. The condition x == y checks if they\'re equal. 5 == 5 is True, so "Equal" is printed.',
+                misconceptions: {
+                    1: '5 equals 5, so the condition is True and the if branch runs.',
+                    2: 'We don\'t print the condition result (True), we print what\'s in the if block.'
+                }
+            },
+            {
+                id: 'sel-predict-4',
+                title: 'Question 4 of 5',
+                code: `grade = 65
+if grade >= 70:
+    print("B")
+elif grade >= 50:
+    print("C")
+else:
+    print("Fail")`,
+                question: 'What will be printed?',
+                options: ['B', 'C', 'Fail', 'B and C'],
+                correctIndex: 1,
+                explanation: 'grade is 65. First condition: 65 >= 70 is False. Second condition: 65 >= 50 is True. So "C" is printed. Once a condition is True, the rest are skipped.',
+                misconceptions: {
+                    0: '65 is NOT >= 70, so the first branch is skipped.',
+                    3: 'Only ONE branch ever runs. Once elif is True, we skip the rest.'
+                }
+            },
+            {
+                id: 'sel-predict-5',
+                title: 'Question 5 of 5',
+                code: `temperature = 20
+if temperature > 30:
+    print("Hot")
+if temperature > 15:
+    print("Warm")
+if temperature > 0:
+    print("Cold")`,
+                question: 'What will be printed?',
+                options: ['Hot', 'Warm', 'Cold', 'Warm and Cold'],
+                correctIndex: 3,
+                explanation: 'These are THREE separate if statements (not if-elif-else). 20 > 30 is False (skip). 20 > 15 is True (print "Warm"). 20 > 0 is True (print "Cold"). Both "Warm" and "Cold" are printed!',
+                misconceptions: {
+                    1: 'Each "if" is checked independently. Both conditions can be True.',
+                    2: 'Both "Warm" and "Cold" are printed because these are separate if statements, not elif.'
+                }
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'selection'
+            }
+        );
+    </script>
+</body>
+</html>

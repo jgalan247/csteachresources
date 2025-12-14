@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Handling - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">File Handling</span>
+        </nav>
+
+        <header class="topic-header">
+            <div class="ks-badge">KS4</div>
+            <h1><span class="topic-header-icon">📁</span> File Handling</h1>
+            <p>Learn how to read from and write to files, allowing your programs to save and load data.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>How to open and close files safely</li>
+                    <li>Reading data from text files</li>
+                    <li>Writing data to text files</li>
+                    <li>Using the 'with' statement for safe file handling</li>
+                    <li>Processing CSV data</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="learning-path">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="files-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: What's in the File?</h4>
+                        <p>Predict what data will be read from or written to files.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="files-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Examples</h4>
+                        <p>See how to read and write files step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="files-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace File Operations</h4>
+                        <p>Track what happens to file contents and variables.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="files-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order to create file handling programs.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="files-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of file handling.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>file</h4>
+                    <p>A collection of data stored on disk with a name and extension (e.g., data.txt).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>open()</h4>
+                    <p>Function to access a file. Takes filename and mode ('r', 'w', 'a').</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>read mode ('r')</h4>
+                    <p>Opens file to read data. File must exist.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>write mode ('w')</h4>
+                    <p>Opens file to write data. Creates file or overwrites existing.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>append mode ('a')</h4>
+                    <p>Opens file to add data at the end. Creates file if needed.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>with statement</h4>
+                    <p>Automatically closes the file when done. Best practice!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">file_handling_examples.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Reading a whole file</span>
+<span class="syntax-keyword">with</span> <span class="syntax-keyword">open</span>(<span class="syntax-string">"data.txt"</span>, <span class="syntax-string">"r"</span>) <span class="syntax-keyword">as</span> file:
+    content = file.read()
+    <span class="syntax-keyword">print</span>(content)
+
+<span class="syntax-comment"># Reading line by line</span>
+<span class="syntax-keyword">with</span> <span class="syntax-keyword">open</span>(<span class="syntax-string">"data.txt"</span>, <span class="syntax-string">"r"</span>) <span class="syntax-keyword">as</span> file:
+    <span class="syntax-keyword">for</span> line <span class="syntax-keyword">in</span> file:
+        <span class="syntax-keyword">print</span>(line.strip())
+
+<span class="syntax-comment"># Reading all lines into a list</span>
+<span class="syntax-keyword">with</span> <span class="syntax-keyword">open</span>(<span class="syntax-string">"data.txt"</span>, <span class="syntax-string">"r"</span>) <span class="syntax-keyword">as</span> file:
+    lines = file.readlines()
+
+<span class="syntax-comment"># Writing to a file (overwrites)</span>
+<span class="syntax-keyword">with</span> <span class="syntax-keyword">open</span>(<span class="syntax-string">"output.txt"</span>, <span class="syntax-string">"w"</span>) <span class="syntax-keyword">as</span> file:
+    file.write(<span class="syntax-string">"Hello, World!\n"</span>)
+    file.write(<span class="syntax-string">"Second line\n"</span>)
+
+<span class="syntax-comment"># Appending to a file (adds to end)</span>
+<span class="syntax-keyword">with</span> <span class="syntax-keyword">open</span>(<span class="syntax-string">"log.txt"</span>, <span class="syntax-string">"a"</span>) <span class="syntax-keyword">as</span> file:
+    file.write(<span class="syntax-string">"New entry\n"</span>)
+
+<span class="syntax-comment"># File modes:</span>
+<span class="syntax-comment"># "r" - read (default)</span>
+<span class="syntax-comment"># "w" - write (overwrites file)</span>
+<span class="syntax-comment"># "a" - append (adds to end)</span>
+<span class="syntax-comment"># "r+" - read and write</span></code></pre>
+            </div>
+        </section>
+
+        <section class="exam-tips mt-xl">
+            <h2>Exam Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>Common Exam Questions</h4>
+                    <ul>
+                        <li>Trace what happens to file contents</li>
+                        <li>Identify the correct file mode to use</li>
+                        <li>Explain why 'with' is preferred</li>
+                        <li>Debug file handling code</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>Common Mistakes</h4>
+                    <ul>
+                        <li>Forgetting to close files (use 'with'!)</li>
+                        <li>Using 'w' when you meant 'a' (loses data)</li>
+                        <li>Forgetting newline characters \n</li>
+                        <li>Not stripping whitespace from lines</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .ks-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .tip-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .tip-card h4 {
+            color: var(--secondary);
+            margin-bottom: var(--space-sm);
+        }
+        .tip-card ul {
+            margin: 0;
+            padding-left: var(--space-md);
+        }
+        .tip-card li {
+            margin-bottom: var(--space-xs);
+            color: var(--gray-600);
+        }
+    </style>
+</body>
+</html>

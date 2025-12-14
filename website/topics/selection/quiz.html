@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Selection - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Selection</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: Selection</h1>
+            <p>Test your understanding of if statements and selection! Answer all questions to see your score.</p>
+        </header>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to Selection</a>
+            <a href="../for-loops/index.html" class="btn btn-secondary">Next Topic: For Loops →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'sel-quiz-1',
+                title: 'Question 1: Comparison operators',
+                code: null,
+                question: 'Which operator checks if two values are EQUAL?',
+                options: ['=', '==', '!=', '>='],
+                correctIndex: 1,
+                explanation: '== checks equality. A single = is for assignment (storing values). != means "not equal", and >= means "greater than or equal to".'
+            },
+            {
+                id: 'sel-quiz-2',
+                title: 'Question 2: True or False?',
+                code: `x = 10
+y = 5
+print(x > y)`,
+                question: 'What will be printed?',
+                options: ['True', 'False', 'x > y', 'Error'],
+                correctIndex: 0,
+                explanation: 'x is 10, y is 5. Is 10 > 5? Yes! So the comparison evaluates to True, and True is printed.'
+            },
+            {
+                id: 'sel-quiz-3',
+                title: 'Question 3: if without else',
+                code: `num = 3
+if num > 5:
+    print("Big")
+print("Done")`,
+                question: 'What will be printed?',
+                options: ['Big\\nDone', 'Done', 'Big', 'Nothing'],
+                correctIndex: 1,
+                explanation: '3 > 5 is False, so "Big" is not printed. But "Done" is NOT inside the if (no indent), so it always runs.'
+            },
+            {
+                id: 'sel-quiz-4',
+                title: 'Question 4: elif purpose',
+                code: null,
+                question: 'What does elif mean?',
+                options: [
+                    'It\'s another way to write "else"',
+                    'It stands for "else if" - check another condition',
+                    'It means "end loop if"',
+                    'It\'s used to exit a program'
+                ],
+                correctIndex: 1,
+                explanation: 'elif is short for "else if". It lets you check another condition if the previous if (or elif) was False.'
+            },
+            {
+                id: 'sel-quiz-5',
+                title: 'Question 5: Execution flow',
+                code: `x = 85
+if x >= 90:
+    print("A")
+elif x >= 80:
+    print("B")
+elif x >= 70:
+    print("C")
+else:
+    print("D")`,
+                question: 'What will be printed?',
+                options: ['A', 'B', 'C', 'B and C'],
+                correctIndex: 1,
+                explanation: '85 >= 90? No. 85 >= 80? Yes! Print "B" and skip all remaining elif/else. Only ONE branch in an if-elif-else chain executes.'
+            },
+            {
+                id: 'sel-quiz-6',
+                title: 'Question 6: Separate ifs vs elif',
+                code: `num = 15
+if num > 10:
+    print("A")
+if num > 5:
+    print("B")`,
+                question: 'What will be printed?',
+                options: ['A', 'B', 'A and B', 'Nothing'],
+                correctIndex: 2,
+                explanation: 'These are TWO SEPARATE if statements, not if-elif. 15 > 10 is True (print A). 15 > 5 is also True (print B). Both conditions are checked independently.'
+            },
+            {
+                id: 'sel-quiz-7',
+                title: 'Question 7: Indentation',
+                code: `if True:
+print("Hello")`,
+                question: 'What happens when this code runs?',
+                options: ['Prints "Hello"', 'Prints nothing', 'Syntax error', 'Prints "True"'],
+                correctIndex: 2,
+                explanation: 'This causes an IndentationError. Code inside an if statement MUST be indented. Python uses indentation to know what belongs to the if.'
+            },
+            {
+                id: 'sel-quiz-8',
+                title: 'Question 8: Complex condition',
+                code: `age = 15
+if age >= 13 and age <= 19:
+    print("Teenager")
+else:
+    print("Not a teenager")`,
+                question: 'What will be printed?',
+                options: ['Teenager', 'Not a teenager', 'Error', '15'],
+                correctIndex: 0,
+                explanation: 'The condition uses "and" to check BOTH parts. 15 >= 13? Yes. 15 <= 19? Yes. Both True, so the whole condition is True. "Teenager" is printed.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'selection'
+            }
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+# Worked Example: Selection Patterns
+# With subgoal labels for making expert thinking visible
+
+---
+worked_example:
+  id: we-selection-001
+  title: "Pass or Fail Check"
+  topic: selection
+  stage: ks3
+  difficulty: core
+
+  problem:
+    statement: "Create a program that tells a student if they passed or failed based on their test score. A score of 50 or more is a pass."
+    context: |
+      Programs often need to make decisions based on data.
+      An if-else statement lets us run different code depending
+      on whether a condition is true or false.
+    inputs: "Score: 65"
+    outputs: |
+      Your score: 65
+      Pass! Well done.
+
+  language: python
+
+  subgoals:
+    - label: "Store the test score"
+      code: "score = 65"
+      explanation: |
+        First, we store the score in a variable.
+        Later, we could change this to get input from the user.
+      highlight: true
+
+      prior_knowledge: "Variable assignment"
+
+    - label: "Write the condition to check"
+      code: "if score >= 50:"
+      explanation: |
+        The if statement starts with "if", then a condition, then a colon.
+
+        The condition score >= 50 will be True if the score is 50 or higher.
+        >= means "greater than or equal to".
+      highlight: true
+
+      prior_knowledge: "Comparison operators"
+
+      misconceptions:
+        - wrong_approach: "Using = instead of >="
+          why_wrong: "= is assignment, not comparison"
+          correction: "Use >= for 'greater than or equal to'"
+
+        - wrong_approach: "Using > instead of >="
+          why_wrong: "This would fail someone who got exactly 50"
+          correction: ">= includes the boundary value"
+
+    - label: "Add the code for when condition is True"
+      code: '    print("Pass! Well done.")'
+      explanation: |
+        This indented code runs ONLY if the condition is True.
+        The indentation (4 spaces) tells Python this belongs to the if.
+
+        If score is 50 or more, this message appears.
+      highlight: true
+
+      prior_knowledge: "Indentation in Python"
+
+      misconceptions:
+        - wrong_approach: "Not indenting"
+          why_wrong: "Python uses indentation to know what's inside the if"
+          correction: "Always indent code inside if/else blocks"
+
+    - label: "Add else for when condition is False"
+      code: |
+        else:
+            print("Fail. Keep trying!")
+      explanation: |
+        The else block runs when the if condition is False.
+        No condition needed - it catches everything that didn't match the if.
+
+        If score is below 50, this message appears.
+      highlight: true
+
+      prior_knowledge: "None specific"
+
+      misconceptions:
+        - wrong_approach: "Putting a condition after else"
+          why_wrong: "else doesn't take a condition - use elif for that"
+          correction: "else catches all remaining cases"
+
+    - label: "Display the score (runs regardless)"
+      code: 'print("Your score:", score)'
+      explanation: |
+        This line is NOT indented, so it runs regardless of the if-else result.
+        It shows the student their score before the pass/fail message.
+
+        Code outside if-else runs normally.
+      highlight: false
+
+      prior_knowledge: "print() function"
+
+  complete_code: |
+    score = 65
+    print("Your score:", score)
+    if score >= 50:
+        print("Pass! Well done.")
+    else:
+        print("Fail. Keep trying!")
+
+  expected_output: |
+    Your score: 65
+    Pass! Well done.
+
+  fading:
+    faded_versions:
+      - level: 1
+        blanked_subgoals: [4]
+        hints_available: true
+
+      - level: 2
+        blanked_subgoals: [3, 4]
+        hints_available: true
+
+      - level: 3
+        blanked_subgoals: [2, 3, 4]
+        hints_available: false
+
+    progression_notes: |
+      Level 1: Students see if statement; write else block
+      Level 2: Students see condition; write both blocks
+      Level 3: Students see variable; write entire if-else
+
+  differentiation:
+    foundation:
+      additional_subgoals: true
+      extra_explanations:
+        - subgoal_index: 2
+          additional_explanation: |
+            Comparison operators:
+            ==  equal to (5 == 5 is True)
+            !=  not equal to (5 != 3 is True)
+            >   greater than (5 > 3 is True)
+            <   less than (3 < 5 is True)
+            >=  greater or equal (5 >= 5 is True)
+            <=  less or equal (3 <= 5 is True)
+
+    extension:
+      challenges:
+        - description: |
+            Add a "distinction" message for scores of 80 or above
+          hints:
+            - "You'll need to add an elif between if and else"
+            - "Check for 80+ first, then 50+"
+
+  practice_problems:
+    - id: practice-sel-001
+      description: "Check if a number is positive or negative"
+      similarity: identical_structure
+      starter_code: |
+        num = -5
+        # Your code here
+      solution: |
+        num = -5
+        if num >= 0:
+            print("Positive or zero")
+        else:
+            print("Negative")
+
+    - id: practice-sel-002
+      description: "Check if someone can drive (age 17+)"
+      similarity: varied_context
+      starter_code: |
+        age = 16
+        # Your code here
+      solution: |
+        age = 16
+        if age >= 17:
+            print("Can drive")
+        else:
+            print("Too young to drive")
+
+  self_explanation_prompts:
+    - after_subgoal: 2
+      prompt: "What would happen if we used > instead of >=?"
+
+    - after_subgoal: 3
+      prompt: "Why must this line be indented?"
+
+    - after_subgoal: 4
+      prompt: "Can you have an if without an else?"
+
+  objectives:
+    - "Understand the structure of if-else statements"
+    - "Use comparison operators correctly"
+    - "Know that indentation determines what's inside blocks"
+
+  related:
+    lesson_id: ks3-selection-001
+    tracing_exercise: trace-selection-001
+    parsons_problem: parsons-selection-001
+
+---
+# Additional worked example: if-elif-else
+
+worked_example:
+  id: we-selection-002
+  title: "Grade Calculator"
+  topic: selection
+  stage: ks3
+  difficulty: core
+
+  problem:
+    statement: "Create a program that converts a percentage score into a letter grade: A (90+), B (70-89), C (50-69), Fail (below 50)"
+    context: |
+      Sometimes we need more than two options.
+      elif (short for "else if") lets us check multiple conditions in order.
+      Only the first matching condition runs.
+    inputs: "Percentage: 75"
+    outputs: |
+      Score: 75
+      Grade: B
+
+  language: python
+
+  subgoals:
+    - label: "Store the percentage score"
+      code: "percentage = 75"
+      explanation: |
+        We store the percentage to check against our grade boundaries.
+        75% should get a B according to our rules.
+      highlight: true
+
+      prior_knowledge: "Variable assignment"
+
+    - label: "Check for the highest grade first"
+      code: |
+        if percentage >= 90:
+            grade = "A"
+      explanation: |
+        We check the highest grade first. If percentage is 90 or more,
+        it's an A. We store the grade in a variable for later use.
+
+        Always check from highest to lowest (or most specific to least).
+      highlight: true
+
+      prior_knowledge: "if statements, comparison operators"
+
+      misconceptions:
+        - wrong_approach: "Checking for fail first"
+          why_wrong: "A score of 95 would match '<50' check as False and continue"
+          correction: "Check highest grades first to catch them properly"
+
+    - label: "Check for B grade using elif"
+      code: |
+        elif percentage >= 70:
+            grade = "B"
+      explanation: |
+        elif means "else if". This only runs if the first condition was False.
+        So we know it's already less than 90. If it's >= 70, it's a B.
+
+        We don't need to write 'percentage < 90 and percentage >= 70'.
+      highlight: true
+
+      prior_knowledge: "if statements"
+
+      misconceptions:
+        - wrong_approach: "Using 'if' instead of 'elif'"
+          why_wrong: "A separate if would check independently - both could run!"
+          correction: "Use elif to chain conditions together"
+
+    - label: "Check for C grade"
+      code: |
+        elif percentage >= 50:
+            grade = "C"
+      explanation: |
+        Another elif for C grades. This runs if both previous conditions
+        were False (so we know it's < 70). If >= 50, it's a C.
+      highlight: true
+
+      prior_knowledge: "elif statements"
+
+    - label: "Handle failing grades with else"
+      code: |
+        else:
+            grade = "Fail"
+      explanation: |
+        If none of the conditions above were True, it must be below 50,
+        so it's a fail. else catches everything that didn't match.
+      highlight: true
+
+      prior_knowledge: "else statements"
+
+    - label: "Display the result"
+      code: |
+        print("Score:", percentage)
+        print("Grade:", grade)
+      explanation: |
+        Finally, we display both the score and the calculated grade.
+        This runs after the if-elif-else completes.
+      highlight: false
+
+      prior_knowledge: "print() function"
+
+  complete_code: |
+    percentage = 75
+
+    if percentage >= 90:
+        grade = "A"
+    elif percentage >= 70:
+        grade = "B"
+    elif percentage >= 50:
+        grade = "C"
+    else:
+        grade = "Fail"
+
+    print("Score:", percentage)
+    print("Grade:", grade)
+
+  expected_output: |
+    Score: 75
+    Grade: B
+
+  fading:
+    faded_versions:
+      - level: 1
+        blanked_subgoals: [5, 6]
+        hints_available: true
+
+      - level: 2
+        blanked_subgoals: [4, 5, 6]
+        hints_available: true
+
+      - level: 3
+        blanked_subgoals: [3, 4, 5, 6]
+        hints_available: false
+
+  differentiation:
+    foundation:
+      additional_subgoals: true
+      extra_explanations:
+        - subgoal_index: 3
+          additional_explanation: |
+            Think of elif as a chain of checkpoints:
+            1. Is it >= 90? No, continue...
+            2. Is it >= 70? Yes! Take this path.
+            3. (Never checked - we already found our answer)
+
+    extension:
+      challenges:
+        - description: |
+            Add A*, B*, C* grades for scores ending in 5-9
+            (e.g., 85-89 = B*, 75-79 = B)
+          hints:
+            - "You'll need more elif conditions"
+            - "Check for starred grades before regular grades"
+
+  self_explanation_prompts:
+    - after_subgoal: 2
+      prompt: "Why do we check for A first instead of checking for Fail first?"
+
+    - after_subgoal: 3
+      prompt: "If percentage is 95, will this elif ever be checked?"
+
+    - after_subgoal: 4
+      prompt: "Why don't we need to write 'percentage < 70 and percentage >= 50'?"
+
+  objectives:
+    - "Use if-elif-else for multiple conditions"
+    - "Understand that only one branch executes"
+    - "Check conditions in the correct order"
+
+  related:
+    lesson_id: ks3-selection-001
+    tracing_exercise: trace-selection-002
+    parsons_problem: parsons-selection-004

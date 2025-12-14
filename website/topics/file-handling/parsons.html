@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: File Handling - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">File Handling</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <div class="ks-badge">KS4</div>
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks into the correct order. Pay attention to file modes and indentation!</p>
+            <div class="alert alert-info">
+                <strong>Remember:</strong> Code inside "with" blocks must be indented.
+            </div>
+        </header>
+
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Read and print file
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'files-parsons-1',
+                topicId: 'file-handling',
+                title: 'Read and Print File Contents',
+                instructions: 'Arrange the code to read the entire contents of a file called "message.txt" and print it.',
+                expectedOutput: '(Contents of message.txt)',
+                blocks: [
+                    { id: 1, code: 'with open("message.txt", "r") as file:', indentLevel: 0 },
+                    { id: 2, code: 'content = file.read()', indentLevel: 1 },
+                    { id: 3, code: 'print(content)', indentLevel: 1 }
+                ],
+                solution: [1, 2, 3],
+                hints: [
+                    'Start by opening the file with "with".',
+                    'Read the file contents into a variable.',
+                    'Print the variable containing the contents.',
+                    'Everything inside "with" is indented.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 2: Core - Write to file
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'files-parsons-2',
+                topicId: 'file-handling',
+                title: 'Write Names to a File',
+                instructions: 'Arrange the code to write a list of names to a file, one name per line.',
+                expectedOutput: 'File contains: Alice\\nBob\\nCharlie',
+                blocks: [
+                    { id: 1, code: 'names = ["Alice", "Bob", "Charlie"]', indentLevel: 0 },
+                    { id: 2, code: 'with open("names.txt", "w") as file:', indentLevel: 0 },
+                    { id: 3, code: 'for name in names:', indentLevel: 1 },
+                    { id: 4, code: 'file.write(name + "\\n")', indentLevel: 2 },
+                    { id: 5, code: 'with open("names.txt", "a") as file:', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4],
+                hints: [
+                    'First, create the list of names.',
+                    'Open the file for writing (creating/overwriting).',
+                    'Loop through each name.',
+                    'Write each name with a newline character.',
+                    'One distractor uses append mode instead of write mode.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 3: Extension - Read, process, write
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'files-parsons-3',
+                topicId: 'file-handling',
+                title: 'Double the Numbers',
+                instructions: 'Read numbers from "input.txt", double each one, and write the results to "output.txt".',
+                expectedOutput: 'Each number in input.txt is doubled in output.txt',
+                blocks: [
+                    { id: 1, code: 'with open("input.txt", "r") as infile:', indentLevel: 0 },
+                    { id: 2, code: 'numbers = infile.readlines()', indentLevel: 1 },
+                    { id: 3, code: 'with open("output.txt", "w") as outfile:', indentLevel: 0 },
+                    { id: 4, code: 'for num in numbers:', indentLevel: 1 },
+                    { id: 5, code: 'doubled = int(num.strip()) * 2', indentLevel: 2 },
+                    { id: 6, code: 'outfile.write(str(doubled) + "\\n")', indentLevel: 2 },
+                    { id: 7, code: 'outfile.write(doubled + "\\n")', indentLevel: 2, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6],
+                hints: [
+                    'First, read from the input file.',
+                    'Then open the output file for writing.',
+                    'Loop through each number from the input.',
+                    'Convert, calculate, and write.',
+                    'Remember to convert back to string when writing!',
+                    'The distractor forgets str() conversion.'
+                ],
+                type: '2d'
+            }
+        );
+    </script>
+    <style>
+        .ks-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,312 @@
+# Worked Example: Variables and Data Types
+# With subgoal labels for making expert thinking visible
+
+---
+worked_example:
+  id: we-variables-001
+  title: "Storing and Using Information"
+  topic: variables
+  stage: ks3
+  difficulty: core
+
+  problem:
+    statement: "Create a program that stores a person's name and age, then displays a greeting message"
+    context: |
+      When writing programs, we often need to store information to use later.
+      Variables let us save data and give it a meaningful name, like labelled boxes.
+    inputs: "Name: Sam, Age: 14"
+    outputs: |
+      Hello, Sam!
+      You are 14 years old.
+
+  language: python
+
+  subgoals:
+    - label: "Choose meaningful variable names"
+      code: 'name = "Sam"'
+      explanation: |
+        We create a variable called "name" and store the text "Sam" in it.
+        Variable names should describe what they hold.
+        The quotes tell Python this is a string (text).
+      highlight: true
+
+      variations:
+        - description: "Different naming styles"
+          alternative_code: 'player_name = "Sam"  # More specific name'
+
+      prior_knowledge: "None required"
+
+      misconceptions:
+        - wrong_approach: 'Using name = Sam without quotes'
+          why_wrong: "Python would think Sam is another variable"
+          correction: "Use quotes to indicate text: name = \"Sam\""
+
+    - label: "Store the age as a number"
+      code: "age = 14"
+      explanation: |
+        We store the number 14 in a variable called "age".
+        Notice there are NO quotes - this tells Python it's a number (integer),
+        not text. We can do maths with integers.
+      highlight: true
+
+      variations:
+        - description: "Decimal numbers"
+          alternative_code: "height = 1.65  # This is a float (decimal)"
+
+      prior_knowledge: "Variable assignment"
+
+      misconceptions:
+        - wrong_approach: 'Using age = "14" with quotes'
+          why_wrong: "This makes it text, so you can't do maths with it"
+          correction: "For numbers you'll calculate with, don't use quotes"
+
+    - label: "Display the greeting with the name"
+      code: 'print("Hello,", name + "!")'
+      explanation: |
+        We use print() to display output.
+        The comma separates items to print (adds a space).
+        We use + to join the name with "!" to make "Sam!".
+      highlight: true
+
+      prior_knowledge: "print() function basics"
+
+      misconceptions:
+        - wrong_approach: 'print("Hello, name!")'
+          why_wrong: "This prints the text 'name', not the variable's value"
+          correction: "Put variables outside the quotes to use their values"
+
+    - label: "Display the age message"
+      code: 'print("You are", age, "years old.")'
+      explanation: |
+        We mix text and variables in print().
+        The commas automatically add spaces between each item.
+        Python converts the number to text for display.
+      highlight: false
+
+      prior_knowledge: "print() with multiple items"
+
+      misconceptions:
+        - wrong_approach: 'print("You are" + age + "years old.")'
+          why_wrong: "Can't use + with strings and numbers directly"
+          correction: "Use commas, or convert: str(age)"
+
+  complete_code: |
+    # Store information in variables
+    name = "Sam"
+    age = 14
+
+    # Display the greeting
+    print("Hello,", name + "!")
+    print("You are", age, "years old.")
+
+  expected_output: |
+    Hello, Sam!
+    You are 14 years old.
+
+  fading:
+    faded_versions:
+      - level: 1
+        blanked_subgoals: [4]
+        hints_available: true
+
+      - level: 2
+        blanked_subgoals: [3, 4]
+        hints_available: true
+
+      - level: 3
+        blanked_subgoals: [2, 3, 4]
+        hints_available: false
+
+    progression_notes: |
+      Level 1: Students see variable creation and first print; write second print
+      Level 2: Students see variable creation; write both prints
+      Level 3: Students see only name variable; write rest
+
+  differentiation:
+    foundation:
+      additional_subgoals: true
+      extra_explanations:
+        - subgoal_index: 1
+          additional_explanation: |
+            Think of a variable as a labelled box:
+            - The NAME is the label on the box
+            - The VALUE is what's inside the box
+            - = means "put this in the box"
+
+    extension:
+      challenges:
+        - description: |
+            Add a variable for the person's favourite colour
+            and include it in a third message.
+          hints:
+            - "Create a new string variable for colour"
+            - "Use print() with the new variable"
+
+        - description: |
+            Calculate how old the person will be in 10 years
+            and display that too.
+          hints:
+            - "Create: future_age = age + 10"
+            - "Print the result with a message"
+
+  practice_problems:
+    - id: practice-var-001
+      description: "Store and display a book title and page count"
+      similarity: identical_structure
+      starter_code: |
+        # Store the book info
+
+        # Display the info
+      solution: |
+        title = "Harry Potter"
+        pages = 320
+        print("Book:", title)
+        print("Pages:", pages)
+
+    - id: practice-var-002
+      description: "Calculate the total cost of 3 items at £5 each"
+      similarity: varied_context
+      starter_code: |
+        price = 5
+        quantity = 3
+        # Calculate total
+
+        # Display result
+      solution: |
+        price = 5
+        quantity = 3
+        total = price * quantity
+        print("Total cost: £", total)
+
+  self_explanation_prompts:
+    - after_subgoal: 1
+      prompt: "Why do we need quotes around Sam?"
+
+    - after_subgoal: 2
+      prompt: "What's the difference between 14 and \"14\"?"
+
+    - after_subgoal: 3
+      prompt: "What would happen if we wrote print(\"name\") instead?"
+
+  objectives:
+    - "Understand how to create and use variables"
+    - "Distinguish between strings and integers"
+    - "Display variable values using print()"
+
+  related:
+    lesson_id: ks3-variables-001
+    tracing_exercise: trace-variables-001
+    parsons_problem: parsons-variables-001
+
+---
+# Additional worked example: Data types and calculations
+
+worked_example:
+  id: we-variables-002
+  title: "Working with Different Data Types"
+  topic: variables
+  stage: ks3
+  difficulty: core
+
+  problem:
+    statement: "Calculate the total price of items including a discount"
+    context: |
+      Programs work with different types of data: text (strings), whole numbers
+      (integers), and decimal numbers (floats). Understanding these helps
+      avoid errors and write correct calculations.
+    inputs: "Price: £25.50, Discount: 10%"
+    outputs: |
+      Original price: 25.5
+      After 10% discount: 22.95
+
+  language: python
+
+  subgoals:
+    - label: "Store the price as a decimal number"
+      code: "price = 25.50"
+      explanation: |
+        Prices often have pence/cents, so we use a decimal number
+        (called a "float" in Python). The .50 makes this a float.
+      highlight: true
+
+      prior_knowledge: "Variable assignment"
+
+      misconceptions:
+        - wrong_approach: 'Using price = "25.50"'
+          why_wrong: "This is text, not a number - can't do maths"
+          correction: "Don't use quotes for numbers you'll calculate with"
+
+    - label: "Store the discount percentage"
+      code: "discount_percent = 10"
+      explanation: |
+        We use an integer (whole number) for the percentage.
+        Note the underscore in the variable name - this is
+        how we make multi-word names readable.
+      highlight: true
+
+      prior_knowledge: "Variable naming"
+
+    - label: "Calculate the discount amount"
+      code: "discount_amount = price * discount_percent / 100"
+      explanation: |
+        To find 10% of the price: multiply by 10, then divide by 100.
+        This gives us 2.55 (the amount to subtract).
+
+        Calculation: 25.50 × 10 ÷ 100 = 2.55
+      highlight: true
+
+      prior_knowledge: "Arithmetic operators (* and /)"
+
+    - label: "Calculate the final price"
+      code: "final_price = price - discount_amount"
+      explanation: |
+        Subtract the discount from the original price.
+        25.50 - 2.55 = 22.95
+      highlight: true
+
+      prior_knowledge: "Variable calculation and assignment"
+
+    - label: "Display the results"
+      code: |
+        print("Original price:", price)
+        print("After 10% discount:", final_price)
+      explanation: |
+        Display both values so the user can see the saving.
+        Python automatically converts the numbers to text for display.
+      highlight: false
+
+  complete_code: |
+    # Store the price and discount
+    price = 25.50
+    discount_percent = 10
+
+    # Calculate the discount
+    discount_amount = price * discount_percent / 100
+    final_price = price - discount_amount
+
+    # Display results
+    print("Original price:", price)
+    print("After 10% discount:", final_price)
+
+  expected_output: |
+    Original price: 25.5
+    After 10% discount: 22.95
+
+  self_explanation_prompts:
+    - after_subgoal: 1
+      prompt: "Why is 25.50 a float but 10 is an integer?"
+
+    - after_subgoal: 3
+      prompt: "What would discount_amount be if price was £50?"
+
+    - after_subgoal: 4
+      prompt: "Why do we store the result instead of just printing price - discount_amount?"
+
+  objectives:
+    - "Work with different data types (integers and floats)"
+    - "Perform calculations with variables"
+    - "Store intermediate results in variables"
+
+  related:
+    lesson_id: ks3-variables-001
+    tracing_exercise: trace-variables-002

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: File Handling - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">File Handling</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <div class="ks-badge">KS4</div>
+            <h1><span>🔮</span> Predict: What's in the File?</h1>
+            <p>File handling lets programs save and load data. Predict what will be read or written!</p>
+        </header>
+
+        <div class="alert alert-info mb-lg">
+            <strong>Note:</strong> In these questions, assume any files mentioned already exist with the contents shown.
+        </div>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Examples →</a>
+            <a href="index.html" class="btn btn-secondary">Back to File Handling</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'files-predict-1',
+                title: 'Question 1 of 5',
+                code: `# File "greeting.txt" contains: Hello World
+
+with open("greeting.txt", "r") as file:
+    content = file.read()
+print(content)`,
+                question: 'What will be printed?',
+                options: ['greeting.txt', 'Hello World', '"r"', 'file'],
+                correctIndex: 1,
+                explanation: 'file.read() reads the entire contents of the file. The file contains "Hello World", so that\'s what gets stored in content and printed.',
+                misconceptions: {
+                    0: 'We print the file CONTENTS, not the filename.',
+                    2: '"r" is the mode (read), not the content.'
+                }
+            },
+            {
+                id: 'files-predict-2',
+                title: 'Question 2 of 5',
+                code: `# File "names.txt" contains:
+# Alice
+# Bob
+# Charlie
+
+with open("names.txt", "r") as file:
+    lines = file.readlines()
+print(len(lines))`,
+                question: 'What will be printed?',
+                options: ['1', '3', '15', 'Error'],
+                correctIndex: 1,
+                explanation: 'readlines() returns a list where each element is one line. The file has 3 lines, so the list has 3 elements. len(lines) is 3.',
+                misconceptions: {
+                    0: 'readlines() gets ALL lines, not just one.',
+                    2: '15 would be the total number of characters. len() counts list items.'
+                }
+            },
+            {
+                id: 'files-predict-3',
+                title: 'Question 3 of 5',
+                code: `with open("output.txt", "w") as file:
+    file.write("First")
+    file.write("Second")
+
+# What is now in output.txt?`,
+                question: 'What will be in output.txt after this code runs?',
+                options: ['First\\nSecond', 'FirstSecond', 'Second', 'First Second'],
+                correctIndex: 1,
+                explanation: 'write() does NOT automatically add newlines. The two strings are written one after another: "FirstSecond".',
+                misconceptions: {
+                    0: 'write() does NOT add newlines. You must add \\n yourself.',
+                    2: 'Both writes happen - the second doesn\'t replace the first.'
+                }
+            },
+            {
+                id: 'files-predict-4',
+                title: 'Question 4 of 5',
+                code: `# File "data.txt" currently contains: Old data
+
+with open("data.txt", "w") as file:
+    file.write("New data")
+
+# What is now in data.txt?`,
+                question: 'What will be in data.txt after this code runs?',
+                options: ['Old data', 'New data', 'Old data\\nNew data', 'New data\\nOld data'],
+                correctIndex: 1,
+                explanation: 'Mode "w" (write) OVERWRITES the file. The old content is deleted and replaced with "New data".',
+                misconceptions: {
+                    2: '"w" mode overwrites, not appends. Use "a" to append.',
+                    0: '"w" replaces the old content completely.'
+                }
+            },
+            {
+                id: 'files-predict-5',
+                title: 'Question 5 of 5',
+                code: `# File "log.txt" currently contains: Entry 1
+
+with open("log.txt", "a") as file:
+    file.write("\\nEntry 2")
+
+# What is now in log.txt?`,
+                question: 'What will be in log.txt after this code runs?',
+                options: ['Entry 2', 'Entry 1', 'Entry 1\\nEntry 2', 'Entry 2\\nEntry 1'],
+                correctIndex: 2,
+                explanation: 'Mode "a" (append) adds to the END of the file. The \\n creates a newline, then "Entry 2" is added after "Entry 1".',
+                misconceptions: {
+                    0: '"a" mode keeps the old content and adds new content at the end.',
+                    1: 'The new content IS written - append doesn\'t discard it.'
+                }
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'file-handling'
+            }
+        );
+    </script>
+    <style>
+        .ks-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</body>
+</html>

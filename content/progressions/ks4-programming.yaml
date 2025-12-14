@@ -1,0 +1,365 @@
+# KS4 Programming Progression
+# Years 10-11 (GCSE preparation)
+# Building on KS3 foundation with more complex concepts
+
+progression:
+  id: ks4-programming-main
+  title: "KS4 Programming Progression"
+  description: |
+    A comprehensive programming curriculum for Key Stage 4 (Years 10-11),
+    designed to prepare students for GCSE Computer Science.
+    Builds on KS3 foundations with more complex and exam-focused content.
+
+  target_stage: ks4
+  target_years: [10, 11]
+
+  prerequisites:
+    - "Completion of KS3 programming units (or equivalent)"
+    - "Confident with variables, selection, and iteration"
+    - "Basic understanding of lists and functions"
+    - "Ability to trace code and predict output"
+
+  curriculum_alignment:
+    exam_boards:
+      - name: "AQA GCSE Computer Science"
+        spec_ref: "3.2 Programming"
+      - name: "OCR GCSE Computer Science"
+        spec_ref: "Component 02"
+      - name: "Edexcel GCSE Computer Science"
+        spec_ref: "Topic 2"
+
+  units:
+    - unit: 1
+      name: "Consolidation and Exam Technique"
+      strand: "Revision & Practice"
+      year_group: 10
+      weeks: 4
+      description: |
+        Review KS3 concepts with GCSE-level rigour.
+        Focus on exam-style questions and precise terminology.
+
+      lessons:
+        - id: ks4-review-001
+          title: "Variables, Data Types, and Operators"
+          focus: "Precise terminology and edge cases"
+
+        - id: ks4-review-002
+          title: "Selection with Complex Conditions"
+          focus: "Boolean logic, nested conditions"
+
+        - id: ks4-review-003
+          title: "Iteration: For and While Loops"
+          focus: "Choosing the right loop, infinite loops"
+
+        - id: ks4-review-004
+          title: "Lists and String Manipulation"
+          focus: "Indexing, slicing, common operations"
+
+      assessment:
+        type: "diagnostic"
+        activities:
+          - "Baseline assessment covering KS3 content"
+          - "Identification of gaps for targeted revision"
+
+    - unit: 2
+      name: "File Handling"
+      strand: "Input/Output"
+      year_group: 10
+      weeks: 4
+      description: |
+        Reading from and writing to text files.
+        Essential for data persistence and real-world applications.
+
+      lessons:
+        - id: ks4-files-001
+          title: "Reading from Files"
+          focus: "open(), read(), readlines(), with statement"
+
+        - id: ks4-files-002
+          title: "Writing to Files"
+          focus: "write(), writelines(), append mode"
+
+        - id: ks4-files-003
+          title: "CSV File Processing"
+          focus: "Structured data, splitting lines"
+
+        - id: ks4-files-004
+          title: "Error Handling with Files"
+          focus: "try-except, file not found errors"
+
+      assessment:
+        formative:
+          - "Trace file operations"
+          - "Predict file contents after operations"
+        summative:
+          - "Create a program that reads, processes, and writes data"
+
+    - unit: 3
+      name: "Subprograms and Modular Code"
+      strand: "Functions"
+      year_group: 10
+      weeks: 5
+      description: |
+        Creating and using functions effectively.
+        Parameters, return values, and scope.
+
+      lessons:
+        - id: ks4-functions-001
+          title: "Defining and Calling Functions"
+          focus: "def, calling syntax, code organisation"
+
+        - id: ks4-functions-002
+          title: "Parameters and Arguments"
+          focus: "Passing data into functions"
+
+        - id: ks4-functions-003
+          title: "Return Values"
+          focus: "Getting results from functions"
+
+        - id: ks4-functions-004
+          title: "Local and Global Scope"
+          focus: "Variable visibility, avoiding globals"
+
+        - id: ks4-functions-005
+          title: "Modular Program Design"
+          focus: "Breaking problems into functions"
+
+      assessment:
+        formative:
+          - "Trace function calls and returns"
+          - "Identify scope of variables"
+        summative:
+          - "Refactor a monolithic program into functions"
+
+    - unit: 4
+      name: "String Manipulation"
+      strand: "Data Processing"
+      year_group: 10
+      weeks: 4
+      description: |
+        Advanced string operations for data processing.
+        Essential for text-based data handling.
+
+      lessons:
+        - id: ks4-strings-001
+          title: "String Indexing and Slicing"
+          focus: "Accessing characters and substrings"
+
+        - id: ks4-strings-002
+          title: "String Methods"
+          focus: "upper, lower, strip, split, join"
+
+        - id: ks4-strings-003
+          title: "String Formatting"
+          focus: "f-strings, format method"
+
+        - id: ks4-strings-004
+          title: "Parsing and Validating Input"
+          focus: "Converting and checking user input"
+
+      assessment:
+        formative:
+          - "Predict string operation results"
+          - "Trace string manipulation code"
+        summative:
+          - "Build a text processing utility"
+
+    - unit: 5
+      name: "2D Data Structures"
+      strand: "Data Structures"
+      year_group: 10
+      weeks: 4
+      description: |
+        Working with lists of lists (2D arrays).
+        Grid-based problems and tabular data.
+
+      lessons:
+        - id: ks4-2d-001
+          title: "Creating and Accessing 2D Lists"
+          focus: "Nested lists, row/column access"
+
+        - id: ks4-2d-002
+          title: "Iterating Through 2D Lists"
+          focus: "Nested loops for grids"
+
+        - id: ks4-2d-003
+          title: "2D List Operations"
+          focus: "Searching, summing rows/columns"
+
+        - id: ks4-2d-004
+          title: "Grid-Based Problems"
+          focus: "Game boards, pixel arrays"
+
+      assessment:
+        formative:
+          - "Trace nested loop iterations"
+          - "Predict 2D list values"
+        summative:
+          - "Implement a grid-based game or simulation"
+
+    - unit: 6
+      name: "Algorithms and Efficiency"
+      strand: "Computational Thinking"
+      year_group: 11
+      weeks: 5
+      description: |
+        Standard algorithms and efficiency considerations.
+        Focus on searching and sorting.
+
+      lessons:
+        - id: ks4-algorithms-001
+          title: "Linear Search"
+          focus: "Sequential search, best/worst case"
+
+        - id: ks4-algorithms-002
+          title: "Binary Search"
+          focus: "Divide and conquer, prerequisites"
+
+        - id: ks4-algorithms-003
+          title: "Bubble Sort"
+          focus: "Swapping adjacent elements"
+
+        - id: ks4-algorithms-004
+          title: "Merge Sort"
+          focus: "Divide, sort, merge"
+
+        - id: ks4-algorithms-005
+          title: "Comparing Algorithms"
+          focus: "Time complexity basics, choosing algorithms"
+
+      assessment:
+        formative:
+          - "Trace algorithms step by step"
+          - "Count comparisons and swaps"
+        summative:
+          - "Implement and compare searching/sorting"
+
+    - unit: 7
+      name: "Error Handling and Validation"
+      strand: "Robust Programming"
+      year_group: 11
+      weeks: 3
+      description: |
+        Writing robust programs that handle errors gracefully.
+        Input validation and exception handling.
+
+      lessons:
+        - id: ks4-errors-001
+          title: "Types of Errors"
+          focus: "Syntax, runtime, logic errors"
+
+        - id: ks4-errors-002
+          title: "Exception Handling"
+          focus: "try-except blocks, specific exceptions"
+
+        - id: ks4-errors-003
+          title: "Input Validation"
+          focus: "Range checks, type checks, presence checks"
+
+      assessment:
+        formative:
+          - "Identify error types in code"
+          - "Predict exception behavior"
+        summative:
+          - "Add validation and error handling to existing code"
+
+    - unit: 8
+      name: "Programming Project"
+      strand: "Assessment"
+      year_group: 11
+      weeks: 6
+      description: |
+        Extended programming project bringing together all concepts.
+        Focus on planning, implementation, and documentation.
+
+      lessons:
+        - id: ks4-project-001
+          title: "Project Planning"
+          focus: "Requirements, design, decomposition"
+
+        - id: ks4-project-002
+          title: "Iterative Development"
+          focus: "Build, test, refine cycles"
+
+        - id: ks4-project-003
+          title: "Testing Strategies"
+          focus: "Test data, boundary testing"
+
+        - id: ks4-project-004
+          title: "Documentation"
+          focus: "Comments, technical documentation"
+
+      assessment:
+        summative:
+          type: "extended_project"
+          criteria:
+            - "Problem decomposition"
+            - "Use of appropriate constructs"
+            - "Testing and validation"
+            - "Code quality and documentation"
+
+  differentiation:
+    foundation:
+      description: |
+        Students working towards grade 4/5.
+        Focus on core concepts with additional scaffolding.
+      strategies:
+        - "Extended use of PRIMM Predict and Investigate phases"
+        - "Parsons problems before all code writing"
+        - "Shorter code examples (5-10 lines)"
+        - "Pre-filled trace tables"
+        - "Worked examples with all subgoals visible"
+
+    core:
+      description: |
+        Students working towards grade 5/6/7.
+        Full coverage with balanced scaffolding.
+      strategies:
+        - "Complete PRIMM cycle"
+        - "Gradual fading of worked examples"
+        - "10-20 line programs"
+        - "Independent tracing with hints available"
+
+    extension:
+      description: |
+        Students working towards grade 7/8/9.
+        Advanced challenges and deeper exploration.
+      strategies:
+        - "Accelerated PRIMM with focus on Make phase"
+        - "Algorithm optimisation challenges"
+        - "Complex multi-function programs"
+        - "Peer teaching opportunities"
+        - "Introduction to OOP concepts (optional enrichment)"
+
+  assessment_framework:
+    formative:
+      frequency: "Every lesson"
+      activities:
+        - "Code prediction questions"
+        - "Trace tables"
+        - "Parsons problems"
+        - "Exit tickets"
+
+    summative:
+      frequency: "End of each unit"
+      components:
+        - criterion: "Code comprehension"
+          weight: 25
+          description: "Trace and predict code behavior"
+        - criterion: "Code analysis"
+          weight: 20
+          description: "Identify errors and explain code"
+        - criterion: "Code modification"
+          weight: 25
+          description: "Adapt existing code to new requirements"
+        - criterion: "Code creation"
+          weight: 30
+          description: "Write original solutions to problems"
+
+    exam_preparation:
+      mock_exams: "Termly, using past paper style questions"
+      key_skills:
+        - "Handwriting code accurately"
+        - "Dry-run tables and trace tables"
+        - "Algorithm design in pseudocode"
+        - "Error identification and correction"

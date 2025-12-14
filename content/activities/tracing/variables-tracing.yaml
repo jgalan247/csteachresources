@@ -1,0 +1,325 @@
+# Code Tracing Exercises: Variables
+# Progressive tracing exercises for understanding variables
+
+---
+# Exercise 1: Foundation - Simple assignment and print
+
+tracing_exercise:
+  id: trace-variables-001
+  title: "Trace Simple Variables"
+  topic: variables
+  stage: ks3
+  difficulty: foundation
+
+  code: |
+    name = "Alice"
+    age = 15
+    print(name)
+    print(age)
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: name
+        type: string
+        initial_value: null
+      - name: age
+        type: integer
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {name: '"Alice"', age: null}
+        output: ""
+        notes: "Store the string 'Alice' in name"
+
+      - step: 2
+        line: 2
+        variables: {name: '"Alice"', age: 15}
+        output: ""
+        notes: "Store the integer 15 in age"
+
+      - step: 3
+        line: 3
+        variables: {name: '"Alice"', age: 15}
+        output: "Alice"
+        notes: "Print the value of name"
+
+      - step: 4
+        line: 4
+        variables: {name: '"Alice"', age: 15}
+        output: "15"
+        notes: "Print the value of age"
+
+  scaffolding:
+    prefilled_steps: [1, 2]
+
+    step_hints:
+      - step: 3
+        hint: "What value is stored in the variable 'name'?"
+      - step: 4
+        hint: "What value is stored in the variable 'age'?"
+
+  differentiation:
+    foundation:
+      additional_scaffolding: |
+        Remember: Variables are like labelled boxes.
+        When you assign a value, you put it in the box.
+        When you print, you show what's in the box.
+
+    extension:
+      prediction_questions:
+        - "What would happen if we printed name before creating it?"
+        - "What if we used age = '15' with quotes?"
+
+  common_errors:
+    - step: 3
+      error: "Writing 'name' instead of 'Alice'"
+      misconception: "Confusing variable name with variable value"
+      feedback: "print(name) displays the VALUE inside name, which is 'Alice'"
+
+  objectives:
+    - "Understand variable assignment"
+    - "Trace variable values through a program"
+    - "Distinguish between variable names and values"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct variable values"
+        marks: 2
+      - criterion: "Correct output"
+        marks: 2
+
+  related:
+    lesson_id: ks3-variables-001
+    parsons_problem: parsons-variables-001
+
+---
+# Exercise 2: Core - Reassignment
+
+tracing_exercise:
+  id: trace-variables-002
+  title: "Trace Variable Changes"
+  topic: variables
+  stage: ks3
+  difficulty: core
+
+  code: |
+    score = 10
+    score = 25
+    bonus = 5
+    score = score + bonus
+    print(score)
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: score
+        type: integer
+        initial_value: null
+      - name: bonus
+        type: integer
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {score: 10, bonus: null}
+        output: ""
+        notes: "score starts at 10"
+
+      - step: 2
+        line: 2
+        variables: {score: 25, bonus: null}
+        output: ""
+        notes: "score is REPLACED with 25 (old value lost)"
+
+      - step: 3
+        line: 3
+        variables: {score: 25, bonus: 5}
+        output: ""
+        notes: "bonus is set to 5"
+
+      - step: 4
+        line: 4
+        variables: {score: 30, bonus: 5}
+        output: ""
+        notes: "score = 25 + 5 = 30"
+
+      - step: 5
+        line: 5
+        variables: {score: 30, bonus: 5}
+        output: "30"
+        notes: "Print the final score"
+
+  scaffolding:
+    prefilled_steps: [1, 2]
+
+    step_hints:
+      - step: 3
+        hint: "A new variable 'bonus' is created"
+      - step: 4
+        hint: "Calculate score + bonus, then store in score"
+
+  differentiation:
+    foundation:
+      additional_scaffolding: |
+        When you assign to a variable that exists,
+        the old value is REPLACED, not added to.
+        score = 25 means "score is now 25"
+
+    extension:
+      prediction_questions:
+        - "What if line 4 said score = bonus instead?"
+        - "What would print if we added print(bonus) at the end?"
+
+  common_errors:
+    - step: 2
+      error: "Writing score = 35 (10 + 25)"
+      misconception: "Thinking = adds instead of replaces"
+      feedback: "score = 25 REPLACES the value. It doesn't add."
+
+    - step: 4
+      error: "Forgetting to add the current score"
+      misconception: "Not understanding score = score + bonus"
+      feedback: "score = score + bonus means: new score = old score + bonus"
+
+  objectives:
+    - "Trace variable reassignment"
+    - "Understand that assignment replaces values"
+    - "Trace expressions with multiple variables"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct score values"
+        marks: 3
+      - criterion: "Correct bonus values"
+        marks: 1
+      - criterion: "Correct final output"
+        marks: 1
+
+  related:
+    lesson_id: ks3-variables-001
+    parsons_problem: parsons-variables-004
+
+---
+# Exercise 3: Extension - Variable copying
+
+tracing_exercise:
+  id: trace-variables-003
+  title: "Trace Variable Copying"
+  topic: variables
+  stage: ks3
+  difficulty: extension
+
+  code: |
+    a = 5
+    b = a
+    a = 10
+    c = a + b
+    print(c)
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: a
+        type: integer
+        initial_value: null
+      - name: b
+        type: integer
+        initial_value: null
+      - name: c
+        type: integer
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {a: 5, b: null, c: null}
+        output: ""
+        notes: "a is set to 5"
+
+      - step: 2
+        line: 2
+        variables: {a: 5, b: 5, c: null}
+        output: ""
+        notes: "b copies the VALUE of a (which is 5)"
+
+      - step: 3
+        line: 3
+        variables: {a: 10, b: 5, c: null}
+        output: ""
+        notes: "a changes to 10, but b stays 5"
+
+      - step: 4
+        line: 4
+        variables: {a: 10, b: 5, c: 15}
+        output: ""
+        notes: "c = 10 + 5 = 15"
+
+      - step: 5
+        line: 5
+        variables: {a: 10, b: 5, c: 15}
+        output: "15"
+        notes: "Print c"
+
+  scaffolding:
+    prefilled_steps: [1]
+
+    step_hints:
+      - step: 2
+        hint: "b = a copies a's VALUE at this moment"
+      - step: 3
+        hint: "Changing a now doesn't affect b"
+      - step: 4
+        hint: "What are a and b at this point?"
+
+  differentiation:
+    foundation:
+      additional_scaffolding: |
+        When you write b = a, you copy the VALUE.
+        It's like photocopying a document - changes to
+        the original don't affect the copy.
+
+    extension:
+      prediction_questions:
+        - "What if we added b = a after line 3?"
+        - "What would c be if line 4 was c = b + b?"
+
+  common_errors:
+    - step: 3
+      error: "Thinking b also becomes 10"
+      misconception: "Thinking variables are linked"
+      feedback: "b = a copies the value at that moment. They're not linked."
+
+  objectives:
+    - "Understand that assignment copies values, not references"
+    - "Trace multiple variables independently"
+    - "Calculate expressions using current variable values"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct understanding of value copying"
+        marks: 3
+      - criterion: "Correct final calculation"
+        marks: 2
+
+  related:
+    lesson_id: ks3-variables-001
+    parsons_problem: parsons-variables-005
