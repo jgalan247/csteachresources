@@ -1,0 +1,380 @@
+# Code Tracing Exercises: Selection
+# Progressive tracing exercises for understanding if statements
+
+---
+# Exercise 1: Foundation - Simple if-else
+
+tracing_exercise:
+  id: trace-selection-001
+  title: "Trace a Simple If-Else"
+  topic: selection
+  stage: ks3
+  difficulty: foundation
+
+  code: |
+    age = 16
+    if age >= 18:
+        print("Adult")
+    else:
+        print("Minor")
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: age
+        type: integer
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+    include_condition_result: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {age: 16}
+        output: ""
+        notes: "Store 16 in age"
+
+      - step: 2
+        line: 2
+        variables: {age: 16}
+        condition: "16 >= 18 → False"
+        output: ""
+        notes: "Check condition: 16 >= 18 is False, skip to else"
+
+      - step: 3
+        line: 5
+        variables: {age: 16}
+        output: "Minor"
+        notes: "else branch executes because condition was False"
+
+  scaffolding:
+    prefilled_steps: [1, 2]
+
+    step_hints:
+      - step: 2
+        hint: "Is 16 greater than or equal to 18?"
+      - step: 3
+        hint: "Since the condition is False, which branch runs?"
+
+    visualisation:
+      flowchart_description: |
+        Start → age=16 → [Is age>=18?]
+                             │
+              ┌──────────────┴──────────────┐
+              ↓No                           ↓Yes
+        print("Minor")                print("Adult")
+              │                             │
+              └──────────────┬──────────────┘
+                             ↓
+                            End
+
+  differentiation:
+    foundation:
+      additional_scaffolding: |
+        When tracing selection:
+        1. Look at the condition
+        2. Is it True or False?
+        3. If True: run the if block
+        4. If False: run the else block (if there is one)
+
+    extension:
+      prediction_questions:
+        - "What would print if age was 18?"
+        - "What would print if age was 25?"
+
+  common_errors:
+    - step: 2
+      error: "Thinking both branches run"
+      misconception: "Not understanding mutual exclusivity"
+      feedback: "Only ONE branch runs - either if OR else, never both"
+
+    - step: 3
+      error: "Tracing line 3 (Adult)"
+      misconception: "Following code sequentially instead of conditionally"
+      feedback: "When condition is False, we SKIP the if block entirely"
+
+  objectives:
+    - "Trace which branch executes based on condition"
+    - "Understand that only one branch runs"
+    - "Evaluate comparison expressions"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct condition evaluation"
+        marks: 2
+      - criterion: "Correct branch identification"
+        marks: 2
+      - criterion: "Correct output"
+        marks: 1
+
+  related:
+    lesson_id: ks3-selection-001
+    parsons_problem: parsons-selection-001
+
+---
+# Exercise 2: Core - if-elif-else
+
+tracing_exercise:
+  id: trace-selection-002
+  title: "Trace Multiple Conditions"
+  topic: selection
+  stage: ks3
+  difficulty: core
+
+  code: |
+    score = 72
+    if score >= 90:
+        grade = "A"
+    elif score >= 70:
+        grade = "B"
+    elif score >= 50:
+        grade = "C"
+    else:
+        grade = "Fail"
+    print(grade)
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: score
+        type: integer
+        initial_value: null
+      - name: grade
+        type: string
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+    include_condition_result: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {score: 72, grade: null}
+        output: ""
+        notes: "Store 72 in score"
+
+      - step: 2
+        line: 2
+        variables: {score: 72, grade: null}
+        condition: "72 >= 90 → False"
+        output: ""
+        notes: "Check first condition: 72 >= 90 is False, try next"
+
+      - step: 3
+        line: 4
+        variables: {score: 72, grade: null}
+        condition: "72 >= 70 → True"
+        output: ""
+        notes: "Check second condition: 72 >= 70 is True!"
+
+      - step: 4
+        line: 5
+        variables: {score: 72, grade: '"B"'}
+        output: ""
+        notes: "Set grade to 'B', skip remaining elif/else"
+
+      - step: 5
+        line: 10
+        variables: {score: 72, grade: '"B"'}
+        output: "B"
+        notes: "Print the grade"
+
+  scaffolding:
+    prefilled_steps: [1, 2]
+
+    step_hints:
+      - step: 3
+        hint: "First condition was False, so check the elif"
+      - step: 4
+        hint: "When a condition is True, run that block and skip the rest"
+      - step: 5
+        hint: "After all conditions, the code continues at print"
+
+  differentiation:
+    foundation:
+      additional_scaffolding: |
+        With if-elif-else:
+        - Check conditions from top to bottom
+        - Stop at the FIRST True condition
+        - Run ONLY that block
+        - Skip all remaining elif/else
+
+    extension:
+      prediction_questions:
+        - "What grade would score=90 get?"
+        - "What grade would score=50 get?"
+        - "What grade would score=49 get?"
+
+  common_errors:
+    - step: 4
+      error: "Continuing to check elif score >= 50"
+      misconception: "Not understanding that elif stops after first True"
+      feedback: "Once one condition is True, we skip ALL remaining elif/else"
+
+    - step: 3
+      error: "Not checking the second condition"
+      misconception: "Stopping after first False"
+      feedback: "We keep checking until we find a True condition (or reach else)"
+
+  objectives:
+    - "Trace if-elif-else chains"
+    - "Understand short-circuit behavior"
+    - "Track variable assignments within branches"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct condition evaluations"
+        marks: 2
+      - criterion: "Correct branch taken"
+        marks: 2
+      - criterion: "Correct variable value"
+        marks: 1
+
+  related:
+    lesson_id: ks3-selection-001
+    parsons_problem: parsons-selection-004
+
+---
+# Exercise 3: Extension - Nested conditions
+
+tracing_exercise:
+  id: trace-selection-003
+  title: "Trace Nested Conditions"
+  topic: selection
+  stage: ks3
+  difficulty: extension
+
+  code: |
+    age = 15
+    has_ticket = True
+    if age >= 12:
+        if has_ticket:
+            print("Welcome!")
+        else:
+            print("Buy a ticket")
+    else:
+        print("Too young")
+
+  language: python
+
+  trace_table:
+    variables:
+      - name: age
+        type: integer
+        initial_value: null
+      - name: has_ticket
+        type: boolean
+        initial_value: null
+
+    include_output: true
+    include_line_numbers: true
+    include_condition_result: true
+
+    solution:
+      - step: 1
+        line: 1
+        variables: {age: 15, has_ticket: null}
+        output: ""
+        notes: "Store 15 in age"
+
+      - step: 2
+        line: 2
+        variables: {age: 15, has_ticket: True}
+        output: ""
+        notes: "Store True in has_ticket"
+
+      - step: 3
+        line: 3
+        variables: {age: 15, has_ticket: True}
+        condition: "15 >= 12 → True"
+        output: ""
+        notes: "Outer if: 15 >= 12 is True, enter outer block"
+
+      - step: 4
+        line: 4
+        variables: {age: 15, has_ticket: True}
+        condition: "has_ticket → True"
+        output: ""
+        notes: "Inner if: has_ticket is True, enter inner block"
+
+      - step: 5
+        line: 5
+        variables: {age: 15, has_ticket: True}
+        output: "Welcome!"
+        notes: "Print Welcome!"
+
+  scaffolding:
+    prefilled_steps: [1]
+
+    step_hints:
+      - step: 3
+        hint: "Check the outer condition first"
+      - step: 4
+        hint: "Only if outer is True do we check the inner condition"
+      - step: 5
+        hint: "Both conditions were True, so we print Welcome!"
+
+    visualisation:
+      flowchart_description: |
+        Start → age=15 → has_ticket=True
+              ↓
+        [Is age>=12?]
+              │
+        ┌─────┴─────┐
+        ↓Yes        ↓No
+        [has_ticket?]  print("Too young")
+        │
+        ┌───┴───┐
+        ↓Yes    ↓No
+        Welcome Buy ticket
+
+  differentiation:
+    foundation:
+      additional_scaffolding: |
+        Nested ifs mean "if inside another if"
+        - First check the outer condition
+        - If True, THEN check the inner condition
+        - The inner if only runs if the outer was True
+
+    extension:
+      prediction_questions:
+        - "What prints if age=15 and has_ticket=False?"
+        - "What prints if age=10 and has_ticket=True?"
+        - "Is the inner condition even checked when age=10?"
+
+  common_errors:
+    - step: 4
+      error: "Checking inner if even when outer is False"
+      misconception: "Not understanding nesting"
+      feedback: "Inner if is INSIDE outer if - it only runs when outer is True"
+
+    - step: 5
+      error: "Printing 'Too young' as well"
+      misconception: "Thinking all print statements run"
+      feedback: "Only code in the matching branch runs"
+
+  objectives:
+    - "Trace nested if statements"
+    - "Understand that inner conditions depend on outer conditions"
+    - "Track flow through multiple levels of nesting"
+
+  assessment:
+    mastery_threshold: 50
+    rubric:
+      - criterion: "Correct outer condition evaluation"
+        marks: 2
+      - criterion: "Correct inner condition evaluation"
+        marks: 2
+      - criterion: "Correct output"
+        marks: 1
+
+  related:
+    lesson_id: ks3-selection-001
+    parsons_problem: parsons-selection-004

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: Variables - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Variables</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks from the left into the solution area on the right. Put them in the correct order to solve the problem!</p>
+            <div class="alert alert-info">
+                <strong>Tip:</strong> Think about what needs to happen first. Variables must be created before you can use them!
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Create and print a variable
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'var-parsons-1',
+                topicId: 'variables',
+                title: 'Store and Display a Name',
+                instructions: 'Arrange the code blocks to create a program that stores your name in a variable and then prints it.',
+                expectedOutput: 'Alice',
+                blocks: [
+                    { id: 1, code: 'name = "Alice"', indentLevel: 0 },
+                    { id: 2, code: 'print(name)', indentLevel: 0 }
+                ],
+                solution: [1, 2],
+                hints: [
+                    'You need to create a variable before you can use it.',
+                    'The = sign assigns a value to a variable.',
+                    'print() displays the value stored in a variable.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 2: Core - Two variables and calculation
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'var-parsons-2',
+                topicId: 'variables',
+                title: 'Calculate a Total',
+                instructions: 'Arrange the code blocks to create a program that calculates and prints the total of two numbers.',
+                expectedOutput: '15',
+                blocks: [
+                    { id: 1, code: 'a = 10', indentLevel: 0 },
+                    { id: 2, code: 'b = 5', indentLevel: 0 },
+                    { id: 3, code: 'total = a + b', indentLevel: 0 },
+                    { id: 4, code: 'print(total)', indentLevel: 0 },
+                    { id: 5, code: 'print(a + b)', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4],
+                hints: [
+                    'First, create both number variables.',
+                    'Then calculate the total and store it in a new variable.',
+                    'Finally, print the total.',
+                    'One block is a distractor - it would work, but isn\'t the solution we want.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 3: Extension - Variable swapping
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'var-parsons-3',
+                topicId: 'variables',
+                title: 'Swap Two Values',
+                instructions: 'Arrange the code blocks to swap the values of x and y. After running, x should be 20 and y should be 10.',
+                expectedOutput: '20\n10',
+                blocks: [
+                    { id: 1, code: 'x = 10', indentLevel: 0 },
+                    { id: 2, code: 'y = 20', indentLevel: 0 },
+                    { id: 3, code: 'temp = x', indentLevel: 0 },
+                    { id: 4, code: 'x = y', indentLevel: 0 },
+                    { id: 5, code: 'y = temp', indentLevel: 0 },
+                    { id: 6, code: 'print(x)', indentLevel: 0 },
+                    { id: 7, code: 'print(y)', indentLevel: 0 },
+                    { id: 8, code: 'x = y', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6, 7],
+                hints: [
+                    'First, create the two variables with their starting values.',
+                    'To swap, you need a temporary variable to hold one value.',
+                    'Think: if you pour water from glass A to glass B, you need a third glass!',
+                    'Save x in temp, then copy y to x, then copy temp to y.',
+                    'One distractor block would lose a value if used incorrectly.'
+                ],
+                type: '2d'
+            }
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: Selection - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Selection</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks into the correct order. Pay attention to indentation - code inside if statements must be indented!</p>
+            <div class="alert alert-info">
+                <strong>Tip:</strong> In Python, the colon (:) at the end of if/else lines means "the next indented lines belong to me".
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Simple if-else
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'sel-parsons-1',
+                topicId: 'selection',
+                title: 'Check Voting Age',
+                instructions: 'Arrange the code blocks to create a program that checks if someone is old enough to vote (18 or older).',
+                expectedOutput: 'Too young to vote',
+                blocks: [
+                    { id: 1, code: 'age = 16', indentLevel: 0 },
+                    { id: 2, code: 'if age >= 18:', indentLevel: 0 },
+                    { id: 3, code: 'print("Can vote!")', indentLevel: 1 },
+                    { id: 4, code: 'else:', indentLevel: 0 },
+                    { id: 5, code: 'print("Too young to vote")', indentLevel: 1 }
+                ],
+                solution: [1, 2, 3, 4, 5],
+                hints: [
+                    'First, set up the age variable.',
+                    'The if statement checks the condition.',
+                    'Code inside if must be indented.',
+                    'else comes after the if block.',
+                    'Code inside else must also be indented.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 2: Core - if-elif-else
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'sel-parsons-2',
+                topicId: 'selection',
+                title: 'Temperature Check',
+                instructions: 'Arrange the code to print "Hot" if temperature is over 30, "Nice" if over 20, otherwise "Cold".',
+                expectedOutput: 'Nice',
+                blocks: [
+                    { id: 1, code: 'temperature = 25', indentLevel: 0 },
+                    { id: 2, code: 'if temperature > 30:', indentLevel: 0 },
+                    { id: 3, code: 'print("Hot")', indentLevel: 1 },
+                    { id: 4, code: 'elif temperature > 20:', indentLevel: 0 },
+                    { id: 5, code: 'print("Nice")', indentLevel: 1 },
+                    { id: 6, code: 'else:', indentLevel: 0 },
+                    { id: 7, code: 'print("Cold")', indentLevel: 1 },
+                    { id: 8, code: 'if temperature > 20:', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6, 7],
+                hints: [
+                    'Check the highest temperature first.',
+                    'elif comes after the first if.',
+                    'else catches everything else.',
+                    'One block is a distractor - using two separate ifs would give wrong output!'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 3: Extension - Grade calculator
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'sel-parsons-3',
+                topicId: 'selection',
+                title: 'Grade Calculator',
+                instructions: 'Arrange the code to assign a letter grade: A (90+), B (70+), C (50+), Fail (below 50). Then print the grade.',
+                expectedOutput: 'B',
+                blocks: [
+                    { id: 1, code: 'score = 75', indentLevel: 0 },
+                    { id: 2, code: 'if score >= 90:', indentLevel: 0 },
+                    { id: 3, code: 'grade = "A"', indentLevel: 1 },
+                    { id: 4, code: 'elif score >= 70:', indentLevel: 0 },
+                    { id: 5, code: 'grade = "B"', indentLevel: 1 },
+                    { id: 6, code: 'elif score >= 50:', indentLevel: 0 },
+                    { id: 7, code: 'grade = "C"', indentLevel: 1 },
+                    { id: 8, code: 'else:', indentLevel: 0 },
+                    { id: 9, code: 'grade = "Fail"', indentLevel: 1 },
+                    { id: 10, code: 'print(grade)', indentLevel: 0 },
+                    { id: 11, code: 'elif score >= 90:', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                hints: [
+                    'Start with the highest grade (A).',
+                    'Each elif checks the next grade boundary.',
+                    'else handles failing grades.',
+                    'print(grade) comes after all conditions.',
+                    'The first condition uses if, not elif!'
+                ],
+                type: '2d'
+            }
+        );
+    </script>
+</body>
+</html>

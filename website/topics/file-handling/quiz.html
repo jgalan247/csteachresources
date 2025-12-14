@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: File Handling - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">File Handling</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <div class="ks-badge">KS4</div>
+            <h1><span>🎯</span> Knowledge Quiz: File Handling</h1>
+            <p>Test your understanding of file handling. These questions are similar to GCSE exam style!</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to File Handling</a>
+            <a href="../../topics/index.html" class="btn btn-secondary">All Topics</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'files-quiz-1',
+                title: 'Question 1: File modes',
+                code: null,
+                question: 'Which file mode should you use to add data to the end of an existing file without losing existing content?',
+                options: ['"r"', '"w"', '"a"', '"rw"'],
+                correctIndex: 2,
+                explanation: '"a" stands for append mode. It adds new data to the end of the file. "w" would overwrite the file. "r" is for reading only.'
+            },
+            {
+                id: 'files-quiz-2',
+                title: 'Question 2: The "with" statement',
+                code: null,
+                question: 'What is the main advantage of using "with open()" instead of just "open()"?',
+                options: [
+                    'It runs faster',
+                    'It automatically closes the file when done',
+                    'It can read larger files',
+                    'It allows writing and reading at the same time'
+                ],
+                correctIndex: 1,
+                explanation: 'The "with" statement automatically closes the file when the block ends, even if an error occurs. This prevents resource leaks and data corruption.'
+            },
+            {
+                id: 'files-quiz-3',
+                title: 'Question 3: readlines() return type',
+                code: `with open("data.txt", "r") as file:
+    result = file.readlines()`,
+                question: 'What data type is "result"?',
+                options: ['String', 'Integer', 'List', 'File'],
+                correctIndex: 2,
+                explanation: 'readlines() returns a LIST where each element is one line from the file (as a string). read() returns a single string.'
+            },
+            {
+                id: 'files-quiz-4',
+                title: 'Question 4: Newline characters',
+                code: `# File "test.txt" contains one line: "Hello"
+with open("test.txt", "r") as file:
+    line = file.readline()
+print(repr(line))`,
+                question: 'What will be printed? (repr shows hidden characters)',
+                options: ["'Hello'", "'Hello\\n'", "'Hello\\r\\n'", 'Hello'],
+                correctIndex: 1,
+                explanation: 'readline() includes the newline character (\\n) at the end of each line. Use strip() to remove it if needed.'
+            },
+            {
+                id: 'files-quiz-5',
+                title: 'Question 5: Write mode behaviour',
+                code: `# File "data.txt" contains: "Old content"
+with open("data.txt", "w") as file:
+    file.write("New content")
+# What is now in data.txt?`,
+                question: 'What will data.txt contain after this code runs?',
+                options: ['Old content', 'New content', 'Old contentNew content', 'Error - file exists'],
+                correctIndex: 1,
+                explanation: 'Mode "w" OVERWRITES the file completely. The old content is deleted and replaced with "New content". Use "a" to append instead.'
+            },
+            {
+                id: 'files-quiz-6',
+                title: 'Question 6: Writing numbers',
+                code: `score = 100
+with open("score.txt", "w") as file:
+    file.write(score)`,
+                question: 'What happens when this code runs?',
+                options: [
+                    '100 is written to the file',
+                    'Error - write() only accepts strings',
+                    '"score" is written to the file',
+                    'Nothing - the file stays empty'
+                ],
+                correctIndex: 1,
+                explanation: 'write() only accepts STRING arguments. To write a number, you must convert it first: file.write(str(score))'
+            },
+            {
+                id: 'files-quiz-7',
+                title: 'Question 7: Reading methods',
+                code: null,
+                question: 'Which method reads an entire file as a single string?',
+                options: ['file.readline()', 'file.readlines()', 'file.read()', 'file.readall()'],
+                correctIndex: 2,
+                explanation: 'read() returns the entire file contents as one string. readline() reads one line. readlines() returns a list of lines. readall() doesn\'t exist.'
+            },
+            {
+                id: 'files-quiz-8',
+                title: 'Question 8: Exam-style trace',
+                code: `# File "nums.txt" contains:
+# 5
+# 10
+# 15
+
+total = 0
+with open("nums.txt", "r") as file:
+    for line in file:
+        total = total + int(line)
+print(total)`,
+                question: 'What will be printed?',
+                options: ['30', '51015', '15', 'Error'],
+                correctIndex: 0,
+                explanation: 'We loop through each line, convert to integer (strip() is automatic in int()), and add to total. 5 + 10 + 15 = 30.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'file-handling'
+            }
+        );
+    </script>
+    <style>
+        .ks-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</body>
+</html>

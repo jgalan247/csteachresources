@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Variables - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Variables</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: Variables</h1>
+            <p>Test your understanding of variables! Answer all questions to see your score.</p>
+        </header>
+
+        <!-- Quiz Container -->
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to Variables</a>
+            <a href="../selection/index.html" class="btn btn-secondary">Next Topic: Selection →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'var-quiz-1',
+                title: 'Question 1: What is a variable?',
+                code: `score = 100`,
+                question: 'What does this line of code do?',
+                options: [
+                    'Checks if score equals 100',
+                    'Creates a variable called score and stores 100 in it',
+                    'Prints the number 100',
+                    'Creates a variable called 100 and stores "score" in it'
+                ],
+                correctIndex: 1,
+                explanation: 'The = sign is the assignment operator. It creates a variable (score) and stores a value (100) in it. The variable name goes on the left, the value on the right.'
+            },
+            {
+                id: 'var-quiz-2',
+                title: 'Question 2: Variable naming',
+                code: null,
+                question: 'Which of these is NOT a valid Python variable name?',
+                options: ['my_score', 'player1', '1st_place', '_count'],
+                correctIndex: 2,
+                explanation: 'Variable names cannot start with a number. "1st_place" is invalid. Variable names can contain letters, numbers, and underscores, but must start with a letter or underscore.'
+            },
+            {
+                id: 'var-quiz-3',
+                title: 'Question 3: String vs Variable',
+                code: `message = "Hello"
+print(message)
+print("message")`,
+                question: 'What will be printed?',
+                options: [
+                    'Hello and Hello',
+                    'message and message',
+                    'Hello and message',
+                    'Error'
+                ],
+                correctIndex: 2,
+                explanation: 'print(message) prints the VALUE stored in the variable (Hello). print("message") prints the literal text "message" because of the quotes.'
+            },
+            {
+                id: 'var-quiz-4',
+                title: 'Question 4: Data types',
+                code: `x = "5"
+y = 5
+print(x + x)
+print(y + y)`,
+                question: 'What will be printed?',
+                options: [
+                    '10 and 10',
+                    '55 and 10',
+                    '55 and 55',
+                    'Error'
+                ],
+                correctIndex: 1,
+                explanation: 'x is a string "5", so x + x concatenates (joins) them: "55". y is an integer 5, so y + y adds them: 10. The + operator behaves differently for strings and numbers.'
+            },
+            {
+                id: 'var-quiz-5',
+                title: 'Question 5: Reassignment',
+                code: `x = 10
+x = x + 5
+x = x * 2
+print(x)`,
+                question: 'What will be printed?',
+                options: ['10', '15', '25', '30'],
+                correctIndex: 3,
+                explanation: 'x starts at 10. Then x = 10 + 5 = 15. Then x = 15 * 2 = 30. Each line updates x with a new calculated value.'
+            },
+            {
+                id: 'var-quiz-6',
+                title: 'Question 6: Variable copying',
+                code: `a = 7
+b = a
+a = 3
+print(b)`,
+                question: 'What will be printed?',
+                options: ['3', '7', '10', 'Error'],
+                correctIndex: 1,
+                explanation: 'When we write b = a, we copy the VALUE of a (7) into b. Later changing a to 3 does not affect b. b still holds its own copy: 7.'
+            },
+            {
+                id: 'var-quiz-7',
+                title: 'Question 7: Float vs Integer',
+                code: `price = 9.99
+quantity = 3`,
+                question: 'What data types are price and quantity?',
+                options: [
+                    'Both are integers',
+                    'Both are floats',
+                    'price is a float, quantity is an integer',
+                    'price is an integer, quantity is a float'
+                ],
+                correctIndex: 2,
+                explanation: '9.99 has a decimal point, so it\'s a float (floating-point number). 3 is a whole number with no decimal, so it\'s an integer.'
+            },
+            {
+                id: 'var-quiz-8',
+                title: 'Question 8: Using variables in calculations',
+                code: `width = 10
+height = 5
+area = width * height
+print(area)`,
+                question: 'What will be printed?',
+                options: ['15', '50', 'width * height', 'Error'],
+                correctIndex: 1,
+                explanation: 'Python uses the VALUES stored in width (10) and height (5) to calculate: 10 * 5 = 50. The result is stored in area and printed.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'variables'
+            }
+        );
+    </script>
+</body>
+</html>

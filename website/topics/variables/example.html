@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: Variables - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Variables</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Using Variables</h1>
+            <p>Follow along as we build a program step by step, learning each concept as we go.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <section class="mt-xl">
+            <h2>More Practice: Data Types</h2>
+            <div id="worked-example-2" class="mt-lg"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Variables →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Worked Example 1: Basic variable usage
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'we-variables-001',
+                topicId: 'variables',
+                title: 'Storing and Using Information',
+                problem: {
+                    statement: 'Create a program that stores a person\'s name and age, then displays a greeting message.',
+                    context: 'When writing programs, we often need to store information to use later. Variables let us save data and give it a meaningful name.',
+                    expectedOutput: 'Hello, Sam!\nYou are 14 years old.'
+                },
+                subgoals: [
+                    {
+                        label: 'Choose meaningful variable names',
+                        code: 'name = "Sam"',
+                        explanation: 'We create a variable called "name" and store the text "Sam" in it. Variable names should describe what they hold. The quotes tell Python this is a string (text).',
+                        selfExplanation: 'Why do we use quotes around Sam but not around name?'
+                    },
+                    {
+                        label: 'Store the age as a number',
+                        code: 'age = 14',
+                        explanation: 'We store the number 14 in a variable called "age". Notice there are no quotes - this tells Python it\'s a number (integer), not text.',
+                        selfExplanation: 'What\'s the difference between age = 14 and age = "14"?'
+                    },
+                    {
+                        label: 'Display the greeting with the name',
+                        code: 'print("Hello,", name + "!")',
+                        explanation: 'We use print() to display output. The comma separates items to print. We use + to join the name with "!" to make "Sam!".',
+                        selfExplanation: 'Why do we write name (no quotes) instead of "name"?'
+                    },
+                    {
+                        label: 'Display the age message',
+                        code: 'print("You are", age, "years old.")',
+                        explanation: 'We can mix text and variables in print(). The commas automatically add spaces between each item. Python converts the number to text for display.',
+                        selfExplanation: 'What would happen if we used + instead of commas with the number?'
+                    }
+                ],
+                completeCode: `name = "Sam"
+age = 14
+print("Hello,", name + "!")
+print("You are", age, "years old.")`,
+                tips: [
+                    'Variable names should describe what they store',
+                    'Use quotes for text (strings), no quotes for numbers',
+                    'Variables must be created before you can use them'
+                ]
+            }
+        );
+
+        // Worked Example 2: Data types
+        new WorkedExample(
+            document.getElementById('worked-example-2'),
+            {
+                id: 'we-variables-002',
+                topicId: 'variables',
+                title: 'Working with Different Data Types',
+                problem: {
+                    statement: 'Calculate the total price of items including a discount.',
+                    context: 'Programs work with different types of data: text (strings), whole numbers (integers), and decimal numbers (floats). Understanding these helps avoid errors.',
+                    expectedOutput: 'Original price: 25.5\nAfter 10% discount: 22.95'
+                },
+                subgoals: [
+                    {
+                        label: 'Store the price as a decimal number',
+                        code: 'price = 25.50',
+                        explanation: 'Prices often have pence/cents, so we use a decimal number (called a "float" in Python). The .50 makes this a float, not an integer.',
+                        selfExplanation: 'Why is 25.50 better than 25 for storing a price?'
+                    },
+                    {
+                        label: 'Store the discount as a percentage',
+                        code: 'discount_percent = 10',
+                        explanation: 'We use an integer (whole number) for the discount percentage. Note the underscore in the variable name - this is how we include spaces in variable names.',
+                        selfExplanation: 'Why can\'t variable names have spaces in them?'
+                    },
+                    {
+                        label: 'Calculate the discount amount',
+                        code: 'discount_amount = price * discount_percent / 100',
+                        explanation: 'To find 10% of the price: multiply by 10, then divide by 100. This gives us 2.55 (the amount to subtract).',
+                        selfExplanation: 'What would discount_amount be if the price was 50?'
+                    },
+                    {
+                        label: 'Calculate and display the final price',
+                        code: `final_price = price - discount_amount
+print("Original price:", price)
+print("After 10% discount:", final_price)`,
+                        explanation: 'Subtract the discount from the original price. Then display both values so the user can see the saving.',
+                        selfExplanation: 'Why do we store the final price in a variable instead of just printing price - discount_amount?'
+                    }
+                ],
+                completeCode: `price = 25.50
+discount_percent = 10
+discount_amount = price * discount_percent / 100
+final_price = price - discount_amount
+print("Original price:", price)
+print("After 10% discount:", final_price)`,
+                tips: [
+                    'Use integers for whole numbers, floats for decimals',
+                    'Use underscores to make long variable names readable',
+                    'Store calculated results in variables if you need them later'
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

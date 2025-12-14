@@ -1,0 +1,374 @@
+# Parsons Problems: Selection Basics
+# A progression of Parsons problems for learning if statements
+
+---
+# Problem 1: Foundation - Simple if-else
+
+parsons_problem:
+  id: parsons-selection-001
+  title: "Check Voting Age"
+  topic: selection
+  stage: ks3
+  difficulty: foundation
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to create a program that checks
+    if someone is old enough to vote (18 or older).
+
+    Expected output (for age 16):
+    Too young to vote
+
+  expected_output: "Too young to vote"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'age = 16'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'if age >= 18:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'print("Can vote!")'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 4
+      code: 'else:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 5
+      code: 'print("Too young to vote")'
+      indent_level: 1
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4, 5]
+
+  distractors:
+    enabled: false
+
+  hints:
+    - level: 1
+      hint: "First, set up the age variable"
+    - level: 2
+      hint: "The if statement checks the condition"
+    - level: 3
+      hint: "Code inside if must be indented"
+    - level: 4
+      hint: "else comes after the if block and handles the opposite case"
+
+  differentiation:
+    foundation:
+      notes: "Pre-place the variable and if line"
+      blocks_to_pre_place: [1, 2]
+    extension:
+      notes: "Add elif for different age groups"
+
+  objectives:
+    - "Understand the structure of if-else statements"
+    - "Recognise that indented code belongs to the if or else"
+
+  common_errors:
+    - error_pattern: "Missing colon after if or else"
+      feedback: "if and else lines must end with a colon (:)"
+    - error_pattern: "Code not indented"
+      feedback: "Code inside if/else MUST be indented"
+
+  related:
+    lesson_id: ks3-selection-001
+    prerequisites: []
+    next: [parsons-selection-002]
+
+---
+# Problem 2: Core - Comparison operators
+
+parsons_problem:
+  id: parsons-selection-002
+  title: "Pass or Fail"
+  topic: selection
+  stage: ks3
+  difficulty: core
+  type: 2d
+
+  problem_statement: |
+    Arrange the code to check if a test score is a pass (50 or more)
+    or a fail (below 50).
+
+    Expected output (for score 45):
+    Fail
+
+  expected_output: "Fail"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'score = 45'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'if score >= 50:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'print("Pass")'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 4
+      code: 'else:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 5
+      code: 'print("Fail")'
+      indent_level: 1
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4, 5]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 6
+        code: 'if score > 50:'
+        why_wrong: "This doesn't include 50 as a pass - use >= for 'or equal to'"
+
+  hints:
+    - level: 1
+      hint: ">= means 'greater than or equal to'"
+    - level: 2
+      hint: "Watch for the difference between > and >="
+    - level: 3
+      hint: "One distractor uses the wrong comparison operator"
+
+  objectives:
+    - "Use comparison operators correctly"
+    - "Understand the difference between > and >="
+
+  common_errors:
+    - error_pattern: "Using = instead of =="
+      feedback: "= is assignment, == is comparison"
+    - error_pattern: "Using > instead of >="
+      feedback: "> doesn't include equal, >= does"
+
+  related:
+    lesson_id: ks3-selection-001
+    prerequisites: [parsons-selection-001]
+    next: [parsons-selection-003]
+
+---
+# Problem 3: Core - Temperature check with elif
+
+parsons_problem:
+  id: parsons-selection-003
+  title: "Temperature Check"
+  topic: selection
+  stage: ks3
+  difficulty: core
+  type: 2d
+
+  problem_statement: |
+    Arrange the code to print:
+    - "Hot" if temperature is over 30
+    - "Nice" if temperature is over 20
+    - "Cold" otherwise
+
+    Expected output (for temperature 25):
+    Nice
+
+  expected_output: "Nice"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'temperature = 25'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'if temperature > 30:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'print("Hot")'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 4
+      code: 'elif temperature > 20:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 5
+      code: 'print("Nice")'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 6
+      code: 'else:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 7
+      code: 'print("Cold")'
+      indent_level: 1
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4, 5, 6, 7]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 8
+        code: 'if temperature > 20:'
+        why_wrong: "Using two separate ifs instead of elif would check both conditions"
+
+  hints:
+    - level: 1
+      hint: "Check the highest temperature first"
+    - level: 2
+      hint: "elif comes after the first if - it only checks if the first was False"
+    - level: 3
+      hint: "else catches everything else"
+    - level: 4
+      hint: "Using separate ifs instead of elif would give wrong output"
+
+  objectives:
+    - "Use elif for multiple conditions"
+    - "Understand that only one branch executes in if-elif-else"
+
+  common_errors:
+    - error_pattern: "Using multiple if instead of elif"
+      feedback: "Multiple ifs are checked independently. elif is only checked if previous was False."
+    - error_pattern: "Wrong order of conditions"
+      feedback: "Check from highest to lowest (or specific to general)"
+
+  related:
+    lesson_id: ks3-selection-001
+    prerequisites: [parsons-selection-002]
+    next: [parsons-selection-004]
+
+---
+# Problem 4: Extension - Grade calculator
+
+parsons_problem:
+  id: parsons-selection-004
+  title: "Grade Calculator"
+  topic: selection
+  stage: ks3
+  difficulty: extension
+  type: 2d
+
+  problem_statement: |
+    Arrange the code to assign a letter grade based on score:
+    - A: 90 or above
+    - B: 70 or above
+    - C: 50 or above
+    - Fail: below 50
+
+    Expected output (for score 75):
+    B
+
+  expected_output: "B"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'score = 75'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'if score >= 90:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'grade = "A"'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 4
+      code: 'elif score >= 70:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 5
+      code: 'grade = "B"'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 6
+      code: 'elif score >= 50:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 7
+      code: 'grade = "C"'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 8
+      code: 'else:'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 9
+      code: 'grade = "Fail"'
+      indent_level: 1
+      is_distractor: false
+
+    - id: 10
+      code: 'print(grade)'
+      indent_level: 0
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 11
+        code: 'elif score >= 90:'
+        why_wrong: "The first check should use if, not elif"
+
+  hints:
+    - level: 1
+      hint: "Start with the highest grade (A)"
+    - level: 2
+      hint: "Each elif checks the next grade boundary"
+    - level: 3
+      hint: "else handles failing grades"
+    - level: 4
+      hint: "print(grade) comes after ALL conditions"
+    - level: 5
+      hint: "The first condition uses if, the others use elif"
+
+  objectives:
+    - "Chain multiple elif statements"
+    - "Understand grade boundary checking"
+    - "Store results in variables within conditions"
+
+  common_errors:
+    - error_pattern: "Starting with elif instead of if"
+      feedback: "The first condition must be if, then use elif for subsequent checks"
+    - error_pattern: "Checking in wrong order"
+      feedback: "Check from highest to lowest to avoid wrong grades"
+
+  related:
+    lesson_id: ks3-selection-001
+    prerequisites: [parsons-selection-003]
+    next: []

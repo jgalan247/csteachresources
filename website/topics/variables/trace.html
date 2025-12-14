@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Tracing: Variables - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Variables</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Investigate: Trace the Variables</h1>
+            <p>Track what happens to each variable as the code runs. Fill in the trace table step by step.</p>
+            <div class="alert alert-info">
+                <strong>How to trace:</strong> Look at each line in order. Write down what value each variable holds AFTER that line runs.
+            </div>
+        </header>
+
+        <!-- Code Tracing Container 1 -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="tracing-exercise-1"></div>
+        </section>
+
+        <!-- Code Tracing Container 2 -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="tracing-exercise-2"></div>
+        </section>
+
+        <!-- Code Tracing Container 3 -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="tracing-exercise-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Tracing Exercise 1: Foundation - Simple assignment and print
+        new CodeTracing(
+            document.getElementById('tracing-exercise-1'),
+            {
+                id: 'variables-trace-1',
+                title: 'Trace Simple Variables',
+                topicId: 'variables',
+                code: `name = "Alice"
+age = 15
+print(name)
+print(age)`,
+                variables: ['name', 'age'],
+                includeOutput: true,
+                prefilled: [0, 1],
+                solution: [
+                    { step: 1, line: 1, variables: { name: '"Alice"', age: null }, output: '' },
+                    { step: 2, line: 2, variables: { name: '"Alice"', age: 15 }, output: '' },
+                    { step: 3, line: 3, variables: { name: '"Alice"', age: 15 }, output: 'Alice' },
+                    { step: 4, line: 4, variables: { name: '"Alice"', age: 15 }, output: '15' }
+                ]
+            }
+        );
+
+        // Tracing Exercise 2: Core - Reassignment
+        new CodeTracing(
+            document.getElementById('tracing-exercise-2'),
+            {
+                id: 'variables-trace-2',
+                title: 'Trace Variable Changes',
+                topicId: 'variables',
+                code: `score = 10
+score = 25
+bonus = 5
+score = score + bonus
+print(score)`,
+                variables: ['score', 'bonus'],
+                includeOutput: true,
+                prefilled: [0, 1],
+                solution: [
+                    { step: 1, line: 1, variables: { score: 10, bonus: null }, output: '' },
+                    { step: 2, line: 2, variables: { score: 25, bonus: null }, output: '' },
+                    { step: 3, line: 3, variables: { score: 25, bonus: 5 }, output: '' },
+                    { step: 4, line: 4, variables: { score: 30, bonus: 5 }, output: '' },
+                    { step: 5, line: 5, variables: { score: 30, bonus: 5 }, output: '30' }
+                ]
+            }
+        );
+
+        // Tracing Exercise 3: Extension - Variable copying
+        new CodeTracing(
+            document.getElementById('tracing-exercise-3'),
+            {
+                id: 'variables-trace-3',
+                title: 'Trace Variable Copying',
+                topicId: 'variables',
+                code: `a = 5
+b = a
+a = 10
+c = a + b
+print(c)`,
+                variables: ['a', 'b', 'c'],
+                includeOutput: true,
+                prefilled: [0],
+                solution: [
+                    { step: 1, line: 1, variables: { a: 5, b: null, c: null }, output: '' },
+                    { step: 2, line: 2, variables: { a: 5, b: 5, c: null }, output: '' },
+                    { step: 3, line: 3, variables: { a: 10, b: 5, c: null }, output: '' },
+                    { step: 4, line: 4, variables: { a: 10, b: 5, c: 15 }, output: '' },
+                    { step: 5, line: 5, variables: { a: 10, b: 5, c: 15 }, output: '15' }
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

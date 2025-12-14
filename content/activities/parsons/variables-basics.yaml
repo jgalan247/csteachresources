@@ -1,0 +1,383 @@
+# Parsons Problems: Variables Basics
+# A progression of Parsons problems for learning variables
+
+---
+# Problem 1: Foundation - Create and print a variable
+
+parsons_problem:
+  id: parsons-variables-001
+  title: "Store and Display a Name"
+  topic: variables
+  stage: ks3
+  difficulty: foundation
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to create a program that stores
+    the name "Alice" in a variable and then prints it.
+
+    Expected output:
+    Alice
+
+  expected_output: "Alice"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'name = "Alice"'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'print(name)'
+      indent_level: 0
+      is_distractor: false
+
+  solution:
+    order: [1, 2]
+
+  distractors:
+    enabled: false
+
+  hints:
+    - level: 1
+      hint: "You need to create a variable before you can use it"
+    - level: 2
+      hint: "The = sign assigns a value to a variable"
+    - level: 3
+      hint: "print() displays the value stored in a variable"
+
+  differentiation:
+    foundation:
+      notes: "Pre-place the assignment line; student only arranges print"
+      blocks_to_pre_place: [1]
+    extension:
+      notes: "Add more variables to print"
+      additional_distractors: []
+
+  objectives:
+    - "Understand how to create a variable"
+    - "Understand how to display a variable's value"
+
+  common_errors:
+    - error_pattern: "print before assignment"
+      feedback: "You must create a variable before you can use it"
+    - error_pattern: 'Using print("name") instead of print(name)'
+      feedback: "Quotes make it print the text 'name', not the variable's value"
+
+  related:
+    lesson_id: ks3-variables-001
+    prerequisites: []
+    next: [parsons-variables-002]
+
+---
+# Problem 2: Foundation - Two variables
+
+parsons_problem:
+  id: parsons-variables-002
+  title: "Two Variables"
+  topic: variables
+  stage: ks3
+  difficulty: foundation
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to create a program that stores
+    a name and an age, then prints both.
+
+    Expected output:
+    Sam
+    15
+
+  expected_output: "Sam\n15"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'name = "Sam"'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'age = 15'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'print(name)'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 4
+      code: 'print(age)'
+      indent_level: 0
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4]
+
+  distractors:
+    enabled: false
+
+  hints:
+    - level: 1
+      hint: "Create both variables first, then print them"
+    - level: 2
+      hint: "Strings need quotes, numbers don't"
+    - level: 3
+      hint: "Print statements come after variable creation"
+
+  objectives:
+    - "Work with multiple variables"
+    - "Distinguish between strings and integers"
+
+  common_errors:
+    - error_pattern: "Using quotes around 15"
+      feedback: "Numbers don't need quotes. 15 is an integer, not text."
+
+  related:
+    lesson_id: ks3-variables-001
+    prerequisites: [parsons-variables-001]
+    next: [parsons-variables-003]
+
+---
+# Problem 3: Core - Calculation with variables
+
+parsons_problem:
+  id: parsons-variables-003
+  title: "Calculate a Total"
+  topic: variables
+  stage: ks3
+  difficulty: core
+  type: 2d
+
+  problem_statement: |
+    Arrange the code blocks to calculate and print the
+    total of two numbers (10 + 5).
+
+    Expected output:
+    15
+
+  expected_output: "15"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'a = 10'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'b = 5'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'total = a + b'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 4
+      code: 'print(total)'
+      indent_level: 0
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 5
+        code: 'print(a + b)'
+        why_wrong: "Works but doesn't follow the pattern of storing in a variable first"
+
+  hints:
+    - level: 1
+      hint: "First, create the two number variables"
+    - level: 2
+      hint: "Then calculate the total and store it"
+    - level: 3
+      hint: "Finally, print the total"
+
+  objectives:
+    - "Use variables in calculations"
+    - "Store calculation results in new variables"
+
+  common_errors:
+    - error_pattern: "Using total before creating a and b"
+      feedback: "You can't use a and b until they exist"
+    - error_pattern: "Using = instead of +"
+      feedback: "Use + for addition, = is for assignment"
+
+  related:
+    lesson_id: ks3-variables-001
+    prerequisites: [parsons-variables-002]
+    next: [parsons-variables-004]
+
+---
+# Problem 4: Core - Reassignment
+
+parsons_problem:
+  id: parsons-variables-004
+  title: "Update a Score"
+  topic: variables
+  stage: ks3
+  difficulty: core
+  type: 2d
+
+  problem_statement: |
+    Arrange the code to start with a score of 10,
+    add 5 bonus points, then print the final score.
+
+    Expected output:
+    15
+
+  expected_output: "15"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'score = 10'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'bonus = 5'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'score = score + bonus'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 4
+      code: 'print(score)'
+      indent_level: 0
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 5
+        code: 'score = bonus'
+        why_wrong: "This replaces score with bonus instead of adding"
+
+  hints:
+    - level: 1
+      hint: "Set up both variables first"
+    - level: 2
+      hint: "To add to score, use score = score + bonus"
+    - level: 3
+      hint: "One distractor replaces instead of adds - watch out!"
+
+  objectives:
+    - "Update a variable's value"
+    - "Understand the difference between replacing and adding"
+
+  common_errors:
+    - error_pattern: "Using score = bonus"
+      feedback: "This replaces score's value, it doesn't add to it"
+
+  related:
+    lesson_id: ks3-variables-001
+    prerequisites: [parsons-variables-003]
+    next: [parsons-variables-005]
+
+---
+# Problem 5: Extension - Variable swapping
+
+parsons_problem:
+  id: parsons-variables-005
+  title: "Swap Two Values"
+  topic: variables
+  stage: ks3
+  difficulty: extension
+  type: 2d
+
+  problem_statement: |
+    Arrange the code to swap the values of x and y.
+    x starts as 10, y starts as 20. After swapping,
+    x should be 20 and y should be 10.
+
+    Expected output:
+    20
+    10
+
+  expected_output: "20\n10"
+  language: python
+
+  blocks:
+    - id: 1
+      code: 'x = 10'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 2
+      code: 'y = 20'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 3
+      code: 'temp = x'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 4
+      code: 'x = y'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 5
+      code: 'y = temp'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 6
+      code: 'print(x)'
+      indent_level: 0
+      is_distractor: false
+
+    - id: 7
+      code: 'print(y)'
+      indent_level: 0
+      is_distractor: false
+
+  solution:
+    order: [1, 2, 3, 4, 5, 6, 7]
+
+  distractors:
+    enabled: true
+    distractor_blocks:
+      - id: 8
+        code: 'x = y'
+        why_wrong: "Using this without temp loses the original value of x"
+
+  hints:
+    - level: 1
+      hint: "First, set up both variables"
+    - level: 2
+      hint: "You need a temporary variable to hold one value"
+    - level: 3
+      hint: "Think: save x, copy y to x, copy saved value to y"
+    - level: 4
+      hint: "Like swapping water between glasses - you need a third glass!"
+
+  objectives:
+    - "Understand the swap pattern"
+    - "Use a temporary variable to preserve data"
+
+  common_errors:
+    - error_pattern: "Swapping without temp variable"
+      feedback: "If you do x = y first, you lose x's original value"
+    - error_pattern: "Wrong order of operations"
+      feedback: "Save x to temp, then copy y to x, then copy temp to y"
+
+  related:
+    lesson_id: ks3-variables-001
+    prerequisites: [parsons-variables-004]
+    next: []

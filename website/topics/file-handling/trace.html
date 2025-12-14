@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Tracing: File Handling - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">File Handling</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <div class="ks-badge">KS4</div>
+            <h1><span>📊</span> Investigate: Trace File Operations</h1>
+            <p>Track how data moves between files and variables. This is a common exam question!</p>
+            <div class="alert alert-info">
+                <strong>Exam tip:</strong> Trace tables for file operations often appear in GCSE papers. Track both variable values AND file contents.
+            </div>
+        </header>
+
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="tracing-exercise-1"></div>
+        </section>
+
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="tracing-exercise-2"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Tracing Exercise 1: Reading a file
+        new CodeTracing(
+            document.getElementById('tracing-exercise-1'),
+            {
+                id: 'files-trace-1',
+                title: 'Trace Reading a File',
+                topicId: 'file-handling',
+                code: `# File "data.txt" contains:
+# 10
+# 20
+# 30
+
+with open("data.txt", "r") as file:
+    lines = file.readlines()
+total = 0
+for line in lines:
+    num = int(line.strip())
+    total = total + num
+print(total)`,
+                variables: ['lines', 'total', 'line', 'num'],
+                includeOutput: true,
+                prefilled: [0, 1, 2],
+                solution: [
+                    { step: 1, line: 5, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: null, line: null, num: null }, output: '' },
+                    { step: 2, line: 6, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 0, line: null, num: null }, output: '' },
+                    { step: 3, line: 7, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 0, line: '"10\\n"', num: null }, output: '' },
+                    { step: 4, line: 8, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 0, line: '"10\\n"', num: 10 }, output: '' },
+                    { step: 5, line: 9, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 10, line: '"10\\n"', num: 10 }, output: '' },
+                    { step: 6, line: 7, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 10, line: '"20\\n"', num: 10 }, output: '' },
+                    { step: 7, line: 8, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 10, line: '"20\\n"', num: 20 }, output: '' },
+                    { step: 8, line: 9, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 30, line: '"20\\n"', num: 20 }, output: '' },
+                    { step: 9, line: 7, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 30, line: '"30\\n"', num: 20 }, output: '' },
+                    { step: 10, line: 8, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 30, line: '"30\\n"', num: 30 }, output: '' },
+                    { step: 11, line: 9, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 60, line: '"30\\n"', num: 30 }, output: '' },
+                    { step: 12, line: 10, variables: { lines: '["10\\n", "20\\n", "30\\n"]', total: 60, line: '"30\\n"', num: 30 }, output: '60' }
+                ]
+            }
+        );
+
+        // Tracing Exercise 2: Writing to a file
+        new CodeTracing(
+            document.getElementById('tracing-exercise-2'),
+            {
+                id: 'files-trace-2',
+                title: 'Trace Writing to a File',
+                topicId: 'file-handling',
+                code: `# File "output.txt" is empty
+
+names = ["Jo", "Sam"]
+with open("output.txt", "w") as file:
+    for name in names:
+        file.write(name + "\\n")
+
+# What is in output.txt?`,
+                variables: ['names', 'name', 'file_contents'],
+                includeOutput: false,
+                includeFileContents: true,
+                prefilled: [0, 1],
+                solution: [
+                    { step: 1, line: 3, variables: { names: '["Jo", "Sam"]', name: null }, file_contents: '(empty)' },
+                    { step: 2, line: 4, variables: { names: '["Jo", "Sam"]', name: null }, file_contents: '(empty)' },
+                    { step: 3, line: 5, variables: { names: '["Jo", "Sam"]', name: '"Jo"' }, file_contents: '(empty)' },
+                    { step: 4, line: 6, variables: { names: '["Jo", "Sam"]', name: '"Jo"' }, file_contents: 'Jo\\n' },
+                    { step: 5, line: 5, variables: { names: '["Jo", "Sam"]', name: '"Sam"' }, file_contents: 'Jo\\n' },
+                    { step: 6, line: 6, variables: { names: '["Jo", "Sam"]', name: '"Sam"' }, file_contents: 'Jo\\nSam\\n' }
+                ]
+            }
+        );
+    </script>
+    <style>
+        .ks-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</body>
+</html>
