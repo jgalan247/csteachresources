@@ -26,7 +26,8 @@ const CertificateSystem = {
         'validation': 'Input Validation',
         'sql': 'SQL & Databases',
         'cpu': 'CPU & Fetch-Execute Cycle',
-        'memory': 'Memory & Storage'
+        'memory': 'Memory & Storage',
+        'storage': 'Secondary Storage'
     },
 
     /**

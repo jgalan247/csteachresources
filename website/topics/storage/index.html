@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secondary Storage - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Secondary Storage</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">💿</span> Secondary Storage</h1>
+            <p>Learn about permanent storage devices - from spinning hard drives to flash memory.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>Why computers need secondary storage</li>
+                    <li>Three types of storage: Optical, Magnetic, and Solid State</li>
+                    <li>Common storage devices and media</li>
+                    <li>How to choose the right storage for different situations</li>
+                    <li>Advantages and disadvantages of each storage type</li>
+                </ul>
+            </div>
+
+            <div class="spec-reference">
+                <h4>Specification Reference: 1.2.2 Secondary Storage</h4>
+                <p>This topic covers the GCSE Computer Science specification requirements for understanding secondary storage devices and media.</p>
+            </div>
+        </header>
+
+        <section class="key-concepts mt-xl">
+            <h2>Why Secondary Storage?</h2>
+            <div class="why-storage">
+                <div class="reason-card">
+                    <span class="reason-icon">🔌</span>
+                    <h4>RAM is Volatile</h4>
+                    <p>RAM loses all data when power is off. We need somewhere to store data permanently.</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-icon">📦</span>
+                    <h4>Large Capacity Needed</h4>
+                    <p>Modern files (games, videos, photos) need much more space than RAM can provide.</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-icon">💰</span>
+                    <h4>Cost Effective</h4>
+                    <p>Secondary storage is much cheaper per GB than RAM.</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-icon">📤</span>
+                    <h4>Portability</h4>
+                    <p>Some storage can be removed and transferred between devices.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="storage-types mt-xl">
+            <h2>Types of Secondary Storage</h2>
+
+            <!-- Magnetic Storage -->
+            <div class="storage-type-card magnetic">
+                <div class="storage-header">
+                    <span class="storage-icon">🧲</span>
+                    <h3>Magnetic Storage</h3>
+                </div>
+                <div class="storage-content">
+                    <div class="how-it-works">
+                        <h4>How it works:</h4>
+                        <p>Data is stored by magnetising tiny areas on a spinning disk or tape. A read/write head moves across the surface to access data.</p>
+                    </div>
+                    <div class="examples">
+                        <h4>Examples:</h4>
+                        <div class="device-list">
+                            <div class="device">
+                                <strong>Hard Disk Drive (HDD)</strong>
+                                <p>Internal/external drives with spinning platters. 500GB - 20TB typical.</p>
+                            </div>
+                            <div class="device">
+                                <strong>Magnetic Tape</strong>
+                                <p>Long strips of magnetic tape. Used for backups and archives.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="characteristics">
+                        <h4>Characteristics:</h4>
+                        <table class="char-table">
+                            <tr><td>Capacity</td><td class="good">Very High (up to 20TB+)</td></tr>
+                            <tr><td>Speed</td><td class="medium">Medium (80-200 MB/s)</td></tr>
+                            <tr><td>Portability</td><td class="medium">Medium (external HDDs portable)</td></tr>
+                            <tr><td>Durability</td><td class="poor">Low (moving parts can break)</td></tr>
+                            <tr><td>Reliability</td><td class="medium">Medium (can fail over time)</td></tr>
+                            <tr><td>Cost</td><td class="good">Low cost per GB</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solid State Storage -->
+            <div class="storage-type-card solid-state">
+                <div class="storage-header">
+                    <span class="storage-icon">⚡</span>
+                    <h3>Solid State Storage</h3>
+                </div>
+                <div class="storage-content">
+                    <div class="how-it-works">
+                        <h4>How it works:</h4>
+                        <p>Data is stored in flash memory chips using electrical charges. No moving parts - all electronic.</p>
+                    </div>
+                    <div class="examples">
+                        <h4>Examples:</h4>
+                        <div class="device-list">
+                            <div class="device">
+                                <strong>Solid State Drive (SSD)</strong>
+                                <p>Fast internal/external drives. 128GB - 8TB typical.</p>
+                            </div>
+                            <div class="device">
+                                <strong>USB Flash Drive</strong>
+                                <p>Small portable "memory sticks". 8GB - 1TB typical.</p>
+                            </div>
+                            <div class="device">
+                                <strong>SD Card</strong>
+                                <p>Used in cameras, phones, games consoles. 16GB - 1TB typical.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="characteristics">
+                        <h4>Characteristics:</h4>
+                        <table class="char-table">
+                            <tr><td>Capacity</td><td class="medium">Medium-High (up to 8TB)</td></tr>
+                            <tr><td>Speed</td><td class="good">Very Fast (500-7000 MB/s)</td></tr>
+                            <tr><td>Portability</td><td class="good">High (small, light, no moving parts)</td></tr>
+                            <tr><td>Durability</td><td class="good">High (no moving parts)</td></tr>
+                            <tr><td>Reliability</td><td class="good">High (resistant to shock)</td></tr>
+                            <tr><td>Cost</td><td class="poor">Higher cost per GB</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optical Storage -->
+            <div class="storage-type-card optical">
+                <div class="storage-header">
+                    <span class="storage-icon">💿</span>
+                    <h3>Optical Storage</h3>
+                </div>
+                <div class="storage-content">
+                    <div class="how-it-works">
+                        <h4>How it works:</h4>
+                        <p>A laser reads tiny pits and lands on the surface of a spinning disc. Data is encoded in the pattern of reflections.</p>
+                    </div>
+                    <div class="examples">
+                        <h4>Examples:</h4>
+                        <div class="device-list">
+                            <div class="device">
+                                <strong>CD (Compact Disc)</strong>
+                                <p>700MB capacity. Music, small files.</p>
+                            </div>
+                            <div class="device">
+                                <strong>DVD (Digital Versatile Disc)</strong>
+                                <p>4.7GB single layer, 8.5GB dual layer. Films, software.</p>
+                            </div>
+                            <div class="device">
+                                <strong>Blu-ray Disc</strong>
+                                <p>25GB single layer, 50GB dual layer. HD films, games.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="characteristics">
+                        <h4>Characteristics:</h4>
+                        <table class="char-table">
+                            <tr><td>Capacity</td><td class="poor">Low (700MB - 50GB)</td></tr>
+                            <tr><td>Speed</td><td class="poor">Slow (1-50 MB/s)</td></tr>
+                            <tr><td>Portability</td><td class="good">High (thin, light discs)</td></tr>
+                            <tr><td>Durability</td><td class="medium">Medium (scratches damage data)</td></tr>
+                            <tr><td>Reliability</td><td class="medium">Medium (degrade over time)</td></tr>
+                            <tr><td>Cost</td><td class="good">Very low per disc</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison-table-section mt-xl">
+            <h2>Quick Comparison</h2>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Magnetic (HDD)</th>
+                            <th>Solid State (SSD)</th>
+                            <th>Optical (DVD/Blu-ray)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Capacity</td>
+                            <td class="best">★★★★★ Very High</td>
+                            <td class="good">★★★★☆ High</td>
+                            <td class="poor">★★☆☆☆ Low</td>
+                        </tr>
+                        <tr>
+                            <td>Speed</td>
+                            <td class="medium">★★★☆☆ Medium</td>
+                            <td class="best">★★★★★ Very Fast</td>
+                            <td class="poor">★☆☆☆☆ Slow</td>
+                        </tr>
+                        <tr>
+                            <td>Portability</td>
+                            <td class="medium">★★★☆☆ Medium</td>
+                            <td class="best">★★★★★ Excellent</td>
+                            <td class="good">★★★★☆ Good</td>
+                        </tr>
+                        <tr>
+                            <td>Durability</td>
+                            <td class="poor">★★☆☆☆ Low</td>
+                            <td class="best">★★★★★ High</td>
+                            <td class="medium">★★★☆☆ Medium</td>
+                        </tr>
+                        <tr>
+                            <td>Reliability</td>
+                            <td class="medium">★★★☆☆ Medium</td>
+                            <td class="best">★★★★★ High</td>
+                            <td class="medium">★★★☆☆ Medium</td>
+                        </tr>
+                        <tr>
+                            <td>Cost per GB</td>
+                            <td class="best">★★★★★ Cheapest</td>
+                            <td class="poor">★★☆☆☆ Expensive</td>
+                            <td class="good">★★★★☆ Cheap</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="use-cases mt-xl">
+            <h2>Choosing the Right Storage</h2>
+            <p>Different situations need different storage solutions:</p>
+
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <h4>🎮 Gaming PC</h4>
+                    <p class="need">Needs: Fast loading, large capacity</p>
+                    <p class="solution"><strong>Best choice:</strong> SSD for OS and games, HDD for extra storage</p>
+                </div>
+                <div class="scenario-card">
+                    <h4>📸 Photographer</h4>
+                    <p class="need">Needs: Portable, works in camera</p>
+                    <p class="solution"><strong>Best choice:</strong> SD cards for camera, external HDD for archive</p>
+                </div>
+                <div class="scenario-card">
+                    <h4>🎬 Film Distribution</h4>
+                    <p class="need">Needs: Cheap to mass produce, standard format</p>
+                    <p class="solution"><strong>Best choice:</strong> Blu-ray or DVD</p>
+                </div>
+                <div class="scenario-card">
+                    <h4>🏢 Business Backup</h4>
+                    <p class="need">Needs: Huge capacity, long-term storage</p>
+                    <p class="solution"><strong>Best choice:</strong> Magnetic tape (cheapest per TB)</p>
+                </div>
+                <div class="scenario-card">
+                    <h4>📱 Smartphone</h4>
+                    <p class="need">Needs: Small, fast, shock-resistant</p>
+                    <p class="solution"><strong>Best choice:</strong> Built-in flash storage (SSD technology)</p>
+                </div>
+                <div class="scenario-card">
+                    <h4>📚 Student</h4>
+                    <p class="need">Needs: Portable, affordable, transfer files</p>
+                    <p class="solution"><strong>Best choice:</strong> USB flash drive</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="learning-path mt-xl">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order to master secondary storage concepts.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="storage-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: Storage Scenarios</h4>
+                        <p>Predict the best storage choice for different situations.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="storage-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Comparing Storage Types</h4>
+                        <p>Walk through detailed comparisons of each storage type.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="storage-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Storage Selection</h4>
+                        <p>Analyse scenarios and justify storage choices.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="storage-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Categorise Storage</h4>
+                        <p>Sort characteristics and devices into correct categories.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="storage-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of secondary storage.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>Secondary Storage</h4>
+                    <p>Non-volatile storage that keeps data when power is off.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Volatile</h4>
+                    <p>Storage that loses data when power is removed (like RAM).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Non-volatile</h4>
+                    <p>Storage that retains data without power (secondary storage).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Capacity</h4>
+                    <p>How much data the storage can hold (GB, TB).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Access Speed</h4>
+                    <p>How quickly data can be read or written (MB/s).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Portability</h4>
+                    <p>How easily the storage can be moved between devices.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Durability</h4>
+                    <p>How well storage withstands physical damage.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Reliability</h4>
+                    <p>How consistently the storage works without failure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="exam-tips mt-xl">
+            <h2>Exam Tips</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <h4>Common Exam Questions</h4>
+                    <ul>
+                        <li>"Explain why secondary storage is needed" (2 marks)</li>
+                        <li>"Compare HDD and SSD for [scenario]" (4 marks)</li>
+                        <li>"Recommend a storage device for [use case] and justify" (3 marks)</li>
+                        <li>"State two advantages and two disadvantages of [storage type]" (4 marks)</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>Key Points to Remember</h4>
+                    <ul>
+                        <li>HDD = cheap, high capacity, but slow and fragile</li>
+                        <li>SSD = fast, durable, but more expensive</li>
+                        <li>Optical = cheap to distribute, but low capacity</li>
+                        <li>Always justify your choice based on the scenario!</li>
+                        <li>Consider: capacity, speed, portability, durability, cost</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .spec-reference {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: var(--space-md);
+            margin-top: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .spec-reference h4 {
+            color: #0369a1;
+            margin-bottom: var(--space-xs);
+        }
+        .spec-reference p {
+            margin: 0;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+        .why-storage {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .reason-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .reason-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+        .reason-card h4 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-sm);
+        }
+        .storage-type-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        .storage-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            color: white;
+        }
+        .storage-type-card.magnetic .storage-header { background: #7c3aed; }
+        .storage-type-card.solid-state .storage-header { background: #059669; }
+        .storage-type-card.optical .storage-header { background: #2563eb; }
+        .storage-icon {
+            font-size: 2rem;
+        }
+        .storage-header h3 {
+            margin: 0;
+        }
+        .storage-content {
+            padding: var(--space-lg);
+            display: grid;
+            gap: var(--space-lg);
+        }
+        .storage-content h4 {
+            color: var(--gray-700);
+            margin-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--gray-200);
+            padding-bottom: var(--space-xs);
+        }
+        .device-list {
+            display: grid;
+            gap: var(--space-md);
+        }
+        .device {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .device strong {
+            color: var(--gray-800);
+        }
+        .device p {
+            margin: var(--space-xs) 0 0 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .char-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .char-table td {
+            padding: var(--space-sm);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .char-table td:first-child {
+            font-weight: 500;
+            width: 120px;
+        }
+        .char-table .good { color: #16a34a; }
+        .char-table .medium { color: #ca8a04; }
+        .char-table .poor { color: #dc2626; }
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--space-md);
+            text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .comparison-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+        .comparison-table .best { background: #dcfce7; color: #166534; }
+        .comparison-table .good { background: #fef9c3; color: #854d0e; }
+        .comparison-table .medium { background: #fef3c7; color: #92400e; }
+        .comparison-table .poor { background: #fef2f2; color: #991b1b; }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .scenario-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--theory, #10b981);
+        }
+        .scenario-card h4 {
+            margin-bottom: var(--space-sm);
+        }
+        .scenario-card .need {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+        }
+        .scenario-card .solution {
+            background: #f0fdf4;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        .tip-card {
+            background: #fef3c7;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid #f59e0b;
+        }
+        .tip-card h4 {
+            color: #92400e;
+            margin-bottom: var(--space-md);
+        }
+        .tip-card ul {
+            padding-left: var(--space-md);
+            margin: 0;
+        }
+        .tip-card li {
+            margin-bottom: var(--space-sm);
+            color: var(--gray-700);
+        }
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--theory, #10b981);
+        }
+        .vocab-card h4 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+    </style>
+</body>
+</html>

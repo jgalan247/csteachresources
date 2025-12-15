@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Storage Scenarios - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Secondary Storage</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="activity-header">
+            <span class="activity-icon">🔮</span>
+            <div class="activity-title">
+                <h1>Predict: Storage Scenarios</h1>
+                <p>Think about which storage type would be best for each situation.</p>
+            </div>
+        </header>
+
+        <div class="activity-instructions">
+            <h3>How to use this activity:</h3>
+            <ol>
+                <li>Read each scenario carefully</li>
+                <li>Think about which storage type would be best and why</li>
+                <li>Click "Reveal Answer" to check your prediction</li>
+                <li>Consider the characteristics: capacity, speed, portability, durability, cost</li>
+            </ol>
+        </div>
+
+        <section class="predictions-container">
+            <!-- Question 1 -->
+            <div class="prediction-card" data-question="1">
+                <div class="prediction-scenario">
+                    <h3>Scenario 1: Gaming Laptop</h3>
+                    <div class="scenario-context">
+                        <p>A gamer is buying a new laptop. They want games to load as fast as possible and need to store about 500GB of games. They'll be carrying the laptop to friends' houses regularly.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which storage type would be best? Why?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: Solid State Drive (SSD)</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why SSD is best:</strong></p>
+                        <ul>
+                            <li><strong>Speed:</strong> SSDs are 5-50x faster than HDDs - games load in seconds</li>
+                            <li><strong>Durability:</strong> No moving parts means safe to transport</li>
+                            <li><strong>Portability:</strong> Light and shock-resistant for carrying around</li>
+                        </ul>
+                        <p><strong>Why not HDD?</strong> Moving parts could be damaged when transported, and loading would be much slower.</p>
+                        <p><strong>Why not Optical?</strong> Way too slow for gaming and limited capacity.</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key factors:</strong> Speed + Durability for portable gaming
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="prediction-card" data-question="2">
+                <div class="prediction-scenario">
+                    <h3>Scenario 2: Music Distribution</h3>
+                    <div class="scenario-context">
+                        <p>A record label wants to sell physical copies of an album. They need to produce 10,000 copies as cheaply as possible. Each album is about 600MB of audio files.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which storage type would be best for distribution?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: CD (Optical Storage)</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why CD is best:</strong></p>
+                        <ul>
+                            <li><strong>Cost:</strong> CDs cost pennies each to mass-produce</li>
+                            <li><strong>Capacity:</strong> 700MB is perfect for an album</li>
+                            <li><strong>Portability:</strong> Thin, light, easy to ship</li>
+                            <li><strong>Standard format:</strong> Works in any CD player</li>
+                        </ul>
+                        <p><strong>Why not USB drives?</strong> Cost £2-5 each - far too expensive for 10,000 copies!</p>
+                        <p><strong>Why not HDD?</strong> Way too expensive and bulky for music distribution.</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key factors:</strong> Low cost for mass production
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="prediction-card" data-question="3">
+                <div class="prediction-scenario">
+                    <h3>Scenario 3: Security Camera System</h3>
+                    <div class="scenario-context">
+                        <p>A shop needs to store 30 days of security footage from 8 cameras recording 24/7. This requires about 6TB of storage. The footage is recorded but rarely watched back.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which storage type would be best?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: Hard Disk Drive (HDD)</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why HDD is best:</strong></p>
+                        <ul>
+                            <li><strong>Capacity:</strong> 6TB HDDs are readily available and affordable</li>
+                            <li><strong>Cost:</strong> Much cheaper per TB than SSDs</li>
+                            <li><strong>Speed:</strong> Writing video doesn't need SSD speeds</li>
+                            <li><strong>Continuous writing:</strong> HDDs handle constant writing well</li>
+                        </ul>
+                        <p><strong>Why not SSD?</strong> Too expensive for 6TB and constant writing can wear out flash memory.</p>
+                        <p><strong>Why not Optical?</strong> Would need hundreds of discs and constant disc swapping!</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key factors:</strong> High capacity + Low cost for bulk storage
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="prediction-card" data-question="4">
+                <div class="prediction-scenario">
+                    <h3>Scenario 4: Photography Trip</h3>
+                    <div class="scenario-context">
+                        <p>A wildlife photographer is going on a 2-week trip to photograph animals. They'll be outdoors in all weather, and their camera uses SD cards. They expect to take about 200GB of photos.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which storage solution would be best?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: Multiple SD Cards (Solid State)</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why SD cards are best:</strong></p>
+                        <ul>
+                            <li><strong>Compatibility:</strong> SD cards work directly in cameras</li>
+                            <li><strong>Durability:</strong> No moving parts, waterproof options available</li>
+                            <li><strong>Portability:</strong> Tiny and lightweight</li>
+                            <li><strong>Reliability:</strong> Work in hot, cold, and humid conditions</li>
+                        </ul>
+                        <p><strong>Good backup strategy:</strong> Bring a portable SSD to copy photos to at night.</p>
+                        <p><strong>Why not HDD?</strong> Fragile moving parts could break with outdoor use.</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key factors:</strong> Durability + Portability for outdoor use
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="prediction-card" data-question="5">
+                <div class="prediction-scenario">
+                    <h3>Scenario 5: Bank Data Archive</h3>
+                    <div class="scenario-context">
+                        <p>A bank needs to archive 10 years of transaction records (50TB of data) for legal compliance. The data is rarely accessed - maybe once a year for audits. Cost is a major concern.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which storage type would be most appropriate?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: Magnetic Tape</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why magnetic tape is best:</strong></p>
+                        <ul>
+                            <li><strong>Cost:</strong> Cheapest per TB for large archives</li>
+                            <li><strong>Capacity:</strong> Single tapes hold 6-15TB each</li>
+                            <li><strong>Longevity:</strong> Tapes last 30+ years when stored properly</li>
+                            <li><strong>Access pattern:</strong> Perfect for "write once, read rarely" data</li>
+                        </ul>
+                        <p><strong>Why not SSD?</strong> Way too expensive for 50TB of rarely-accessed data.</p>
+                        <p><strong>Why not HDD?</strong> More expensive and HDDs degrade if left unused.</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key factors:</strong> Lowest cost for long-term archival
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="prediction-card" data-question="6">
+                <div class="prediction-scenario">
+                    <h3>Scenario 6: Student Homework</h3>
+                    <div class="scenario-context">
+                        <p>A student needs to save their homework and transfer it between home and school computers. Files are mostly Word documents and PDFs totalling about 5GB.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which storage device would be most suitable?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: USB Flash Drive</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why USB flash drive is best:</strong></p>
+                        <ul>
+                            <li><strong>Portability:</strong> Fits on a keychain, easy to carry</li>
+                            <li><strong>Compatibility:</strong> Works in any computer's USB port</li>
+                            <li><strong>Capacity:</strong> 8-32GB is plenty for documents</li>
+                            <li><strong>Cost:</strong> Affordable (£5-15)</li>
+                            <li><strong>Durability:</strong> No moving parts, survives being in a bag</li>
+                        </ul>
+                        <p><strong>Alternative:</strong> Cloud storage is even better if internet is available!</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key factors:</strong> Portability + Ease of use for small files
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="prediction-card" data-question="7">
+                <div class="prediction-scenario">
+                    <h3>Scenario 7: Film Studio Editing</h3>
+                    <div class="scenario-context">
+                        <p>A film editor needs to work with 4K video files. They need to scrub through footage smoothly, access files instantly, and work with about 2TB of raw video. Speed is critical.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which storage type would be best?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: NVMe SSD</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why NVMe SSD is best:</strong></p>
+                        <ul>
+                            <li><strong>Speed:</strong> 3000-7000 MB/s - essential for 4K editing</li>
+                            <li><strong>Random access:</strong> Instant scrubbing through footage</li>
+                            <li><strong>Capacity:</strong> 2TB NVMe SSDs are available</li>
+                            <li><strong>Reliability:</strong> Consistent performance under heavy use</li>
+                        </ul>
+                        <p><strong>Why not HDD?</strong> Too slow - would cause stuttering when scrubbing.</p>
+                        <p><strong>Cost consideration:</strong> Expensive but necessary for professional work.</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key factors:</strong> Maximum speed for professional video work
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="prediction-card" data-question="8">
+                <div class="prediction-scenario">
+                    <h3>Scenario 8: Software Distribution (Old School)</h3>
+                    <div class="scenario-context">
+                        <p>A company in a region with limited internet wants to distribute their 20GB software to customers physically. They'll produce about 500 copies.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which optical format would be most appropriate?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: Blu-ray Disc</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why Blu-ray is best:</strong></p>
+                        <ul>
+                            <li><strong>Capacity:</strong> 25GB single layer fits the 20GB software</li>
+                            <li><strong>Cost:</strong> Cheaper than USB drives for 500 copies</li>
+                            <li><strong>Standard format:</strong> Can be read by Blu-ray drives</li>
+                        </ul>
+                        <p><strong>Why not DVD?</strong> Only 4.7GB - would need 5 discs per customer!</p>
+                        <p><strong>Why not USB?</strong> More expensive at 500 units.</p>
+                        <p><strong>Note:</strong> Many modern laptops don't have optical drives, so a USB option should also be offered.</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key factors:</strong> Capacity vs cost for physical distribution
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="prediction-card" data-question="9">
+                <div class="prediction-scenario">
+                    <h3>Scenario 9: Dropping a Device</h3>
+                    <div class="scenario-context">
+                        <p>A laptop with an HDD is accidentally dropped from a desk while it's running. Another laptop with an SSD is also dropped.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which laptop is more likely to have data loss? Why?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: The HDD laptop is more likely to have data loss</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Why HDD is more vulnerable:</strong></p>
+                        <ul>
+                            <li><strong>Moving parts:</strong> HDD has spinning platters and a moving read/write head</li>
+                            <li><strong>Head crash:</strong> Impact can cause the head to hit the platter</li>
+                            <li><strong>Physical damage:</strong> Moving parts can be knocked out of alignment</li>
+                        </ul>
+                        <p><strong>Why SSD is safer:</strong></p>
+                        <ul>
+                            <li><strong>No moving parts:</strong> Data stored in flash chips</li>
+                            <li><strong>Shock resistant:</strong> Can withstand significant impact</li>
+                        </ul>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> Moving parts = vulnerability to physical shock
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="prediction-card" data-question="10">
+                <div class="prediction-scenario">
+                    <h3>Scenario 10: Budget Desktop Computer</h3>
+                    <div class="scenario-context">
+                        <p>A family needs a budget desktop for homework, web browsing, and storing family photos (about 2TB total). They want to spend as little as possible on storage.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which storage solution offers the best value?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer: Small SSD + Large HDD (Hybrid approach)</h4>
+                    <div class="answer-reasoning">
+                        <p><strong>Best budget solution:</strong></p>
+                        <ul>
+                            <li><strong>256GB SSD:</strong> For Windows and programs - fast boot and app loading</li>
+                            <li><strong>2TB HDD:</strong> For photos and files - cheap bulk storage</li>
+                        </ul>
+                        <p><strong>Why this combination?</strong></p>
+                        <ul>
+                            <li>Get SSD speed where it matters (OS, programs)</li>
+                            <li>Get HDD capacity where speed doesn't matter (photos, documents)</li>
+                            <li>Total cost is much lower than a 2TB SSD</li>
+                        </ul>
+                        <p><strong>HDD-only alternative:</strong> Cheaper but noticeably slower everyday use.</p>
+                    </div>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> Combining storage types for best value
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-navigation">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.prediction-card');
+                const answer = card.querySelector('.prediction-answer');
+                answer.classList.toggle('hidden');
+                this.textContent = answer.classList.contains('hidden') ? 'Reveal Answer' : 'Hide Answer';
+            });
+        });
+
+        Progress.startActivity('storage-predict', 'storage');
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
+            margin-bottom: var(--space-xl);
+        }
+        .activity-icon {
+            font-size: 3rem;
+            background: var(--theory, #10b981);
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+        }
+        .activity-instructions {
+            background: #f0fdf4;
+            border-left: 4px solid var(--theory, #10b981);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .predictions-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+        .prediction-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .prediction-scenario h3 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-md);
+        }
+        .scenario-context {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+        .prediction-question {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            margin-top: var(--space-md);
+        }
+        .reveal-btn {
+            margin-top: var(--space-md);
+        }
+        .prediction-answer {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 2px solid var(--gray-200);
+        }
+        .prediction-answer h4 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-sm);
+        }
+        .answer-reasoning {
+            margin: var(--space-md) 0;
+        }
+        .answer-reasoning ul {
+            padding-left: var(--space-lg);
+            margin: var(--space-sm) 0;
+        }
+        .answer-reasoning li {
+            margin-bottom: var(--space-xs);
+        }
+        .key-point {
+            background: #ecfdf5;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            border-left: 4px solid var(--theory, #10b981);
+        }
+        .hidden {
+            display: none;
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

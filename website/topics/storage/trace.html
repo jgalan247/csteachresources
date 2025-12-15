@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: Storage Selection - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Secondary Storage</a>
+            <h1>Trace: Storage Selection Analysis</h1>
+            <p class="subtitle">Follow the decision process for choosing the right storage device</p>
+        </div>
+
+        <!-- Exercise 1: Film Production Company -->
+        <section class="activity-section">
+            <h2>Exercise 1: Film Production Company</h2>
+            <div class="scenario-box">
+                <h3>Scenario</h3>
+                <p>A film production company needs to store and transport 4K video footage between filming locations.
+                They need to move 500GB of data quickly and reliably in outdoor environments.</p>
+                <p><strong>Requirements:</strong> High capacity, fast transfer speeds, portable, durable in outdoor conditions</p>
+            </div>
+
+            <div class="trace-exercise" data-exercise="storage-film">
+                <h3>Trace through the storage selection:</h3>
+
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Identify Capacity Requirement</span>
+                    </div>
+                    <div class="step-content">
+                        <p>The company needs to store <strong>500GB</strong> of video footage.</p>
+                        <div class="trace-question">
+                            <p>Which storage types can handle 500GB or more?</p>
+                            <div class="trace-options">
+                                <label><input type="checkbox" value="hdd"> HDD (up to 20TB)</label>
+                                <label><input type="checkbox" value="ssd"> External SSD (up to 8TB)</label>
+                                <label><input type="checkbox" value="usb"> USB Flash Drive (up to 1TB)</label>
+                                <label><input type="checkbox" value="dvd"> DVD (4.7GB per disc)</label>
+                                <label><input type="checkbox" value="bluray"> Blu-ray (25-128GB per disc)</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="hdd,ssd,usb">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Evaluate Speed Requirement</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Fast transfer speeds are needed for large video files.</p>
+                        <div class="trace-question">
+                            <p>From our shortlist (HDD, SSD, USB), which has the fastest transfer speed?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="step2" value="hdd"> HDD (up to 160 MB/s)</label>
+                                <label><input type="radio" name="step2" value="ssd"> External SSD (up to 2,000 MB/s)</label>
+                                <label><input type="radio" name="step2" value="usb"> USB Flash Drive (up to 150 MB/s)</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="ssd">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Check Durability for Outdoor Use</span>
+                    </div>
+                    <div class="step-content">
+                        <p>The storage will be used in outdoor filming environments with potential bumps and vibrations.</p>
+                        <div class="trace-question">
+                            <p>Which storage type has NO moving parts and is most durable?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="step3" value="hdd"> HDD (spinning platters - fragile)</label>
+                                <label><input type="radio" name="step3" value="ssd"> SSD (solid state - no moving parts)</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="ssd">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Final Recommendation</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>Based on our analysis, what is the best storage solution?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="step4" value="wrong1"> External HDD - good capacity but fragile</label>
+                                <label><input type="radio" name="step4" value="correct"> Rugged External SSD - high capacity, fast, durable</label>
+                                <label><input type="radio" name="step4" value="wrong2"> Multiple USB drives - slower and less practical</label>
+                                <label><input type="radio" name="step4" value="wrong3"> Blu-ray discs - would need multiple discs and slow</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-summary hidden">
+                    <h3>Decision Summary</h3>
+                    <div class="summary-path">
+                        <div class="path-item">500GB needed → HDD, SSD, USB viable</div>
+                        <div class="path-item">Fast speeds needed → SSD is fastest</div>
+                        <div class="path-item">Outdoor durability → SSD has no moving parts</div>
+                        <div class="path-item final">Recommendation: Rugged External SSD</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 2: School Archive -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 2: School Archive System</h2>
+            <div class="scenario-box">
+                <h3>Scenario</h3>
+                <p>A school needs to create a long-term archive of student records and historical documents.
+                They have 50TB of data to store for at least 25 years. Cost is a major factor, and the data
+                is rarely accessed (maybe once per year).</p>
+                <p><strong>Requirements:</strong> Massive capacity, long-term reliability, low cost per GB, speed not critical</p>
+            </div>
+
+            <div class="trace-exercise" data-exercise="storage-school">
+                <h3>Trace through the storage selection:</h3>
+
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Evaluate Capacity Options</span>
+                    </div>
+                    <div class="step-content">
+                        <p>The school needs to store <strong>50TB</strong> of archival data.</p>
+                        <div class="trace-question">
+                            <p>Which storage can practically handle 50TB of data?</p>
+                            <div class="trace-options">
+                                <label><input type="checkbox" value="tape"> Magnetic Tape (up to 45TB per tape)</label>
+                                <label><input type="checkbox" value="hdd"> Multiple HDDs (up to 20TB each)</label>
+                                <label><input type="checkbox" value="bluray"> Blu-ray Archive (25-128GB per disc)</label>
+                                <label><input type="checkbox" value="usb"> USB Drives (up to 1TB each)</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="tape,hdd">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Compare Cost Per GB</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Cost is a major factor for the school budget.</p>
+                        <div class="trace-question">
+                            <p>Which storage type has the LOWEST cost per GB for large archives?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="school-step2" value="tape"> Magnetic Tape (~£0.01 per GB)</label>
+                                <label><input type="radio" name="school-step2" value="hdd"> HDD (~£0.02 per GB)</label>
+                                <label><input type="radio" name="school-step2" value="ssd"> SSD (~£0.08 per GB)</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="tape">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Check Long-Term Reliability</span>
+                    </div>
+                    <div class="step-content">
+                        <p>The archive needs to last at least 25 years.</p>
+                        <div class="trace-question">
+                            <p>What is the typical lifespan of magnetic tape when properly stored?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="school-step3" value="wrong1"> 5-10 years</label>
+                                <label><input type="radio" name="school-step3" value="wrong2"> 10-20 years</label>
+                                <label><input type="radio" name="school-step3" value="correct"> 30+ years</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Consider Access Pattern</span>
+                    </div>
+                    <div class="step-content">
+                        <p>The data is rarely accessed - maybe once per year.</p>
+                        <div class="trace-question">
+                            <p>Does the slow sequential access of magnetic tape matter for this use case?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="school-step4" value="correct"> No - infrequent access means speed isn't critical</label>
+                                <label><input type="radio" name="school-step4" value="wrong"> Yes - they should use faster storage anyway</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <span class="step-title">Final Recommendation</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>What is the best storage solution for the school archive?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="school-step5" value="wrong1"> Multiple SSDs - too expensive for 50TB</label>
+                                <label><input type="radio" name="school-step5" value="wrong2"> Blu-ray discs - would need hundreds of discs</label>
+                                <label><input type="radio" name="school-step5" value="correct"> Magnetic Tape Library - cheapest, reliable, high capacity</label>
+                                <label><input type="radio" name="school-step5" value="wrong3"> Cloud storage only - ongoing costs too high</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-summary hidden">
+                    <h3>Decision Summary</h3>
+                    <div class="summary-path">
+                        <div class="path-item">50TB needed → Tape or HDD arrays</div>
+                        <div class="path-item">Budget limited → Tape is cheapest per GB</div>
+                        <div class="path-item">25 year storage → Tape lasts 30+ years</div>
+                        <div class="path-item">Rare access → Sequential access is acceptable</div>
+                        <div class="path-item final">Recommendation: Magnetic Tape Library</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 3: Gaming Setup -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 3: Gaming PC Setup</h2>
+            <div class="scenario-box">
+                <h3>Scenario</h3>
+                <p>A gamer is building a new PC and wants fast game loading times. They have a
+                budget for 2TB of game storage. Games need to load quickly, and they want
+                minimal waiting during gameplay.</p>
+                <p><strong>Requirements:</strong> Fast read/write speeds, 2TB capacity, reasonable cost, internal installation</p>
+            </div>
+
+            <div class="trace-exercise" data-exercise="storage-gaming">
+                <h3>Trace through the storage selection:</h3>
+
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Identify Speed Priority</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Fast loading times are the main priority for gaming.</p>
+                        <div class="trace-question">
+                            <p>Rank these storage types by READ speed (fastest to slowest):</p>
+                            <div class="rank-exercise">
+                                <div class="rank-item" draggable="true" data-value="nvme">NVMe SSD (up to 7,000 MB/s)</div>
+                                <div class="rank-item" draggable="true" data-value="sata-ssd">SATA SSD (up to 550 MB/s)</div>
+                                <div class="rank-item" draggable="true" data-value="hdd">HDD (up to 160 MB/s)</div>
+                            </div>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="gaming-step1" value="correct"> NVMe SSD → SATA SSD → HDD</label>
+                                <label><input type="radio" name="gaming-step1" value="wrong1"> SATA SSD → NVMe SSD → HDD</label>
+                                <label><input type="radio" name="gaming-step1" value="wrong2"> HDD → SATA SSD → NVMe SSD</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Check 2TB Availability</span>
+                    </div>
+                    <div class="step-content">
+                        <p>The gamer needs 2TB of storage capacity.</p>
+                        <div class="trace-question">
+                            <p>Are 2TB NVMe SSDs available at reasonable prices?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="gaming-step2" value="correct"> Yes - 2TB NVMe SSDs are common (£100-200)</label>
+                                <label><input type="radio" name="gaming-step2" value="wrong"> No - NVMe drives are too small for 2TB</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Compare with SATA SSD</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Consider if the extra speed of NVMe is worth the cost difference.</p>
+                        <div class="trace-question">
+                            <p>NVMe is faster, but how much faster than SATA SSD for game loading?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="gaming-step3" value="wrong1"> About 2x faster</label>
+                                <label><input type="radio" name="gaming-step3" value="correct"> About 5-10x faster (theoretical), but real-world game loading is 20-50% faster</label>
+                                <label><input type="radio" name="gaming-step3" value="wrong2"> No noticeable difference in games</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Final Recommendation</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>What is the best storage solution for gaming?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="gaming-step4" value="wrong1"> 2TB HDD - cheapest option</label>
+                                <label><input type="radio" name="gaming-step4" value="wrong2"> 2TB SATA SSD - good balance</label>
+                                <label><input type="radio" name="gaming-step4" value="correct"> 2TB NVMe SSD - fastest loading times</label>
+                                <label><input type="radio" name="gaming-step4" value="wrong3"> External USB drive - for portability</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-summary hidden">
+                    <h3>Decision Summary</h3>
+                    <div class="summary-path">
+                        <div class="path-item">Fast loading priority → NVMe is fastest</div>
+                        <div class="path-item">2TB capacity → Available at reasonable price</div>
+                        <div class="path-item">Worth the cost → Noticeable gaming improvement</div>
+                        <div class="path-item final">Recommendation: 2TB NVMe SSD</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 4: Music Distribution -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 4: Music Distribution</h2>
+            <div class="scenario-box">
+                <h3>Scenario</h3>
+                <p>A band wants to sell physical copies of their album at concerts. Each album is
+                about 700MB. They need cheap, portable media that fans can play in cars and home stereos.
+                They'll distribute 1000 copies.</p>
+                <p><strong>Requirements:</strong> Low cost per unit, universal compatibility, standard audio format</p>
+            </div>
+
+            <div class="trace-exercise" data-exercise="storage-music">
+                <h3>Trace through the storage selection:</h3>
+
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Consider Compatibility</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Fans need to play the album in cars and home stereos.</p>
+                        <div class="trace-question">
+                            <p>Which format is universally compatible with CD players in cars and homes?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="music-step1" value="correct"> Audio CD</label>
+                                <label><input type="radio" name="music-step1" value="wrong1"> USB drive with MP3 files</label>
+                                <label><input type="radio" name="music-step1" value="wrong2"> SD card</label>
+                                <label><input type="radio" name="music-step1" value="wrong3"> Blu-ray disc</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Check Capacity</span>
+                    </div>
+                    <div class="step-content">
+                        <p>The album is 700MB of audio data.</p>
+                        <div class="trace-question">
+                            <p>What is the capacity of a standard CD?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="music-step2" value="wrong1"> 250MB</label>
+                                <label><input type="radio" name="music-step2" value="correct"> 700MB (80 minutes of audio)</label>
+                                <label><input type="radio" name="music-step2" value="wrong2"> 4.7GB</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Calculate Cost</span>
+                    </div>
+                    <div class="step-content">
+                        <p>They need 1000 copies for distribution.</p>
+                        <div class="trace-question">
+                            <p>Which is cheaper for 1000 copies?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="music-step3" value="correct"> Bulk CDs (~£0.20-0.50 each when duplicated)</label>
+                                <label><input type="radio" name="music-step3" value="wrong1"> 1000 USB drives (~£3-5 each)</label>
+                                <label><input type="radio" name="music-step3" value="wrong2"> 1000 SD cards (~£2-4 each)</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Final Recommendation</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>What is the best distribution format?</p>
+                            <div class="trace-options single">
+                                <label><input type="radio" name="music-step4" value="correct"> Pressed/Duplicated Audio CDs</label>
+                                <label><input type="radio" name="music-step4" value="wrong1"> USB drives with MP3s</label>
+                                <label><input type="radio" name="music-step4" value="wrong2"> Download codes only</label>
+                                <label><input type="radio" name="music-step4" value="wrong3"> Blu-ray audio discs</label>
+                            </div>
+                            <button class="btn btn-secondary check-step" data-correct="correct">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-summary hidden">
+                    <h3>Decision Summary</h3>
+                    <div class="summary-path">
+                        <div class="path-item">Universal compatibility → Audio CD works everywhere</div>
+                        <div class="path-item">700MB album → Fits perfectly on CD</div>
+                        <div class="path-item">1000 copies → CDs are cheapest to duplicate</div>
+                        <div class="path-item final">Recommendation: Audio CD Distribution</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="example.html" class="btn btn-secondary">← Worked Example</a>
+            <a href="parsons.html" class="btn btn-primary">Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Trace exercise functionality
+        document.querySelectorAll('.trace-exercise').forEach(exercise => {
+            const exerciseId = exercise.dataset.exercise;
+
+            exercise.querySelectorAll('.check-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    const step = this.closest('.trace-step');
+                    const stepNum = parseInt(step.dataset.step);
+                    const correct = this.dataset.correct.split(',');
+                    const feedback = step.querySelector('.feedback');
+
+                    // Get selected values
+                    let selected = [];
+                    const checkboxes = step.querySelectorAll('input[type="checkbox"]:checked');
+                    const radios = step.querySelectorAll('input[type="radio"]:checked');
+
+                    checkboxes.forEach(cb => selected.push(cb.value));
+                    radios.forEach(r => selected.push(r.value));
+
+                    // Check if correct
+                    const isCorrect = correct.length === selected.length &&
+                        correct.every(c => selected.includes(c));
+
+                    if (isCorrect) {
+                        feedback.innerHTML = '<span class="success">Correct! Well done.</span>';
+                        feedback.className = 'feedback success';
+                        step.classList.add('completed');
+
+                        // Unlock next step
+                        const nextStep = exercise.querySelector(`.trace-step[data-step="${stepNum + 1}"]`);
+                        if (nextStep) {
+                            nextStep.classList.remove('locked');
+                            setTimeout(() => {
+                                nextStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 500);
+                        } else {
+                            // Show summary
+                            const summary = exercise.querySelector('.trace-summary');
+                            if (summary) {
+                                summary.classList.remove('hidden');
+                                setTimeout(() => {
+                                    summary.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }, 500);
+                            }
+                            // Track completion
+                            Progress.completeActivity('storage', `trace-${exerciseId}`);
+                        }
+                    } else {
+                        feedback.innerHTML = '<span class="error">Not quite. Try again!</span>';
+                        feedback.className = 'feedback error';
+                    }
+                });
+            });
+        });
+
+        // Track page visit
+        Progress.startTopic('storage');
+    </script>
+    <style>
+        .scenario-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+        .scenario-box h3 {
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+        .trace-exercise {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .trace-step {
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .trace-step.locked {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .trace-step.completed {
+            border-color: var(--success);
+            background: #f0fdf4;
+        }
+        .step-header {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        .trace-step.completed .step-header {
+            background: #dcfce7;
+        }
+        .step-number {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .trace-step.completed .step-number {
+            background: var(--success);
+        }
+        .step-title {
+            font-weight: 600;
+        }
+        .step-content {
+            padding: var(--space-lg);
+        }
+        .trace-question {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .trace-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin: var(--space-md) 0;
+        }
+        .trace-options label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .trace-options label:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+        }
+        .feedback.success {
+            background: #dcfce7;
+            color: var(--success);
+        }
+        .feedback.error {
+            background: #fef2f2;
+            color: var(--error);
+        }
+        .trace-summary {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--success);
+        }
+        .trace-summary h3 {
+            color: var(--success);
+            margin-top: 0;
+        }
+        .summary-path {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .path-item {
+            padding: var(--space-sm) var(--space-md);
+            background: white;
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--gray-300);
+        }
+        .path-item.final {
+            border-left-color: var(--success);
+            font-weight: bold;
+            background: #dcfce7;
+        }
+        .hidden {
+            display: none;
+        }
+        .rank-exercise {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            margin: var(--space-md) 0;
+            padding: var(--space-sm);
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+        }
+        .rank-item {
+            padding: var(--space-sm);
+            background: white;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+    </style>
+</body>
+</html>
