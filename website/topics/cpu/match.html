@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match: CPU Registers - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .theory-hero {
+            background: linear-gradient(135deg, var(--theory-light) 0%, white 100%);
+        }
+        .match-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .match-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .match-section h2 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-lg);
+        }
+        .match-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+        }
+        @media (max-width: 768px) {
+            .match-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .column-header {
+            text-align: center;
+            font-weight: 600;
+            color: var(--theory-dark);
+            padding: var(--space-md);
+            background: var(--theory-light);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+        .match-items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            min-height: 300px;
+        }
+        .match-item {
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: grab;
+            transition: all var(--transition-fast);
+            user-select: none;
+            font-weight: 500;
+        }
+        .match-item:active {
+            cursor: grabbing;
+        }
+        .match-item.dragging {
+            opacity: 0.5;
+            transform: scale(1.05);
+        }
+        .match-item.selected {
+            outline: 3px solid var(--theory);
+            outline-offset: 2px;
+        }
+        .register-item {
+            background: var(--theory-light);
+            border: 2px solid var(--theory);
+            text-align: center;
+        }
+        .definition-item {
+            background: var(--gray-100);
+            border: 2px solid var(--gray-300);
+        }
+        .definition-item.placeholder {
+            border-style: dashed;
+            background: var(--gray-50);
+            color: var(--gray-400);
+            text-align: center;
+        }
+        .definition-item.correct {
+            background: var(--success-light);
+            border-color: var(--success);
+        }
+        .definition-item.incorrect {
+            background: var(--error-light);
+            border-color: var(--error);
+        }
+        .drop-zone {
+            min-height: 50px;
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        .drop-zone.drag-over {
+            border-color: var(--theory);
+            background: var(--theory-light);
+        }
+        .drop-zone .register-label {
+            font-weight: 600;
+            color: var(--theory-dark);
+            min-width: 60px;
+        }
+        .drop-zone .dropped-item {
+            flex: 1;
+            padding: var(--space-sm) var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+        }
+        .drop-zone .dropped-item:hover {
+            background: var(--gray-200);
+        }
+        .drop-zone.correct {
+            border-color: var(--success);
+            background: var(--success-light);
+        }
+        .drop-zone.incorrect {
+            border-color: var(--error);
+            background: var(--error-light);
+        }
+        .category-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+        .category-box {
+            min-height: 150px;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 3px dashed var(--gray-300);
+        }
+        .category-box.address-box {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.05);
+        }
+        .category-box.data-box {
+            border-color: var(--success);
+            background: rgba(16, 185, 129, 0.05);
+        }
+        .category-box h3 {
+            margin-bottom: var(--space-md);
+            text-align: center;
+        }
+        .category-box.address-box h3 {
+            color: var(--primary);
+        }
+        .category-box.data-box h3 {
+            color: var(--success);
+        }
+        .category-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            justify-content: center;
+            min-height: 60px;
+        }
+        .draggable-register {
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: grab;
+            font-weight: 600;
+            background: var(--theory-light);
+            border: 2px solid var(--theory);
+            transition: all var(--transition-fast);
+        }
+        .draggable-register:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .draggable-register.in-address {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+        .draggable-register.in-data {
+            background: var(--success-light);
+            border-color: var(--success);
+        }
+        .register-pool {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            padding: var(--space-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+        .results {
+            background: var(--theory-light);
+            border: 2px solid var(--theory);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            margin-top: var(--space-lg);
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--theory-dark);
+        }
+        .feedback-text {
+            margin-top: var(--space-md);
+            font-size: 1.1rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-top: var(--space-lg);
+        }
+        .instructions {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .instructions h3 {
+            margin-bottom: var(--space-sm);
+        }
+        .activity-tabs {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+        .activity-tab {
+            padding: var(--space-sm) var(--space-lg);
+            border: 2px solid var(--theory);
+            background: white;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+        .activity-tab:hover {
+            background: var(--theory-light);
+        }
+        .activity-tab.active {
+            background: var(--theory);
+            color: white;
+        }
+        .activity-content {
+            display: none;
+        }
+        .activity-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero theory-hero">
+            <a href="index.html" style="color: var(--theory); text-decoration: none;">← Back to CPU</a>
+            <h1>Match: CPU Registers</h1>
+            <p class="hero-subtitle">Test your knowledge of CPU registers and what they store</p>
+        </header>
+
+        <div class="match-container">
+            <!-- Activity Tabs -->
+            <div class="activity-tabs">
+                <button class="activity-tab active" data-activity="classify">Activity 1: Classify Registers</button>
+                <button class="activity-tab" data-activity="match">Activity 2: Match Definitions</button>
+            </div>
+
+            <!-- Activity 1: Classify Registers as Data or Address -->
+            <div class="activity-content active" id="classify-activity">
+                <div class="instructions">
+                    <h3>Activity 1: Data vs Address</h3>
+                    <p>Drag each register to the correct category. Remember: some registers store <strong>addresses</strong> (memory locations), while others store <strong>data</strong> (actual values).</p>
+                </div>
+
+                <div class="register-pool" id="register-pool">
+                    <div class="draggable-register" draggable="true" data-register="PC">PC</div>
+                    <div class="draggable-register" draggable="true" data-register="MAR">MAR</div>
+                    <div class="draggable-register" draggable="true" data-register="MDR">MDR</div>
+                    <div class="draggable-register" draggable="true" data-register="ACC">ACC</div>
+                </div>
+
+                <div class="category-grid">
+                    <div class="category-box address-box" id="address-category" data-category="address">
+                        <h3>📍 Stores ADDRESS</h3>
+                        <p style="font-size: 0.9rem; color: var(--gray-500); text-align: center; margin-bottom: var(--space-md);">Memory locations - WHERE to look</p>
+                        <div class="category-items"></div>
+                    </div>
+                    <div class="category-box data-box" id="data-category" data-category="data">
+                        <h3>📦 Stores DATA</h3>
+                        <p style="font-size: 0.9rem; color: var(--gray-500); text-align: center; margin-bottom: var(--space-md);">Actual values - WHAT we found</p>
+                        <div class="category-items"></div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="check-classify">Check Answers</button>
+                    <button class="btn btn-secondary" id="reset-classify">Reset</button>
+                </div>
+
+                <div class="results" id="classify-results">
+                    <h2>Results</h2>
+                    <div class="score" id="classify-score">0/4</div>
+                    <p class="feedback-text" id="classify-feedback"></p>
+                </div>
+            </div>
+
+            <!-- Activity 2: Match Registers to Definitions -->
+            <div class="activity-content" id="match-activity">
+                <div class="instructions">
+                    <h3>Activity 2: Match Definitions</h3>
+                    <p>Click a register, then click the matching definition to pair them together.</p>
+                </div>
+
+                <div class="match-grid">
+                    <div class="column">
+                        <div class="column-header">Registers</div>
+                        <div class="match-items" id="registers-column">
+                            <div class="match-item register-item" data-register="PC">PC (Program Counter)</div>
+                            <div class="match-item register-item" data-register="MAR">MAR (Memory Address Register)</div>
+                            <div class="match-item register-item" data-register="MDR">MDR (Memory Data Register)</div>
+                            <div class="match-item register-item" data-register="ACC">ACC (Accumulator)</div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="column-header">Definitions</div>
+                        <div class="match-items" id="definitions-column">
+                            <div class="match-item definition-item" data-answer="ACC">Stores the results of calculations from the ALU</div>
+                            <div class="match-item definition-item" data-answer="PC">Holds the address of the NEXT instruction to be fetched</div>
+                            <div class="match-item definition-item" data-answer="MDR">Holds the data that has been fetched from memory</div>
+                            <div class="match-item definition-item" data-answer="MAR">Holds the address of the memory location currently being accessed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="check-match">Check Answers</button>
+                    <button class="btn btn-secondary" id="reset-match">Reset</button>
+                </div>
+
+                <div class="results" id="match-results">
+                    <h2>Results</h2>
+                    <div class="score" id="match-score">0/4</div>
+                    <p class="feedback-text" id="match-feedback"></p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div style="display: flex; justify-content: space-between; margin-top: var(--space-xl);">
+                <a href="learn.html" class="btn btn-secondary">← Back to Learn</a>
+                <a href="quiz.html" class="btn btn-primary">Take the Quiz →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Correct answers
+        const correctCategories = {
+            'PC': 'address',
+            'MAR': 'address',
+            'MDR': 'data',
+            'ACC': 'data'
+        };
+
+        // Activity tabs
+        document.querySelectorAll('.activity-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.activity-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.activity-content').forEach(c => c.classList.remove('active'));
+
+                this.classList.add('active');
+                document.getElementById(this.dataset.activity + '-activity').classList.add('active');
+            });
+        });
+
+        // ==========================================
+        // ACTIVITY 1: Classify Registers
+        // ==========================================
+        let draggedRegister = null;
+
+        document.querySelectorAll('.draggable-register').forEach(register => {
+            register.addEventListener('dragstart', function(e) {
+                draggedRegister = this;
+                this.classList.add('dragging');
+            });
+
+            register.addEventListener('dragend', function() {
+                this.classList.remove('dragging');
+            });
+        });
+
+        document.querySelectorAll('.category-box').forEach(box => {
+            box.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.borderStyle = 'solid';
+                this.style.opacity = '0.9';
+            });
+
+            box.addEventListener('dragleave', function() {
+                this.style.borderStyle = 'dashed';
+                this.style.opacity = '1';
+            });
+
+            box.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.borderStyle = 'dashed';
+                this.style.opacity = '1';
+
+                if (draggedRegister) {
+                    const itemsContainer = this.querySelector('.category-items');
+                    itemsContainer.appendChild(draggedRegister);
+
+                    // Update styling based on category
+                    if (this.dataset.category === 'address') {
+                        draggedRegister.classList.remove('in-data');
+                        draggedRegister.classList.add('in-address');
+                    } else {
+                        draggedRegister.classList.remove('in-address');
+                        draggedRegister.classList.add('in-data');
+                    }
+                }
+            });
+        });
+
+        // Also allow dropping back to pool
+        document.getElementById('register-pool').addEventListener('dragover', function(e) {
+            e.preventDefault();
+        });
+
+        document.getElementById('register-pool').addEventListener('drop', function(e) {
+            e.preventDefault();
+            if (draggedRegister) {
+                this.appendChild(draggedRegister);
+                draggedRegister.classList.remove('in-address', 'in-data');
+            }
+        });
+
+        // Check classify answers
+        document.getElementById('check-classify').addEventListener('click', function() {
+            let score = 0;
+            const addressBox = document.getElementById('address-category');
+            const dataBox = document.getElementById('data-category');
+
+            // Check address category
+            addressBox.querySelectorAll('.draggable-register').forEach(reg => {
+                if (correctCategories[reg.dataset.register] === 'address') {
+                    score++;
+                    reg.style.background = 'var(--success-light)';
+                    reg.style.borderColor = 'var(--success)';
+                } else {
+                    reg.style.background = 'var(--error-light)';
+                    reg.style.borderColor = 'var(--error)';
+                }
+            });
+
+            // Check data category
+            dataBox.querySelectorAll('.draggable-register').forEach(reg => {
+                if (correctCategories[reg.dataset.register] === 'data') {
+                    score++;
+                    reg.style.background = 'var(--success-light)';
+                    reg.style.borderColor = 'var(--success)';
+                } else {
+                    reg.style.background = 'var(--error-light)';
+                    reg.style.borderColor = 'var(--error)';
+                }
+            });
+
+            // Show results
+            const results = document.getElementById('classify-results');
+            results.classList.add('show');
+            document.getElementById('classify-score').textContent = score + '/4';
+
+            const feedback = document.getElementById('classify-feedback');
+            if (score === 4) {
+                feedback.textContent = 'Perfect! PC and MAR store addresses, MDR and ACC store data.';
+            } else if (score >= 2) {
+                feedback.textContent = 'Good try! Remember: PC and MAR store addresses (where to look). MDR and ACC store data (what we found).';
+            } else {
+                feedback.textContent = 'Keep practicing! Hint: MAR has "Address" in its name, MDR has "Data" in its name.';
+            }
+
+            // Save progress
+            if (typeof saveProgress === 'function') {
+                saveProgress('cpu-match', score === 4 ? 100 : Math.round((score / 4) * 100));
+            }
+        });
+
+        // Reset classify
+        document.getElementById('reset-classify').addEventListener('click', function() {
+            const pool = document.getElementById('register-pool');
+            document.querySelectorAll('.draggable-register').forEach(reg => {
+                pool.appendChild(reg);
+                reg.classList.remove('in-address', 'in-data');
+                reg.style.background = '';
+                reg.style.borderColor = '';
+            });
+            document.getElementById('classify-results').classList.remove('show');
+        });
+
+        // ==========================================
+        // ACTIVITY 2: Match Definitions
+        // ==========================================
+        let selectedRegister = null;
+        let matches = {};
+
+        document.querySelectorAll('.register-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Deselect if clicking same item
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    selectedRegister = null;
+                    return;
+                }
+
+                // Select this register
+                document.querySelectorAll('.register-item').forEach(r => r.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedRegister = this.dataset.register;
+            });
+        });
+
+        document.querySelectorAll('.definition-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (selectedRegister && !this.classList.contains('matched')) {
+                    // Remove any previous match for this register
+                    document.querySelectorAll('.definition-item').forEach(def => {
+                        if (def.dataset.matchedTo === selectedRegister) {
+                            def.dataset.matchedTo = '';
+                            def.textContent = def.dataset.originalText || def.textContent;
+                            def.style.background = '';
+                        }
+                    });
+
+                    // Store original text if not already stored
+                    if (!this.dataset.originalText) {
+                        this.dataset.originalText = this.textContent;
+                    }
+
+                    // Create the match
+                    this.dataset.matchedTo = selectedRegister;
+                    this.textContent = selectedRegister + ': ' + this.dataset.originalText;
+                    this.style.background = 'var(--theory-light)';
+                    matches[selectedRegister] = this.dataset.answer;
+
+                    // Deselect
+                    document.querySelectorAll('.register-item').forEach(r => r.classList.remove('selected'));
+                    selectedRegister = null;
+                }
+            });
+        });
+
+        // Check match answers
+        document.getElementById('check-match').addEventListener('click', function() {
+            let score = 0;
+
+            document.querySelectorAll('.definition-item').forEach(item => {
+                const matchedTo = item.dataset.matchedTo;
+                const correctAnswer = item.dataset.answer;
+
+                if (matchedTo) {
+                    if (matchedTo === correctAnswer) {
+                        score++;
+                        item.classList.add('correct');
+                        item.classList.remove('incorrect');
+                    } else {
+                        item.classList.add('incorrect');
+                        item.classList.remove('correct');
+                    }
+                }
+            });
+
+            // Show results
+            const results = document.getElementById('match-results');
+            results.classList.add('show');
+            document.getElementById('match-score').textContent = score + '/4';
+
+            const feedback = document.getElementById('match-feedback');
+            if (score === 4) {
+                feedback.textContent = 'Excellent! You know all the register definitions!';
+            } else if (score >= 2) {
+                feedback.textContent = 'Good progress! Review the definitions you got wrong.';
+            } else {
+                feedback.textContent = 'Keep learning! Go back to the Learn page to review.';
+            }
+
+            // Save progress
+            if (typeof saveProgress === 'function') {
+                saveProgress('cpu-match', score === 4 ? 100 : Math.round((score / 4) * 100));
+            }
+        });
+
+        // Reset match
+        document.getElementById('reset-match').addEventListener('click', function() {
+            document.querySelectorAll('.definition-item').forEach(item => {
+                item.classList.remove('correct', 'incorrect', 'matched');
+                item.dataset.matchedTo = '';
+                if (item.dataset.originalText) {
+                    item.textContent = item.dataset.originalText;
+                }
+                item.style.background = '';
+            });
+            document.querySelectorAll('.register-item').forEach(r => r.classList.remove('selected'));
+            selectedRegister = null;
+            matches = {};
+            document.getElementById('match-results').classList.remove('show');
+        });
+    </script>
+</body>
+</html>

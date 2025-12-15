@@ -1,0 +1,473 @@
+# Unplugged Activity: Human CPU Simulation
+# Evidence-based approach from CS Unplugged research
+# Applies: Embodied cognition, collaborative learning, semantic waves
+
+id: unplugged-cpu-001
+title: "Human CPU Simulation"
+type: unplugged
+topic: computer-systems
+subtopic: fetch-execute-cycle
+
+# Activity metadata
+metadata:
+  duration_minutes: 20-30
+  group_size: 6-12 students active, others observe
+  suitable_for: [ks3, ks4]
+  difficulty: foundation
+  space_required: "Classroom with space to move between 'stations'"
+
+# Learning connection
+learning_objectives:
+  - Understand how CPU components work together
+  - Experience the fetch-execute cycle kinaesthetically
+  - Recognise the role of each CPU component
+  - Understand sequential instruction execution
+
+# Why this works (research basis)
+research_basis: |
+  CS Unplugged activities have been shown to:
+  - Raise students' "interest, curiosity and motivation" (Nishida et al., 2009)
+  - Enable collaborative learning and discussion
+  - Connect abstract concepts to physical experience (embodied cognition)
+  - Reduce cognitive load by separating concept from computer syntax
+
+  Semantic waves approach: Start with unpacked, concrete activity,
+  then repack into formal technical understanding.
+
+# ============================================
+# BASIC VERSION (KS3)
+# ============================================
+basic_version:
+  title: "Human CPU - Basic (KS3)"
+  focus: "Four components, four-stage cycle"
+
+  roles:
+    - role: "Control Unit"
+      badge_colour: Blue
+      description: "The boss who coordinates everything"
+      responsibilities:
+        - Goes to RAM to fetch instructions
+        - Reads and decodes what instructions mean
+        - Tells other components what to do
+        - Announces each stage to the class
+
+    - role: "ALU"
+      badge_colour: Green
+      description: "The calculator"
+      responsibilities:
+        - Performs calculations when asked
+        - Can use physical calculator for accuracy
+        - Announces results of calculations
+
+    - role: "Register A"
+      badge_colour: Orange
+      description: "Temporary storage hand 1"
+      responsibilities:
+        - Holds one number at a time
+        - Shows current value on whiteboard/card
+        - Gives value to ALU when asked
+
+    - role: "Register B"
+      badge_colour: Orange
+      description: "Temporary storage hand 2"
+      responsibilities:
+        - Holds one number at a time
+        - Shows current value on whiteboard/card
+        - Receives results from ALU
+
+    - role: "RAM"
+      badge_colour: Purple
+      description: "The library of instructions"
+      responsibilities:
+        - Holds all instruction cards in order
+        - Gives next instruction when Control Unit asks
+        - Tracks which instruction is next
+
+    - role: "Output Screen"
+      badge_colour: Red
+      description: "The display"
+      responsibilities:
+        - Writes results on classroom whiteboard
+        - Only writes when told to OUTPUT
+
+  setup:
+    materials:
+      - "6 role badges/labels (colours as above)"
+      - "Mini whiteboards for registers (to show current values)"
+      - "Instruction cards (see below)"
+      - "Classroom whiteboard for output"
+      - "Number cards 0-20 (optional, for initial values)"
+
+    room_layout: |
+      Set up distinct areas:
+
+      [RAM CORNER]           [OUTPUT BOARD]
+         📚                      📺
+          ↓
+      [---- CPU AREA ----]
+      [CU]  [ALU]  [REG A]  [REG B]
+       👤    👤      👤       👤
+
+    instruction_cards:
+      - card: "LOAD 5"
+        meaning: "Put the number 5 into Register A"
+      - card: "ADD 3"
+        meaning: "Add 3 to Register A"
+      - card: "STORE B"
+        meaning: "Copy Register A value to Register B"
+      - card: "OUTPUT"
+        meaning: "Display Register A value on screen"
+
+    sample_program:
+      - "LOAD 5"
+      - "ADD 3"
+      - "OUTPUT"
+
+  activity_script:
+    introduction: |
+      "Today we're going to become a human computer! Six of you will
+      play different parts of the CPU, and we'll see how a computer
+      actually runs a program, one instruction at a time."
+
+    round_1:
+      instruction: "LOAD 5"
+      stages:
+        - stage: "FETCH"
+          action: |
+            CU: Walk to RAM corner
+            CU: "I am FETCHING the next instruction"
+            RAM: Hand over "LOAD 5" card
+            CU: Return to CPU area with card
+          say: "I have fetched: LOAD 5"
+
+        - stage: "DECODE"
+          action: |
+            CU: Read the card
+            CU: Work out what it means
+          say: "I am DECODING. LOAD 5 means: Put the number 5 into Register A"
+
+        - stage: "EXECUTE"
+          action: |
+            CU: Tell Register A what to do
+            Register A: Write "5" on their whiteboard
+          say: "EXECUTING. Register A, store the number 5!"
+          register_a_says: "I now hold the value 5"
+
+        - stage: "STORE"
+          action: |
+            CU: Check the result is stored
+          say: "STORING complete. Register A contains 5. Cycle complete!"
+
+    round_2:
+      instruction: "ADD 3"
+      stages:
+        - stage: "FETCH"
+          action: "CU fetches 'ADD 3' from RAM"
+          say: "I have fetched: ADD 3"
+
+        - stage: "DECODE"
+          action: "CU interprets the instruction"
+          say: "DECODING. ADD 3 means: Add 3 to whatever is in Register A"
+
+        - stage: "EXECUTE"
+          action: |
+            CU: "ALU, take the value from Register A (5) and add 3"
+            Register A: Shows whiteboard to ALU
+            ALU: Uses calculator: 5 + 3 = 8
+            ALU: "The result is 8"
+          say: "EXECUTING. ALU, calculate Register A plus 3!"
+
+        - stage: "STORE"
+          action: |
+            CU: "Register A, store the result"
+            Register A: Updates whiteboard to "8"
+          say: "STORING. Register A is now 8. Cycle complete!"
+
+    round_3:
+      instruction: "OUTPUT"
+      stages:
+        - stage: "FETCH"
+          say: "I have fetched: OUTPUT"
+
+        - stage: "DECODE"
+          say: "DECODING. OUTPUT means: Display Register A on the screen"
+
+        - stage: "EXECUTE"
+          action: |
+            CU: "Register A, tell Output Screen your value"
+            Register A: "My value is 8"
+            Output Screen: Writes "8" on classroom board
+          say: "EXECUTING. Display the value!"
+
+        - stage: "STORE"
+          say: "Nothing to store. Output complete. Program finished!"
+
+  debrief:
+    questions:
+      - question: "How many fetch-execute cycles did we do?"
+        answer: "Three - one for each instruction"
+      - question: "What would happen if the ALU tried to calculate before DECODE?"
+        answer: "It wouldn't know what calculation to do!"
+      - question: "Why does the Control Unit need to go to RAM every time?"
+        answer: "Each instruction is stored in RAM - CPU doesn't remember them"
+      - question: "What if we swapped the order of instructions?"
+        answer: "Program would do something different - order matters!"
+
+    key_learning_points:
+      - "Every instruction needs its own Fetch-Decode-Execute cycle"
+      - "Control Unit coordinates everything but doesn't do calculations"
+      - "ALU does maths, but only when told what to do"
+      - "Registers are temporary storage - they get overwritten"
+      - "Real CPUs do billions of these cycles every second!"
+
+# ============================================
+# ADVANCED VERSION (KS4)
+# ============================================
+advanced_version:
+  title: "Register Relay - Advanced (KS4)"
+  focus: "Specific registers (PC, MAR, MDR, ACC)"
+
+  roles:
+    - role: "Control Unit"
+      badge_colour: Blue
+      responsibilities:
+        - Coordinates the fetch-decode-execute cycle
+        - Decodes instructions
+        - Directs register transfers
+
+    - role: "ALU"
+      badge_colour: Green
+      responsibilities:
+        - Performs calculations
+        - Receives operands from ACC and MDR
+
+    - role: "PC (Program Counter)"
+      badge_colour: Yellow
+      responsibilities:
+        - Holds address of NEXT instruction
+        - Passes address to MAR during FETCH
+        - Increments self after each FETCH
+
+    - role: "MAR (Memory Address Register)"
+      badge_colour: Orange
+      responsibilities:
+        - Holds address currently being accessed
+        - Sends address to RAM
+        - Updated during FETCH and EXECUTE
+
+    - role: "MDR (Memory Data Register)"
+      badge_colour: Orange
+      responsibilities:
+        - Receives data/instructions from RAM
+        - Passes data to other registers
+        - Bidirectional (can also send TO RAM)
+
+    - role: "ACC (Accumulator)"
+      badge_colour: Red
+      responsibilities:
+        - Stores results from ALU
+        - Provides operand to ALU
+        - Main working register
+
+    - role: "RAM"
+      badge_colour: Purple
+      responsibilities:
+        - Holds program and data at addresses
+        - Responds to address in MAR
+        - Returns contents to MDR
+
+  setup:
+    materials:
+      - "7 role badges"
+      - "Address cards (100, 101, 102, 200, 201)"
+      - "Instruction cards with addresses"
+      - "Data value cards"
+      - "Mini whiteboards for each register"
+      - "RAM contents display (large poster/whiteboard)"
+
+    ram_contents_display: |
+      Display this on a poster or whiteboard:
+
+      | Address | Contents |
+      |---------|----------|
+      | 100     | LDA 200  |
+      | 101     | ADD 201  |
+      | 102     | OUT      |
+      | 200     | 12       |
+      | 201     | 5        |
+
+    initial_state: |
+      - PC holds card: "100"
+      - All other registers: blank whiteboards
+      - RAM student has access to contents table
+
+  activity_script:
+    introduction: |
+      "This is the advanced version with specific CPU registers.
+      At GCSE, you need to know what PC, MAR, MDR, and ACC do.
+      Let's trace through a real program showing exactly which
+      registers change at each step."
+
+    instruction_1: "LDA 200 (Load value from address 200 into ACC)"
+    trace_1:
+      - stage: "FETCH - Step 1"
+        action: "PC passes address card (100) to MAR"
+        register_states:
+          PC: "100 (passing to MAR)"
+          MAR: "100 (receiving)"
+        announcement: "Address 100 is now in MAR"
+
+      - stage: "FETCH - Step 2"
+        action: "MAR shows address to RAM; RAM gives 'LDA 200' card to MDR"
+        register_states:
+          MAR: "100"
+          MDR: "LDA 200"
+        announcement: "Instruction 'LDA 200' now in MDR"
+
+      - stage: "FETCH - Step 3"
+        action: "PC increments (picks up card 101)"
+        register_states:
+          PC: "101"
+        announcement: "PC updated to 101 - ready for next instruction"
+
+      - stage: "DECODE"
+        action: "CU takes instruction from MDR, interprets it"
+        announcement: "LDA 200 means: Load value from address 200 into ACC"
+
+      - stage: "EXECUTE - Step 1"
+        action: "Put 200 in MAR (need to access address 200)"
+        register_states:
+          MAR: "200"
+        announcement: "MAR set to 200 to access data"
+
+      - stage: "EXECUTE - Step 2"
+        action: "RAM returns contents of 200 (value 12) to MDR"
+        register_states:
+          MDR: "12"
+        announcement: "Value 12 retrieved from memory"
+
+      - stage: "EXECUTE - Step 3"
+        action: "MDR value copied to ACC"
+        register_states:
+          ACC: "12"
+        announcement: "ACC now holds 12. LDA complete!"
+
+      final_state:
+        PC: "101"
+        MAR: "200"
+        MDR: "12"
+        ACC: "12"
+
+    instruction_2: "ADD 201 (Add value from address 201 to ACC)"
+    trace_2:
+      - stage: "FETCH"
+        actions:
+          - "PC (101) → MAR"
+          - "RAM returns 'ADD 201' → MDR"
+          - "PC increments to 102"
+        final_state:
+          PC: "102"
+          MAR: "101"
+          MDR: "ADD 201"
+          ACC: "12"
+
+      - stage: "DECODE"
+        announcement: "ADD 201 means: Add value at address 201 to ACC"
+
+      - stage: "EXECUTE"
+        actions:
+          - "MAR ← 201"
+          - "RAM returns 5 → MDR"
+          - "ALU: ACC + MDR = 12 + 5 = 17"
+          - "Result stored in ACC"
+        final_state:
+          PC: "102"
+          MAR: "201"
+          MDR: "5"
+          ACC: "17"
+
+  debrief:
+    questions:
+      - question: "Why does PC increment during FETCH, not at the end?"
+        answer: "So it's ready for the next cycle - allows pipelining in real CPUs"
+      - question: "What's the difference between PC and MAR?"
+        answer: "PC = where we're GOING (next instruction), MAR = where we ARE (current access)"
+      - question: "Why do we need MDR? Why not transfer directly?"
+        answer: "MDR acts as a buffer between fast CPU and slower memory"
+
+    exam_tips:
+      - "Always state register values at specific points when asked"
+      - "Remember: PC increments during FETCH"
+      - "MAR can change multiple times per cycle (instruction fetch + data fetch)"
+      - "MDR contents change based on what's being accessed"
+
+# ============================================
+# VARIATIONS AND EXTENSIONS
+# ============================================
+variations:
+  - name: "Speeded Version"
+    description: |
+      Once students understand the cycle, try to complete cycles faster.
+      Use a timer - can we do 3 cycles in under 2 minutes?
+    purpose: "Demonstrates that real CPUs do this billions of times per second"
+
+  - name: "Error Introduction"
+    description: |
+      Deliberately give an invalid instruction (e.g., "DIVIDE 0")
+      or wrong address. Discuss what happens.
+    purpose: "Introduces concept of errors and exceptions"
+
+  - name: "Multiple Programs"
+    description: |
+      Different groups run different programs simultaneously.
+      Compare outputs.
+    purpose: "Shows same CPU architecture can run any program"
+
+  - name: "Cache Simulation"
+    description: |
+      Add a "cache" student who stands between CPU area and RAM.
+      If they have the data, transfer is instant. If not, must get from RAM.
+    purpose: "Introduces concept of cache and memory hierarchy"
+
+  - name: "Competition Mode"
+    description: |
+      Two teams race to execute a program correctly.
+      Errors mean starting that instruction again.
+    purpose: "Engagement, reinforces need for accuracy"
+
+# ============================================
+# TEACHER NOTES
+# ============================================
+teacher_notes:
+  preparation:
+    - "Print and laminate role badges (durable for reuse)"
+    - "Prepare instruction cards - laminate for durability"
+    - "Clear space in classroom for movement"
+    - "Prepare RAM contents display"
+    - "Have spare students ready to rotate in"
+
+  common_issues:
+    - issue: "Students forget which stage they're in"
+      solution: "Have CU announce each stage loudly before starting"
+
+    - issue: "Activity becomes chaotic"
+      solution: "Strict turn-taking - only one transfer at a time"
+
+    - issue: "Observers become disengaged"
+      solution: "Give them trace tables to complete, or rotate roles frequently"
+
+    - issue: "Students struggle with advanced version"
+      solution: "Always do basic version first, even briefly"
+
+  timing_guide: |
+    Basic version: 15-20 minutes (including setup and debrief)
+    Advanced version: 20-30 minutes
+
+    First time: Allow extra 10 minutes for explanation
+    Repeat sessions: Can condense to 10-15 minutes
+
+  follow_up_activities:
+    - "Complete trace table independently"
+    - "Draw the CPU diagram with data flows"
+    - "Write explanation of F-D-E cycle"
+    - "Create own simple program to trace"

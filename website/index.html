@@ -44,8 +44,14 @@
 
         <section class="topics-section">
             <h2>Choose a Topic</h2>
+            <p style="color: var(--gray-600); margin-bottom: var(--space-md);">
+                <span style="display: inline-block; width: 12px; height: 12px; background: var(--primary); border-radius: 2px; margin-right: 4px;"></span> Programming
+                <span style="margin-left: var(--space-md); display: inline-block; width: 12px; height: 12px; background: var(--theory); border-radius: 2px; margin-right: 4px;"></span> Computer Science Theory
+            </p>
             <div class="topic-grid">
-                <a href="topics/variables/index.html" class="topic-card">
+                <!-- Programming Topics (Blue) -->
+                <a href="topics/variables/index.html" class="topic-card programming">
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">📦</div>
                     <h3>Variables</h3>
                     <p>Store and use data in your programs</p>
@@ -55,7 +61,8 @@
                     </div>
                 </a>
 
-                <a href="topics/selection/index.html" class="topic-card">
+                <a href="topics/selection/index.html" class="topic-card programming">
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔀</div>
                     <h3>Selection</h3>
                     <p>Make decisions with if statements</p>
@@ -65,7 +72,8 @@
                     </div>
                 </a>
 
-                <a href="topics/for-loops/index.html" class="topic-card featured">
+                <a href="topics/for-loops/index.html" class="topic-card programming featured">
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔄</div>
                     <h3>For Loops</h3>
                     <p>Repeat code a specific number of times</p>
@@ -76,7 +84,21 @@
                     <span class="badge">Start Here</span>
                 </a>
 
-                <a href="topics/while-loops/index.html" class="topic-card">
+                <!-- Theory Topics (Teal) -->
+                <a href="topics/cpu/index.html" class="topic-card theory featured">
+                    <span class="topic-type-label theory">Theory</span>
+                    <div class="topic-icon">🖥️</div>
+                    <h3>CPU &amp; Fetch-Execute</h3>
+                    <p>How the processor runs programs</p>
+                    <div class="topic-progress" data-topic="cpu">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge">New</span>
+                </a>
+
+                <a href="topics/while-loops/index.html" class="topic-card programming">
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔁</div>
                     <h3>While Loops</h3>
                     <p>Repeat code while a condition is true</p>
@@ -86,7 +108,8 @@
                     </div>
                 </a>
 
-                <a href="topics/lists/index.html" class="topic-card">
+                <a href="topics/lists/index.html" class="topic-card programming">
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">📋</div>
                     <h3>Lists</h3>
                     <p>Work with collections of data</p>
@@ -96,11 +119,23 @@
                     </div>
                 </a>
 
-                <a href="topics/functions/index.html" class="topic-card">
+                <a href="topics/functions/index.html" class="topic-card programming">
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">⚡</div>
                     <h3>Functions</h3>
                     <p>Organise code into reusable blocks</p>
                     <div class="topic-progress" data-topic="functions">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="topics/file-handling/index.html" class="topic-card programming">
+                    <span class="topic-type-label programming">Programming</span>
+                    <div class="topic-icon">📁</div>
+                    <h3>File Handling</h3>
+                    <p>Read and write data to files</p>
+                    <div class="topic-progress" data-topic="file-handling">
                         <div class="progress-bar"><div class="progress-fill"></div></div>
                         <span class="progress-text">0% complete</span>
                     </div>

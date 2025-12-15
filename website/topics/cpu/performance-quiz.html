@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Performance Quiz - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .question-number {
+            color: var(--theory);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+        }
+        .question-scenario {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            border-left: 3px solid var(--theory);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .option:hover {
+            border-color: var(--theory);
+            background: var(--theory-light);
+        }
+        .option.selected {
+            border-color: var(--theory);
+            background: var(--theory-light);
+        }
+        .option.correct {
+            border-color: var(--success);
+            background: var(--success-light);
+        }
+        .option.incorrect {
+            border-color: var(--error);
+            background: var(--error-light);
+        }
+        .option input {
+            margin-right: var(--space-md);
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .feedback.show {
+            display: block;
+        }
+        .feedback.correct {
+            background: var(--success-light);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+        .feedback.incorrect {
+            background: var(--error-light);
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+        .results {
+            background: var(--theory-light);
+            border: 2px solid var(--theory);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--theory-dark);
+        }
+        .theory-hero {
+            background: linear-gradient(135deg, var(--theory-light) 0%, white 100%);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero theory-hero">
+            <a href="index.html" style="color: var(--theory); text-decoration: none;">← Back to CPU</a>
+            <h1>CPU Performance Quiz</h1>
+            <p class="hero-subtitle">Test your understanding of clock speed, cache, and cores</p>
+        </header>
+
+        <div class="quiz-container">
+            <!-- Question 1 -->
+            <div class="question-card" data-question="1" data-correct="c">
+                <div class="question-number">Question 1 of 8</div>
+                <div class="question-text">What is clock speed measured in?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        <span>Megabytes (MB)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        <span>Watts (W)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        <span>Hertz (Hz) / Gigahertz (GHz)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        <span>Bits per second (bps)</span>
+                    </label>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card" data-question="2" data-correct="b">
+                <div class="question-number">Question 2 of 8</div>
+                <div class="question-text">What is a disadvantage of increasing clock speed?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        <span>The CPU processes fewer instructions</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        <span>The CPU generates more heat and uses more power</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        <span>Programs cannot run on the CPU</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        <span>The cache becomes smaller</span>
+                    </label>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card" data-question="3" data-correct="a">
+                <div class="question-number">Question 3 of 8</div>
+                <div class="question-text">Which level of cache is the fastest but smallest?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="a">
+                        <span>L1 Cache</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="b">
+                        <span>L2 Cache</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="c">
+                        <span>L3 Cache</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="d">
+                        <span>RAM</span>
+                    </label>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card" data-question="4" data-correct="d">
+                <div class="question-number">Question 4 of 8</div>
+                <div class="question-text">What is a "cache hit"?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        <span>When the cache memory is full</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        <span>When the cache is damaged</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        <span>When data must be fetched from RAM</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        <span>When the required data is found in the cache</span>
+                    </label>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card" data-question="5" data-correct="c">
+                <div class="question-number">Question 5 of 8</div>
+                <div class="question-text">What is a CPU core?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        <span>The outer casing of the CPU</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        <span>A type of cache memory</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        <span>An independent processing unit that can execute instructions</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        <span>The main power supply for the CPU</span>
+                    </label>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-card" data-question="6" data-correct="b">
+                <div class="question-number">Question 6 of 8</div>
+                <div class="question-text">When does having more CPU cores NOT improve performance?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a">
+                        <span>When running video editing software</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b">
+                        <span>When software is single-threaded and cannot use multiple cores</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c">
+                        <span>When multitasking with many programs</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="d">
+                        <span>When rendering 3D graphics</span>
+                    </label>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <!-- Question 7 - Scenario -->
+            <div class="question-card" data-question="7" data-correct="b">
+                <div class="question-number">Question 7 of 8</div>
+                <div class="question-scenario">
+                    <strong>Scenario:</strong> A video editor is choosing between two laptops:<br>
+                    <strong>Laptop A:</strong> 4.0 GHz dual-core, 4MB cache<br>
+                    <strong>Laptop B:</strong> 3.2 GHz octa-core, 16MB cache
+                </div>
+                <div class="question-text">Which laptop would be better for video editing, and why?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="a">
+                        <span>Laptop A - higher clock speed means faster rendering</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="b">
+                        <span>Laptop B - video editing uses multiple cores for parallel processing</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="c">
+                        <span>Laptop A - dual-core is enough for any task</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="d">
+                        <span>Both would perform exactly the same</span>
+                    </label>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-card" data-question="8" data-correct="d">
+                <div class="question-number">Question 8 of 8</div>
+                <div class="question-text">Why is larger cache expensive even though it's "just memory"?</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a">
+                        <span>It uses more electricity</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b">
+                        <span>It makes the CPU run slower</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c">
+                        <span>It requires special cooling</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="d">
+                        <span>It takes up space on the CPU chip and must be extremely fast</span>
+                    </label>
+                </div>
+                <div class="feedback"></div>
+            </div>
+
+            <div class="results">
+                <h2>Quiz Complete!</h2>
+                <div class="score">0/8</div>
+                <p class="score-message"></p>
+                <button class="btn btn-primary mt-lg" onclick="resetQuiz()">Try Again</button>
+                <a href="index.html" class="btn btn-secondary mt-lg">Back to Topic</a>
+            </div>
+
+            <button class="btn btn-primary btn-lg" id="checkAnswers" style="width: 100%;">Check Answers</button>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const correctAnswers = {
+            1: { answer: 'c', explanation: 'Clock speed is measured in Hertz (Hz). Modern CPUs use Gigahertz (GHz) - billions of cycles per second.' },
+            2: { answer: 'b', explanation: 'Higher clock speeds generate more heat and consume more power, which can require better cooling and reduce battery life.' },
+            3: { answer: 'a', explanation: 'L1 cache is the smallest but fastest, located closest to the CPU cores. L3 is the largest but slowest.' },
+            4: { answer: 'd', explanation: 'A cache hit is when the CPU finds the data it needs in the cache, which is much faster than fetching from RAM.' },
+            5: { answer: 'c', explanation: 'A core is an independent processing unit within the CPU that can execute instructions. Multi-core CPUs have several of these.' },
+            6: { answer: 'b', explanation: 'More cores only help if software is designed to use them (multi-threaded). Single-threaded software uses only one core regardless of how many are available.' },
+            7: { answer: 'b', explanation: 'Video editing software is designed to use multiple cores (multi-threaded). The octa-core CPU can render video much faster by processing multiple parts simultaneously.' },
+            8: { answer: 'd', explanation: 'Cache must be built directly into the CPU chip and operate at CPU speeds. This specialized, high-speed memory is expensive to manufacture and takes up valuable chip space.' }
+        };
+
+        document.getElementById('checkAnswers').addEventListener('click', function() {
+            let score = 0;
+            const questions = document.querySelectorAll('.question-card');
+
+            questions.forEach(card => {
+                const qNum = card.dataset.question;
+                const selected = card.querySelector('input:checked');
+                const feedback = card.querySelector('.feedback');
+                const options = card.querySelectorAll('.option');
+
+                // Remove previous states
+                options.forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect', 'selected');
+                });
+
+                if (selected) {
+                    const selectedOption = selected.closest('.option');
+                    const correctValue = correctAnswers[qNum].answer;
+
+                    if (selected.value === correctValue) {
+                        score++;
+                        selectedOption.classList.add('correct');
+                        feedback.textContent = '✓ Correct! ' + correctAnswers[qNum].explanation;
+                        feedback.className = 'feedback show correct';
+                    } else {
+                        selectedOption.classList.add('incorrect');
+                        // Highlight correct answer
+                        options.forEach(opt => {
+                            if (opt.querySelector('input').value === correctValue) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                        feedback.textContent = '✗ ' + correctAnswers[qNum].explanation;
+                        feedback.className = 'feedback show incorrect';
+                    }
+                } else {
+                    feedback.textContent = 'Please select an answer.';
+                    feedback.className = 'feedback show incorrect';
+                }
+            });
+
+            // Show results
+            const results = document.querySelector('.results');
+            results.classList.add('show');
+            results.querySelector('.score').textContent = score + '/8';
+
+            const message = results.querySelector('.score-message');
+            if (score === 8) {
+                message.textContent = 'Perfect! You really understand CPU performance factors!';
+            } else if (score >= 6) {
+                message.textContent = 'Good job! Review the questions you got wrong.';
+            } else if (score >= 4) {
+                message.textContent = 'Keep practicing! Go back and review the material.';
+            } else {
+                message.textContent = 'You need more practice. Read through the Learn section again.';
+            }
+
+            // Hide check button
+            document.getElementById('checkAnswers').style.display = 'none';
+
+            // Save progress
+            if (typeof saveProgress === 'function') {
+                saveProgress('cpu-performance-quiz', score === 8 ? 100 : Math.round((score / 8) * 100));
+            }
+        });
+
+        function resetQuiz() {
+            // Clear all selections
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+            });
+
+            // Remove all classes
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('correct', 'incorrect', 'selected');
+            });
+
+            // Hide feedback
+            document.querySelectorAll('.feedback').forEach(fb => {
+                fb.classList.remove('show');
+            });
+
+            // Hide results
+            document.querySelector('.results').classList.remove('show');
+
+            // Show check button
+            document.getElementById('checkAnswers').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

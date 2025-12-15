@@ -1,0 +1,478 @@
+# KS4 Theory Lesson: CPU Components & Von Neumann Architecture
+# OCR J277 Computer Science Specification Alignment
+# 1.1 Systems Architecture - CPU Components
+
+id: ks4-systems-cpu-components-001
+title: "CPU Components and Von Neumann Architecture (OCR J277)"
+topic: computer-systems
+subtopic: cpu-components-von-neumann
+stage: ks4
+year_group: 10
+duration_minutes: 60
+
+# OCR J277 SPECIFICATION ALIGNMENT
+specification:
+  exam_board: OCR
+  spec_code: J277
+  component: "1.1 Systems Architecture"
+
+  spec_points:
+    - "Common CPU components and their function: ALU, CU, Cache, Registers"
+    - "Von Neumann architecture: MAR, MDR, Program Counter, Accumulator"
+    - "What actions occur at each stage of the fetch-execute cycle"
+
+  assessment_requirements:
+    - "The role/purpose of each component and what it manages, stores, or controls"
+    - "The purpose of each register, what it stores (data or address)"
+    - "The difference between storing data and an address"
+
+objectives:
+  - Describe the purpose and function of the ALU, Control Unit, Cache, and Registers
+  - Explain the Von Neumann architecture and its key registers (MAR, MDR, PC, ACC)
+  - Distinguish between registers that store data and those that store addresses
+  - Explain what happens at each stage of the fetch-execute cycle
+  - Apply knowledge to exam-style questions
+
+success_criteria:
+  all_students:
+    - I can name and describe the four main CPU components
+    - I can name the four key registers and state their purpose
+    - I can identify whether a register stores data or an address
+  most_students:
+    - I can explain what each component does during the fetch-execute cycle
+    - I can trace register values through a complete cycle
+    - I can answer 4-mark exam questions on CPU components
+  some_students:
+    - I can explain why Von Neumann architecture creates a bottleneck
+    - I can compare different register functions in detail
+    - I can answer 6-mark extended response questions
+
+# ==================================================
+# KEY VOCABULARY WITH EXAM FOCUS
+# ==================================================
+vocabulary:
+  # CPU COMPONENTS
+  - term: ALU (Arithmetic Logic Unit)
+    definition: The component within the CPU that performs arithmetic operations (add, subtract, multiply, divide) and logical operations (AND, OR, NOT, comparisons)
+    stores: Nothing permanently - performs calculations on data passed to it
+    exam_tip: "Remember: ALU = Arithmetic + Logic. Two types of operations."
+
+  - term: Control Unit (CU)
+    definition: The component that controls and coordinates all CPU operations. It fetches instructions, decodes them, and directs other components.
+    manages: The fetch-execute cycle, timing, data flow between components
+    exam_tip: "The CU is like the conductor - it doesn't do calculations but tells everything else what to do"
+
+  - term: Cache
+    definition: Small, very fast memory located inside or very close to the CPU that stores frequently accessed data and instructions
+    stores: Copies of data and instructions from RAM
+    exam_tip: "Cache is faster than RAM but smaller. It reduces the need to access slower main memory."
+
+  - term: Registers
+    definition: Tiny, extremely fast storage locations within the CPU that hold data currently being processed
+    stores: Data or addresses (depends on the specific register)
+    exam_tip: "Registers are the FASTEST memory but can only hold small amounts of data"
+
+  # VON NEUMANN REGISTERS
+  - term: Program Counter (PC)
+    definition: A register that holds the memory ADDRESS of the NEXT instruction to be fetched
+    stores: ADDRESS (not data)
+    during_fe_cycle: "Copied to MAR at start of fetch, then incremented"
+    exam_tip: "PC = NEXT instruction ADDRESS. It's always one step ahead."
+
+  - term: Memory Address Register (MAR)
+    definition: A register that holds the ADDRESS of the memory location currently being read from or written to
+    stores: ADDRESS (not data)
+    during_fe_cycle: "Receives address from PC, sends address to RAM via address bus"
+    exam_tip: "MAR holds WHERE we're looking in memory. Think 'Address' in the name."
+
+  - term: Memory Data Register (MDR)
+    definition: A register that holds the DATA that has been fetched from memory or is about to be written to memory
+    stores: DATA (instructions or values)
+    during_fe_cycle: "Receives instruction/data FROM RAM or holds data TO BE WRITTEN to RAM"
+    exam_tip: "MDR holds WHAT we got from memory. Also called MBR (Memory Buffer Register)."
+
+  - term: Accumulator (ACC)
+    definition: A register that stores the results of calculations performed by the ALU
+    stores: DATA (calculation results)
+    during_fe_cycle: "Receives results from ALU, can provide operands to ALU"
+    exam_tip: "Results ACCUMULATE here. It's the main working register for calculations."
+
+# ==================================================
+# KEY CONCEPT: DATA vs ADDRESS
+# ==================================================
+data_vs_address:
+  explanation: |
+    This is a crucial distinction for OCR J277:
+
+    ADDRESS = A location in memory (like a house number)
+    DATA = The actual content stored at that location (like who lives in the house)
+
+  register_classification:
+    stores_address:
+      - register: PC (Program Counter)
+        what_it_holds: "The address of the NEXT instruction"
+        example: "PC might hold 100, meaning 'go to address 100 next'"
+
+      - register: MAR (Memory Address Register)
+        what_it_holds: "The address currently being accessed"
+        example: "MAR holds 100 when we're reading from address 100"
+
+    stores_data:
+      - register: MDR (Memory Data Register)
+        what_it_holds: "The actual data or instruction from memory"
+        example: "MDR might hold 'ADD 5' (an instruction) or '42' (a value)"
+
+      - register: ACC (Accumulator)
+        what_it_holds: "Results of calculations"
+        example: "After adding 10+5, ACC holds 15"
+
+  exam_question_example:
+    question: "State whether the Program Counter stores data or an address. (1 mark)"
+    answer: "Address"
+    explanation: "PC stores the address of the next instruction to be fetched, not the instruction itself"
+
+# ==================================================
+# CPU COMPONENTS DETAIL
+# ==================================================
+cpu_components:
+
+  alu:
+    full_name: Arithmetic Logic Unit
+    purpose: "Performs all calculations and logical decisions in the CPU"
+
+    arithmetic_operations:
+      - Addition
+      - Subtraction
+      - Multiplication
+      - Division
+
+    logical_operations:
+      - AND
+      - OR
+      - NOT
+      - Comparison (greater than, less than, equal to)
+
+    how_it_works: |
+      1. Receives data from registers (usually ACC and MDR)
+      2. Performs the operation specified by the Control Unit
+      3. Sends result back to a register (usually ACC)
+
+    during_fetch_execute: |
+      The ALU is used during the EXECUTE stage when the instruction
+      requires a calculation or comparison. Not all instructions use the ALU
+      (e.g., LOAD and STORE don't need calculations).
+
+    exam_points:
+      - "ALU performs TWO types of operations: arithmetic AND logical"
+      - "Results typically go to the Accumulator"
+      - "ALU is controlled by the Control Unit"
+
+  control_unit:
+    full_name: Control Unit
+    purpose: "Controls and coordinates all operations within the CPU"
+
+    responsibilities:
+      - Fetching instructions from memory
+      - Decoding instructions to determine what operation is needed
+      - Directing data flow between CPU components
+      - Controlling timing of operations
+      - Sending control signals to other components
+
+    how_it_works: |
+      1. Fetches instruction using PC and MAR
+      2. Receives instruction in MDR
+      3. Decodes the instruction to understand what to do
+      4. Sends control signals to relevant components (ALU, registers, memory)
+      5. Coordinates the execution of the instruction
+
+    during_fetch_execute: |
+      The Control Unit is active in ALL stages:
+      - FETCH: Coordinates fetching instruction from RAM
+      - DECODE: Interprets what the instruction means
+      - EXECUTE: Tells other components what to do
+
+    exam_points:
+      - "CU coordinates but doesn't perform calculations (that's ALU)"
+      - "CU decodes instructions - works out what they mean"
+      - "CU controls timing and data flow"
+
+  cache:
+    full_name: Cache Memory
+    purpose: "Provides fast access to frequently used data and instructions"
+
+    characteristics:
+      - Faster than RAM but slower than registers
+      - Smaller capacity than RAM but larger than registers
+      - Located on or very near the CPU
+      - Stores copies of frequently accessed data
+
+    how_it_works: |
+      1. When CPU needs data, it first checks cache
+      2. If data is in cache (cache HIT) - very fast access
+      3. If data is not in cache (cache MISS) - must get from slower RAM
+      4. Recently accessed data is stored in cache for next time
+
+    levels:
+      - L1: Smallest, fastest, on CPU chip
+      - L2: Larger, slightly slower
+      - L3: Largest cache, slowest (but still faster than RAM)
+
+    during_fetch_execute: |
+      Cache speeds up the fetch stage by storing recently used instructions.
+      Instead of always fetching from slow RAM, the CPU can often find
+      the instruction in fast cache memory.
+
+    exam_points:
+      - "Cache sits between CPU and RAM in the memory hierarchy"
+      - "More cache generally = better performance"
+      - "Cache stores COPIES of data from RAM"
+
+  registers:
+    full_name: Registers
+    purpose: "Provide extremely fast storage for data currently being processed"
+
+    characteristics:
+      - Fastest type of memory
+      - Very small capacity (typically 32 or 64 bits each)
+      - Located inside the CPU
+      - Different registers have specific purposes
+
+    key_registers:
+      - PC: Holds address of next instruction
+      - MAR: Holds address being accessed
+      - MDR: Holds data being transferred
+      - ACC: Holds calculation results
+
+    exam_points:
+      - "Registers are the fastest memory"
+      - "Each register has a specific purpose"
+      - "Some store addresses, some store data"
+
+# ==================================================
+# VON NEUMANN ARCHITECTURE
+# ==================================================
+von_neumann:
+  definition: |
+    A computer architecture where programs and data share the same memory
+    and the same bus system. Named after mathematician John von Neumann (1945).
+
+  key_principles:
+    - "Programs and data stored in the SAME memory"
+    - "Instructions fetched and executed SEQUENTIALLY (one at a time)"
+    - "Single bus connects CPU to memory"
+
+  components:
+    - CPU (with CU and ALU)
+    - Memory (RAM) for programs AND data
+    - Input devices
+    - Output devices
+    - Bus system connecting components
+
+  registers_in_von_neumann:
+    pc:
+      name: Program Counter (PC)
+      stores: ADDRESS
+      purpose: "Holds address of NEXT instruction to fetch"
+      key_behaviour: "Incremented during fetch to point to following instruction"
+
+    mar:
+      name: Memory Address Register (MAR)
+      stores: ADDRESS
+      purpose: "Holds address of memory location being accessed"
+      key_behaviour: "Receives address from PC, sends to RAM via address bus"
+      connected_to: "Address bus"
+
+    mdr:
+      name: Memory Data Register (MDR)
+      stores: DATA
+      purpose: "Holds data being read from or written to memory"
+      key_behaviour: "Acts as buffer between CPU and RAM"
+      connected_to: "Data bus"
+      alternative_name: "MBR (Memory Buffer Register)"
+
+    acc:
+      name: Accumulator (ACC)
+      stores: DATA
+      purpose: "Stores results of ALU calculations"
+      key_behaviour: "Main register for arithmetic operations"
+
+  von_neumann_bottleneck:
+    definition: |
+      Because programs and data share the same bus, only ONE thing can be
+      transferred at a time. This limits speed as the CPU often has to wait.
+    exam_relevance: "Understanding this explains why cache is important"
+
+# ==================================================
+# FETCH-EXECUTE CYCLE - DETAILED BREAKDOWN
+# ==================================================
+fetch_execute_cycle:
+  overview: |
+    The fetch-execute cycle (also called fetch-decode-execute) is the
+    continuous process the CPU uses to process instructions. Every program
+    is executed through repeated cycles.
+
+  stages:
+    fetch:
+      purpose: "Get the next instruction from memory"
+      steps:
+        - step: 1
+          action: "PC contents copied to MAR"
+          detail: "MAR now holds address of instruction to fetch"
+          registers_involved: [PC, MAR]
+          what_happens: "PC → MAR"
+
+        - step: 2
+          action: "Address sent from MAR to RAM via address bus"
+          detail: "RAM receives the address and locates the data"
+          registers_involved: [MAR]
+          what_happens: "MAR → Address Bus → RAM"
+
+        - step: 3
+          action: "Instruction at that address sent from RAM to MDR via data bus"
+          detail: "The actual instruction is now in MDR"
+          registers_involved: [MDR]
+          what_happens: "RAM → Data Bus → MDR"
+
+        - step: 4
+          action: "PC is incremented"
+          detail: "PC now points to the NEXT instruction"
+          registers_involved: [PC]
+          what_happens: "PC = PC + 1"
+          exam_note: "PC increments DURING fetch, not after"
+
+    decode:
+      purpose: "Work out what the instruction means"
+      steps:
+        - step: 1
+          action: "Instruction in MDR is sent to Control Unit"
+          detail: "CU receives the instruction"
+
+        - step: 2
+          action: "Control Unit decodes the instruction"
+          detail: "CU works out what operation is needed and what operands"
+
+        - step: 3
+          action: "CU prepares control signals"
+          detail: "CU determines which components need to be activated"
+
+    execute:
+      purpose: "Carry out the instruction"
+      note: "Execution varies depending on instruction type"
+
+      examples:
+        - instruction_type: "LDA (Load)"
+          what_happens: "Data loaded from memory into ACC"
+          steps:
+            - "Address of data put in MAR"
+            - "Data fetched from RAM to MDR"
+            - "Data copied from MDR to ACC"
+          uses_alu: false
+
+        - instruction_type: "ADD"
+          what_happens: "Value added to ACC"
+          steps:
+            - "Address of data put in MAR (if needed)"
+            - "Data fetched to MDR (if from memory)"
+            - "ALU adds MDR value to ACC"
+            - "Result stored in ACC"
+          uses_alu: true
+
+        - instruction_type: "STA (Store)"
+          what_happens: "ACC value stored to memory"
+          steps:
+            - "Destination address put in MAR"
+            - "ACC value copied to MDR"
+            - "MDR contents written to RAM at MAR address"
+          uses_alu: false
+
+        - instruction_type: "OUT (Output)"
+          what_happens: "ACC value sent to output device"
+          steps:
+            - "ACC contents sent to output"
+          uses_alu: false
+
+# ==================================================
+# EXAM-STYLE QUESTIONS AND MARK SCHEMES
+# ==================================================
+exam_practice:
+
+  short_questions:
+    - question: "State the purpose of the ALU. (1 mark)"
+      answer: "To perform arithmetic and logical operations/calculations"
+
+    - question: "State what the Program Counter stores. (1 mark)"
+      answer: "The address of the next instruction to be fetched"
+
+    - question: "State the difference between MAR and MDR. (2 marks)"
+      answer: |
+        MAR stores the ADDRESS of the memory location being accessed (1)
+        MDR stores the DATA being read from or written to memory (1)
+
+    - question: "Explain the purpose of cache memory. (2 marks)"
+      answer: |
+        Cache stores frequently used data/instructions (1)
+        This allows faster access than RAM, improving performance (1)
+
+  medium_questions:
+    - question: "Describe the role of the Control Unit in the fetch-execute cycle. (3 marks)"
+      answer: |
+        The Control Unit fetches instructions from memory (1)
+        It decodes instructions to determine what operation is needed (1)
+        It sends control signals to coordinate other components (1)
+
+    - question: "Explain what happens during the FETCH stage of the fetch-execute cycle. (4 marks)"
+      answer: |
+        The address in PC is copied to MAR (1)
+        The address is sent to RAM via the address bus (1)
+        The instruction is returned to MDR via the data bus (1)
+        The PC is incremented to point to the next instruction (1)
+
+  extended_questions:
+    - question: "Describe the purpose of each of the following registers: PC, MAR, MDR, ACC. For each register, state whether it stores an address or data. (8 marks)"
+      mark_scheme: |
+        PC - stores the address of the next instruction to be fetched (1)
+        PC stores an ADDRESS (1)
+
+        MAR - holds the address of the memory location being accessed (1)
+        MAR stores an ADDRESS (1)
+
+        MDR - holds data being read from or written to memory (1)
+        MDR stores DATA (1)
+
+        ACC - stores results of calculations from the ALU (1)
+        ACC stores DATA (1)
+
+# ==================================================
+# COMMON MISCONCEPTIONS
+# ==================================================
+misconceptions:
+  - misconception: "PC stores the current instruction"
+    correction: "PC stores the ADDRESS of the NEXT instruction, not the instruction itself"
+
+  - misconception: "MAR and MDR do the same thing"
+    correction: "MAR holds addresses (WHERE), MDR holds data (WHAT)"
+
+  - misconception: "Cache is the same as RAM"
+    correction: "Cache is faster but smaller than RAM, and stores copies of frequently used data"
+
+  - misconception: "The ALU controls the CPU"
+    correction: "The Control Unit controls the CPU; the ALU only performs calculations"
+
+  - misconception: "PC increments after the cycle completes"
+    correction: "PC increments DURING the fetch stage, so it's ready for the next cycle"
+
+  - misconception: "All registers store the same type of data"
+    correction: "Some registers store addresses (PC, MAR), others store data (MDR, ACC)"
+
+# ==================================================
+# RESOURCES
+# ==================================================
+resources:
+  isaac_cs:
+    - "https://isaaccomputerscience.org/concepts/sys_arch_cpu"
+    - "https://isaaccomputerscience.org/concepts/sys_arch_von_neumann"
+    - "https://isaaccomputerscience.org/concepts/sys_arch_fde_cycle"
+
+  ocr:
+    - "OCR J277 Specification Section 1.1"
+    - "OCR J277 Sample Assessment Materials"

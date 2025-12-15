@@ -1,0 +1,604 @@
+# KS3 Theory Lesson: The CPU and Fetch-Execute Cycle
+# Evidence-based approach applying research findings:
+# - Unplugged activities (CS Unplugged research)
+# - Semantic waves (unpack-repack)
+# - Dual coding (visual + verbal)
+# - Concrete analogies
+# - Explicit misconception handling
+
+id: ks3-systems-cpu-001
+title: "The CPU and the Fetch-Execute Cycle"
+topic: computer-systems
+subtopic: cpu-fetch-execute
+stage: ks3
+year_group: 8
+duration_minutes: 60
+
+curriculum:
+  national_curriculum:
+    - "Understand the hardware components that make up computer systems"
+    - "Understand how instructions are stored and executed within a computer system"
+
+objectives:
+  - Understand the purpose of the CPU as the "brain" that processes instructions
+  - Identify the three main components of the CPU (ALU, Control Unit, Registers)
+  - Describe the four stages of the fetch-execute cycle (Fetch, Decode, Execute, Store)
+  - Trace through a simple fetch-execute cycle sequence
+
+success_criteria:
+  all_students:
+    - I can explain what the CPU does in a computer
+    - I can name the three parts of the CPU
+    - I can list the four stages of the fetch-execute cycle
+  most_students:
+    - I can explain what each part of the CPU does
+    - I can describe what happens at each stage of the fetch-execute cycle
+  some_students:
+    - I can trace through multiple fetch-execute cycles
+    - I can explain how the components work together
+
+prerequisites:
+  concepts:
+    - Basic understanding of what a computer is
+    - Knowledge that computers follow instructions
+    - Understanding of input and output
+  vocabulary:
+    - hardware
+    - software
+    - program
+    - instruction
+
+# KEY VOCABULARY - Lead with Concepts principle
+vocabulary:
+  - term: CPU (Central Processing Unit)
+    definition: The "brain" of the computer that processes all instructions
+    visual: Chip diagram with CPU highlighted on motherboard
+    analogy: Like a chef in a kitchen who reads recipes and carries out cooking steps
+    tier: 3
+
+  - term: ALU (Arithmetic Logic Unit)
+    definition: The part of the CPU that does calculations and makes comparisons
+    visual: Calculator symbol within CPU diagram
+    analogy: Like a calculator that does all the maths
+    tier: 3
+
+  - term: Control Unit
+    definition: The part of the CPU that manages and coordinates all operations
+    visual: Conductor/manager symbol within CPU diagram
+    analogy: Like a conductor who tells the orchestra when to play
+    tier: 3
+
+  - term: Registers
+    definition: Tiny, super-fast memory locations inside the CPU that hold data being processed
+    visual: Small boxes inside CPU diagram
+    analogy: Like a chef's hands - can only hold a few things at once but very quick access
+    tier: 3
+
+  - term: Fetch-Execute Cycle
+    definition: The continuous process the CPU uses to retrieve and carry out instructions
+    visual: Circular diagram with four stages
+    analogy: Like a chef reading a recipe step, understanding it, doing the action, then moving to the next step
+    tier: 3
+
+  - term: RAM (Random Access Memory)
+    definition: The computer's main memory where programs and data are stored while in use
+    visual: Memory module image, shown separate from CPU
+    analogy: Like a kitchen counter where ingredients are placed ready to use
+    tier: 2
+
+# CONCEPT MAP - Knowledge organisation
+concept_map:
+  central_concept: CPU
+  connected_concepts:
+    - concept: ALU
+      relationship: "performs calculations within"
+    - concept: Control Unit
+      relationship: "coordinates operations within"
+    - concept: Registers
+      relationship: "stores working data within"
+    - concept: RAM
+      relationship: "fetches instructions from"
+    - concept: Fetch-Execute Cycle
+      relationship: "operates using"
+
+# ============================================
+# LESSON PHASES
+# ============================================
+
+# PHASE 1: HOOK (5-10 minutes)
+# Activate prior knowledge, create curiosity
+hook:
+  activity: |
+    Display an image of a CPU chip (zoomed in on computer motherboard).
+    Ask: "This tiny chip can do billions of calculations every second.
+    How do you think it knows what to do?"
+
+  retrieval_questions:
+    - question: "What is hardware? Give me an example."
+      expected_answer: "Physical parts of a computer you can touch - keyboard, monitor, etc."
+    - question: "What is software?"
+      expected_answer: "Programs/instructions that tell the hardware what to do"
+    - question: "If hardware is the body, what is software?"
+      expected_answer: "The brain/mind/instructions"
+
+  real_world_connection: |
+    Every time you play a game, watch a video, or type a message, the CPU is
+    processing millions of instructions. Understanding how it works helps us
+    understand why computers sometimes slow down, and why some computers are
+    faster than others.
+
+# PHASE 2: UNPACK (15-20 minutes)
+# Concrete, unplugged introduction - semantic waves
+unpack:
+  description: |
+    Use the "Human CPU" unplugged activity to make the abstract fetch-execute
+    cycle concrete and memorable. Students physically act out the CPU's operation.
+
+  unplugged_activity:
+    name: "Human CPU Simulation"
+    description: |
+      Students take on roles of CPU components and physically act out the
+      fetch-execute cycle, passing instruction cards and performing actions.
+
+    materials:
+      - "Role cards: Control Unit (1), ALU (1), Registers (3-4), RAM (1)"
+      - "Instruction cards (printed, simple operations like ADD 5, SUBTRACT 3)"
+      - "Number cards (0-20) for register values"
+      - "Whiteboard or flip chart for 'output screen'"
+      - "Coloured bibs or labels to identify roles (optional)"
+
+    setup_instructions: |
+      1. Arrange classroom with distinct areas:
+         - "RAM corner" with instruction cards in order
+         - "CPU area" in centre with Register, ALU, and Control Unit positions
+         - "Output screen" (whiteboard) visible to all
+      2. Assign 6-7 students to active roles, others observe first round
+      3. Display the cycle diagram on board for reference
+
+    activity_steps:
+      - step: 1
+        instruction: |
+          FETCH: The Control Unit student goes to RAM and collects the NEXT
+          instruction card. They bring it back to the CPU area and announce:
+          "I have fetched instruction: [reads card]"
+        teacher_note: |
+          Emphasise that instructions must be fetched IN ORDER from RAM.
+          The Control Unit keeps track of which instruction comes next.
+
+      - step: 2
+        instruction: |
+          DECODE: The Control Unit student reads the instruction and works out
+          what needs to happen. They announce: "This instruction means we need to..."
+          (e.g., "add 5 to the number in Register 1")
+        teacher_note: |
+          This is where the instruction is "translated" from code to action.
+          Ask: "Why can't the ALU just read the instruction directly?"
+
+      - step: 3
+        instruction: |
+          EXECUTE: If calculation needed, Control Unit tells ALU what to do.
+          ALU student collects number cards from relevant Register students,
+          performs the calculation (using calculator if needed), and announces result.
+        teacher_note: |
+          The ALU does the "doing" - but only when told by Control Unit.
+          For non-calculation instructions (like OUTPUT), skip to relevant action.
+
+      - step: 4
+        instruction: |
+          STORE: The result is given to a Register student to hold, OR
+          written on the output screen if it's an OUTPUT instruction.
+          Control Unit announces: "Cycle complete. Ready for next instruction."
+        teacher_note: |
+          Emphasise that results must be stored somewhere before the next cycle.
+          Registers are temporary - they'll be overwritten.
+
+    debrief_questions:
+      - "What would happen if we skipped the FETCH stage?"
+      - "Why does the Control Unit need to DECODE instructions?"
+      - "What would happen if we had no Registers?"
+      - "How many times does this cycle repeat when you run a program?"
+
+    cs_connection: |
+      The real CPU does this exact process, but billions of times per second!
+      Each instruction is incredibly simple (add two numbers, compare values),
+      but by doing billions of them, complex programs run.
+
+  analogies:
+    - analogy: "The CPU is like a chef following a recipe"
+      maps_to: |
+        - Chef = CPU (does the work)
+        - Recipe book = RAM (stores instructions)
+        - Reading recipe step = FETCH
+        - Understanding what to do = DECODE
+        - Chopping/mixing/cooking = EXECUTE
+        - Putting food on plate = STORE result
+      limitations: |
+        A chef can be creative and skip steps. A CPU MUST follow instructions
+        exactly in order - it cannot think for itself.
+
+    - analogy: "Control Unit is like a project manager"
+      maps_to: |
+        The Control Unit coordinates everything but doesn't do calculations itself.
+        It fetches the work, understands what needs doing, tells others to do it,
+        and makes sure results are saved properly.
+      limitations: |
+        Unlike a project manager, the Control Unit has no flexibility or decision-making
+        beyond exactly what the instructions say.
+
+# PHASE 3: EXPLAIN (10-15 minutes)
+# Direct instruction with dual coding
+explain:
+  key_points:
+    - point: "The CPU is the processing centre of the computer"
+      visual_support: |
+        Diagram showing CPU on motherboard with arrows showing data flow
+        to/from RAM, storage, and I/O devices.
+      check_understanding: "What flows between the CPU and RAM?"
+
+    - point: "The CPU has three main parts: Control Unit, ALU, and Registers"
+      visual_support: |
+        Labelled diagram of CPU internals showing CU, ALU, and multiple registers.
+        Use colour coding: CU = blue, ALU = green, Registers = orange.
+      check_understanding: "Which part does the calculations?"
+
+    - point: "The fetch-execute cycle has four stages that repeat continuously"
+      visual_support: |
+        Circular flow diagram: FETCH → DECODE → EXECUTE → STORE → (back to FETCH)
+        Each stage in different colour with icon representation.
+      check_understanding: "What comes after Decode?"
+
+  worked_example:
+    title: "Tracing a Simple Program"
+    context: |
+      Let's trace what happens when the CPU runs these three instructions:
+      1. LOAD 7      (Put the number 7 into a register)
+      2. ADD 3       (Add 3 to the number in the register)
+      3. OUTPUT      (Display the result)
+
+    steps:
+      - subgoal: "Process first instruction: LOAD 7"
+        action: "CPU fetches 'LOAD 7' from RAM"
+        visual: "Arrow from RAM to CPU with 'LOAD 7' label"
+        explanation: "Control Unit retrieves the first instruction from memory"
+
+      - subgoal: "Decode the LOAD instruction"
+        action: "Control Unit interprets: 'Put 7 into Register A'"
+        visual: "CU box with 'LOAD 7 → Store 7 in Reg A' text"
+        explanation: "Control Unit works out what the instruction means"
+
+      - subgoal: "Execute the LOAD instruction"
+        action: "Number 7 is placed into Register A"
+        visual: "Register A box showing '7'"
+        explanation: "The action is carried out - register now holds 7"
+
+      - subgoal: "Process second instruction: ADD 3"
+        action: "Fetch ADD 3, Decode as 'Add 3 to Register A', Execute using ALU"
+        visual: "ALU showing 7 + 3 = 10, Register A updated to 10"
+        explanation: "ALU performs calculation, result stored back in register"
+
+      - subgoal: "Process third instruction: OUTPUT"
+        action: "Fetch OUTPUT, Decode as 'Display Register A', Execute by sending to screen"
+        visual: "Screen showing '10'"
+        explanation: "Result is sent to output device"
+
+    complete_walkthrough: |
+      The CPU processed three instructions through three complete fetch-execute
+      cycles. Each cycle: FETCH from RAM → DECODE in Control Unit →
+      EXECUTE (using ALU if calculation) → STORE result.
+      Final output: 10 (because 7 + 3 = 10)
+
+  diagrams:
+    - name: "CPU Internal Structure"
+      description: "Block diagram showing CU, ALU, Registers and data paths"
+      key_labels:
+        - Control Unit
+        - ALU (Arithmetic Logic Unit)
+        - Registers (ACC, MAR, MDR, PC)
+        - Data buses (internal connections)
+      common_errors: "Students often think ALU and CU are separate chips"
+
+    - name: "Fetch-Execute Cycle"
+      description: "Circular flow diagram of the four stages"
+      key_labels:
+        - "1. FETCH: Get next instruction from RAM"
+        - "2. DECODE: Work out what instruction means"
+        - "3. EXECUTE: Carry out the instruction"
+        - "4. STORE: Save the result"
+      common_errors: "Students may think STORE always means saving to hard drive"
+
+# PHASE 4: ELABORATE (15-20 minutes)
+# Structured practice activities
+elaborate:
+  activities:
+    - type: trace_walkthrough
+      description: "Students trace through a fetch-execute sequence"
+      scaffold_level: high
+      task: |
+        Complete the trace table for this program:
+        1. LOAD 12
+        2. ADD 8
+        3. SUBTRACT 5
+        4. OUTPUT
+
+        | Cycle | Instruction | Stage    | What Happens           | Register A |
+        |-------|-------------|----------|------------------------|------------|
+        | 1     | LOAD 12     | Fetch    | Get instruction        | -          |
+        | 1     | LOAD 12     | Decode   | "Put 12 in Reg A"      | -          |
+        | 1     | LOAD 12     | Execute  | Store 12 in register   | 12         |
+        | 2     | ADD 8       | Fetch    | _______________        | 12         |
+        | 2     | ADD 8       | Decode   | _______________        | 12         |
+        | 2     | ADD 8       | Execute  | _______________        | ___        |
+        | ...   | ...         | ...      | ...                    | ...        |
+
+      solution: |
+        Final Register A value: 15 (12 + 8 - 5 = 15)
+        Output displayed: 15
+
+    - type: labelling
+      description: "Label the CPU diagram"
+      diagram_reference: "cpu-internal-structure.png"
+      labels_to_place:
+        - Control Unit
+        - ALU
+        - Registers
+        - "Data from RAM"
+        - "Instructions from RAM"
+
+    - type: sequencing
+      description: "Put the fetch-execute stages in the correct order"
+      items_to_order:
+        - "The Control Unit works out what the instruction means"
+        - "The result is stored in a register or sent to output"
+        - "The Control Unit fetches the next instruction from RAM"
+        - "The instruction is carried out (ALU does calculations if needed)"
+      correct_order: [3, 1, 4, 2]
+
+    - type: matching
+      description: "Match CPU components to their functions"
+      pairs:
+        - term: "Control Unit"
+          definition: "Coordinates and manages all CPU operations"
+        - term: "ALU"
+          definition: "Performs calculations and logical comparisons"
+        - term: "Registers"
+          definition: "Tiny fast memory that holds data being processed"
+        - term: "RAM"
+          definition: "Main memory where programs and data are stored"
+
+    - type: explain_writing
+      description: "Write an explanation of the fetch-execute cycle"
+      prompt: |
+        Explain to a Year 7 student what happens during the fetch-execute cycle.
+        Include all four stages and explain what the CPU does at each stage.
+      success_criteria:
+        - Names all four stages in correct order
+        - Explains what happens at each stage
+        - Uses correct vocabulary (CPU, RAM, instruction)
+        - Is clear enough for a younger student to understand
+      sentence_starters:
+        - "The fetch-execute cycle is how the CPU..."
+        - "First, during the FETCH stage..."
+        - "Next, the CPU needs to DECODE, which means..."
+        - "Then the instruction is EXECUTED by..."
+        - "Finally, the result is STORED..."
+
+  differentiation:
+    foundation:
+      modifications:
+        - Provide partially completed trace table
+        - Use simplified 2-stage model (Fetch-Execute) before introducing 4 stages
+        - Pair with peer for activities
+        - Provide word bank for explanation writing
+      additional_scaffolds:
+        - Visual prompt card with cycle diagram
+        - Fill-in-the-blank explanations
+        - Matching activities before sequencing
+
+    extension:
+      challenges:
+        - "What happens if an instruction has an error?"
+        - "Research: What do the special registers (PC, MAR, MDR, ACC) do?"
+        - "How does the CPU know which instruction to fetch next?"
+        - "Create your own program (5 instructions) and trace it"
+
+# PHASE 5: EVALUATE (5-10 minutes)
+# Check understanding and address misconceptions
+evaluate:
+  formative_checks:
+    - type: hinge_question
+      content: |
+        During the DECODE stage, what does the Control Unit do?
+        A) Fetches the next instruction from RAM
+        B) Works out what the instruction means
+        C) Performs calculations on numbers
+        D) Saves results to the hard drive
+
+        (Correct: B)
+      success_threshold: "80% correct before moving on"
+
+    - type: exit_ticket
+      content: |
+        1. Name the three main parts of the CPU.
+        2. What are the four stages of the fetch-execute cycle?
+        3. Which part of the CPU does calculations?
+      success_threshold: "All students can answer Q1 and Q2"
+
+  common_misconceptions:
+    - misconception: "The CPU stores programs and data"
+      why_students_think_this: |
+        Confusion between CPU and RAM. "Processing" sounds like it includes storage.
+      diagnostic_question: "Where are programs stored while running - CPU or RAM?"
+      correction_strategy: |
+        Use the chef analogy: "Does the chef store all the ingredients? No - they're
+        on the counter (RAM). The chef (CPU) just works with what's given to them."
+
+    - misconception: "The ALU controls everything in the CPU"
+      why_students_think_this: |
+        ALU sounds important and "Arithmetic Logic" seems to cover all operations.
+      diagnostic_question: "Which part tells the ALU what calculation to do?"
+      correction_strategy: |
+        Clarify: "The ALU is like a calculator - very good at maths, but someone
+        (the Control Unit) needs to tell it which buttons to press."
+
+    - misconception: "Fetch-Execute happens once per program"
+      why_students_think_this: |
+        Students may think one cycle runs the whole program.
+      diagnostic_question: "If a program has 100 instructions, how many fetch-execute cycles?"
+      correction_strategy: |
+        "Every single instruction needs its own fetch-execute cycle. A simple
+        game might need millions of cycles to run!"
+
+    - misconception: "STORE always means saving to hard drive"
+      why_students_think_this: |
+        Everyday meaning of "store" implies permanent storage.
+      diagnostic_question: "Where does the CPU store results during the STORE stage?"
+      correction_strategy: |
+        "Store in F-E cycle means saving to registers (temporary) or outputting.
+        Saving to hard drive is a separate operation with different instructions."
+
+# RETRIEVAL PRACTICE
+retrieval_practice:
+  previous_topics:
+    - topic: "Hardware and Software"
+      questions:
+        - "Give two examples of hardware"
+        - "What is the difference between hardware and software?"
+    - topic: "Input and Output"
+      questions:
+        - "Name two input devices"
+        - "What is an output device?"
+
+  this_topic:
+    key_facts:
+      - "CPU stands for Central Processing Unit"
+      - "The CPU has three main parts: Control Unit, ALU, Registers"
+      - "The fetch-execute cycle has four stages: Fetch, Decode, Execute, Store"
+      - "ALU performs calculations and comparisons"
+      - "Control Unit coordinates all CPU operations"
+    key_processes:
+      - "Instructions are fetched from RAM, decoded, executed, and results stored"
+      - "The cycle repeats for every single instruction"
+      - "CPU processes billions of instructions per second"
+
+# CROSS-CURRICULAR CONNECTIONS
+cross_curricular:
+  mathematics:
+    connections:
+      - "Binary representation of instructions"
+      - "Arithmetic operations performed by ALU"
+      - "Memory addresses as numbers"
+    how_to_link: |
+      Link to place value when discussing how memory addresses work.
+      ALU operations connect to arithmetic skills.
+
+  english:
+    vocabulary_focus:
+      - "Technical vocabulary (CPU, ALU, registers)"
+      - "Process vocabulary (fetch, decode, execute, store)"
+      - "Precise, technical writing"
+    writing_opportunities: |
+      Explanation writing task requires clear, sequenced technical writing.
+      Good practice for technical communication skills.
+
+  science:
+    connections:
+      - "Electrical circuits (CPU uses electrical signals)"
+      - "Energy and heat (CPU generates heat when processing)"
+
+# TEACHER GUIDANCE
+teacher_notes:
+  preparation:
+    - "Print role cards and instruction cards for unplugged activity"
+    - "Prepare CPU diagram for labelling (printed or digital)"
+    - "Have trace table templates ready"
+    - "Test any animations/videos in advance"
+    - "Prepare exit tickets"
+
+  common_issues:
+    - "Students may struggle to distinguish Control Unit from ALU roles"
+    - "The DECODE stage is often confused with EXECUTE"
+    - "Students may not realise how fast and repetitive the cycle is"
+    - "Register vs RAM confusion is common"
+
+  timing_guidance: |
+    Hook: 5-10 mins
+    Unpack (unplugged activity): 15-20 mins
+    Explain (direct instruction): 10-15 mins
+    Elaborate (practice activities): 15-20 mins
+    Evaluate (exit check): 5-10 mins
+
+    If time is short, prioritise the unplugged activity - research shows
+    it significantly improves understanding and retention.
+
+  subject_knowledge:
+    key_facts:
+      - "Modern CPUs execute billions of cycles per second (GHz = billion cycles/sec)"
+      - "Each instruction is very simple - complex operations need many instructions"
+      - "Registers are the fastest memory but very limited in size"
+    deeper_understanding: |
+      The fetch-execute cycle is a simplification. Real CPUs use pipelining
+      (multiple instructions in different stages simultaneously) and branch
+      prediction. At KS3, focus on the basic four-stage model.
+    historical_context: |
+      The fetch-execute cycle was formalised in the Von Neumann architecture
+      (1945). John Von Neumann described a computer with stored programs
+      where instructions and data share the same memory.
+
+# RESOURCES
+resources:
+  printable:
+    - name: "Human CPU Role Cards"
+      description: "Cards for unplugged activity (Control Unit, ALU, Registers, RAM)"
+      file: "human-cpu-role-cards.pdf"
+    - name: "Instruction Cards"
+      description: "Simple instructions for unplugged activity"
+      file: "instruction-cards.pdf"
+    - name: "Trace Table Template"
+      description: "Template for tracing fetch-execute cycles"
+      file: "fe-trace-table.pdf"
+    - name: "CPU Labelling Diagram"
+      description: "Unlabelled CPU diagram for labelling activity"
+      file: "cpu-diagram-unlabelled.pdf"
+
+  digital:
+    - name: "CPU Simulator"
+      url: "https://peterhigginson.co.uk/lmc/"
+      purpose: "Interactive Little Man Computer for demonstrating cycles"
+    - name: "BBC Bitesize - CPU"
+      url: "https://www.bbc.co.uk/bitesize/guides/zmb9mp3/revision/1"
+      purpose: "Student revision resource"
+    - name: "Craig'n'Dave Video"
+      url: "https://www.youtube.com/craigndave"
+      purpose: "Video explanation of fetch-execute cycle"
+
+  ncce:
+    - "https://teachcomputing.org/curriculum/key-stage-3/computing-systems"
+  isaac:
+    - "https://isaaccomputerscience.org/concepts/sys_arch_cpu"
+
+# ASSESSMENT
+assessment:
+  formative:
+    - method: "Prediction and observation during unplugged activity"
+      description: "Watch for misconceptions during Human CPU simulation"
+      when: "During unpack phase"
+    - method: "Hinge question"
+      description: "Quick check on DECODE understanding"
+      when: "After explain phase"
+    - method: "Trace table review"
+      description: "Check trace tables for accuracy"
+      when: "During elaborate phase"
+
+  summative:
+    - method: "Exit ticket"
+      description: "Three-question check on key knowledge"
+      criteria:
+        - "Can name three CPU components"
+        - "Can list four F-E cycle stages"
+        - "Can identify ALU function"
+    - method: "Explanation writing"
+      description: "Written explanation assessed against success criteria"
+      criteria:
+        - "Correct sequence of stages"
+        - "Accurate description of each stage"
+        - "Appropriate vocabulary use"

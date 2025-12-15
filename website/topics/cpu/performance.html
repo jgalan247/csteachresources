@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Performance - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .theory-hero {
+            background: linear-gradient(135deg, var(--theory-light) 0%, white 100%);
+        }
+        .content-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .content-section h2 {
+            color: var(--theory-dark);
+            border-bottom: 3px solid var(--theory);
+            padding-bottom: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+        .spec-badge {
+            display: inline-block;
+            background: var(--theory);
+            color: white;
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        .factor-card {
+            background: var(--gray-50);
+            border-left: 4px solid var(--theory);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        .factor-card h3 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .factor-icon {
+            font-size: 1.5rem;
+        }
+        .key-point {
+            background: var(--theory-light);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        .key-point strong {
+            color: var(--theory-dark);
+        }
+        .exam-tip {
+            background: var(--warning-light);
+            border-left: 4px solid var(--warning);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        .exam-tip::before {
+            content: "Exam Tip: ";
+            font-weight: 600;
+            color: var(--warning);
+        }
+        .analogy-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin: var(--space-md) 0;
+        }
+        .analogy-box h4 {
+            color: #0369a1;
+            margin-bottom: var(--space-sm);
+        }
+        .effects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        @media (max-width: 768px) {
+            .effects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .effect-box {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .effect-box.positive {
+            background: var(--success-light);
+            border: 1px solid var(--success);
+        }
+        .effect-box.negative {
+            background: var(--error-light);
+            border: 1px solid var(--error);
+        }
+        .effect-box h4 {
+            margin-bottom: var(--space-sm);
+        }
+        .effect-box.positive h4 {
+            color: var(--success);
+        }
+        .effect-box.negative h4 {
+            color: var(--error);
+        }
+        .effect-box ul {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-lg) 0;
+        }
+        .comparison-table th {
+            background: var(--theory);
+            color: white;
+            padding: var(--space-md);
+            text-align: left;
+        }
+        .comparison-table td {
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .comparison-table tr:nth-child(even) {
+            background: var(--gray-50);
+        }
+        .speed-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .speed-fast {
+            background: var(--success-light);
+            color: var(--success);
+        }
+        .speed-medium {
+            background: var(--warning-light);
+            color: var(--warning);
+        }
+        .speed-slow {
+            background: var(--error-light);
+            color: var(--error);
+        }
+        .scenario-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        .scenario-card h4 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-sm);
+        }
+        .scenario-card .recommendation {
+            background: var(--theory-light);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-sm);
+        }
+        .cores-visual {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: var(--space-lg) 0;
+        }
+        .core-example {
+            text-align: center;
+            padding: var(--space-md);
+        }
+        .core-boxes {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+            margin-bottom: var(--space-sm);
+        }
+        .core-box {
+            width: 30px;
+            height: 30px;
+            background: var(--theory);
+            border-radius: var(--radius-sm);
+        }
+        .toc {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .toc h3 {
+            margin-bottom: var(--space-md);
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: var(--space-sm);
+        }
+        .toc a {
+            color: var(--theory-dark);
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+        @media (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .summary-item {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+            border-top: 4px solid var(--theory);
+        }
+        .summary-item h4 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-sm);
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero theory-hero">
+            <a href="index.html" style="color: var(--theory); text-decoration: none;">← Back to CPU</a>
+            <span class="spec-badge">OCR J277 - 1.1 Systems Architecture</span>
+            <h1>CPU Performance</h1>
+            <p class="hero-subtitle">What makes one CPU faster than another?</p>
+        </header>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="#clock-speed">1. Clock Speed</a></li>
+                <li><a href="#cache-size">2. Cache Size</a></li>
+                <li><a href="#cores">3. Number of Cores</a></li>
+                <li><a href="#combined">4. Combined Effects</a></li>
+                <li><a href="#summary">5. Summary & Exam Checklist</a></li>
+            </ul>
+        </div>
+
+        <!-- Introduction -->
+        <section class="content-section">
+            <h2>What Affects CPU Performance?</h2>
+            <p>Why does one laptop cost £400 and another £1400? Often, it comes down to the CPU. There are <strong>three main factors</strong> that affect how fast a CPU can process instructions:</p>
+
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4>Clock Speed</h4>
+                    <p>How many cycles per second</p>
+                    <p style="font-family: var(--font-mono); color: var(--theory);">3.5 GHz</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Cache Size</h4>
+                    <p>Fast memory on the CPU</p>
+                    <p style="font-family: var(--font-mono); color: var(--theory);">8 MB</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Number of Cores</h4>
+                    <p>Parallel processing units</p>
+                    <p style="font-family: var(--font-mono); color: var(--theory);">4 cores</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Clock Speed -->
+        <section class="content-section" id="clock-speed">
+            <h2>1. Clock Speed</h2>
+
+            <div class="factor-card">
+                <h3><span class="factor-icon">⏱️</span> What is Clock Speed?</h3>
+                <p>Clock speed is the number of cycles the CPU can perform per second. It's like the <strong>heartbeat</strong> of the CPU - every 'tick' of the clock allows the CPU to perform operations.</p>
+
+                <div class="key-point">
+                    <strong>Measured in Hertz (Hz):</strong>
+                    <ul>
+                        <li><strong>1 Hz</strong> = 1 cycle per second</li>
+                        <li><strong>1 MHz</strong> = 1 million cycles per second</li>
+                        <li><strong>1 GHz</strong> = 1 billion cycles per second</li>
+                    </ul>
+                    <p>Modern CPUs typically run at <strong>2-5 GHz</strong>.</p>
+                </div>
+            </div>
+
+            <div class="analogy-box">
+                <h4>Analogy: The Drummer in a Band</h4>
+                <p>Think of clock speed like a drummer in a band. The drummer sets the pace for everyone else. A faster drum beat (higher clock speed) means the band can play faster.</p>
+                <p>But there's a limit - if the drummer plays too fast, the other musicians can't keep up, and things start to go wrong!</p>
+            </div>
+
+            <h3>How Does Clock Speed Affect Performance?</h3>
+            <div class="effects-grid">
+                <div class="effect-box positive">
+                    <h4>Advantages of Higher Clock Speed</h4>
+                    <ul>
+                        <li>More instructions processed per second</li>
+                        <li>Programs run faster</li>
+                        <li>Better responsiveness</li>
+                    </ul>
+                </div>
+                <div class="effect-box negative">
+                    <h4>Disadvantages of Higher Clock Speed</h4>
+                    <ul>
+                        <li>Generates more heat</li>
+                        <li>Uses more electrical power</li>
+                        <li>Physical limits on maximum speed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-tip">
+                Higher clock speed = more cycles per second = faster processing. But it's NOT the only factor - a 3GHz CPU isn't always faster than a 2GHz CPU if the architecture is different!
+            </div>
+        </section>
+
+        <!-- Section 2: Cache Size -->
+        <section class="content-section" id="cache-size">
+            <h2>2. Cache Size</h2>
+
+            <div class="factor-card">
+                <h3><span class="factor-icon">💾</span> What is Cache?</h3>
+                <p>Cache is <strong>small, super-fast memory</strong> built directly into the CPU. It stores copies of data that the CPU uses frequently, so it doesn't have to fetch from the slower RAM every time.</p>
+
+                <div class="key-point">
+                    <strong>Cache Levels:</strong>
+                    <ul>
+                        <li><strong>L1 Cache:</strong> Smallest (32-64KB), fastest, closest to CPU cores</li>
+                        <li><strong>L2 Cache:</strong> Medium (256KB-1MB), slightly slower</li>
+                        <li><strong>L3 Cache:</strong> Largest (4-32MB), shared between all cores</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="analogy-box">
+                <h4>Analogy: Your Desk, Bookshelf, and Library</h4>
+                <p>Imagine you're writing an essay:</p>
+                <ul>
+                    <li><strong>Your desk (Cache)</strong> - holds the books you're using right now = instant access</li>
+                    <li><strong>Bookshelf (RAM)</strong> - across the room = takes a few seconds to fetch</li>
+                    <li><strong>Library (Hard Drive)</strong> - across town = takes ages!</li>
+                </ul>
+                <p>A bigger desk means more books within reach = less time wasted walking!</p>
+            </div>
+
+            <h3>Speed Comparison</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Memory Type</th>
+                        <th>Access Time</th>
+                        <th>Speed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>L1 Cache</td>
+                        <td>~4 clock cycles</td>
+                        <td><span class="speed-badge speed-fast">Fastest</span></td>
+                    </tr>
+                    <tr>
+                        <td>L2 Cache</td>
+                        <td>~10 clock cycles</td>
+                        <td><span class="speed-badge speed-fast">Very Fast</span></td>
+                    </tr>
+                    <tr>
+                        <td>L3 Cache</td>
+                        <td>~40 clock cycles</td>
+                        <td><span class="speed-badge speed-medium">Fast</span></td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>~100+ clock cycles</td>
+                        <td><span class="speed-badge speed-slow">Slower</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>How Does Cache Size Affect Performance?</h3>
+            <div class="effects-grid">
+                <div class="effect-box positive">
+                    <h4>Advantages of Larger Cache</h4>
+                    <ul>
+                        <li>Reduces time waiting for data from RAM</li>
+                        <li>More "cache hits" (data found in cache)</li>
+                        <li>Keeps frequently used data close to CPU</li>
+                    </ul>
+                </div>
+                <div class="effect-box negative">
+                    <h4>Disadvantages of Larger Cache</h4>
+                    <ul>
+                        <li>Very expensive per megabyte</li>
+                        <li>Takes up space on the CPU chip</li>
+                        <li>More cache = higher cost</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-tip">
+                A "cache hit" (data found in cache) is MUCH faster than a "cache miss" (data must be fetched from RAM). Larger cache = more cache hits = better performance.
+            </div>
+        </section>
+
+        <!-- Section 3: Number of Cores -->
+        <section class="content-section" id="cores">
+            <h2>3. Number of Cores</h2>
+
+            <div class="factor-card">
+                <h3><span class="factor-icon">🔲</span> What is a Core?</h3>
+                <p>A core is like a complete mini-CPU that can execute instructions <strong>independently</strong>. Modern CPUs have multiple cores, allowing them to run multiple tasks at the same time (in parallel).</p>
+
+                <div class="cores-visual">
+                    <div class="core-example">
+                        <div class="core-boxes">
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                        </div>
+                        <strong>Dual-core</strong><br>2 cores
+                    </div>
+                    <div class="core-example">
+                        <div class="core-boxes">
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                        </div>
+                        <strong>Quad-core</strong><br>4 cores
+                    </div>
+                    <div class="core-example">
+                        <div class="core-boxes">
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                            <div class="core-box"></div>
+                        </div>
+                        <strong>Octa-core</strong><br>8 cores
+                    </div>
+                </div>
+            </div>
+
+            <div class="analogy-box">
+                <h4>Analogy: Supermarket Checkouts</h4>
+                <p>Think of cores like checkout tills in a supermarket:</p>
+                <ul>
+                    <li><strong>1 core = 1 checkout</strong> - customers queue up, served one at a time</li>
+                    <li><strong>4 cores = 4 checkouts</strong> - 4 customers served simultaneously</li>
+                    <li><strong>8 cores = 8 checkouts</strong> - even more customers served at once</li>
+                </ul>
+                <p><strong>BUT:</strong> If there's only one customer, having 8 checkouts doesn't help! Similarly, if software only uses 1 core, extra cores won't speed it up.</p>
+            </div>
+
+            <h3>How Does Number of Cores Affect Performance?</h3>
+            <div class="effects-grid">
+                <div class="effect-box positive">
+                    <h4>Advantages of More Cores</h4>
+                    <ul>
+                        <li>Can run multiple programs simultaneously</li>
+                        <li>Multi-threaded programs run faster</li>
+                        <li>Better at multitasking</li>
+                    </ul>
+                </div>
+                <div class="effect-box negative">
+                    <h4>Disadvantages/Limitations</h4>
+                    <ul>
+                        <li>Not all software can use multiple cores</li>
+                        <li>Some tasks can't be split into parallel parts</li>
+                        <li>More cores don't help single-threaded apps</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <strong>Important:</strong> More cores only help if the software is designed to use them (called "multi-threading"):
+                <ul>
+                    <li><strong>Benefits greatly:</strong> Video editing, 3D rendering, scientific simulations</li>
+                    <li><strong>Limited benefit:</strong> Simple programs, older software, web browsing</li>
+                </ul>
+            </div>
+
+            <div class="exam-tip">
+                Doubling the number of cores does NOT double performance for all tasks. Software must be written to use multiple cores to benefit from them.
+            </div>
+        </section>
+
+        <!-- Section 4: Combined Effects -->
+        <section class="content-section" id="combined">
+            <h2>4. Combined Effects</h2>
+
+            <p>In reality, all three factors work together. The "best" CPU depends on what it will be used for.</p>
+
+            <h3>Which Factors Matter Most?</h3>
+
+            <div class="scenario-card">
+                <h4>🎮 Gaming</h4>
+                <p>Many games prefer fast single-thread performance but can use 4-8 cores.</p>
+                <div class="recommendation">
+                    <strong>Best:</strong> High clock speed + moderate cores (4-8) + good cache
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4>🎬 Video Editing</h4>
+                <p>Video encoding is highly parallelisable - more cores = faster rendering.</p>
+                <div class="recommendation">
+                    <strong>Best:</strong> Many cores + decent clock speed + large cache
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4>💼 Office Work / Web Browsing</h4>
+                <p>Light tasks don't need extreme performance.</p>
+                <div class="recommendation">
+                    <strong>Best:</strong> Moderate clock speed + 2-4 cores + moderate cache
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <h4>🔬 Scientific Computing</h4>
+                <p>Complex calculations benefit from parallel processing.</p>
+                <div class="recommendation">
+                    <strong>Best:</strong> Many cores + large cache + good clock speed
+                </div>
+            </div>
+
+            <h3>Trade-offs to Remember</h3>
+            <div class="key-point">
+                <ul>
+                    <li>Higher clock speed often means <strong>fewer cores</strong> (due to heat)</li>
+                    <li>More cores often means <strong>lower per-core clock speed</strong></li>
+                    <li>Larger cache <strong>increases cost significantly</strong></li>
+                    <li>The best balance <strong>depends on the use case</strong></li>
+                </ul>
+            </div>
+
+            <div class="exam-tip">
+                Exam questions often ask you to recommend a CPU for a specific task. Always consider: What is the computer being used for? Does that task benefit from more cores (parallel) or faster single-thread speed?
+            </div>
+        </section>
+
+        <!-- Section 5: Summary -->
+        <section class="content-section" id="summary">
+            <h2>5. Summary & Exam Checklist</h2>
+
+            <h3>What You Need to Know</h3>
+
+            <div class="key-point">
+                <strong>Clock Speed:</strong>
+                <ul>
+                    <li>☐ Higher clock speed = more cycles per second</li>
+                    <li>☐ Measured in GHz (gigahertz)</li>
+                    <li>☐ Increasing it generates more heat and uses more power</li>
+                </ul>
+            </div>
+
+            <div class="key-point">
+                <strong>Cache Size:</strong>
+                <ul>
+                    <li>☐ Larger cache = more data stored close to CPU</li>
+                    <li>☐ Cache is much faster than RAM</li>
+                    <li>☐ L1 is fastest but smallest; L3 is largest but slowest</li>
+                    <li>☐ Cache hit = fast; Cache miss = must fetch from RAM</li>
+                </ul>
+            </div>
+
+            <div class="key-point">
+                <strong>Number of Cores:</strong>
+                <ul>
+                    <li>☐ More cores = can process multiple instructions simultaneously</li>
+                    <li>☐ Software must be multi-threaded to benefit</li>
+                    <li>☐ Good for multitasking and parallel processing</li>
+                    <li>☐ Doubling cores does NOT double performance for all tasks</li>
+                </ul>
+            </div>
+
+            <div class="key-point">
+                <strong>Combined Effects:</strong>
+                <ul>
+                    <li>☐ All three factors work together</li>
+                    <li>☐ The "best" balance depends on the use case</li>
+                    <li>☐ There are trade-offs between factors</li>
+                </ul>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Effect of Increasing</th>
+                        <th>Limitation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Clock Speed</strong></td>
+                        <td>More instructions per second</td>
+                        <td>More heat, more power</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cache Size</strong></td>
+                        <td>Fewer slow RAM accesses</td>
+                        <td>Expensive, limited space</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Number of Cores</strong></td>
+                        <td>More parallel processing</td>
+                        <td>Only helps multi-threaded software</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Navigation -->
+        <div class="nav-buttons">
+            <a href="learn.html" class="btn btn-secondary">← CPU Components</a>
+            <a href="performance-quiz.html" class="btn btn-primary">Test Your Knowledge →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Mark as complete when scrolled to bottom
+        window.addEventListener('scroll', function() {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+                if (typeof saveProgress === 'function') {
+                    saveProgress('cpu-performance', 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

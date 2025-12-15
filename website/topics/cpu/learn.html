@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn: CPU Components & Von Neumann Architecture - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .theory-hero {
+            background: linear-gradient(135deg, var(--theory-light) 0%, white 100%);
+        }
+        .content-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .content-section h2 {
+            color: var(--theory-dark);
+            border-bottom: 3px solid var(--theory);
+            padding-bottom: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+        .spec-badge {
+            display: inline-block;
+            background: var(--theory);
+            color: white;
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        .component-card {
+            background: var(--gray-50);
+            border-left: 4px solid var(--theory);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        .component-card h3 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-sm);
+        }
+        .component-card .full-name {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-md);
+        }
+        .key-point {
+            background: var(--theory-light);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        .key-point strong {
+            color: var(--theory-dark);
+        }
+        .exam-tip {
+            background: var(--warning-light);
+            border-left: 4px solid var(--warning);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        .exam-tip::before {
+            content: "📝 Exam Tip: ";
+            font-weight: 600;
+            color: var(--warning);
+        }
+        .register-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-lg) 0;
+        }
+        .register-table th {
+            background: var(--theory);
+            color: white;
+            padding: var(--space-md);
+            text-align: left;
+        }
+        .register-table td {
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .register-table tr:nth-child(even) {
+            background: var(--gray-50);
+        }
+        .stores-address {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .stores-data {
+            background: var(--success-light);
+            color: var(--success);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .cycle-stage {
+            background: white;
+            border: 2px solid var(--theory);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        .cycle-stage h3 {
+            background: var(--theory);
+            color: white;
+            margin: calc(var(--space-lg) * -1);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+        .step-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: step;
+        }
+        .step-list li {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: var(--space-md);
+            counter-increment: step;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--theory);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .register-change {
+            font-family: var(--font-mono);
+            background: var(--gray-100);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            color: var(--theory-dark);
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .comparison-box {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .comparison-box h4 {
+            color: var(--theory-dark);
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+        .toc {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .toc h3 {
+            margin-bottom: var(--space-md);
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: var(--space-sm);
+        }
+        .toc a {
+            color: var(--theory-dark);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero theory-hero">
+            <a href="index.html" style="color: var(--theory); text-decoration: none;">← Back to CPU</a>
+            <span class="spec-badge">OCR J277 - 1.1 Systems Architecture</span>
+            <h1>CPU Components & Von Neumann Architecture</h1>
+            <p class="hero-subtitle">Everything you need to know for your GCSE exam</p>
+        </header>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>📑 Contents</h3>
+            <ul>
+                <li><a href="#cpu-components">1. CPU Components (ALU, CU, Cache, Registers)</a></li>
+                <li><a href="#von-neumann">2. Von Neumann Architecture</a></li>
+                <li><a href="#registers">3. The Four Key Registers (PC, MAR, MDR, ACC)</a></li>
+                <li><a href="#data-vs-address">4. Data vs Address - The Key Difference</a></li>
+                <li><a href="#fetch-execute">5. The Fetch-Execute Cycle</a></li>
+                <li><a href="#summary">6. Summary & Exam Checklist</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 1: CPU Components -->
+        <section class="content-section" id="cpu-components">
+            <h2>1. CPU Components</h2>
+            <p>The CPU (Central Processing Unit) is the "brain" of the computer. It contains four main components that you need to know:</p>
+
+            <!-- ALU -->
+            <div class="component-card">
+                <h3>ALU (Arithmetic Logic Unit)</h3>
+                <p class="full-name">What it does: Performs all calculations and comparisons</p>
+
+                <p>The ALU handles <strong>two types of operations</strong>:</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-box">
+                        <h4>Arithmetic Operations</h4>
+                        <ul style="text-align: left;">
+                            <li>Addition (+)</li>
+                            <li>Subtraction (-)</li>
+                            <li>Multiplication (×)</li>
+                            <li>Division (÷)</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-box">
+                        <h4>Logical Operations</h4>
+                        <ul style="text-align: left;">
+                            <li>AND</li>
+                            <li>OR</li>
+                            <li>NOT</li>
+                            <li>Comparisons (>, <, =)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exam-tip">
+                    Remember ALU = <strong>A</strong>rithmetic + <strong>L</strong>ogic. That's two types of operations!
+                </div>
+            </div>
+
+            <!-- Control Unit -->
+            <div class="component-card">
+                <h3>CU (Control Unit)</h3>
+                <p class="full-name">What it does: Controls and coordinates all CPU operations</p>
+
+                <p>The Control Unit is like a <strong>conductor</strong> in an orchestra - it doesn't play instruments (do calculations) but tells everyone else what to do and when.</p>
+
+                <div class="key-point">
+                    <strong>The Control Unit:</strong>
+                    <ul>
+                        <li><strong>Fetches</strong> instructions from memory</li>
+                        <li><strong>Decodes</strong> instructions (works out what they mean)</li>
+                        <li><strong>Controls</strong> timing and data flow</li>
+                        <li><strong>Sends signals</strong> to other components</li>
+                    </ul>
+                </div>
+
+                <div class="exam-tip">
+                    The CU coordinates but doesn't calculate - that's the ALU's job!
+                </div>
+            </div>
+
+            <!-- Cache -->
+            <div class="component-card">
+                <h3>Cache</h3>
+                <p class="full-name">What it does: Provides fast storage for frequently used data</p>
+
+                <p>Cache is <strong>small, fast memory</strong> inside the CPU. It stores copies of data and instructions that are used frequently.</p>
+
+                <div class="key-point">
+                    <strong>Why cache matters:</strong>
+                    <ul>
+                        <li>Cache is <strong>faster than RAM</strong> but <strong>smaller</strong></li>
+                        <li>CPU checks cache first before going to slower RAM</li>
+                        <li><strong>Cache hit</strong> = data found in cache (fast!)</li>
+                        <li><strong>Cache miss</strong> = data not in cache, must get from RAM (slower)</li>
+                    </ul>
+                </div>
+
+                <div class="exam-tip">
+                    More cache = better performance, because less waiting for slow RAM.
+                </div>
+            </div>
+
+            <!-- Registers -->
+            <div class="component-card">
+                <h3>Registers</h3>
+                <p class="full-name">What they do: Store small amounts of data being processed</p>
+
+                <p>Registers are <strong>tiny, super-fast</strong> storage locations inside the CPU.</p>
+
+                <div class="key-point">
+                    <strong>Key facts about registers:</strong>
+                    <ul>
+                        <li>The <strong>fastest</strong> type of memory</li>
+                        <li>Very <strong>small</strong> (typically 32 or 64 bits each)</li>
+                        <li>Different registers have <strong>specific purposes</strong></li>
+                        <li>Some store <strong>addresses</strong>, some store <strong>data</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Von Neumann Architecture -->
+        <section class="content-section" id="von-neumann">
+            <h2>2. Von Neumann Architecture</h2>
+
+            <p>Most modern computers use <strong>Von Neumann architecture</strong>, named after mathematician John von Neumann who described it in 1945.</p>
+
+            <div class="key-point">
+                <strong>Key principle:</strong> Programs and data are stored in the <strong>same memory</strong> (RAM) and share the same bus system.
+            </div>
+
+            <h3>Components of Von Neumann Architecture</h3>
+            <ul>
+                <li><strong>CPU</strong> - with Control Unit and ALU</li>
+                <li><strong>Memory (RAM)</strong> - stores BOTH programs AND data</li>
+                <li><strong>Input devices</strong> - keyboard, mouse, etc.</li>
+                <li><strong>Output devices</strong> - monitor, printer, etc.</li>
+                <li><strong>Bus system</strong> - connects everything together</li>
+            </ul>
+
+            <div class="exam-tip">
+                The key point is that programs and data share the SAME memory. Before Von Neumann, computers had separate memory for programs!
+            </div>
+        </section>
+
+        <!-- Section 3: The Four Key Registers -->
+        <section class="content-section" id="registers">
+            <h2>3. The Four Key Registers</h2>
+
+            <p>You MUST know these four registers for OCR J277:</p>
+
+            <table class="register-table">
+                <thead>
+                    <tr>
+                        <th>Register</th>
+                        <th>Full Name</th>
+                        <th>Purpose</th>
+                        <th>Stores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PC</strong></td>
+                        <td>Program Counter</td>
+                        <td>Holds the address of the <strong>NEXT</strong> instruction to be fetched</td>
+                        <td><span class="stores-address">ADDRESS</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MAR</strong></td>
+                        <td>Memory Address Register</td>
+                        <td>Holds the address of the memory location being accessed <strong>NOW</strong></td>
+                        <td><span class="stores-address">ADDRESS</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MDR</strong></td>
+                        <td>Memory Data Register</td>
+                        <td>Holds the <strong>data</strong> that has been fetched from (or is being written to) memory</td>
+                        <td><span class="stores-data">DATA</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ACC</strong></td>
+                        <td>Accumulator</td>
+                        <td>Stores the <strong>results</strong> of calculations from the ALU</td>
+                        <td><span class="stores-data">DATA</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="exam-tip">
+                PC and MAR store ADDRESSES (where to look). MDR and ACC store DATA (what we found or calculated).
+            </div>
+        </section>
+
+        <!-- Section 4: Data vs Address -->
+        <section class="content-section" id="data-vs-address">
+            <h2>4. Data vs Address - The Key Difference</h2>
+
+            <p>This is a <strong>crucial distinction</strong> for your exam. You must know which registers store data and which store addresses.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-box" style="border: 3px solid var(--primary);">
+                    <h4 style="color: var(--primary);">📍 ADDRESS</h4>
+                    <p>A <strong>location</strong> in memory</p>
+                    <p style="font-size: 0.9rem; color: var(--gray-600);">Like a house number - tells you WHERE something is</p>
+                    <p><strong>Registers:</strong> PC, MAR</p>
+                    <p style="font-family: var(--font-mono);">Example: 100, 101, 256</p>
+                </div>
+                <div class="comparison-box" style="border: 3px solid var(--success);">
+                    <h4 style="color: var(--success);">📦 DATA</h4>
+                    <p>The actual <strong>content</strong> stored</p>
+                    <p style="font-size: 0.9rem; color: var(--gray-600);">Like who lives in the house - the ACTUAL information</p>
+                    <p><strong>Registers:</strong> MDR, ACC</p>
+                    <p style="font-family: var(--font-mono);">Example: "ADD 5", 42, "Hello"</p>
+                </div>
+            </div>
+
+            <h3>Quick Memory Aid</h3>
+            <ul>
+                <li><strong>PC</strong> = "Where am I going next?" → ADDRESS</li>
+                <li><strong>MAR</strong> = "Where am I looking now?" → ADDRESS (has "Address" in the name!)</li>
+                <li><strong>MDR</strong> = "What did I find there?" → DATA (has "Data" in the name!)</li>
+                <li><strong>ACC</strong> = "What's my answer?" → DATA</li>
+            </ul>
+        </section>
+
+        <!-- Section 5: Fetch-Execute Cycle -->
+        <section class="content-section" id="fetch-execute">
+            <h2>5. The Fetch-Execute Cycle</h2>
+
+            <p>Every instruction goes through this cycle. Learn what happens at <strong>each stage</strong> and which <strong>registers change</strong>.</p>
+
+            <!-- FETCH Stage -->
+            <div class="cycle-stage">
+                <h3>🔄 FETCH Stage</h3>
+                <p><strong>Purpose:</strong> Get the next instruction from memory</p>
+
+                <ol class="step-list">
+                    <li>
+                        <strong>PC → MAR</strong><br>
+                        The address in the Program Counter is copied to the Memory Address Register<br>
+                        <span class="register-change">MAR = PC</span>
+                    </li>
+                    <li>
+                        <strong>MAR sends address to RAM</strong><br>
+                        The address is sent via the <strong>address bus</strong> to RAM
+                    </li>
+                    <li>
+                        <strong>RAM → MDR</strong><br>
+                        The instruction at that address is sent via the <strong>data bus</strong> to MDR<br>
+                        <span class="register-change">MDR = [contents of that address]</span>
+                    </li>
+                    <li>
+                        <strong>PC increments</strong><br>
+                        The Program Counter increases by 1, ready for the next instruction<br>
+                        <span class="register-change">PC = PC + 1</span>
+                    </li>
+                </ol>
+
+                <div class="exam-tip">
+                    PC increments DURING fetch, not at the end of the cycle!
+                </div>
+            </div>
+
+            <!-- DECODE Stage -->
+            <div class="cycle-stage">
+                <h3>🔍 DECODE Stage</h3>
+                <p><strong>Purpose:</strong> Work out what the instruction means</p>
+
+                <ol class="step-list">
+                    <li>
+                        <strong>Instruction sent to Control Unit</strong><br>
+                        The instruction in MDR is passed to the Control Unit
+                    </li>
+                    <li>
+                        <strong>CU decodes the instruction</strong><br>
+                        The Control Unit works out what operation is needed
+                    </li>
+                    <li>
+                        <strong>CU prepares control signals</strong><br>
+                        Control signals are prepared for the execute stage
+                    </li>
+                </ol>
+            </div>
+
+            <!-- EXECUTE Stage -->
+            <div class="cycle-stage">
+                <h3>⚡ EXECUTE Stage</h3>
+                <p><strong>Purpose:</strong> Carry out the instruction</p>
+
+                <p>What happens depends on the instruction type:</p>
+
+                <div class="component-card">
+                    <h4>Example: LDA 200 (Load from address 200)</h4>
+                    <ol class="step-list">
+                        <li>Address 200 is placed in MAR</li>
+                        <li>Data at address 200 is fetched to MDR</li>
+                        <li>Data is copied from MDR to ACC</li>
+                    </ol>
+                </div>
+
+                <div class="component-card">
+                    <h4>Example: ADD 150 (Add value from address 150)</h4>
+                    <ol class="step-list">
+                        <li>Address 150 is placed in MAR</li>
+                        <li>Data at address 150 is fetched to MDR</li>
+                        <li>ALU adds MDR value to ACC</li>
+                        <li>Result stored back in ACC</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Summary -->
+        <section class="content-section" id="summary">
+            <h2>6. Summary & Exam Checklist</h2>
+
+            <h3>✅ What You Need to Know</h3>
+
+            <div class="key-point">
+                <strong>CPU Components:</strong>
+                <ul>
+                    <li>☐ ALU - performs arithmetic AND logical operations</li>
+                    <li>☐ Control Unit - fetches, decodes, coordinates</li>
+                    <li>☐ Cache - fast memory for frequently used data</li>
+                    <li>☐ Registers - tiny, fast storage in CPU</li>
+                </ul>
+            </div>
+
+            <div class="key-point">
+                <strong>Von Neumann Registers:</strong>
+                <ul>
+                    <li>☐ PC stores ADDRESS of NEXT instruction</li>
+                    <li>☐ MAR stores ADDRESS being accessed</li>
+                    <li>☐ MDR stores DATA being transferred</li>
+                    <li>☐ ACC stores DATA (calculation results)</li>
+                </ul>
+            </div>
+
+            <div class="key-point">
+                <strong>Fetch-Execute Cycle:</strong>
+                <ul>
+                    <li>☐ FETCH: PC→MAR, RAM→MDR, PC++</li>
+                    <li>☐ DECODE: CU interprets instruction</li>
+                    <li>☐ EXECUTE: Instruction carried out (may use ALU)</li>
+                </ul>
+            </div>
+
+            <div class="key-point">
+                <strong>Data vs Address:</strong>
+                <ul>
+                    <li>☐ PC and MAR store ADDRESSES</li>
+                    <li>☐ MDR and ACC store DATA</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="nav-buttons">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="quiz.html" class="btn btn-primary">Test Your Knowledge →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Mark as complete when scrolled to bottom
+        window.addEventListener('scroll', function() {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+                if (typeof saveProgress === 'function') {
+                    saveProgress('cpu-learn', 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

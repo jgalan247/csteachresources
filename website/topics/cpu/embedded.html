@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Systems - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .theory-hero {
+            background: linear-gradient(135deg, var(--theory-light) 0%, white 100%);
+        }
+        .content-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .content-section h2 {
+            color: var(--theory-dark);
+            border-bottom: 3px solid var(--theory);
+            padding-bottom: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+        .spec-badge {
+            display: inline-block;
+            background: var(--theory);
+            color: white;
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+        .definition-box {
+            background: var(--theory-light);
+            border-left: 4px solid var(--theory);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        .definition-box h3 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-sm);
+        }
+        .key-point {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        .key-point strong {
+            color: var(--theory-dark);
+        }
+        .exam-tip {
+            background: var(--warning-light);
+            border-left: 4px solid var(--warning);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        .exam-tip::before {
+            content: "Exam Tip: ";
+            font-weight: 600;
+            color: var(--warning);
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .comparison-box {
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-200);
+        }
+        .comparison-box h4 {
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .comparison-box.general {
+            border-color: var(--primary);
+            background: rgba(37, 99, 235, 0.05);
+        }
+        .comparison-box.general h4 {
+            color: var(--primary);
+        }
+        .comparison-box.embedded {
+            border-color: var(--theory);
+            background: var(--theory-light);
+        }
+        .comparison-box.embedded h4 {
+            color: var(--theory-dark);
+        }
+        .characteristic-card {
+            background: white;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        .characteristic-card h4 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .characteristic-card .icon {
+            font-size: 1.3rem;
+        }
+        .characteristic-card p {
+            margin-bottom: var(--space-sm);
+        }
+        .characteristic-card .example {
+            background: var(--gray-50);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .example-category {
+            margin-bottom: var(--space-xl);
+        }
+        .example-category h3 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+        .example-item {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--theory);
+        }
+        .example-item .device {
+            font-weight: 600;
+            color: var(--theory-dark);
+            margin-bottom: var(--space-xs);
+        }
+        .example-item .function {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .purpose-card {
+            background: linear-gradient(135deg, var(--theory-light) 0%, white 100%);
+            border: 2px solid var(--theory);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+            text-align: center;
+        }
+        .purpose-card h4 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-sm);
+        }
+        .purpose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+        }
+        .characteristics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+        .toc {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .toc h3 {
+            margin-bottom: var(--space-md);
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .toc li {
+            margin-bottom: var(--space-sm);
+        }
+        .toc a {
+            color: var(--theory-dark);
+        }
+        .summary-checklist {
+            background: var(--theory-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .summary-checklist ul {
+            list-style: none;
+            padding: 0;
+        }
+        .summary-checklist li {
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .summary-checklist li:last-child {
+            border-bottom: none;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero theory-hero">
+            <a href="index.html" style="color: var(--theory); text-decoration: none;">← Back to CPU</a>
+            <span class="spec-badge">OCR J277 - 1.1 Systems Architecture</span>
+            <h1>Embedded Systems</h1>
+            <p class="hero-subtitle">The hidden computers all around you</p>
+        </header>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="#what-is">1. What is an Embedded System?</a></li>
+                <li><a href="#characteristics">2. Characteristics of Embedded Systems</a></li>
+                <li><a href="#examples">3. Examples of Embedded Systems</a></li>
+                <li><a href="#purpose">4. Purpose of Embedded Systems</a></li>
+                <li><a href="#summary">5. Summary & Exam Checklist</a></li>
+            </ul>
+        </div>
+
+        <!-- Introduction -->
+        <section class="content-section">
+            <h2>Hidden Computers Everywhere</h2>
+            <p>Look around you - how many computers can you see? Just your phone and laptop?</p>
+            <p>Actually, there are probably <strong>dozens</strong> of computers near you right now! Your watch, TV remote, microwave, car key, even your toothbrush might contain a computer.</p>
+            <p>These hidden computers are called <strong>embedded systems</strong>.</p>
+        </section>
+
+        <!-- Section 1: What is an Embedded System? -->
+        <section class="content-section" id="what-is">
+            <h2>1. What is an Embedded System?</h2>
+
+            <div class="definition-box">
+                <h3>Definition</h3>
+                <p>An <strong>embedded system</strong> is a computer system that is built into a larger device to perform <strong>ONE specific, dedicated function</strong>.</p>
+            </div>
+
+            <div class="key-point">
+                <strong>Key Points:</strong>
+                <ul>
+                    <li><strong>Built INTO</strong> another device (not standalone)</li>
+                    <li>Performs a <strong>SINGLE</strong> dedicated function</li>
+                    <li>Usually <strong>invisible</strong> to the user</li>
+                    <li>User doesn't interact with it like a traditional computer</li>
+                </ul>
+            </div>
+
+            <h3>Embedded vs General-Purpose Computers</h3>
+
+            <div class="comparison-grid">
+                <div class="comparison-box general">
+                    <h4>💻 General-Purpose Computer</h4>
+                    <p><strong>Examples:</strong> Desktop PC, Laptop, Smartphone, Tablet</p>
+                    <ul>
+                        <li>Runs <strong>many different</strong> programs</li>
+                        <li>User <strong>installs/removes</strong> software</li>
+                        <li><strong>Flexible</strong> - can do many tasks</li>
+                        <li>Has obvious user interface (keyboard, screen)</li>
+                        <li>User <strong>knows</strong> they're using a computer</li>
+                    </ul>
+                </div>
+                <div class="comparison-box embedded">
+                    <h4>🔧 Embedded System</h4>
+                    <p><strong>Examples:</strong> Washing machine, TV remote, Car engine</p>
+                    <ul>
+                        <li>Runs <strong>ONE specific</strong> program</li>
+                        <li>Software is <strong>fixed</strong> (firmware)</li>
+                        <li><strong>Single-purpose</strong> - does one job</li>
+                        <li>May have <strong>no visible interface</strong></li>
+                        <li>User often <strong>doesn't realize</strong> it's a computer</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exam-tip">
+                The key difference is that embedded systems perform ONE SPECIFIC function, while general-purpose computers can run many different programs.
+            </div>
+        </section>
+
+        <!-- Section 2: Characteristics -->
+        <section class="content-section" id="characteristics">
+            <h2>2. Characteristics of Embedded Systems</h2>
+
+            <p>These are the typical features you'll find in embedded systems:</p>
+
+            <div class="characteristics-list">
+                <div class="characteristic-card">
+                    <h4><span class="icon">🎯</span> Dedicated Function</h4>
+                    <p>Designed to perform ONE specific task and nothing else.</p>
+                    <div class="example">Example: A microwave only controls cooking - it can't check email!</div>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4><span class="icon">📦</span> Built into a Larger Device</h4>
+                    <p>Not a standalone computer - it's part of another product.</p>
+                    <div class="example">Example: The chip in your TV is inside the TV, not a separate device</div>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4><span class="icon">🔘</span> Limited User Interface</h4>
+                    <p>Often no screen or keyboard - just buttons or no interface at all.</p>
+                    <div class="example">Example: A thermostat might just have a dial and small display</div>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4><span class="icon">🔋</span> Low Power Consumption</h4>
+                    <p>Usually compact with low energy requirements.</p>
+                    <div class="example">Example: A smartwatch runs on a tiny battery for days</div>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4><span class="icon">⚡</span> Real-time Operation</h4>
+                    <p>Must respond quickly and reliably to inputs.</p>
+                    <div class="example">Example: Anti-lock brakes must respond in milliseconds</div>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4><span class="icon">✅</span> Reliable and Stable</h4>
+                    <p>Must work consistently without crashing.</p>
+                    <div class="example">Example: A pacemaker cannot 'freeze' or need rebooting!</div>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4><span class="icon">💾</span> Fixed Software (Firmware)</h4>
+                    <p>Software is usually permanent, not changed by the user.</p>
+                    <div class="example">Example: You don't install apps on your toaster</div>
+                </div>
+
+                <div class="characteristic-card">
+                    <h4><span class="icon">💰</span> Cost-Effective</h4>
+                    <p>Designed to be cheap to produce in large quantities.</p>
+                    <div class="example">Example: The chip in a £10 toy must cost just pennies</div>
+                </div>
+            </div>
+
+            <div class="exam-tip">
+                Learn at least 4-5 characteristics. Common exam answers: dedicated function, part of larger device, limited UI, low power, reliable, fixed software.
+            </div>
+        </section>
+
+        <!-- Section 3: Examples -->
+        <section class="content-section" id="examples">
+            <h2>3. Examples of Embedded Systems</h2>
+
+            <p>Embedded systems are everywhere! Here are examples from different categories:</p>
+
+            <div class="example-category">
+                <h3>🏠 Home Appliances</h3>
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="device">Washing Machine</div>
+                        <div class="function">Controls wash cycles, water temperature, spin speed</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Microwave Oven</div>
+                        <div class="function">Controls cooking time, power level, turntable</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Smart Thermostat</div>
+                        <div class="function">Monitors and controls home temperature</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Dishwasher</div>
+                        <div class="function">Controls wash programs and water usage</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-category">
+                <h3>📺 Consumer Electronics</h3>
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="device">Digital Watch</div>
+                        <div class="function">Keeps time, controls display, manages alarms</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">TV Remote Control</div>
+                        <div class="function">Sends infrared signals to control TV</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Games Controller</div>
+                        <div class="function">Reads button presses, sends to console</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Digital Camera</div>
+                        <div class="function">Controls image capture, storage, display</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-category">
+                <h3>🚗 Automotive</h3>
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="device">Engine Management</div>
+                        <div class="function">Controls fuel injection, ignition timing</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Anti-lock Brakes (ABS)</div>
+                        <div class="function">Prevents wheels locking during braking</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Airbag Controller</div>
+                        <div class="function">Detects crash and deploys airbags</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Parking Sensors</div>
+                        <div class="function">Detects obstacles when reversing</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-category">
+                <h3>🏥 Medical Devices</h3>
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="device">Pacemaker</div>
+                        <div class="function">Monitors and regulates heartbeat</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Blood Glucose Monitor</div>
+                        <div class="function">Measures blood sugar levels</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Hearing Aid</div>
+                        <div class="function">Amplifies and processes sound</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Insulin Pump</div>
+                        <div class="function">Delivers controlled doses of insulin</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-category">
+                <h3>🏢 Industrial & Infrastructure</h3>
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="device">Traffic Lights</div>
+                        <div class="function">Controls signal timing and sequences</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Security Alarm</div>
+                        <div class="function">Monitors sensors, triggers alarms</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Central Heating Boiler</div>
+                        <div class="function">Controls heating and hot water</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">ATM (Cash Machine)</div>
+                        <div class="function">Processes transactions, dispenses cash</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-category">
+                <h3>⌚ Wearables & Personal</h3>
+                <div class="example-grid">
+                    <div class="example-item">
+                        <div class="device">Fitness Tracker</div>
+                        <div class="function">Monitors activity, heart rate, sleep</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Smartwatch</div>
+                        <div class="function">Displays time, notifications, health data</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Electric Toothbrush</div>
+                        <div class="function">Controls brush speed and timer</div>
+                    </div>
+                    <div class="example-item">
+                        <div class="device">Wireless Earbuds</div>
+                        <div class="function">Audio processing, noise cancellation</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exam-tip">
+                When giving examples in the exam, always state what SPECIFIC FUNCTION the embedded system performs. Don't just say "washing machine" - say "washing machine controller that manages wash cycles and water temperature."
+            </div>
+        </section>
+
+        <!-- Section 4: Purpose -->
+        <section class="content-section" id="purpose">
+            <h2>4. Purpose of Embedded Systems</h2>
+
+            <p>Why do we use embedded systems instead of general-purpose computers?</p>
+
+            <div class="purpose-grid">
+                <div class="purpose-card">
+                    <h4>🤖 Automation</h4>
+                    <p>Automate tasks that would otherwise require human intervention</p>
+                </div>
+                <div class="purpose-card">
+                    <h4>🎛️ Control</h4>
+                    <p>Precisely control processes and devices</p>
+                </div>
+                <div class="purpose-card">
+                    <h4>👁️ Monitoring</h4>
+                    <p>Continuously monitor conditions and respond appropriately</p>
+                </div>
+                <div class="purpose-card">
+                    <h4>🛡️ Safety</h4>
+                    <p>Provide safety-critical functions that protect people</p>
+                </div>
+                <div class="purpose-card">
+                    <h4>📊 Efficiency</h4>
+                    <p>Optimize device operation for energy and resources</p>
+                </div>
+            </div>
+
+            <h3>Why Use Embedded Systems?</h3>
+            <div class="key-point">
+                <ul>
+                    <li><strong>More reliable</strong> than general-purpose computers for specific tasks</li>
+                    <li><strong>Cheaper</strong> to produce in large quantities</li>
+                    <li><strong>Lower power</strong> consumption</li>
+                    <li><strong>Smaller size</strong> - can fit into compact devices</li>
+                    <li><strong>Faster response</strong> time for dedicated tasks</li>
+                    <li><strong>No updates</strong> or user maintenance needed</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 5: Summary -->
+        <section class="content-section" id="summary">
+            <h2>5. Summary & Exam Checklist</h2>
+
+            <div class="summary-checklist">
+                <h3>What You Need to Know</h3>
+                <ul>
+                    <li>☐ <strong>Definition:</strong> Computer system built into a device to perform ONE specific function</li>
+                    <li>☐ <strong>Difference:</strong> Embedded = single function; General-purpose = many programs</li>
+                    <li>☐ <strong>Characteristics:</strong> Dedicated function, part of larger device, limited UI, low power, reliable, fixed software</li>
+                    <li>☐ <strong>Examples:</strong> Know at least 4-5 from different categories with their functions</li>
+                    <li>☐ <strong>Purpose:</strong> Automation, control, monitoring, safety, efficiency</li>
+                </ul>
+            </div>
+
+            <h3>Quick Reference: Characteristics</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-top: var(--space-md);">
+                <thead>
+                    <tr style="background: var(--theory); color: white;">
+                        <th style="padding: var(--space-md); text-align: left;">Characteristic</th>
+                        <th style="padding: var(--space-md); text-align: left;">Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: var(--gray-50);">
+                        <td style="padding: var(--space-md);">Dedicated function</td>
+                        <td style="padding: var(--space-md);">Does ONE specific job</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: var(--space-md);">Part of larger device</td>
+                        <td style="padding: var(--space-md);">Built INTO another product</td>
+                    </tr>
+                    <tr style="background: var(--gray-50);">
+                        <td style="padding: var(--space-md);">Limited UI</td>
+                        <td style="padding: var(--space-md);">Few/no buttons, no keyboard</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: var(--space-md);">Low power</td>
+                        <td style="padding: var(--space-md);">Uses little electricity</td>
+                    </tr>
+                    <tr style="background: var(--gray-50);">
+                        <td style="padding: var(--space-md);">Real-time</td>
+                        <td style="padding: var(--space-md);">Responds immediately</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: var(--space-md);">Reliable</td>
+                        <td style="padding: var(--space-md);">Doesn't crash</td>
+                    </tr>
+                    <tr style="background: var(--gray-50);">
+                        <td style="padding: var(--space-md);">Fixed software</td>
+                        <td style="padding: var(--space-md);">Can't install new programs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Navigation -->
+        <div class="nav-buttons">
+            <a href="performance.html" class="btn btn-secondary">← CPU Performance</a>
+            <a href="embedded-quiz.html" class="btn btn-primary">Test Your Knowledge →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Mark as complete when scrolled to bottom
+        window.addEventListener('scroll', function() {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+                if (typeof saveProgress === 'function') {
+                    saveProgress('cpu-embedded', 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
