@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems - Data Representation</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Representation</a>
+            <h1>Parsons Problems</h1>
+            <p class="subtitle">Drag and drop steps into the correct order</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How to Solve Parsons Problems</h2>
+            <p>The steps for each calculation are shown in the wrong order. Drag them into the correct sequence to complete the calculation. This helps you understand the <strong>method</strong>, not just memorise answers.</p>
+        </div>
+
+        <!-- Problem 1: Text File Size -->
+        <section class="parsons-problem" data-problem="1">
+            <h2>Problem 1: Calculate Text File Size</h2>
+            <p class="problem-description">Put these steps in the correct order to calculate the file size of a 200-character ASCII text file.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-1">
+                    <div class="parsons-block" data-order="3">Multiply: 200 × 8 = 1,600 bits</div>
+                    <div class="parsons-block" data-order="1">Count the number of characters: 200</div>
+                    <div class="parsons-block" data-order="4">Convert to bytes: 1,600 ÷ 8 = 200 bytes</div>
+                    <div class="parsons-block" data-order="2">Identify bits per character in ASCII: 8 bits</div>
+                </div>
+                <div class="parsons-target" id="target-1">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="1">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-1"></div>
+        </section>
+
+        <!-- Problem 2: Character Set Comparison -->
+        <section class="parsons-problem" data-problem="2">
+            <h2>Problem 2: Compare ASCII and Unicode</h2>
+            <p class="problem-description">Order these steps to explain why Unicode files are larger than ASCII files.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-2">
+                    <div class="parsons-block" data-order="4">Conclusion: Unicode files are 2× larger but support all world languages</div>
+                    <div class="parsons-block" data-order="2">ASCII uses 8 bits (1 byte) per character</div>
+                    <div class="parsons-block" data-order="1">Both are character sets that assign binary codes to characters</div>
+                    <div class="parsons-block" data-order="3">Unicode uses 16 bits (2 bytes) per character minimum</div>
+                </div>
+                <div class="parsons-target" id="target-2">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="2">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-2"></div>
+        </section>
+
+        <!-- Problem 3: ASCII Character Codes -->
+        <section class="parsons-problem" data-problem="3">
+            <h2>Problem 3: Finding an ASCII Code</h2>
+            <p class="problem-description">Order these steps to find the ASCII code for 'F' given that 'A' = 65.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-3">
+                    <div class="parsons-block" data-order="2">F is the 6th letter of the alphabet</div>
+                    <div class="parsons-block" data-order="4">ASCII code for 'F' = 70</div>
+                    <div class="parsons-block" data-order="3">Calculate: 65 + 5 = 70 (add positions after A)</div>
+                    <div class="parsons-block" data-order="1">Start with the known code: 'A' = 65</div>
+                </div>
+                <div class="parsons-target" id="target-3">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="3">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-3"></div>
+        </section>
+
+        <!-- Problem 4: Image File Size -->
+        <section class="parsons-problem" data-problem="4">
+            <h2>Problem 4: Calculate Image File Size</h2>
+            <p class="problem-description">Order these steps to calculate the size of a 1024×768 image with 24-bit colour depth.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-4">
+                    <div class="parsons-block" data-order="4">Convert to bytes: 18,874,368 ÷ 8 = 2,359,296 bytes</div>
+                    <div class="parsons-block" data-order="2">Calculate total pixels: 1024 × 768 = 786,432 pixels</div>
+                    <div class="parsons-block" data-order="1">Identify the values: width=1024, height=768, colour depth=24</div>
+                    <div class="parsons-block" data-order="5">Convert to MB: 2,359,296 ÷ 1,000,000 ≈ 2.36 MB</div>
+                    <div class="parsons-block" data-order="3">Calculate total bits: 786,432 × 24 = 18,874,368 bits</div>
+                </div>
+                <div class="parsons-target" id="target-4">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="4">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-4"></div>
+        </section>
+
+        <!-- Problem 5: Colour Depth -->
+        <section class="parsons-problem" data-problem="5">
+            <h2>Problem 5: Explain Colour Depth</h2>
+            <p class="problem-description">Order these steps to explain how colour depth affects image quality and file size.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-5">
+                    <div class="parsons-block" data-order="3">More bits = more possible colours (2^n colours)</div>
+                    <div class="parsons-block" data-order="5">Trade-off: Higher quality images require more storage</div>
+                    <div class="parsons-block" data-order="1">Colour depth is the number of bits used to store each pixel's colour</div>
+                    <div class="parsons-block" data-order="4">More colours = more realistic images but larger files</div>
+                    <div class="parsons-block" data-order="2">Common values: 1-bit (2 colours), 8-bit (256), 24-bit (16.7M)</div>
+                </div>
+                <div class="parsons-target" id="target-5">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="5">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-5"></div>
+        </section>
+
+        <!-- Problem 6: Sound File Size -->
+        <section class="parsons-problem" data-problem="6">
+            <h2>Problem 6: Calculate Sound File Size</h2>
+            <p class="problem-description">Order these steps to calculate the size of a 30-second mono audio file at 44.1kHz with 16-bit depth.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-6">
+                    <div class="parsons-block" data-order="5">Convert to MB: 2,646,000 ÷ 1,000,000 ≈ 2.65 MB</div>
+                    <div class="parsons-block" data-order="1">Identify values: sample rate=44,100 Hz, bit depth=16, duration=30s</div>
+                    <div class="parsons-block" data-order="3">Calculate bits: 44,100 × 16 × 30 = 21,168,000 bits</div>
+                    <div class="parsons-block" data-order="4">Convert to bytes: 21,168,000 ÷ 8 = 2,646,000 bytes</div>
+                    <div class="parsons-block" data-order="2">Apply formula: Sample rate × Bit depth × Duration</div>
+                </div>
+                <div class="parsons-target" id="target-6">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="6">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-6"></div>
+        </section>
+
+        <!-- Problem 7: Sample Rate Explanation -->
+        <section class="parsons-problem" data-problem="7">
+            <h2>Problem 7: Explain Sample Rate</h2>
+            <p class="problem-description">Order these steps to explain how sample rate affects audio quality.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-7">
+                    <div class="parsons-block" data-order="4">Higher sample rate = more accurate sound but larger files</div>
+                    <div class="parsons-block" data-order="2">Sample rate is measured in Hertz (Hz) - samples per second</div>
+                    <div class="parsons-block" data-order="1">Digital audio works by taking "snapshots" of sound waves</div>
+                    <div class="parsons-block" data-order="5">CD quality uses 44,100 Hz (44.1 kHz)</div>
+                    <div class="parsons-block" data-order="3">More samples = smoother, more accurate representation of the original sound</div>
+                </div>
+                <div class="parsons-target" id="target-7">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="7">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-7"></div>
+        </section>
+
+        <!-- Problem 8: Stereo Calculation -->
+        <section class="parsons-problem" data-problem="8">
+            <h2>Problem 8: Stereo vs Mono</h2>
+            <p class="problem-description">Order these steps to explain why stereo files are twice as large as mono.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-8">
+                    <div class="parsons-block" data-order="3">Each channel stores a complete audio stream</div>
+                    <div class="parsons-block" data-order="1">Mono audio has one channel (one speaker)</div>
+                    <div class="parsons-block" data-order="4">Two channels = double the data = 2× file size</div>
+                    <div class="parsons-block" data-order="2">Stereo audio has two channels (left and right speakers)</div>
+                    <div class="parsons-block" data-order="5">Formula for stereo: multiply mono calculation by 2</div>
+                </div>
+                <div class="parsons-target" id="target-8">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="8">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-8"></div>
+        </section>
+
+        <!-- Progress Summary -->
+        <section class="progress-summary">
+            <h2>Your Progress</h2>
+            <div class="progress-grid" id="parsons-progress">
+                <div class="progress-item" data-problem="1">Problem 1: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="2">Problem 2: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="3">Problem 3: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="4">Problem 4: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="5">Problem 5: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="6">Problem 6: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="7">Problem 7: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="8">Problem 8: <span class="status">Not attempted</span></div>
+            </div>
+            <p class="completion-message" id="completion-message" style="display: none;">
+                Congratulations! You've completed all Parsons problems!
+            </p>
+        </section>
+
+        <div class="activity-nav">
+            <a href="trace.html" class="btn btn-secondary">← Trace Exercises</a>
+            <a href="quiz.html" class="btn btn-primary">Knowledge Quiz →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Track completed problems
+        let completedProblems = new Set();
+
+        // Initialize drag and drop
+        function initParsons() {
+            document.querySelectorAll('.parsons-source').forEach(source => {
+                // Shuffle the blocks
+                const blocks = Array.from(source.querySelectorAll('.parsons-block'));
+                blocks.sort(() => Math.random() - 0.5);
+                blocks.forEach(block => source.appendChild(block));
+
+                // Make blocks draggable
+                blocks.forEach(block => {
+                    block.draggable = true;
+                    block.addEventListener('dragstart', handleDragStart);
+                    block.addEventListener('dragend', handleDragEnd);
+                });
+            });
+
+            // Set up drop targets
+            document.querySelectorAll('.parsons-target').forEach(target => {
+                target.addEventListener('dragover', handleDragOver);
+                target.addEventListener('drop', handleDrop);
+                target.addEventListener('dragleave', handleDragLeave);
+            });
+
+            // Also allow dropping back to source
+            document.querySelectorAll('.parsons-source').forEach(source => {
+                source.addEventListener('dragover', handleDragOver);
+                source.addEventListener('drop', handleDrop);
+                source.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        let draggedElement = null;
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            document.querySelectorAll('.parsons-target, .parsons-source').forEach(el => {
+                el.classList.remove('drag-over');
+            });
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            e.currentTarget.classList.add('drag-over');
+
+            // Determine where to insert based on mouse position
+            const target = e.currentTarget;
+            const blocks = [...target.querySelectorAll('.parsons-block:not(.dragging)')];
+
+            const afterElement = blocks.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = e.clientY - box.top - box.height / 2;
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+
+            if (afterElement) {
+                target.insertBefore(draggedElement, afterElement);
+            } else {
+                target.appendChild(draggedElement);
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        // Check answer
+        document.querySelectorAll('.check-parsons').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const problemNum = this.dataset.problem;
+                const target = document.getElementById(`target-${problemNum}`);
+                const feedback = document.getElementById(`feedback-${problemNum}`);
+                const blocks = target.querySelectorAll('.parsons-block');
+
+                if (blocks.length === 0) {
+                    feedback.innerHTML = '<p class="incorrect">Drag all steps to the answer area first!</p>';
+                    return;
+                }
+
+                // Check if source still has blocks
+                const source = document.getElementById(`source-${problemNum}`);
+                if (source.querySelectorAll('.parsons-block').length > 0) {
+                    feedback.innerHTML = '<p class="incorrect">Move all steps to the answer area!</p>';
+                    return;
+                }
+
+                let correct = true;
+                let currentOrder = 1;
+
+                blocks.forEach(block => {
+                    const expectedOrder = parseInt(block.dataset.order);
+                    if (expectedOrder !== currentOrder) {
+                        correct = false;
+                        block.classList.add('incorrect-order');
+                        block.classList.remove('correct-order');
+                    } else {
+                        block.classList.add('correct-order');
+                        block.classList.remove('incorrect-order');
+                    }
+                    currentOrder++;
+                });
+
+                if (correct) {
+                    feedback.innerHTML = '<p class="correct">Correct! Well done!</p>';
+                    this.disabled = true;
+
+                    // Update progress
+                    completedProblems.add(problemNum);
+                    updateProgressDisplay(problemNum, true);
+
+                    // Save progress
+                    if (typeof Progress !== 'undefined') {
+                        Progress.complete(`representation-parsons-${problemNum}`);
+                    }
+
+                    // Check if all complete
+                    checkAllComplete();
+                } else {
+                    feedback.innerHTML = '<p class="incorrect">Not quite right. Steps highlighted in red are in the wrong position. Try again!</p>';
+                }
+            });
+        });
+
+        function updateProgressDisplay(problemNum, completed) {
+            const item = document.querySelector(`.progress-item[data-problem="${problemNum}"]`);
+            const status = item.querySelector('.status');
+
+            if (completed) {
+                status.textContent = 'Completed!';
+                status.className = 'status completed';
+                item.classList.add('completed');
+            } else {
+                status.textContent = 'In progress';
+                status.className = 'status in-progress';
+            }
+        }
+
+        function checkAllComplete() {
+            if (completedProblems.size >= 8) {
+                document.getElementById('completion-message').style.display = 'block';
+
+                // Save overall completion
+                if (typeof Progress !== 'undefined') {
+                    Progress.complete('representation-parsons');
+                }
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initParsons);
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('representation-parsons');
+        }
+    </script>
+
+    <style>
+        .parsons-problem {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .problem-description {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+
+        .parsons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+        }
+
+        @media (max-width: 768px) {
+            .parsons-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .parsons-source,
+        .parsons-target {
+            min-height: 200px;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background: var(--gray-100);
+            border: 2px dashed var(--gray-400);
+        }
+
+        .parsons-target {
+            background: #e8f5e9;
+            border-color: var(--success);
+        }
+
+        .target-label {
+            color: var(--gray-600);
+            font-style: italic;
+            text-align: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .parsons-block {
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-sm);
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .parsons-block:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .parsons-block.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+
+        .parsons-block.correct-order {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .parsons-block.incorrect-order {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+
+        .drag-over {
+            background: var(--primary-light) !important;
+            border-color: var(--primary) !important;
+        }
+
+        .parsons-feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+
+        .parsons-feedback p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .parsons-feedback .correct {
+            color: var(--success);
+        }
+
+        .parsons-feedback .incorrect {
+            color: var(--error);
+        }
+
+        .progress-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .progress-item {
+            padding: var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+        }
+
+        .progress-item.completed {
+            background: #d4edda;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .status.completed {
+            color: var(--success);
+        }
+
+        .status.in-progress {
+            color: var(--warning);
+        }
+
+        .completion-message {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: #e8f5e9;
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

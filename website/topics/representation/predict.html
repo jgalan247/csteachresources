@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict - Data Representation</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Representation</a>
+            <h1>Predict</h1>
+            <p class="subtitle">Test your intuition about data representation</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How This Works</h2>
+            <p>For each scenario, predict what will happen before revealing the answer. This helps you develop intuition about how characters, images, and sound are represented digitally.</p>
+        </div>
+
+        <div class="predictions-container">
+            <!-- Prediction 1: Character Sets -->
+            <div class="prediction-card" data-prediction="1">
+                <div class="prediction-header">
+                    <span class="prediction-number">1</span>
+                    <span class="prediction-category">Characters</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>ASCII Character Codes</h3>
+                    <p>In ASCII, the character 'A' has the code 65.</p>
+                    <p><strong>What is the ASCII code for 'D'?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">62</button>
+                    <button class="option-btn" data-value="b">66</button>
+                    <button class="option-btn" data-value="c">68</button>
+                    <button class="option-btn" data-value="d">70</button>
+                </div>
+                <div class="prediction-answer" data-correct="c">
+                    <h4>Answer: 68</h4>
+                    <p>ASCII characters are <strong>logically ordered</strong>. If A = 65, then B = 66, C = 67, D = 68.</p>
+                    <p>You can always calculate: <code>65 + (position in alphabet - 1)</code>. D is the 4th letter, so 65 + 3 = 68.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 2: Character Sets - Bits -->
+            <div class="prediction-card" data-prediction="2">
+                <div class="prediction-header">
+                    <span class="prediction-number">2</span>
+                    <span class="prediction-category">Characters</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Bits and Characters</h3>
+                    <p>ASCII uses 8 bits per character and can represent 256 different characters.</p>
+                    <p><strong>If a character set used only 6 bits per character, how many characters could it represent?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">48</button>
+                    <button class="option-btn" data-value="b">64</button>
+                    <button class="option-btn" data-value="c">128</button>
+                    <button class="option-btn" data-value="d">256</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: 64</h4>
+                    <p>Number of characters = 2<sup>bits</sup></p>
+                    <p>With 6 bits: 2<sup>6</sup> = 64 characters</p>
+                    <p>This would be enough for uppercase letters (26) + digits (10) + some symbols, but not lowercase!</p>
+                </div>
+            </div>
+
+            <!-- Prediction 3: Text File Size -->
+            <div class="prediction-card" data-prediction="3">
+                <div class="prediction-header">
+                    <span class="prediction-number">3</span>
+                    <span class="prediction-category">Characters</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Text File Size Comparison</h3>
+                    <p>You have the word "HELLO" stored in two text files:</p>
+                    <ul>
+                        <li>File A uses ASCII (8 bits per character)</li>
+                        <li>File B uses Unicode (16 bits per character)</li>
+                    </ul>
+                    <p><strong>How much larger is File B than File A?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Same size</button>
+                    <button class="option-btn" data-value="b">2× larger</button>
+                    <button class="option-btn" data-value="c">8× larger</button>
+                    <button class="option-btn" data-value="d">16× larger</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: 2× larger</h4>
+                    <p>File A: 5 characters × 8 bits = 40 bits</p>
+                    <p>File B: 5 characters × 16 bits = 80 bits</p>
+                    <p>80 ÷ 40 = 2× larger. Unicode's extra bits mean larger file sizes, but more characters can be represented.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 4: ASCII vs Unicode -->
+            <div class="prediction-card" data-prediction="4">
+                <div class="prediction-header">
+                    <span class="prediction-number">4</span>
+                    <span class="prediction-category">Characters</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Character Set Choice</h3>
+                    <p>A website needs to display content in Japanese, Arabic, and English, including emojis.</p>
+                    <p><strong>Which character set should be used?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">ASCII (smaller files)</button>
+                    <button class="option-btn" data-value="b">Unicode (multiple languages)</button>
+                    <button class="option-btn" data-value="c">Either would work</button>
+                    <button class="option-btn" data-value="d">A custom character set</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: Unicode</h4>
+                    <p>ASCII only supports 256 characters - only English letters and basic symbols.</p>
+                    <p>Unicode supports over 140,000 characters including:</p>
+                    <ul>
+                        <li>All world languages (Japanese, Arabic, Chinese, etc.)</li>
+                        <li>Mathematical symbols</li>
+                        <li>Emojis</li>
+                    </ul>
+                    <p>For multilingual content, Unicode is the only choice, despite larger file sizes.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 5: Image Resolution -->
+            <div class="prediction-card" data-prediction="5">
+                <div class="prediction-header">
+                    <span class="prediction-number">5</span>
+                    <span class="prediction-category">Images</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Doubling Resolution</h3>
+                    <p>An image is 1000 × 500 pixels with 24-bit colour depth.</p>
+                    <p><strong>If you double BOTH the width AND height (to 2000 × 1000), how much larger will the file be?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">2× larger</button>
+                    <button class="option-btn" data-value="b">3× larger</button>
+                    <button class="option-btn" data-value="c">4× larger</button>
+                    <button class="option-btn" data-value="d">8× larger</button>
+                </div>
+                <div class="prediction-answer" data-correct="c">
+                    <h4>Answer: 4× larger</h4>
+                    <p>Original: 1000 × 500 = 500,000 pixels</p>
+                    <p>New: 2000 × 1000 = 2,000,000 pixels</p>
+                    <p>2,000,000 ÷ 500,000 = 4× more pixels</p>
+                    <p><strong>Key insight:</strong> Doubling both dimensions quadruples the total pixels (2 × 2 = 4).</p>
+                </div>
+            </div>
+
+            <!-- Prediction 6: Colour Depth -->
+            <div class="prediction-card" data-prediction="6">
+                <div class="prediction-header">
+                    <span class="prediction-number">6</span>
+                    <span class="prediction-category">Images</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Colour Depth Impact</h3>
+                    <p>An image uses 8-bit colour depth (256 colours).</p>
+                    <p><strong>If you increase to 24-bit colour depth (16.7 million colours), how much larger will the file be?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">2× larger</button>
+                    <button class="option-btn" data-value="b">3× larger</button>
+                    <button class="option-btn" data-value="c">16× larger</button>
+                    <button class="option-btn" data-value="d">256× larger</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: 3× larger</h4>
+                    <p>At 8-bit: Each pixel uses 8 bits</p>
+                    <p>At 24-bit: Each pixel uses 24 bits</p>
+                    <p>24 ÷ 8 = 3× more bits per pixel = 3× larger file</p>
+                    <p>The number of colours increased massively (256 to 16.7 million), but the file only tripled!</p>
+                </div>
+            </div>
+
+            <!-- Prediction 7: Image Quality -->
+            <div class="prediction-card" data-prediction="7">
+                <div class="prediction-header">
+                    <span class="prediction-number">7</span>
+                    <span class="prediction-category">Images</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Image Quality Trade-off</h3>
+                    <p>You need to email a photo but the file is too large. You can either:</p>
+                    <ul>
+                        <li>Reduce resolution from 4000×3000 to 2000×1500</li>
+                        <li>Reduce colour depth from 24-bit to 8-bit</li>
+                    </ul>
+                    <p><strong>Which will reduce the file size more?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Reducing resolution</button>
+                    <button class="option-btn" data-value="b">Reducing colour depth</button>
+                    <button class="option-btn" data-value="c">Both reduce by the same amount</button>
+                    <button class="option-btn" data-value="d">Cannot be determined</button>
+                </div>
+                <div class="prediction-answer" data-correct="a">
+                    <h4>Answer: Reducing resolution</h4>
+                    <p><strong>Resolution reduction:</strong></p>
+                    <p>Original: 4000 × 3000 = 12,000,000 pixels</p>
+                    <p>New: 2000 × 1500 = 3,000,000 pixels</p>
+                    <p>Reduction: 4× smaller (÷4)</p>
+                    <p><strong>Colour depth reduction:</strong></p>
+                    <p>24 bits → 8 bits = 3× smaller (÷3)</p>
+                    <p>Resolution wins! But colour depth reduction may look worse (banding, fewer shades).</p>
+                </div>
+            </div>
+
+            <!-- Prediction 8: Sample Rate -->
+            <div class="prediction-card" data-prediction="8">
+                <div class="prediction-header">
+                    <span class="prediction-number">8</span>
+                    <span class="prediction-category">Sound</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Sample Rate Comparison</h3>
+                    <p>CD quality audio uses a sample rate of 44,100 Hz (44.1 kHz).</p>
+                    <p><strong>How many samples are taken in 1 second of CD audio?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">44</button>
+                    <button class="option-btn" data-value="b">441</button>
+                    <button class="option-btn" data-value="c">4,410</button>
+                    <button class="option-btn" data-value="d">44,100</button>
+                </div>
+                <div class="prediction-answer" data-correct="d">
+                    <h4>Answer: 44,100 samples</h4>
+                    <p>Sample rate is measured in Hertz (Hz), which means "per second".</p>
+                    <p>44,100 Hz = 44,100 samples per second</p>
+                    <p>That's over 44 thousand snapshots of the sound wave every second!</p>
+                </div>
+            </div>
+
+            <!-- Prediction 9: Sound File Duration -->
+            <div class="prediction-card" data-prediction="9">
+                <div class="prediction-header">
+                    <span class="prediction-number">9</span>
+                    <span class="prediction-category">Sound</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Duration and File Size</h3>
+                    <p>A 30-second audio clip at CD quality (44.1 kHz, 16-bit, mono) is 2.6 MB.</p>
+                    <p><strong>How large would a 2-minute clip be at the same quality?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">5.2 MB</button>
+                    <button class="option-btn" data-value="b">7.8 MB</button>
+                    <button class="option-btn" data-value="c">10.4 MB</button>
+                    <button class="option-btn" data-value="d">20.8 MB</button>
+                </div>
+                <div class="prediction-answer" data-correct="c">
+                    <h4>Answer: 10.4 MB</h4>
+                    <p>2 minutes = 120 seconds</p>
+                    <p>30 seconds = 2.6 MB</p>
+                    <p>120 ÷ 30 = 4× longer</p>
+                    <p>2.6 × 4 = 10.4 MB</p>
+                    <p>File size scales linearly with duration (double the time = double the file).</p>
+                </div>
+            </div>
+
+            <!-- Prediction 10: Stereo vs Mono -->
+            <div class="prediction-card" data-prediction="10">
+                <div class="prediction-header">
+                    <span class="prediction-number">10</span>
+                    <span class="prediction-category">Sound</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Stereo vs Mono</h3>
+                    <p>A mono audio file is 5 MB.</p>
+                    <p><strong>If you record the same audio in stereo (same sample rate, bit depth, duration), how large will it be?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">5 MB (same)</button>
+                    <button class="option-btn" data-value="b">7.5 MB</button>
+                    <button class="option-btn" data-value="c">10 MB</button>
+                    <button class="option-btn" data-value="d">15 MB</button>
+                </div>
+                <div class="prediction-answer" data-correct="c">
+                    <h4>Answer: 10 MB</h4>
+                    <p>Stereo audio has <strong>two channels</strong> (left and right).</p>
+                    <p>Each channel needs to store separate audio data.</p>
+                    <p>Stereo = Mono × 2</p>
+                    <p>5 MB × 2 = 10 MB</p>
+                </div>
+            </div>
+
+            <!-- Prediction 11: Bit Depth -->
+            <div class="prediction-card" data-prediction="11">
+                <div class="prediction-header">
+                    <span class="prediction-number">11</span>
+                    <span class="prediction-category">Sound</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Bit Depth Impact</h3>
+                    <p>An audio file uses 8-bit depth. You upgrade to 16-bit depth (keeping sample rate and duration the same).</p>
+                    <p><strong>What happens to the file size?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Stays the same</button>
+                    <button class="option-btn" data-value="b">Doubles</button>
+                    <button class="option-btn" data-value="c">Quadruples</button>
+                    <button class="option-btn" data-value="d">Increases by 256×</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: Doubles</h4>
+                    <p>Bit depth is the number of bits per sample.</p>
+                    <p>8-bit → 16-bit = 2× more bits per sample</p>
+                    <p>Same number of samples, but each takes twice as much space.</p>
+                    <p><strong>Benefit:</strong> 16-bit has 65,536 volume levels vs 256 for 8-bit, giving much better dynamic range.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 12: Metadata -->
+            <div class="prediction-card" data-prediction="12">
+                <div class="prediction-header">
+                    <span class="prediction-number">12</span>
+                    <span class="prediction-category">Images</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Image Metadata</h3>
+                    <p>You receive an image file. Without metadata, the computer wouldn't know:</p>
+                    <p><strong>Which of these would be MOST essential for displaying the image correctly?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Date the photo was taken</button>
+                    <button class="option-btn" data-value="b">Camera model used</button>
+                    <button class="option-btn" data-value="c">Width and height in pixels</button>
+                    <button class="option-btn" data-value="d">GPS coordinates</button>
+                </div>
+                <div class="prediction-answer" data-correct="c">
+                    <h4>Answer: Width and height in pixels</h4>
+                    <p>Without knowing the dimensions, the computer can't arrange the pixels correctly!</p>
+                    <p>Imagine receiving a stream of colour values - how would you know where each row ends?</p>
+                    <p>Date, camera model, and GPS are useful metadata but not essential for display.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-tracker">
+            <h3>Your Progress</h3>
+            <p><span id="correct-count">0</span> / 12 correct</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="activity-nav">
+            <a href="index.html" class="btn btn-secondary">← Back to Content</a>
+            <a href="example.html" class="btn btn-primary">Worked Examples →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        let correctAnswers = 0;
+        const totalQuestions = 12;
+
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.prediction-card');
+                const answer = card.querySelector('.prediction-answer');
+                const correctValue = answer.dataset.correct;
+                const selectedValue = this.dataset.value;
+
+                // Disable all buttons in this card
+                card.querySelectorAll('.option-btn').forEach(b => {
+                    b.disabled = true;
+                    if (b.dataset.value === correctValue) {
+                        b.classList.add('correct');
+                    }
+                });
+
+                // Mark selected answer
+                if (selectedValue === correctValue) {
+                    this.classList.add('correct');
+                    correctAnswers++;
+                } else {
+                    this.classList.add('incorrect');
+                }
+
+                // Show answer
+                answer.classList.add('revealed');
+
+                // Update progress
+                updateProgress();
+            });
+        });
+
+        function updateProgress() {
+            document.getElementById('correct-count').textContent = correctAnswers;
+            const percentage = (correctAnswers / totalQuestions) * 100;
+            document.getElementById('progress-fill').style.width = percentage + '%';
+
+            // Save progress
+            if (typeof Progress !== 'undefined') {
+                if (document.querySelectorAll('.prediction-answer.revealed').length === totalQuestions) {
+                    Progress.complete('representation-predict', Math.round(percentage));
+                }
+            }
+        }
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('representation-predict');
+        }
+    </script>
+
+    <style>
+        .predictions-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .prediction-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .prediction-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .prediction-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .prediction-category {
+            background: var(--gray-200);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .prediction-scenario {
+            margin-bottom: var(--space-lg);
+        }
+
+        .prediction-scenario h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .prediction-scenario ul {
+            margin: var(--space-sm) 0;
+            padding-left: var(--space-lg);
+        }
+
+        .prediction-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .option-btn {
+            padding: var(--space-md);
+            border: 2px solid var(--gray-300);
+            background: white;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .option-btn.correct {
+            background: #d4edda;
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .option-btn.incorrect {
+            background: #f8d7da;
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        .prediction-answer {
+            display: none;
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--success);
+        }
+
+        .prediction-answer.revealed {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .prediction-answer h4 {
+            color: var(--success);
+            margin-bottom: var(--space-sm);
+        }
+
+        .prediction-answer ul {
+            margin: var(--space-sm) 0;
+            padding-left: var(--space-lg);
+        }
+
+        .prediction-answer code {
+            background: var(--gray-200);
+            padding: 0.2em 0.4em;
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+        }
+
+        .progress-tracker {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-top: var(--space-xl);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .progress-tracker h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: var(--gray-200);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: var(--space-md);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            transition: width 0.3s ease;
+        }
+
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

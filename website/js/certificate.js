@@ -29,7 +29,8 @@ const CertificateSystem = {
         'memory': 'Memory & Storage',
         'storage': 'Secondary Storage',
         'units': 'Data Units & Capacity',
-        'numbers': 'Number Systems'
+        'numbers': 'Number Systems',
+        'representation': 'Data Representation'
     },
 
     /**
