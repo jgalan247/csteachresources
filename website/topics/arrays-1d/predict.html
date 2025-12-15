@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: 1D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">1D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: What's in the Array?</h1>
+            <p>Look at each piece of code and predict what will be output. Remember: array indexing starts at 0!</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">Back to 1D Arrays</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'arr1d-predict-1',
+                title: 'Question 1 of 5',
+                code: `fruits = ["apple", "banana", "cherry"]
+print(fruits[0])`,
+                question: 'What will be printed?',
+                options: ['apple', 'banana', '0', 'Error'],
+                correctIndex: 0,
+                explanation: 'Array indexing starts at 0. fruits[0] is the FIRST element, which is "apple".',
+                misconceptions: {
+                    1: 'Index 0 is the FIRST element, not index 1. Index 1 would be "banana".'
+                }
+            },
+            {
+                id: 'arr1d-predict-2',
+                title: 'Question 2 of 5',
+                code: `numbers = [10, 20, 30, 40, 50]
+print(numbers[3])`,
+                question: 'What will be printed?',
+                options: ['30', '40', '20', 'Error'],
+                correctIndex: 1,
+                explanation: 'Index 0=10, Index 1=20, Index 2=30, Index 3=40. So numbers[3] is 40.',
+                misconceptions: {
+                    0: 'Count from 0: index 0=10, 1=20, 2=30, 3=40. Index 3 is the FOURTH element.'
+                }
+            },
+            {
+                id: 'arr1d-predict-3',
+                title: 'Question 3 of 5',
+                code: `colours = ["red", "green", "blue"]
+print(len(colours))`,
+                question: 'What will be printed?',
+                options: ['2', '3', '["red", "green", "blue"]', 'Error'],
+                correctIndex: 1,
+                explanation: 'len() returns the NUMBER of elements in the array. There are 3 colours, so len(colours) = 3.',
+                misconceptions: {
+                    0: 'len() counts the total elements (3), not the highest index (2).'
+                }
+            },
+            {
+                id: 'arr1d-predict-4',
+                title: 'Question 4 of 5',
+                code: `scores = [5, 10, 15]
+scores.append(20)
+print(scores)`,
+                question: 'What will be printed?',
+                options: ['[20, 5, 10, 15]', '[5, 10, 15, 20]', '[5, 10, 15]', '20'],
+                correctIndex: 1,
+                explanation: 'append() adds an element to the END of the array. So 20 is added after 15.',
+                misconceptions: {
+                    0: 'append() adds to the END, not the beginning. Use insert(0, value) to add at the start.'
+                }
+            },
+            {
+                id: 'arr1d-predict-5',
+                title: 'Question 5 of 5',
+                code: `nums = [1, 2, 3]
+total = 0
+for n in nums:
+    total = total + n
+print(total)`,
+                question: 'What will be printed?',
+                options: ['3', '6', '[1, 2, 3]', '123'],
+                correctIndex: 1,
+                explanation: 'The loop adds each element to total: 0+1=1, 1+2=3, 3+3=6. Final total is 6.',
+                misconceptions: {
+                    0: 'The loop runs 3 times, adding 1, then 2, then 3 to the total.'
+                }
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'arrays-1d'
+            }
+        );
+    </script>
+</body>
+</html>

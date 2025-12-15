@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Functions - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Functions</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: Function Output</h1>
+            <p>Look at each code snippet and predict what will be printed. Think about how values flow through function calls!</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">← Back to Functions</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'functions-predict-1',
+                title: 'Question 1: Simple Function Call',
+                code: `def say_hello():
+    print("Hello!")
+
+say_hello()`,
+                question: 'What will be printed?',
+                options: ['Hello!', 'say_hello()', 'Nothing', 'Error'],
+                correctIndex: 0,
+                explanation: 'When we call say_hello(), it runs the code inside the function, which prints "Hello!"'
+            },
+            {
+                id: 'functions-predict-2',
+                title: 'Question 2: Function with Parameter',
+                code: `def greet(name):
+    print(f"Hi {name}!")
+
+greet("Sam")`,
+                question: 'What will be printed?',
+                options: ['Hi name!', 'Hi Sam!', 'Hi {name}!', 'Error'],
+                correctIndex: 1,
+                explanation: 'The argument "Sam" is passed to the parameter name, so the f-string prints "Hi Sam!"'
+            },
+            {
+                id: 'functions-predict-3',
+                title: 'Question 3: Return Value',
+                code: `def double(x):
+    return x * 2
+
+result = double(5)
+print(result)`,
+                question: 'What will be printed?',
+                options: ['5', '10', 'x * 2', 'None'],
+                correctIndex: 1,
+                explanation: 'double(5) returns 5 * 2 = 10. This is stored in result, which is then printed.'
+            },
+            {
+                id: 'functions-predict-4',
+                title: 'Question 4: Multiple Calls',
+                code: `def add_one(n):
+    return n + 1
+
+x = 3
+x = add_one(x)
+x = add_one(x)
+print(x)`,
+                question: 'What will be printed?',
+                options: ['3', '4', '5', '6'],
+                correctIndex: 2,
+                explanation: 'x starts at 3. First call: add_one(3) returns 4, x becomes 4. Second call: add_one(4) returns 5, x becomes 5.'
+            },
+            {
+                id: 'functions-predict-5',
+                title: 'Question 5: Local Variable',
+                code: `def calculate():
+    total = 50
+    return total
+
+total = 10
+result = calculate()
+print(total)`,
+                question: 'What will be printed?',
+                options: ['10', '50', 'Error', 'None'],
+                correctIndex: 0,
+                explanation: 'The total inside calculate() is a LOCAL variable - it doesn\'t affect the global total = 10. The global total remains 10.'
+            },
+            {
+                id: 'functions-predict-6',
+                title: 'Question 6: Global Variable',
+                code: `score = 0
+
+def add_point():
+    global score
+    score = score + 1
+
+add_point()
+add_point()
+print(score)`,
+                question: 'What will be printed?',
+                options: ['0', '1', '2', 'Error'],
+                correctIndex: 2,
+                explanation: 'The global keyword lets the function modify the global score. After two calls to add_point(), score is 2.'
+            },
+            {
+                id: 'functions-predict-7',
+                title: 'Question 7: No Return Value',
+                code: `def greet(name):
+    print(f"Hello {name}")
+
+result = greet("Jo")
+print(result)`,
+                question: 'What will be the SECOND line printed?',
+                options: ['Hello Jo', 'None', 'Jo', 'Error'],
+                correctIndex: 1,
+                explanation: 'greet() has no return statement, so it returns None by default. The second print shows None.'
+            },
+            {
+                id: 'functions-predict-8',
+                title: 'Question 8: Multiple Parameters',
+                code: `def describe(animal, sound):
+    return f"The {animal} says {sound}"
+
+message = describe("cat", "meow")
+print(message)`,
+                question: 'What will be printed?',
+                options: ['The animal says sound', 'The cat says meow', 'cat meow', 'Error'],
+                correctIndex: 1,
+                explanation: 'The arguments "cat" and "meow" map to parameters animal and sound, creating "The cat says meow".'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'functions'
+            }
+        );
+    </script>
+</body>
+</html>

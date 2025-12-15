@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: Functions - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Functions</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Investigate: Trace Function Calls</h1>
+            <p>Follow the flow of values as they pass through function calls and returns. Pay attention to local vs global variables!</p>
+        </header>
+
+        <div id="tracing-exercise"></div>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Arrange the Code →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Worked Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new CodeTracing(
+            document.getElementById('tracing-exercise'),
+            {
+                id: 'functions-trace-1',
+                topicId: 'functions',
+                title: 'Trace: Function with Local Variable',
+                description: 'Track how the parameter and local variable behave, and notice that the global x is not affected.',
+                code: `x = 10
+def double_it(n):
+    result = n * 2
+    return result
+y = double_it(x)
+print(x, y)`,
+                variables: ['x (global)', 'n (local)', 'result (local)', 'y (global)'],
+                prefilled: [0, 1, 2],
+                solution: [
+                    { step: 1, line: 1, variables: { 'x (global)': 10, 'n (local)': null, 'result (local)': null, 'y (global)': null }, output: '' },
+                    { step: 2, line: 5, variables: { 'x (global)': 10, 'n (local)': 10, 'result (local)': null, 'y (global)': null }, output: '' },
+                    { step: 3, line: 3, variables: { 'x (global)': 10, 'n (local)': 10, 'result (local)': 20, 'y (global)': null }, output: '' },
+                    { step: 4, line: 4, variables: { 'x (global)': 10, 'n (local)': null, 'result (local)': null, 'y (global)': 20 }, output: '' },
+                    { step: 5, line: 6, variables: { 'x (global)': 10, 'n (local)': null, 'result (local)': null, 'y (global)': 20 }, output: '10 20' }
+                ],
+                hints: {
+                    2: 'When double_it(x) is called, x\'s value (10) is copied to parameter n.',
+                    3: 'Inside the function: result = 10 * 2 = 20',
+                    4: 'return sends 20 back. Local variables n and result are destroyed. y receives 20.',
+                    5: 'Notice: x is still 10! The function didn\'t change it.'
+                }
+            }
+        );
+    </script>
+</body>
+</html>

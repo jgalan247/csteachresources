@@ -225,20 +225,20 @@ class ParsonsProblem {
     }
 
     getErrorHint(userAnswer) {
-        // Check if all blocks are present
-        if (userAnswer.length !== this.config.solution.length) {
-            if (userAnswer.length < this.config.solution.length) {
-                return "You haven't used all the blocks yet. Make sure to drag all needed blocks to the solution area.";
-            } else {
-                return "You've used too many blocks. Check if you've included any wrong blocks.";
-            }
-        }
-
-        // Check for distractor blocks
+        // Check for distractor blocks FIRST (more specific feedback)
         const distractorIds = this.config.blocks.filter(b => b.isDistractor).map(b => b.id);
         const usedDistractors = userAnswer.filter(id => distractorIds.includes(id));
         if (usedDistractors.length > 0) {
-            return "One or more of your blocks doesn't belong in the solution. Look carefully at what each line does.";
+            return "You've used a distractor block that doesn't belong in the intended solution. While it might work, try using the other blocks to match the expected approach.";
+        }
+
+        // Check if all blocks are present
+        if (userAnswer.length !== this.config.solution.length) {
+            if (userAnswer.length < this.config.solution.length) {
+                return "You haven't used all the required blocks yet. Make sure to drag all needed blocks to the solution area.";
+            } else {
+                return "You've used too many blocks. Check if you've included any wrong blocks.";
+            }
         }
 
         // Check first block

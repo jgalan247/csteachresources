@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: Reading Error Messages - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Common Errors</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Study: Reading Error Messages</h1>
+            <p>Learn how to decode Python's error messages (tracebacks) to find and fix problems quickly.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <section class="error-message-guide mt-xl">
+            <h2>Common Python Error Messages</h2>
+
+            <div class="error-guide-card">
+                <h3>SyntaxError</h3>
+                <div class="error-example">
+                    <code>SyntaxError: invalid syntax</code>
+                </div>
+                <p><strong>Meaning:</strong> Python doesn't understand your code - you've broken a grammar rule.</p>
+                <p><strong>Common causes:</strong></p>
+                <ul>
+                    <li>Missing colon after if, for, while, def</li>
+                    <li>Unclosed brackets, parentheses, or quotes</li>
+                    <li>Using = instead of == in comparisons</li>
+                    <li>Misspelled keywords</li>
+                </ul>
+            </div>
+
+            <div class="error-guide-card">
+                <h3>IndentationError</h3>
+                <div class="error-example">
+                    <code>IndentationError: expected an indented block</code>
+                </div>
+                <p><strong>Meaning:</strong> Python expects indented code but didn't find any.</p>
+                <p><strong>Common causes:</strong></p>
+                <ul>
+                    <li>Code after if/for/while/def not indented</li>
+                    <li>Mixing tabs and spaces (use 4 spaces consistently)</li>
+                    <li>Inconsistent indentation levels</li>
+                </ul>
+            </div>
+
+            <div class="error-guide-card">
+                <h3>NameError</h3>
+                <div class="error-example">
+                    <code>NameError: name 'varible' is not defined</code>
+                </div>
+                <p><strong>Meaning:</strong> Python doesn't recognise a name you're using.</p>
+                <p><strong>Common causes:</strong></p>
+                <ul>
+                    <li>Typo in variable name (varible vs variable)</li>
+                    <li>Using a variable before creating it</li>
+                    <li>Forgetting to put strings in quotes</li>
+                </ul>
+            </div>
+
+            <div class="error-guide-card">
+                <h3>TypeError</h3>
+                <div class="error-example">
+                    <code>TypeError: can only concatenate str (not "int") to str</code>
+                </div>
+                <p><strong>Meaning:</strong> You're trying to do something with incompatible data types.</p>
+                <p><strong>Common causes:</strong></p>
+                <ul>
+                    <li>Trying to add a string and number: "Age: " + 15</li>
+                    <li>Using wrong function on wrong type</li>
+                    <li>Forgetting to convert user input: int(input(...))</li>
+                </ul>
+            </div>
+
+            <div class="error-guide-card">
+                <h3>ValueError</h3>
+                <div class="error-example">
+                    <code>ValueError: invalid literal for int() with base 10: 'hello'</code>
+                </div>
+                <p><strong>Meaning:</strong> The value is the wrong format for what you're trying to do.</p>
+                <p><strong>Common causes:</strong></p>
+                <ul>
+                    <li>Trying to convert non-numeric text to int: int("hello")</li>
+                    <li>User enters invalid input</li>
+                </ul>
+            </div>
+
+            <div class="error-guide-card">
+                <h3>IndexError</h3>
+                <div class="error-example">
+                    <code>IndexError: list index out of range</code>
+                </div>
+                <p><strong>Meaning:</strong> You're trying to access a position that doesn't exist.</p>
+                <p><strong>Common causes:</strong></p>
+                <ul>
+                    <li>Index too large: my_list[10] when list only has 5 items</li>
+                    <li>Off-by-one: list has indices 0-4, but you use 5</li>
+                    <li>Accessing empty list</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Investigate Logic Errors →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'errors-example-1',
+                topicId: 'errors',
+                title: 'Reading a Python Traceback',
+                scenario: 'Your program crashes with an error message. Let\'s learn how to read it!',
+                steps: [
+                    {
+                        title: 'Step 1: The Error Message Structure',
+                        explanation: 'When Python encounters an error, it shows a "traceback" - a report of what went wrong. Let\'s look at a typical error:',
+                        code: `Traceback (most recent call last):
+  File "program.py", line 3, in <module>
+    print("Hello " + age)
+TypeError: can only concatenate str (not "int") to str`,
+                        note: 'The traceback has three parts: 1) Where the error happened, 2) The line of code, 3) The error type and message.'
+                    },
+                    {
+                        title: 'Step 2: Find the Line Number',
+                        explanation: 'Look for "line X" - this tells you exactly where to look in your code.',
+                        code: `# The error says "line 3"
+# Line 1: name = "Alice"
+# Line 2: age = 15
+# Line 3: print("Hello " + age)  ← Error is HERE`,
+                        note: 'Always start by going to the line number mentioned in the error.'
+                    },
+                    {
+                        title: 'Step 3: Read the Error Type',
+                        explanation: 'The last line tells you WHAT went wrong. In this case: TypeError',
+                        code: `TypeError: can only concatenate str (not "int") to str
+
+# TypeError = wrong data type used
+# The message explains: can't add string + integer`,
+                        note: 'TypeError means you\'re mixing incompatible types. Python can\'t add "Hello " (text) and 15 (number) together.'
+                    },
+                    {
+                        title: 'Step 4: Fix the Error',
+                        explanation: 'Now we understand the problem: we need to convert the integer to a string.',
+                        code: `# Original (broken):
+print("Hello " + age)
+
+# Fixed - convert int to str:
+print("Hello " + str(age))
+
+# Or use an f-string (recommended):
+print(f"Hello {age}")`,
+                        note: 'The fix: convert the number to a string with str(), or use an f-string which handles conversion automatically.'
+                    },
+                    {
+                        title: 'Step 5: Practice Reading Errors',
+                        explanation: 'Here\'s another example. Can you spot the problem?',
+                        code: `Traceback (most recent call last):
+  File "quiz.py", line 5, in <module>
+    if score = 100:
+SyntaxError: invalid syntax
+
+# Line 5 has SyntaxError
+# The problem: used = (assignment) instead of == (comparison)
+# Fix: if score == 100:`,
+                        note: 'SyntaxError means Python can\'t understand your code. Look carefully at the highlighted line for typos or missing symbols.'
+                    }
+                ],
+                keyPoints: [
+                    'Read the line number first - go straight to that line in your code',
+                    'Read the error type (SyntaxError, TypeError, etc.) to understand the category of problem',
+                    'Read the message for specific details about what went wrong',
+                    'SyntaxError = grammar mistake (won\'t run at all)',
+                    'TypeError = wrong data type (runs but crashes)',
+                    'NameError = unknown variable name (often a typo)'
+                ]
+            }
+        );
+    </script>
+    <style>
+        .error-guide-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            border-left: 4px solid var(--primary);
+        }
+        .error-guide-card h3 {
+            color: var(--danger);
+            margin-top: 0;
+        }
+        .error-example {
+            background: var(--gray-100);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin: var(--space-sm) 0;
+            font-family: monospace;
+        }
+        .error-guide-card ul {
+            padding-left: var(--space-md);
+            margin: var(--space-sm) 0 0 0;
+        }
+        .error-guide-card li {
+            margin-bottom: var(--space-xs);
+        }
+    </style>
+</body>
+</html>

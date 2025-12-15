@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Arithmetic Operators - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Arithmetic Operators</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: Arithmetic Operators</h1>
+            <p>Test your understanding of arithmetic operators! Answer all questions to see your score.</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to Arithmetic Operators</a>
+            <a href="../data-types/index.html" class="btn btn-secondary">Next Topic: Data Types →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'op-quiz-1',
+                title: 'Question 1: Division operators',
+                code: `print(7 / 2)
+print(7 // 2)`,
+                question: 'What will be printed?',
+                options: [
+                    '3.5 and 3.5',
+                    '3.5 and 3',
+                    '3 and 3',
+                    '3.5 and 4'
+                ],
+                correctIndex: 1,
+                explanation: '/ gives regular division (3.5). // gives integer division which rounds DOWN to the nearest whole number (3).'
+            },
+            {
+                id: 'op-quiz-2',
+                title: 'Question 2: Modulo operator',
+                code: `print(20 % 6)`,
+                question: 'What will be printed?',
+                options: ['3', '2', '3.33', '14'],
+                correctIndex: 1,
+                explanation: 'The modulo operator % gives the REMAINDER after division. 20 ÷ 6 = 3 remainder 2. So 20 % 6 = 2.'
+            },
+            {
+                id: 'op-quiz-3',
+                title: 'Question 3: Order of operations',
+                code: `result = 10 - 2 * 3
+print(result)`,
+                question: 'What will be printed?',
+                options: ['24', '4', '16', '-6'],
+                correctIndex: 1,
+                explanation: 'Following BIDMAS, multiplication happens first: 2 * 3 = 6. Then subtraction: 10 - 6 = 4.'
+            },
+            {
+                id: 'op-quiz-4',
+                title: 'Question 4: Using brackets',
+                code: `a = (10 + 5) * 2
+b = 10 + 5 * 2
+print(a - b)`,
+                question: 'What will be printed?',
+                options: ['0', '10', '-10', '20'],
+                correctIndex: 1,
+                explanation: 'a = (10 + 5) * 2 = 15 * 2 = 30. b = 10 + 5 * 2 = 10 + 10 = 20 (multiplication first). So a - b = 30 - 20 = 10.'
+            },
+            {
+                id: 'op-quiz-5',
+                title: 'Question 5: Exponentiation',
+                code: `print(2 ** 4)`,
+                question: 'What will be printed?',
+                options: ['8', '6', '16', '24'],
+                correctIndex: 2,
+                explanation: 'The ** operator raises a number to a power. 2 ** 4 means 2 to the power of 4, which is 2 × 2 × 2 × 2 = 16.'
+            },
+            {
+                id: 'op-quiz-6',
+                title: 'Question 6: Practical application',
+                code: `minutes = 150
+hours = minutes // 60
+leftover = minutes % 60
+print(hours, leftover)`,
+                question: 'What will be printed?',
+                options: ['2.5 0', '2 30', '2 0.5', '150 60'],
+                correctIndex: 1,
+                explanation: 'hours = 150 // 60 = 2 (integer division gives whole hours). leftover = 150 % 60 = 30 (remainder gives leftover minutes).'
+            },
+            {
+                id: 'op-quiz-7',
+                title: 'Question 7: Compound expression',
+                code: `x = 5
+x = x * 2 + 3
+print(x)`,
+                question: 'What will be printed?',
+                options: ['13', '16', '25', '8'],
+                correctIndex: 0,
+                explanation: 'x starts at 5. Then x = 5 * 2 + 3 = 10 + 3 = 13. Multiplication happens before addition.'
+            },
+            {
+                id: 'op-quiz-8',
+                title: 'Question 8: Negative numbers',
+                code: `print(-10 // 3)`,
+                question: 'What will be printed?',
+                options: ['-3', '-4', '-3.33', '3'],
+                correctIndex: 1,
+                explanation: 'Integer division (//) always rounds DOWN (towards negative infinity). -10 / 3 = -3.33..., rounded DOWN is -4, not -3.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'operators'
+            }
+        );
+    </script>
+</body>
+</html>

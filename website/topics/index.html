@@ -17,6 +17,7 @@
             <li><a href="../index.html">Home</a></li>
             <li><a href="index.html" class="active">Topics</a></li>
             <li><a href="../progress.html">My Progress</a></li>
+            <li><a href="../certificates.html">Certificates</a></li>
             <li><a href="../help.html">Help</a></li>
         </ul>
     </nav>
@@ -28,11 +29,8 @@
         </header>
 
         <section class="topics-overview">
-            <h2>All Topics</h2>
-            <p>
-                <span style="display: inline-block; width: 12px; height: 12px; background: var(--primary); border-radius: 2px; margin-right: 4px;"></span> <strong>Programming</strong> - Learn to code in Python
-                <span style="margin-left: var(--space-lg); display: inline-block; width: 12px; height: 12px; background: var(--theory); border-radius: 2px; margin-right: 4px;"></span> <strong>Theory</strong> - Understand how computers work
-            </p>
+            <h2>Programming</h2>
+            <p>Learn to code in Python - from basics to advanced concepts.</p>
 
             <div class="topic-grid">
                 <!-- Programming Topics -->
@@ -44,7 +42,7 @@
                     <p>Learn to store and use data in your programs. The foundation of all programming!</p>
                     <ul class="topic-concepts">
                         <li>Variable assignment</li>
-                        <li>Data types (strings, integers)</li>
+                        <li>Naming rules</li>
                         <li>Using variables in output</li>
                     </ul>
                     <div class="topic-progress" data-topic="variables">
@@ -53,15 +51,50 @@
                     </div>
                 </a>
 
-                <a href="selection/index.html" class="topic-card programming">
+                <a href="operators/index.html" class="topic-card programming">
                     <div class="topic-number">2</div>
+                    <span class="topic-type-label programming">Programming</span>
+                    <div class="topic-icon">🔢</div>
+                    <h3>Arithmetic Operators</h3>
+                    <p>Perform calculations in Python using arithmetic operators.</p>
+                    <ul class="topic-concepts">
+                        <li>+, -, *, / operators</li>
+                        <li>Integer division and modulo</li>
+                        <li>Order of operations (BIDMAS)</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="operators">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="data-types/index.html" class="topic-card programming">
+                    <div class="topic-number">3</div>
+                    <span class="topic-type-label programming">Programming</span>
+                    <div class="topic-icon">🏷️</div>
+                    <h3>Data Types</h3>
+                    <p>Understand the different types of data and how to convert between them.</p>
+                    <ul class="topic-concepts">
+                        <li>Strings, integers, floats, booleans</li>
+                        <li>Type checking with type()</li>
+                        <li>Casting: int(), str(), float()</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="data-types">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="selection/index.html" class="topic-card programming">
+                    <div class="topic-number">4</div>
                     <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔀</div>
                     <h3>Selection</h3>
                     <p>Make decisions in your code using if statements and conditions.</p>
                     <ul class="topic-concepts">
                         <li>if statements</li>
-                        <li>Comparison operators</li>
+                        <li>Comparison operators (==, !=, etc.)</li>
+                        <li>Boolean operators (and, or, not)</li>
                         <li>if-else and if-elif-else</li>
                     </ul>
                     <div class="topic-progress" data-topic="selection">
@@ -71,7 +104,7 @@
                 </a>
 
                 <a href="for-loops/index.html" class="topic-card programming featured">
-                    <div class="topic-number">3</div>
+                    <div class="topic-number">5</div>
                     <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔄</div>
                     <h3>For Loops</h3>
@@ -89,7 +122,7 @@
                 </a>
 
                 <a href="while-loops/index.html" class="topic-card programming">
-                    <div class="topic-number">4</div>
+                    <div class="topic-number">6</div>
                     <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔁</div>
                     <h3>While Loops</h3>
@@ -97,35 +130,68 @@
                     <ul class="topic-concepts">
                         <li>while loops</li>
                         <li>Condition-controlled iteration</li>
+                        <li>break and continue</li>
                         <li>Input validation</li>
                     </ul>
                     <div class="topic-progress" data-topic="while-loops">
                         <div class="progress-bar"><div class="progress-fill"></div></div>
                         <span class="progress-text">0% complete</span>
                     </div>
-                    <span class="badge" style="background: var(--gray-400);">Coming Soon</span>
                 </a>
 
-                <a href="lists/index.html" class="topic-card programming">
-                    <div class="topic-number">5</div>
+                <a href="arrays-1d/index.html" class="topic-card programming">
+                    <div class="topic-number">7</div>
                     <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">📋</div>
-                    <h3>Lists</h3>
-                    <p>Work with collections of data. Store multiple values in one variable!</p>
+                    <h3>1D Arrays (Lists)</h3>
+                    <p>Store multiple values in a single variable. Learn to iterate with loops!</p>
                     <ul class="topic-concepts">
-                        <li>Creating lists</li>
-                        <li>Indexing and slicing</li>
-                        <li>Iterating through lists</li>
+                        <li>Creating and accessing arrays</li>
+                        <li>Indexing and length</li>
+                        <li>Looping through arrays</li>
                     </ul>
-                    <div class="topic-progress" data-topic="lists">
+                    <div class="topic-progress" data-topic="arrays-1d">
                         <div class="progress-bar"><div class="progress-fill"></div></div>
                         <span class="progress-text">0% complete</span>
                     </div>
-                    <span class="badge" style="background: var(--gray-400);">Coming Soon</span>
+                </a>
+
+                <a href="arrays-2d/index.html" class="topic-card programming">
+                    <div class="topic-number">8</div>
+                    <span class="topic-type-label programming">Programming</span>
+                    <div class="topic-icon">📊</div>
+                    <h3>2D Arrays (Grids)</h3>
+                    <p>Work with data in rows and columns. Master nested loops!</p>
+                    <ul class="topic-concepts">
+                        <li>Creating 2D arrays</li>
+                        <li>Row and column indexing</li>
+                        <li>Nested loops</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="arrays-2d">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="strings/index.html" class="topic-card programming">
+                    <div class="topic-number">9</div>
+                    <span class="topic-type-label programming">Programming</span>
+                    <div class="topic-icon">🔤</div>
+                    <h3>String Manipulation</h3>
+                    <p>Strings are arrays of characters! Learn slicing, concatenation, and more.</p>
+                    <ul class="topic-concepts">
+                        <li>Strings as character arrays</li>
+                        <li>Indexing and slicing</li>
+                        <li>Concatenation and methods</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="strings">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
                 </a>
 
                 <a href="functions/index.html" class="topic-card programming">
-                    <div class="topic-number">6</div>
+                    <div class="topic-number">10</div>
                     <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">⚡</div>
                     <h3>Functions</h3>
@@ -134,24 +200,42 @@
                         <li>Defining functions</li>
                         <li>Parameters and arguments</li>
                         <li>Return values</li>
+                        <li>Local and global variables</li>
                     </ul>
                     <div class="topic-progress" data-topic="functions">
                         <div class="progress-bar"><div class="progress-fill"></div></div>
                         <span class="progress-text">0% complete</span>
                     </div>
-                    <span class="badge" style="background: var(--gray-400);">Coming Soon</span>
+                </a>
+
+                <a href="errors/index.html" class="topic-card programming">
+                    <div class="topic-number">11</div>
+                    <span class="topic-type-label programming">Programming</span>
+                    <div class="topic-icon">🐛</div>
+                    <h3>Common Errors</h3>
+                    <p>Learn to identify, understand, and fix the most common programming errors.</p>
+                    <ul class="topic-concepts">
+                        <li>Syntax errors vs logic errors</li>
+                        <li>Reading error messages</li>
+                        <li>Debugging strategies</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="errors">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
                 </a>
 
                 <a href="file-handling/index.html" class="topic-card programming">
-                    <div class="topic-number">7</div>
+                    <div class="topic-number">12</div>
                     <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">📁</div>
                     <h3>File Handling</h3>
-                    <p>Read from and write to files. Persistent data storage!</p>
+                    <p>Read from and write to files. Store data permanently!</p>
                     <ul class="topic-concepts">
-                        <li>Reading files</li>
-                        <li>Writing files</li>
-                        <li>File modes</li>
+                        <li>Opening and closing files</li>
+                        <li>Reading: read(), readline(), readlines()</li>
+                        <li>Writing and appending</li>
+                        <li>The with statement</li>
                     </ul>
                     <div class="topic-progress" data-topic="file-handling">
                         <div class="progress-bar"><div class="progress-fill"></div></div>
@@ -159,8 +243,33 @@
                     </div>
                 </a>
 
-                <!-- Theory Topics -->
+                <a href="validation/index.html" class="topic-card programming">
+                    <div class="topic-number">13</div>
+                    <span class="topic-type-label programming">Programming</span>
+                    <div class="topic-icon">🛡️</div>
+                    <h3>Input Validation</h3>
+                    <p>Check user input before using it. Essential for robust, secure programs!</p>
+                    <ul class="topic-concepts">
+                        <li>Presence, Range, Length checks</li>
+                        <li>Format and Type checks</li>
+                        <li>Input sanitisation</li>
+                        <li>SQL injection prevention</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="validation">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="theory-topics mt-xl">
+            <h2>Theory</h2>
+            <p>Understand how computers work - the concepts behind the code.</p>
+
+            <div class="topic-grid">
                 <a href="cpu/index.html" class="topic-card theory featured">
+                    <div class="topic-number">1</div>
                     <span class="topic-type-label theory">Theory</span>
                     <div class="topic-icon">🖥️</div>
                     <h3>CPU &amp; Fetch-Execute Cycle</h3>
@@ -175,6 +284,30 @@
                         <span class="progress-text">0% complete</span>
                     </div>
                     <span class="badge">New</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="additional-topics mt-xl">
+            <h2>Additional Topics</h2>
+            <p>These topics can be studied alongside or after the main curriculum:</p>
+
+            <div class="topic-grid">
+                <a href="sql/index.html" class="topic-card supplementary">
+                    <div class="topic-icon">🗄️</div>
+                    <h3>SQL &amp; Databases</h3>
+                    <p>Learn to query databases using SQL - the standard language for working with data!</p>
+                    <ul class="topic-concepts">
+                        <li>What is a database?</li>
+                        <li>SELECT to retrieve data</li>
+                        <li>FROM to specify tables</li>
+                        <li>WHERE to filter results</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="sql">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge supplementary-badge">Standalone Topic</span>
                 </a>
             </div>
         </section>
@@ -213,6 +346,31 @@
         }
         .topic-concepts li {
             margin-bottom: var(--space-xs);
+        }
+        .theory-topics {
+            border-top: 2px solid var(--gray-200);
+            padding-top: var(--space-xl);
+        }
+        .theory-topics .topic-number {
+            background: var(--theory, #10b981);
+        }
+        .additional-topics {
+            border-top: 2px solid var(--gray-200);
+            padding-top: var(--space-xl);
+        }
+        .topic-card.supplementary {
+            border: 2px solid #6366f1;
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+        }
+        .topic-card.supplementary:hover {
+            border-color: #4f46e5;
+            transform: translateY(-4px);
+        }
+        .topic-card.supplementary .topic-icon {
+            background: #6366f1;
+        }
+        .supplementary-badge {
+            background: #6366f1 !important;
         }
     </style>
 </body>

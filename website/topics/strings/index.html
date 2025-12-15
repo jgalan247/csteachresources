@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Manipulation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">String Manipulation</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">🔤</span> String Manipulation</h1>
+            <p>Learn to work with text data by treating strings as arrays of characters.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>Why strings are called "strings" (they're arrays of characters!)</li>
+                    <li>Accessing individual characters using index notation</li>
+                    <li>String slicing to extract substrings</li>
+                    <li>Concatenation - joining strings together</li>
+                    <li>Useful string methods: len(), upper(), lower(), find()</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="key-insight mt-xl">
+            <div class="insight-card">
+                <h2>Why Are They Called "Strings"?</h2>
+                <p>In programming, we call text data a <strong>"string"</strong> rather than "text" because it's actually a <strong>sequence of characters strung together</strong> - like beads on a string!</p>
+
+                <div class="string-visual">
+                    <div class="string-diagram">
+                        <div class="string-title">The word "PYTHON" as a string:</div>
+                        <div class="char-boxes">
+                            <div class="char-box"><span class="char">P</span><span class="index">0</span></div>
+                            <div class="char-box"><span class="char">Y</span><span class="index">1</span></div>
+                            <div class="char-box"><span class="char">T</span><span class="index">2</span></div>
+                            <div class="char-box"><span class="char">H</span><span class="index">3</span></div>
+                            <div class="char-box"><span class="char">O</span><span class="index">4</span></div>
+                            <div class="char-box"><span class="char">N</span><span class="index">5</span></div>
+                        </div>
+                        <div class="string-note">Each character has an index (position number), just like in an array!</div>
+                    </div>
+                </div>
+
+                <div class="comparison-box">
+                    <h3>Strings ARE Arrays!</h3>
+                    <p>Because strings are arrays of characters, you can use the same techniques you learned with arrays:</p>
+                    <div class="comparison-grid">
+                        <div class="comparison-item">
+                            <h4>Arrays</h4>
+                            <code>numbers = [10, 20, 30]</code><br>
+                            <code>numbers[0]</code> → <strong>10</strong><br>
+                            <code>len(numbers)</code> → <strong>3</strong>
+                        </div>
+                        <div class="comparison-item">
+                            <h4>Strings</h4>
+                            <code>word = "CAT"</code><br>
+                            <code>word[0]</code> → <strong>"C"</strong><br>
+                            <code>len(word)</code> → <strong>3</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="operations-section mt-xl">
+            <h2>String Operations</h2>
+
+            <div class="operation-cards">
+                <div class="operation-card">
+                    <h3>Accessing Characters</h3>
+                    <p>Use square brackets with an index to get a single character.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>word = <span class="syntax-string">"HELLO"</span>
+<span class="syntax-keyword">print</span>(word[<span class="syntax-number">0</span>])   <span class="syntax-comment"># H (first character)</span>
+<span class="syntax-keyword">print</span>(word[<span class="syntax-number">4</span>])   <span class="syntax-comment"># O (fifth character)</span>
+<span class="syntax-keyword">print</span>(word[<span class="syntax-number">-1</span>])  <span class="syntax-comment"># O (last character)</span>
+<span class="syntax-keyword">print</span>(word[<span class="syntax-number">-2</span>])  <span class="syntax-comment"># L (second to last)</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="operation-card">
+                    <h3>String Slicing</h3>
+                    <p>Extract a substring using <code>[start:end]</code>. End is NOT included!</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>text = <span class="syntax-string">"PYTHON"</span>
+<span class="syntax-keyword">print</span>(text[<span class="syntax-number">0</span>:<span class="syntax-number">3</span>])  <span class="syntax-comment"># PYT (positions 0,1,2)</span>
+<span class="syntax-keyword">print</span>(text[:<span class="syntax-number">3</span>])   <span class="syntax-comment"># PYT (from start to 2)</span>
+<span class="syntax-keyword">print</span>(text[<span class="syntax-number">3</span>:])   <span class="syntax-comment"># HON (from 3 to end)</span>
+<span class="syntax-keyword">print</span>(text[<span class="syntax-number">-3</span>:])  <span class="syntax-comment"># HON (last 3 chars)</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Concatenation</h3>
+                    <p>Join strings together using the + operator.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>first = <span class="syntax-string">"Hello"</span>
+second = <span class="syntax-string">"World"</span>
+result = first + <span class="syntax-string">" "</span> + second
+<span class="syntax-keyword">print</span>(result)  <span class="syntax-comment"># Hello World</span>
+
+name = <span class="syntax-string">"Alice"</span>
+greeting = <span class="syntax-string">"Hi, "</span> + name + <span class="syntax-string">"!"</span>
+<span class="syntax-keyword">print</span>(greeting) <span class="syntax-comment"># Hi, Alice!</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="operation-card">
+                    <h3>String Length</h3>
+                    <p>Use len() to find how many characters are in a string.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>word = <span class="syntax-string">"Python"</span>
+length = len(word)
+<span class="syntax-keyword">print</span>(length)     <span class="syntax-comment"># 6</span>
+
+<span class="syntax-comment"># Useful for loops!</span>
+<span class="syntax-keyword">for</span> i <span class="syntax-keyword">in</span> range(len(word)):
+    <span class="syntax-keyword">print</span>(word[i])</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="methods-section mt-xl">
+            <h2>Useful String Methods</h2>
+            <div class="methods-table">
+                <table>
+                    <tr>
+                        <th>Method</th>
+                        <th>What it does</th>
+                        <th>Example</th>
+                        <th>Result</th>
+                    </tr>
+                    <tr>
+                        <td><code>len(s)</code></td>
+                        <td>Returns the length (number of characters)</td>
+                        <td><code>len("Hello")</code></td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td><code>s.upper()</code></td>
+                        <td>Converts to UPPERCASE</td>
+                        <td><code>"hello".upper()</code></td>
+                        <td>"HELLO"</td>
+                    </tr>
+                    <tr>
+                        <td><code>s.lower()</code></td>
+                        <td>Converts to lowercase</td>
+                        <td><code>"HELLO".lower()</code></td>
+                        <td>"hello"</td>
+                    </tr>
+                    <tr>
+                        <td><code>s.find(x)</code></td>
+                        <td>Finds position of substring (-1 if not found)</td>
+                        <td><code>"hello".find("l")</code></td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td><code>s.replace(a, b)</code></td>
+                        <td>Replaces all occurrences of a with b</td>
+                        <td><code>"hello".replace("l", "x")</code></td>
+                        <td>"hexxo"</td>
+                    </tr>
+                    <tr>
+                        <td><code>s.strip()</code></td>
+                        <td>Removes whitespace from start and end</td>
+                        <td><code>"  hi  ".strip()</code></td>
+                        <td>"hi"</td>
+                    </tr>
+                    <tr>
+                        <td><code>x in s</code></td>
+                        <td>Checks if substring exists (True/False)</td>
+                        <td><code>"el" in "hello"</code></td>
+                        <td>True</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="slicing-guide mt-xl">
+            <h2>String Slicing Guide</h2>
+            <div class="slicing-visual">
+                <div class="slice-example">
+                    <div class="slice-string">
+                        <span class="slice-title">text = "COMPUTING"</span>
+                        <div class="slice-chars">
+                            <div class="slice-char"><span>C</span><span class="idx">0</span></div>
+                            <div class="slice-char"><span>O</span><span class="idx">1</span></div>
+                            <div class="slice-char"><span>M</span><span class="idx">2</span></div>
+                            <div class="slice-char"><span>P</span><span class="idx">3</span></div>
+                            <div class="slice-char"><span>U</span><span class="idx">4</span></div>
+                            <div class="slice-char"><span>T</span><span class="idx">5</span></div>
+                            <div class="slice-char"><span>I</span><span class="idx">6</span></div>
+                            <div class="slice-char"><span>N</span><span class="idx">7</span></div>
+                            <div class="slice-char"><span>G</span><span class="idx">8</span></div>
+                        </div>
+                        <div class="negative-idx">
+                            <span>-9</span><span>-8</span><span>-7</span><span>-6</span><span>-5</span><span>-4</span><span>-3</span><span>-2</span><span>-1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="slice-examples">
+                    <div class="slice-row">
+                        <code>text[0]</code>
+                        <span class="arrow">→</span>
+                        <span class="result">"C"</span>
+                        <span class="desc">First character</span>
+                    </div>
+                    <div class="slice-row">
+                        <code>text[-1]</code>
+                        <span class="arrow">→</span>
+                        <span class="result">"G"</span>
+                        <span class="desc">Last character</span>
+                    </div>
+                    <div class="slice-row">
+                        <code>text[:3]</code>
+                        <span class="arrow">→</span>
+                        <span class="result">"COM"</span>
+                        <span class="desc">First 3 characters</span>
+                    </div>
+                    <div class="slice-row">
+                        <code>text[-3:]</code>
+                        <span class="arrow">→</span>
+                        <span class="result">"ING"</span>
+                        <span class="desc">Last 3 characters</span>
+                    </div>
+                    <div class="slice-row">
+                        <code>text[2:6]</code>
+                        <span class="arrow">→</span>
+                        <span class="result">"MPUT"</span>
+                        <span class="desc">From index 2 to 5</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="learning-path mt-xl">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="strings-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: String Output</h4>
+                        <p>Predict what string operations will produce.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="strings-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See how to manipulate strings step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="strings-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace String Operations</h4>
+                        <p>Track how strings change through operations.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="strings-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order for string manipulation.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="strings-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of string manipulation.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>string</h4>
+                    <p>A sequence of characters - like an array of letters. Called "string" because characters are strung together.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>index</h4>
+                    <p>The position of a character in a string. Starts at 0, not 1!</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>slicing</h4>
+                    <p>Extracting a portion of a string using [start:end] notation.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>concatenation</h4>
+                    <p>Joining strings together using the + operator.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>substring</h4>
+                    <p>A smaller string extracted from a larger string.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>immutable</h4>
+                    <p>Cannot be changed. Strings are immutable - you create new strings instead of modifying existing ones.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">string_manipulation.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Strings are arrays of characters</span>
+text = <span class="syntax-string">"Python"</span>
+
+<span class="syntax-comment"># Access single characters</span>
+first = text[<span class="syntax-number">0</span>]       <span class="syntax-comment"># "P"</span>
+last = text[<span class="syntax-number">-1</span>]       <span class="syntax-comment"># "n"</span>
+
+<span class="syntax-comment"># Slicing (extracting substrings)</span>
+start = text[:<span class="syntax-number">3</span>]      <span class="syntax-comment"># "Pyt" (first 3)</span>
+end = text[<span class="syntax-number">-3</span>:]       <span class="syntax-comment"># "hon" (last 3)</span>
+middle = text[<span class="syntax-number">1</span>:<span class="syntax-number">4</span>]    <span class="syntax-comment"># "yth" (positions 1,2,3)</span>
+
+<span class="syntax-comment"># Concatenation</span>
+greeting = <span class="syntax-string">"Hello"</span> + <span class="syntax-string">" "</span> + <span class="syntax-string">"World"</span>  <span class="syntax-comment"># "Hello World"</span>
+
+<span class="syntax-comment"># Length</span>
+length = len(text)    <span class="syntax-comment"># 6</span>
+
+<span class="syntax-comment"># Case conversion</span>
+upper = text.upper()  <span class="syntax-comment"># "PYTHON"</span>
+lower = text.lower()  <span class="syntax-comment"># "python"</span>
+
+<span class="syntax-comment"># Finding substrings</span>
+pos = text.find(<span class="syntax-string">"th"</span>) <span class="syntax-comment"># 2 (position where "th" starts)</span>
+exists = <span class="syntax-string">"th"</span> <span class="syntax-keyword">in</span> text <span class="syntax-comment"># True</span>
+
+<span class="syntax-comment"># Loop through characters (just like an array!)</span>
+<span class="syntax-keyword">for</span> char <span class="syntax-keyword">in</span> text:
+    <span class="syntax-keyword">print</span>(char)</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .insight-card {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            border: 2px solid #3b82f6;
+        }
+        .insight-card h2 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+        .string-visual {
+            margin: var(--space-lg) 0;
+        }
+        .string-diagram {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .string-title {
+            font-weight: bold;
+            margin-bottom: var(--space-md);
+            font-family: monospace;
+        }
+        .char-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+        .char-box {
+            width: 50px;
+            background: #3b82f6;
+            border-radius: var(--radius-sm);
+            padding: var(--space-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .char-box .char {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        .char-box .index {
+            color: #bfdbfe;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+        .string-note {
+            margin-top: var(--space-md);
+            color: var(--gray-600);
+            font-style: italic;
+        }
+        .comparison-box {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-lg);
+        }
+        .comparison-box h3 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .comparison-item {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .comparison-item h4 {
+            margin-top: 0;
+            color: var(--secondary);
+            font-family: var(--font-sans);
+        }
+        .operation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .operation-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .operation-card h3 {
+            margin-top: 0;
+            color: var(--secondary);
+        }
+        .methods-table {
+            overflow-x: auto;
+            margin-top: var(--space-md);
+        }
+        .methods-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        .methods-table th, .methods-table td {
+            padding: var(--space-sm) var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .methods-table th {
+            background: var(--primary);
+            color: white;
+        }
+        .methods-table code {
+            background: var(--gray-100);
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+        }
+        .slicing-visual {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .slice-example {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+        .slice-title {
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: var(--space-md);
+        }
+        .slice-chars {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+        }
+        .slice-char {
+            width: 40px;
+            background: var(--primary);
+            color: white;
+            padding: var(--space-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: var(--radius-sm);
+        }
+        .slice-char span:first-child {
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        .slice-char .idx {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+        .negative-idx {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            margin-top: 4px;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            font-family: monospace;
+        }
+        .negative-idx span {
+            width: 40px;
+            text-align: center;
+        }
+        .slice-examples {
+            display: grid;
+            gap: var(--space-sm);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .slice-row {
+            display: grid;
+            grid-template-columns: 120px 30px 80px 1fr;
+            align-items: center;
+            padding: var(--space-sm);
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+        }
+        .slice-row code {
+            font-weight: bold;
+        }
+        .slice-row .arrow {
+            color: var(--gray-400);
+        }
+        .slice-row .result {
+            color: var(--success);
+            font-weight: bold;
+            font-family: monospace;
+        }
+        .slice-row .desc {
+            color: var(--gray-500);
+            font-size: 0.85rem;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: SQL Queries - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">SQL & Databases</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Building SQL Queries</h1>
+            <p>Follow along as we build SQL queries step by step!</p>
+        </header>
+
+        <div class="reference-table mb-xl">
+            <h3>Reference: products table</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>category</th>
+                        <th>price</th>
+                        <th>stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Laptop</td><td>Electronics</td><td>899.99</td><td>15</td></tr>
+                    <tr><td>2</td><td>Mouse</td><td>Electronics</td><td>29.99</td><td>150</td></tr>
+                    <tr><td>3</td><td>Desk</td><td>Furniture</td><td>249.99</td><td>25</td></tr>
+                    <tr><td>4</td><td>Chair</td><td>Furniture</td><td>179.99</td><td>40</td></tr>
+                    <tr><td>5</td><td>Monitor</td><td>Electronics</td><td>349.99</td><td>30</td></tr>
+                    <tr><td>6</td><td>Keyboard</td><td>Electronics</td><td>79.99</td><td>85</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="worked-example"></div>
+
+        <section class="query-builder-guide mt-xl">
+            <h2>Query Building Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <h4>Identify what you need</h4>
+                        <p>What columns do you want? What conditions must be met?</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <h4>Start with SELECT</h4>
+                        <p>List the columns you want, or use * for all.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <h4>Add FROM</h4>
+                        <p>Specify which table contains the data.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <span class="step-number">4</span>
+                    <div class="step-content">
+                        <h4>Add WHERE (if needed)</h4>
+                        <p>Filter results with conditions using =, >, <, AND, OR.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Query Execution →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'sql-example-1',
+                topicId: 'sql',
+                title: 'Finding Products in a Shop Database',
+                description: 'Build queries to find specific products in an online shop database.',
+                steps: [
+                    {
+                        title: 'Task: List All Product Names',
+                        explanation: 'We want to see just the names of all products. We only need one column from the table.',
+                        code: `-- Get all product names
+SELECT name
+FROM products;`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Select a single column from a table'
+                    },
+                    {
+                        title: 'Result: All Names',
+                        explanation: 'This returns one column (name) with 6 rows - one for each product.',
+                        code: `-- Result:
+-- name
+-- --------
+-- Laptop
+-- Mouse
+-- Desk
+-- Chair
+-- Monitor
+-- Keyboard`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Understand the result structure'
+                    },
+                    {
+                        title: 'Task: Get Names and Prices',
+                        explanation: 'Now we want to see product names with their prices. We need two columns.',
+                        code: `-- Get names and prices
+SELECT name, price
+FROM products;`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Select multiple columns'
+                    },
+                    {
+                        title: 'Task: Find Electronics Only',
+                        explanation: 'We want to see only products in the Electronics category. We need to filter with WHERE.',
+                        code: `-- Find all electronics
+SELECT name, price
+FROM products
+WHERE category = 'Electronics';`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Filter with WHERE using equals'
+                    },
+                    {
+                        title: 'Result: Electronics',
+                        explanation: 'Only 4 products are in the Electronics category. Notice we use single quotes around the text value.',
+                        code: `-- Result:
+-- name      | price
+-- ----------|--------
+-- Laptop    | 899.99
+-- Mouse     | 29.99
+-- Monitor   | 349.99
+-- Keyboard  | 79.99`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Text values need single quotes'
+                    },
+                    {
+                        title: 'Task: Find Cheap Products',
+                        explanation: 'We want products that cost less than £100. We use the < operator with a number.',
+                        code: `-- Find products under £100
+SELECT name, price
+FROM products
+WHERE price < 100;`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Filter with comparison operators'
+                    },
+                    {
+                        title: 'Result: Cheap Products',
+                        explanation: 'Numbers don\'t need quotes! Only Mouse (29.99) and Keyboard (79.99) are under £100.',
+                        code: `-- Result:
+-- name     | price
+-- ---------|-------
+-- Mouse    | 29.99
+-- Keyboard | 79.99`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Numbers don\'t need quotes'
+                    },
+                    {
+                        title: 'Task: Find Cheap Electronics',
+                        explanation: 'We want Electronics under £100. We need TWO conditions - use AND.',
+                        code: `-- Find cheap electronics (both conditions must be true)
+SELECT name, price, category
+FROM products
+WHERE category = 'Electronics' AND price < 100;`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Combine conditions with AND'
+                    },
+                    {
+                        title: 'Result: Cheap Electronics',
+                        explanation: 'AND requires BOTH conditions to be true. Mouse and Keyboard are both Electronics AND under £100.',
+                        code: `-- Result:
+-- name     | price | category
+-- ---------|-------|------------
+-- Mouse    | 29.99 | Electronics
+-- Keyboard | 79.99 | Electronics`,
+                        codeLanguage: 'sql',
+                        subgoal: 'AND = both conditions must match'
+                    },
+                    {
+                        title: 'Task: Find Low Stock Items',
+                        explanation: 'We want to find products with stock less than or equal to 30. This could be items we need to reorder.',
+                        code: `-- Find items with low stock (30 or fewer)
+SELECT name, stock
+FROM products
+WHERE stock <= 30;`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Use less than or equal operator'
+                    },
+                    {
+                        title: 'Task: Find Electronics OR Furniture',
+                        explanation: 'We want to see products that are in EITHER Electronics OR Furniture category.',
+                        code: `-- Find Electronics OR Furniture
+SELECT name, category
+FROM products
+WHERE category = 'Electronics' OR category = 'Furniture';`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Combine conditions with OR'
+                    },
+                    {
+                        title: 'Final Challenge: Complex Query',
+                        explanation: 'Find all Electronics that cost more than £100 but less than £500.',
+                        code: `-- Find mid-range electronics
+SELECT name, price, category
+FROM products
+WHERE category = 'Electronics'
+  AND price > 100
+  AND price < 500;`,
+                        codeLanguage: 'sql',
+                        subgoal: 'Combine multiple AND conditions'
+                    }
+                ],
+                finalCode: `-- Complete examples of SELECT...FROM...WHERE
+
+-- 1. Select one column
+SELECT name FROM products;
+
+-- 2. Select multiple columns
+SELECT name, price FROM products;
+
+-- 3. Select all columns
+SELECT * FROM products;
+
+-- 4. Filter with WHERE (text - use quotes)
+SELECT * FROM products WHERE category = 'Electronics';
+
+-- 5. Filter with WHERE (number - no quotes)
+SELECT * FROM products WHERE price < 100;
+
+-- 6. Multiple conditions with AND
+SELECT * FROM products
+WHERE category = 'Electronics' AND price < 100;
+
+-- 7. Multiple conditions with OR
+SELECT * FROM products
+WHERE category = 'Electronics' OR category = 'Furniture';
+
+-- 8. Complex conditions
+SELECT name, price FROM products
+WHERE category = 'Electronics'
+  AND price > 100
+  AND price < 500;`,
+                summary: 'We learned to build SQL queries using SELECT (choose columns), FROM (choose table), and WHERE (filter results). Use single quotes for text values but not for numbers. Combine conditions with AND (both must be true) or OR (either can be true).'
+            }
+        );
+    </script>
+    <style>
+        .reference-table {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary);
+        }
+        .reference-table h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th, .data-table td {
+            padding: var(--space-sm) var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .data-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+        .process-steps {
+            display: grid;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .process-step {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .step-content h4 {
+            margin: 0 0 var(--space-xs) 0;
+        }
+        .step-content p {
+            margin: 0;
+            color: var(--gray-600);
+        }
+    </style>
+</body>
+</html>

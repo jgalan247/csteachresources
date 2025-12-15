@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: Data Types - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Data Types</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: User Input Calculator</h1>
+            <p>Follow along as we build a program that takes user input and performs calculations.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Data Types →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'dt-example-1',
+                topicId: 'data-types',
+                title: 'Calculate Birth Year from Age',
+                problem: {
+                    statement: 'Create a program that asks for a user\'s age and calculates what year they were born.',
+                    context: 'User input always comes as a string, so we need to convert it to do calculations.'
+                },
+                expectedOutput: 'Enter your age: 15\nYou were born in approximately 2010',
+                subgoals: [
+                    {
+                        label: 'Get user input',
+                        code: 'age_str = input("Enter your age: ")',
+                        explanation: 'The input() function gets text from the user. IMPORTANT: input() ALWAYS returns a string, even if the user types a number! We store it in age_str to remind us it\'s a string.'
+                    },
+                    {
+                        label: 'Convert string to integer',
+                        code: 'age = int(age_str)',
+                        explanation: 'We use int() to convert the string "15" into the number 15. Now we can do maths with it! If we skip this step, we\'d get an error trying to subtract a string.'
+                    },
+                    {
+                        label: 'Set the current year',
+                        code: 'current_year = 2025',
+                        explanation: 'We store the current year as an integer. This makes our calculation clear and easy to update.'
+                    },
+                    {
+                        label: 'Calculate birth year',
+                        code: 'birth_year = current_year - age',
+                        explanation: 'Now we can do arithmetic! 2025 - 15 = 2010. This only works because age is now an integer, not a string.'
+                    },
+                    {
+                        label: 'Display the result',
+                        code: 'print("You were born in approximately", birth_year)',
+                        explanation: 'We print the result. Python automatically converts birth_year to a string for printing when we use commas.'
+                    }
+                ],
+                completeCode: `age_str = input("Enter your age: ")
+age = int(age_str)
+current_year = 2025
+birth_year = current_year - age
+print("You were born in approximately", birth_year)`
+            }
+        );
+    </script>
+</body>
+</html>

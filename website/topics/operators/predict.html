@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Arithmetic Operators - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Arithmetic Operators</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: What's the Result?</h1>
+            <p>Look at each calculation and predict what Python will output. Think carefully about the order of operations!</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">Back to Arithmetic Operators</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'op-predict-1',
+                title: 'Question 1 of 5',
+                code: `print(8 + 2)`,
+                question: 'What will be printed?',
+                options: ['82', '10', '8 + 2', 'Error'],
+                correctIndex: 1,
+                explanation: 'The + operator adds the two numbers together: 8 + 2 = 10.',
+                misconceptions: {
+                    0: 'This would happen with strings. With numbers, + means addition, not joining.'
+                }
+            },
+            {
+                id: 'op-predict-2',
+                title: 'Question 2 of 5',
+                code: `print(15 / 3)`,
+                question: 'What will be printed?',
+                options: ['5', '5.0', '45', 'Error'],
+                correctIndex: 1,
+                explanation: 'The / operator performs division. In Python 3, division always returns a float (decimal number), so 15 / 3 = 5.0',
+                misconceptions: {
+                    0: 'Close! But in Python 3, / always gives a float result, even when the answer is a whole number.'
+                }
+            },
+            {
+                id: 'op-predict-3',
+                title: 'Question 3 of 5',
+                code: `print(17 // 5)`,
+                question: 'What will be printed?',
+                options: ['3.4', '3', '2', '17 // 5'],
+                correctIndex: 1,
+                explanation: 'The // operator performs integer division - it divides and rounds DOWN to the nearest whole number. 17 ÷ 5 = 3.4, rounded down = 3.',
+                misconceptions: {
+                    0: 'That would be regular division (/). The // operator gives you just the whole number part.'
+                }
+            },
+            {
+                id: 'op-predict-4',
+                title: 'Question 4 of 5',
+                code: `print(17 % 5)`,
+                question: 'What will be printed?',
+                options: ['3.4', '3', '2', '17'],
+                correctIndex: 2,
+                explanation: 'The % operator (modulo) gives the REMAINDER after division. 17 ÷ 5 = 3 remainder 2. So 17 % 5 = 2.',
+                misconceptions: {
+                    1: 'That\'s the result of integer division (//). The % gives the remainder.'
+                }
+            },
+            {
+                id: 'op-predict-5',
+                title: 'Question 5 of 5',
+                code: `print(2 + 3 * 4)`,
+                question: 'What will be printed?',
+                options: ['20', '14', '24', 'Error'],
+                correctIndex: 1,
+                explanation: 'Python follows BIDMAS order of operations. Multiplication (*) happens before addition (+). So: 3 * 4 = 12, then 2 + 12 = 14.',
+                misconceptions: {
+                    0: 'Remember BIDMAS! Multiplication happens before addition, so it\'s not (2+3)*4.'
+                }
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'operators'
+            }
+        );
+    </script>
+</body>
+</html>

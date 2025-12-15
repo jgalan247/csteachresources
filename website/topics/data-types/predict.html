@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Data Types - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Data Types</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: What Type Is It?</h1>
+            <p>Look at each value and predict what data type it is. Think carefully - quotes make a big difference!</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">Back to Data Types</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'dt-predict-1',
+                title: 'Question 1 of 5',
+                code: `x = "42"`,
+                question: 'What is the data type of x?',
+                options: ['int (integer)', 'str (string)', 'float', 'bool (boolean)'],
+                correctIndex: 1,
+                explanation: 'Even though 42 looks like a number, the quotes make it a string! "42" is text, not a number you can do maths with.',
+                misconceptions: {
+                    0: 'The quotes around 42 make it a string, not an integer. Without quotes (x = 42) it would be an integer.'
+                }
+            },
+            {
+                id: 'dt-predict-2',
+                title: 'Question 2 of 5',
+                code: `y = 3.0`,
+                question: 'What is the data type of y?',
+                options: ['int (integer)', 'str (string)', 'float', 'bool (boolean)'],
+                correctIndex: 2,
+                explanation: 'Any number with a decimal point is a float, even if the decimal part is .0. Python stores 3.0 as a floating-point number.',
+                misconceptions: {
+                    0: 'Although 3.0 equals 3, the decimal point makes Python store it as a float, not an integer.'
+                }
+            },
+            {
+                id: 'dt-predict-3',
+                title: 'Question 3 of 5',
+                code: `result = 10 > 5`,
+                question: 'What is the data type of result?',
+                options: ['int (integer)', 'str (string)', 'float', 'bool (boolean)'],
+                correctIndex: 3,
+                explanation: '10 > 5 is a comparison that evaluates to True. The result of any comparison (>, <, ==, etc.) is a boolean.',
+                misconceptions: {
+                    0: 'Comparisons like > don\'t give numbers - they give True or False (boolean values).'
+                }
+            },
+            {
+                id: 'dt-predict-4',
+                title: 'Question 4 of 5',
+                code: `a = "5"
+b = "3"
+c = a + b
+print(c)`,
+                question: 'What will be printed?',
+                options: ['8', '53', '"8"', 'Error'],
+                correctIndex: 1,
+                explanation: 'Both a and b are strings (they have quotes). When you use + with strings, it concatenates (joins) them. "5" + "3" = "53".',
+                misconceptions: {
+                    0: 'The + operator joins strings together instead of adding them. To get 8, you would need integers: 5 + 3.'
+                }
+            },
+            {
+                id: 'dt-predict-5',
+                title: 'Question 5 of 5',
+                code: `num = int("25")
+print(type(num))`,
+                question: 'What will be printed?',
+                options: ["<class 'str'>", "<class 'int'>", "<class 'float'>", '25'],
+                correctIndex: 1,
+                explanation: 'int() converts the string "25" into the integer 25. type() then shows us it\'s an integer: <class \'int\'>.',
+                misconceptions: {
+                    0: 'The int() function converts the string to an integer, so it\'s no longer a string.'
+                }
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'data-types'
+            }
+        );
+    </script>
+</body>
+</html>

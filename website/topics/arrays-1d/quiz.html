@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: 1D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">1D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: 1D Arrays</h1>
+            <p>Test your understanding of 1D arrays and loops! Answer all questions to see your score.</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to 1D Arrays</a>
+            <a href="../arrays-2d/index.html" class="btn btn-secondary">Next Topic: 2D Arrays →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'arr1d-quiz-1',
+                title: 'Question 1: Array indexing',
+                code: `items = ["a", "b", "c", "d", "e"]
+print(items[4])`,
+                question: 'What will be printed?',
+                options: ['d', 'e', 'Error: index out of range', '4'],
+                correctIndex: 1,
+                explanation: 'Index 0="a", 1="b", 2="c", 3="d", 4="e". So items[4] is "e", the FIFTH (and last) element.'
+            },
+            {
+                id: 'arr1d-quiz-2',
+                title: 'Question 2: Negative indexing',
+                code: `data = [10, 20, 30, 40]
+print(data[-1])`,
+                question: 'What will be printed?',
+                options: ['10', '40', '-1', 'Error'],
+                correctIndex: 1,
+                explanation: 'Negative indices count from the end. -1 is the LAST element, -2 is second-last, etc. So data[-1] = 40.'
+            },
+            {
+                id: 'arr1d-quiz-3',
+                title: 'Question 3: Modifying elements',
+                code: `nums = [5, 10, 15]
+nums[1] = 99
+print(nums)`,
+                question: 'What will be printed?',
+                options: ['[5, 10, 15]', '[99, 10, 15]', '[5, 99, 15]', '[5, 10, 99]'],
+                correctIndex: 2,
+                explanation: 'nums[1] is the SECOND element (index 1). We change it from 10 to 99, giving [5, 99, 15].'
+            },
+            {
+                id: 'arr1d-quiz-4',
+                title: 'Question 4: Array length',
+                code: `words = ["cat", "dog"]
+words.append("fish")
+print(len(words))`,
+                question: 'What will be printed?',
+                options: ['2', '3', '7', 'Error'],
+                correctIndex: 1,
+                explanation: 'The array starts with 2 elements. append() adds one more, making 3 elements total.'
+            },
+            {
+                id: 'arr1d-quiz-5',
+                title: 'Question 5: Loop iteration',
+                code: `letters = ["x", "y", "z"]
+for letter in letters:
+    print(letter, end=" ")`,
+                question: 'What will be printed?',
+                options: ['x y z ', 'xyz', '0 1 2 ', 'x\ny\nz'],
+                correctIndex: 0,
+                explanation: 'The loop prints each letter followed by a space (end=" "). Output: "x y z ".'
+            },
+            {
+                id: 'arr1d-quiz-6',
+                title: 'Question 6: Loop by index',
+                code: `arr = [10, 20, 30]
+for i in range(len(arr)):
+    arr[i] = arr[i] * 2
+print(arr)`,
+                question: 'What will be printed?',
+                options: ['[10, 20, 30]', '[20, 40, 60]', '[2, 2, 2]', 'Error'],
+                correctIndex: 1,
+                explanation: 'The loop doubles each element: 10*2=20, 20*2=40, 30*2=60. Result: [20, 40, 60].'
+            },
+            {
+                id: 'arr1d-quiz-7',
+                title: 'Question 7: Finding elements',
+                code: `names = ["Jo", "Sam", "Alex"]
+if "Sam" in names:
+    print("Found!")
+else:
+    print("Not found")`,
+                question: 'What will be printed?',
+                options: ['Found!', 'Not found', 'True', '1'],
+                correctIndex: 0,
+                explanation: 'The "in" keyword checks if an element exists in the array. "Sam" is in names, so we print "Found!".'
+            },
+            {
+                id: 'arr1d-quiz-8',
+                title: 'Question 8: Accumulator pattern',
+                code: `values = [2, 4, 6]
+product = 1
+for v in values:
+    product = product * v
+print(product)`,
+                question: 'What will be printed?',
+                options: ['12', '48', '246', '1'],
+                correctIndex: 1,
+                explanation: 'Starting with product=1: 1*2=2, 2*4=8, 8*6=48. The final product is 48.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'arrays-1d'
+            }
+        );
+    </script>
+</body>
+</html>

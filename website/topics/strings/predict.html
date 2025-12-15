@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: String Manipulation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">String Manipulation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: String Output</h1>
+            <p>Look at each code snippet and predict what will be printed. Remember: strings are arrays of characters, and indexing starts at 0!</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">← Back to String Manipulation</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'strings-predict-1',
+                title: 'Question 1: First Character',
+                code: `word = "HELLO"
+print(word[0])`,
+                question: 'What will be printed?',
+                options: ['H', 'E', 'HELLO', '0'],
+                correctIndex: 0,
+                explanation: 'String indexing starts at 0, so word[0] is the first character, which is "H".'
+            },
+            {
+                id: 'strings-predict-2',
+                title: 'Question 2: Last Character',
+                code: `name = "Python"
+print(name[-1])`,
+                question: 'What will be printed?',
+                options: ['P', 'n', 'o', 'Error'],
+                correctIndex: 1,
+                explanation: 'Negative indices count from the end. -1 is the last character, which is "n".'
+            },
+            {
+                id: 'strings-predict-3',
+                title: 'Question 3: String Length',
+                code: `text = "Computer"
+print(len(text))`,
+                question: 'What will be printed?',
+                options: ['7', '8', '9', 'Computer'],
+                correctIndex: 1,
+                explanation: '"Computer" has 8 characters: C-o-m-p-u-t-e-r. len() returns the count.'
+            },
+            {
+                id: 'strings-predict-4',
+                title: 'Question 4: String Slicing',
+                code: `word = "PYTHON"
+print(word[0:3])`,
+                question: 'What will be printed?',
+                options: ['PYT', 'PYTH', 'YTH', 'P'],
+                correctIndex: 0,
+                explanation: 'word[0:3] gets characters at positions 0, 1, and 2 (stops BEFORE 3). That\'s "PYT".'
+            },
+            {
+                id: 'strings-predict-5',
+                title: 'Question 5: Slice from Start',
+                code: `text = "COMPUTING"
+print(text[:4])`,
+                question: 'What will be printed?',
+                options: ['COMP', 'COMPU', 'C', 'OMPUTING'],
+                correctIndex: 0,
+                explanation: 'text[:4] means from the start up to (but not including) position 4. That\'s "COMP".'
+            },
+            {
+                id: 'strings-predict-6',
+                title: 'Question 6: Slice to End',
+                code: `word = "SCIENCE"
+print(word[3:])`,
+                question: 'What will be printed?',
+                options: ['SCI', 'ENCE', 'NCE', 'E'],
+                correctIndex: 1,
+                explanation: 'word[3:] starts at position 3 and goes to the end. Position 3 is "E", so we get "ENCE".'
+            },
+            {
+                id: 'strings-predict-7',
+                title: 'Question 7: Concatenation',
+                code: `first = "Hello"
+second = "World"
+result = first + " " + second
+print(result)`,
+                question: 'What will be printed?',
+                options: ['HelloWorld', 'Hello World', 'Hello + World', 'first second'],
+                correctIndex: 1,
+                explanation: 'The + operator joins strings. We join "Hello" + " " + "World" = "Hello World".'
+            },
+            {
+                id: 'strings-predict-8',
+                title: 'Question 8: Upper Case',
+                code: `message = "hello"
+print(message.upper())`,
+                question: 'What will be printed?',
+                options: ['hello', 'HELLO', 'Hello', 'Error'],
+                correctIndex: 1,
+                explanation: 'The .upper() method converts all characters to uppercase: "HELLO".'
+            },
+            {
+                id: 'strings-predict-9',
+                title: 'Question 9: Find Substring',
+                code: `text = "programming"
+print(text.find("gram"))`,
+                question: 'What will be printed?',
+                options: ['True', '3', '4', 'gram'],
+                correctIndex: 2,
+                explanation: 'find() returns the position where the substring starts. "gram" starts at index 4 in "programming".'
+            },
+            {
+                id: 'strings-predict-10',
+                title: 'Question 10: Last Three Characters',
+                code: `word = "PYTHON"
+print(word[-3:])`,
+                question: 'What will be printed?',
+                options: ['PYT', 'HON', 'ON', 'N'],
+                correctIndex: 1,
+                explanation: 'word[-3:] gets the last 3 characters. That\'s "HON".'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'strings'
+            }
+        );
+    </script>
+</body>
+</html>

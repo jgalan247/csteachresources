@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: Data Types - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Data Types</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Trace: Data Type Conversions</h1>
+            <p>Track how values change as they are converted between different data types. Pay attention to quotes for strings!</p>
+        </header>
+
+        <div id="tracing-exercise"></div>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Worked Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new CodeTracing(
+            document.getElementById('tracing-exercise'),
+            {
+                id: 'dt-trace-1',
+                topicId: 'data-types',
+                title: 'Trace: String and Number Operations',
+                code: `a = "5"
+b = "3"
+c = a + b
+d = int(a) + int(b)
+e = float(c)
+print(c, d, e)`,
+                variables: ['a', 'b', 'c', 'd', 'e'],
+                prefilled: [0],
+                solution: [
+                    { step: 1, line: 1, variables: { a: '"5"', b: null, c: null, d: null, e: null }, output: '' },
+                    { step: 2, line: 2, variables: { a: '"5"', b: '"3"', c: null, d: null, e: null }, output: '' },
+                    { step: 3, line: 3, variables: { a: '"5"', b: '"3"', c: '"53"', d: null, e: null }, output: '' },
+                    { step: 4, line: 4, variables: { a: '"5"', b: '"3"', c: '"53"', d: 8, e: null }, output: '' },
+                    { step: 5, line: 5, variables: { a: '"5"', b: '"3"', c: '"53"', d: 8, e: 53.0 }, output: '' },
+                    { step: 6, line: 6, variables: { a: '"5"', b: '"3"', c: '"53"', d: 8, e: 53.0 }, output: '53 8 53.0' }
+                ],
+                hints: {
+                    2: 'b is also a string because of the quotes around "3".',
+                    3: 'With strings, + concatenates (joins) them. "5" + "3" = "53" (not 8!).',
+                    4: 'int() converts strings to integers. Then we can add them: 5 + 3 = 8.',
+                    5: 'float() converts the string "53" to the decimal number 53.0.'
+                }
+            }
+        );
+    </script>
+</body>
+</html>

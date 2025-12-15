@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: While Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">While Loops</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Investigate: Trace While Loop Execution</h1>
+            <p>Track how variables change through each iteration of a while loop!</p>
+        </header>
+
+        <div id="tracing-exercise"></div>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Arrange the Code →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Worked Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new CodeTracing(
+            document.getElementById('tracing-exercise'),
+            {
+                id: 'while-trace-1',
+                topicId: 'while-loops',
+                title: 'Trace: Calculating Factorial',
+                description: 'Track how this while loop calculates 4! (4 factorial = 4 × 3 × 2 × 1 = 24)',
+                code: `n = 4
+result = 1
+while n > 0:
+    result = result * n
+    n = n - 1
+print(result)`,
+                variables: ['n', 'result'],
+                prefilled: [0, 1, 2],
+                solution: [
+                    { step: 1, line: 1, variables: { n: '4', result: null }, output: '' },
+                    { step: 2, line: 2, variables: { n: '4', result: '1' }, output: '' },
+                    { step: 3, line: 3, variables: { n: '4', result: '1' }, output: '' },
+                    { step: 4, line: 4, variables: { n: '4', result: '4' }, output: '' },
+                    { step: 5, line: 5, variables: { n: '3', result: '4' }, output: '' },
+                    { step: 6, line: 3, variables: { n: '3', result: '4' }, output: '' },
+                    { step: 7, line: 4, variables: { n: '3', result: '12' }, output: '' },
+                    { step: 8, line: 5, variables: { n: '2', result: '12' }, output: '' },
+                    { step: 9, line: 3, variables: { n: '2', result: '12' }, output: '' },
+                    { step: 10, line: 4, variables: { n: '2', result: '24' }, output: '' },
+                    { step: 11, line: 5, variables: { n: '1', result: '24' }, output: '' },
+                    { step: 12, line: 3, variables: { n: '1', result: '24' }, output: '' },
+                    { step: 13, line: 4, variables: { n: '1', result: '24' }, output: '' },
+                    { step: 14, line: 5, variables: { n: '0', result: '24' }, output: '' },
+                    { step: 15, line: 3, variables: { n: '0', result: '24' }, output: '' },
+                    { step: 16, line: 6, variables: { n: '0', result: '24' }, output: '24' }
+                ],
+                hints: {
+                    3: 'Check the condition: Is 4 > 0? Yes! Enter the loop.',
+                    4: 'result = 1 * 4 = 4',
+                    5: 'n = 4 - 1 = 3',
+                    6: 'Check condition again: Is 3 > 0? Yes! Continue loop.',
+                    7: 'result = 4 * 3 = 12',
+                    9: 'Check condition: Is 2 > 0? Yes!',
+                    10: 'result = 12 * 2 = 24',
+                    12: 'Check condition: Is 1 > 0? Yes!',
+                    13: 'result = 24 * 1 = 24 (no change)',
+                    15: 'Check condition: Is 0 > 0? NO! Exit loop.',
+                    16: 'Loop ended, print the final result.'
+                }
+            }
+        );
+    </script>
+</body>
+</html>

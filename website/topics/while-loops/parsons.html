@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: While Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">While Loops</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks to create working while loops!</p>
+            <div class="alert alert-info">
+                <strong>Remember:</strong> Initialise variables before the loop, and make sure to update them inside the loop!
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Simple countdown
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'while-parsons-1',
+                topicId: 'while-loops',
+                title: 'Countdown from 5',
+                instructions: 'Arrange the code blocks to count down from 5 to 1, then print "Blast off!"',
+                expectedOutput: '5\n4\n3\n2\n1\nBlast off!',
+                blocks: [
+                    { id: 1, code: 'count = 5', indentLevel: 0 },
+                    { id: 2, code: 'while count > 0:', indentLevel: 0 },
+                    { id: 3, code: '    print(count)', indentLevel: 1 },
+                    { id: 4, code: '    count = count - 1', indentLevel: 1 },
+                    { id: 5, code: 'print("Blast off!")', indentLevel: 0 }
+                ],
+                solution: [1, 2, 3, 4, 5],
+                hints: [
+                    'First, initialise count to 5.',
+                    'The while loop runs while count is greater than 0.',
+                    'Inside the loop, print then decrease count.',
+                    'The final print is OUTSIDE the loop (no indent).'
+                ]
+            }
+        );
+
+        // Parsons Problem 2: Core - Sum of numbers
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'while-parsons-2',
+                topicId: 'while-loops',
+                title: 'Sum Numbers 1 to 5',
+                instructions: 'Arrange the code to add up the numbers 1+2+3+4+5 and print the total (15). One block is a distractor.',
+                expectedOutput: '15',
+                blocks: [
+                    { id: 1, code: 'total = 0', indentLevel: 0 },
+                    { id: 2, code: 'num = 1', indentLevel: 0 },
+                    { id: 3, code: 'while num <= 5:', indentLevel: 0 },
+                    { id: 4, code: '    total = total + num', indentLevel: 1 },
+                    { id: 5, code: '    num = num + 1', indentLevel: 1 },
+                    { id: 6, code: 'print(total)', indentLevel: 0 },
+                    { id: 7, code: 'while num < 5:', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6],
+                hints: [
+                    'Initialise both total and num before the loop.',
+                    'Use <= 5 to include 5 in the sum (not < 5 which would stop at 4).',
+                    'Add num to total, then increment num.',
+                    'Print total after the loop ends.'
+                ]
+            }
+        );
+
+        // Parsons Problem 3: Extension - Input validation with break
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'while-parsons-3',
+                topicId: 'while-loops',
+                title: 'Valid Age Input',
+                instructions: 'Arrange the code to keep asking for an age until a valid age (0-120) is entered. One block is a distractor.',
+                expectedOutput: 'Age accepted!',
+                blocks: [
+                    { id: 1, code: 'while True:', indentLevel: 0 },
+                    { id: 2, code: '    age = int(input("Enter age: "))', indentLevel: 1 },
+                    { id: 3, code: '    if age >= 0 and age <= 120:', indentLevel: 1 },
+                    { id: 4, code: '        break', indentLevel: 2 },
+                    { id: 5, code: '    print("Invalid age, try again")', indentLevel: 1 },
+                    { id: 6, code: 'print("Age accepted!")', indentLevel: 0 },
+                    { id: 7, code: '    if age >= 0 or age <= 120:', indentLevel: 1, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6],
+                hints: [
+                    'while True creates an infinite loop - we exit with break.',
+                    'Get input inside the loop.',
+                    'Use AND to check both conditions (age >= 0 AND age <= 120).',
+                    'OR would be wrong - any age would pass (everything is either >= 0 OR <= 120).',
+                    'break exits the loop when valid, otherwise print error and loop again.'
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

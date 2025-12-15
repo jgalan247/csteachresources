@@ -102,7 +102,7 @@
                 id: 'var-parsons-2',
                 topicId: 'variables',
                 title: 'Calculate a Total',
-                instructions: 'Arrange the code blocks to create a program that calculates and prints the total of two numbers.',
+                instructions: 'Arrange the code blocks to create a program that stores the sum in a variable called <code>total</code>, then prints it. (One block is a distractor that won\'t be used.)',
                 expectedOutput: '15',
                 blocks: [
                     { id: 1, code: 'a = 10', indentLevel: 0 },
@@ -114,9 +114,9 @@
                 solution: [1, 2, 3, 4],
                 hints: [
                     'First, create both number variables.',
-                    'Then calculate the total and store it in a new variable.',
-                    'Finally, print the total.',
-                    'One block is a distractor - it would work, but isn\'t the solution we want.'
+                    'Then calculate the total and store it in a new variable called "total".',
+                    'Finally, print the total variable.',
+                    'The print(a + b) block is a distractor - it works but doesn\'t use a named variable for the result.'
                 ],
                 type: '2d'
             }
@@ -129,7 +129,7 @@
                 id: 'var-parsons-3',
                 topicId: 'variables',
                 title: 'Swap Two Values',
-                instructions: 'Arrange the code blocks to swap the values of x and y. After running, x should be 20 and y should be 10.',
+                instructions: 'Arrange the code blocks to swap the values of x and y. After running, x should be 20 and y should be 10. (One block is a distractor.)',
                 expectedOutput: '20\n10',
                 blocks: [
                     { id: 1, code: 'x = 10', indentLevel: 0 },
@@ -139,7 +139,7 @@
                     { id: 5, code: 'y = temp', indentLevel: 0 },
                     { id: 6, code: 'print(x)', indentLevel: 0 },
                     { id: 7, code: 'print(y)', indentLevel: 0 },
-                    { id: 8, code: 'x = y', indentLevel: 0, isDistractor: true }
+                    { id: 8, code: 'y = x', indentLevel: 0, isDistractor: true }
                 ],
                 solution: [1, 2, 3, 4, 5, 6, 7],
                 hints: [
@@ -147,7 +147,7 @@
                     'To swap, you need a temporary variable to hold one value.',
                     'Think: if you pour water from glass A to glass B, you need a third glass!',
                     'Save x in temp, then copy y to x, then copy temp to y.',
-                    'One distractor block would lose a value if used incorrectly.'
+                    'The distractor represents a common mistake - think about what would happen if you used it.'
                 ],
                 type: '2d'
             }

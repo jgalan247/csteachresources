@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Types - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Data Types</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">🏷️</span> Data Types</h1>
+            <p>Learn about the different types of data you can store and work with in Python.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>The main data types: strings, integers, floats, and booleans</li>
+                    <li>How to check what type a value is using type()</li>
+                    <li>Casting: converting between types using int(), str(), float()</li>
+                    <li>Why data types matter in programming</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="learning-path">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="datatypes-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: What type is it?</h4>
+                        <p>Predict the data type of different values.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="datatypes-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See how to work with different data types.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="datatypes-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Data Types</h4>
+                        <p>Track how data types affect program behaviour.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="datatypes-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order to convert between types.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="datatypes-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of data types.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="casting-section mt-xl">
+            <h2>Casting (Type Conversion)</h2>
+            <p>Casting means converting data from one type to another. This is essential when working with user input or combining different types of data.</p>
+
+            <div class="casting-cards">
+                <div class="casting-card">
+                    <h3><code>int()</code></h3>
+                    <p>Converts to integer (whole number)</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># String to integer</span>
+age_str = <span class="syntax-string">"25"</span>
+age = int(age_str)      <span class="syntax-comment"># 25</span>
+
+<span class="syntax-comment"># Float to integer (removes decimal)</span>
+price = <span class="syntax-number">9.99</span>
+whole = int(price)      <span class="syntax-comment"># 9</span>
+
+<span class="syntax-comment"># User input (always a string!)</span>
+num = int(input(<span class="syntax-string">"Enter number: "</span>))</code></pre>
+                    </div>
+                    <div class="casting-note warning">
+                        <strong>Warning:</strong> <code>int("hello")</code> causes an error! Only numeric strings can be converted.
+                    </div>
+                </div>
+
+                <div class="casting-card">
+                    <h3><code>float()</code></h3>
+                    <p>Converts to float (decimal number)</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># String to float</span>
+price_str = <span class="syntax-string">"19.99"</span>
+price = float(price_str) <span class="syntax-comment"># 19.99</span>
+
+<span class="syntax-comment"># Integer to float</span>
+count = <span class="syntax-number">5</span>
+decimal = float(count)   <span class="syntax-comment"># 5.0</span>
+
+<span class="syntax-comment"># Division result</span>
+result = float(<span class="syntax-number">7</span>) / <span class="syntax-number">2</span>   <span class="syntax-comment"># 3.5</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="casting-card">
+                    <h3><code>str()</code></h3>
+                    <p>Converts to string (text)</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># Integer to string</span>
+age = <span class="syntax-number">15</span>
+age_text = str(age)      <span class="syntax-comment"># "15"</span>
+
+<span class="syntax-comment"># Float to string</span>
+price = <span class="syntax-number">9.99</span>
+price_text = str(price)  <span class="syntax-comment"># "9.99"</span>
+
+<span class="syntax-comment"># Concatenating with strings</span>
+<span class="syntax-keyword">print</span>(<span class="syntax-string">"Age: "</span> + str(age))  <span class="syntax-comment"># "Age: 15"</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="casting-card">
+                    <h3><code>bool()</code></h3>
+                    <p>Converts to boolean (True/False)</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># Numbers to boolean</span>
+bool(<span class="syntax-number">0</span>)      <span class="syntax-comment"># False (zero)</span>
+bool(<span class="syntax-number">1</span>)      <span class="syntax-comment"># True (non-zero)</span>
+bool(<span class="syntax-number">-5</span>)     <span class="syntax-comment"># True (non-zero)</span>
+
+<span class="syntax-comment"># Strings to boolean</span>
+bool(<span class="syntax-string">""</span>)     <span class="syntax-comment"># False (empty)</span>
+bool(<span class="syntax-string">"hi"</span>)   <span class="syntax-comment"># True (non-empty)</span>
+bool(<span class="syntax-string">"False"</span>) <span class="syntax-comment"># True (non-empty string!)</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-cast mt-lg">
+                <h3>Why Do We Need Casting?</h3>
+                <div class="why-cast-examples">
+                    <div class="example-card">
+                        <h4>User Input is Always a String</h4>
+                        <div class="code-display">
+                            <pre class="code-content"><code><span class="syntax-comment"># This won't work as expected!</span>
+age = input(<span class="syntax-string">"Enter age: "</span>)  <span class="syntax-comment"># "25" (string)</span>
+<span class="syntax-keyword">if</span> age > <span class="syntax-number">18</span>:                <span class="syntax-comment"># ERROR! Can't compare string to int</span>
+
+<span class="syntax-comment"># Fix: Convert to integer first</span>
+age = int(input(<span class="syntax-string">"Enter age: "</span>))  <span class="syntax-comment"># 25 (integer)</span>
+<span class="syntax-keyword">if</span> age > <span class="syntax-number">18</span>:                     <span class="syntax-comment"># Works!</span></code></pre>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h4>Combining Text and Numbers</h4>
+                        <div class="code-display">
+                            <pre class="code-content"><code><span class="syntax-comment"># This causes a TypeError!</span>
+score = <span class="syntax-number">95</span>
+<span class="syntax-keyword">print</span>(<span class="syntax-string">"Score: "</span> + score)     <span class="syntax-comment"># ERROR!</span>
+
+<span class="syntax-comment"># Fix 1: Convert to string</span>
+<span class="syntax-keyword">print</span>(<span class="syntax-string">"Score: "</span> + str(score)) <span class="syntax-comment"># "Score: 95"</span>
+
+<span class="syntax-comment"># Fix 2: Use f-string (recommended)</span>
+<span class="syntax-keyword">print</span>(<span class="syntax-string">f"Score: {score}"</span>)     <span class="syntax-comment"># "Score: 95"</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>data type</h4>
+                    <p>The category of data a value belongs to. Determines what operations you can perform.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>string (str)</h4>
+                    <p>Text data, written in quotes. <code>"Hello"</code>, <code>'Python'</code>, <code>"123"</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>integer (int)</h4>
+                    <p>A whole number with no decimal. <code>42</code>, <code>-7</code>, <code>0</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>float</h4>
+                    <p>A decimal number. <code>3.14</code>, <code>-0.5</code>, <code>2.0</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>boolean (bool)</h4>
+                    <p>True or False values. <code>True</code>, <code>False</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>casting</h4>
+                    <p>Converting data from one type to another. Also called type conversion.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>int()</h4>
+                    <p>Converts a value to an integer. <code>int("5")</code> gives <code>5</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>str()</h4>
+                    <p>Converts a value to a string. <code>str(42)</code> gives <code>"42"</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>float()</h4>
+                    <p>Converts a value to a float. <code>float("3.14")</code> gives <code>3.14</code></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">data_types_examples.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># String - text in quotes</span>
+name = <span class="syntax-string">"Alice"</span>
+message = <span class="syntax-string">'Hello World'</span>
+
+<span class="syntax-comment"># Integer - whole numbers</span>
+age = <span class="syntax-number">15</span>
+score = <span class="syntax-number">-10</span>
+
+<span class="syntax-comment"># Float - decimal numbers</span>
+price = <span class="syntax-number">9.99</span>
+temperature = <span class="syntax-number">-2.5</span>
+
+<span class="syntax-comment"># Boolean - True or False</span>
+is_student = <span class="syntax-keyword">True</span>
+has_passed = <span class="syntax-keyword">False</span>
+
+<span class="syntax-comment"># Check data type</span>
+<span class="syntax-keyword">print</span>(type(name))    <span class="syntax-comment"># &lt;class 'str'&gt;</span>
+<span class="syntax-keyword">print</span>(type(age))     <span class="syntax-comment"># &lt;class 'int'&gt;</span>
+<span class="syntax-keyword">print</span>(type(price))   <span class="syntax-comment"># &lt;class 'float'&gt;</span>
+
+<span class="syntax-comment"># Type conversion</span>
+num_str = <span class="syntax-string">"42"</span>
+num_int = int(num_str)    <span class="syntax-comment"># String to integer</span>
+num_float = float(num_str) <span class="syntax-comment"># String to float</span>
+back_to_str = str(<span class="syntax-number">42</span>)     <span class="syntax-comment"># Integer to string</span></code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .casting-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .casting-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .casting-card h3 {
+            margin-top: 0;
+            color: var(--secondary);
+        }
+        .casting-note {
+            margin-top: var(--space-sm);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+        }
+        .casting-note.warning {
+            background: #fef3c7;
+            border-left: 3px solid #f59e0b;
+        }
+        .why-cast {
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .why-cast h3 {
+            margin-top: 0;
+        }
+        .why-cast-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .example-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .example-card h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+    </style>
+</body>
+</html>

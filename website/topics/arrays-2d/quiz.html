@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: 2D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">2D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: 2D Arrays</h1>
+            <p>Test your understanding of 2D arrays and nested loops! Answer all questions to see your score.</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to 2D Arrays</a>
+            <a href="../index.html" class="btn btn-secondary">All Topics</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'arr2d-quiz-1',
+                title: 'Question 1: Accessing elements',
+                code: `data = [
+    [10, 20, 30],
+    [40, 50, 60]
+]
+print(data[1][2])`,
+                question: 'What will be printed?',
+                options: ['30', '40', '60', '20'],
+                correctIndex: 2,
+                explanation: 'data[1] is the second row [40, 50, 60]. Then [2] is the third element of that row: 60.'
+            },
+            {
+                id: 'arr2d-quiz-2',
+                title: 'Question 2: Dimensions',
+                code: `grid = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12]
+]`,
+                question: 'How many rows and columns does this grid have?',
+                options: ['3 rows, 4 columns', '4 rows, 3 columns', '12 rows, 1 column', '3 rows, 3 columns'],
+                correctIndex: 0,
+                explanation: 'There are 3 inner arrays (rows). Each inner array has 4 elements (columns). So it\'s 3 rows × 4 columns.'
+            },
+            {
+                id: 'arr2d-quiz-3',
+                title: 'Question 3: Getting a row',
+                code: `matrix = [["a", "b"], ["c", "d"], ["e", "f"]]
+row = matrix[2]
+print(row)`,
+                question: 'What will be printed?',
+                options: ['["a", "b"]', '["c", "d"]', '["e", "f"]', '"e"'],
+                correctIndex: 2,
+                explanation: 'matrix[2] returns the entire third row (index 2), which is ["e", "f"].'
+            },
+            {
+                id: 'arr2d-quiz-4',
+                title: 'Question 4: Modifying elements',
+                code: `grid = [[1, 2], [3, 4]]
+grid[0][1] = 99
+print(grid)`,
+                question: 'What will be printed?',
+                options: ['[[99, 2], [3, 4]]', '[[1, 99], [3, 4]]', '[[1, 2], [99, 4]]', '[[1, 2], [3, 99]]'],
+                correctIndex: 1,
+                explanation: 'grid[0][1] means row 0, column 1. That\'s the second element of the first row. We change 2 to 99.'
+            },
+            {
+                id: 'arr2d-quiz-5',
+                title: 'Question 5: Nested loop count',
+                code: `grid = [[1, 2, 3], [4, 5, 6]]
+count = 0
+for row in grid:
+    for item in row:
+        count = count + 1
+print(count)`,
+                question: 'What will be printed?',
+                options: ['2', '3', '5', '6'],
+                correctIndex: 3,
+                explanation: 'The nested loops visit every element. There are 2 rows × 3 columns = 6 elements total.'
+            },
+            {
+                id: 'arr2d-quiz-6',
+                title: 'Question 6: Row sums',
+                code: `nums = [[1, 2], [3, 4]]
+for row in nums:
+    total = 0
+    for n in row:
+        total = total + n
+    print(total)`,
+                question: 'What will be printed?',
+                options: ['10', '3 and 7', '3\n7', '1\n2\n3\n4'],
+                correctIndex: 2,
+                explanation: 'For each row, we sum its elements. Row 0: 1+2=3. Row 1: 3+4=7. Printed on separate lines.'
+            },
+            {
+                id: 'arr2d-quiz-7',
+                title: 'Question 7: Using indices',
+                code: `grid = [["X", "O"], ["O", "X"]]
+for r in range(2):
+    for c in range(2):
+        if r == c:
+            print(grid[r][c])`,
+                question: 'What will be printed?',
+                options: ['X\nX', 'O\nO', 'X\nO', 'X O X O'],
+                correctIndex: 0,
+                explanation: 'We print when r == c (diagonal positions). That\'s [0][0]="X" and [1][1]="X".'
+            },
+            {
+                id: 'arr2d-quiz-8',
+                title: 'Question 8: Finding dimensions',
+                code: `table = [[1,2,3], [4,5,6], [7,8,9], [10,11,12]]
+rows = len(table)
+cols = len(table[0])
+print(rows, cols)`,
+                question: 'What will be printed?',
+                options: ['3 4', '4 3', '12 1', '3 3'],
+                correctIndex: 1,
+                explanation: 'len(table) is the number of rows (4). len(table[0]) is the length of the first row (3 columns).'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'arrays-2d'
+            }
+        );
+    </script>
+</body>
+</html>

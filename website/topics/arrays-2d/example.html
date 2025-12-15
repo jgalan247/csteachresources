@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: 2D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">2D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Seating Plan</h1>
+            <p>Follow along as we build a program that stores a classroom seating plan in a 2D array and finds a specific student.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Nested Loops →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'arr2d-example-1',
+                topicId: 'arrays-2d',
+                title: 'Find a Student in a Seating Plan',
+                problem: {
+                    statement: 'Create a program that stores a 3x3 classroom seating plan and finds the row and column position of a specific student.',
+                    context: 'A teacher wants to quickly locate where a student is sitting.'
+                },
+                expectedOutput: 'Seating Plan:\nAmy  Bob  Cat\nDan  Eve  Fin\nGus  Hal  Ivy\n\nSearching for: Eve\nFound at row 1, column 1',
+                subgoals: [
+                    {
+                        label: 'Create the 2D array seating plan',
+                        code: 'seats = [\n    ["Amy", "Bob", "Cat"],\n    ["Dan", "Eve", "Fin"],\n    ["Gus", "Hal", "Ivy"]\n]',
+                        explanation: 'We create a 2D array where each inner array is a row of desks. Row 0 is the front, Column 0 is the left side. Each element stores a student name.'
+                    },
+                    {
+                        label: 'Display the seating plan',
+                        code: 'print("Seating Plan:")\nfor row in seats:\n    for student in row:\n        print(student, end="  ")\n    print()',
+                        explanation: 'We use nested loops: the outer loop goes through each row, the inner loop prints each student in that row. The print() at the end starts a new line after each row.'
+                    },
+                    {
+                        label: 'Set up the search',
+                        code: 'target = "Eve"\nprint("\\nSearching for:", target)',
+                        explanation: 'We store the name we\'re looking for in a variable. This makes it easy to search for different students later.'
+                    },
+                    {
+                        label: 'Search using nested loops with indices',
+                        code: 'for r in range(len(seats)):\n    for c in range(len(seats[r])):\n        if seats[r][c] == target:\n            print("Found at row", r, "column", c)',
+                        explanation: 'To find the position, we need indices! range(len(seats)) gives us row numbers 0, 1, 2. range(len(seats[r])) gives column numbers 0, 1, 2. When we find the name, we print the indices.'
+                    }
+                ],
+                completeCode: `seats = [
+    ["Amy", "Bob", "Cat"],
+    ["Dan", "Eve", "Fin"],
+    ["Gus", "Hal", "Ivy"]
+]
+print("Seating Plan:")
+for row in seats:
+    for student in row:
+        print(student, end="  ")
+    print()
+
+target = "Eve"
+print("\\nSearching for:", target)
+for r in range(len(seats)):
+    for c in range(len(seats[r])):
+        if seats[r][c] == target:
+            print("Found at row", r, "column", c)`
+            }
+        );
+    </script>
+</body>
+</html>

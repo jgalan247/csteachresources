@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL & Databases - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">SQL & Databases</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">🗄️</span> SQL & Databases</h1>
+            <p>Learn to query databases using SQL - the standard language for working with data!</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>What databases are and why we use them</li>
+                    <li>The SELECT command to retrieve data</li>
+                    <li>The FROM clause to specify which table</li>
+                    <li>The WHERE clause to filter results</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="what-is-database mt-xl">
+            <div class="intro-card">
+                <h2>What is a Database?</h2>
+                <p>A <strong>database</strong> is an organised collection of data stored electronically. Think of it like a powerful spreadsheet that can store millions of records and retrieve them instantly!</p>
+
+                <div class="database-visual">
+                    <div class="table-example">
+                        <h4>Example: students table</h4>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>name</th>
+                                    <th>age</th>
+                                    <th>year_group</th>
+                                    <th>house</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Alice</td><td>14</td><td>9</td><td>Red</td></tr>
+                                <tr><td>2</td><td>Bob</td><td>15</td><td>10</td><td>Blue</td></tr>
+                                <tr><td>3</td><td>Charlie</td><td>14</td><td>9</td><td>Red</td></tr>
+                                <tr><td>4</td><td>Diana</td><td>16</td><td>11</td><td>Green</td></tr>
+                                <tr><td>5</td><td>Eve</td><td>15</td><td>10</td><td>Blue</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="key-terms mt-md">
+                    <div class="term-item">
+                        <strong>Table:</strong> A collection of related data organised in rows and columns (like the students table above)
+                    </div>
+                    <div class="term-item">
+                        <strong>Record (Row):</strong> A single entry in a table (e.g., one student's information)
+                    </div>
+                    <div class="term-item">
+                        <strong>Field (Column):</strong> A specific piece of information (e.g., name, age, house)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="what-is-sql mt-xl">
+            <h2>What is SQL?</h2>
+            <div class="sql-intro">
+                <p><strong>SQL</strong> (Structured Query Language) is the standard language for communicating with databases. It lets you:</p>
+                <ul class="sql-uses">
+                    <li><strong>Retrieve</strong> data (SELECT)</li>
+                    <li><strong>Insert</strong> new records (INSERT)</li>
+                    <li><strong>Update</strong> existing records (UPDATE)</li>
+                    <li><strong>Delete</strong> records (DELETE)</li>
+                </ul>
+                <p class="mt-md">SQL is used by almost every website and app you use - from social media to online shopping!</p>
+            </div>
+        </section>
+
+        <section class="sql-commands mt-xl">
+            <h2>The SELECT Statement</h2>
+            <p>SELECT is the most common SQL command - it retrieves data from a database.</p>
+
+            <div class="command-cards">
+                <div class="command-card">
+                    <div class="cmd-header select">
+                        <h3>SELECT ... FROM</h3>
+                        <span class="cmd-purpose">Choose columns and table</span>
+                    </div>
+                    <div class="cmd-body">
+                        <p><strong>SELECT</strong> specifies which columns you want. <strong>FROM</strong> specifies which table.</p>
+
+                        <div class="code-display sql-code">
+                            <div class="code-header">
+                                <span class="code-filename">SQL Query</span>
+                            </div>
+                            <pre class="code-content"><code><span class="sql-keyword">SELECT</span> name, age
+<span class="sql-keyword">FROM</span> students;</code></pre>
+                        </div>
+
+                        <div class="result-display">
+                            <h5>Result:</h5>
+                            <table class="result-table">
+                                <thead><tr><th>name</th><th>age</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Alice</td><td>14</td></tr>
+                                    <tr><td>Bob</td><td>15</td></tr>
+                                    <tr><td>Charlie</td><td>14</td></tr>
+                                    <tr><td>Diana</td><td>16</td></tr>
+                                    <tr><td>Eve</td><td>15</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="cmd-header select-all">
+                        <h3>SELECT * (All Columns)</h3>
+                        <span class="cmd-purpose">Get everything</span>
+                    </div>
+                    <div class="cmd-body">
+                        <p>Use <strong>*</strong> (asterisk) to select ALL columns from a table.</p>
+
+                        <div class="code-display sql-code">
+                            <div class="code-header">
+                                <span class="code-filename">SQL Query</span>
+                            </div>
+                            <pre class="code-content"><code><span class="sql-keyword">SELECT</span> *
+<span class="sql-keyword">FROM</span> students;</code></pre>
+                        </div>
+
+                        <p class="mt-sm"><em>This returns ALL columns: id, name, age, year_group, house</em></p>
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="cmd-header where">
+                        <h3>WHERE (Filter Results)</h3>
+                        <span class="cmd-purpose">Only matching rows</span>
+                    </div>
+                    <div class="cmd-body">
+                        <p><strong>WHERE</strong> filters the results to only include rows that match a condition.</p>
+
+                        <div class="code-display sql-code">
+                            <div class="code-header">
+                                <span class="code-filename">SQL Query</span>
+                            </div>
+                            <pre class="code-content"><code><span class="sql-keyword">SELECT</span> name, house
+<span class="sql-keyword">FROM</span> students
+<span class="sql-keyword">WHERE</span> house = <span class="sql-string">'Red'</span>;</code></pre>
+                        </div>
+
+                        <div class="result-display">
+                            <h5>Result:</h5>
+                            <table class="result-table">
+                                <thead><tr><th>name</th><th>house</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Alice</td><td>Red</td></tr>
+                                    <tr><td>Charlie</td><td>Red</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="where-operators mt-xl">
+            <h2>WHERE Comparison Operators</h2>
+            <p>Use these operators in WHERE clauses to filter data:</p>
+
+            <div class="operators-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Operator</th>
+                            <th>Meaning</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>=</code></td>
+                            <td>Equal to</td>
+                            <td><code>WHERE age = 15</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>!=</code> or <code>&lt;&gt;</code></td>
+                            <td>Not equal to</td>
+                            <td><code>WHERE house != 'Red'</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;</code></td>
+                            <td>Less than</td>
+                            <td><code>WHERE age < 15</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&gt;</code></td>
+                            <td>Greater than</td>
+                            <td><code>WHERE age > 14</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;=</code></td>
+                            <td>Less than or equal</td>
+                            <td><code>WHERE year_group <= 10</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>&gt;=</code></td>
+                            <td>Greater than or equal</td>
+                            <td><code>WHERE age >= 15</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="where-logical mt-xl">
+            <h2>Combining Conditions: AND, OR</h2>
+            <p>Use <strong>AND</strong> and <strong>OR</strong> to combine multiple conditions in WHERE.</p>
+
+            <div class="logical-examples">
+                <div class="logical-card">
+                    <h4>AND - Both conditions must be true</h4>
+                    <div class="code-display sql-code">
+                        <pre class="code-content"><code><span class="sql-keyword">SELECT</span> name, age, house
+<span class="sql-keyword">FROM</span> students
+<span class="sql-keyword">WHERE</span> age = <span class="sql-number">14</span> <span class="sql-keyword">AND</span> house = <span class="sql-string">'Red'</span>;</code></pre>
+                    </div>
+                    <div class="result-display">
+                        <table class="result-table">
+                            <thead><tr><th>name</th><th>age</th><th>house</th></tr></thead>
+                            <tbody>
+                                <tr><td>Alice</td><td>14</td><td>Red</td></tr>
+                                <tr><td>Charlie</td><td>14</td><td>Red</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="logical-card">
+                    <h4>OR - Either condition can be true</h4>
+                    <div class="code-display sql-code">
+                        <pre class="code-content"><code><span class="sql-keyword">SELECT</span> name, house
+<span class="sql-keyword">FROM</span> students
+<span class="sql-keyword">WHERE</span> house = <span class="sql-string">'Red'</span> <span class="sql-keyword">OR</span> house = <span class="sql-string">'Green'</span>;</code></pre>
+                    </div>
+                    <div class="result-display">
+                        <table class="result-table">
+                            <thead><tr><th>name</th><th>house</th></tr></thead>
+                            <tbody>
+                                <tr><td>Alice</td><td>Red</td></tr>
+                                <tr><td>Charlie</td><td>Red</td></tr>
+                                <tr><td>Diana</td><td>Green</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sql-syntax mt-xl">
+            <h2>SQL Syntax Rules</h2>
+            <div class="syntax-rules">
+                <div class="rule-card">
+                    <span class="rule-icon">1</span>
+                    <div class="rule-content">
+                        <h4>SQL keywords are NOT case-sensitive</h4>
+                        <p><code>SELECT</code>, <code>select</code>, and <code>Select</code> all work the same. Convention is UPPERCASE.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <span class="rule-icon">2</span>
+                    <div class="rule-content">
+                        <h4>Text values need quotes</h4>
+                        <p>Use single quotes for text: <code>WHERE name = 'Alice'</code></p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <span class="rule-icon">3</span>
+                    <div class="rule-content">
+                        <h4>Numbers don't need quotes</h4>
+                        <p><code>WHERE age = 15</code> (not <code>'15'</code>)</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <span class="rule-icon">4</span>
+                    <div class="rule-content">
+                        <h4>Statements end with semicolon</h4>
+                        <p>Always end your SQL statements with <code>;</code></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="learning-path mt-xl">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order to master SQL basics.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="sql-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: Query Results</h4>
+                        <p>Predict what data SQL queries will return.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="sql-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See how to build SQL queries step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="sql-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Query Execution</h4>
+                        <p>Track how SQL processes data step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="sql-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Build SQL Queries</h4>
+                        <p>Arrange SQL clauses to create working queries.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="sql-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of SQL basics.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>database</h4>
+                    <p>An organised collection of data stored electronically.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>table</h4>
+                    <p>A collection of related data organised in rows and columns.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>record (row)</h4>
+                    <p>A single entry in a table containing data for one item.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>field (column)</h4>
+                    <p>A specific category of data in a table (e.g., name, age).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>SQL</h4>
+                    <p>Structured Query Language - the standard language for querying databases.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>query</h4>
+                    <p>A request to retrieve or manipulate data in a database.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>SELECT</h4>
+                    <p>SQL command to specify which columns to retrieve.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>FROM</h4>
+                    <p>SQL clause specifying which table to query.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>WHERE</h4>
+                    <p>SQL clause to filter results based on conditions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display sql-code">
+                <div class="code-header">
+                    <span class="code-filename">SQL Quick Reference</span>
+                </div>
+                <pre class="code-content"><code><span class="sql-comment">-- Select specific columns</span>
+<span class="sql-keyword">SELECT</span> column1, column2 <span class="sql-keyword">FROM</span> table_name;
+
+<span class="sql-comment">-- Select all columns</span>
+<span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> table_name;
+
+<span class="sql-comment">-- Filter with WHERE</span>
+<span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> table_name <span class="sql-keyword">WHERE</span> condition;
+
+<span class="sql-comment">-- Multiple conditions with AND</span>
+<span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> students
+<span class="sql-keyword">WHERE</span> age > <span class="sql-number">14</span> <span class="sql-keyword">AND</span> house = <span class="sql-string">'Blue'</span>;
+
+<span class="sql-comment">-- Multiple conditions with OR</span>
+<span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> students
+<span class="sql-keyword">WHERE</span> house = <span class="sql-string">'Red'</span> <span class="sql-keyword">OR</span> house = <span class="sql-string">'Blue'</span>;</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .intro-card {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            border: 2px solid #3b82f6;
+        }
+        .intro-card h2 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+        .data-table, .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-top: var(--space-md);
+        }
+        .data-table th, .data-table td,
+        .result-table th, .result-table td {
+            padding: var(--space-sm) var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .data-table th, .result-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .data-table tbody tr:hover {
+            background: #f0f9ff;
+        }
+        .key-terms {
+            display: grid;
+            gap: var(--space-sm);
+        }
+        .term-item {
+            background: white;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid #3b82f6;
+        }
+        .sql-uses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-sm);
+            list-style: none;
+            padding: 0;
+            margin: var(--space-md) 0;
+        }
+        .sql-uses li {
+            background: white;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-200);
+        }
+        .command-cards {
+            display: grid;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .command-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        .cmd-header {
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cmd-header.select { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+        .cmd-header.select-all { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
+        .cmd-header.where { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+        .cmd-header h3 { margin: 0; }
+        .cmd-purpose {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .cmd-body {
+            padding: var(--space-lg);
+        }
+        .sql-code .code-content {
+            background: #1e293b;
+        }
+        .sql-keyword { color: #60a5fa; font-weight: bold; }
+        .sql-string { color: #4ade80; }
+        .sql-number { color: #fbbf24; }
+        .sql-comment { color: #94a3b8; }
+        .result-display {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .result-display h5 {
+            margin: 0 0 var(--space-sm) 0;
+            color: var(--gray-600);
+        }
+        .result-table {
+            margin-top: 0;
+        }
+        .operators-table {
+            overflow-x: auto;
+        }
+        .operators-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .operators-table th,
+        .operators-table td {
+            padding: var(--space-sm) var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .operators-table th {
+            background: var(--gray-100);
+        }
+        .operators-table code {
+            background: #1e293b;
+            color: #60a5fa;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .logical-examples {
+            display: grid;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .logical-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .logical-card h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .syntax-rules {
+            display: grid;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .rule-card {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .rule-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .rule-content h4 {
+            margin: 0 0 var(--space-xs) 0;
+        }
+        .rule-content p {
+            margin: 0;
+            color: var(--gray-600);
+        }
+        .rule-content code {
+            background: var(--gray-100);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+    </style>
+</body>
+</html>

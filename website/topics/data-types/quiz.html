@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Data Types - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Data Types</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: Data Types</h1>
+            <p>Test your understanding of data types! Answer all questions to see your score.</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to Data Types</a>
+            <a href="../selection/index.html" class="btn btn-secondary">Next Topic: Selection →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'dt-quiz-1',
+                title: 'Question 1: Identifying types',
+                code: `a = 100
+b = "100"
+c = 100.0`,
+                question: 'What are the data types of a, b, and c?',
+                options: [
+                    'All integers',
+                    'All strings',
+                    'int, str, float',
+                    'int, int, float'
+                ],
+                correctIndex: 2,
+                explanation: 'a = 100 is an integer (no quotes, no decimal). b = "100" is a string (has quotes). c = 100.0 is a float (has decimal point).'
+            },
+            {
+                id: 'dt-quiz-2',
+                title: 'Question 2: String concatenation',
+                code: `x = "Hello"
+y = "World"
+print(x + y)`,
+                question: 'What will be printed?',
+                options: ['Hello World', 'HelloWorld', 'Hello + World', 'Error'],
+                correctIndex: 1,
+                explanation: 'The + operator with strings concatenates (joins) them directly. There\'s no automatic space added, so "Hello" + "World" = "HelloWorld".'
+            },
+            {
+                id: 'dt-quiz-3',
+                title: 'Question 3: Type conversion',
+                code: `num = "25"
+result = int(num) + 5
+print(result)`,
+                question: 'What will be printed?',
+                options: ['255', '30', '"25" + 5', 'Error'],
+                correctIndex: 1,
+                explanation: 'int("25") converts the string "25" to the integer 25. Then 25 + 5 = 30.'
+            },
+            {
+                id: 'dt-quiz-4',
+                title: 'Question 4: Mixed types',
+                code: `print("Score: " + 100)`,
+                question: 'What will happen?',
+                options: ['Prints: Score: 100', 'Prints: Score: + 100', 'Prints: Score:100', 'Error'],
+                correctIndex: 3,
+                explanation: 'You cannot use + to join a string and an integer directly. Python raises a TypeError. You need to convert: "Score: " + str(100).'
+            },
+            {
+                id: 'dt-quiz-5',
+                title: 'Question 5: Boolean values',
+                code: `x = 5 == 5
+y = 5 == "5"
+print(x, y)`,
+                question: 'What will be printed?',
+                options: ['True True', 'True False', 'False True', '5 5'],
+                correctIndex: 1,
+                explanation: '5 == 5 compares two integers and is True. 5 == "5" compares an integer to a string - they\'re different types, so it\'s False.'
+            },
+            {
+                id: 'dt-quiz-6',
+                title: 'Question 6: Input function',
+                code: `age = input("Enter age: ")
+# User types: 15`,
+                question: 'What is the data type of age?',
+                options: ['int', 'str', 'float', 'Depends on what user types'],
+                correctIndex: 1,
+                explanation: 'input() ALWAYS returns a string, even if the user types a number. The variable age will contain "15" (a string), not 15 (an integer).'
+            },
+            {
+                id: 'dt-quiz-7',
+                title: 'Question 7: Float conversion',
+                code: `x = int(7.9)
+print(x)`,
+                question: 'What will be printed?',
+                options: ['7', '8', '7.9', 'Error'],
+                correctIndex: 0,
+                explanation: 'int() truncates (cuts off) the decimal part - it does NOT round. So int(7.9) = 7, not 8.'
+            },
+            {
+                id: 'dt-quiz-8',
+                title: 'Question 8: String multiplication',
+                code: `text = "Hi"
+print(text * 3)`,
+                question: 'What will be printed?',
+                options: ['Hi Hi Hi', 'HiHiHi', 'Hi3', 'Error'],
+                correctIndex: 1,
+                explanation: 'Multiplying a string by an integer repeats the string that many times. "Hi" * 3 = "HiHiHi" (no spaces added).'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'data-types'
+            }
+        );
+    </script>
+</body>
+</html>

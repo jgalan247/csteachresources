@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: While Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">While Loops</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Number Guessing Game</h1>
+            <p>Follow along as we build a number guessing game using while loops!</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <section class="pattern-reference mt-xl">
+            <h2>Common While Loop Patterns</h2>
+            <div class="pattern-grid">
+                <div class="pattern-box">
+                    <h4>Counter Pattern</h4>
+                    <div class="code-display">
+                        <pre class="code-content"><code>count = start_value
+while count <= end_value:
+    # do something
+    count = count + 1</code></pre>
+                    </div>
+                </div>
+                <div class="pattern-box">
+                    <h4>Sentinel Pattern</h4>
+                    <div class="code-display">
+                        <pre class="code-content"><code>value = initial_value
+while value != sentinel:
+    # process value
+    value = get_next_value()</code></pre>
+                    </div>
+                </div>
+                <div class="pattern-box">
+                    <h4>Validation Pattern</h4>
+                    <div class="code-display">
+                        <pre class="code-content"><code>while True:
+    user_input = input(prompt)
+    if is_valid(user_input):
+        break
+    print("Try again")</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Execution →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'while-example-1',
+                topicId: 'while-loops',
+                title: 'Number Guessing Game',
+                description: 'Build a game where the player guesses a secret number. They keep guessing until they get it right!',
+                steps: [
+                    {
+                        title: 'Understand the Problem',
+                        explanation: 'We want to: 1) Set a secret number, 2) Let the player guess, 3) Tell them if too high or too low, 4) Keep going until they guess correctly, 5) Count their attempts.',
+                        code: `# Number Guessing Game
+# - Secret number is set
+# - Player guesses until correct
+# - Feedback: too high / too low
+# - Count number of attempts`,
+                        subgoal: 'Plan what the program needs to do'
+                    },
+                    {
+                        title: 'Set Up the Secret Number',
+                        explanation: 'First, we set the secret number. We\'ll use a fixed number for now (in a real game, you\'d use random).',
+                        code: `# Set the secret number
+secret = 7
+
+# We'll also track the number of guesses
+guesses = 0`,
+                        subgoal: 'Initialise the game variables'
+                    },
+                    {
+                        title: 'Set Up the Initial Guess',
+                        explanation: 'We need a variable to store the player\'s guess. We\'ll set it to something that definitely isn\'t the answer, so the loop starts.',
+                        code: `secret = 7
+guesses = 0
+
+# Initial guess - set to something != secret
+# so the while condition is True at first
+guess = -1`,
+                        subgoal: 'Initialise the guess variable'
+                    },
+                    {
+                        title: 'Create the While Loop',
+                        explanation: 'Now the key part: keep looping WHILE the guess is not equal to the secret. The loop continues until they match!',
+                        code: `secret = 7
+guesses = 0
+guess = -1
+
+# Keep going while guess is wrong
+while guess != secret:
+    # Get a guess from the player
+    guess = int(input("Guess a number (1-10): "))
+    guesses = guesses + 1`,
+                        subgoal: 'Loop while guess is incorrect'
+                    },
+                    {
+                        title: 'Add Feedback - Too High or Too Low',
+                        explanation: 'Inside the loop, after getting a guess, we tell them if it\'s too high or too low. This helps them narrow down!',
+                        code: `secret = 7
+guesses = 0
+guess = -1
+
+while guess != secret:
+    guess = int(input("Guess a number (1-10): "))
+    guesses = guesses + 1
+
+    # Give feedback
+    if guess < secret:
+        print("Too low! Try again.")
+    elif guess > secret:
+        print("Too high! Try again.")`,
+                        subgoal: 'Provide helpful feedback'
+                    },
+                    {
+                        title: 'Add the Win Message',
+                        explanation: 'When the loop ends (guess == secret), we congratulate them and show how many guesses it took.',
+                        code: `secret = 7
+guesses = 0
+guess = -1
+
+while guess != secret:
+    guess = int(input("Guess a number (1-10): "))
+    guesses = guesses + 1
+
+    if guess < secret:
+        print("Too low! Try again.")
+    elif guess > secret:
+        print("Too high! Try again.")
+
+# Loop ended - they got it!
+print(f"Correct! You got it in {guesses} guesses!")`,
+                        subgoal: 'Display the winning message'
+                    },
+                    {
+                        title: 'Add a Welcome Message',
+                        explanation: 'Polish the game with a welcome message at the start.',
+                        code: `# Number Guessing Game
+print("=== Number Guessing Game ===")
+print("I'm thinking of a number between 1 and 10.")
+print()
+
+secret = 7
+guesses = 0
+guess = -1
+
+while guess != secret:
+    guess = int(input("Guess a number (1-10): "))
+    guesses = guesses + 1
+
+    if guess < secret:
+        print("Too low! Try again.")
+    elif guess > secret:
+        print("Too high! Try again.")
+
+print(f"Correct! You got it in {guesses} guesses!")`,
+                        subgoal: 'Add user-friendly introduction'
+                    },
+                    {
+                        title: 'Alternative: Using while True with break',
+                        explanation: 'Here\'s another way to write the same game using while True and break. This pattern is common for input validation.',
+                        code: `print("=== Number Guessing Game ===")
+print("I'm thinking of a number between 1 and 10.")
+
+secret = 7
+guesses = 0
+
+while True:  # Loop forever...
+    guess = int(input("Guess a number (1-10): "))
+    guesses = guesses + 1
+
+    if guess == secret:
+        break  # ...until we break out!
+    elif guess < secret:
+        print("Too low! Try again.")
+    else:
+        print("Too high! Try again.")
+
+print(f"Correct! You got it in {guesses} guesses!")`,
+                        subgoal: 'Show alternative pattern with break'
+                    }
+                ],
+                finalCode: `# Number Guessing Game - Complete Version
+
+print("=== Number Guessing Game ===")
+print("I'm thinking of a number between 1 and 10.")
+print()
+
+secret = 7
+guesses = 0
+guess = -1
+
+while guess != secret:
+    guess = int(input("Guess a number (1-10): "))
+    guesses = guesses + 1
+
+    if guess < secret:
+        print("Too low! Try again.")
+    elif guess > secret:
+        print("Too high! Try again.")
+
+print()
+print(f"Correct! You got it in {guesses} guesses!")
+
+if guesses == 1:
+    print("Wow! Lucky guess!")
+elif guesses <= 3:
+    print("Great job!")
+else:
+    print("Good effort!")`,
+                summary: 'We built a number guessing game using a while loop that continues until the player guesses correctly. Key concepts: 1) Initialize variables before the loop, 2) Use a condition that becomes False when we want to stop, 3) Always make progress toward ending the loop (getting new input), 4) Code after the loop runs when we\'re done.'
+            }
+        );
+    </script>
+    <style>
+        .pattern-grid {
+            display: grid;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .pattern-box {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .pattern-box h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+    </style>
+</body>
+</html>

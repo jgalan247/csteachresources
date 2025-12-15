@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: Data Types - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Data Types</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks from the left into the solution area on the right. Put them in the correct order to solve the problem!</p>
+            <div class="alert alert-info">
+                <strong>Tip:</strong> Remember that input() always returns a string. You need to convert it before doing calculations!
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Check data type
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'dt-parsons-1',
+                topicId: 'data-types',
+                title: 'Check the Data Type',
+                instructions: 'Arrange the code blocks to create a variable and print its data type.',
+                expectedOutput: "<class 'float'>",
+                blocks: [
+                    { id: 1, code: 'price = 9.99', indentLevel: 0 },
+                    { id: 2, code: 'print(type(price))', indentLevel: 0 }
+                ],
+                solution: [1, 2],
+                hints: [
+                    'First, create the variable.',
+                    'Then use type() inside print() to show what type it is.',
+                    '9.99 has a decimal point, so it\'s a float.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 2: Core - Convert and calculate
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'dt-parsons-2',
+                topicId: 'data-types',
+                title: 'Double a Number from Input',
+                instructions: 'Arrange the code blocks to get a number from the user and print double its value. (One block is a distractor.)',
+                expectedOutput: 'Enter a number: 5\n10',
+                blocks: [
+                    { id: 1, code: 'text = input("Enter a number: ")', indentLevel: 0 },
+                    { id: 2, code: 'number = int(text)', indentLevel: 0 },
+                    { id: 3, code: 'result = number * 2', indentLevel: 0 },
+                    { id: 4, code: 'print(result)', indentLevel: 0 },
+                    { id: 5, code: 'result = text * 2', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4],
+                hints: [
+                    'First, get input from the user (it will be a string).',
+                    'Convert the string to an integer so you can do maths.',
+                    'Calculate the result by multiplying.',
+                    'The distractor multiplies a string - "5" * 2 = "55", not 10!'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 3: Extension - Build a string with conversion
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'dt-parsons-3',
+                topicId: 'data-types',
+                title: 'Build a Message with Numbers',
+                instructions: 'Arrange the code blocks to create a message that includes a calculated price. (One block is a distractor.)',
+                expectedOutput: 'Total price: £15.0',
+                blocks: [
+                    { id: 1, code: 'quantity = 3', indentLevel: 0 },
+                    { id: 2, code: 'price = 5.0', indentLevel: 0 },
+                    { id: 3, code: 'total = quantity * price', indentLevel: 0 },
+                    { id: 4, code: 'message = "Total price: £" + str(total)', indentLevel: 0 },
+                    { id: 5, code: 'print(message)', indentLevel: 0 },
+                    { id: 6, code: 'message = "Total price: £" + total', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5],
+                hints: [
+                    'First, create the variables for quantity and price.',
+                    'Calculate the total.',
+                    'To join a string with a number, convert the number to a string first using str().',
+                    'The distractor will cause an error - you can\'t use + to join a string and a float!'
+                ],
+                type: '2d'
+            }
+        );
+    </script>
+</body>
+</html>

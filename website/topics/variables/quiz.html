@@ -42,7 +42,7 @@
 
         <div class="mt-xl">
             <a href="index.html" class="btn btn-primary">← Back to Variables</a>
-            <a href="../selection/index.html" class="btn btn-secondary">Next Topic: Selection →</a>
+            <a href="../operators/index.html" class="btn btn-secondary">Next Topic: Arithmetic Operators →</a>
         </div>
     </main>
 
@@ -96,36 +96,7 @@ print("message")`,
             },
             {
                 id: 'var-quiz-4',
-                title: 'Question 4: Data types',
-                code: `x = "5"
-y = 5
-print(x + x)
-print(y + y)`,
-                question: 'What will be printed?',
-                options: [
-                    '10 and 10',
-                    '55 and 10',
-                    '55 and 55',
-                    'Error'
-                ],
-                correctIndex: 1,
-                explanation: 'x is a string "5", so x + x concatenates (joins) them: "55". y is an integer 5, so y + y adds them: 10. The + operator behaves differently for strings and numbers.'
-            },
-            {
-                id: 'var-quiz-5',
-                title: 'Question 5: Reassignment',
-                code: `x = 10
-x = x + 5
-x = x * 2
-print(x)`,
-                question: 'What will be printed?',
-                options: ['10', '15', '25', '30'],
-                correctIndex: 3,
-                explanation: 'x starts at 10. Then x = 10 + 5 = 15. Then x = 15 * 2 = 30. Each line updates x with a new calculated value.'
-            },
-            {
-                id: 'var-quiz-6',
-                title: 'Question 6: Variable copying',
+                title: 'Question 4: Variable copying',
                 code: `a = 7
 b = a
 a = 3
@@ -136,23 +107,19 @@ print(b)`,
                 explanation: 'When we write b = a, we copy the VALUE of a (7) into b. Later changing a to 3 does not affect b. b still holds its own copy: 7.'
             },
             {
-                id: 'var-quiz-7',
-                title: 'Question 7: Float vs Integer',
-                code: `price = 9.99
-quantity = 3`,
-                question: 'What data types are price and quantity?',
-                options: [
-                    'Both are integers',
-                    'Both are floats',
-                    'price is a float, quantity is an integer',
-                    'price is an integer, quantity is a float'
-                ],
-                correctIndex: 2,
-                explanation: '9.99 has a decimal point, so it\'s a float (floating-point number). 3 is a whole number with no decimal, so it\'s an integer.'
+                id: 'var-quiz-5',
+                title: 'Question 5: Reassignment',
+                code: `count = 5
+count = count + 1
+print(count)`,
+                question: 'What will be printed?',
+                options: ['5', '6', 'count + 1', 'Error'],
+                correctIndex: 1,
+                explanation: 'count starts at 5. Then count = count + 1 takes the current value (5), adds 1, and stores the result (6) back in count.'
             },
             {
-                id: 'var-quiz-8',
-                title: 'Question 8: Using variables in calculations',
+                id: 'var-quiz-6',
+                title: 'Question 6: Using variables',
                 code: `width = 10
 height = 5
 area = width * height
@@ -161,6 +128,29 @@ print(area)`,
                 options: ['15', '50', 'width * height', 'Error'],
                 correctIndex: 1,
                 explanation: 'Python uses the VALUES stored in width (10) and height (5) to calculate: 10 * 5 = 50. The result is stored in area and printed.'
+            },
+            {
+                id: 'var-quiz-7',
+                title: 'Question 7: Overwriting variables',
+                code: `name = "Alice"
+name = "Bob"
+name = "Charlie"
+print(name)`,
+                question: 'What will be printed?',
+                options: ['Alice', 'Bob', 'Charlie', 'AliceBobCharlie'],
+                correctIndex: 2,
+                explanation: 'Each assignment replaces the previous value. The variable name ends up storing "Charlie" because that was the last value assigned.'
+            },
+            {
+                id: 'var-quiz-8',
+                title: 'Question 8: Variable names are case-sensitive',
+                code: `Name = "Alice"
+name = "Bob"
+print(Name)`,
+                question: 'What will be printed?',
+                options: ['Alice', 'Bob', 'AliceBob', 'Error'],
+                correctIndex: 0,
+                explanation: 'Python is case-sensitive! "Name" and "name" are two different variables. Name stores "Alice", name stores "Bob". We print Name, so we get "Alice".'
             }
         ];
 

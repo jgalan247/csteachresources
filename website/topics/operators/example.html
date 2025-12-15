@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: Arithmetic Operators - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Arithmetic Operators</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Calculate Shopping Total</h1>
+            <p>Follow along as we build a program that calculates a shopping bill with a discount.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Calculations →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'op-example-1',
+                topicId: 'operators',
+                title: 'Calculate Shopping Total with Discount',
+                problem: {
+                    statement: 'Create a program that calculates the total cost of 3 items at £4.50 each, then applies a 10% discount.',
+                    context: 'A shop wants to show customers their total before and after discount.'
+                },
+                expectedOutput: 'Original total: 13.5\nDiscount: 1.35\nFinal price: 12.15',
+                subgoals: [
+                    {
+                        label: 'Store the item price and quantity',
+                        code: 'price = 4.50\nquantity = 3',
+                        explanation: 'We create variables to store our values. This makes the code easier to read and modify later. Using meaningful names like "price" helps us understand what each value represents.'
+                    },
+                    {
+                        label: 'Calculate the original total',
+                        code: 'total = price * quantity',
+                        explanation: 'We use the * operator to multiply price by quantity. The result (13.5) is stored in a new variable called total. We can reuse this value later.'
+                    },
+                    {
+                        label: 'Calculate the discount amount',
+                        code: 'discount = total * 0.10',
+                        explanation: 'To find 10% of something, multiply by 0.10 (which is 10/100). We store this in a variable so we can display it and subtract it.'
+                    },
+                    {
+                        label: 'Calculate the final price',
+                        code: 'final_price = total - discount',
+                        explanation: 'We subtract the discount from the total using the - operator. This gives us the price the customer actually pays.'
+                    },
+                    {
+                        label: 'Display the results',
+                        code: 'print("Original total:", total)\nprint("Discount:", discount)\nprint("Final price:", final_price)',
+                        explanation: 'We use print() to show all three values. The comma lets us combine text labels with variable values on the same line.'
+                    }
+                ],
+                completeCode: `price = 4.50
+quantity = 3
+total = price * quantity
+discount = total * 0.10
+final_price = total - discount
+print("Original total:", total)
+print("Discount:", discount)
+print("Final price:", final_price)`
+            }
+        );
+    </script>
+</body>
+</html>

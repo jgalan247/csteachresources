@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Input Validation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Input Validation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: Input Validation</h1>
+            <p>Test your understanding of validation types, input checking, and security!</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to Input Validation</a>
+            <a href="../index.html" class="btn btn-secondary">All Topics</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'validation-quiz-1',
+                title: 'Question 1: Why Validate?',
+                code: null,
+                question: 'Why is input validation important in programming?',
+                options: [
+                    'To make programs run faster',
+                    'To prevent errors and security attacks from bad input',
+                    'To make code look more professional',
+                    'It\'s optional - just a nice-to-have feature'
+                ],
+                correctIndex: 1,
+                explanation: 'Input validation is essential for preventing errors (like crashes from invalid data) and security attacks (like SQL injection). Never trust user input!'
+            },
+            {
+                id: 'validation-quiz-2',
+                title: 'Question 2: Presence Check',
+                code: null,
+                question: 'What type of validation checks that a field is not empty?',
+                options: ['Range check', 'Length check', 'Presence check', 'Format check'],
+                correctIndex: 2,
+                explanation: 'A presence check verifies that something was entered - that the field is not empty. It\'s often the first validation to perform on required fields.'
+            },
+            {
+                id: 'validation-quiz-3',
+                title: 'Question 3: Range Check Code',
+                code: `age = 150
+
+if age < 0 or age > 120:
+    print("Invalid")
+else:
+    print("Valid")`,
+                question: 'What will this code print?',
+                options: ['Valid', 'Invalid', 'Error', 'Nothing'],
+                correctIndex: 1,
+                explanation: '150 is greater than 120, so the condition "age > 120" is True. The range check fails and prints "Invalid".'
+            },
+            {
+                id: 'validation-quiz-4',
+                title: 'Question 4: Length Check',
+                code: null,
+                question: 'Which validation would you use to ensure a password is at least 8 characters?',
+                options: ['Range check', 'Length check', 'Format check', 'Type check'],
+                correctIndex: 1,
+                explanation: 'A length check uses len() to verify a string has the correct number of characters. For passwords: if len(password) < 8: ...'
+            },
+            {
+                id: 'validation-quiz-5',
+                title: 'Question 5: Type Check Method',
+                code: `user_input = "123"
+result = user_input.isdigit()`,
+                question: 'What is the value of result?',
+                options: ['True', 'False', '123', 'Error'],
+                correctIndex: 0,
+                explanation: 'The string "123" contains only digit characters (0-9), so isdigit() returns True. This is used for type checking numeric input.'
+            },
+            {
+                id: 'validation-quiz-6',
+                title: 'Question 6: isdigit Limitation',
+                code: `text = "-5"
+print(text.isdigit())`,
+                question: 'What will this print?',
+                options: ['True', 'False', '-5', 'Error'],
+                correctIndex: 1,
+                explanation: 'isdigit() returns False for "-5" because the minus sign is not a digit! Use try/except with int() if you need to accept negative numbers.'
+            },
+            {
+                id: 'validation-quiz-7',
+                title: 'Question 7: SQL Injection',
+                code: null,
+                question: 'What is SQL injection?',
+                options: [
+                    'A method to speed up database queries',
+                    'A security attack using malicious input to manipulate database queries',
+                    'A way to add data to a database',
+                    'A Python library for databases'
+                ],
+                correctIndex: 1,
+                explanation: 'SQL injection is a dangerous attack where hackers enter malicious code in input fields to manipulate database queries. Prevention: use parameterised queries and input sanitisation.'
+            },
+            {
+                id: 'validation-quiz-8',
+                title: 'Question 8: Best Prevention',
+                code: null,
+                question: 'What is the BEST way to prevent SQL injection?',
+                options: [
+                    'Hope users don\'t attack',
+                    'Remove all quotes from input',
+                    'Use parameterised queries (placeholders)',
+                    'Only allow short inputs'
+                ],
+                correctIndex: 2,
+                explanation: 'Parameterised queries (using ? or %s placeholders) are the best defence. The database treats user input as data, not executable code.'
+            },
+            {
+                id: 'validation-quiz-9',
+                title: 'Question 9: Validation Order',
+                code: `while True:
+    num = input("Number: ")
+    if not num.isdigit():
+        continue
+    num = int(num)
+    if num < 1 or num > 10:
+        continue
+    break`,
+                question: 'What validation checks does this code perform, in order?',
+                options: [
+                    'Range check, then type check',
+                    'Type check, then range check',
+                    'Length check, then format check',
+                    'Presence check, then type check'
+                ],
+                correctIndex: 1,
+                explanation: 'First it checks if the input is digits (type check with isdigit()), then converts to int, then checks if it\'s 1-10 (range check). Type check must come first!'
+            },
+            {
+                id: 'validation-quiz-10',
+                title: 'Question 10: Input Sanitisation',
+                code: `def sanitise(text):
+    return text.replace("'", "").replace(";", "")
+
+result = sanitise("O'Brien; DROP TABLE")`,
+                question: 'What is the value of result?',
+                options: [
+                    '"O\'Brien; DROP TABLE"',
+                    '"OBrien DROP TABLE"',
+                    '"O Brien  DROP TABLE"',
+                    'Error'
+                ],
+                correctIndex: 1,
+                explanation: 'The function removes single quotes and semicolons. "O\'Brien; DROP TABLE" becomes "OBrien DROP TABLE" (apostrophe and semicolon removed).'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'validation'
+            }
+        );
+    </script>
+</body>
+</html>
