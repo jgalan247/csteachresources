@@ -25,16 +25,21 @@
     <main class="container">
         <header class="hero">
             <h1>All Topics</h1>
-            <p class="hero-subtitle">Choose a topic to start learning Python programming</p>
+            <p class="hero-subtitle">Learn Computer Science - both programming and theory</p>
         </header>
 
         <section class="topics-overview">
-            <h2>Recommended Order</h2>
-            <p>We suggest learning topics in this order, as each one builds on the previous:</p>
+            <h2>All Topics</h2>
+            <p>
+                <span style="display: inline-block; width: 12px; height: 12px; background: var(--primary); border-radius: 2px; margin-right: 4px;"></span> <strong>Programming</strong> - Learn to code in Python
+                <span style="margin-left: var(--space-lg); display: inline-block; width: 12px; height: 12px; background: var(--theory); border-radius: 2px; margin-right: 4px;"></span> <strong>Theory</strong> - Understand how computers work
+            </p>
 
             <div class="topic-grid">
-                <a href="variables/index.html" class="topic-card">
+                <!-- Programming Topics -->
+                <a href="variables/index.html" class="topic-card programming">
                     <div class="topic-number">1</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">📦</div>
                     <h3>Variables</h3>
                     <p>Learn to store and use data in your programs. The foundation of all programming!</p>
@@ -49,8 +54,9 @@
                     </div>
                 </a>
 
-                <a href="operators/index.html" class="topic-card">
+                <a href="operators/index.html" class="topic-card programming">
                     <div class="topic-number">2</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔢</div>
                     <h3>Arithmetic Operators</h3>
                     <p>Perform calculations in Python using arithmetic operators.</p>
@@ -65,8 +71,9 @@
                     </div>
                 </a>
 
-                <a href="data-types/index.html" class="topic-card">
+                <a href="data-types/index.html" class="topic-card programming">
                     <div class="topic-number">3</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🏷️</div>
                     <h3>Data Types</h3>
                     <p>Understand the different types of data and how to convert between them.</p>
@@ -81,8 +88,9 @@
                     </div>
                 </a>
 
-                <a href="selection/index.html" class="topic-card">
+                <a href="selection/index.html" class="topic-card programming">
                     <div class="topic-number">4</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔀</div>
                     <h3>Selection</h3>
                     <p>Make decisions in your code using if statements and conditions.</p>
@@ -98,8 +106,9 @@
                     </div>
                 </a>
 
-                <a href="for-loops/index.html" class="topic-card featured">
+                <a href="for-loops/index.html" class="topic-card programming featured">
                     <div class="topic-number">5</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔄</div>
                     <h3>For Loops</h3>
                     <p>Repeat code a specific number of times. Essential for automation!</p>
@@ -115,8 +124,9 @@
                     <span class="badge">Most Content</span>
                 </a>
 
-                <a href="while-loops/index.html" class="topic-card">
+                <a href="while-loops/index.html" class="topic-card programming">
                     <div class="topic-number">6</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔁</div>
                     <h3>While Loops</h3>
                     <p>Repeat code while a condition is true. Great for input validation!</p>
@@ -132,8 +142,9 @@
                     </div>
                 </a>
 
-                <a href="arrays-1d/index.html" class="topic-card">
+                <a href="arrays-1d/index.html" class="topic-card programming">
                     <div class="topic-number">7</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">📋</div>
                     <h3>1D Arrays (Lists)</h3>
                     <p>Store multiple values in a single variable. Learn to iterate with loops!</p>
@@ -148,8 +159,9 @@
                     </div>
                 </a>
 
-                <a href="arrays-2d/index.html" class="topic-card">
+                <a href="arrays-2d/index.html" class="topic-card programming">
                     <div class="topic-number">8</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">📊</div>
                     <h3>2D Arrays (Grids)</h3>
                     <p>Work with data in rows and columns. Master nested loops!</p>
@@ -164,8 +176,9 @@
                     </div>
                 </a>
 
-                <a href="strings/index.html" class="topic-card">
+                <a href="strings/index.html" class="topic-card programming">
                     <div class="topic-number">9</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🔤</div>
                     <h3>String Manipulation</h3>
                     <p>Strings are arrays of characters! Learn slicing, concatenation, and more.</p>
@@ -180,8 +193,9 @@
                     </div>
                 </a>
 
-                <a href="functions/index.html" class="topic-card">
+                <a href="functions/index.html" class="topic-card programming">
                     <div class="topic-number">10</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">⚡</div>
                     <h3>Functions</h3>
                     <p>Organise code into reusable blocks. Write once, use many times!</p>
@@ -197,8 +211,9 @@
                     </div>
                 </a>
 
-                <a href="errors/index.html" class="topic-card">
+                <a href="errors/index.html" class="topic-card programming">
                     <div class="topic-number">11</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🐛</div>
                     <h3>Common Errors</h3>
                     <p>Learn to identify, understand, and fix the most common programming errors.</p>
@@ -213,8 +228,9 @@
                     </div>
                 </a>
 
-                <a href="file-handling/index.html" class="topic-card">
+                <a href="file-handling/index.html" class="topic-card programming">
                     <div class="topic-number">12</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">📁</div>
                     <h3>File Handling</h3>
                     <p>Read from and write to files. Store data permanently!</p>
@@ -230,8 +246,9 @@
                     </div>
                 </a>
 
-                <a href="validation/index.html" class="topic-card">
+                <a href="validation/index.html" class="topic-card programming">
                     <div class="topic-number">13</div>
+                    <span class="topic-type-label programming">Programming</span>
                     <div class="topic-icon">🛡️</div>
                     <h3>Input Validation</h3>
                     <p>Check user input before using it. Essential for robust, secure programs!</p>
@@ -255,7 +272,6 @@
 
             <div class="topic-grid">
                 <a href="sql/index.html" class="topic-card supplementary">
-                    <div class="topic-icon-alt">🗄️</div>
                     <div class="topic-icon">🗄️</div>
                     <h3>SQL & Databases</h3>
                     <p>Learn to query databases using SQL - the standard language for working with data!</p>
@@ -270,6 +286,24 @@
                         <span class="progress-text">0% complete</span>
                     </div>
                     <span class="badge supplementary-badge">Standalone Topic</span>
+                </a>
+
+                <!-- Theory Topics -->
+                <a href="cpu/index.html" class="topic-card theory featured">
+                    <span class="topic-type-label theory">Theory</span>
+                    <div class="topic-icon">🖥️</div>
+                    <h3>CPU &amp; Fetch-Execute Cycle</h3>
+                    <p>Understand how the processor runs every program on your computer.</p>
+                    <ul class="topic-concepts">
+                        <li>Purpose of the CPU</li>
+                        <li>CPU components (CU, ALU, Registers)</li>
+                        <li>The Fetch-Execute cycle</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="cpu">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge">New</span>
                 </a>
             </div>
         </section>
@@ -323,9 +357,6 @@
         }
         .topic-card.supplementary .topic-icon {
             background: #6366f1;
-        }
-        .topic-icon-alt {
-            display: none;
         }
         .supplementary-badge {
             background: #6366f1 !important;

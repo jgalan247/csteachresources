@@ -1,0 +1,279 @@
+# CPU Performance - OCR J277 GCSE Computer Science
+# Specification: 1.1 Systems Architecture - CPU Performance
+
+metadata:
+  title: "CPU Performance"
+  topic: "Systems Architecture"
+  key_stage: "KS4"
+  exam_board: "OCR"
+  specification: "J277"
+  spec_reference: "1.1.1"
+  difficulty: "intermediate"
+  estimated_time: "45-60 minutes"
+  prerequisites:
+    - "CPU components (ALU, CU, Cache, Registers)"
+    - "Von Neumann architecture"
+    - "Fetch-Execute cycle"
+
+learning_objectives:
+  - "Understand how clock speed affects CPU performance"
+  - "Understand how cache size affects CPU performance"
+  - "Understand how the number of cores affects CPU performance"
+  - "Explain the effects of changing these characteristics individually"
+  - "Explain the effects of changing these characteristics in combination"
+  - "Apply knowledge to compare CPUs and predict performance"
+
+key_vocabulary:
+  - term: "Clock Speed"
+    definition: "The number of cycles the CPU can perform per second, measured in Hertz (Hz)"
+    example: "A 3.5 GHz processor performs 3.5 billion cycles per second"
+
+  - term: "Hertz (Hz)"
+    definition: "The unit of frequency - one cycle per second"
+    related: "GHz = gigahertz = 1 billion Hz"
+
+  - term: "Clock Cycle"
+    definition: "A single 'tick' of the CPU's internal clock; one pulse of the system clock"
+    note: "Instructions may take multiple clock cycles to complete"
+
+  - term: "Cache"
+    definition: "Small, fast memory built into the CPU that stores frequently used data"
+    levels: "L1 (smallest, fastest), L2, L3 (largest, slowest)"
+
+  - term: "Core"
+    definition: "An independent processing unit within the CPU that can execute instructions"
+    example: "A quad-core processor has 4 cores"
+
+  - term: "Multi-core Processor"
+    definition: "A CPU with multiple cores that can process instructions simultaneously"
+    types: "Dual-core (2), Quad-core (4), Hexa-core (6), Octa-core (8)"
+
+content:
+  introduction:
+    hook: "Why does one laptop cost £400 and another £1400? Often it comes down to the CPU. Understanding CPU performance helps you make smart buying decisions and understand why some computers feel faster than others."
+
+    key_question: "What makes one CPU faster than another?"
+
+  sections:
+    - title: "1. Clock Speed"
+      content:
+        explanation: |
+          Clock speed is like the heartbeat of the CPU. Every 'tick' of the clock allows
+          the CPU to perform operations. The faster the clock ticks, the more operations
+          can be performed per second.
+
+          Clock speed is measured in Hertz (Hz):
+          - 1 Hz = 1 cycle per second
+          - 1 MHz = 1 million cycles per second
+          - 1 GHz = 1 billion cycles per second
+
+          Modern CPUs typically run at 2-5 GHz.
+
+        analogy: |
+          Think of clock speed like a drummer in a band. The drummer sets the pace for
+          everyone else. A faster drum beat (higher clock speed) means the band can
+          play faster. But there's a limit - if the drummer plays too fast, the other
+          musicians can't keep up!
+
+        effect_on_performance:
+          positive:
+            - "More instructions processed per second"
+            - "Programs run faster"
+            - "Better responsiveness"
+          negative:
+            - "Higher clock speeds generate more heat"
+            - "Use more electrical power"
+            - "There's a physical limit to how fast a clock can tick"
+
+        exam_points:
+          - "Higher clock speed = more cycles per second = faster processing"
+          - "Measured in GHz (gigahertz) for modern CPUs"
+          - "Not the only factor - a 3GHz CPU isn't always faster than a 2GHz CPU"
+          - "Increasing clock speed increases power consumption and heat"
+
+    - title: "2. Cache Size"
+      content:
+        explanation: |
+          Cache is small, super-fast memory built directly into the CPU. It stores
+          copies of data that the CPU uses frequently, so it doesn't have to fetch
+          from the slower RAM every time.
+
+          Cache comes in levels:
+          - L1 Cache: Smallest (typically 32-64KB), fastest, closest to CPU cores
+          - L2 Cache: Medium (typically 256KB-1MB), slightly slower
+          - L3 Cache: Largest (typically 4-32MB), shared between all cores
+
+        analogy: |
+          Imagine you're writing an essay. Your desk (cache) holds the books you're
+          using right now. The bookshelf (RAM) is across the room. The library (hard
+          drive) is across town.
+
+          - Getting a book from your desk = instant (cache hit)
+          - Walking to the bookshelf = takes time (RAM access)
+          - Going to the library = takes ages (hard drive access)
+
+          A bigger desk means more books within reach = less time wasted walking!
+
+        effect_on_performance:
+          positive:
+            - "Reduces time waiting for data from RAM"
+            - "Cache hits are much faster than RAM access"
+            - "Keeps frequently used data close to the CPU"
+          negative:
+            - "Very expensive per megabyte"
+            - "Takes up space on the CPU chip"
+            - "More cache = higher cost"
+
+        cache_comparison:
+          L1: "~4 clock cycles to access"
+          L2: "~10 clock cycles to access"
+          L3: "~40 clock cycles to access"
+          RAM: "~100+ clock cycles to access"
+
+        exam_points:
+          - "Larger cache = more data stored close to CPU = fewer slow RAM accesses"
+          - "Cache is much faster than RAM but much smaller"
+          - "L1 is fastest but smallest; L3 is largest but slowest"
+          - "A 'cache hit' (data found in cache) is much faster than a 'cache miss'"
+
+    - title: "3. Number of Cores"
+      content:
+        explanation: |
+          A core is like a complete mini-CPU that can execute instructions independently.
+          Modern CPUs have multiple cores, allowing them to run multiple tasks at the
+          same time (in parallel).
+
+          Common configurations:
+          - Dual-core: 2 cores
+          - Quad-core: 4 cores
+          - Hexa-core: 6 cores
+          - Octa-core: 8 cores
+          - High-end: 16, 32, or even 64 cores
+
+        analogy: |
+          Think of cores like checkout tills in a supermarket:
+          - 1 core = 1 checkout = customers queue up, served one at a time
+          - 4 cores = 4 checkouts = 4 customers served simultaneously
+          - 8 cores = 8 checkouts = even more customers served at once
+
+          BUT: If there's only one customer, having 8 checkouts doesn't help!
+          Similarly, if software only uses 1 core, extra cores won't speed it up.
+
+        effect_on_performance:
+          positive:
+            - "Can run multiple programs simultaneously"
+            - "Programs designed for multi-threading run faster"
+            - "Better at multitasking"
+          negative:
+            - "Not all software can use multiple cores"
+            - "Some tasks can't be split into parallel parts"
+            - "More cores don't help single-threaded applications"
+
+        parallelism_note: |
+          Important: More cores only help if the software is designed to use them.
+          - Video editing, 3D rendering, scientific simulations = benefit greatly
+          - Simple programs, older software = may only use one core
+
+        exam_points:
+          - "More cores = ability to process multiple instructions simultaneously"
+          - "Software must be written to use multiple cores (multi-threaded)"
+          - "Good for multitasking and parallel processing"
+          - "Doubling cores does NOT double performance for all tasks"
+
+    - title: "4. Combined Effects"
+      content:
+        explanation: |
+          In reality, all three factors work together. Understanding how they interact
+          is crucial for evaluating CPU performance.
+
+        scenarios:
+          - scenario: "Gaming"
+            best_configuration: "High clock speed + moderate cores (4-8) + good cache"
+            reason: "Many games prefer fast single-thread performance but can use 4-8 cores"
+
+          - scenario: "Video Editing"
+            best_configuration: "Many cores + decent clock speed + large cache"
+            reason: "Video encoding is highly parallelisable - more cores = faster rendering"
+
+          - scenario: "Web Browsing / Office Work"
+            best_configuration: "Moderate clock speed + 2-4 cores + moderate cache"
+            reason: "Light tasks don't need extreme performance"
+
+          - scenario: "Scientific Computing"
+            best_configuration: "Many cores + large cache + good clock speed"
+            reason: "Complex calculations benefit from parallel processing"
+
+        trade_offs:
+          - "Higher clock speed often means fewer cores (heat limitations)"
+          - "More cores often means lower per-core clock speed"
+          - "Larger cache increases cost significantly"
+          - "Best balance depends on what the computer will be used for"
+
+        exam_points:
+          - "Be able to explain how changing ONE factor affects performance"
+          - "Be able to explain how factors work TOGETHER"
+          - "Understand trade-offs (e.g., more cores might mean lower clock speed)"
+          - "Know that 'best' depends on the use case"
+
+common_misconceptions:
+  - misconception: "Higher GHz always means faster"
+    correction: "A newer 2GHz CPU may outperform an older 3GHz CPU due to better architecture"
+
+  - misconception: "More cores always means better performance"
+    correction: "Only if software is designed to use multiple cores; single-threaded tasks won't benefit"
+
+  - misconception: "Cache is just small RAM"
+    correction: "Cache is physically different, built into the CPU, and operates at CPU speeds"
+
+  - misconception: "You can just increase all three factors infinitely"
+    correction: "There are physical limits - higher clock speeds generate heat, more transistors need more power"
+
+exam_questions:
+  - question: "State two factors that affect CPU performance"
+    marks: 2
+    answer: "Any two of: Clock speed, Cache size, Number of cores"
+
+  - question: "Explain why increasing the clock speed of a CPU improves performance"
+    marks: 2
+    answer: |
+      Higher clock speed means more cycles per second (1 mark).
+      This means more instructions can be fetched, decoded, and executed per second (1 mark).
+
+  - question: "A user is choosing between two laptops. Laptop A has a 3.0GHz dual-core processor. Laptop B has a 2.4GHz quad-core processor. The user primarily uses video editing software. Explain which laptop would be better for their needs."
+    marks: 4
+    answer: |
+      Laptop B would be better (1 mark) because video editing software is designed to
+      use multiple cores/is multi-threaded (1 mark). The quad-core processor can process
+      four tasks simultaneously (1 mark). Although it has a lower clock speed, the ability
+      to use all four cores for rendering will make video editing faster overall (1 mark).
+
+  - question: "Explain the role of cache memory in improving CPU performance"
+    marks: 3
+    answer: |
+      Cache stores frequently used data/instructions close to the CPU (1 mark).
+      This is much faster than accessing RAM (1 mark).
+      When the CPU needs data, it checks cache first - a 'cache hit' is much faster
+      than fetching from RAM (1 mark).
+
+  - question: "State and explain two limitations of increasing CPU clock speed to improve performance"
+    marks: 4
+    answer: |
+      1. Heat: Higher clock speeds generate more heat (1 mark), which can damage
+         components or require expensive cooling (1 mark).
+      2. Power consumption: Higher clock speeds use more electricity (1 mark),
+         reducing battery life in laptops/increasing running costs (1 mark).
+      Alternative answers: Physical limits of transistor switching speed,
+      diminishing returns, other components become bottlenecks.
+
+summary:
+  key_points:
+    - "Clock speed: Higher = more cycles per second = faster processing (but more heat/power)"
+    - "Cache size: Larger = more data stored close to CPU = fewer slow RAM accesses"
+    - "Number of cores: More = can run more tasks simultaneously (if software supports it)"
+    - "All three factors work together to determine overall CPU performance"
+    - "The 'best' balance depends on what the computer will be used for"
+
+  exam_tip: |
+    Questions often ask you to compare CPUs or recommend one for a specific task.
+    Always consider: What is the computer being used for? Does that task benefit
+    from more cores (parallel processing) or faster single-thread speed?

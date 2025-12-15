@@ -1,0 +1,325 @@
+# Embedded Systems - OCR J277 GCSE Computer Science
+# Specification: 1.1 Systems Architecture - Embedded Systems
+
+metadata:
+  title: "Embedded Systems"
+  topic: "Systems Architecture"
+  key_stage: "KS4"
+  exam_board: "OCR"
+  specification: "J277"
+  spec_reference: "1.1.2"
+  difficulty: "intermediate"
+  estimated_time: "30-45 minutes"
+  prerequisites:
+    - "Basic understanding of CPU components"
+    - "Understanding of what hardware and software are"
+
+learning_objectives:
+  - "Define what an embedded system is"
+  - "Explain the purpose of embedded systems"
+  - "Describe the typical characteristics of embedded systems"
+  - "Identify a range of different embedded systems in everyday devices"
+  - "Compare embedded systems with general-purpose computers"
+
+key_vocabulary:
+  - term: "Embedded System"
+    definition: "A computer system built into a larger device to perform a specific, dedicated function"
+    example: "The microcontroller in a washing machine that controls the wash cycle"
+
+  - term: "Dedicated Function"
+    definition: "A single, specific task that a system is designed to perform"
+    example: "A thermostat only controls temperature - it doesn't play games or browse the web"
+
+  - term: "Microcontroller"
+    definition: "A small, self-contained computer on a single chip, commonly used in embedded systems"
+    note: "Contains CPU, memory, and I/O on one chip"
+
+  - term: "Firmware"
+    definition: "Permanent software programmed into an embedded system's memory"
+    note: "Usually stored in ROM or flash memory"
+
+  - term: "Real-time System"
+    definition: "A system that must respond to inputs within a guaranteed time frame"
+    example: "Car airbag systems must deploy within milliseconds"
+
+  - term: "General-purpose Computer"
+    definition: "A computer designed to perform many different tasks (opposite of embedded)"
+    example: "Desktop PC, laptop, smartphone"
+
+content:
+  introduction:
+    hook: "Look around you - how many computers can you see? Just your phone and laptop? Actually, there are probably dozens! Your watch, TV remote, microwave, car key, even your toothbrush might contain a computer. These hidden computers are called embedded systems."
+
+    key_question: "What makes an embedded system different from a regular computer?"
+
+  sections:
+    - title: "1. What is an Embedded System?"
+      content:
+        definition: |
+          An embedded system is a computer system that is built into a larger device
+          to perform ONE specific, dedicated function.
+
+          Unlike a general-purpose computer (like a PC or laptop) that can run many
+          different programs, an embedded system is designed to do just one job.
+
+        key_points:
+          - "Built INTO another device (not standalone)"
+          - "Performs a SINGLE dedicated function"
+          - "Usually invisible to the user"
+          - "User doesn't interact with it like a traditional computer"
+
+        comparison:
+          general_purpose:
+            name: "General-Purpose Computer"
+            examples: ["Desktop PC", "Laptop", "Smartphone", "Tablet"]
+            characteristics:
+              - "Runs many different programs"
+              - "User installs/removes software"
+              - "Flexible - can be used for many tasks"
+              - "Has obvious user interface (keyboard, screen)"
+              - "User is aware they're using a computer"
+
+          embedded:
+            name: "Embedded System"
+            examples: ["Washing machine controller", "TV remote", "Car engine management"]
+            characteristics:
+              - "Runs one specific program"
+              - "Software is fixed (firmware)"
+              - "Single-purpose - does one job"
+              - "May have no visible interface"
+              - "User often doesn't realize it's a computer"
+
+    - title: "2. Characteristics of Embedded Systems"
+      content:
+        main_characteristics:
+          - characteristic: "Dedicated Function"
+            explanation: "Designed to perform ONE specific task and nothing else"
+            example: "A microwave's embedded system only controls cooking - it can't check email"
+
+          - characteristic: "Built into a Larger Device"
+            explanation: "Not a standalone computer - part of another product"
+            example: "The chip in your TV is inside the TV, not a separate device"
+
+          - characteristic: "Limited User Interface"
+            explanation: "Often no screen/keyboard - just buttons or no interface at all"
+            example: "A thermostat might have just a dial and display, not a full keyboard"
+
+          - characteristic: "Small and Low Power"
+            explanation: "Usually compact with low energy requirements"
+            example: "A smartwatch must run on a tiny battery for days"
+
+          - characteristic: "Real-time Operation"
+            explanation: "Must respond quickly and reliably to inputs"
+            example: "Anti-lock brakes must respond in milliseconds"
+
+          - characteristic: "Reliable and Stable"
+            explanation: "Must work consistently without crashing"
+            example: "A pacemaker cannot 'freeze' or need rebooting"
+
+          - characteristic: "Fixed Software (Firmware)"
+            explanation: "Software is usually permanent, not changed by the user"
+            example: "You don't install apps on your toaster"
+
+          - characteristic: "Cost-Effective"
+            explanation: "Designed to be cheap to produce in large quantities"
+            example: "The chip in a £10 toy must cost pennies"
+
+        exam_points:
+          - "Dedicated/specific function (single purpose)"
+          - "Part of a larger device"
+          - "Limited or no user interface"
+          - "Low power consumption"
+          - "Real-time response"
+          - "Reliable/stable operation"
+          - "Fixed software (firmware)"
+
+    - title: "3. Examples of Embedded Systems"
+      content:
+        categories:
+          - category: "Home Appliances"
+            examples:
+              - device: "Washing Machine"
+                function: "Controls wash cycles, water temperature, spin speed"
+              - device: "Microwave Oven"
+                function: "Controls cooking time, power level, turntable"
+              - device: "Smart Thermostat"
+                function: "Monitors and controls home temperature"
+              - device: "Dishwasher"
+                function: "Controls wash programs, water usage"
+              - device: "Refrigerator"
+                function: "Maintains temperature, controls defrost cycle"
+
+          - category: "Consumer Electronics"
+            examples:
+              - device: "Digital Watch"
+                function: "Keeps time, controls display, alarms"
+              - device: "TV Remote Control"
+                function: "Sends infrared signals to control TV"
+              - device: "Games Console Controller"
+                function: "Reads button presses, sends to console"
+              - device: "Digital Camera"
+                function: "Controls image capture, storage, display"
+              - device: "Smart Speaker"
+                function: "Processes voice commands, plays audio"
+
+          - category: "Automotive"
+            examples:
+              - device: "Engine Management System"
+                function: "Controls fuel injection, ignition timing"
+              - device: "Anti-lock Braking System (ABS)"
+                function: "Prevents wheels locking during braking"
+              - device: "Airbag Controller"
+                function: "Detects crash and deploys airbags"
+              - device: "Sat Nav System"
+                function: "GPS navigation and route planning"
+              - device: "Parking Sensors"
+                function: "Detects obstacles when reversing"
+
+          - category: "Medical Devices"
+            examples:
+              - device: "Pacemaker"
+                function: "Monitors and regulates heartbeat"
+              - device: "Blood Glucose Monitor"
+                function: "Measures blood sugar levels"
+              - device: "Hearing Aid"
+                function: "Amplifies and processes sound"
+              - device: "Insulin Pump"
+                function: "Delivers controlled doses of insulin"
+
+          - category: "Industrial & Infrastructure"
+            examples:
+              - device: "Traffic Lights"
+                function: "Controls signal timing and sequences"
+              - device: "Security Alarm System"
+                function: "Monitors sensors, triggers alarms"
+              - device: "Central Heating Boiler"
+                function: "Controls heating and hot water"
+              - device: "ATM (Cash Machine)"
+                function: "Processes transactions, dispenses cash"
+
+          - category: "Wearables & Personal"
+            examples:
+              - device: "Fitness Tracker"
+                function: "Monitors activity, heart rate, sleep"
+              - device: "Smartwatch"
+                function: "Displays time, notifications, health data"
+              - device: "Electric Toothbrush"
+                function: "Controls brush speed, timer"
+              - device: "Wireless Earbuds"
+                function: "Audio processing, noise cancellation"
+
+        exam_tip: |
+          You may be asked to give examples of embedded systems. Try to remember
+          examples from different categories (home, automotive, medical, etc.)
+          and be able to explain what specific function each one performs.
+
+    - title: "4. Purpose of Embedded Systems"
+      content:
+        main_purposes:
+          - purpose: "Automation"
+            explanation: "Automate tasks that would otherwise require human intervention"
+            example: "A washing machine automatically controls the entire wash cycle"
+
+          - purpose: "Control"
+            explanation: "Precisely control processes and devices"
+            example: "Engine management systems control fuel injection timing to the millisecond"
+
+          - purpose: "Monitoring"
+            explanation: "Continuously monitor conditions and respond appropriately"
+            example: "A thermostat monitors room temperature and turns heating on/off"
+
+          - purpose: "Safety"
+            explanation: "Provide safety-critical functions that protect people"
+            example: "Airbag systems detect crashes and deploy airbags to protect occupants"
+
+          - purpose: "Efficiency"
+            explanation: "Optimize the operation of devices for energy/resource efficiency"
+            example: "Smart meters monitor and optimize electricity usage"
+
+        why_use_embedded:
+          - "More reliable than general-purpose computers for specific tasks"
+          - "Cheaper to produce in large quantities"
+          - "Lower power consumption"
+          - "Smaller size - can fit into compact devices"
+          - "Faster response time for dedicated tasks"
+          - "Don't need updates or user maintenance"
+
+common_misconceptions:
+  - misconception: "Embedded systems are only in high-tech devices"
+    correction: "They're in everyday items like toasters, doorbells, and toys"
+
+  - misconception: "Embedded systems are the same as smartphones"
+    correction: "Smartphones are general-purpose - they run many different apps. Embedded systems do ONE job"
+
+  - misconception: "Embedded systems can be reprogrammed like a PC"
+    correction: "Most embedded systems have fixed firmware that users cannot change"
+
+  - misconception: "All computers have screens and keyboards"
+    correction: "Many embedded systems have no visible interface at all"
+
+exam_questions:
+  - question: "Define what is meant by an embedded system"
+    marks: 2
+    answer: |
+      An embedded system is a computer system (1 mark) that is built into a larger
+      device to perform a specific/dedicated function (1 mark).
+
+  - question: "Give two characteristics of embedded systems"
+    marks: 2
+    answer: |
+      Any two of:
+      - Dedicated/specific function (single purpose)
+      - Part of a larger device
+      - Limited or no user interface
+      - Low power consumption
+      - Real-time response
+      - Reliable/stable operation
+      - Fixed software (firmware)
+      (1 mark each, max 2)
+
+  - question: "Give two examples of embedded systems and state the function each performs"
+    marks: 4
+    answer: |
+      Example answers (1 mark for device, 1 mark for function):
+      - Washing machine - controls wash cycles/temperature/spin speed
+      - Car engine management system - controls fuel injection/ignition timing
+      - Traffic lights - controls signal timing/sequences
+      - Pacemaker - monitors and regulates heartbeat
+      - Thermostat - monitors and controls temperature
+      (Any valid embedded system with appropriate function)
+
+  - question: "Explain two differences between an embedded system and a general-purpose computer"
+    marks: 4
+    answer: |
+      Difference 1: Embedded systems perform a single dedicated function (1 mark)
+      while general-purpose computers can run many different programs (1 mark).
+
+      Difference 2: Embedded systems usually have fixed software/firmware (1 mark)
+      while general-purpose computers allow users to install/remove software (1 mark).
+
+      Alternative answers: user interface differences, size, power consumption,
+      cost, ability to be reprogrammed.
+
+  - question: "A smart home system uses embedded systems to control lighting, heating, and security. Explain why embedded systems are suitable for this purpose."
+    marks: 4
+    answer: |
+      - Embedded systems can operate continuously/reliably without crashing (1 mark)
+        which is important for security and heating systems
+      - They respond in real-time (1 mark) which is needed for security alerts
+      - They use low power (1 mark) so can run constantly without high energy costs
+      - They are cost-effective (1 mark) allowing multiple systems throughout the home
+      (Any 4 valid points with explanation)
+
+summary:
+  key_points:
+    - "Embedded systems are computers built into devices to perform ONE specific function"
+    - "They are different from general-purpose computers (PCs, laptops, phones)"
+    - "Key characteristics: dedicated function, part of larger device, limited UI, low power, reliable, fixed software"
+    - "Found everywhere: home appliances, cars, medical devices, consumer electronics"
+    - "Purpose: automation, control, monitoring, safety, efficiency"
+
+  exam_tip: |
+    When answering questions about embedded systems, always emphasize that they
+    perform a SINGLE, SPECIFIC function. Give concrete examples with their
+    specific purpose (e.g., "a washing machine controller that manages wash cycles"
+    not just "a washing machine").

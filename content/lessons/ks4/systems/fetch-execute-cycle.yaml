@@ -1,0 +1,680 @@
+# KS4 Theory Lesson: The CPU and Fetch-Execute Cycle (GCSE Level)
+# Evidence-based approach with exam focus:
+# - Builds on KS3 foundations with increased formality
+# - Introduces specific registers (PC, MAR, MDR, ACC)
+# - Explicit exam technique and vocabulary
+# - Retrieval practice and spaced repetition
+# - Worked examples with subgoal labels
+
+id: ks4-systems-cpu-001
+title: "The CPU and Fetch-Execute Cycle (GCSE)"
+topic: computer-systems
+subtopic: cpu-fetch-execute
+stage: ks4
+year_group: 10
+duration_minutes: 60
+
+curriculum:
+  national_curriculum:
+    - "Understand the hardware components that make up computer systems"
+    - "Understand how instructions are stored and executed within a computer system"
+
+  exam_board_refs:
+    aqa:
+      - "3.4.1 Hardware - The purpose of the CPU"
+      - "3.4.1.1 The fetch-execute cycle"
+    ocr:
+      - "1.1.1 The purpose of the CPU"
+      - "1.1.1 (a) The fetch-decode-execute cycle"
+    eduqas:
+      - "Component 1: 1.1 CPU"
+
+objectives:
+  - Describe the purpose and function of the CPU
+  - Explain the role of each CPU component (CU, ALU, Cache, Registers)
+  - Describe the purpose of specific registers (PC, MAR, MDR, ACC)
+  - Explain each stage of the fetch-decode-execute cycle with register involvement
+  - Trace through fetch-decode-execute cycles showing register states
+
+success_criteria:
+  all_students:
+    - I can explain the purpose of the CPU and its main components
+    - I can name and describe the four key registers
+    - I can describe the fetch-decode-execute cycle stages
+  most_students:
+    - I can explain how registers are used in each stage of the cycle
+    - I can trace register values through multiple cycles
+    - I can answer GCSE-style questions on the F-D-E cycle
+  some_students:
+    - I can explain how the F-D-E cycle links to Von Neumann architecture
+    - I can evaluate the impact of CPU design on performance
+    - I can explain pipelining at a basic level
+
+prerequisites:
+  concepts:
+    - Basic CPU structure (from KS3)
+    - Fetch-execute cycle stages (from KS3)
+    - Binary representation basics
+    - Concept of memory addresses
+  vocabulary:
+    - CPU
+    - ALU
+    - Control Unit
+    - RAM
+    - instruction
+
+# KEY VOCABULARY - Extended for GCSE
+vocabulary:
+  - term: CPU (Central Processing Unit)
+    definition: The component that executes program instructions and processes data
+    visual: Detailed CPU block diagram
+    tier: 3
+
+  - term: ALU (Arithmetic Logic Unit)
+    definition: Performs arithmetic (add, subtract) and logic (AND, OR, NOT, comparison) operations
+    visual: ALU with inputs and output arrows
+    tier: 3
+
+  - term: Control Unit (CU)
+    definition: Decodes instructions and coordinates/controls CPU operations and data flow
+    visual: CU connected to all other components
+    tier: 3
+
+  - term: Cache
+    definition: Small, very fast memory inside the CPU that stores frequently used data and instructions
+    visual: Cache positioned between CPU and RAM in hierarchy
+    tier: 3
+
+  - term: Program Counter (PC)
+    definition: Register that holds the memory address of the NEXT instruction to be fetched
+    visual: Register box with address value and arrow to MAR
+    tier: 3
+
+  - term: Memory Address Register (MAR)
+    definition: Register that holds the address of the memory location being accessed
+    visual: Register connected to address bus
+    tier: 3
+
+  - term: Memory Data Register (MDR)
+    definition: Register that holds data being transferred to or from memory
+    visual: Register connected to data bus
+    tier: 3
+
+  - term: Accumulator (ACC)
+    definition: Register that stores the results of calculations performed by the ALU
+    visual: Register connected to ALU output
+    tier: 3
+
+  - term: Fetch-Decode-Execute Cycle
+    definition: The continuous sequence of operations the CPU performs to process each instruction
+    visual: Circular diagram with three stages
+    tier: 3
+
+# CONCEPT MAP
+concept_map:
+  central_concept: CPU Architecture
+  connected_concepts:
+    - concept: Control Unit
+      relationship: "coordinates operations, decodes instructions"
+    - concept: ALU
+      relationship: "performs calculations and logic"
+    - concept: Cache
+      relationship: "provides fast temporary storage"
+    - concept: Registers
+      relationship: "hold working data and addresses"
+    - concept: PC
+      relationship: "tracks next instruction address"
+    - concept: MAR
+      relationship: "holds memory address for access"
+    - concept: MDR
+      relationship: "holds data being transferred"
+    - concept: ACC
+      relationship: "stores calculation results"
+    - concept: System Bus
+      relationship: "connects to memory and I/O"
+
+# ============================================
+# LESSON PHASES
+# ============================================
+
+# PHASE 1: HOOK AND RETRIEVAL
+hook:
+  activity: |
+    Display two CPU specifications:
+    - CPU A: 3.0 GHz, 4 cores
+    - CPU B: 2.5 GHz, 8 cores
+    "Which would you choose for gaming? Why?"
+
+    This leads into discussion of what the numbers mean and why
+    understanding CPU architecture matters.
+
+  retrieval_questions:
+    - question: "What does CPU stand for?"
+      expected_answer: "Central Processing Unit"
+    - question: "Name the three main parts of the CPU from KS3"
+      expected_answer: "Control Unit, ALU, Registers"
+    - question: "What are the four stages of the fetch-execute cycle?"
+      expected_answer: "Fetch, Decode, Execute, Store"
+    - question: "Which part of the CPU does calculations?"
+      expected_answer: "ALU (Arithmetic Logic Unit)"
+
+  real_world_connection: |
+    Understanding CPU architecture helps you:
+    - Make informed decisions when buying computers/phones
+    - Understand why some programs run slowly
+    - Write more efficient code (at A-Level and beyond)
+    - Pursue careers in hardware engineering or systems programming
+
+# PHASE 2: UNPACK - Building on Prior Knowledge
+unpack:
+  description: |
+    Activate and build on KS3 knowledge. Use quick unplugged recap
+    before introducing new register-level detail.
+
+  unplugged_activity:
+    name: "Register Relay - Detailed F-D-E Simulation"
+    description: |
+      Advanced version of Human CPU that includes specific registers.
+      Students wear labels for PC, MAR, MDR, ACC and physically move
+      data cards to demonstrate the cycle with precision.
+
+    materials:
+      - "Register labels: PC, MAR, MDR, ACC"
+      - "Component labels: CU, ALU, RAM"
+      - "Address cards (showing memory addresses: 100, 101, 102...)"
+      - "Instruction cards with addresses"
+      - "Data value cards"
+      - "Whiteboard showing RAM contents (address → instruction mapping)"
+
+    setup_instructions: |
+      1. Display RAM contents table:
+         | Address | Contents      |
+         |---------|---------------|
+         | 100     | LDA 200       |
+         | 101     | ADD 201       |
+         | 102     | STA 202       |
+         | 200     | 15            |
+         | 201     | 7             |
+         | 202     | (empty)       |
+
+      2. PC student starts holding card "100"
+      3. MAR, MDR, ACC students start empty
+      4. CU and ALU students ready in position
+
+    activity_steps:
+      - step: 1
+        instruction: |
+          FETCH Stage - Part 1:
+          "PC passes its address (100) to MAR"
+          PC student gives their card to MAR student.
+          CU announces: "Address 100 is now in the MAR"
+        teacher_note: |
+          Emphasise: PC ALWAYS holds the NEXT instruction address.
+          MAR holds the address we're CURRENTLY accessing.
+
+      - step: 2
+        instruction: |
+          FETCH Stage - Part 2:
+          "MAR sends address to RAM, RAM returns contents to MDR"
+          MAR student shows address to RAM student.
+          RAM student gives corresponding instruction card (LDA 200) to MDR.
+          CU announces: "MDR now contains: LDA 200"
+        teacher_note: |
+          MAR → Address Bus → RAM → Data Bus → MDR
+          This is how memory access actually works.
+
+      - step: 3
+        instruction: |
+          FETCH Stage - Part 3:
+          "PC is incremented"
+          PC student picks up card "101" (next address).
+          CU announces: "PC updated to 101 - ready for next instruction"
+        teacher_note: |
+          PC increments DURING fetch, so it's ready for the next cycle.
+          This is automatic - happens every fetch.
+
+      - step: 4
+        instruction: |
+          DECODE Stage:
+          CU takes instruction from MDR and interprets it.
+          CU announces: "LDA 200 means: Load the value at address 200 into ACC"
+        teacher_note: |
+          Decoding happens in the Control Unit.
+          It determines what operations are needed.
+
+      - step: 5
+        instruction: |
+          EXECUTE Stage (for LDA):
+          "Need to access address 200, so:
+           - Put 200 in MAR
+           - RAM returns contents (15) to MDR
+           - MDR value copied to ACC"
+          ACC student now holds card "15"
+        teacher_note: |
+          LDA needs another memory access - but this is still part of EXECUTE.
+          Different instructions have different execute stages.
+
+    debrief_questions:
+      - "Why does the PC increment during FETCH, not after?"
+      - "What's the difference between MAR and MDR?"
+      - "Why do we need MDR - why not transfer directly to ACC?"
+      - "What would be in PC, MAR, MDR, ACC after the ADD instruction?"
+
+    cs_connection: |
+      This register-level detail is what GCSE exam questions test.
+      You need to trace these specific registers through cycles.
+
+  analogies:
+    - analogy: "Registers are like a chef's hands and immediate workspace"
+      maps_to: |
+        - PC = Recipe book bookmark (where to read next)
+        - MAR = Pointing at a shelf to access
+        - MDR = Holding an item taken from or to be placed on shelf
+        - ACC = The mixing bowl where results accumulate
+      limitations: |
+        The analogy breaks down for timing - real transfers are electronic
+        and happen in fractions of a nanosecond.
+
+# PHASE 3: EXPLAIN - Detailed Direct Instruction
+explain:
+  key_points:
+    - point: "The CPU contains specialised registers for the F-D-E cycle"
+      visual_support: |
+        Detailed CPU diagram showing:
+        - PC (Program Counter) pointing to RAM
+        - MAR (Memory Address Register) connected to Address Bus
+        - MDR (Memory Data Register) connected to Data Bus
+        - ACC (Accumulator) connected to ALU
+      check_understanding: "Which register holds the address of the NEXT instruction?"
+
+    - point: "Each stage of F-D-E involves specific register operations"
+      visual_support: |
+        Three-panel diagram showing register states at each stage:
+        FETCH: PC→MAR, RAM→MDR, PC++
+        DECODE: CU interprets MDR contents
+        EXECUTE: Varies by instruction (may use ALU, ACC, additional memory access)
+      check_understanding: "Which register is updated during FETCH?"
+
+    - point: "Cache speeds up the cycle by reducing memory access time"
+      visual_support: |
+        Memory hierarchy pyramid:
+        Registers (fastest, smallest) → Cache → RAM → Storage (slowest, largest)
+      check_understanding: "Why is cache faster than RAM?"
+
+  worked_example:
+    title: "Complete F-D-E Trace with Registers"
+    context: |
+      Trace the execution of: LDA 50 (Load value from address 50 into ACC)
+      Assume PC starts at address 10, and address 50 contains the value 42.
+
+      Initial state: PC=10, MAR=?, MDR=?, ACC=?
+
+    steps:
+      - subgoal: "FETCH Stage 1: Copy PC to MAR"
+        action: "Address in PC (10) is copied to MAR"
+        visual: "PC[10] → MAR[10]"
+        explanation: "MAR now holds the address we need to access"
+
+      - subgoal: "FETCH Stage 2: Memory read"
+        action: "MAR sends address 10 to RAM via address bus; RAM returns 'LDA 50' to MDR via data bus"
+        visual: "MAR[10] → Address Bus → RAM → Data Bus → MDR['LDA 50']"
+        explanation: "The instruction is now in MDR, ready for decoding"
+
+      - subgoal: "FETCH Stage 3: Increment PC"
+        action: "PC is incremented: 10 + 1 = 11"
+        visual: "PC[10] → PC[11]"
+        explanation: "PC now points to the NEXT instruction (ready for next cycle)"
+
+      - subgoal: "DECODE: Interpret instruction"
+        action: "Control Unit decodes 'LDA 50' as: Load value from address 50 into ACC"
+        visual: "CU analyses MDR contents"
+        explanation: "CU determines what operations are needed"
+
+      - subgoal: "EXECUTE Stage 1: Set up memory access"
+        action: "Address 50 is placed in MAR"
+        visual: "MAR[50]"
+        explanation: "We need to read from address 50"
+
+      - subgoal: "EXECUTE Stage 2: Read data"
+        action: "RAM returns contents of address 50 (value 42) to MDR"
+        visual: "MDR[42]"
+        explanation: "The data we need is now in MDR"
+
+      - subgoal: "EXECUTE Stage 3: Transfer to ACC"
+        action: "Value 42 is copied from MDR to ACC"
+        visual: "ACC[42]"
+        explanation: "LDA is complete - the value is now in the accumulator"
+
+    complete_walkthrough: |
+      Final register states after LDA 50:
+      - PC = 11 (pointing to next instruction)
+      - MAR = 50 (last address accessed)
+      - MDR = 42 (last data transferred)
+      - ACC = 42 (loaded value)
+
+      GCSE TIP: Exam questions often ask you to state register values
+      at specific points in the cycle. Practice tracing until automatic.
+
+  diagrams:
+    - name: "CPU Architecture with Registers"
+      description: "Complete CPU block diagram for GCSE"
+      key_labels:
+        - "Control Unit (decodes and coordinates)"
+        - "ALU (calculations and comparisons)"
+        - "PC (next instruction address)"
+        - "MAR (address being accessed)"
+        - "MDR (data being transferred)"
+        - "ACC (calculation results)"
+        - "Cache (fast temporary storage)"
+        - "Address Bus (carries addresses)"
+        - "Data Bus (carries data)"
+        - "Control Bus (carries control signals)"
+      common_errors: |
+        - Confusing MAR with PC (MAR = current access, PC = next instruction)
+        - Forgetting that PC increments during FETCH
+        - Thinking MDR only carries data TO memory (it's bidirectional)
+
+# PHASE 4: ELABORATE - Exam-Style Practice
+elaborate:
+  activities:
+    - type: trace_walkthrough
+      description: "Complete F-D-E trace table (GCSE style)"
+      scaffold_level: medium
+      task: |
+        Complete this trace table for the instruction: ADD 75
+        (Add the value at address 75 to the ACC)
+        Assume: PC=20, ACC=10, address 75 contains value 5
+
+        | Stage   | Register | Value Before | Value After | Why |
+        |---------|----------|--------------|-------------|-----|
+        | FETCH   | PC       | 20           | ____        |     |
+        | FETCH   | MAR      | ?            | ____        |     |
+        | FETCH   | MDR      | ?            | ____        |     |
+        | DECODE  | (CU)     | -            | -           |     |
+        | EXECUTE | MAR      | ____         | ____        |     |
+        | EXECUTE | MDR      | ____         | ____        |     |
+        | EXECUTE | ACC      | 10           | ____        |     |
+
+      solution: |
+        | Stage   | Register | Value Before | Value After | Why                        |
+        |---------|----------|--------------|-------------|----------------------------|
+        | FETCH   | PC       | 20           | 21          | Incremented for next instr |
+        | FETCH   | MAR      | ?            | 20          | Address of instruction     |
+        | FETCH   | MDR      | ?            | ADD 75      | Instruction fetched        |
+        | DECODE  | (CU)     | -            | -           | Add val@75 to ACC          |
+        | EXECUTE | MAR      | 20           | 75          | Address of operand         |
+        | EXECUTE | MDR      | ADD 75       | 5           | Value loaded from addr 75  |
+        | EXECUTE | ACC      | 10           | 15          | 10 + 5 = 15                |
+
+    - type: sequencing
+      description: "Order the F-D-E operations"
+      items_to_order:
+        - "Instruction is transferred from MDR to CU for decoding"
+        - "MAR is loaded with the address from PC"
+        - "PC is incremented by 1"
+        - "RAM sends instruction to MDR via data bus"
+        - "ALU performs calculation, result stored in ACC"
+        - "CU interprets the opcode and determines required actions"
+      correct_order: [2, 4, 3, 1, 6, 5]
+
+    - type: matching
+      description: "Match registers to their purpose (GCSE style)"
+      pairs:
+        - term: "Program Counter (PC)"
+          definition: "Holds the address of the next instruction to be fetched"
+        - term: "Memory Address Register (MAR)"
+          definition: "Holds the address of the memory location being read from or written to"
+        - term: "Memory Data Register (MDR)"
+          definition: "Holds the data that has been fetched from memory or is to be written to memory"
+        - term: "Accumulator (ACC)"
+          definition: "Stores the results of calculations performed by the ALU"
+
+    - type: explain_writing
+      description: "GCSE-style extended response"
+      prompt: |
+        Describe the fetch-decode-execute cycle, explaining what happens
+        at each stage and which registers are involved. (6 marks)
+      success_criteria:
+        - Names and describes all three stages
+        - Correctly identifies register involvement at each stage
+        - Explains what happens during each stage
+        - Uses correct technical vocabulary
+        - Answers in logical sequence
+        - Includes specific detail (e.g., "PC is incremented")
+      sentence_starters:
+        - "During the FETCH stage, the CPU..."
+        - "The address in the PC is copied to..."
+        - "In the DECODE stage, the Control Unit..."
+        - "The EXECUTE stage involves..."
+
+  differentiation:
+    foundation:
+      modifications:
+        - Provide register value bank to choose from
+        - Use simplified 3-register model (PC, MDR, ACC) first
+        - Pre-filled trace table with some values
+        - Paired work for extended writing
+      additional_scaffolds:
+        - F-D-E reference card with register changes
+        - Visual flowchart of register transfers
+        - Glossary with register definitions
+
+    extension:
+      challenges:
+        - "Trace through a program with 3+ instructions showing all register states"
+        - "Explain how cache affects the F-D-E cycle"
+        - "Research: What is pipelining and how does it speed up execution?"
+        - "Compare Von Neumann and Harvard architectures"
+        - "Explain why the Von Neumann bottleneck occurs"
+
+# PHASE 5: EVALUATE
+evaluate:
+  formative_checks:
+    - type: hinge_question
+      content: |
+        At what point in the F-D-E cycle is the PC incremented?
+        A) At the start of FETCH
+        B) At the end of FETCH / during FETCH
+        C) During DECODE
+        D) At the end of EXECUTE
+
+        (Correct: B)
+      success_threshold: "80% correct"
+
+    - type: mini_quiz
+      content: |
+        1. What does MAR stand for? (1 mark)
+        2. Which register holds the result of ALU calculations? (1 mark)
+        3. During FETCH, what is copied from PC to MAR? (1 mark)
+        4. Why does PC increment during FETCH, not after EXECUTE? (2 marks)
+      success_threshold: "4/5 marks"
+
+    - type: exit_ticket
+      content: |
+        State the values of PC, MAR, MDR, and ACC after executing:
+        LDA 100 (where address 100 contains 25, and PC started at 50)
+      success_threshold: "Correct values for at least 3 registers"
+
+  common_misconceptions:
+    - misconception: "PC increments at the end of the cycle"
+      why_students_think_this: |
+        Seems logical to finish one instruction before moving to next.
+      diagnostic_question: "When does PC change - during FETCH, DECODE, or EXECUTE?"
+      correction_strategy: |
+        "PC updates during FETCH so it's ready for the next cycle. This allows
+        pipelining - the CPU can start fetching the next instruction while
+        executing the current one."
+
+    - misconception: "MAR and PC do the same thing"
+      why_students_think_this: |
+        Both hold memory addresses, purpose seems similar.
+      diagnostic_question: "What address does PC hold? What address does MAR hold?"
+      correction_strategy: |
+        "PC holds where we're GOING next (next instruction). MAR holds where
+        we ARE now (current memory access). During EXECUTE, MAR might hold a
+        data address while PC already points to the next instruction."
+
+    - misconception: "MDR only transfers data FROM memory"
+      why_students_think_this: |
+        Most examples show loading data, not storing.
+      diagnostic_question: "If executing STA 200 (store ACC to address 200), what's in MDR?"
+      correction_strategy: |
+        "MDR is bidirectional - it holds data being read FROM memory OR data
+        being written TO memory. The name 'Memory Data Register' doesn't
+        specify direction."
+
+    - misconception: "Each stage takes the same amount of time"
+      why_students_think_this: |
+        The cycle diagram suggests equal stages.
+      diagnostic_question: "Which stage might take longest and why?"
+      correction_strategy: |
+        "EXECUTE varies hugely - a simple register copy is fast, but a division
+        operation takes many clock cycles. This is why different instructions
+        have different execution times."
+
+# RETRIEVAL PRACTICE
+retrieval_practice:
+  previous_topics:
+    - topic: "KS3 CPU Basics"
+      questions:
+        - "What three parts make up the CPU?"
+        - "What does the ALU do?"
+    - topic: "Binary"
+      questions:
+        - "Why do computers use binary?"
+        - "Convert 13 to binary"
+    - topic: "Memory"
+      questions:
+        - "What's the difference between RAM and storage?"
+
+  this_topic:
+    key_facts:
+      - "PC holds the address of the NEXT instruction"
+      - "MAR holds the address being accessed NOW"
+      - "MDR holds data being transferred to/from memory"
+      - "ACC stores results from ALU calculations"
+      - "PC increments during FETCH stage"
+      - "Cycle repeats: Fetch → Decode → Execute"
+    key_processes:
+      - "FETCH: PC→MAR, Memory→MDR, PC++"
+      - "DECODE: CU interprets instruction in MDR"
+      - "EXECUTE: Varies by instruction, may use ALU/ACC/memory"
+
+# CROSS-CURRICULAR
+cross_curricular:
+  mathematics:
+    connections:
+      - "Binary addresses and arithmetic"
+      - "Hexadecimal for memory addresses"
+      - "Clock speed calculations (instructions per second)"
+    how_to_link: |
+      Use real calculations: "If CPU runs at 3GHz, how many F-D-E cycles per second?"
+      Link memory addresses to number bases.
+
+  english:
+    vocabulary_focus:
+      - "Precise technical terminology"
+      - "Process description vocabulary"
+    writing_opportunities: |
+      Extended response questions require structured, technical writing.
+      Practice sequencing and use of connectives (First, Then, Finally).
+
+# TEACHER NOTES
+teacher_notes:
+  preparation:
+    - "Prepare register relay materials if using unplugged activity"
+    - "Print trace table templates"
+    - "Have CPU diagram (blank and labelled versions)"
+    - "Prepare GCSE-style questions for practice"
+    - "Review exam board specification for exact requirements"
+
+  common_issues:
+    - "Students confuse PC and MAR - drill the difference"
+    - "PC increment timing is commonly misunderstood"
+    - "Students may not realise EXECUTE varies by instruction type"
+    - "MDR bidirectional nature often missed"
+
+  timing_guidance: |
+    Hook/Retrieval: 5-10 mins
+    Unpack (activity if used): 10-15 mins
+    Explain (direct instruction): 15-20 mins
+    Elaborate (practice): 20-25 mins
+    Evaluate: 5-10 mins
+
+    Prioritise trace table practice - this is the most common exam question type.
+
+  subject_knowledge:
+    key_facts:
+      - "CIR (Current Instruction Register) holds instruction being decoded - not always on specs"
+      - "Some specs distinguish Fetch-Decode-Execute (3 stage) vs Fetch-Execute (2 stage)"
+      - "Modern CPUs use pipelining - multiple instructions in different stages simultaneously"
+    deeper_understanding: |
+      The Von Neumann bottleneck: instructions and data share the same bus,
+      limiting transfer speed. Harvard architecture separates them but is more complex.
+      This is why cache is so important - reduces bus traffic.
+    historical_context: |
+      John von Neumann's 1945 "First Draft of a Report on the EDVAC" described
+      stored-program architecture. Before this, computers were programmed by
+      physically rewiring them. The fetch-execute cycle enabled software.
+
+# RESOURCES
+resources:
+  printable:
+    - name: "GCSE Register Trace Table Template"
+      description: "Template for practicing F-D-E traces"
+      file: "gcse-fde-trace-template.pdf"
+    - name: "CPU Architecture Diagram - Labelled"
+      description: "Reference diagram with all components"
+      file: "cpu-architecture-labelled.pdf"
+    - name: "CPU Architecture Diagram - Blank"
+      description: "For labelling practice"
+      file: "cpu-architecture-blank.pdf"
+    - name: "Register Flashcards"
+      description: "For retrieval practice of register functions"
+      file: "register-flashcards.pdf"
+
+  digital:
+    - name: "Little Man Computer"
+      url: "https://peterhigginson.co.uk/lmc/"
+      purpose: "Simulate F-D-E cycle with visible registers"
+    - name: "CPU Simulator (Visual)"
+      url: "https://schweigi.github.io/assembler-simulator/"
+      purpose: "Visual assembly simulator showing register changes"
+    - name: "Isaac Computer Science - CPU"
+      url: "https://isaaccomputerscience.org/concepts/sys_arch_cpu"
+      purpose: "GCSE revision content"
+
+  ncce:
+    - "https://teachcomputing.org/curriculum/key-stage-4/computing-systems"
+  isaac:
+    - "https://isaaccomputerscience.org/concepts/sys_arch_cpu"
+    - "https://isaaccomputerscience.org/concepts/sys_arch_fde_cycle"
+
+# ASSESSMENT
+assessment:
+  formative:
+    - method: "Retrieval quiz"
+      description: "Quick recall of KS3 knowledge at start"
+      when: "Lesson start"
+    - method: "Hinge question"
+      description: "Check PC increment understanding"
+      when: "After explain phase"
+    - method: "Trace table check"
+      description: "Review trace tables during practice"
+      when: "During elaborate phase"
+
+  summative:
+    - method: "Exit ticket"
+      description: "Complete trace showing register states"
+      criteria:
+        - "Correct PC value after fetch"
+        - "Correct MAR value(s)"
+        - "Correct MDR contents at each stage"
+        - "Correct ACC value after execution"
+    - method: "Extended response"
+      description: "6-mark describe question"
+      criteria:
+        - "All stages named and described"
+        - "Registers correctly identified"
+        - "Logical sequence"
+        - "Technical vocabulary used"
