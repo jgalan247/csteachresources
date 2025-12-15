@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace the Fetch-Execute Cycle - Computer Science Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .theory-hero {
+            background: linear-gradient(135deg, var(--theory-light) 0%, white 100%);
+        }
+        .trace-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .program-display {
+            background: var(--gray-800);
+            color: #f8f8f2;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            font-family: var(--font-mono);
+            margin-bottom: var(--space-lg);
+        }
+        .program-display h3 {
+            color: var(--theory-light);
+            margin-bottom: var(--space-md);
+        }
+        .instruction-line {
+            padding: var(--space-xs) 0;
+            display: flex;
+            gap: var(--space-md);
+        }
+        .line-number {
+            color: var(--gray-500);
+            min-width: 30px;
+        }
+        .instruction {
+            color: #a6e22e;
+        }
+        .instruction.active {
+            background: rgba(166, 226, 46, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 0 var(--space-sm);
+        }
+        .trace-table-container {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-lg);
+            overflow-x: auto;
+        }
+        .trace-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .trace-table th {
+            background: var(--theory);
+            color: white;
+            padding: var(--space-md);
+            text-align: left;
+            font-weight: 600;
+        }
+        .trace-table td {
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .trace-table tr:nth-child(even) {
+            background: var(--gray-50);
+        }
+        .trace-table tr.current {
+            background: var(--theory-light);
+        }
+        .trace-table tr.completed {
+            color: var(--gray-500);
+        }
+        .register-value {
+            font-family: var(--font-mono);
+            background: var(--gray-100);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+        }
+        .cpu-state {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        .register-display {
+            background: white;
+            border: 2px solid var(--theory);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            text-align: center;
+        }
+        .register-display.changed {
+            animation: pulse 0.5s ease;
+            border-color: var(--success);
+            background: var(--success-light);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .register-name {
+            font-weight: 600;
+            color: var(--theory-dark);
+            font-size: 0.85rem;
+        }
+        .register-val {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            color: var(--gray-800);
+            margin-top: var(--space-xs);
+        }
+        .stage-indicator {
+            background: var(--theory);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            font-size: 1.2rem;
+        }
+        .explanation-box {
+            background: var(--theory-light);
+            border-left: 4px solid var(--theory);
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+        .controls {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero theory-hero">
+            <a href="index.html" style="color: var(--theory); text-decoration: none;">← Back to CPU</a>
+            <h1>Trace the Fetch-Execute Cycle</h1>
+            <p class="hero-subtitle">Follow along as the CPU processes each instruction</p>
+        </header>
+
+        <div class="trace-container">
+            <!-- Program Display -->
+            <div class="program-display">
+                <h3>Program in RAM</h3>
+                <div class="instruction-line">
+                    <span class="line-number">100:</span>
+                    <span class="instruction" id="inst-100">LOAD 5</span>
+                    <span style="color: var(--gray-500);">← Put 5 into the accumulator</span>
+                </div>
+                <div class="instruction-line">
+                    <span class="line-number">101:</span>
+                    <span class="instruction" id="inst-101">ADD 3</span>
+                    <span style="color: var(--gray-500);">← Add 3 to the accumulator</span>
+                </div>
+                <div class="instruction-line">
+                    <span class="line-number">102:</span>
+                    <span class="instruction" id="inst-102">OUTPUT</span>
+                    <span style="color: var(--gray-500);">← Display the result</span>
+                </div>
+            </div>
+
+            <!-- Current Stage Indicator -->
+            <div class="stage-indicator" id="stageIndicator">
+                Click "Next Step" to begin tracing
+            </div>
+
+            <!-- Explanation -->
+            <div class="explanation-box" id="explanation">
+                <strong>How this works:</strong> Click "Next Step" to see each stage of the Fetch-Execute cycle.
+                Watch how the registers change as the CPU processes each instruction.
+            </div>
+
+            <!-- CPU State Display -->
+            <div class="cpu-state">
+                <div class="register-display" id="reg-pc">
+                    <div class="register-name">PC (Program Counter)</div>
+                    <div class="register-val">100</div>
+                </div>
+                <div class="register-display" id="reg-mar">
+                    <div class="register-name">MAR (Memory Address)</div>
+                    <div class="register-val">-</div>
+                </div>
+                <div class="register-display" id="reg-mdr">
+                    <div class="register-name">MDR (Memory Data)</div>
+                    <div class="register-val">-</div>
+                </div>
+                <div class="register-display" id="reg-acc">
+                    <div class="register-name">ACC (Accumulator)</div>
+                    <div class="register-val">0</div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="btn btn-secondary" id="resetBtn">Reset</button>
+                <button class="btn btn-primary btn-lg" id="nextBtn">Next Step →</button>
+            </div>
+
+            <!-- Trace Table -->
+            <div class="trace-table-container">
+                <h3>Trace Table</h3>
+                <table class="trace-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Stage</th>
+                            <th>PC</th>
+                            <th>MAR</th>
+                            <th>MDR</th>
+                            <th>ACC</th>
+                            <th>What Happens</th>
+                        </tr>
+                    </thead>
+                    <tbody id="traceBody">
+                        <tr class="current">
+                            <td>0</td>
+                            <td>Start</td>
+                            <td><span class="register-value">100</span></td>
+                            <td><span class="register-value">-</span></td>
+                            <td><span class="register-value">-</span></td>
+                            <td><span class="register-value">0</span></td>
+                            <td>Ready to begin</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Output Display -->
+            <div class="intro-card" id="outputDisplay" style="display: none;">
+                <h3>Output Screen</h3>
+                <div style="font-family: var(--font-mono); font-size: 2rem; color: var(--success); text-align: center; padding: var(--space-lg);">
+                    <span id="outputValue"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Trace steps for the program
+        const steps = [
+            // Instruction 1: LOAD 5
+            { stage: 'FETCH', pc: 100, mar: 100, mdr: '-', acc: 0,
+              explanation: 'PC value (100) copied to MAR. We need to access address 100.',
+              highlight: 'mar', inst: 100 },
+            { stage: 'FETCH', pc: 100, mar: 100, mdr: 'LOAD 5', acc: 0,
+              explanation: 'RAM returns contents of address 100 → MDR now holds "LOAD 5"',
+              highlight: 'mdr', inst: 100 },
+            { stage: 'FETCH', pc: 101, mar: 100, mdr: 'LOAD 5', acc: 0,
+              explanation: 'PC incremented to 101 (ready for next instruction)',
+              highlight: 'pc', inst: 100 },
+            { stage: 'DECODE', pc: 101, mar: 100, mdr: 'LOAD 5', acc: 0,
+              explanation: 'Control Unit decodes "LOAD 5" → Put value 5 into ACC',
+              highlight: null, inst: 100 },
+            { stage: 'EXECUTE', pc: 101, mar: 100, mdr: 'LOAD 5', acc: 5,
+              explanation: 'Value 5 loaded into the Accumulator',
+              highlight: 'acc', inst: 100 },
+
+            // Instruction 2: ADD 3
+            { stage: 'FETCH', pc: 101, mar: 101, mdr: 'LOAD 5', acc: 5,
+              explanation: 'PC value (101) copied to MAR',
+              highlight: 'mar', inst: 101 },
+            { stage: 'FETCH', pc: 101, mar: 101, mdr: 'ADD 3', acc: 5,
+              explanation: 'RAM returns "ADD 3" → MDR',
+              highlight: 'mdr', inst: 101 },
+            { stage: 'FETCH', pc: 102, mar: 101, mdr: 'ADD 3', acc: 5,
+              explanation: 'PC incremented to 102',
+              highlight: 'pc', inst: 101 },
+            { stage: 'DECODE', pc: 102, mar: 101, mdr: 'ADD 3', acc: 5,
+              explanation: 'Control Unit decodes "ADD 3" → Add 3 to ACC',
+              highlight: null, inst: 101 },
+            { stage: 'EXECUTE', pc: 102, mar: 101, mdr: 'ADD 3', acc: 8,
+              explanation: 'ALU calculates: 5 + 3 = 8. Result stored in ACC',
+              highlight: 'acc', inst: 101 },
+
+            // Instruction 3: OUTPUT
+            { stage: 'FETCH', pc: 102, mar: 102, mdr: 'ADD 3', acc: 8,
+              explanation: 'PC value (102) copied to MAR',
+              highlight: 'mar', inst: 102 },
+            { stage: 'FETCH', pc: 102, mar: 102, mdr: 'OUTPUT', acc: 8,
+              explanation: 'RAM returns "OUTPUT" → MDR',
+              highlight: 'mdr', inst: 102 },
+            { stage: 'FETCH', pc: 103, mar: 102, mdr: 'OUTPUT', acc: 8,
+              explanation: 'PC incremented to 103',
+              highlight: 'pc', inst: 102 },
+            { stage: 'DECODE', pc: 103, mar: 102, mdr: 'OUTPUT', acc: 8,
+              explanation: 'Control Unit decodes "OUTPUT" → Display ACC value',
+              highlight: null, inst: 102 },
+            { stage: 'EXECUTE', pc: 103, mar: 102, mdr: 'OUTPUT', acc: 8,
+              explanation: 'ACC value (8) sent to output device. Program complete!',
+              highlight: null, inst: 102, output: 8 }
+        ];
+
+        let currentStep = -1;
+
+        function updateDisplay(step) {
+            // Update registers
+            document.querySelector('#reg-pc .register-val').textContent = step.pc;
+            document.querySelector('#reg-mar .register-val').textContent = step.mar;
+            document.querySelector('#reg-mdr .register-val').textContent = step.mdr;
+            document.querySelector('#reg-acc .register-val').textContent = step.acc;
+
+            // Highlight changed register
+            document.querySelectorAll('.register-display').forEach(el => el.classList.remove('changed'));
+            if (step.highlight) {
+                document.getElementById('reg-' + step.highlight).classList.add('changed');
+            }
+
+            // Update stage indicator
+            const stageColors = {
+                'FETCH': 'var(--theory)',
+                'DECODE': 'var(--warning)',
+                'EXECUTE': 'var(--success)'
+            };
+            document.getElementById('stageIndicator').textContent = step.stage + ' Stage';
+            document.getElementById('stageIndicator').style.background = stageColors[step.stage] || 'var(--theory)';
+
+            // Update explanation
+            document.getElementById('explanation').innerHTML = '<strong>' + step.stage + ':</strong> ' + step.explanation;
+
+            // Highlight current instruction
+            document.querySelectorAll('.instruction').forEach(el => el.classList.remove('active'));
+            if (step.inst) {
+                document.getElementById('inst-' + step.inst).classList.add('active');
+            }
+
+            // Add to trace table
+            const tbody = document.getElementById('traceBody');
+            // Mark previous as completed
+            const rows = tbody.querySelectorAll('tr');
+            rows.forEach(row => {
+                row.classList.remove('current');
+                row.classList.add('completed');
+            });
+
+            const newRow = document.createElement('tr');
+            newRow.className = 'current';
+            newRow.innerHTML = `
+                <td>${currentStep + 1}</td>
+                <td>${step.stage}</td>
+                <td><span class="register-value">${step.pc}</span></td>
+                <td><span class="register-value">${step.mar}</span></td>
+                <td><span class="register-value">${step.mdr}</span></td>
+                <td><span class="register-value">${step.acc}</span></td>
+                <td>${step.explanation.split('.')[0]}</td>
+            `;
+            tbody.appendChild(newRow);
+
+            // Show output if needed
+            if (step.output !== undefined) {
+                document.getElementById('outputDisplay').style.display = 'block';
+                document.getElementById('outputValue').textContent = step.output;
+            }
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            currentStep++;
+            if (currentStep < steps.length) {
+                updateDisplay(steps[currentStep]);
+                if (currentStep === steps.length - 1) {
+                    this.textContent = 'Complete!';
+                    this.disabled = true;
+                    // Save progress
+                    if (typeof saveProgress === 'function') {
+                        saveProgress('cpu-trace', 100);
+                    }
+                }
+            }
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            currentStep = -1;
+
+            // Reset registers
+            document.querySelector('#reg-pc .register-val').textContent = '100';
+            document.querySelector('#reg-mar .register-val').textContent = '-';
+            document.querySelector('#reg-mdr .register-val').textContent = '-';
+            document.querySelector('#reg-acc .register-val').textContent = '0';
+
+            // Reset highlights
+            document.querySelectorAll('.register-display').forEach(el => el.classList.remove('changed'));
+            document.querySelectorAll('.instruction').forEach(el => el.classList.remove('active'));
+
+            // Reset stage indicator
+            document.getElementById('stageIndicator').textContent = 'Click "Next Step" to begin tracing';
+            document.getElementById('stageIndicator').style.background = 'var(--theory)';
+
+            // Reset explanation
+            document.getElementById('explanation').innerHTML = '<strong>How this works:</strong> Click "Next Step" to see each stage of the Fetch-Execute cycle.';
+
+            // Reset trace table
+            document.getElementById('traceBody').innerHTML = `
+                <tr class="current">
+                    <td>0</td>
+                    <td>Start</td>
+                    <td><span class="register-value">100</span></td>
+                    <td><span class="register-value">-</span></td>
+                    <td><span class="register-value">-</span></td>
+                    <td><span class="register-value">0</span></td>
+                    <td>Ready to begin</td>
+                </tr>
+            `;
+
+            // Hide output
+            document.getElementById('outputDisplay').style.display = 'none';
+
+            // Reset button
+            document.getElementById('nextBtn').textContent = 'Next Step →';
+            document.getElementById('nextBtn').disabled = false;
+        });
+    </script>
+</body>
+</html>
