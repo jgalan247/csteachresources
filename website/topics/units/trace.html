@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: Data Units - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Units</a>
+            <h1>Trace: File Size Calculations</h1>
+            <p class="subtitle">Work through calculations step by step</p>
+        </div>
+
+        <!-- Exercise 1: Image Calculation Trace -->
+        <section class="activity-section">
+            <h2>Exercise 1: Trace an Image File Size Calculation</h2>
+            <div class="scenario-box">
+                <h3>Problem</h3>
+                <p>Calculate the file size of a <strong>1280 × 720 pixel</strong> image with <strong>24-bit colour</strong>.</p>
+                <p>Express the final answer in <strong>megabytes (MB)</strong>.</p>
+            </div>
+
+            <div class="trace-exercise" data-exercise="image-trace">
+                <h3>Complete each step:</h3>
+
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Calculate total pixels</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Formula: Width × Height</p>
+                        <div class="trace-question">
+                            <p>1280 × 720 = ?</p>
+                            <input type="number" class="trace-input" data-correct="921600" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Calculate size in bits</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Formula: Total pixels × Colour depth</p>
+                        <div class="trace-question">
+                            <p>921,600 × 24 = ?</p>
+                            <input type="number" class="trace-input" data-correct="22118400" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Convert bits to bytes</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Formula: Bits ÷ 8</p>
+                        <div class="trace-question">
+                            <p>22,118,400 ÷ 8 = ?</p>
+                            <input type="number" class="trace-input" data-correct="2764800" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Convert bytes to MB</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Formula: Bytes ÷ 1,000,000</p>
+                        <div class="trace-question">
+                            <p>2,764,800 ÷ 1,000,000 = ?</p>
+                            <input type="number" class="trace-input" data-correct="2.76" data-tolerance="0.02" step="0.01" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-summary hidden">
+                    <h3>Calculation Complete!</h3>
+                    <div class="summary-path">
+                        <div class="path-item">1280 × 720 = 921,600 pixels</div>
+                        <div class="path-item">921,600 × 24 = 22,118,400 bits</div>
+                        <div class="path-item">22,118,400 ÷ 8 = 2,764,800 bytes</div>
+                        <div class="path-item final">2,764,800 ÷ 1,000,000 = 2.76 MB</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Audio Calculation Trace -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 2: Trace an Audio File Size Calculation</h2>
+            <div class="scenario-box">
+                <h3>Problem</h3>
+                <p>Calculate the file size of a <strong>2-minute stereo audio</strong> recording with:</p>
+                <ul>
+                    <li>Sample rate: 44,100 Hz</li>
+                    <li>Bit depth: 16 bits</li>
+                </ul>
+                <p>Express the final answer in <strong>megabytes (MB)</strong>.</p>
+            </div>
+
+            <div class="trace-exercise" data-exercise="audio-trace">
+                <h3>Complete each step:</h3>
+
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Convert duration to seconds</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>2 minutes = ? seconds</p>
+                            <input type="number" class="trace-input" data-correct="120" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Calculate mono size (bits)</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Formula: Sample rate × Duration × Bit depth</p>
+                        <div class="trace-question">
+                            <p>44,100 × 120 × 16 = ?</p>
+                            <input type="number" class="trace-input" data-correct="84672000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Calculate stereo size (bits)</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Stereo = mono × 2 channels</p>
+                        <div class="trace-question">
+                            <p>84,672,000 × 2 = ?</p>
+                            <input type="number" class="trace-input" data-correct="169344000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Convert to bytes</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>169,344,000 ÷ 8 = ?</p>
+                            <input type="number" class="trace-input" data-correct="21168000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <span class="step-title">Convert to MB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>21,168,000 ÷ 1,000,000 = ?</p>
+                            <input type="number" class="trace-input" data-correct="21.17" data-tolerance="0.02" step="0.01" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-summary hidden">
+                    <h3>Calculation Complete!</h3>
+                    <div class="summary-path">
+                        <div class="path-item">2 min = 120 seconds</div>
+                        <div class="path-item">44,100 × 120 × 16 = 84,672,000 bits (mono)</div>
+                        <div class="path-item">× 2 for stereo = 169,344,000 bits</div>
+                        <div class="path-item">÷ 8 = 21,168,000 bytes</div>
+                        <div class="path-item final">÷ 1,000,000 = 21.17 MB</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 3: Unit Conversion Chain -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 3: Unit Conversion Chain</h2>
+            <div class="scenario-box">
+                <h3>Problem</h3>
+                <p>Convert <strong>5 GB</strong> through all the smaller units down to bits.</p>
+            </div>
+
+            <div class="trace-exercise" data-exercise="conversion-trace">
+                <h3>Complete the conversion chain:</h3>
+
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">GB to MB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>5 GB × 1,000 = ? MB</p>
+                            <input type="number" class="trace-input" data-correct="5000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">MB to KB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>5,000 MB × 1,000 = ? KB</p>
+                            <input type="number" class="trace-input" data-correct="5000000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">KB to Bytes</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>5,000,000 KB × 1,000 = ? bytes</p>
+                            <input type="number" class="trace-input" data-correct="5000000000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Bytes to Bits</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>5,000,000,000 bytes × 8 = ? bits</p>
+                            <input type="number" class="trace-input" data-correct="40000000000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-summary hidden">
+                    <h3>Conversion Complete!</h3>
+                    <div class="summary-path">
+                        <div class="path-item">5 GB</div>
+                        <div class="path-item">× 1,000 = 5,000 MB</div>
+                        <div class="path-item">× 1,000 = 5,000,000 KB</div>
+                        <div class="path-item">× 1,000 = 5,000,000,000 bytes</div>
+                        <div class="path-item final">× 8 = 40,000,000,000 bits (40 Gb)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 4: Reverse Calculation -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 4: Work Backwards</h2>
+            <div class="scenario-box">
+                <h3>Problem</h3>
+                <p>An image file is <strong>3.6 MB</strong>. If the image has <strong>24-bit colour</strong> and is <strong>1500 pixels wide</strong>, how many pixels tall is it?</p>
+            </div>
+
+            <div class="trace-exercise" data-exercise="reverse-trace">
+                <h3>Work backwards through the formula:</h3>
+
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Convert MB to bytes</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>3.6 MB × 1,000,000 = ? bytes</p>
+                            <input type="number" class="trace-input" data-correct="3600000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Convert bytes to bits</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="trace-question">
+                            <p>3,600,000 bytes × 8 = ? bits</p>
+                            <input type="number" class="trace-input" data-correct="28800000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Calculate total pixels</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Total bits ÷ Colour depth = Total pixels</p>
+                        <div class="trace-question">
+                            <p>28,800,000 ÷ 24 = ? pixels</p>
+                            <input type="number" class="trace-input" data-correct="1200000" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step locked" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Calculate height</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Total pixels ÷ Width = Height</p>
+                        <div class="trace-question">
+                            <p>1,200,000 ÷ 1,500 = ? pixels</p>
+                            <input type="number" class="trace-input" data-correct="800" placeholder="Enter answer">
+                            <button class="btn btn-secondary check-step">Check</button>
+                            <div class="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-summary hidden">
+                    <h3>Problem Solved!</h3>
+                    <div class="summary-path">
+                        <div class="path-item">3.6 MB = 3,600,000 bytes</div>
+                        <div class="path-item">3,600,000 × 8 = 28,800,000 bits</div>
+                        <div class="path-item">28,800,000 ÷ 24 = 1,200,000 pixels</div>
+                        <div class="path-item final">1,200,000 ÷ 1,500 = 800 pixels tall</div>
+                    </div>
+                    <p class="summary-note">The image dimensions are 1500 × 800 pixels.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="example.html" class="btn btn-secondary">← Worked Examples</a>
+            <a href="parsons.html" class="btn btn-primary">Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Trace exercise functionality
+        document.querySelectorAll('.trace-exercise').forEach(exercise => {
+            const exerciseId = exercise.dataset.exercise;
+
+            exercise.querySelectorAll('.check-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    const step = this.closest('.trace-step');
+                    const stepNum = parseInt(step.dataset.step);
+                    const input = step.querySelector('.trace-input');
+                    const feedback = step.querySelector('.feedback');
+                    const correctValue = parseFloat(input.dataset.correct);
+                    const tolerance = parseFloat(input.dataset.tolerance) || 0;
+                    const userValue = parseFloat(input.value);
+
+                    const isCorrect = Math.abs(userValue - correctValue) <= tolerance;
+
+                    if (isCorrect) {
+                        feedback.innerHTML = '<span class="success">Correct!</span>';
+                        feedback.className = 'feedback success';
+                        step.classList.add('completed');
+                        input.disabled = true;
+                        this.disabled = true;
+
+                        // Unlock next step
+                        const nextStep = exercise.querySelector(`.trace-step[data-step="${stepNum + 1}"]`);
+                        if (nextStep) {
+                            nextStep.classList.remove('locked');
+                            setTimeout(() => {
+                                nextStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 500);
+                        } else {
+                            // Show summary
+                            const summary = exercise.querySelector('.trace-summary');
+                            if (summary) {
+                                summary.classList.remove('hidden');
+                                setTimeout(() => {
+                                    summary.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }, 500);
+                            }
+                            // Track completion
+                            Progress.completeActivity('units', `trace-${exerciseId}`);
+                        }
+                    } else {
+                        feedback.innerHTML = `<span class="error">Not quite. Try again! Hint: Make sure to include all digits.</span>`;
+                        feedback.className = 'feedback error';
+                    }
+                });
+            });
+
+            // Allow Enter key to check
+            exercise.querySelectorAll('.trace-input').forEach(input => {
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        const checkBtn = input.closest('.trace-question').querySelector('.check-step');
+                        if (!checkBtn.disabled) {
+                            checkBtn.click();
+                        }
+                    }
+                });
+            });
+        });
+
+        // Track page visit
+        Progress.startTopic('units');
+    </script>
+    <style>
+        .scenario-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+        .scenario-box h3 {
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+        .scenario-box ul {
+            margin: var(--space-sm) 0 0 var(--space-lg);
+        }
+        .trace-exercise {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .trace-step {
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .trace-step.locked {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .trace-step.completed {
+            border-color: var(--success);
+            background: #f0fdf4;
+        }
+        .step-header {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        .trace-step.completed .step-header {
+            background: #dcfce7;
+        }
+        .step-number {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .trace-step.completed .step-number {
+            background: var(--success);
+        }
+        .step-title {
+            font-weight: 600;
+        }
+        .step-content {
+            padding: var(--space-lg);
+        }
+        .trace-question {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .trace-question p {
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-bottom: var(--space-md);
+        }
+        .trace-input {
+            padding: var(--space-sm);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            width: 200px;
+            margin-right: var(--space-sm);
+        }
+        .trace-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        .trace-input:disabled {
+            background: #dcfce7;
+            border-color: var(--success);
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+        }
+        .feedback.success {
+            background: #dcfce7;
+            color: var(--success);
+        }
+        .feedback.error {
+            background: #fef2f2;
+            color: var(--error);
+        }
+        .trace-summary {
+            margin-top: var(--space-xl);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--success);
+        }
+        .trace-summary h3 {
+            color: var(--success);
+            margin-top: 0;
+        }
+        .summary-path {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .path-item {
+            padding: var(--space-sm) var(--space-md);
+            background: white;
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--gray-300);
+            font-family: monospace;
+        }
+        .path-item.final {
+            border-left-color: var(--success);
+            font-weight: bold;
+            background: #dcfce7;
+        }
+        .summary-note {
+            margin-top: var(--space-md);
+            color: var(--gray-600);
+            font-style: italic;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Examples: Data Units - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Units</a>
+            <h1>Worked Examples: File Size Calculations</h1>
+            <p class="subtitle">Step-by-step solutions to common calculation problems</p>
+        </div>
+
+        <!-- Formula Reference -->
+        <section class="formula-reference">
+            <h2>Formula Reference</h2>
+            <div class="formula-cards">
+                <div class="formula-card">
+                    <h4>Image File Size</h4>
+                    <p class="formula">Width × Height × Colour Depth</p>
+                    <p class="unit-note">Result in bits - divide by 8 for bytes</p>
+                </div>
+                <div class="formula-card">
+                    <h4>Sound File Size</h4>
+                    <p class="formula">Sample Rate × Duration × Bit Depth</p>
+                    <p class="unit-note">× 2 for stereo - result in bits</p>
+                </div>
+                <div class="formula-card">
+                    <h4>Text File Size</h4>
+                    <p class="formula">Characters × Bits per Character</p>
+                    <p class="unit-note">Usually 8 bits per character (ASCII)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 1: Basic Image Calculation -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 1</span>
+                <span class="difficulty easy">Foundation</span>
+            </div>
+            <h2>Image File Size - Basic</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>Calculate the file size of an image that is <strong>640 × 480 pixels</strong> with a colour depth of <strong>24 bits</strong>. Give your answer in megabytes (MB).</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Identify what we know</span>
+                    </div>
+                    <div class="step-content">
+                        <ul>
+                            <li>Width = 640 pixels</li>
+                            <li>Height = 480 pixels</li>
+                            <li>Colour depth = 24 bits per pixel</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Write the formula</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="formula-display">
+                            File size (bits) = Width × Height × Colour depth
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Calculate total pixels</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Total pixels = 640 × 480 = <strong>307,200 pixels</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Calculate size in bits</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Size = 307,200 × 24 = <strong>7,372,800 bits</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">5</span>
+                        <span class="step-title">Convert bits to bytes</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Size = 7,372,800 ÷ 8 = <strong>921,600 bytes</strong>
+                        </div>
+                        <p class="note">Remember: 8 bits = 1 byte</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">6</span>
+                        <span class="step-title">Convert to megabytes</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Size = 921,600 ÷ 1,000,000 = <strong>0.92 MB</strong>
+                        </div>
+                        <p class="note">Or approximately 922 KB</p>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>The image file size is <strong>0.92 MB</strong> (or 922 KB)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2: HD Image Calculation -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 2</span>
+                <span class="difficulty medium">Core</span>
+            </div>
+            <h2>Image File Size - HD Resolution</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>A digital camera takes photos at <strong>1920 × 1080 pixels</strong> (Full HD) with <strong>32-bit colour</strong> (including transparency). How many photos can fit on a <strong>2 GB</strong> memory card?</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Calculate size of one photo</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            <p>Total pixels = 1920 × 1080 = 2,073,600 pixels</p>
+                            <p>Size in bits = 2,073,600 × 32 = 66,355,200 bits</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Convert to bytes and MB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            <p>Size in bytes = 66,355,200 ÷ 8 = 8,294,400 bytes</p>
+                            <p>Size in MB = 8,294,400 ÷ 1,000,000 = <strong>8.29 MB per photo</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Convert card capacity to MB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            2 GB = 2 × 1,000 = <strong>2,000 MB</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Calculate number of photos</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Number of photos = 2,000 ÷ 8.29 = <strong>241.25</strong>
+                        </div>
+                        <p class="note">Round down since you can't store a partial photo</p>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>The memory card can store <strong>241 photos</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3: Audio File Calculation -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 3</span>
+                <span class="difficulty medium">Core</span>
+            </div>
+            <h2>Audio File Size - CD Quality</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>An audio CD contains <strong>74 minutes</strong> of stereo music recorded at:</p>
+                <ul>
+                    <li>Sample rate: 44,100 Hz</li>
+                    <li>Bit depth: 16 bits</li>
+                    <li>Channels: 2 (stereo)</li>
+                </ul>
+                <p>Calculate the total data capacity of the CD in MB.</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Convert duration to seconds</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Duration = 74 × 60 = <strong>4,440 seconds</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Write the formula</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="formula-display">
+                            Size = Sample rate × Duration × Bit depth × Channels
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Substitute values</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            <p>Size = 44,100 × 4,440 × 16 × 2</p>
+                            <p>Size = <strong>6,273,792,000 bits</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Convert to bytes</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Size = 6,273,792,000 ÷ 8 = <strong>784,224,000 bytes</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">5</span>
+                        <span class="step-title">Convert to MB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Size = 784,224,000 ÷ 1,000,000 = <strong>784.2 MB</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>The CD can store approximately <strong>784 MB</strong> of audio data</p>
+                    <p class="note">This is close to the standard CD capacity of ~700 MB, accounting for some error correction data.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4: Text File Calculation -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 4</span>
+                <span class="difficulty easy">Foundation</span>
+            </div>
+            <h2>Text File Size</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>A plain text document contains <strong>15,000 characters</strong> (including spaces and punctuation). Using ASCII encoding (8 bits per character), calculate the file size in:</p>
+                <ul>
+                    <li>a) Bytes</li>
+                    <li>b) Kilobytes (KB)</li>
+                </ul>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Calculate size in bits</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Size = 15,000 × 8 = <strong>120,000 bits</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Part (a): Convert to bytes</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Size = 120,000 ÷ 8 = <strong>15,000 bytes</strong>
+                        </div>
+                        <p class="note">Notice: With 8 bits per character, bytes = characters!</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Part (b): Convert to KB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Size = 15,000 ÷ 1,000 = <strong>15 KB</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answers</h4>
+                    <p>a) <strong>15,000 bytes</strong></p>
+                    <p>b) <strong>15 KB</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5: Unit Conversion -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 5</span>
+                <span class="difficulty medium">Core</span>
+            </div>
+            <h2>Unit Conversion Chain</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>Convert <strong>3.5 GB</strong> into:</p>
+                <ul>
+                    <li>a) Megabytes (MB)</li>
+                    <li>b) Kilobytes (KB)</li>
+                    <li>c) Bytes</li>
+                    <li>d) Bits</li>
+                </ul>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Part (a): GB to MB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            3.5 GB × 1,000 = <strong>3,500 MB</strong>
+                        </div>
+                        <p class="note">Multiply by 1,000 when going to smaller units</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Part (b): MB to KB</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            3,500 MB × 1,000 = <strong>3,500,000 KB</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Part (c): KB to Bytes</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            3,500,000 KB × 1,000 = <strong>3,500,000,000 bytes</strong>
+                        </div>
+                        <p class="note">Or 3.5 × 10<sup>9</sup> bytes in scientific notation</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Part (d): Bytes to Bits</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            3,500,000,000 bytes × 8 = <strong>28,000,000,000 bits</strong>
+                        </div>
+                        <p class="note">Or 28 × 10<sup>9</sup> bits = 28 Gb (gigabits)</p>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answers</h4>
+                    <p>a) <strong>3,500 MB</strong></p>
+                    <p>b) <strong>3,500,000 KB</strong></p>
+                    <p>c) <strong>3,500,000,000 bytes</strong></p>
+                    <p>d) <strong>28,000,000,000 bits</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 6: Complex Scenario -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 6</span>
+                <span class="difficulty hard">Extension</span>
+            </div>
+            <h2>Complex Scenario - Storage Planning</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>A video production company needs storage for a project containing:</p>
+                <ul>
+                    <li>200 images at 4000 × 3000 pixels, 24-bit colour</li>
+                    <li>30 minutes of uncompressed audio (48,000 Hz, 24-bit, stereo)</li>
+                    <li>A 50,000 word script (average 6 characters per word, ASCII)</li>
+                </ul>
+                <p>What is the minimum hard drive size needed (in GB)?</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Calculate image storage</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            <p>Per image = 4000 × 3000 × 24 = 288,000,000 bits</p>
+                            <p>Per image = 288,000,000 ÷ 8 = 36,000,000 bytes = 36 MB</p>
+                            <p>Total images = 36 × 200 = <strong>7,200 MB</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Calculate audio storage</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            <p>Duration = 30 × 60 = 1,800 seconds</p>
+                            <p>Size = 48,000 × 1,800 × 24 × 2 = 4,147,200,000 bits</p>
+                            <p>Size = 4,147,200,000 ÷ 8 = 518,400,000 bytes</p>
+                            <p>Size = <strong>518.4 MB</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Calculate script storage</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            <p>Total characters = 50,000 × 6 = 300,000 characters</p>
+                            <p>Size = 300,000 × 8 = 2,400,000 bits</p>
+                            <p>Size = 2,400,000 ÷ 8 = 300,000 bytes = <strong>0.3 MB</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">4</span>
+                        <span class="step-title">Calculate total</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            <p>Total = 7,200 + 518.4 + 0.3 = 7,718.7 MB</p>
+                            <p>In GB = 7,718.7 ÷ 1,000 = <strong>7.72 GB</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>Minimum storage needed: <strong>8 GB</strong> (rounding up to next practical size)</p>
+                    <p class="note">In practice, you'd want more space for working files and future additions - a 16 GB or 32 GB drive would be advisable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Problems -->
+        <section class="practice-section mt-xl">
+            <h2>Try These Yourself</h2>
+            <div class="practice-problems">
+                <div class="practice-problem">
+                    <h4>Problem 1</h4>
+                    <p>Calculate the file size of a 1024 × 768 image with 8-bit colour depth. Give your answer in KB.</p>
+                    <button class="btn btn-secondary show-answer" data-answer="ans1">Show Answer</button>
+                    <div class="practice-answer hidden" id="ans1">
+                        <p>786,432 pixels × 8 bits = 6,291,456 bits</p>
+                        <p>= 786,432 bytes = <strong>786.4 KB</strong></p>
+                    </div>
+                </div>
+
+                <div class="practice-problem">
+                    <h4>Problem 2</h4>
+                    <p>A 5-minute mono audio file is recorded at 22,050 Hz with 8-bit depth. What is the file size in MB?</p>
+                    <button class="btn btn-secondary show-answer" data-answer="ans2">Show Answer</button>
+                    <div class="practice-answer hidden" id="ans2">
+                        <p>22,050 × 300 × 8 = 52,920,000 bits</p>
+                        <p>= 6,615,000 bytes = <strong>6.6 MB</strong></p>
+                    </div>
+                </div>
+
+                <div class="practice-problem">
+                    <h4>Problem 3</h4>
+                    <p>Convert 2,500,000 bytes into: a) KB, b) MB, c) bits</p>
+                    <button class="btn btn-secondary show-answer" data-answer="ans3">Show Answer</button>
+                    <div class="practice-answer hidden" id="ans3">
+                        <p>a) 2,500,000 ÷ 1,000 = <strong>2,500 KB</strong></p>
+                        <p>b) 2,500 ÷ 1,000 = <strong>2.5 MB</strong></p>
+                        <p>c) 2,500,000 × 8 = <strong>20,000,000 bits</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="predict.html" class="btn btn-secondary">← Predict</a>
+            <a href="trace.html" class="btn btn-primary">Trace Calculations →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Show answer functionality
+        document.querySelectorAll('.show-answer').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const answerId = this.dataset.answer;
+                const answerDiv = document.getElementById(answerId);
+                answerDiv.classList.toggle('hidden');
+                this.textContent = answerDiv.classList.contains('hidden') ? 'Show Answer' : 'Hide Answer';
+            });
+        });
+
+        // Track progress
+        Progress.startTopic('units');
+        Progress.completeActivity('units', 'example');
+    </script>
+    <style>
+        .formula-reference {
+            background: var(--gray-100);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .formula-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        .formula-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .formula-card h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .formula-card .formula {
+            font-family: monospace;
+            font-size: 1rem;
+            background: var(--primary);
+            color: white;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin: var(--space-sm) 0;
+        }
+        .formula-card .unit-note {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+        .example-section {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        .example-badge {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .difficulty {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .difficulty.easy { background: #dcfce7; color: #166534; }
+        .difficulty.medium { background: #fef3c7; color: #92400e; }
+        .difficulty.hard { background: #fee2e2; color: #991b1b; }
+        .question-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            margin-bottom: var(--space-xl);
+        }
+        .question-box h3 {
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+        .question-box ul {
+            margin: var(--space-sm) 0 0 var(--space-lg);
+        }
+        .solution-steps h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: var(--space-sm);
+        }
+        .step {
+            margin-bottom: var(--space-lg);
+            border-left: 3px solid var(--gray-200);
+            padding-left: var(--space-lg);
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .step-title {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        .step-content {
+            padding-left: calc(32px + var(--space-md));
+        }
+        .calculation {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+        }
+        .calculation p {
+            margin: var(--space-xs) 0;
+        }
+        .formula-display {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            text-align: center;
+        }
+        .note {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            font-style: italic;
+            margin-top: var(--space-sm);
+        }
+        .final-answer {
+            background: #dcfce7;
+            border: 2px solid var(--success);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-xl);
+        }
+        .final-answer h4 {
+            color: var(--success);
+            margin-top: 0;
+        }
+        .practice-section {
+            background: var(--gray-100);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .practice-problems {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        .practice-problem {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .practice-problem h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .practice-answer {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: #dcfce7;
+            border-radius: var(--radius-md);
+        }
+        .practice-answer p {
+            margin: var(--space-xs) 0;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</body>
+</html>

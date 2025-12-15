@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Units - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="../index.html" class="back-link">← Back to Topics</a>
+            <h1>Data Units & Capacity</h1>
+            <p class="subtitle">Understanding how data is measured and calculated</p>
+        </div>
+
+        <!-- Learning Objectives -->
+        <section class="objectives-section">
+            <h2>What You'll Learn</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <span class="objective-icon">🔢</span>
+                    <h3>Binary Data</h3>
+                    <p>Why computers store everything as 0s and 1s</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">📏</span>
+                    <h3>Units of Storage</h3>
+                    <p>From bits to petabytes - measuring data</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">🔄</span>
+                    <h3>Unit Conversion</h3>
+                    <p>Converting between different data units</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">🧮</span>
+                    <h3>File Size Calculations</h3>
+                    <p>Calculate sizes for images, sound, and text</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Why Binary? -->
+        <section class="content-section mt-xl">
+            <h2>Why Computers Use Binary</h2>
+
+            <div class="concept-box">
+                <h3>Everything is Binary</h3>
+                <p>Computers can only understand two states: <strong>ON</strong> (1) or <strong>OFF</strong> (0). This is called <strong>binary</strong>.</p>
+                <p>All data - text, images, videos, music, games - must be converted to binary (0s and 1s) before a computer can process, store, or transmit it.</p>
+            </div>
+
+            <div class="info-grid mt-lg">
+                <div class="info-card">
+                    <h4>Why Binary Works</h4>
+                    <ul>
+                        <li><strong>Simple circuits</strong> - Easy to build with transistors (on/off switches)</li>
+                        <li><strong>Reliable</strong> - Only 2 states means less chance of errors</li>
+                        <li><strong>Fast switching</strong> - Transistors can switch billions of times per second</li>
+                        <li><strong>Universal</strong> - Any data can be represented as numbers</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h4>Real-World Analogy</h4>
+                    <p>Think of Morse code - it uses just dots and dashes to represent any message. Binary is similar, but uses 0s and 1s instead.</p>
+                    <div class="analogy-example">
+                        <span>Light switch: OFF = 0, ON = 1</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Units of Data Storage -->
+        <section class="content-section mt-xl">
+            <h2>Units of Data Storage</h2>
+
+            <p>Data is measured in specific units. The smallest unit is a <strong>bit</strong>, and we group bits together to make larger, more practical units.</p>
+
+            <div class="units-table-container">
+                <table class="data-table units-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Symbol</th>
+                            <th>Size</th>
+                            <th>Example Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><strong>Bit</strong></td>
+                            <td>b</td>
+                            <td>Single 0 or 1</td>
+                            <td>The smallest unit of data</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nibble</strong></td>
+                            <td>-</td>
+                            <td>4 bits</td>
+                            <td>One hexadecimal digit (0-F)</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>Byte</strong></td>
+                            <td>B</td>
+                            <td>8 bits</td>
+                            <td>One character (letter, number, symbol)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kilobyte</strong></td>
+                            <td>KB</td>
+                            <td>1,000 bytes</td>
+                            <td>A short email or text document</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Megabyte</strong></td>
+                            <td>MB</td>
+                            <td>1,000 KB</td>
+                            <td>An MP3 song (3-5 MB)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gigabyte</strong></td>
+                            <td>GB</td>
+                            <td>1,000 MB</td>
+                            <td>A movie or large game</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Terabyte</strong></td>
+                            <td>TB</td>
+                            <td>1,000 GB</td>
+                            <td>Hard drive capacity</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Petabyte</strong></td>
+                            <td>PB</td>
+                            <td>1,000 TB</td>
+                            <td>Data centres, cloud storage</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="key-point mt-lg">
+                <h4>Key Pattern</h4>
+                <p>Each unit is <strong>1,000 times larger</strong> than the previous one (using decimal/SI units).</p>
+                <p class="note">Note: Some systems use 1,024 (binary) instead of 1,000. Both are acceptable in exams.</p>
+            </div>
+
+            <!-- Visual representation -->
+            <div class="units-visual mt-lg">
+                <h3>Visualising Data Units</h3>
+                <div class="unit-ladder">
+                    <div class="ladder-step pb">
+                        <span class="step-label">PB</span>
+                        <span class="step-value">1,000,000,000,000,000 bytes</span>
+                    </div>
+                    <div class="ladder-step tb">
+                        <span class="step-label">TB</span>
+                        <span class="step-value">1,000,000,000,000 bytes</span>
+                    </div>
+                    <div class="ladder-step gb">
+                        <span class="step-label">GB</span>
+                        <span class="step-value">1,000,000,000 bytes</span>
+                    </div>
+                    <div class="ladder-step mb">
+                        <span class="step-label">MB</span>
+                        <span class="step-value">1,000,000 bytes</span>
+                    </div>
+                    <div class="ladder-step kb">
+                        <span class="step-label">KB</span>
+                        <span class="step-value">1,000 bytes</span>
+                    </div>
+                    <div class="ladder-step byte">
+                        <span class="step-label">B</span>
+                        <span class="step-value">8 bits</span>
+                    </div>
+                    <div class="ladder-step bit">
+                        <span class="step-label">bit</span>
+                        <span class="step-value">1 or 0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Converting Between Units -->
+        <section class="content-section mt-xl">
+            <h2>Converting Between Units</h2>
+
+            <div class="conversion-rules">
+                <div class="rule-card">
+                    <h4>Going UP (smaller to larger)</h4>
+                    <p class="rule-formula">Divide by 1,000</p>
+                    <div class="rule-example">
+                        <p>5,000 KB ÷ 1,000 = <strong>5 MB</strong></p>
+                        <p>2,500,000 bytes ÷ 1,000 ÷ 1,000 = <strong>2.5 MB</strong></p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <h4>Going DOWN (larger to smaller)</h4>
+                    <p class="rule-formula">Multiply by 1,000</p>
+                    <div class="rule-example">
+                        <p>3 GB × 1,000 = <strong>3,000 MB</strong></p>
+                        <p>1.5 TB × 1,000 × 1,000 = <strong>1,500,000 MB</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-converter mt-lg">
+                <h3>Try It: Unit Converter</h3>
+                <div class="converter-tool">
+                    <div class="converter-input">
+                        <input type="number" id="converter-value" value="1" min="0" step="0.01">
+                        <select id="converter-from">
+                            <option value="bit">bits</option>
+                            <option value="byte" selected>bytes</option>
+                            <option value="kb">KB</option>
+                            <option value="mb">MB</option>
+                            <option value="gb">GB</option>
+                            <option value="tb">TB</option>
+                        </select>
+                    </div>
+                    <span class="converter-equals">=</span>
+                    <div class="converter-output">
+                        <span id="converter-result">1</span>
+                        <select id="converter-to">
+                            <option value="bit">bits</option>
+                            <option value="byte">bytes</option>
+                            <option value="kb" selected>KB</option>
+                            <option value="mb">MB</option>
+                            <option value="gb">GB</option>
+                            <option value="tb">TB</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: File Size Calculations -->
+        <section class="content-section mt-xl">
+            <h2>Calculating File Sizes</h2>
+
+            <p>You need to know how to calculate the file size for different types of data. Each type has its own formula.</p>
+
+            <!-- Image File Size -->
+            <div class="formula-section">
+                <h3>Image File Size</h3>
+                <div class="formula-box">
+                    <div class="formula">
+                        <span class="formula-text">Image Size (bits)</span>
+                        <span class="formula-equals">=</span>
+                        <span class="formula-text">Width (px) × Height (px) × Colour Depth (bits)</span>
+                    </div>
+                </div>
+
+                <div class="formula-explanation">
+                    <div class="term">
+                        <strong>Width × Height</strong> = Total number of pixels in the image
+                    </div>
+                    <div class="term">
+                        <strong>Colour Depth</strong> = Number of bits used to represent each pixel's colour
+                        <ul>
+                            <li>1 bit = 2 colours (black & white)</li>
+                            <li>8 bits = 256 colours</li>
+                            <li>24 bits = 16.7 million colours (true colour)</li>
+                            <li>32 bits = 16.7 million colours + transparency</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="worked-example">
+                    <h4>Example: Calculate the file size of an image</h4>
+                    <p>An image is 1920 × 1080 pixels with 24-bit colour depth.</p>
+                    <div class="calculation-steps">
+                        <div class="step">
+                            <span class="step-num">1</span>
+                            <span>Total pixels = 1920 × 1080 = <strong>2,073,600 pixels</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">2</span>
+                            <span>Size in bits = 2,073,600 × 24 = <strong>49,766,400 bits</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">3</span>
+                            <span>Size in bytes = 49,766,400 ÷ 8 = <strong>6,220,800 bytes</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">4</span>
+                            <span>Size in MB = 6,220,800 ÷ 1,000,000 = <strong>6.22 MB</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sound File Size -->
+            <div class="formula-section mt-xl">
+                <h3>Sound File Size</h3>
+                <div class="formula-box">
+                    <div class="formula">
+                        <span class="formula-text">Sound Size (bits)</span>
+                        <span class="formula-equals">=</span>
+                        <span class="formula-text">Sample Rate (Hz) × Duration (s) × Bit Depth</span>
+                    </div>
+                </div>
+
+                <div class="formula-explanation">
+                    <div class="term">
+                        <strong>Sample Rate</strong> = How many samples taken per second (Hz)
+                        <ul>
+                            <li>8,000 Hz = Phone quality</li>
+                            <li>44,100 Hz = CD quality</li>
+                            <li>48,000 Hz = DVD/professional quality</li>
+                        </ul>
+                    </div>
+                    <div class="term">
+                        <strong>Duration</strong> = Length of the audio in seconds
+                    </div>
+                    <div class="term">
+                        <strong>Bit Depth</strong> = Bits per sample (quality of each sample)
+                        <ul>
+                            <li>8-bit = Basic quality</li>
+                            <li>16-bit = CD quality</li>
+                            <li>24-bit = Professional quality</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <strong>Note:</strong> For stereo audio, multiply by 2 (two channels).
+                </div>
+
+                <div class="worked-example">
+                    <h4>Example: Calculate the file size of an audio clip</h4>
+                    <p>A 3-minute stereo audio clip at CD quality (44,100 Hz, 16-bit).</p>
+                    <div class="calculation-steps">
+                        <div class="step">
+                            <span class="step-num">1</span>
+                            <span>Duration in seconds = 3 × 60 = <strong>180 seconds</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">2</span>
+                            <span>Size in bits = 44,100 × 180 × 16 = <strong>127,008,000 bits</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">3</span>
+                            <span>For stereo = 127,008,000 × 2 = <strong>254,016,000 bits</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">4</span>
+                            <span>Size in bytes = 254,016,000 ÷ 8 = <strong>31,752,000 bytes</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">5</span>
+                            <span>Size in MB = 31,752,000 ÷ 1,000,000 = <strong>31.75 MB</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text File Size -->
+            <div class="formula-section mt-xl">
+                <h3>Text File Size</h3>
+                <div class="formula-box">
+                    <div class="formula">
+                        <span class="formula-text">Text Size (bits)</span>
+                        <span class="formula-equals">=</span>
+                        <span class="formula-text">Number of Characters × Bits per Character</span>
+                    </div>
+                </div>
+
+                <div class="formula-explanation">
+                    <div class="term">
+                        <strong>Number of Characters</strong> = Total characters including spaces and punctuation
+                    </div>
+                    <div class="term">
+                        <strong>Bits per Character</strong> = Depends on encoding:
+                        <ul>
+                            <li>ASCII = 7 or 8 bits (128 or 256 characters)</li>
+                            <li>Unicode (UTF-8) = 8-32 bits (supports all languages)</li>
+                            <li>Common assumption: 8 bits (1 byte) per character</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="worked-example">
+                    <h4>Example: Calculate the file size of a text document</h4>
+                    <p>A document contains 5,000 characters using ASCII encoding (8 bits per character).</p>
+                    <div class="calculation-steps">
+                        <div class="step">
+                            <span class="step-num">1</span>
+                            <span>Size in bits = 5,000 × 8 = <strong>40,000 bits</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">2</span>
+                            <span>Size in bytes = 40,000 ÷ 8 = <strong>5,000 bytes</strong></span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">3</span>
+                            <span>Size in KB = 5,000 ÷ 1,000 = <strong>5 KB</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Storage Capacity Planning -->
+        <section class="content-section mt-xl">
+            <h2>Calculating Storage Requirements</h2>
+
+            <p>When planning storage, you need to calculate the total capacity required for all your files.</p>
+
+            <div class="worked-example">
+                <h4>Example: Planning a photo storage device</h4>
+                <p>A photographer needs to store 500 photos. Each photo is 4000 × 3000 pixels with 24-bit colour.</p>
+                <div class="calculation-steps">
+                    <div class="step">
+                        <span class="step-num">1</span>
+                        <span>Size per image = 4000 × 3000 × 24 = 288,000,000 bits</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">2</span>
+                        <span>In bytes = 288,000,000 ÷ 8 = 36,000,000 bytes = <strong>36 MB per photo</strong></span>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">3</span>
+                        <span>Total for 500 photos = 36 × 500 = <strong>18,000 MB = 18 GB</strong></span>
+                    </div>
+                    <div class="step final">
+                        <span class="step-num">✓</span>
+                        <span>Recommendation: 32 GB SD card (allows room for more)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box mt-lg">
+                <h4>Exam Tips</h4>
+                <ul>
+                    <li>Always show your working - you get marks for method even if the final answer is wrong</li>
+                    <li>Convert to the unit asked for in the question</li>
+                    <li>Remember: 8 bits = 1 byte (divide by 8 to go from bits to bytes)</li>
+                    <li>Use 1,000 for conversions (or 1,024 if specified)</li>
+                    <li>Don't forget stereo = ×2 for audio files</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Quick Reference Card -->
+        <section class="reference-card mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="reference-grid">
+                <div class="ref-item">
+                    <h4>Unit Conversions</h4>
+                    <ul>
+                        <li>8 bits = 1 byte</li>
+                        <li>1,000 bytes = 1 KB</li>
+                        <li>1,000 KB = 1 MB</li>
+                        <li>1,000 MB = 1 GB</li>
+                        <li>1,000 GB = 1 TB</li>
+                        <li>1,000 TB = 1 PB</li>
+                    </ul>
+                </div>
+                <div class="ref-item">
+                    <h4>File Size Formulas</h4>
+                    <ul>
+                        <li><strong>Image:</strong> W × H × colour depth</li>
+                        <li><strong>Sound:</strong> sample rate × duration × bit depth</li>
+                        <li><strong>Text:</strong> characters × bits per char</li>
+                    </ul>
+                </div>
+                <div class="ref-item">
+                    <h4>Common Values</h4>
+                    <ul>
+                        <li>CD audio: 44,100 Hz, 16-bit</li>
+                        <li>True colour: 24-bit depth</li>
+                        <li>ASCII text: 8 bits/char</li>
+                        <li>HD image: 1920 × 1080</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Navigation -->
+        <section class="activities-nav mt-xl">
+            <h2>Practice Activities</h2>
+            <div class="activity-grid">
+                <a href="predict.html" class="activity-card">
+                    <span class="activity-icon">🔮</span>
+                    <h3>Predict</h3>
+                    <p>Estimate file sizes before calculating</p>
+                </a>
+                <a href="example.html" class="activity-card">
+                    <span class="activity-icon">📖</span>
+                    <h3>Worked Examples</h3>
+                    <p>Step-by-step calculation walkthroughs</p>
+                </a>
+                <a href="trace.html" class="activity-card">
+                    <span class="activity-icon">🔍</span>
+                    <h3>Trace</h3>
+                    <p>Follow and verify calculations</p>
+                </a>
+                <a href="parsons.html" class="activity-card">
+                    <span class="activity-icon">🧩</span>
+                    <h3>Parsons Problems</h3>
+                    <p>Order units and calculation steps</p>
+                </a>
+                <a href="quiz.html" class="activity-card">
+                    <span class="activity-icon">📝</span>
+                    <h3>Quiz</h3>
+                    <p>Test your knowledge</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Unit converter functionality
+        const unitMultipliers = {
+            'bit': 1,
+            'byte': 8,
+            'kb': 8000,
+            'mb': 8000000,
+            'gb': 8000000000,
+            'tb': 8000000000000
+        };
+
+        function updateConverter() {
+            const value = parseFloat(document.getElementById('converter-value').value) || 0;
+            const fromUnit = document.getElementById('converter-from').value;
+            const toUnit = document.getElementById('converter-to').value;
+
+            // Convert to bits first, then to target unit
+            const bits = value * unitMultipliers[fromUnit];
+            const result = bits / unitMultipliers[toUnit];
+
+            // Format result
+            let displayResult;
+            if (result >= 1000000) {
+                displayResult = result.toExponential(2);
+            } else if (result < 0.01 && result > 0) {
+                displayResult = result.toExponential(2);
+            } else {
+                displayResult = parseFloat(result.toFixed(4)).toString();
+            }
+
+            document.getElementById('converter-result').textContent = displayResult;
+        }
+
+        document.getElementById('converter-value').addEventListener('input', updateConverter);
+        document.getElementById('converter-from').addEventListener('change', updateConverter);
+        document.getElementById('converter-to').addEventListener('change', updateConverter);
+
+        // Initial conversion
+        updateConverter();
+
+        // Track progress
+        Progress.startTopic('units');
+    </script>
+    <style>
+        .units-table-container {
+            overflow-x: auto;
+        }
+        .units-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .units-table th, .units-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .units-table th {
+            background: var(--primary);
+            color: white;
+        }
+        .units-table .highlight-row {
+            background: #e0f2fe;
+        }
+        .unit-ladder {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .ladder-step {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        .ladder-step.bit { background: #fee2e2; }
+        .ladder-step.byte { background: #fef3c7; }
+        .ladder-step.kb { background: #d1fae5; }
+        .ladder-step.mb { background: #dbeafe; }
+        .ladder-step.gb { background: #e0e7ff; }
+        .ladder-step.tb { background: #ede9fe; }
+        .ladder-step.pb { background: #fce7f3; }
+        .step-label {
+            font-weight: bold;
+            min-width: 40px;
+        }
+        .step-value {
+            color: var(--gray-600);
+        }
+        .conversion-rules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        .rule-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        .rule-formula {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: var(--space-md) 0;
+        }
+        .rule-example {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: left;
+        }
+        .rule-example p {
+            margin: var(--space-xs) 0;
+        }
+        .interactive-converter {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .converter-tool {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        .converter-input, .converter-output {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .converter-input input {
+            width: 120px;
+            padding: var(--space-sm);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+        }
+        .converter-input select, .converter-output select {
+            padding: var(--space-sm);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+        }
+        .converter-equals {
+            font-size: 1.5rem;
+            color: var(--gray-500);
+        }
+        #converter-result {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 100px;
+        }
+        .formula-section {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin: var(--space-md) 0;
+        }
+        .formula {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            color: white;
+            font-size: 1.1rem;
+        }
+        .formula-equals {
+            font-size: 1.5rem;
+            margin: 0 var(--space-sm);
+        }
+        .formula-explanation {
+            margin-top: var(--space-lg);
+        }
+        .term {
+            margin-bottom: var(--space-md);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .term ul {
+            margin: var(--space-sm) 0 0 var(--space-lg);
+            color: var(--gray-600);
+        }
+        .worked-example {
+            background: #f0fdf4;
+            border: 2px solid var(--success);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-lg);
+        }
+        .worked-example h4 {
+            color: var(--success);
+            margin-top: 0;
+        }
+        .calculation-steps {
+            margin-top: var(--space-md);
+        }
+        .calculation-steps .step {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-sm) 0;
+            border-bottom: 1px dashed var(--gray-300);
+        }
+        .calculation-steps .step.final {
+            border-bottom: none;
+            background: #dcfce7;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-sm);
+        }
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .note-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .tip-box {
+            background: #e0f2fe;
+            border: 2px solid var(--primary);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+        }
+        .tip-box h4 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        .tip-box ul {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+        .tip-box li {
+            margin-bottom: var(--space-sm);
+        }
+        .reference-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--gray-300);
+        }
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+        .ref-item {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .ref-item h4 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: var(--space-sm);
+        }
+        .ref-item ul {
+            margin: 0;
+            padding-left: var(--space-md);
+        }
+        .ref-item li {
+            margin-bottom: var(--space-xs);
+        }
+        .analogy-example {
+            background: var(--gray-100);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-sm);
+            font-family: monospace;
+        }
+    </style>
+</body>
+</html>

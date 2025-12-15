@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons: Data Units - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Units</a>
+            <h1>Parsons: Data Units</h1>
+            <p class="subtitle">Order units and arrange calculation steps</p>
+        </div>
+
+        <!-- Exercise 1: Order Units by Size -->
+        <section class="activity-section">
+            <h2>Exercise 1: Order Units from Smallest to Largest</h2>
+            <p>Drag the units to arrange them in order from smallest to largest.</p>
+
+            <div class="order-exercise" data-exercise="unit-order">
+                <div class="sortable-list" id="unit-sort">
+                    <div class="sortable-item" draggable="true" data-order="5">Megabyte (MB)</div>
+                    <div class="sortable-item" draggable="true" data-order="2">Nibble</div>
+                    <div class="sortable-item" draggable="true" data-order="7">Terabyte (TB)</div>
+                    <div class="sortable-item" draggable="true" data-order="3">Byte</div>
+                    <div class="sortable-item" draggable="true" data-order="1">Bit</div>
+                    <div class="sortable-item" draggable="true" data-order="6">Gigabyte (GB)</div>
+                    <div class="sortable-item" draggable="true" data-order="4">Kilobyte (KB)</div>
+                    <div class="sortable-item" draggable="true" data-order="8">Petabyte (PB)</div>
+                </div>
+
+                <div class="order-labels">
+                    <span class="label-start">Smallest</span>
+                    <span class="label-end">Largest</span>
+                </div>
+
+                <button class="btn btn-primary check-order">Check Order</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Order Image Calculation Steps -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 2: Order the Image Calculation Steps</h2>
+            <p>Arrange the steps in the correct order to calculate image file size.</p>
+
+            <div class="scenario-reminder">
+                <strong>Task:</strong> Calculate file size of a 1024 × 768 image with 24-bit colour, answer in MB.
+            </div>
+
+            <div class="order-exercise" data-exercise="image-steps">
+                <div class="sortable-list">
+                    <div class="sortable-item" draggable="true" data-order="2">Multiply total pixels by colour depth (24 bits)</div>
+                    <div class="sortable-item" draggable="true" data-order="4">Divide by 1,000,000 to get MB</div>
+                    <div class="sortable-item" draggable="true" data-order="3">Divide by 8 to convert bits to bytes</div>
+                    <div class="sortable-item" draggable="true" data-order="1">Calculate total pixels (1024 × 768)</div>
+                </div>
+
+                <div class="order-labels">
+                    <span class="label-start">First</span>
+                    <span class="label-end">Last</span>
+                </div>
+
+                <button class="btn btn-primary check-order">Check Order</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 3: Order Audio Calculation Steps -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 3: Order the Audio Calculation Steps</h2>
+            <p>Arrange the steps in the correct order to calculate audio file size.</p>
+
+            <div class="scenario-reminder">
+                <strong>Task:</strong> Calculate file size of 3-minute stereo audio at 44,100 Hz, 16-bit, answer in MB.
+            </div>
+
+            <div class="order-exercise" data-exercise="audio-steps">
+                <div class="sortable-list">
+                    <div class="sortable-item" draggable="true" data-order="3">Multiply by bit depth (16)</div>
+                    <div class="sortable-item" draggable="true" data-order="5">Divide by 8 to get bytes</div>
+                    <div class="sortable-item" draggable="true" data-order="1">Convert duration to seconds (3 × 60 = 180)</div>
+                    <div class="sortable-item" draggable="true" data-order="4">Multiply by 2 for stereo</div>
+                    <div class="sortable-item" draggable="true" data-order="2">Multiply sample rate by duration (44,100 × 180)</div>
+                    <div class="sortable-item" draggable="true" data-order="6">Divide by 1,000,000 for MB</div>
+                </div>
+
+                <div class="order-labels">
+                    <span class="label-start">First</span>
+                    <span class="label-end">Last</span>
+                </div>
+
+                <button class="btn btn-primary check-order">Check Order</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 4: Match Values to Units -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 4: Match Capacity to Real-World Examples</h2>
+            <p>Drag each storage capacity to match the most appropriate example.</p>
+
+            <div class="categorize-exercise" data-exercise="capacity-match">
+                <div class="drag-items">
+                    <div class="drag-item" draggable="true" data-category="pb">1 PB</div>
+                    <div class="drag-item" draggable="true" data-category="tb">1 TB</div>
+                    <div class="drag-item" draggable="true" data-category="gb">4 GB</div>
+                    <div class="drag-item" draggable="true" data-category="mb">5 MB</div>
+                    <div class="drag-item" draggable="true" data-category="kb">10 KB</div>
+                    <div class="drag-item" draggable="true" data-category="byte">1 byte</div>
+                </div>
+
+                <div class="drop-categories">
+                    <div class="drop-zone" data-category="byte">
+                        <h4>Single character (ASCII)</h4>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="kb">
+                        <h4>Short text document</h4>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="mb">
+                        <h4>MP3 music file</h4>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="gb">
+                        <h4>HD movie file</h4>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="tb">
+                        <h4>External hard drive</h4>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="pb">
+                        <h4>Data centre storage</h4>
+                        <div class="drop-area"></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary check-categorize">Check Matches</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 5: Order Conversion Steps -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 5: Order the Conversion Steps</h2>
+            <p>Arrange the steps to convert 2 GB to bits.</p>
+
+            <div class="order-exercise" data-exercise="convert-steps">
+                <div class="sortable-list">
+                    <div class="sortable-item" draggable="true" data-order="4">Multiply bytes by 8 to get bits</div>
+                    <div class="sortable-item" draggable="true" data-order="2">Multiply MB by 1,000 to get KB</div>
+                    <div class="sortable-item" draggable="true" data-order="1">Multiply GB by 1,000 to get MB</div>
+                    <div class="sortable-item" draggable="true" data-order="3">Multiply KB by 1,000 to get bytes</div>
+                </div>
+
+                <div class="order-labels">
+                    <span class="label-start">First</span>
+                    <span class="label-end">Last</span>
+                </div>
+
+                <button class="btn btn-primary check-order">Check Order</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 6: Categorize File Types by Typical Size -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 6: Categorize by Typical File Size</h2>
+            <p>Drag each file type to its typical size category.</p>
+
+            <div class="categorize-exercise" data-exercise="filetype-size">
+                <div class="drag-items">
+                    <div class="drag-item" draggable="true" data-category="small">Plain text email</div>
+                    <div class="drag-item" draggable="true" data-category="medium">Digital photo (JPEG)</div>
+                    <div class="drag-item" draggable="true" data-category="large">HD Video (1 hour)</div>
+                    <div class="drag-item" draggable="true" data-category="small">Word document (text only)</div>
+                    <div class="drag-item" draggable="true" data-category="medium">MP3 song (4 minutes)</div>
+                    <div class="drag-item" draggable="true" data-category="large">Modern video game</div>
+                    <div class="drag-item" draggable="true" data-category="medium">PowerPoint presentation</div>
+                    <div class="drag-item" draggable="true" data-category="small">Python code file</div>
+                </div>
+
+                <div class="drop-categories wide">
+                    <div class="drop-zone" data-category="small">
+                        <h4>Small (KB range)</h4>
+                        <p class="hint">Text files, code, emails</p>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="medium">
+                        <h4>Medium (MB range)</h4>
+                        <p class="hint">Images, music, documents with graphics</p>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="large">
+                        <h4>Large (GB range)</h4>
+                        <p class="hint">Videos, games, databases</p>
+                        <div class="drop-area"></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary check-categorize">Check Categories</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="trace.html" class="btn btn-secondary">← Trace Exercises</a>
+            <a href="quiz.html" class="btn btn-primary">Quiz →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Order exercise functionality
+        document.querySelectorAll('.order-exercise').forEach(exercise => {
+            const exerciseId = exercise.dataset.exercise;
+            const list = exercise.querySelector('.sortable-list');
+            const items = list.querySelectorAll('.sortable-item');
+            let draggedItem = null;
+
+            items.forEach(item => {
+                item.addEventListener('dragstart', (e) => {
+                    draggedItem = item;
+                    item.classList.add('dragging');
+                });
+
+                item.addEventListener('dragend', () => {
+                    item.classList.remove('dragging');
+                    draggedItem = null;
+                });
+
+                item.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    if (draggedItem && draggedItem !== item) {
+                        const rect = item.getBoundingClientRect();
+                        const midY = rect.top + rect.height / 2;
+                        if (e.clientY < midY) {
+                            list.insertBefore(draggedItem, item);
+                        } else {
+                            list.insertBefore(draggedItem, item.nextSibling);
+                        }
+                    }
+                });
+            });
+
+            // Check button
+            const checkBtn = exercise.querySelector('.check-order');
+            checkBtn.addEventListener('click', () => {
+                const currentItems = list.querySelectorAll('.sortable-item');
+                let correct = true;
+
+                currentItems.forEach((item, index) => {
+                    const expectedOrder = index + 1;
+                    const actualOrder = parseInt(item.dataset.order);
+                    if (expectedOrder === actualOrder) {
+                        item.classList.add('correct');
+                        item.classList.remove('incorrect');
+                    } else {
+                        item.classList.add('incorrect');
+                        item.classList.remove('correct');
+                        correct = false;
+                    }
+                });
+
+                const feedback = exercise.querySelector('.feedback');
+                if (correct) {
+                    feedback.innerHTML = '<span class="success">Perfect! All items in correct order!</span>';
+                    feedback.className = 'feedback success';
+                    Progress.completeActivity('units', `parsons-${exerciseId}`);
+                } else {
+                    feedback.innerHTML = '<span class="error">Not quite right. Green items are correct, red need moving.</span>';
+                    feedback.className = 'feedback error';
+                }
+            });
+        });
+
+        // Categorize exercise functionality
+        document.querySelectorAll('.categorize-exercise').forEach(exercise => {
+            const exerciseId = exercise.dataset.exercise;
+            const items = exercise.querySelectorAll('.drag-item');
+            const dropZones = exercise.querySelectorAll('.drop-zone');
+
+            items.forEach(item => {
+                item.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', item.dataset.category);
+                    item.classList.add('dragging');
+                });
+
+                item.addEventListener('dragend', () => {
+                    item.classList.remove('dragging');
+                });
+            });
+
+            dropZones.forEach(zone => {
+                const dropArea = zone.querySelector('.drop-area');
+
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('drag-over');
+                });
+
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('drag-over');
+                });
+
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    const draggingItem = document.querySelector('.dragging');
+                    if (draggingItem) {
+                        dropArea.appendChild(draggingItem);
+                    }
+                });
+            });
+
+            // Check button
+            const checkBtn = exercise.querySelector('.check-categorize');
+            checkBtn.addEventListener('click', () => {
+                let correct = 0;
+                let total = items.length;
+
+                items.forEach(item => {
+                    const parent = item.closest('.drop-zone');
+                    if (parent && parent.dataset.category === item.dataset.category) {
+                        item.classList.add('correct');
+                        item.classList.remove('incorrect');
+                        correct++;
+                    } else if (parent) {
+                        item.classList.add('incorrect');
+                        item.classList.remove('correct');
+                    }
+                });
+
+                const feedback = exercise.querySelector('.feedback');
+                if (correct === total) {
+                    feedback.innerHTML = `<span class="success">Perfect! All ${total} items correctly matched!</span>`;
+                    feedback.className = 'feedback success';
+                    Progress.completeActivity('units', `parsons-${exerciseId}`);
+                } else {
+                    feedback.innerHTML = `<span class="partial">${correct}/${total} correct. Keep trying!</span>`;
+                    feedback.className = 'feedback partial';
+                }
+            });
+        });
+
+        // Track page visit
+        Progress.startTopic('units');
+    </script>
+    <style>
+        .scenario-reminder {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+        .sortable-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            padding: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            min-height: 100px;
+        }
+        .sortable-item {
+            padding: var(--space-md);
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .sortable-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .sortable-item.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .sortable-item.correct {
+            background: #dcfce7;
+            border-color: var(--success);
+        }
+        .sortable-item.incorrect {
+            background: #fef2f2;
+            border-color: var(--error);
+        }
+        .order-labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 var(--space-lg);
+            margin-bottom: var(--space-lg);
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .label-start::before { content: "↑ "; }
+        .label-end::before { content: "↓ "; }
+        .drag-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            padding: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            min-height: 60px;
+        }
+        .drag-item {
+            padding: var(--space-sm) var(--space-md);
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-sm);
+            cursor: grab;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .drag-item:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        .drag-item.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .drag-item.correct {
+            background: #dcfce7;
+            border-color: var(--success);
+        }
+        .drag-item.incorrect {
+            background: #fef2f2;
+            border-color: var(--error);
+        }
+        .drop-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        .drop-categories.wide {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .drop-zone {
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            min-height: 120px;
+            transition: all 0.2s ease;
+        }
+        .drop-zone h4 {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+        .drop-zone .hint {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin: 0 0 var(--space-sm) 0;
+        }
+        .drop-zone.drag-over {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .drop-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            min-height: 40px;
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+        }
+        .feedback.success {
+            background: #dcfce7;
+            color: var(--success);
+        }
+        .feedback.error {
+            background: #fef2f2;
+            color: var(--error);
+        }
+        .feedback.partial {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        @media (max-width: 768px) {
+            .drop-categories.wide {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

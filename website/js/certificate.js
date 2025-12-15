@@ -27,7 +27,8 @@ const CertificateSystem = {
         'sql': 'SQL & Databases',
         'cpu': 'CPU & Fetch-Execute Cycle',
         'memory': 'Memory & Storage',
-        'storage': 'Secondary Storage'
+        'storage': 'Secondary Storage',
+        'units': 'Data Units & Capacity'
     },
 
     /**
