@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory and Storage - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Memory and Storage</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">💾</span> Memory and Storage</h1>
+            <p>Understand how computers store data - from lightning-fast RAM to permanent storage.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>Why computers need primary storage (memory)</li>
+                    <li>The difference between RAM and ROM</li>
+                    <li>The purpose of RAM and ROM in a computer system</li>
+                    <li>What virtual memory is and why it's needed</li>
+                    <li>How cache memory speeds up your computer</li>
+                    <li>How data transfers between RAM and secondary storage</li>
+                </ul>
+            </div>
+
+            <div class="spec-reference">
+                <h4>Specification Reference: 1.2.1 Primary Storage (Memory)</h4>
+                <p>This topic covers the GCSE Computer Science specification requirements for understanding computer memory systems.</p>
+            </div>
+        </header>
+
+        <section class="key-concepts mt-xl">
+            <h2>Key Concepts Overview</h2>
+
+            <div class="concept-cards">
+                <div class="concept-card">
+                    <div class="concept-icon">🧠</div>
+                    <h3>Primary Storage</h3>
+                    <p>Memory that the CPU can access directly. Includes RAM and ROM. Fast but limited in size.</p>
+                    <div class="concept-detail">
+                        <strong>Why needed:</strong> The CPU needs somewhere to store data and instructions it's currently working with. Secondary storage (like hard drives) is too slow for this.
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">⚡</div>
+                    <h3>RAM (Random Access Memory)</h3>
+                    <p>Volatile memory that stores data and programs currently in use.</p>
+                    <div class="concept-detail">
+                        <ul>
+                            <li><strong>Volatile:</strong> Loses contents when power is off</li>
+                            <li><strong>Read/Write:</strong> Can be changed</li>
+                            <li><strong>Fast:</strong> Quick access times</li>
+                            <li><strong>Stores:</strong> Running programs, open files, OS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">🔒</div>
+                    <h3>ROM (Read Only Memory)</h3>
+                    <p>Non-volatile memory that stores permanent instructions.</p>
+                    <div class="concept-detail">
+                        <ul>
+                            <li><strong>Non-volatile:</strong> Keeps contents when power is off</li>
+                            <li><strong>Read Only:</strong> Cannot be changed (easily)</li>
+                            <li><strong>Permanent:</strong> Set during manufacturing</li>
+                            <li><strong>Stores:</strong> BIOS/boot instructions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">🔄</div>
+                    <h3>Virtual Memory</h3>
+                    <p>Uses secondary storage as an extension of RAM when RAM is full.</p>
+                    <div class="concept-detail">
+                        <strong>How it works:</strong>
+                        <ol>
+                            <li>RAM becomes full</li>
+                            <li>Least-used data moved to hard drive (page file)</li>
+                            <li>When needed again, swapped back to RAM</li>
+                            <li>Called "paging" or "swapping"</li>
+                        </ol>
+                        <p class="warning">Slower than RAM - causes "disk thrashing" if overused!</p>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">🚀</div>
+                    <h3>Cache Memory</h3>
+                    <p>Small, ultra-fast memory between CPU and RAM.</p>
+                    <div class="concept-detail">
+                        <ul>
+                            <li><strong>Purpose:</strong> Stores frequently used data</li>
+                            <li><strong>Speed:</strong> Faster than RAM</li>
+                            <li><strong>Size:</strong> Very small (MB not GB)</li>
+                            <li><strong>Levels:</strong> L1 (fastest), L2, L3</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="memory-comparison mt-xl">
+            <h2>Memory Hierarchy</h2>
+            <p>Computer memory is organised in a hierarchy - faster memory is smaller and more expensive:</p>
+
+            <div class="hierarchy-diagram">
+                <div class="hierarchy-level level-1">
+                    <span class="level-name">CPU Registers</span>
+                    <span class="level-info">Fastest | Smallest | Built into CPU</span>
+                </div>
+                <div class="hierarchy-level level-2">
+                    <span class="level-name">Cache (L1, L2, L3)</span>
+                    <span class="level-info">Very Fast | Small (MB) | Stores frequent data</span>
+                </div>
+                <div class="hierarchy-level level-3">
+                    <span class="level-name">RAM</span>
+                    <span class="level-info">Fast | Medium (GB) | Current programs</span>
+                </div>
+                <div class="hierarchy-level level-4">
+                    <span class="level-name">Virtual Memory</span>
+                    <span class="level-info">Slow | Large | Overflow from RAM</span>
+                </div>
+                <div class="hierarchy-level level-5">
+                    <span class="level-name">Secondary Storage (SSD/HDD)</span>
+                    <span class="level-info">Slowest | Largest | Permanent storage</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="ram-vs-rom mt-xl">
+            <h2>RAM vs ROM Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>RAM</th>
+                        <th>ROM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Volatility</td>
+                        <td>Volatile (loses data when power off)</td>
+                        <td>Non-volatile (keeps data)</td>
+                    </tr>
+                    <tr>
+                        <td>Read/Write</td>
+                        <td>Can read and write</td>
+                        <td>Read only (cannot change easily)</td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td>Fast</td>
+                        <td>Slower than RAM</td>
+                    </tr>
+                    <tr>
+                        <td>Size</td>
+                        <td>Larger (4-64+ GB typical)</td>
+                        <td>Smaller (few MB)</td>
+                    </tr>
+                    <tr>
+                        <td>Purpose</td>
+                        <td>Store running programs & data</td>
+                        <td>Store boot instructions (BIOS)</td>
+                    </tr>
+                    <tr>
+                        <td>Contents</td>
+                        <td>Changes constantly</td>
+                        <td>Permanent/rarely changes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="learning-path mt-xl">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order to master memory concepts.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="memory-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: Memory Scenarios</h4>
+                        <p>Predict what happens in different memory situations.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="memory-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: How Memory Works</h4>
+                        <p>Step through how RAM, ROM, cache and virtual memory work together.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="memory-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Memory Operations</h4>
+                        <p>Follow data as it moves through the memory hierarchy.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="memory-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Concepts</h4>
+                        <p>Put memory concepts and processes in the correct order.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="memory-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of memory and storage concepts.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>Primary Storage</h4>
+                    <p>Memory directly accessible by the CPU (RAM and ROM).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Secondary Storage</h4>
+                    <p>Permanent storage like hard drives and SSDs.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Volatile</h4>
+                    <p>Memory that loses its contents when power is switched off.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Non-volatile</h4>
+                    <p>Memory that retains its contents without power.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>BIOS</h4>
+                    <p>Basic Input/Output System - stored in ROM, runs when computer starts.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Page File</h4>
+                    <p>Area on hard drive used for virtual memory.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Disk Thrashing</h4>
+                    <p>Excessive swapping between RAM and virtual memory, slowing the system.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Cache Hit/Miss</h4>
+                    <p>When requested data is (hit) or isn't (miss) found in cache.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="exam-tips mt-xl">
+            <h2>Exam Tips</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <h4>Common Exam Questions</h4>
+                    <ul>
+                        <li>"Explain why a computer needs both RAM and ROM" (4 marks)</li>
+                        <li>"Describe how virtual memory works" (3 marks)</li>
+                        <li>"Explain the purpose of cache memory" (2 marks)</li>
+                        <li>"Compare RAM and ROM" (4 marks)</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>Key Points to Remember</h4>
+                    <ul>
+                        <li>RAM = temporary, changeable, volatile</li>
+                        <li>ROM = permanent, fixed, non-volatile, stores BIOS</li>
+                        <li>Virtual memory = overflow for RAM, uses hard drive</li>
+                        <li>Cache = speeds up CPU access to frequently used data</li>
+                        <li>More RAM = less need for virtual memory = faster computer</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .spec-reference {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: var(--space-md);
+            margin-top: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .spec-reference h4 {
+            color: #0369a1;
+            margin-bottom: var(--space-xs);
+        }
+        .spec-reference p {
+            margin: 0;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+        .concept-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .concept-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--theory, #10b981);
+        }
+        .concept-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        .concept-card h3 {
+            color: var(--gray-800);
+            margin-bottom: var(--space-sm);
+        }
+        .concept-detail {
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--gray-200);
+            font-size: 0.9rem;
+        }
+        .concept-detail ul, .concept-detail ol {
+            padding-left: var(--space-md);
+            margin: var(--space-sm) 0;
+        }
+        .concept-detail li {
+            margin-bottom: var(--space-xs);
+        }
+        .warning {
+            color: #dc2626;
+            font-weight: 500;
+            margin-top: var(--space-sm);
+        }
+        .hierarchy-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            margin-top: var(--space-md);
+        }
+        .hierarchy-level {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            color: white;
+            font-weight: 500;
+        }
+        .level-1 { background: #dc2626; }
+        .level-2 { background: #ea580c; }
+        .level-3 { background: #ca8a04; }
+        .level-4 { background: #16a34a; }
+        .level-5 { background: #2563eb; }
+        .level-info {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--space-md);
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .comparison-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+        .comparison-table th:nth-child(2) { color: #2563eb; }
+        .comparison-table th:nth-child(3) { color: #dc2626; }
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        .tip-card {
+            background: #fef3c7;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid #f59e0b;
+        }
+        .tip-card h4 {
+            color: #92400e;
+            margin-bottom: var(--space-md);
+        }
+        .tip-card ul {
+            padding-left: var(--space-md);
+            margin: 0;
+        }
+        .tip-card li {
+            margin-bottom: var(--space-sm);
+            color: var(--gray-700);
+        }
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--theory, #10b981);
+        }
+        .vocab-card h4 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+    </style>
+</body>
+</html>

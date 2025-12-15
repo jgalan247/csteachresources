@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: Memory Operations - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Memory and Storage</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="activity-header">
+            <span class="activity-icon">📊</span>
+            <div class="activity-title">
+                <h1>Trace: Memory Operations</h1>
+                <p>Follow data as it moves through the memory hierarchy step by step.</p>
+            </div>
+        </header>
+
+        <div class="activity-instructions">
+            <h3>How to use this activity:</h3>
+            <ol>
+                <li>Read the scenario and starting state</li>
+                <li>Click "Next Step" to advance through each operation</li>
+                <li>Watch how data moves between different memory types</li>
+                <li>Pay attention to what happens at each stage</li>
+            </ol>
+        </div>
+
+        <!-- Trace 1: Boot Sequence -->
+        <section class="trace-exercise">
+            <h2>Trace 1: Computer Boot Sequence</h2>
+            <p>Trace how a computer starts up and loads the operating system.</p>
+
+            <div class="trace-container" id="trace-boot">
+                <div class="memory-state">
+                    <div class="memory-column">
+                        <h4>ROM</h4>
+                        <div class="memory-cells" id="boot-rom">
+                            <div class="cell filled">BIOS Code</div>
+                            <div class="cell filled">POST Instructions</div>
+                            <div class="cell filled">Boot Loader</div>
+                        </div>
+                    </div>
+                    <div class="memory-column">
+                        <h4>RAM (8GB)</h4>
+                        <div class="memory-cells" id="boot-ram">
+                            <div class="cell empty">-</div>
+                            <div class="cell empty">-</div>
+                            <div class="cell empty">-</div>
+                            <div class="cell empty">-</div>
+                        </div>
+                    </div>
+                    <div class="memory-column">
+                        <h4>Hard Drive</h4>
+                        <div class="memory-cells" id="boot-hdd">
+                            <div class="cell filled">Windows Kernel</div>
+                            <div class="cell filled">System Files</div>
+                            <div class="cell filled">Desktop Manager</div>
+                            <div class="cell filled">User Programs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-steps" id="boot-steps">
+                    <div class="step active" data-step="0">
+                        <span class="step-badge">Initial</span>
+                        <p><strong>Power Off State:</strong> RAM is empty (volatile), ROM has BIOS (non-volatile), Hard drive has OS files (non-volatile).</p>
+                    </div>
+                    <div class="step" data-step="1">
+                        <span class="step-badge">Step 1</span>
+                        <p><strong>Power On:</strong> CPU reads first instruction from ROM. BIOS begins executing.</p>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-badge">Step 2</span>
+                        <p><strong>POST:</strong> BIOS tests hardware - checks RAM, keyboard, display are working.</p>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-badge">Step 3</span>
+                        <p><strong>Find OS:</strong> BIOS searches for bootable device (hard drive) and finds Windows.</p>
+                    </div>
+                    <div class="step" data-step="4">
+                        <span class="step-badge">Step 4</span>
+                        <p><strong>Load Kernel:</strong> Windows Kernel copied from hard drive → RAM.</p>
+                    </div>
+                    <div class="step" data-step="5">
+                        <span class="step-badge">Step 5</span>
+                        <p><strong>Load System Files:</strong> Essential system files copied from hard drive → RAM.</p>
+                    </div>
+                    <div class="step" data-step="6">
+                        <span class="step-badge">Step 6</span>
+                        <p><strong>Load Desktop:</strong> Desktop manager loaded into RAM. Computer ready to use!</p>
+                    </div>
+                </div>
+
+                <div class="trace-controls">
+                    <button class="btn btn-secondary" id="boot-prev" disabled>← Previous</button>
+                    <span class="step-counter" id="boot-counter">Step 0 of 6</span>
+                    <button class="btn btn-primary" id="boot-next">Next Step →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trace 2: Virtual Memory -->
+        <section class="trace-exercise mt-xl">
+            <h2>Trace 2: Virtual Memory in Action</h2>
+            <p>Trace what happens when RAM becomes full and virtual memory is used.</p>
+
+            <div class="trace-container" id="trace-virtual">
+                <div class="memory-state">
+                    <div class="memory-column wide">
+                        <h4>RAM (4GB Total)</h4>
+                        <div class="memory-bar-trace" id="vm-ram">
+                            <div class="bar-section os" style="width: 25%">OS (1GB)</div>
+                            <div class="bar-section free" style="width: 75%">Free (3GB)</div>
+                        </div>
+                        <div class="memory-detail" id="vm-ram-detail">
+                            Used: 1GB / 4GB
+                        </div>
+                    </div>
+                    <div class="memory-column">
+                        <h4>Virtual Memory (Page File)</h4>
+                        <div class="memory-cells" id="vm-pagefile">
+                            <div class="cell empty">-</div>
+                            <div class="cell empty">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-steps" id="vm-steps">
+                    <div class="step active" data-step="0">
+                        <span class="step-badge">Initial</span>
+                        <p><strong>Starting State:</strong> OS using 1GB RAM. 3GB free. Page file empty.</p>
+                    </div>
+                    <div class="step" data-step="1">
+                        <span class="step-badge">Step 1</span>
+                        <p><strong>Open Chrome:</strong> Chrome loads, needs 1.5GB RAM. Total now 2.5GB used.</p>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-badge">Step 2</span>
+                        <p><strong>Open Photoshop:</strong> Photoshop needs 1.5GB. Total now 4GB - RAM is FULL!</p>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-badge">Step 3</span>
+                        <p><strong>Open Game:</strong> Game needs 1GB but RAM is full! OS must use virtual memory.</p>
+                    </div>
+                    <div class="step" data-step="4">
+                        <span class="step-badge">Step 4</span>
+                        <p><strong>Swap Out:</strong> Least-used Chrome tabs (0.5GB) moved to page file on hard drive.</p>
+                    </div>
+                    <div class="step" data-step="5">
+                        <span class="step-badge">Step 5</span>
+                        <p><strong>Game Loads:</strong> Game uses the freed RAM space. System slower due to swapping.</p>
+                    </div>
+                    <div class="step" data-step="6">
+                        <span class="step-badge">Step 6</span>
+                        <p><strong>Switch to Chrome:</strong> Swapped tabs needed - loaded back from page file (causes delay!).</p>
+                    </div>
+                </div>
+
+                <div class="trace-controls">
+                    <button class="btn btn-secondary" id="vm-prev" disabled>← Previous</button>
+                    <span class="step-counter" id="vm-counter">Step 0 of 6</span>
+                    <button class="btn btn-primary" id="vm-next">Next Step →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trace 3: Cache -->
+        <section class="trace-exercise mt-xl">
+            <h2>Trace 3: Cache Memory Access</h2>
+            <p>Trace how the CPU uses cache to speed up data access.</p>
+
+            <div class="trace-container" id="trace-cache">
+                <div class="memory-state vertical">
+                    <div class="cache-visual">
+                        <div class="cache-level-box" id="cache-l1">
+                            <h5>L1 Cache (64KB)</h5>
+                            <div class="cache-content">Empty</div>
+                        </div>
+                        <div class="cache-level-box" id="cache-l2">
+                            <h5>L2 Cache (256KB)</h5>
+                            <div class="cache-content">Empty</div>
+                        </div>
+                        <div class="cache-level-box" id="cache-l3">
+                            <h5>L3 Cache (8MB)</h5>
+                            <div class="cache-content">Empty</div>
+                        </div>
+                        <div class="ram-box" id="cache-ram">
+                            <h5>RAM</h5>
+                            <div class="cache-content">Document.docx data</div>
+                        </div>
+                    </div>
+                    <div class="access-result" id="cache-result">
+                        <span class="result-label">Access Time:</span>
+                        <span class="result-value">-</span>
+                    </div>
+                </div>
+
+                <div class="trace-steps" id="cache-steps">
+                    <div class="step active" data-step="0">
+                        <span class="step-badge">Initial</span>
+                        <p><strong>Starting State:</strong> User opens Document.docx. Data is in RAM, caches are empty.</p>
+                    </div>
+                    <div class="step" data-step="1">
+                        <span class="step-badge">Step 1</span>
+                        <p><strong>First Access:</strong> CPU needs paragraph 1. Checks L1 → MISS. Checks L2 → MISS. Checks L3 → MISS.</p>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-badge">Step 2</span>
+                        <p><strong>Load from RAM:</strong> Data fetched from RAM (100ns). Copied to L3, L2, and L1 cache.</p>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-badge">Step 3</span>
+                        <p><strong>User types:</strong> CPU needs same paragraph again. Checks L1 → HIT! Data found instantly.</p>
+                    </div>
+                    <div class="step" data-step="4">
+                        <span class="step-badge">Step 4</span>
+                        <p><strong>Scroll down:</strong> CPU needs paragraph 5. Not in L1 but found in L3 → Partial HIT.</p>
+                    </div>
+                    <div class="step" data-step="5">
+                        <span class="step-badge">Step 5</span>
+                        <p><strong>Cache fills:</strong> L1 now full. Old data pushed to L2, then L3. Hierarchy maintained.</p>
+                    </div>
+                </div>
+
+                <div class="trace-controls">
+                    <button class="btn btn-secondary" id="cache-prev" disabled>← Previous</button>
+                    <span class="step-counter" id="cache-counter">Step 0 of 5</span>
+                    <button class="btn btn-primary" id="cache-next">Next Step →</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="trace-summary mt-xl">
+            <h2>What You've Learned</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h4>Boot Sequence</h4>
+                    <ul>
+                        <li>BIOS in ROM starts the process</li>
+                        <li>OS loaded from hard drive to RAM</li>
+                        <li>CPU executes from RAM</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <h4>Virtual Memory</h4>
+                    <ul>
+                        <li>Used when RAM is full</li>
+                        <li>Data swapped to hard drive</li>
+                        <li>Causes slowdowns</li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <h4>Cache Memory</h4>
+                    <ul>
+                        <li>Stores frequently used data</li>
+                        <li>Much faster than RAM</li>
+                        <li>Cache hits = fast access</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-navigation">
+            <a href="example.html" class="btn btn-secondary">← Previous: Example</a>
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        Progress.startActivity('memory-trace', 'memory');
+
+        // Boot trace controller
+        const bootTrace = {
+            currentStep: 0,
+            maxSteps: 6,
+            ramStates: [
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['empty', 'empty', 'empty', 'empty'],
+                ['Windows Kernel', 'empty', 'empty', 'empty'],
+                ['Windows Kernel', 'System Files', 'empty', 'empty'],
+                ['Windows Kernel', 'System Files', 'Desktop Manager', 'empty']
+            ]
+        };
+
+        document.getElementById('boot-next').addEventListener('click', () => {
+            if (bootTrace.currentStep < bootTrace.maxSteps) {
+                bootTrace.currentStep++;
+                updateBootTrace();
+            }
+        });
+
+        document.getElementById('boot-prev').addEventListener('click', () => {
+            if (bootTrace.currentStep > 0) {
+                bootTrace.currentStep--;
+                updateBootTrace();
+            }
+        });
+
+        function updateBootTrace() {
+            // Update steps
+            document.querySelectorAll('#boot-steps .step').forEach((step, i) => {
+                step.classList.toggle('active', i === bootTrace.currentStep);
+            });
+
+            // Update RAM display
+            const ramCells = document.querySelectorAll('#boot-ram .cell');
+            const state = bootTrace.ramStates[bootTrace.currentStep];
+            ramCells.forEach((cell, i) => {
+                cell.textContent = state[i] === 'empty' ? '-' : state[i];
+                cell.classList.toggle('empty', state[i] === 'empty');
+                cell.classList.toggle('filled', state[i] !== 'empty');
+            });
+
+            // Update counter and buttons
+            document.getElementById('boot-counter').textContent = `Step ${bootTrace.currentStep} of ${bootTrace.maxSteps}`;
+            document.getElementById('boot-prev').disabled = bootTrace.currentStep === 0;
+            document.getElementById('boot-next').disabled = bootTrace.currentStep === bootTrace.maxSteps;
+        }
+
+        // Virtual Memory trace controller
+        const vmTrace = {
+            currentStep: 0,
+            maxSteps: 6,
+            states: [
+                { ram: [25, 75], ramLabel: ['OS (1GB)', 'Free (3GB)'], page: ['empty', 'empty'], detail: 'Used: 1GB / 4GB' },
+                { ram: [25, 37, 38], ramLabel: ['OS', 'Chrome', 'Free'], page: ['empty', 'empty'], detail: 'Used: 2.5GB / 4GB' },
+                { ram: [25, 37, 38], ramLabel: ['OS', 'Chrome', 'Photoshop'], page: ['empty', 'empty'], detail: 'Used: 4GB / 4GB - FULL!' },
+                { ram: [25, 37, 38], ramLabel: ['OS', 'Chrome', 'Photoshop'], page: ['empty', 'empty'], detail: 'Need 1GB more! RAM FULL!' },
+                { ram: [25, 25, 38, 12], ramLabel: ['OS', 'Chrome*', 'Photoshop', 'Free'], page: ['Chrome tabs', 'empty'], detail: 'Swapped 0.5GB to page file' },
+                { ram: [25, 25, 38, 12], ramLabel: ['OS', 'Chrome*', 'Photoshop', 'Game'], page: ['Chrome tabs', 'empty'], detail: 'Game loaded, system slower' },
+                { ram: [25, 37, 26, 12], ramLabel: ['OS', 'Chrome', 'PS*', 'Game'], page: ['PS data', 'empty'], detail: 'Tabs loaded back, PS swapped' }
+            ]
+        };
+
+        document.getElementById('vm-next').addEventListener('click', () => {
+            if (vmTrace.currentStep < vmTrace.maxSteps) {
+                vmTrace.currentStep++;
+                updateVMTrace();
+            }
+        });
+
+        document.getElementById('vm-prev').addEventListener('click', () => {
+            if (vmTrace.currentStep > 0) {
+                vmTrace.currentStep--;
+                updateVMTrace();
+            }
+        });
+
+        function updateVMTrace() {
+            document.querySelectorAll('#vm-steps .step').forEach((step, i) => {
+                step.classList.toggle('active', i === vmTrace.currentStep);
+            });
+
+            const state = vmTrace.states[vmTrace.currentStep];
+            const ramBar = document.getElementById('vm-ram');
+            const colors = ['#2563eb', '#ea580c', '#7c3aed', '#10b981'];
+
+            ramBar.innerHTML = state.ram.map((width, i) =>
+                `<div class="bar-section" style="width: ${width}%; background: ${colors[i] || '#e5e7eb'}">${state.ramLabel[i]}</div>`
+            ).join('');
+
+            document.getElementById('vm-ram-detail').textContent = state.detail;
+
+            const pageCells = document.querySelectorAll('#vm-pagefile .cell');
+            pageCells.forEach((cell, i) => {
+                cell.textContent = state.page[i] === 'empty' ? '-' : state.page[i];
+                cell.classList.toggle('empty', state.page[i] === 'empty');
+                cell.classList.toggle('filled', state.page[i] !== 'empty');
+            });
+
+            document.getElementById('vm-counter').textContent = `Step ${vmTrace.currentStep} of ${vmTrace.maxSteps}`;
+            document.getElementById('vm-prev').disabled = vmTrace.currentStep === 0;
+            document.getElementById('vm-next').disabled = vmTrace.currentStep === vmTrace.maxSteps;
+        }
+
+        // Cache trace controller
+        const cacheTrace = {
+            currentStep: 0,
+            maxSteps: 5,
+            states: [
+                { l1: 'Empty', l2: 'Empty', l3: 'Empty', result: '-', resultClass: '' },
+                { l1: 'MISS', l2: 'MISS', l3: 'MISS', result: 'Checking caches...', resultClass: 'checking' },
+                { l1: 'Para 1', l2: 'Para 1', l3: 'Para 1', result: '100ns (from RAM)', resultClass: 'slow' },
+                { l1: 'Para 1', l2: 'Para 1', l3: 'Para 1', result: '1ns (L1 HIT!)', resultClass: 'fast' },
+                { l1: 'Para 5', l2: 'Para 1,5', l3: 'Para 1-5', result: '10ns (L3 hit)', resultClass: 'medium' },
+                { l1: 'Para 6', l2: 'Para 5,6', l3: 'Para 1-6', result: 'Cache hierarchy working', resultClass: '' }
+            ]
+        };
+
+        document.getElementById('cache-next').addEventListener('click', () => {
+            if (cacheTrace.currentStep < cacheTrace.maxSteps) {
+                cacheTrace.currentStep++;
+                updateCacheTrace();
+            }
+        });
+
+        document.getElementById('cache-prev').addEventListener('click', () => {
+            if (cacheTrace.currentStep > 0) {
+                cacheTrace.currentStep--;
+                updateCacheTrace();
+            }
+        });
+
+        function updateCacheTrace() {
+            document.querySelectorAll('#cache-steps .step').forEach((step, i) => {
+                step.classList.toggle('active', i === cacheTrace.currentStep);
+            });
+
+            const state = cacheTrace.states[cacheTrace.currentStep];
+            document.querySelector('#cache-l1 .cache-content').textContent = state.l1;
+            document.querySelector('#cache-l2 .cache-content').textContent = state.l2;
+            document.querySelector('#cache-l3 .cache-content').textContent = state.l3;
+
+            const resultEl = document.querySelector('#cache-result .result-value');
+            resultEl.textContent = state.result;
+            resultEl.className = 'result-value ' + state.resultClass;
+
+            document.getElementById('cache-counter').textContent = `Step ${cacheTrace.currentStep} of ${cacheTrace.maxSteps}`;
+            document.getElementById('cache-prev').disabled = cacheTrace.currentStep === 0;
+            document.getElementById('cache-next').disabled = cacheTrace.currentStep === cacheTrace.maxSteps;
+        }
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
+            margin-bottom: var(--space-xl);
+        }
+        .activity-icon {
+            font-size: 3rem;
+            background: var(--theory, #10b981);
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+        }
+        .activity-instructions {
+            background: #f0fdf4;
+            border-left: 4px solid var(--theory, #10b981);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .trace-exercise {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .trace-exercise h2 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-sm);
+        }
+        .trace-container {
+            margin-top: var(--space-lg);
+        }
+        .memory-state {
+            display: flex;
+            gap: var(--space-xl);
+            justify-content: center;
+            padding: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+        .memory-column {
+            text-align: center;
+        }
+        .memory-column.wide {
+            flex: 2;
+            min-width: 300px;
+        }
+        .memory-column h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--gray-700);
+        }
+        .memory-cells {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+        .cell {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+        .cell.empty {
+            background: var(--gray-200);
+            color: var(--gray-500);
+            border: 1px dashed var(--gray-400);
+        }
+        .cell.filled {
+            background: #bfdbfe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+        .memory-bar-trace {
+            display: flex;
+            height: 50px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: var(--space-sm);
+        }
+        .bar-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .bar-section.os { background: #2563eb; }
+        .bar-section.free { background: #e5e7eb; color: var(--gray-600); }
+        .memory-detail {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .trace-steps {
+            margin-bottom: var(--space-lg);
+        }
+        .trace-steps .step {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+            background: var(--gray-100);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        .trace-steps .step.active {
+            background: #ecfdf5;
+            border-left: 4px solid var(--theory, #10b981);
+            opacity: 1;
+        }
+        .step-badge {
+            display: inline-block;
+            background: var(--theory, #10b981);
+            color: white;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            margin-bottom: var(--space-xs);
+        }
+        .trace-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg);
+        }
+        .step-counter {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+        .cache-visual {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            align-items: center;
+        }
+        .cache-level-box, .ram-box {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+            min-width: 200px;
+        }
+        .cache-level-box h5, .ram-box h5 {
+            margin-bottom: var(--space-xs);
+            font-size: 0.85rem;
+        }
+        #cache-l1 { background: #fecaca; }
+        #cache-l2 { background: #fed7aa; }
+        #cache-l3 { background: #fef08a; }
+        .ram-box { background: #bfdbfe; }
+        .cache-content {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .access-result {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: white;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .result-value {
+            font-weight: bold;
+            margin-left: var(--space-sm);
+        }
+        .result-value.fast { color: #16a34a; }
+        .result-value.medium { color: #ca8a04; }
+        .result-value.slow { color: #dc2626; }
+        .result-value.checking { color: #2563eb; }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+        .summary-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        .summary-card h4 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-sm);
+        }
+        .summary-card ul {
+            padding-left: var(--space-md);
+            margin: 0;
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

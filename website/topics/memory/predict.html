@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Memory Scenarios - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Memory and Storage</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="activity-header">
+            <span class="activity-icon">🔮</span>
+            <div class="activity-title">
+                <h1>Predict: Memory Scenarios</h1>
+                <p>Think about what happens in different memory situations before revealing the answers.</p>
+            </div>
+        </header>
+
+        <div class="activity-instructions">
+            <h3>How to use this activity:</h3>
+            <ol>
+                <li>Read each scenario carefully</li>
+                <li>Think about what will happen based on your understanding</li>
+                <li>Click "Reveal Answer" to check your prediction</li>
+                <li>Read the explanation to deepen your understanding</li>
+            </ol>
+        </div>
+
+        <section class="predictions-container">
+            <!-- Question 1 -->
+            <div class="prediction-card" data-question="1">
+                <div class="prediction-scenario">
+                    <h3>Scenario 1: Power Cut</h3>
+                    <div class="scenario-context">
+                        <p>You're working on an essay in Word. You haven't saved it yet. Suddenly, there's a power cut and your computer turns off.</p>
+                    </div>
+                    <p class="prediction-question"><strong>What happens to your unsaved essay? Why?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>Your essay is lost.</strong></p>
+                    <p class="explanation">The essay was stored in <strong>RAM</strong>, which is <strong>volatile</strong>. This means RAM loses all its contents when the power is switched off. Until you save a file, it only exists in RAM. Once saved, it's copied to secondary storage (hard drive/SSD) which is non-volatile.</p>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> RAM is volatile - always save your work!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="prediction-card" data-question="2">
+                <div class="prediction-scenario">
+                    <h3>Scenario 2: Computer Boot</h3>
+                    <div class="scenario-context">
+                        <p>You press the power button on your computer. The RAM is empty (it was off). The hard drive contains Windows, but the CPU can't read from the hard drive directly at startup.</p>
+                    </div>
+                    <p class="prediction-question"><strong>How does the computer know what to do when you first turn it on?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>The BIOS stored in ROM tells it what to do.</strong></p>
+                    <p class="explanation">ROM is <strong>non-volatile</strong> - it keeps its contents even when power is off. The BIOS (Basic Input/Output System) is stored in ROM and contains the instructions needed to:</p>
+                    <ol>
+                        <li>Test the hardware (POST - Power On Self Test)</li>
+                        <li>Find the operating system on the hard drive</li>
+                        <li>Load the OS into RAM</li>
+                    </ol>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> ROM stores permanent boot instructions (BIOS)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="prediction-card" data-question="3">
+                <div class="prediction-scenario">
+                    <h3>Scenario 3: Too Many Programs</h3>
+                    <div class="scenario-context">
+                        <p>Your computer has 8GB of RAM. You open:</p>
+                        <ul>
+                            <li>Chrome with 20 tabs (using 4GB)</li>
+                            <li>Photoshop with a large image (using 3GB)</li>
+                            <li>Spotify (using 0.5GB)</li>
+                            <li>A video game (needs 2GB)</li>
+                        </ul>
+                        <p>That's 9.5GB total, but you only have 8GB RAM!</p>
+                    </div>
+                    <p class="prediction-question"><strong>What happens? Does the computer crash?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>The computer uses virtual memory.</strong></p>
+                    <p class="explanation">When RAM is full, the operating system uses <strong>virtual memory</strong>:</p>
+                    <ol>
+                        <li>Identifies least recently used data in RAM</li>
+                        <li>Moves it to a "page file" on the hard drive</li>
+                        <li>Frees up RAM for the new program</li>
+                        <li>If old data is needed, swaps it back</li>
+                    </ol>
+                    <p>The computer won't crash, but it will slow down significantly because the hard drive is much slower than RAM.</p>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> Virtual memory prevents crashes but causes slowdowns
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="prediction-card" data-question="4">
+                <div class="prediction-scenario">
+                    <h3>Scenario 4: Disk Thrashing</h3>
+                    <div class="scenario-context">
+                        <p>A computer with only 4GB RAM is running many programs. The user notices:</p>
+                        <ul>
+                            <li>The hard drive light is constantly on</li>
+                            <li>A whirring sound from the hard drive</li>
+                            <li>Everything is extremely slow</li>
+                            <li>Even moving the mouse is laggy</li>
+                        </ul>
+                    </div>
+                    <p class="prediction-question"><strong>What is causing this problem?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>Disk thrashing due to excessive virtual memory usage.</strong></p>
+                    <p class="explanation">When RAM is severely overloaded, the system constantly swaps data between RAM and the hard drive. This is called <strong>disk thrashing</strong>:</p>
+                    <ul>
+                        <li>Program A needs data → swapped into RAM</li>
+                        <li>Program B needs its data → A's data swapped out</li>
+                        <li>Program A needs data again → B's data swapped out</li>
+                        <li>This cycle repeats constantly</li>
+                    </ul>
+                    <p><strong>Solution:</strong> Close programs, or add more RAM to the computer.</p>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> More RAM = less virtual memory needed = faster computer
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="prediction-card" data-question="5">
+                <div class="prediction-scenario">
+                    <h3>Scenario 5: Cache Benefits</h3>
+                    <div class="scenario-context">
+                        <p>A CPU needs to access the same piece of data 1000 times during a calculation.</p>
+                        <ul>
+                            <li>Reading from RAM takes 100 nanoseconds</li>
+                            <li>Reading from cache takes 1 nanosecond</li>
+                        </ul>
+                    </div>
+                    <p class="prediction-question"><strong>How much time does cache save if the data is found in cache 99% of the time?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>Cache saves approximately 98,000 nanoseconds (98 microseconds).</strong></p>
+                    <div class="calculation">
+                        <p><strong>Without cache (all from RAM):</strong></p>
+                        <p>1000 × 100ns = 100,000 nanoseconds</p>
+                        <p><strong>With cache (99% hit rate):</strong></p>
+                        <p>990 × 1ns + 10 × 100ns = 990 + 1000 = 1,990 nanoseconds</p>
+                        <p><strong>Time saved:</strong> 100,000 - 1,990 = 98,010 nanoseconds</p>
+                    </div>
+                    <p class="explanation">Cache is roughly <strong>100× faster</strong> than RAM, making it crucial for performance. Even though cache is tiny compared to RAM, a high "hit rate" makes a huge difference.</p>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> Cache dramatically speeds up repeated data access
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="prediction-card" data-question="6">
+                <div class="prediction-scenario">
+                    <h3>Scenario 6: ROM Update</h3>
+                    <div class="scenario-context">
+                        <p>A manufacturer discovers a bug in the BIOS that could cause problems. They release a "BIOS update".</p>
+                    </div>
+                    <p class="prediction-question"><strong>Wait - if ROM is "Read Only", how can it be updated?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>Modern computers use EEPROM or Flash ROM.</strong></p>
+                    <p class="explanation">Traditional ROM truly couldn't be changed. However, modern "ROM" is usually:</p>
+                    <ul>
+                        <li><strong>EEPROM</strong> (Electrically Erasable Programmable ROM) - can be rewritten with special software</li>
+                        <li><strong>Flash ROM</strong> - similar to EEPROM, easier to update</li>
+                    </ul>
+                    <p>We still call it "ROM" because:</p>
+                    <ul>
+                        <li>It's non-volatile (keeps data without power)</li>
+                        <li>It's not meant for regular writing</li>
+                        <li>Updates are rare (unlike RAM which changes constantly)</li>
+                    </ul>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> "ROM" in modern computers can technically be updated, but rarely is
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="prediction-card" data-question="7">
+                <div class="prediction-scenario">
+                    <h3>Scenario 7: SSD vs HDD Virtual Memory</h3>
+                    <div class="scenario-context">
+                        <p>Two identical computers both run out of RAM and start using virtual memory. The only difference:</p>
+                        <ul>
+                            <li>Computer A has an HDD (spinning hard drive)</li>
+                            <li>Computer B has an SSD (solid state drive)</li>
+                        </ul>
+                    </div>
+                    <p class="prediction-question"><strong>Which computer will perform better? Why?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>Computer B (SSD) will perform much better.</strong></p>
+                    <p class="explanation">Virtual memory requires reading and writing to secondary storage. SSDs are much faster than HDDs:</p>
+                    <table class="mini-table">
+                        <tr>
+                            <th>Storage Type</th>
+                            <th>Typical Speed</th>
+                        </tr>
+                        <tr>
+                            <td>HDD</td>
+                            <td>100-200 MB/s</td>
+                        </tr>
+                        <tr>
+                            <td>SSD (SATA)</td>
+                            <td>500-600 MB/s</td>
+                        </tr>
+                        <tr>
+                            <td>SSD (NVMe)</td>
+                            <td>3,000-7,000 MB/s</td>
+                        </tr>
+                    </table>
+                    <p>This is why upgrading to an SSD makes such a noticeable difference, especially on computers with limited RAM.</p>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> Faster storage = faster virtual memory = better performance when RAM is full
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="prediction-card" data-question="8">
+                <div class="prediction-scenario">
+                    <h3>Scenario 8: Memory Hierarchy</h3>
+                    <div class="scenario-context">
+                        <p>The CPU needs to read a piece of data. It checks in this order:</p>
+                        <ol>
+                            <li>L1 Cache - NOT FOUND</li>
+                            <li>L2 Cache - NOT FOUND</li>
+                            <li>L3 Cache - NOT FOUND</li>
+                            <li>RAM - NOT FOUND</li>
+                        </ol>
+                    </div>
+                    <p class="prediction-question"><strong>Where will the data come from next? What is this situation called?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>The data will come from virtual memory (hard drive). This is a "page fault".</strong></p>
+                    <p class="explanation">When data isn't in RAM, it must be in the page file on secondary storage. The OS must:</p>
+                    <ol>
+                        <li>Find the data in the page file</li>
+                        <li>Load it into RAM (possibly swapping something else out)</li>
+                        <li>Then the CPU can access it</li>
+                    </ol>
+                    <p>This is called a <strong>page fault</strong> - not an error, but it causes significant delay.</p>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> Page faults are slow - data must be fetched from secondary storage
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="prediction-card" data-question="9">
+                <div class="prediction-scenario">
+                    <h3>Scenario 9: Gaming Computer</h3>
+                    <div class="scenario-context">
+                        <p>A gamer is building a new PC. They have a choice:</p>
+                        <ul>
+                            <li><strong>Option A:</strong> 8GB RAM + 16GB virtual memory</li>
+                            <li><strong>Option B:</strong> 16GB RAM + 8GB virtual memory</li>
+                        </ul>
+                        <p>Both have 24GB total "memory" available.</p>
+                    </div>
+                    <p class="prediction-question"><strong>Which option would give better gaming performance? Why?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>Option B (16GB RAM) would be much better.</strong></p>
+                    <p class="explanation">Virtual memory is NOT equivalent to RAM:</p>
+                    <ul>
+                        <li>RAM is approximately <strong>100,000× faster</strong> than an HDD</li>
+                        <li>Even with an SSD, RAM is still <strong>100× faster</strong></li>
+                        <li>Games need fast, constant access to data</li>
+                        <li>Virtual memory causes stuttering and lag</li>
+                    </ul>
+                    <p>16GB of real RAM means the game can run entirely from fast memory, avoiding slow virtual memory access.</p>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> RAM and virtual memory are NOT equivalent - always prefer more RAM
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="prediction-card" data-question="10">
+                <div class="prediction-scenario">
+                    <h3>Scenario 10: Smartphone Memory</h3>
+                    <div class="scenario-context">
+                        <p>Your smartphone has 6GB RAM but no virtual memory (most phones don't use it). You try to open too many apps.</p>
+                    </div>
+                    <p class="prediction-question"><strong>What happens when the phone runs out of RAM?</strong></p>
+                </div>
+                <button class="btn btn-secondary reveal-btn">Reveal Answer</button>
+                <div class="prediction-answer hidden">
+                    <h4>Answer:</h4>
+                    <p><strong>The phone closes background apps automatically.</strong></p>
+                    <p class="explanation">Unlike computers, most smartphones don't use virtual memory because:</p>
+                    <ul>
+                        <li>Flash storage has limited write cycles</li>
+                        <li>Constant writing would wear out the storage</li>
+                        <li>Battery life would suffer</li>
+                    </ul>
+                    <p>Instead, the OS uses <strong>"app killing"</strong>:</p>
+                    <ul>
+                        <li>Monitors RAM usage</li>
+                        <li>When full, closes least-recently-used apps</li>
+                        <li>Apps reload when you switch back to them</li>
+                    </ul>
+                    <div class="key-point">
+                        <strong>Key concept:</strong> Different devices manage memory differently based on their hardware limitations
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-navigation">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Reveal answer functionality
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.prediction-card');
+                const answer = card.querySelector('.prediction-answer');
+                answer.classList.toggle('hidden');
+                this.textContent = answer.classList.contains('hidden') ? 'Reveal Answer' : 'Hide Answer';
+            });
+        });
+
+        // Mark activity as started
+        Progress.startActivity('memory-predict', 'memory');
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
+            margin-bottom: var(--space-xl);
+        }
+        .activity-icon {
+            font-size: 3rem;
+            background: var(--theory, #10b981);
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+        }
+        .activity-title h1 {
+            margin-bottom: var(--space-xs);
+        }
+        .activity-instructions {
+            background: #f0fdf4;
+            border-left: 4px solid var(--theory, #10b981);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .activity-instructions ol {
+            padding-left: var(--space-lg);
+            margin: var(--space-sm) 0 0 0;
+        }
+        .predictions-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+        .prediction-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .prediction-scenario h3 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-md);
+        }
+        .scenario-context {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+        .scenario-context ul {
+            padding-left: var(--space-lg);
+            margin: var(--space-sm) 0;
+        }
+        .prediction-question {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            margin-top: var(--space-md);
+        }
+        .reveal-btn {
+            margin-top: var(--space-md);
+        }
+        .prediction-answer {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 2px solid var(--gray-200);
+        }
+        .prediction-answer h4 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-sm);
+        }
+        .explanation {
+            color: var(--gray-600);
+            margin: var(--space-md) 0;
+        }
+        .key-point {
+            background: #ecfdf5;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            border-left: 4px solid var(--theory, #10b981);
+        }
+        .hidden {
+            display: none;
+        }
+        .calculation {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            margin: var(--space-md) 0;
+        }
+        .mini-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+        .mini-table th, .mini-table td {
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-300);
+            text-align: left;
+        }
+        .mini-table th {
+            background: var(--gray-100);
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

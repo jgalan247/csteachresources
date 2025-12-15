@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: How Memory Works - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Memory and Storage</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="activity-header">
+            <span class="activity-icon">📖</span>
+            <div class="activity-title">
+                <h1>Worked Example: How Memory Works</h1>
+                <p>Follow along step-by-step as we explore how different types of memory work together.</p>
+            </div>
+        </header>
+
+        <section class="worked-example">
+            <h2>Example: A Day in the Life of Computer Memory</h2>
+            <p>Let's follow what happens to memory from when you turn on your computer to when you shut it down.</p>
+
+            <!-- Step 1: Boot -->
+            <div class="example-step">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <h3>Pressing the Power Button</h3>
+                </div>
+                <div class="step-content">
+                    <div class="step-diagram">
+                        <div class="memory-box rom">
+                            <h4>ROM</h4>
+                            <div class="memory-contents">
+                                <div class="data-item">BIOS Instructions</div>
+                                <div class="data-item">Hardware Test Code</div>
+                                <div class="data-item">Boot Sequence</div>
+                            </div>
+                            <span class="status">Always has data</span>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="memory-box ram empty">
+                            <h4>RAM</h4>
+                            <div class="memory-contents">
+                                <div class="data-item empty-slot">(Empty)</div>
+                                <div class="data-item empty-slot">(Empty)</div>
+                                <div class="data-item empty-slot">(Empty)</div>
+                            </div>
+                            <span class="status">Was off - empty</span>
+                        </div>
+                    </div>
+                    <div class="step-explanation">
+                        <h4>What's happening:</h4>
+                        <ul>
+                            <li>RAM is empty because it's <strong>volatile</strong> - it lost all data when power was off</li>
+                            <li>ROM still contains the BIOS because it's <strong>non-volatile</strong></li>
+                            <li>CPU reads boot instructions from ROM</li>
+                            <li>BIOS performs POST (Power On Self Test) to check hardware</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: OS Loading -->
+            <div class="example-step">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <h3>Loading the Operating System</h3>
+                </div>
+                <div class="step-content">
+                    <div class="step-diagram">
+                        <div class="memory-box storage">
+                            <h4>Hard Drive (Secondary)</h4>
+                            <div class="memory-contents">
+                                <div class="data-item highlight">Windows OS Files</div>
+                                <div class="data-item">Your Documents</div>
+                                <div class="data-item">Programs</div>
+                            </div>
+                            <span class="status">Permanent storage</span>
+                        </div>
+                        <div class="arrow transfer">→ COPY →</div>
+                        <div class="memory-box ram">
+                            <h4>RAM</h4>
+                            <div class="memory-contents">
+                                <div class="data-item highlight">Windows Kernel</div>
+                                <div class="data-item highlight">System Services</div>
+                                <div class="data-item highlight">Desktop Manager</div>
+                            </div>
+                            <span class="status">Loading OS...</span>
+                        </div>
+                    </div>
+                    <div class="step-explanation">
+                        <h4>What's happening:</h4>
+                        <ul>
+                            <li>BIOS finds Windows on the hard drive</li>
+                            <li>Essential OS files are <strong>copied</strong> from hard drive to RAM</li>
+                            <li>Original files stay on hard drive (it's a copy, not a move)</li>
+                            <li>CPU can now execute the OS from fast RAM</li>
+                        </ul>
+                        <div class="why-box">
+                            <strong>Why copy to RAM?</strong> The CPU cannot execute programs directly from the hard drive - it's too slow. RAM is much faster, allowing smooth operation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Opening a Program -->
+            <div class="example-step">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <h3>Opening Microsoft Word</h3>
+                </div>
+                <div class="step-content">
+                    <div class="step-diagram">
+                        <div class="memory-box ram">
+                            <h4>RAM (8GB Total)</h4>
+                            <div class="memory-bar">
+                                <div class="used-space" style="width: 45%">
+                                    <span>Windows (2GB)</span>
+                                </div>
+                                <div class="used-space word" style="width: 15%">
+                                    <span>Word (1GB)</span>
+                                </div>
+                                <div class="free-space" style="width: 40%">
+                                    <span>Free (3.2GB)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-explanation">
+                        <h4>What's happening:</h4>
+                        <ul>
+                            <li>Word program files copied from hard drive to RAM</li>
+                            <li>Word's interface, menus, and features loaded</li>
+                            <li>RAM now holds: OS (2GB) + Word (1GB) = 3GB used</li>
+                            <li>Still 5GB free for other programs and data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Cache in Action -->
+            <div class="example-step">
+                <div class="step-header">
+                    <span class="step-number">4</span>
+                    <h3>Typing a Document (Cache in Action)</h3>
+                </div>
+                <div class="step-content">
+                    <div class="step-diagram">
+                        <div class="cache-hierarchy">
+                            <div class="memory-box cpu">
+                                <h4>CPU</h4>
+                                <div class="cache-levels">
+                                    <div class="cache-level l1">L1 Cache (64KB) - Current letter</div>
+                                    <div class="cache-level l2">L2 Cache (512KB) - Recent words</div>
+                                    <div class="cache-level l3">L3 Cache (8MB) - Current paragraph</div>
+                                </div>
+                            </div>
+                            <div class="arrow">↑↓</div>
+                            <div class="memory-box ram small">
+                                <h4>RAM</h4>
+                                <p>Full document</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-explanation">
+                        <h4>What's happening:</h4>
+                        <ul>
+                            <li>As you type, the CPU predicts what data you'll need next</li>
+                            <li><strong>L1 Cache:</strong> Stores the exact character being processed</li>
+                            <li><strong>L2 Cache:</strong> Stores recent words and formatting</li>
+                            <li><strong>L3 Cache:</strong> Stores the current paragraph/section</li>
+                            <li>Most data found in cache = <strong>cache hit</strong> = very fast!</li>
+                        </ul>
+                        <div class="speed-comparison">
+                            <h5>Speed Comparison:</h5>
+                            <div class="speed-bar">
+                                <span class="speed-label">L1 Cache</span>
+                                <div class="speed-fill" style="width: 100%">~1 nanosecond</div>
+                            </div>
+                            <div class="speed-bar">
+                                <span class="speed-label">RAM</span>
+                                <div class="speed-fill ram-speed" style="width: 10%">~100 nanoseconds</div>
+                            </div>
+                            <div class="speed-bar">
+                                <span class="speed-label">SSD</span>
+                                <div class="speed-fill ssd-speed" style="width: 0.1%">~100,000 nanoseconds</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Running Out of RAM -->
+            <div class="example-step">
+                <div class="step-header">
+                    <span class="step-number">5</span>
+                    <h3>Opening Too Many Programs (Virtual Memory)</h3>
+                </div>
+                <div class="step-content">
+                    <div class="step-diagram">
+                        <div class="memory-box ram full">
+                            <h4>RAM (8GB) - FULL!</h4>
+                            <div class="memory-bar">
+                                <div class="used-space" style="width: 25%">Windows</div>
+                                <div class="used-space word" style="width: 15%">Word</div>
+                                <div class="used-space chrome" style="width: 35%">Chrome</div>
+                                <div class="used-space game" style="width: 25%">Game</div>
+                            </div>
+                        </div>
+                        <div class="arrow swap">↔ SWAP ↔</div>
+                        <div class="memory-box virtual">
+                            <h4>Virtual Memory (Page File)</h4>
+                            <div class="memory-contents">
+                                <div class="data-item swapped">Chrome Tab 5 (swapped)</div>
+                                <div class="data-item swapped">Chrome Tab 12 (swapped)</div>
+                                <div class="data-item swapped">Game textures (swapped)</div>
+                            </div>
+                            <span class="status">On Hard Drive - SLOW!</span>
+                        </div>
+                    </div>
+                    <div class="step-explanation">
+                        <h4>What's happening:</h4>
+                        <ol>
+                            <li>RAM is completely full (8GB used)</li>
+                            <li>OS identifies least-recently-used data</li>
+                            <li>This data is moved to the "page file" on hard drive</li>
+                            <li>RAM space is freed for active programs</li>
+                            <li>If swapped data is needed, it's loaded back (causing delay)</li>
+                        </ol>
+                        <div class="warning-box">
+                            <strong>Warning:</strong> Virtual memory is 1000x slower than RAM! If this happens too often, you'll experience lag and the dreaded "disk thrashing".
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Saving Work -->
+            <div class="example-step">
+                <div class="step-header">
+                    <span class="step-number">6</span>
+                    <h3>Saving Your Document</h3>
+                </div>
+                <div class="step-content">
+                    <div class="step-diagram">
+                        <div class="memory-box ram">
+                            <h4>RAM</h4>
+                            <div class="memory-contents">
+                                <div class="data-item highlight">Your Essay (unsaved)</div>
+                            </div>
+                            <span class="status">Temporary!</span>
+                        </div>
+                        <div class="arrow save">→ SAVE →</div>
+                        <div class="memory-box storage">
+                            <h4>Hard Drive</h4>
+                            <div class="memory-contents">
+                                <div class="data-item saved">essay.docx (saved)</div>
+                            </div>
+                            <span class="status">Permanent!</span>
+                        </div>
+                    </div>
+                    <div class="step-explanation">
+                        <h4>What's happening:</h4>
+                        <ul>
+                            <li>While working, your document only exists in RAM</li>
+                            <li>When you press Save (Ctrl+S), it's copied to the hard drive</li>
+                            <li>Now it exists in BOTH places (RAM for working, hard drive for storage)</li>
+                            <li>If power fails, the hard drive copy survives!</li>
+                        </ul>
+                        <div class="tip-box">
+                            <strong>Top Tip:</strong> Save often! Until you save, your work only exists in volatile RAM.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: Shutdown -->
+            <div class="example-step">
+                <div class="step-header">
+                    <span class="step-number">7</span>
+                    <h3>Shutting Down</h3>
+                </div>
+                <div class="step-content">
+                    <div class="step-diagram">
+                        <div class="memory-box ram shutdown">
+                            <h4>RAM (After Shutdown)</h4>
+                            <div class="memory-contents">
+                                <div class="data-item gone">(All data lost)</div>
+                                <div class="data-item gone">(All data lost)</div>
+                                <div class="data-item gone">(All data lost)</div>
+                            </div>
+                            <span class="status">Power off = empty</span>
+                        </div>
+                        <div class="memory-box rom">
+                            <h4>ROM (After Shutdown)</h4>
+                            <div class="memory-contents">
+                                <div class="data-item">BIOS Instructions</div>
+                                <div class="data-item">Hardware Test Code</div>
+                                <div class="data-item">Boot Sequence</div>
+                            </div>
+                            <span class="status">Still has data!</span>
+                        </div>
+                        <div class="memory-box storage">
+                            <h4>Hard Drive (After Shutdown)</h4>
+                            <div class="memory-contents">
+                                <div class="data-item">Windows OS</div>
+                                <div class="data-item saved">essay.docx</div>
+                                <div class="data-item">All your files</div>
+                            </div>
+                            <span class="status">Still has data!</span>
+                        </div>
+                    </div>
+                    <div class="step-explanation">
+                        <h4>What happens to each type of memory:</h4>
+                        <table class="shutdown-table">
+                            <tr>
+                                <th>Memory Type</th>
+                                <th>After Shutdown</th>
+                                <th>Why?</th>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td class="lost">All data LOST</td>
+                                <td>Volatile - needs power</td>
+                            </tr>
+                            <tr>
+                                <td>Cache</td>
+                                <td class="lost">All data LOST</td>
+                                <td>Also volatile</td>
+                            </tr>
+                            <tr>
+                                <td>ROM</td>
+                                <td class="kept">Data KEPT</td>
+                                <td>Non-volatile</td>
+                            </tr>
+                            <tr>
+                                <td>Hard Drive</td>
+                                <td class="kept">Data KEPT</td>
+                                <td>Non-volatile</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="summary-section mt-xl">
+            <h2>Key Takeaways</h2>
+            <div class="takeaway-grid">
+                <div class="takeaway-card">
+                    <span class="takeaway-icon">🧠</span>
+                    <h4>RAM is Working Memory</h4>
+                    <p>Fast but temporary. Stores currently running programs and open files.</p>
+                </div>
+                <div class="takeaway-card">
+                    <span class="takeaway-icon">🔒</span>
+                    <h4>ROM is Boot Memory</h4>
+                    <p>Permanent but small. Contains BIOS to start up the computer.</p>
+                </div>
+                <div class="takeaway-card">
+                    <span class="takeaway-icon">🚀</span>
+                    <h4>Cache Speeds Things Up</h4>
+                    <p>Tiny but ultra-fast. Stores frequently accessed data near the CPU.</p>
+                </div>
+                <div class="takeaway-card">
+                    <span class="takeaway-icon">🔄</span>
+                    <h4>Virtual Memory is a Safety Net</h4>
+                    <p>Uses hard drive when RAM is full. Prevents crashes but causes slowdowns.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-navigation">
+            <a href="predict.html" class="btn btn-secondary">← Previous: Predict</a>
+            <a href="trace.html" class="btn btn-primary">Next: Trace Memory →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        Progress.startActivity('memory-example', 'memory');
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
+            margin-bottom: var(--space-xl);
+        }
+        .activity-icon {
+            font-size: 3rem;
+            background: var(--theory, #10b981);
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+        }
+        .worked-example {
+            margin-top: var(--space-xl);
+        }
+        .example-step {
+            background: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            background: var(--theory, #10b981);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+        }
+        .step-number {
+            background: white;
+            color: var(--theory, #10b981);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .step-content {
+            padding: var(--space-lg);
+        }
+        .step-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+            padding: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+        }
+        .memory-box {
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            min-width: 200px;
+            text-align: center;
+        }
+        .memory-box h4 {
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .memory-box.rom {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+        .memory-box.rom h4 { color: #dc2626; }
+        .memory-box.ram {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+        .memory-box.ram h4 { color: #2563eb; }
+        .memory-box.ram.empty {
+            border-style: dashed;
+            opacity: 0.7;
+        }
+        .memory-box.storage {
+            border-color: #7c3aed;
+            background: #f5f3ff;
+        }
+        .memory-box.storage h4 { color: #7c3aed; }
+        .memory-box.virtual {
+            border-color: #ea580c;
+            background: #fff7ed;
+        }
+        .memory-box.virtual h4 { color: #ea580c; }
+        .memory-box.cpu {
+            border-color: #059669;
+            background: #ecfdf5;
+        }
+        .memory-box.cpu h4 { color: #059669; }
+        .memory-contents {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+        .data-item {
+            background: var(--gray-200);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+        }
+        .data-item.highlight {
+            background: #bfdbfe;
+            font-weight: 500;
+        }
+        .data-item.empty-slot {
+            background: transparent;
+            border: 1px dashed var(--gray-400);
+            color: var(--gray-500);
+        }
+        .data-item.swapped {
+            background: #fed7aa;
+        }
+        .data-item.saved {
+            background: #bbf7d0;
+        }
+        .data-item.gone {
+            background: #fecaca;
+            text-decoration: line-through;
+        }
+        .status {
+            display: block;
+            margin-top: var(--space-sm);
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+        .arrow {
+            font-size: 2rem;
+            color: var(--gray-400);
+        }
+        .arrow.transfer {
+            background: #dbeafe;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            color: #2563eb;
+            font-size: 1rem;
+        }
+        .arrow.swap {
+            background: #ffedd5;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            color: #ea580c;
+            font-size: 1rem;
+        }
+        .arrow.save {
+            background: #dcfce7;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            color: #16a34a;
+            font-size: 1rem;
+        }
+        .step-explanation h4 {
+            color: var(--gray-700);
+            margin-bottom: var(--space-sm);
+        }
+        .step-explanation ul, .step-explanation ol {
+            padding-left: var(--space-lg);
+        }
+        .step-explanation li {
+            margin-bottom: var(--space-xs);
+        }
+        .why-box, .warning-box, .tip-box {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .why-box {
+            background: #dbeafe;
+            border-left: 4px solid #2563eb;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .tip-box {
+            background: #dcfce7;
+            border-left: 4px solid #16a34a;
+        }
+        .memory-bar {
+            display: flex;
+            height: 40px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-top: var(--space-sm);
+        }
+        .used-space {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .used-space:nth-child(1) { background: #2563eb; }
+        .used-space.word { background: #7c3aed; }
+        .used-space.chrome { background: #ea580c; }
+        .used-space.game { background: #059669; }
+        .free-space {
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--gray-600);
+        }
+        .cache-hierarchy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        .cache-levels {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+        .cache-level {
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+        }
+        .cache-level.l1 { background: #fecaca; }
+        .cache-level.l2 { background: #fed7aa; }
+        .cache-level.l3 { background: #fef08a; }
+        .speed-comparison {
+            margin-top: var(--space-lg);
+        }
+        .speed-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+        .speed-label {
+            width: 80px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .speed-fill {
+            background: #10b981;
+            color: white;
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            min-width: 120px;
+            text-align: center;
+        }
+        .speed-fill.ram-speed { background: #2563eb; }
+        .speed-fill.ssd-speed { background: #7c3aed; min-width: 150px; }
+        .shutdown-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--space-md);
+        }
+        .shutdown-table th, .shutdown-table td {
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-300);
+            text-align: left;
+        }
+        .shutdown-table th {
+            background: var(--gray-100);
+        }
+        .shutdown-table .lost {
+            color: #dc2626;
+            font-weight: 500;
+        }
+        .shutdown-table .kept {
+            color: #16a34a;
+            font-weight: 500;
+        }
+        .memory-box.shutdown {
+            opacity: 0.6;
+            border-style: dashed;
+        }
+        .takeaway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-lg);
+        }
+        .takeaway-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        .takeaway-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+        .takeaway-card h4 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-sm);
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

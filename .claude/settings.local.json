@@ -6,7 +6,9 @@
       "WebFetch(domain:www.101computing.net)",
       "Bash(grep:*)",
       "Bash(ls:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

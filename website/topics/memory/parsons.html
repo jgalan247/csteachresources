@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons: Memory Concepts - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Memory and Storage</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons</span>
+        </nav>
+
+        <header class="activity-header">
+            <span class="activity-icon">🧩</span>
+            <div class="activity-title">
+                <h1>Arrange: Memory Concepts</h1>
+                <p>Put the steps and concepts in the correct order.</p>
+            </div>
+        </header>
+
+        <div class="activity-instructions">
+            <h3>How to complete these exercises:</h3>
+            <ol>
+                <li>Read the task description</li>
+                <li>Drag the blocks into the correct order</li>
+                <li>Click "Check Answer" to verify</li>
+                <li>Green = correct position, Red = wrong position</li>
+            </ol>
+        </div>
+
+        <!-- Problem 1: Boot Sequence -->
+        <section class="parsons-problem">
+            <h2>Problem 1: Computer Boot Sequence</h2>
+            <p>Arrange these steps in the order they happen when you turn on a computer.</p>
+
+            <div class="parsons-container" data-problem="1">
+                <div class="blocks-area" id="blocks-1">
+                    <div class="parsons-block" data-order="3">BIOS searches for the operating system on the hard drive</div>
+                    <div class="parsons-block" data-order="5">Desktop appears and computer is ready to use</div>
+                    <div class="parsons-block" data-order="1">CPU reads boot instructions from ROM</div>
+                    <div class="parsons-block" data-order="4">Operating system files are copied from hard drive to RAM</div>
+                    <div class="parsons-block" data-order="2">BIOS performs POST (Power On Self Test)</div>
+                </div>
+                <div class="solution-area" id="solution-1">
+                    <p class="drop-hint">Drag blocks here in the correct order</p>
+                </div>
+            </div>
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-btn" data-problem="1">Reset</button>
+                <button class="btn btn-primary check-btn" data-problem="1">Check Answer</button>
+            </div>
+            <div class="feedback" id="feedback-1"></div>
+        </section>
+
+        <!-- Problem 2: Virtual Memory Process -->
+        <section class="parsons-problem mt-xl">
+            <h2>Problem 2: Virtual Memory Process</h2>
+            <p>Arrange these steps to show what happens when RAM becomes full.</p>
+
+            <div class="parsons-container" data-problem="2">
+                <div class="blocks-area" id="blocks-2">
+                    <div class="parsons-block" data-order="4">New program loads into the freed RAM space</div>
+                    <div class="parsons-block" data-order="1">RAM becomes completely full</div>
+                    <div class="parsons-block" data-order="5">When old data is needed, it's swapped back from hard drive</div>
+                    <div class="parsons-block" data-order="2">Operating system identifies least recently used data</div>
+                    <div class="parsons-block" data-order="3">This data is moved to the page file on the hard drive</div>
+                </div>
+                <div class="solution-area" id="solution-2">
+                    <p class="drop-hint">Drag blocks here in the correct order</p>
+                </div>
+            </div>
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-btn" data-problem="2">Reset</button>
+                <button class="btn btn-primary check-btn" data-problem="2">Check Answer</button>
+            </div>
+            <div class="feedback" id="feedback-2"></div>
+        </section>
+
+        <!-- Problem 3: Memory Hierarchy Speed -->
+        <section class="parsons-problem mt-xl">
+            <h2>Problem 3: Memory Speed (Fastest to Slowest)</h2>
+            <p>Arrange these memory types from FASTEST to SLOWEST access speed.</p>
+
+            <div class="parsons-container" data-problem="3">
+                <div class="blocks-area" id="blocks-3">
+                    <div class="parsons-block" data-order="4">RAM</div>
+                    <div class="parsons-block" data-order="2">L2 Cache</div>
+                    <div class="parsons-block" data-order="6">Hard Disk Drive (HDD)</div>
+                    <div class="parsons-block" data-order="1">CPU Registers / L1 Cache</div>
+                    <div class="parsons-block" data-order="5">Solid State Drive (SSD)</div>
+                    <div class="parsons-block" data-order="3">L3 Cache</div>
+                </div>
+                <div class="solution-area" id="solution-3">
+                    <p class="drop-hint">Drag blocks here: fastest at top, slowest at bottom</p>
+                </div>
+            </div>
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-btn" data-problem="3">Reset</button>
+                <button class="btn btn-primary check-btn" data-problem="3">Check Answer</button>
+            </div>
+            <div class="feedback" id="feedback-3"></div>
+        </section>
+
+        <!-- Problem 4: RAM vs ROM -->
+        <section class="parsons-problem mt-xl">
+            <h2>Problem 4: Categorise RAM vs ROM</h2>
+            <p>Drag each characteristic to the correct memory type.</p>
+
+            <div class="categorise-container" data-problem="4">
+                <div class="category-blocks" id="cat-blocks-4">
+                    <div class="cat-block" data-category="RAM">Stores running programs</div>
+                    <div class="cat-block" data-category="ROM">Contains BIOS instructions</div>
+                    <div class="cat-block" data-category="RAM">Volatile - loses data when power off</div>
+                    <div class="cat-block" data-category="ROM">Non-volatile - keeps data without power</div>
+                    <div class="cat-block" data-category="RAM">Can be read and written to</div>
+                    <div class="cat-block" data-category="ROM">Read-only (cannot easily change)</div>
+                    <div class="cat-block" data-category="RAM">Typically 4GB - 64GB in size</div>
+                    <div class="cat-block" data-category="ROM">Only a few MB in size</div>
+                </div>
+                <div class="categories-area">
+                    <div class="category-box" id="cat-ram">
+                        <h4>RAM</h4>
+                        <div class="category-drop"></div>
+                    </div>
+                    <div class="category-box" id="cat-rom">
+                        <h4>ROM</h4>
+                        <div class="category-drop"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-btn" data-problem="4">Reset</button>
+                <button class="btn btn-primary check-btn" data-problem="4">Check Answer</button>
+            </div>
+            <div class="feedback" id="feedback-4"></div>
+        </section>
+
+        <!-- Problem 5: Cache Process -->
+        <section class="parsons-problem mt-xl">
+            <h2>Problem 5: How Cache Works</h2>
+            <p>Arrange these steps to show how cache memory speeds up data access.</p>
+
+            <div class="parsons-container" data-problem="5">
+                <div class="blocks-area" id="blocks-5">
+                    <div class="parsons-block" data-order="4">A copy is also stored in cache for next time</div>
+                    <div class="parsons-block" data-order="5">Next time CPU needs same data, it's found in cache (cache hit!)</div>
+                    <div class="parsons-block" data-order="1">CPU needs to access some data</div>
+                    <div class="parsons-block" data-order="3">Data is fetched from RAM (slower)</div>
+                    <div class="parsons-block" data-order="2">CPU checks cache first - data not found (cache miss)</div>
+                </div>
+                <div class="solution-area" id="solution-5">
+                    <p class="drop-hint">Drag blocks here in the correct order</p>
+                </div>
+            </div>
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-btn" data-problem="5">Reset</button>
+                <button class="btn btn-primary check-btn" data-problem="5">Check Answer</button>
+            </div>
+            <div class="feedback" id="feedback-5"></div>
+        </section>
+
+        <div class="activity-navigation">
+            <a href="trace.html" class="btn btn-secondary">← Previous: Trace</a>
+            <a href="quiz.html" class="btn btn-primary">Next: Quiz →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        Progress.startActivity('memory-parsons', 'memory');
+
+        // Make blocks draggable
+        document.querySelectorAll('.parsons-block, .cat-block').forEach(block => {
+            block.draggable = true;
+            block.addEventListener('dragstart', handleDragStart);
+            block.addEventListener('dragend', handleDragEnd);
+        });
+
+        // Set up drop zones
+        document.querySelectorAll('.solution-area, .category-drop').forEach(zone => {
+            zone.addEventListener('dragover', handleDragOver);
+            zone.addEventListener('drop', handleDrop);
+            zone.addEventListener('dragleave', handleDragLeave);
+        });
+
+        // Also allow dropping back to blocks area
+        document.querySelectorAll('.blocks-area, .category-blocks').forEach(zone => {
+            zone.addEventListener('dragover', handleDragOver);
+            zone.addEventListener('drop', handleDropBack);
+            zone.addEventListener('dragleave', handleDragLeave);
+        });
+
+        let draggedElement = null;
+
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            this.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+            if (draggedElement) {
+                // Remove hint text if present
+                const hint = this.querySelector('.drop-hint');
+                if (hint) hint.remove();
+                this.appendChild(draggedElement);
+            }
+        }
+
+        function handleDropBack(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+            if (draggedElement) {
+                this.appendChild(draggedElement);
+            }
+        }
+
+        // Reset buttons
+        document.querySelectorAll('.reset-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const problemNum = this.dataset.problem;
+                resetProblem(problemNum);
+            });
+        });
+
+        function resetProblem(num) {
+            const blocksArea = document.getElementById(`blocks-${num}`) || document.getElementById(`cat-blocks-${num}`);
+            const solutionArea = document.getElementById(`solution-${num}`);
+            const feedback = document.getElementById(`feedback-${num}`);
+
+            if (solutionArea) {
+                // Move all blocks back
+                const blocks = solutionArea.querySelectorAll('.parsons-block');
+                blocks.forEach(block => {
+                    block.classList.remove('correct', 'incorrect');
+                    blocksArea.appendChild(block);
+                });
+                // Restore hint
+                if (!solutionArea.querySelector('.drop-hint')) {
+                    const hint = document.createElement('p');
+                    hint.className = 'drop-hint';
+                    hint.textContent = 'Drag blocks here in the correct order';
+                    solutionArea.appendChild(hint);
+                }
+            }
+
+            // Handle category problem
+            if (num === '4') {
+                document.querySelectorAll('#cat-ram .category-drop .cat-block, #cat-rom .category-drop .cat-block').forEach(block => {
+                    block.classList.remove('correct', 'incorrect');
+                    document.getElementById('cat-blocks-4').appendChild(block);
+                });
+            }
+
+            feedback.innerHTML = '';
+            feedback.className = 'feedback';
+        }
+
+        // Check buttons
+        document.querySelectorAll('.check-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const problemNum = this.dataset.problem;
+                checkAnswer(problemNum);
+            });
+        });
+
+        function checkAnswer(num) {
+            const feedback = document.getElementById(`feedback-${num}`);
+
+            if (num === '4') {
+                // Category problem
+                checkCategories();
+                return;
+            }
+
+            const solutionArea = document.getElementById(`solution-${num}`);
+            const blocks = solutionArea.querySelectorAll('.parsons-block');
+
+            if (blocks.length === 0) {
+                feedback.innerHTML = '<p class="error">Please drag some blocks to the solution area first!</p>';
+                feedback.className = 'feedback error';
+                return;
+            }
+
+            let allCorrect = true;
+            blocks.forEach((block, index) => {
+                const expectedOrder = index + 1;
+                const actualOrder = parseInt(block.dataset.order);
+
+                if (actualOrder === expectedOrder) {
+                    block.classList.add('correct');
+                    block.classList.remove('incorrect');
+                } else {
+                    block.classList.add('incorrect');
+                    block.classList.remove('correct');
+                    allCorrect = false;
+                }
+            });
+
+            // Check if all blocks are used
+            const blocksArea = document.getElementById(`blocks-${num}`);
+            const remainingBlocks = blocksArea.querySelectorAll('.parsons-block');
+            if (remainingBlocks.length > 0) {
+                allCorrect = false;
+            }
+
+            if (allCorrect) {
+                feedback.innerHTML = '<p class="success">Correct! Well done!</p>';
+                feedback.className = 'feedback success';
+            } else {
+                feedback.innerHTML = '<p class="error">Not quite right. Green blocks are in the correct position. Try rearranging the red blocks.</p>';
+                feedback.className = 'feedback error';
+            }
+        }
+
+        function checkCategories() {
+            const feedback = document.getElementById('feedback-4');
+            const ramBlocks = document.querySelectorAll('#cat-ram .category-drop .cat-block');
+            const romBlocks = document.querySelectorAll('#cat-rom .category-drop .cat-block');
+
+            let allCorrect = true;
+
+            ramBlocks.forEach(block => {
+                if (block.dataset.category === 'RAM') {
+                    block.classList.add('correct');
+                    block.classList.remove('incorrect');
+                } else {
+                    block.classList.add('incorrect');
+                    block.classList.remove('correct');
+                    allCorrect = false;
+                }
+            });
+
+            romBlocks.forEach(block => {
+                if (block.dataset.category === 'ROM') {
+                    block.classList.add('correct');
+                    block.classList.remove('incorrect');
+                } else {
+                    block.classList.add('incorrect');
+                    block.classList.remove('correct');
+                    allCorrect = false;
+                }
+            });
+
+            // Check if all blocks are categorised
+            const uncategorised = document.querySelectorAll('#cat-blocks-4 .cat-block');
+            if (uncategorised.length > 0) {
+                allCorrect = false;
+            }
+
+            if (allCorrect && ramBlocks.length + romBlocks.length === 8) {
+                feedback.innerHTML = '<p class="success">Correct! You correctly categorised all the characteristics.</p>';
+                feedback.className = 'feedback success';
+            } else {
+                feedback.innerHTML = '<p class="error">Not quite right. Check the highlighted blocks and try again.</p>';
+                feedback.className = 'feedback error';
+            }
+        }
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
+            margin-bottom: var(--space-xl);
+        }
+        .activity-icon {
+            font-size: 3rem;
+            background: var(--theory, #10b981);
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+        }
+        .activity-instructions {
+            background: #f0fdf4;
+            border-left: 4px solid var(--theory, #10b981);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .parsons-problem {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .parsons-problem h2 {
+            color: var(--theory, #10b981);
+            margin-bottom: var(--space-sm);
+        }
+        .parsons-container, .categorise-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        @media (max-width: 768px) {
+            .parsons-container, .categorise-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .blocks-area, .category-blocks {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            min-height: 200px;
+        }
+        .solution-area {
+            background: #f0fdf4;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border: 2px dashed var(--theory, #10b981);
+            min-height: 200px;
+        }
+        .parsons-block, .cat-block {
+            background: white;
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-300);
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+        .parsons-block:hover, .cat-block:hover {
+            border-color: var(--theory, #10b981);
+            box-shadow: var(--shadow-sm);
+        }
+        .parsons-block.dragging, .cat-block.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .parsons-block.correct, .cat-block.correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+        }
+        .parsons-block.incorrect, .cat-block.incorrect {
+            background: #fef2f2;
+            border-color: #dc2626;
+        }
+        .drag-over {
+            background: #d1fae5 !important;
+        }
+        .drop-hint {
+            color: var(--gray-500);
+            text-align: center;
+            font-style: italic;
+            margin-top: var(--space-xl);
+        }
+        .categories-area {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .category-box {
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+        }
+        .category-box h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--gray-700);
+            text-align: center;
+        }
+        #cat-ram { border-left: 4px solid #2563eb; }
+        #cat-rom { border-left: 4px solid #dc2626; }
+        .category-drop {
+            min-height: 100px;
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: var(--space-sm);
+            border: 2px dashed var(--gray-300);
+        }
+        .parsons-controls {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .feedback.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .feedback.error {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>
