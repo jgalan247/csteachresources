@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems - Number Systems</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Number Systems</a>
+            <h1>Parsons Problems</h1>
+            <p class="subtitle">Drag and drop steps into the correct order</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How to Solve Parsons Problems</h2>
+            <p>The steps for each conversion are shown in the wrong order. Drag them into the correct sequence to complete the conversion. This helps you understand the <strong>method</strong>, not just memorise answers.</p>
+        </div>
+
+        <!-- Problem 1: Binary to Denary -->
+        <section class="parsons-problem" data-problem="1">
+            <h2>Problem 1: Binary to Denary Conversion</h2>
+            <p class="problem-description">Put these steps in the correct order to convert <strong>10110110</strong> from binary to denary.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-1">
+                    <div class="parsons-block" data-order="3">Identify which place values have a 1: 128, 32, 16, 4, 2</div>
+                    <div class="parsons-block" data-order="1">Write out the binary place values: 128, 64, 32, 16, 8, 4, 2, 1</div>
+                    <div class="parsons-block" data-order="4">Add the place values: 128 + 32 + 16 + 4 + 2 = 182</div>
+                    <div class="parsons-block" data-order="2">Place each binary digit under its place value: 1,0,1,1,0,1,1,0</div>
+                    <div class="parsons-block" data-order="5">The answer is 182 in denary</div>
+                </div>
+                <div class="parsons-target" id="target-1">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="1">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-1"></div>
+        </section>
+
+        <!-- Problem 2: Denary to Binary (Division Method) -->
+        <section class="parsons-problem" data-problem="2">
+            <h2>Problem 2: Denary to Binary (Division Method)</h2>
+            <p class="problem-description">Put these steps in the correct order to convert <strong>200</strong> from denary to binary using repeated division.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-2">
+                    <div class="parsons-block" data-order="3">Continue dividing by 2 until the quotient is 0</div>
+                    <div class="parsons-block" data-order="5">Pad with leading zeros if needed to make 8 bits</div>
+                    <div class="parsons-block" data-order="1">Start with the denary number (200)</div>
+                    <div class="parsons-block" data-order="4">Read the remainders from bottom to top</div>
+                    <div class="parsons-block" data-order="2">Divide by 2 and record the remainder (0 or 1)</div>
+                </div>
+                <div class="parsons-target" id="target-2">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="2">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-2"></div>
+        </section>
+
+        <!-- Problem 3: Binary Addition -->
+        <section class="parsons-problem" data-problem="3">
+            <h2>Problem 3: Binary Addition</h2>
+            <p class="problem-description">Put these steps in the correct order to add two 8-bit binary numbers.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-3">
+                    <div class="parsons-block" data-order="4">Move to the next column (left), including any carry</div>
+                    <div class="parsons-block" data-order="2">Start from the rightmost column (LSB)</div>
+                    <div class="parsons-block" data-order="3">Add the bits in the column: 0+0=0, 0+1=1, 1+1=10 (write 0, carry 1)</div>
+                    <div class="parsons-block" data-order="1">Write both numbers aligned by their place values</div>
+                    <div class="parsons-block" data-order="6">Check for overflow if there's a carry out of the MSB</div>
+                    <div class="parsons-block" data-order="5">Repeat until all columns are added</div>
+                </div>
+                <div class="parsons-target" id="target-3">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="3">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-3"></div>
+        </section>
+
+        <!-- Problem 4: Hexadecimal to Denary -->
+        <section class="parsons-problem" data-problem="4">
+            <h2>Problem 4: Hexadecimal to Denary</h2>
+            <p class="problem-description">Put these steps in the correct order to convert <strong>C5</strong> from hexadecimal to denary.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-4">
+                    <div class="parsons-block" data-order="2">Convert each hex digit to its denary value: C=12, 5=5</div>
+                    <div class="parsons-block" data-order="4">Add the results: 192 + 5 = 197</div>
+                    <div class="parsons-block" data-order="3">Multiply by place values: 12 × 16 = 192, 5 × 1 = 5</div>
+                    <div class="parsons-block" data-order="1">Identify the place values: 16s and 1s columns</div>
+                    <div class="parsons-block" data-order="5">The answer is 197 in denary</div>
+                </div>
+                <div class="parsons-target" id="target-4">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="4">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-4"></div>
+        </section>
+
+        <!-- Problem 5: Binary to Hexadecimal -->
+        <section class="parsons-problem" data-problem="5">
+            <h2>Problem 5: Binary to Hexadecimal</h2>
+            <p class="problem-description">Put these steps in the correct order to convert <strong>11001010</strong> from binary to hexadecimal.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-5">
+                    <div class="parsons-block" data-order="3">Convert each nibble to denary: 1100=12, 1010=10</div>
+                    <div class="parsons-block" data-order="1">Split the binary number into 4-bit groups (nibbles)</div>
+                    <div class="parsons-block" data-order="5">Combine the hex digits: CA</div>
+                    <div class="parsons-block" data-order="2">Group from right: 1100 | 1010</div>
+                    <div class="parsons-block" data-order="4">Convert to hex digits: 12=C, 10=A</div>
+                </div>
+                <div class="parsons-target" id="target-5">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="5">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-5"></div>
+        </section>
+
+        <!-- Problem 6: Denary to Hexadecimal -->
+        <section class="parsons-problem" data-problem="6">
+            <h2>Problem 6: Denary to Hexadecimal</h2>
+            <p class="problem-description">Put these steps in the correct order to convert <strong>250</strong> from denary to hexadecimal.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-6">
+                    <div class="parsons-block" data-order="4">Convert results to hex: 15=F, 10=A</div>
+                    <div class="parsons-block" data-order="2">Divide by 16: 250 ÷ 16 = 15 remainder 10</div>
+                    <div class="parsons-block" data-order="5">Write as FA (16s digit first, then 1s digit)</div>
+                    <div class="parsons-block" data-order="1">Start with the denary number (250)</div>
+                    <div class="parsons-block" data-order="3">Quotient (15) is the 16s column, remainder (10) is the 1s column</div>
+                </div>
+                <div class="parsons-target" id="target-6">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="6">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-6"></div>
+        </section>
+
+        <!-- Problem 7: Left Shift -->
+        <section class="parsons-problem" data-problem="7">
+            <h2>Problem 7: Binary Left Shift</h2>
+            <p class="problem-description">Put these steps in the correct order to perform a left shift by 2 on <strong>00101100</strong>.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-7">
+                    <div class="parsons-block" data-order="4">The result represents the original × 4 (since shift by 2 = ×2²)</div>
+                    <div class="parsons-block" data-order="2">Move all bits 2 positions to the left</div>
+                    <div class="parsons-block" data-order="1">Start with the original binary: 00101100 (44 in denary)</div>
+                    <div class="parsons-block" data-order="3">Fill empty positions on the right with zeros: 10110000</div>
+                    <div class="parsons-block" data-order="5">10110000 = 176 (which is 44 × 4)</div>
+                </div>
+                <div class="parsons-target" id="target-7">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="7">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-7"></div>
+        </section>
+
+        <!-- Problem 8: Right Shift -->
+        <section class="parsons-problem" data-problem="8">
+            <h2>Problem 8: Binary Right Shift</h2>
+            <p class="problem-description">Put these steps in the correct order to perform a right shift by 1 on <strong>01100100</strong>.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-8">
+                    <div class="parsons-block" data-order="3">Fill empty position on the left with zero: 00110010</div>
+                    <div class="parsons-block" data-order="5">00110010 = 50 (which is 100 ÷ 2)</div>
+                    <div class="parsons-block" data-order="1">Start with the original binary: 01100100 (100 in denary)</div>
+                    <div class="parsons-block" data-order="4">The result represents the original ÷ 2</div>
+                    <div class="parsons-block" data-order="2">Move all bits 1 position to the right (rightmost bit is lost)</div>
+                </div>
+                <div class="parsons-target" id="target-8">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="8">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-8"></div>
+        </section>
+
+        <!-- Progress Summary -->
+        <section class="progress-summary">
+            <h2>Your Progress</h2>
+            <div class="progress-grid" id="parsons-progress">
+                <div class="progress-item" data-problem="1">Problem 1: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="2">Problem 2: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="3">Problem 3: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="4">Problem 4: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="5">Problem 5: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="6">Problem 6: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="7">Problem 7: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="8">Problem 8: <span class="status">Not attempted</span></div>
+            </div>
+            <p class="completion-message" id="completion-message" style="display: none;">
+                Congratulations! You've completed all Parsons problems!
+            </p>
+        </section>
+
+        <div class="activity-nav">
+            <a href="trace.html" class="btn btn-secondary">← Trace Exercises</a>
+            <a href="quiz.html" class="btn btn-primary">Knowledge Quiz →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Track completed problems
+        let completedProblems = new Set();
+
+        // Initialize drag and drop
+        function initParsons() {
+            document.querySelectorAll('.parsons-source').forEach(source => {
+                // Shuffle the blocks
+                const blocks = Array.from(source.querySelectorAll('.parsons-block'));
+                blocks.sort(() => Math.random() - 0.5);
+                blocks.forEach(block => source.appendChild(block));
+
+                // Make blocks draggable
+                blocks.forEach(block => {
+                    block.draggable = true;
+                    block.addEventListener('dragstart', handleDragStart);
+                    block.addEventListener('dragend', handleDragEnd);
+                });
+            });
+
+            // Set up drop targets
+            document.querySelectorAll('.parsons-target').forEach(target => {
+                target.addEventListener('dragover', handleDragOver);
+                target.addEventListener('drop', handleDrop);
+                target.addEventListener('dragleave', handleDragLeave);
+            });
+
+            // Also allow dropping back to source
+            document.querySelectorAll('.parsons-source').forEach(source => {
+                source.addEventListener('dragover', handleDragOver);
+                source.addEventListener('drop', handleDrop);
+                source.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        let draggedElement = null;
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            document.querySelectorAll('.parsons-target, .parsons-source').forEach(el => {
+                el.classList.remove('drag-over');
+            });
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            e.currentTarget.classList.add('drag-over');
+
+            // Determine where to insert based on mouse position
+            const target = e.currentTarget;
+            const blocks = [...target.querySelectorAll('.parsons-block:not(.dragging)')];
+
+            const afterElement = blocks.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = e.clientY - box.top - box.height / 2;
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+
+            if (afterElement) {
+                target.insertBefore(draggedElement, afterElement);
+            } else {
+                target.appendChild(draggedElement);
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        // Check answer
+        document.querySelectorAll('.check-parsons').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const problemNum = this.dataset.problem;
+                const target = document.getElementById(`target-${problemNum}`);
+                const feedback = document.getElementById(`feedback-${problemNum}`);
+                const blocks = target.querySelectorAll('.parsons-block');
+
+                if (blocks.length === 0) {
+                    feedback.innerHTML = '<p class="incorrect">Drag all steps to the answer area first!</p>';
+                    return;
+                }
+
+                // Check if source still has blocks
+                const source = document.getElementById(`source-${problemNum}`);
+                if (source.querySelectorAll('.parsons-block').length > 0) {
+                    feedback.innerHTML = '<p class="incorrect">Move all steps to the answer area!</p>';
+                    return;
+                }
+
+                let correct = true;
+                let currentOrder = 1;
+
+                blocks.forEach(block => {
+                    const expectedOrder = parseInt(block.dataset.order);
+                    if (expectedOrder !== currentOrder) {
+                        correct = false;
+                        block.classList.add('incorrect-order');
+                        block.classList.remove('correct-order');
+                    } else {
+                        block.classList.add('correct-order');
+                        block.classList.remove('incorrect-order');
+                    }
+                    currentOrder++;
+                });
+
+                if (correct) {
+                    feedback.innerHTML = '<p class="correct">Correct! Well done!</p>';
+                    this.disabled = true;
+
+                    // Update progress
+                    completedProblems.add(problemNum);
+                    updateProgressDisplay(problemNum, true);
+
+                    // Save progress
+                    if (typeof Progress !== 'undefined') {
+                        Progress.complete(`numbers-parsons-${problemNum}`);
+                    }
+
+                    // Check if all complete
+                    checkAllComplete();
+                } else {
+                    feedback.innerHTML = '<p class="incorrect">Not quite right. Steps highlighted in red are in the wrong position. Try again!</p>';
+                }
+            });
+        });
+
+        function updateProgressDisplay(problemNum, completed) {
+            const item = document.querySelector(`.progress-item[data-problem="${problemNum}"]`);
+            const status = item.querySelector('.status');
+
+            if (completed) {
+                status.textContent = 'Completed!';
+                status.className = 'status completed';
+                item.classList.add('completed');
+            } else {
+                status.textContent = 'In progress';
+                status.className = 'status in-progress';
+            }
+        }
+
+        function checkAllComplete() {
+            if (completedProblems.size >= 8) {
+                document.getElementById('completion-message').style.display = 'block';
+
+                // Save overall completion
+                if (typeof Progress !== 'undefined') {
+                    Progress.complete('numbers-parsons');
+                }
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initParsons);
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('numbers-parsons');
+        }
+    </script>
+
+    <style>
+        .parsons-problem {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .problem-description {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+
+        .parsons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+        }
+
+        @media (max-width: 768px) {
+            .parsons-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .parsons-source,
+        .parsons-target {
+            min-height: 200px;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background: var(--gray-100);
+            border: 2px dashed var(--gray-400);
+        }
+
+        .parsons-target {
+            background: var(--success-light, #e8f5e9);
+            border-color: var(--success);
+        }
+
+        .target-label {
+            color: var(--gray-600);
+            font-style: italic;
+            text-align: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .parsons-block {
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-sm);
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .parsons-block:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .parsons-block.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+
+        .parsons-block.correct-order {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .parsons-block.incorrect-order {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+
+        .drag-over {
+            background: var(--primary-light) !important;
+            border-color: var(--primary) !important;
+        }
+
+        .parsons-feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+
+        .parsons-feedback p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .parsons-feedback .correct {
+            color: var(--success);
+        }
+
+        .parsons-feedback .incorrect {
+            color: var(--error);
+        }
+
+        .progress-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .progress-item {
+            padding: var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+        }
+
+        .progress-item.completed {
+            background: #d4edda;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .status.completed {
+            color: var(--success);
+        }
+
+        .status.in-progress {
+            color: var(--warning);
+        }
+
+        .completion-message {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: var(--success-light, #e8f5e9);
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

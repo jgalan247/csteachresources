@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Number Systems - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Number Systems</a>
+            <h1>Predict: Number Conversions</h1>
+            <p class="subtitle">Make predictions about number conversions before calculating</p>
+        </div>
+
+        <div class="instructions-box">
+            <h3>How This Works</h3>
+            <p>For each question, make a prediction BEFORE revealing the answer. Building intuition for number systems helps you spot errors quickly.</p>
+        </div>
+
+        <!-- Prediction 1: Binary Range -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">1</span>
+                <h3>Binary Range Check</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>The binary number <strong>11111111</strong> represents which denary value?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred1" value="a"> 128</label>
+                    <label><input type="radio" name="pred1" value="b"> 255</label>
+                    <label><input type="radio" name="pred1" value="c"> 256</label>
+                    <label><input type="radio" name="pred1" value="d"> 511</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer1">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer1">
+                <h4>Answer: 255</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <p>128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = <strong>255</strong></p>
+                    <p>This is the maximum value that can be stored in 8 bits.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 2: Binary to Denary -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">2</span>
+                <h3>Binary to Denary</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Convert the binary number <strong>10101010</strong> to denary.</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred2" value="a"> 85</label>
+                    <label><input type="radio" name="pred2" value="b"> 170</label>
+                    <label><input type="radio" name="pred2" value="c"> 186</label>
+                    <label><input type="radio" name="pred2" value="d"> 240</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer2">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer2">
+                <h4>Answer: 170</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <p>128 + 0 + 32 + 0 + 8 + 0 + 2 + 0 = <strong>170</strong></p>
+                    <p>The pattern 10101010 has 1s in the 128, 32, 8, and 2 positions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 3: Denary to Binary -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">3</span>
+                <h3>Denary to Binary</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Convert denary <strong>200</strong> to binary.</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred3" value="a"> 11001000</label>
+                    <label><input type="radio" name="pred3" value="b"> 11000100</label>
+                    <label><input type="radio" name="pred3" value="c"> 11010000</label>
+                    <label><input type="radio" name="pred3" value="d"> 11001100</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer3">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer3">
+                <h4>Answer: 11001000</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <p>200 = 128 + 64 + 8 = 11001000</p>
+                    <ul>
+                        <li>128 fits (200-128=72), mark 1</li>
+                        <li>64 fits (72-64=8), mark 1</li>
+                        <li>32 doesn't fit, mark 0</li>
+                        <li>16 doesn't fit, mark 0</li>
+                        <li>8 fits (8-8=0), mark 1</li>
+                        <li>Rest are 0s</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 4: Binary Addition -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">4</span>
+                <h3>Binary Addition</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Add: <strong>01100100 + 00110010</strong></p>
+                <p>(Hint: 100 + 50 in denary)</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred4" value="a"> 10010110</label>
+                    <label><input type="radio" name="pred4" value="b"> 10010100</label>
+                    <label><input type="radio" name="pred4" value="c"> 10001110</label>
+                    <label><input type="radio" name="pred4" value="d"> 10011010</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer4">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer4">
+                <h4>Answer: 10010110</h4>
+                <div class="explanation">
+                    <p><strong>Verification:</strong></p>
+                    <p>10010110 = 128 + 16 + 4 + 2 = 150</p>
+                    <p>100 + 50 = 150 ✓</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 5: Overflow Check -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">5</span>
+                <h3>Overflow Detection</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Which of these additions will cause an <strong>overflow error</strong> in 8 bits?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred5" value="a"> 100 + 100</label>
+                    <label><input type="radio" name="pred5" value="b"> 127 + 127</label>
+                    <label><input type="radio" name="pred5" value="c"> 200 + 100</label>
+                    <label><input type="radio" name="pred5" value="d"> 64 + 64</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer5">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer5">
+                <h4>Answer: 200 + 100 causes overflow</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <ul>
+                        <li>100 + 100 = 200 ✓ (fits in 8 bits)</li>
+                        <li>127 + 127 = 254 ✓ (fits in 8 bits)</li>
+                        <li>200 + 100 = 300 ✗ (exceeds 255, overflow!)</li>
+                        <li>64 + 64 = 128 ✓ (fits in 8 bits)</li>
+                    </ul>
+                    <p>8 bits can only store values 0-255. Any result > 255 causes overflow.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 6: Hex to Denary -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">6</span>
+                <h3>Hexadecimal to Denary</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Convert hexadecimal <strong>A5</strong> to denary.</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred6" value="a"> 105</label>
+                    <label><input type="radio" name="pred6" value="b"> 155</label>
+                    <label><input type="radio" name="pred6" value="c"> 165</label>
+                    <label><input type="radio" name="pred6" value="d"> 175</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer6">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer6">
+                <h4>Answer: 165</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <p>A = 10, 5 = 5</p>
+                    <p>(10 × 16) + (5 × 1) = 160 + 5 = <strong>165</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 7: Binary to Hex -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">7</span>
+                <h3>Binary to Hexadecimal</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Convert binary <strong>11110000</strong> to hexadecimal.</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred7" value="a"> E0</label>
+                    <label><input type="radio" name="pred7" value="b"> F0</label>
+                    <label><input type="radio" name="pred7" value="c"> 0F</label>
+                    <label><input type="radio" name="pred7" value="d"> FF</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer7">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer7">
+                <h4>Answer: F0</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <p>Split into nibbles: 1111 | 0000</p>
+                    <p>1111 = 15 = F</p>
+                    <p>0000 = 0 = 0</p>
+                    <p>Result: <strong>F0</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 8: Left Shift -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">8</span>
+                <h3>Left Shift</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>What is the result of shifting <strong>00001100</strong> (12) left by 2 positions?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred8" value="a"> 00000011 (3)</label>
+                    <label><input type="radio" name="pred8" value="b"> 00110000 (48)</label>
+                    <label><input type="radio" name="pred8" value="c"> 01100000 (96)</label>
+                    <label><input type="radio" name="pred8" value="d"> 00011000 (24)</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer8">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer8">
+                <h4>Answer: 00110000 (48)</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <p>Left shift by 2 = multiply by 2² = multiply by 4</p>
+                    <p>12 × 4 = 48</p>
+                    <p>00001100 → 00110000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 9: Right Shift -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">9</span>
+                <h3>Right Shift</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>What is the result of shifting <strong>01100000</strong> (96) right by 3 positions?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred9" value="a"> 00001100 (12)</label>
+                    <label><input type="radio" name="pred9" value="b"> 00000110 (6)</label>
+                    <label><input type="radio" name="pred9" value="c"> 00011000 (24)</label>
+                    <label><input type="radio" name="pred9" value="d"> 00000011 (3)</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer9">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer9">
+                <h4>Answer: 00001100 (12)</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <p>Right shift by 3 = divide by 2³ = divide by 8</p>
+                    <p>96 ÷ 8 = 12</p>
+                    <p>01100000 → 00001100</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 10: MSB/LSB -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">10</span>
+                <h3>MSB and LSB</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>In the binary number <strong>10110101</strong>, what is the value of the MSB (Most Significant Bit)?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred10" value="a"> 1</label>
+                    <label><input type="radio" name="pred10" value="b"> 128</label>
+                    <label><input type="radio" name="pred10" value="c"> 0</label>
+                    <label><input type="radio" name="pred10" value="d"> 181</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer10">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer10">
+                <h4>Answer: 1 (or it contributes 128 to the value)</h4>
+                <div class="explanation">
+                    <p><strong>Explanation:</strong></p>
+                    <p>The MSB is the <strong>leftmost bit</strong>. In 10110101, the MSB is <strong>1</strong>.</p>
+                    <p>The MSB has the highest place value. In 8-bit binary, if the MSB is 1, it contributes 128 to the total value.</p>
+                    <p>The question asks for the VALUE of the MSB, which is <strong>1</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Score Summary -->
+        <section class="score-section mt-xl">
+            <h2>Key Patterns to Remember</h2>
+            <div class="score-tips">
+                <ul>
+                    <li><strong>Powers of 2:</strong> 1, 2, 4, 8, 16, 32, 64, 128 - memorise these!</li>
+                    <li><strong>Max 8-bit value:</strong> 255 (11111111 in binary, FF in hex)</li>
+                    <li><strong>Hex digits A-F:</strong> A=10, B=11, C=12, D=13, E=14, F=15</li>
+                    <li><strong>Left shift:</strong> Multiplies by 2 per position</li>
+                    <li><strong>Right shift:</strong> Divides by 2 per position (integer division)</li>
+                    <li><strong>4 bits = 1 hex digit:</strong> Split binary into groups of 4</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="example.html" class="btn btn-primary">Worked Examples →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Reveal answer functionality
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.dataset.target;
+                const answerDiv = document.getElementById(targetId);
+                answerDiv.classList.toggle('hidden');
+                this.textContent = answerDiv.classList.contains('hidden') ? 'Reveal Answer' : 'Hide Answer';
+            });
+        });
+
+        // Track completion
+        let revealed = 0;
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                revealed++;
+                if (revealed >= 5) {
+                    Progress.completeActivity('numbers', 'predict');
+                }
+            });
+        });
+
+        Progress.startTopic('numbers');
+    </script>
+    <style>
+        .instructions-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+        .instructions-box h3 {
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+        .prediction-card {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-xl);
+        }
+        .prediction-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        .prediction-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .prediction-header h3 {
+            margin: 0;
+        }
+        .prediction-scenario {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            font-family: monospace;
+        }
+        .prediction-input {
+            margin-bottom: var(--space-lg);
+        }
+        .prediction-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+        .prediction-options label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-family: monospace;
+            transition: all 0.2s ease;
+        }
+        .prediction-options label:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .prediction-answer {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: #dcfce7;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--success);
+        }
+        .prediction-answer h4 {
+            margin-top: 0;
+            color: var(--success);
+        }
+        .explanation {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            font-family: monospace;
+        }
+        .explanation ul {
+            margin: var(--space-sm) 0 0 var(--space-lg);
+        }
+        .hidden {
+            display: none;
+        }
+        .score-section {
+            background: var(--gray-100);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .score-tips {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .score-tips ul {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+        .score-tips li {
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace - Number Systems</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Number Systems</a>
+            <h1>Trace Through Conversions</h1>
+            <p class="subtitle">Practice step-by-step number conversions</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How to Use This Activity</h2>
+            <p>Work through each conversion step by step. Enter your answer for each step, then check if you're correct before moving on. This helps you understand the <strong>process</strong>, not just get the final answer.</p>
+        </div>
+
+        <!-- Exercise 1: Binary to Denary -->
+        <section class="trace-exercise" id="exercise-1">
+            <h2>Exercise 1: Binary to Denary</h2>
+            <p class="exercise-instruction">Convert the binary number <code>10110101</code> to denary by filling in each place value.</p>
+
+            <div class="place-value-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>128</th>
+                            <th>64</th>
+                            <th>32</th>
+                            <th>16</th>
+                            <th>8</th>
+                            <th>4</th>
+                            <th>2</th>
+                            <th>1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Which place values have a 1? (Enter values separated by +)</label>
+                    <input type="text" class="trace-input" data-answer="128+32+16+4+1" placeholder="e.g., 128+64+...">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Add these values together. What is 128+32+16+4+1?</label>
+                    <input type="text" class="trace-input" data-answer="181" placeholder="Enter the sum">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Final Answer: 10110101 in denary is:</label>
+                    <input type="text" class="trace-input" data-answer="181" placeholder="Enter final answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Denary to Binary (Division Method) -->
+        <section class="trace-exercise" id="exercise-2">
+            <h2>Exercise 2: Denary to Binary</h2>
+            <p class="exercise-instruction">Convert <strong>217</strong> to binary using the division method. Trace through each division step.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: 217 ÷ 2 = ? remainder ?</label>
+                    <div class="multi-input">
+                        <input type="text" class="trace-input small" data-answer="108" placeholder="quotient">
+                        <span>R</span>
+                        <input type="text" class="trace-input small" data-answer="1" placeholder="rem">
+                    </div>
+                    <button class="btn btn-sm check-step-multi">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: 108 ÷ 2 = ? remainder ?</label>
+                    <div class="multi-input">
+                        <input type="text" class="trace-input small" data-answer="54" placeholder="quotient">
+                        <span>R</span>
+                        <input type="text" class="trace-input small" data-answer="0" placeholder="rem">
+                    </div>
+                    <button class="btn btn-sm check-step-multi">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: 54 ÷ 2 = ? remainder ?</label>
+                    <div class="multi-input">
+                        <input type="text" class="trace-input small" data-answer="27" placeholder="quotient">
+                        <span>R</span>
+                        <input type="text" class="trace-input small" data-answer="0" placeholder="rem">
+                    </div>
+                    <button class="btn btn-sm check-step-multi">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: 27 ÷ 2 = ? remainder ?</label>
+                    <div class="multi-input">
+                        <input type="text" class="trace-input small" data-answer="13" placeholder="quotient">
+                        <span>R</span>
+                        <input type="text" class="trace-input small" data-answer="1" placeholder="rem">
+                    </div>
+                    <button class="btn btn-sm check-step-multi">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 5: 13 ÷ 2 = ? remainder ?</label>
+                    <div class="multi-input">
+                        <input type="text" class="trace-input small" data-answer="6" placeholder="quotient">
+                        <span>R</span>
+                        <input type="text" class="trace-input small" data-answer="1" placeholder="rem">
+                    </div>
+                    <button class="btn btn-sm check-step-multi">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 6: 6 ÷ 2 = ? remainder ?</label>
+                    <div class="multi-input">
+                        <input type="text" class="trace-input small" data-answer="3" placeholder="quotient">
+                        <span>R</span>
+                        <input type="text" class="trace-input small" data-answer="0" placeholder="rem">
+                    </div>
+                    <button class="btn btn-sm check-step-multi">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 7: 3 ÷ 2 = ? remainder ?</label>
+                    <div class="multi-input">
+                        <input type="text" class="trace-input small" data-answer="1" placeholder="quotient">
+                        <span>R</span>
+                        <input type="text" class="trace-input small" data-answer="1" placeholder="rem">
+                    </div>
+                    <button class="btn btn-sm check-step-multi">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 8: 1 ÷ 2 = ? remainder ?</label>
+                    <div class="multi-input">
+                        <input type="text" class="trace-input small" data-answer="0" placeholder="quotient">
+                        <span>R</span>
+                        <input type="text" class="trace-input small" data-answer="1" placeholder="rem">
+                    </div>
+                    <button class="btn btn-sm check-step-multi">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 9: Reading remainders from bottom to top gives:</label>
+                    <input type="text" class="trace-input" data-answer="11011001" placeholder="8-bit binary">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Final Answer: 217 in binary is:</label>
+                    <input type="text" class="trace-input" data-answer="11011001" placeholder="Enter 8-bit binary">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 3: Binary Addition -->
+        <section class="trace-exercise" id="exercise-3">
+            <h2>Exercise 3: Binary Addition</h2>
+            <p class="exercise-instruction">Add <strong>01101011</strong> + <strong>00110101</strong> in binary, tracking carries.</p>
+
+            <div class="binary-addition-grid">
+                <div class="addition-row carry-row">
+                    <span class="row-label">Carry:</span>
+                    <input type="text" class="bit-input" data-answer="1" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="1" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="1" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="0" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="1" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="1" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="1" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="0" maxlength="1">
+                </div>
+                <div class="addition-row">
+                    <span class="row-label">Number 1:</span>
+                    <span class="bit-display">0</span>
+                    <span class="bit-display">1</span>
+                    <span class="bit-display">1</span>
+                    <span class="bit-display">0</span>
+                    <span class="bit-display">1</span>
+                    <span class="bit-display">0</span>
+                    <span class="bit-display">1</span>
+                    <span class="bit-display">1</span>
+                </div>
+                <div class="addition-row">
+                    <span class="row-label">Number 2:</span>
+                    <span class="bit-display">0</span>
+                    <span class="bit-display">0</span>
+                    <span class="bit-display">1</span>
+                    <span class="bit-display">1</span>
+                    <span class="bit-display">0</span>
+                    <span class="bit-display">1</span>
+                    <span class="bit-display">0</span>
+                    <span class="bit-display">1</span>
+                </div>
+                <div class="addition-row result-row">
+                    <span class="row-label">Result:</span>
+                    <input type="text" class="bit-input" data-answer="1" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="0" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="1" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="0" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="0" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="0" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="0" maxlength="1">
+                    <input type="text" class="bit-input" data-answer="0" maxlength="1">
+                </div>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Fill in the carry row and result row above, then click Check All</label>
+                    <button class="btn btn-primary" id="check-addition">Check All</button>
+                    <span class="step-feedback" id="addition-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Is there a carry out of the MSB (leftmost bit)?</label>
+                    <input type="text" class="trace-input" data-answer="yes" placeholder="yes or no">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>What decimal value is 01101011?</label>
+                    <input type="text" class="trace-input" data-answer="107" placeholder="denary">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>What decimal value is 00110101?</label>
+                    <input type="text" class="trace-input" data-answer="53" placeholder="denary">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>107 + 53 = 160, but the result shows 10100000. The 8-bit result without the overflow carry represents:</label>
+                    <input type="text" class="trace-input" data-answer="160" placeholder="denary value">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+            <div class="info-box">
+                <strong>Note:</strong> In this case, there IS a carry out but the 8-bit result (10100000 = 160) is still correct because 107 + 53 = 160 which fits in 8 bits. An overflow error only occurs when the TRUE result exceeds 255.
+            </div>
+        </section>
+
+        <!-- Exercise 4: Hexadecimal to Denary -->
+        <section class="trace-exercise" id="exercise-4">
+            <h2>Exercise 4: Hexadecimal to Denary</h2>
+            <p class="exercise-instruction">Convert <strong>E7</strong> (hexadecimal) to denary.</p>
+
+            <div class="hex-reference">
+                <p><strong>Hex digits:</strong> 0-9 = 0-9, A=10, B=11, C=12, D=13, E=14, F=15</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: What denary value does E represent?</label>
+                    <input type="text" class="trace-input" data-answer="14" placeholder="0-15">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: What denary value does 7 represent?</label>
+                    <input type="text" class="trace-input" data-answer="7" placeholder="0-15">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: E is in the 16s column, so E × 16 = ?</label>
+                    <input type="text" class="trace-input" data-answer="224" placeholder="14 × 16">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: 7 is in the 1s column, so 7 × 1 = ?</label>
+                    <input type="text" class="trace-input" data-answer="7" placeholder="7 × 1">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 5: Add the values: 224 + 7 = ?</label>
+                    <input type="text" class="trace-input" data-answer="231" placeholder="final denary">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 5: Binary to Hexadecimal -->
+        <section class="trace-exercise" id="exercise-5">
+            <h2>Exercise 5: Binary to Hexadecimal</h2>
+            <p class="exercise-instruction">Convert <strong>11110010</strong> to hexadecimal.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Split into two nibbles (4-bit groups). Left nibble:</label>
+                    <input type="text" class="trace-input" data-answer="1111" placeholder="first 4 bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Right nibble:</label>
+                    <input type="text" class="trace-input" data-answer="0010" placeholder="last 4 bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: Convert left nibble 1111 to denary (8+4+2+1):</label>
+                    <input type="text" class="trace-input" data-answer="15" placeholder="0-15">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: What hex digit represents 15?</label>
+                    <input type="text" class="trace-input" data-answer="F" placeholder="A-F">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 5: Convert right nibble 0010 to denary:</label>
+                    <input type="text" class="trace-input" data-answer="2" placeholder="0-15">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 6: What hex digit represents 2?</label>
+                    <input type="text" class="trace-input" data-answer="2" placeholder="0-9">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Final Answer: 11110010 in hexadecimal is:</label>
+                    <input type="text" class="trace-input" data-answer="F2" placeholder="2-digit hex">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 6: Binary Shifts -->
+        <section class="trace-exercise" id="exercise-6">
+            <h2>Exercise 6: Binary Shifts</h2>
+            <p class="exercise-instruction">Perform shifts on the binary number <strong>00110100</strong> (denary 52).</p>
+
+            <h3>Part A: Left Shift by 1</h3>
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Starting value: 00110100. Shift all bits LEFT by 1, adding 0 on the right:</label>
+                    <input type="text" class="trace-input" data-answer="01101000" placeholder="8-bit result">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>What is 01101000 in denary?</label>
+                    <input type="text" class="trace-input" data-answer="104" placeholder="denary">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Original was 52. Left shift by 1 multiplies by 2. Is 104 = 52 × 2?</label>
+                    <input type="text" class="trace-input" data-answer="yes" placeholder="yes or no">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+
+            <h3>Part B: Left Shift by 2</h3>
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Starting value: 00110100. Shift all bits LEFT by 2:</label>
+                    <input type="text" class="trace-input" data-answer="11010000" placeholder="8-bit result">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>What is 11010000 in denary?</label>
+                    <input type="text" class="trace-input" data-answer="208" placeholder="denary">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Left shift by 2 multiplies by 4. Is 208 = 52 × 4?</label>
+                    <input type="text" class="trace-input" data-answer="yes" placeholder="yes or no">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+
+            <h3>Part C: Right Shift by 1</h3>
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Starting value: 00110100. Shift all bits RIGHT by 1, adding 0 on the left:</label>
+                    <input type="text" class="trace-input" data-answer="00011010" placeholder="8-bit result">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>What is 00011010 in denary?</label>
+                    <input type="text" class="trace-input" data-answer="26" placeholder="denary">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Right shift by 1 divides by 2 (integer division). Is 26 = 52 ÷ 2?</label>
+                    <input type="text" class="trace-input" data-answer="yes" placeholder="yes or no">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Tracker -->
+        <section class="exercise-summary">
+            <h2>Your Progress</h2>
+            <div class="summary-grid" id="progress-summary">
+                <div class="summary-item" data-exercise="1">
+                    <span class="exercise-name">Binary to Denary</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="2">
+                    <span class="exercise-name">Denary to Binary</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="3">
+                    <span class="exercise-name">Binary Addition</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="4">
+                    <span class="exercise-name">Hex to Denary</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="5">
+                    <span class="exercise-name">Binary to Hex</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="6">
+                    <span class="exercise-name">Binary Shifts</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-nav">
+            <a href="example.html" class="btn btn-secondary">← Worked Examples</a>
+            <a href="parsons.html" class="btn btn-primary">Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Track correct answers per exercise
+        const exerciseProgress = {
+            1: { total: 3, correct: 0 },
+            2: { total: 10, correct: 0 },
+            3: { total: 5, correct: 0 },
+            4: { total: 5, correct: 0 },
+            5: { total: 7, correct: 0 },
+            6: { total: 9, correct: 0 }
+        };
+
+        // Single input check
+        document.querySelectorAll('.check-step').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const step = this.closest('.trace-step');
+                const input = step.querySelector('.trace-input');
+                const feedback = step.querySelector('.step-feedback');
+                const answer = input.dataset.answer.toLowerCase();
+                const userAnswer = input.value.trim().toLowerCase();
+
+                // Find which exercise this belongs to
+                const exercise = this.closest('.trace-exercise');
+                const exerciseNum = parseInt(exercise.id.split('-')[1]);
+
+                if (userAnswer === answer) {
+                    feedback.textContent = '✓ Correct!';
+                    feedback.className = 'step-feedback correct';
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    this.disabled = true;
+                    input.disabled = true;
+
+                    // Track progress
+                    exerciseProgress[exerciseNum].correct++;
+                    updateProgressDisplay(exerciseNum);
+                } else {
+                    feedback.textContent = '✗ Try again';
+                    feedback.className = 'step-feedback incorrect';
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            });
+        });
+
+        // Multi-input check (for division steps)
+        document.querySelectorAll('.check-step-multi').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const step = this.closest('.trace-step');
+                const inputs = step.querySelectorAll('.trace-input');
+                const feedback = step.querySelector('.step-feedback');
+
+                let allCorrect = true;
+                inputs.forEach(input => {
+                    const answer = input.dataset.answer;
+                    const userAnswer = input.value.trim();
+
+                    if (userAnswer === answer) {
+                        input.classList.add('correct');
+                        input.classList.remove('incorrect');
+                    } else {
+                        input.classList.add('incorrect');
+                        input.classList.remove('correct');
+                        allCorrect = false;
+                    }
+                });
+
+                const exercise = this.closest('.trace-exercise');
+                const exerciseNum = parseInt(exercise.id.split('-')[1]);
+
+                if (allCorrect) {
+                    feedback.textContent = '✓ Correct!';
+                    feedback.className = 'step-feedback correct';
+                    this.disabled = true;
+                    inputs.forEach(i => i.disabled = true);
+
+                    exerciseProgress[exerciseNum].correct++;
+                    updateProgressDisplay(exerciseNum);
+                } else {
+                    feedback.textContent = '✗ Try again';
+                    feedback.className = 'step-feedback incorrect';
+                }
+            });
+        });
+
+        // Binary addition grid check
+        document.getElementById('check-addition')?.addEventListener('click', function() {
+            const grid = document.querySelector('.binary-addition-grid');
+            const inputs = grid.querySelectorAll('.bit-input');
+            const feedback = document.getElementById('addition-feedback');
+
+            let allCorrect = true;
+            inputs.forEach(input => {
+                const answer = input.dataset.answer;
+                const userAnswer = input.value.trim();
+
+                if (userAnswer === answer) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                    allCorrect = false;
+                }
+            });
+
+            if (allCorrect) {
+                feedback.textContent = '✓ All bits correct!';
+                feedback.className = 'step-feedback correct';
+                this.disabled = true;
+                inputs.forEach(i => i.disabled = true);
+            } else {
+                feedback.textContent = '✗ Some bits are incorrect. Check your work.';
+                feedback.className = 'step-feedback incorrect';
+            }
+        });
+
+        // Update progress display
+        function updateProgressDisplay(exerciseNum) {
+            const progress = exerciseProgress[exerciseNum];
+            const summaryItem = document.querySelector(`.summary-item[data-exercise="${exerciseNum}"]`);
+            const statusEl = summaryItem.querySelector('.exercise-status');
+
+            if (progress.correct >= progress.total) {
+                statusEl.textContent = 'Complete!';
+                statusEl.className = 'exercise-status complete';
+                summaryItem.classList.add('complete');
+
+                // Save progress
+                if (typeof Progress !== 'undefined') {
+                    Progress.complete(`numbers-trace-${exerciseNum}`);
+                }
+            } else {
+                statusEl.textContent = `${progress.correct}/${progress.total}`;
+                statusEl.className = 'exercise-status in-progress';
+                summaryItem.classList.add('in-progress');
+            }
+        }
+
+        // Allow Enter key to submit
+        document.querySelectorAll('.trace-input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const btn = this.closest('.trace-step').querySelector('.check-step, .check-step-multi');
+                    if (btn && !btn.disabled) {
+                        btn.click();
+                    }
+                }
+            });
+        });
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('numbers-trace');
+        }
+    </script>
+
+    <style>
+        .trace-exercise {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .place-value-table {
+            overflow-x: auto;
+            margin: var(--space-lg) 0;
+        }
+
+        .place-value-table table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .place-value-table th,
+        .place-value-table td {
+            padding: var(--space-md);
+            border: 1px solid var(--gray-300);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .place-value-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .place-value-table td {
+            background: var(--gray-100);
+            font-weight: bold;
+        }
+
+        .trace-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .trace-step {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--gray-300);
+        }
+
+        .trace-step.final-step {
+            border-left-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .trace-step label {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .trace-input {
+            padding: var(--space-sm) var(--space-md);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 1rem;
+            width: 150px;
+        }
+
+        .trace-input.small {
+            width: 80px;
+        }
+
+        .trace-input.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .trace-input.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+
+        .multi-input {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .step-feedback {
+            font-weight: bold;
+            min-width: 100px;
+        }
+
+        .step-feedback.correct {
+            color: var(--success);
+        }
+
+        .step-feedback.incorrect {
+            color: var(--error);
+        }
+
+        .btn-sm {
+            padding: var(--space-xs) var(--space-md);
+            font-size: 0.9rem;
+        }
+
+        /* Binary addition grid */
+        .binary-addition-grid {
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+            overflow-x: auto;
+        }
+
+        .addition-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .row-label {
+            width: 80px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .bit-display {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .bit-input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 2px solid var(--gray-400);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .carry-row .bit-input {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        .result-row {
+            border-top: 3px solid var(--gray-600);
+            padding-top: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+
+        .result-row .bit-input {
+            background: #e8f5e9;
+            border-color: var(--success);
+        }
+
+        /* Hex reference */
+        .hex-reference {
+            background: var(--info-light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--info);
+        }
+
+        .info-box {
+            background: var(--info-light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            border-left: 4px solid var(--info);
+        }
+
+        /* Exercise summary */
+        .exercise-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .summary-item {
+            padding: var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .summary-item.in-progress {
+            background: #fff3cd;
+        }
+
+        .summary-item.complete {
+            background: #d4edda;
+        }
+
+        .exercise-name {
+            display: block;
+            font-weight: bold;
+            margin-bottom: var(--space-xs);
+        }
+
+        .exercise-status {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .exercise-status.complete {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .exercise-status.in-progress {
+            color: var(--warning);
+        }
+
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+
+        h3 {
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-md);
+            color: var(--gray-700);
+        }
+    </style>
+</body>
+</html>
