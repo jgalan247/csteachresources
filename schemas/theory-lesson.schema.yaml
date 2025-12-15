@@ -1,0 +1,240 @@
+# Theory Lesson Schema
+# Defines the structure for evidence-based computer science theory lessons
+# Based on NCCE 12 Principles, Cognitive Load Theory, and Dual Coding research
+
+schema_version: "1.0"
+description: |
+  Theory lesson structure applying evidence-based pedagogy for CS theory topics.
+  Based on research synthesis from NCCE, Raspberry Pi Foundation, and academic sources.
+
+  Key principles applied:
+  - Lead with concepts (vocabulary, concept maps)
+  - Unplug, unpack, repack (semantic waves)
+  - Dual coding (visual + verbal)
+  - Worked examples with subgoal labels
+  - Retrieval practice integration
+  - Explicit misconception handling
+  - Differentiation by key stage
+
+theory_lesson:
+  # Metadata
+  id: string                    # Unique identifier e.g., "ks3-cpu-001"
+  title: string                 # Human-readable title
+  topic: string                 # Theory concept area
+  subtopic: string              # Specific focus within topic
+  stage: enum [ks3, ks4, ks5]   # Key stage
+  year_group: integer           # 7, 8, 9, 10, 11, 12, 13
+  duration_minutes: integer     # Suggested duration
+
+  # Curriculum alignment
+  curriculum:
+    national_curriculum: [string]  # NC statements covered
+    exam_board_refs:               # Optional exam board references
+      aqa: [string]
+      ocr: [string]
+      eduqas: [string]
+
+  # Learning objectives
+  objectives:
+    - string                    # What students will learn
+
+  # Success criteria (differentiated)
+  success_criteria:
+    all_students: [string]      # Everyone should achieve
+    most_students: [string]     # Most will achieve
+    some_students: [string]     # Extension/challenge
+
+  # Prerequisites
+  prerequisites:
+    concepts: [string]          # Prior knowledge needed
+    vocabulary: [string]        # Terms they should know
+    lessons: [string]           # Prior lesson IDs (optional)
+
+  # Key vocabulary (Lead with Concepts principle)
+  vocabulary:
+    - term: string
+      definition: string
+      visual: string            # Description of visual representation
+      analogy: string           # Real-world comparison (optional)
+      tier: enum [1, 2, 3]      # Academic vocabulary tier
+
+  # Concept map structure
+  concept_map:
+    central_concept: string
+    connected_concepts:
+      - concept: string
+        relationship: string    # How it connects to central concept
+
+  # LESSON STRUCTURE
+
+  # PHASE 1: Hook and Prior Knowledge Activation (5-10 mins)
+  hook:
+    activity: string            # Engaging starter activity
+    retrieval_questions:        # Activate prior knowledge
+      - question: string
+        expected_answer: string
+    real_world_connection: string  # Why this matters
+
+  # PHASE 2: Unpack - Concrete/Unplugged Introduction (15-20 mins)
+  unpack:
+    description: |
+      Move from concrete/familiar to abstract.
+      Use unplugged activities, analogies, and physical representations.
+
+    unplugged_activity:
+      name: string
+      description: string
+      materials: [string]
+      setup_instructions: string
+      activity_steps:
+        - step: integer
+          instruction: string
+          teacher_note: string
+      debrief_questions: [string]
+      cs_connection: string     # Explicit link to CS concept
+
+    analogies:
+      - analogy: string
+        maps_to: string         # What CS concept it represents
+        limitations: string     # Where the analogy breaks down
+
+  # PHASE 3: Explain - Direct Instruction with Dual Coding (10-15 mins)
+  explain:
+    description: |
+      Teacher-led explanation using visual + verbal (dual coding).
+      Include worked examples with subgoal labels.
+
+    key_points:
+      - point: string
+        visual_support: string  # Diagram, animation, or image reference
+        check_understanding: string  # Quick question to verify
+
+    worked_example:
+      title: string
+      context: string           # Problem setup
+      steps:
+        - subgoal: string       # Purpose of this step (subgoal label)
+          action: string        # What happens
+          visual: string        # Visual representation
+          explanation: string   # Why this happens
+      complete_walkthrough: string
+
+    diagrams:
+      - name: string
+        description: string
+        key_labels: [string]
+        common_errors: string   # What students often misread
+
+  # PHASE 4: Elaborate - Structured Practice (15-20 mins)
+  elaborate:
+    description: |
+      Students apply understanding through varied activities.
+      Includes differentiated tasks.
+
+    activities:
+      # Tracing/walkthrough activity
+      - type: trace_walkthrough
+        description: string
+        scaffold_level: enum [high, medium, low]
+        task: string
+        solution: string
+
+      # Labelling activity
+      - type: labelling
+        description: string
+        diagram_reference: string
+        labels_to_place: [string]
+
+      # Sequencing activity
+      - type: sequencing
+        description: string
+        items_to_order: [string]
+        correct_order: [integer]
+
+      # Matching activity
+      - type: matching
+        description: string
+        pairs:
+          - term: string
+            definition: string
+
+      # Explanation writing
+      - type: explain_writing
+        description: string
+        prompt: string
+        success_criteria: [string]
+        sentence_starters: [string]  # Scaffolding
+
+    differentiation:
+      foundation:
+        modifications: [string]   # How to simplify
+        additional_scaffolds: [string]
+      extension:
+        challenges: [string]      # How to extend
+
+  # PHASE 5: Evaluate - Check Understanding (5-10 mins)
+  evaluate:
+    formative_checks:
+      - type: enum [hinge_question, exit_ticket, mini_quiz, peer_explanation]
+        content: string
+        success_threshold: string  # e.g., "80% correct before moving on"
+
+    common_misconceptions:
+      - misconception: string
+        why_students_think_this: string
+        diagnostic_question: string   # Question that reveals this
+        correction_strategy: string
+
+  # Retrieval Practice Integration
+  retrieval_practice:
+    previous_topics:            # Spaced practice of prior learning
+      - topic: string
+        questions: [string]
+    this_topic:                 # For future lessons to reference
+      key_facts: [string]
+      key_processes: [string]
+
+  # Cross-curricular connections
+  cross_curricular:
+    mathematics:
+      connections: [string]
+      how_to_link: string
+    english:
+      vocabulary_focus: [string]
+      writing_opportunities: string
+    science:
+      connections: [string]
+
+  # Teacher guidance
+  teacher_notes:
+    preparation: [string]
+    common_issues: [string]
+    timing_guidance: string
+    subject_knowledge:
+      key_facts: [string]
+      deeper_understanding: string
+      historical_context: string
+
+  # Resources
+  resources:
+    printable:
+      - name: string
+        description: string
+        file: string
+    digital:
+      - name: string
+        url: string
+        purpose: string
+    ncce: [string]
+    isaac: [string]
+
+  # Assessment
+  assessment:
+    formative:
+      - method: string
+        description: string
+        when: string            # At what point in lesson
+    summative:
+      - method: string
+        description: string
+        criteria: [string]
