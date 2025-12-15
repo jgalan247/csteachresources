@@ -3,10 +3,17 @@
    =========================================== */
 
 :root {
-    /* Colors */
+    /* Colors - Programming (Blue) */
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
     --primary-light: #dbeafe;
+
+    /* Colors - Theory (Teal/Cyan) */
+    --theory: #0891b2;
+    --theory-dark: #0e7490;
+    --theory-light: #cffafe;
+
+    /* Status Colors */
     --success: #16a34a;
     --success-light: #dcfce7;
     --warning: #ca8a04;
@@ -298,6 +305,58 @@ pre code {
 
 .topic-card.featured {
     border-color: var(--primary);
+}
+
+/* Theory topic cards - teal/cyan theme */
+.topic-card.theory {
+    border-left: 4px solid var(--theory);
+}
+
+.topic-card.theory:hover {
+    border-color: var(--theory);
+}
+
+.topic-card.theory.featured {
+    border-color: var(--theory);
+}
+
+.topic-card.theory .badge {
+    background: var(--theory);
+}
+
+.topic-card.theory .progress-fill {
+    background: var(--theory);
+}
+
+/* Programming topic cards - blue theme (default, but explicit) */
+.topic-card.programming {
+    border-left: 4px solid var(--primary);
+}
+
+.topic-card.programming:hover {
+    border-color: var(--primary);
+}
+
+/* Topic type labels */
+.topic-type-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.topic-type-label.programming {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.topic-type-label.theory {
+    background: var(--theory-light);
+    color: var(--theory-dark);
 }
 
 .topic-card .badge {

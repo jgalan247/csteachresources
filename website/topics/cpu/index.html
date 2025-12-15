@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU & Fetch-Execute Cycle - Computer Science Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .theory-hero {
+            background: linear-gradient(135deg, var(--theory-light) 0%, white 100%);
+        }
+        .activity-card.theory {
+            border-left: 4px solid var(--theory);
+        }
+        .activity-card.theory:hover {
+            border-color: var(--theory);
+        }
+        .vocab-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            box-shadow: var(--shadow-sm);
+        }
+        .vocab-term {
+            font-weight: 600;
+            color: var(--theory-dark);
+        }
+        .vocab-def {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+        .diagram-container {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin: var(--space-lg) 0;
+            text-align: center;
+        }
+        .cycle-diagram {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin: var(--space-lg) 0;
+        }
+        .cycle-step {
+            background: var(--theory-light);
+            border: 2px solid var(--theory);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-lg);
+            text-align: center;
+            min-width: 120px;
+        }
+        .cycle-step h4 {
+            color: var(--theory-dark);
+            margin-bottom: var(--space-xs);
+        }
+        .cycle-step p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+        .cycle-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--theory);
+        }
+        .cpu-diagram {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-lg);
+        }
+        .cpu-box {
+            border: 3px solid var(--theory);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            background: white;
+        }
+        .cpu-components {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+        .cpu-component {
+            background: var(--theory-light);
+            border: 2px solid var(--theory);
+            border-radius: var(--radius-sm);
+            padding: var(--space-md);
+            text-align: center;
+        }
+        .cpu-component h5 {
+            margin: 0 0 var(--space-xs);
+            color: var(--theory-dark);
+        }
+        .cpu-component p {
+            font-size: 0.8rem;
+            margin: 0;
+            color: var(--gray-600);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero theory-hero">
+            <span class="topic-type-label theory">Theory</span>
+            <h1>CPU & Fetch-Execute Cycle</h1>
+            <p class="hero-subtitle">Understand how the processor runs every program</p>
+        </header>
+
+        <!-- Learning Objectives -->
+        <section class="intro-section">
+            <div class="intro-card">
+                <h2>What You'll Learn</h2>
+                <ul class="learning-steps">
+                    <li><span class="step-icon">🎯</span> <strong>Purpose of the CPU</strong> - Why every computer needs a processor</li>
+                    <li><span class="step-icon">🔧</span> <strong>CPU Components</strong> - Control Unit, ALU, Cache, and Registers</li>
+                    <li><span class="step-icon">🔄</span> <strong>Fetch-Execute Cycle</strong> - How instructions are processed</li>
+                    <li><span class="step-icon">📊</span> <strong>Tracing</strong> - Follow the cycle step by step</li>
+                    <li><span class="step-icon">⚡</span> <strong>CPU Performance</strong> - Clock speed, cache size, and cores</li>
+                    <li><span class="step-icon">🔧</span> <strong>Embedded Systems</strong> - Dedicated computers in everyday devices</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Key Vocabulary -->
+        <section class="topics-section">
+            <h2>Key Vocabulary</h2>
+            <div class="topic-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+                <div class="vocab-card">
+                    <div class="vocab-term">CPU (Central Processing Unit)</div>
+                    <div class="vocab-def">The "brain" of the computer that processes all instructions</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">Control Unit (CU)</div>
+                    <div class="vocab-def">Coordinates and manages all CPU operations</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">ALU (Arithmetic Logic Unit)</div>
+                    <div class="vocab-def">Performs arithmetic and logical operations</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">Cache</div>
+                    <div class="vocab-def">Small, fast memory for frequently used data</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">Registers</div>
+                    <div class="vocab-def">Tiny, super-fast memory inside the CPU (PC, MAR, MDR, ACC)</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">RAM</div>
+                    <div class="vocab-def">Main memory where programs and data are stored</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">Fetch-Execute Cycle</div>
+                    <div class="vocab-def">The continuous process of getting and running instructions</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">Von Neumann Architecture</div>
+                    <div class="vocab-def">Design where programs and data share the same memory</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">Clock Speed</div>
+                    <div class="vocab-def">Number of cycles per second, measured in GHz</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">Core</div>
+                    <div class="vocab-def">Independent processing unit within the CPU</div>
+                </div>
+                <div class="vocab-card">
+                    <div class="vocab-term">Embedded System</div>
+                    <div class="vocab-def">Computer built into a device for a specific function</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CPU Diagram -->
+        <section class="diagram-container">
+            <h2>Inside the CPU</h2>
+            <div class="cpu-diagram">
+                <div class="cpu-box">
+                    <h3 style="text-align: center; color: var(--theory-dark); margin-bottom: var(--space-md);">CPU</h3>
+                    <div class="cpu-components">
+                        <div class="cpu-component">
+                            <h5>Control Unit</h5>
+                            <p>Coordinates operations</p>
+                        </div>
+                        <div class="cpu-component">
+                            <h5>ALU</h5>
+                            <p>Does calculations</p>
+                        </div>
+                        <div class="cpu-component" style="grid-column: span 2;">
+                            <h5>Registers</h5>
+                            <p>PC | MAR | MDR | ACC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="color: var(--gray-500); margin-top: var(--space-md);">The CPU contains the Control Unit, ALU, and Registers working together</p>
+        </section>
+
+        <!-- Fetch-Execute Cycle Diagram -->
+        <section class="diagram-container">
+            <h2>The Fetch-Execute Cycle</h2>
+            <p>Every instruction goes through these four stages:</p>
+            <div class="cycle-diagram">
+                <div class="cycle-step">
+                    <h4>1. FETCH</h4>
+                    <p>Get the next instruction from RAM</p>
+                </div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-step">
+                    <h4>2. DECODE</h4>
+                    <p>Work out what the instruction means</p>
+                </div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-step">
+                    <h4>3. EXECUTE</h4>
+                    <p>Carry out the instruction</p>
+                </div>
+                <div class="cycle-arrow">→</div>
+                <div class="cycle-step">
+                    <h4>4. STORE</h4>
+                    <p>Save the result</p>
+                </div>
+            </div>
+            <p style="color: var(--gray-500);">This cycle repeats billions of times per second!</p>
+        </section>
+
+        <!-- Activities -->
+        <section class="topics-section">
+            <h2>Activities</h2>
+            <div class="topic-grid">
+                <a href="learn.html" class="topic-card theory">
+                    <div class="topic-icon">📖</div>
+                    <h3>Learn</h3>
+                    <p>CPU components, Von Neumann architecture, and the fetch-execute cycle (OCR J277)</p>
+                    <div class="topic-progress" data-topic="cpu-learn">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="predict.html" class="topic-card theory">
+                    <div class="topic-icon">🔮</div>
+                    <h3>Predict</h3>
+                    <p>Look at scenarios and predict what the CPU will do</p>
+                    <div class="topic-progress" data-topic="cpu-predict">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="topic-card theory">
+                    <div class="topic-icon">📊</div>
+                    <h3>Trace</h3>
+                    <p>Follow the fetch-execute cycle step by step</p>
+                    <div class="topic-progress" data-topic="cpu-trace">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="match.html" class="topic-card theory">
+                    <div class="topic-icon">🔗</div>
+                    <h3>Match</h3>
+                    <p>Classify registers as data or address, and match definitions</p>
+                    <div class="topic-progress" data-topic="cpu-match">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="sequence.html" class="topic-card theory">
+                    <div class="topic-icon">🔢</div>
+                    <h3>Sequence</h3>
+                    <p>Put the fetch-execute stages in the correct order</p>
+                    <div class="topic-progress" data-topic="cpu-sequence">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="topic-card theory">
+                    <div class="topic-icon">✅</div>
+                    <h3>Quiz</h3>
+                    <p>Test your understanding with multiple choice questions</p>
+                    <div class="topic-progress" data-topic="cpu-quiz">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CPU Performance Section -->
+        <section class="topics-section">
+            <h2>CPU Performance</h2>
+            <p style="color: var(--gray-600); margin-bottom: var(--space-md);">What makes one CPU faster than another? Understand the three key factors.</p>
+            <div class="topic-grid">
+                <a href="performance.html" class="topic-card theory">
+                    <div class="topic-icon">⚡</div>
+                    <h3>Learn: Performance</h3>
+                    <p>Clock speed, cache size, and number of cores (OCR J277)</p>
+                    <div class="topic-progress" data-topic="cpu-performance">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="performance-quiz.html" class="topic-card theory">
+                    <div class="topic-icon">✅</div>
+                    <h3>Quiz: Performance</h3>
+                    <p>Test your understanding of CPU performance factors</p>
+                    <div class="topic-progress" data-topic="cpu-performance-quiz">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Embedded Systems Section -->
+        <section class="topics-section">
+            <h2>Embedded Systems</h2>
+            <p style="color: var(--gray-600); margin-bottom: var(--space-md);">The hidden computers in everyday devices - from washing machines to cars.</p>
+            <div class="topic-grid">
+                <a href="embedded.html" class="topic-card theory">
+                    <div class="topic-icon">🔧</div>
+                    <h3>Learn: Embedded Systems</h3>
+                    <p>Purpose, characteristics, and examples of embedded systems (OCR J277)</p>
+                    <div class="topic-progress" data-topic="cpu-embedded">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+
+                <a href="embedded-quiz.html" class="topic-card theory">
+                    <div class="topic-icon">✅</div>
+                    <h3>Quiz: Embedded Systems</h3>
+                    <p>Test your understanding of embedded systems</p>
+                    <div class="topic-progress" data-topic="cpu-embedded-quiz">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Real World Connection -->
+        <section class="intro-section">
+            <div class="intro-card">
+                <h2>Why Does This Matter?</h2>
+                <p>Understanding the CPU helps you:</p>
+                <ul>
+                    <li><strong>Choose better hardware</strong> - Know what CPU specs actually mean</li>
+                    <li><strong>Debug programs</strong> - Understand why code runs the way it does</li>
+                    <li><strong>Pass your exams</strong> - This is a key GCSE and A-Level topic!</li>
+                    <li><strong>Think like a computer scientist</strong> - See the big picture of how computers work</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+</body>
+</html>
