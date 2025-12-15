@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: Input Validation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Input Validation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Registration Form Validation</h1>
+            <p>Follow along as we build robust input validation step by step!</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <section class="validation-guide mt-xl">
+            <h2>Validation Type Reference</h2>
+            <div class="validation-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Purpose</th>
+                            <th>Code Pattern</th>
+                            <th>Example Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Presence</strong></td>
+                            <td>Not empty</td>
+                            <td><code>if x == "":</code></td>
+                            <td>Required fields</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Range</strong></td>
+                            <td>Within limits</td>
+                            <td><code>if x < min or x > max:</code></td>
+                            <td>Age 0-120, Score 0-100</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Length</strong></td>
+                            <td>Correct size</td>
+                            <td><code>if len(x) < n:</code></td>
+                            <td>Password min 8 chars</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Format</strong></td>
+                            <td>Matches pattern</td>
+                            <td><code>if "@" not in x:</code></td>
+                            <td>Email contains @</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Type</strong></td>
+                            <td>Correct data type</td>
+                            <td><code>if not x.isdigit():</code></td>
+                            <td>Numbers only</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="sanitisation-guide mt-xl">
+            <h2>Input Sanitisation Techniques</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">sanitisation_examples.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Remove leading/trailing whitespace</span>
+name = input(<span class="syntax-string">"Name: "</span>).strip()
+
+<span class="syntax-comment"># Convert to lowercase for comparison</span>
+choice = input(<span class="syntax-string">"Yes/No: "</span>).lower()
+
+<span class="syntax-comment"># Remove dangerous characters (SQL injection prevention)</span>
+<span class="syntax-keyword">def</span> sanitise_sql(text):
+    dangerous = [<span class="syntax-string">"'"</span>, <span class="syntax-string">'"'</span>, <span class="syntax-string">";"</span>, <span class="syntax-string">"--"</span>]
+    <span class="syntax-keyword">for</span> char <span class="syntax-keyword">in</span> dangerous:
+        text = text.replace(char, <span class="syntax-string">""</span>)
+    <span class="syntax-keyword">return</span> text
+
+<span class="syntax-comment"># Keep only alphanumeric characters</span>
+<span class="syntax-keyword">def</span> clean_username(text):
+    result = <span class="syntax-string">""</span>
+    <span class="syntax-keyword">for</span> char <span class="syntax-keyword">in</span> text:
+        <span class="syntax-keyword">if</span> char.isalnum():
+            result = result + char
+    <span class="syntax-keyword">return</span> result</code></pre>
+            </div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Validation →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'validation-example-1',
+                topicId: 'validation',
+                title: 'Registration Form Validation',
+                description: 'Build a complete registration system that validates username, password, age, and email.',
+                steps: [
+                    {
+                        title: 'Start with the Problem',
+                        explanation: 'We need to validate user registration input. The requirements are: username (3-15 alphanumeric characters), password (at least 8 characters), age (13-120 years), and email (must contain @).',
+                        code: `# Registration Form Validation
+# Requirements:
+# - Username: 3-15 characters, letters/numbers only
+# - Password: at least 8 characters
+# - Age: 13-120 (minimum age for account)
+# - Email: must contain @`,
+                        subgoal: 'Understand what we need to validate'
+                    },
+                    {
+                        title: 'Create the Validation Loop Structure',
+                        explanation: 'We want to keep asking for input until it\'s valid. A while True loop with break is perfect for this - we\'ll break out when input passes all checks.',
+                        code: `# Get username with validation
+while True:
+    username = input("Username (3-15 chars): ")
+
+    # Validation checks will go here
+
+    break  # Exit when valid
+
+print(f"Username accepted: {username}")`,
+                        subgoal: 'Set up the validation loop structure'
+                    },
+                    {
+                        title: 'Add Presence Check',
+                        explanation: 'First, check that the user entered something. An empty string "" would fail all other checks anyway, but giving a specific error message helps users.',
+                        code: `while True:
+    username = input("Username (3-15 chars): ")
+
+    # Presence check
+    if username == "":
+        print("Error: Username cannot be empty")
+        continue  # Go back to start of loop
+
+    break`,
+                        subgoal: 'Check for empty input first'
+                    },
+                    {
+                        title: 'Add Length Check',
+                        explanation: 'Now check the username length. We need it between 3 and 15 characters. Use len() to get the string length.',
+                        code: `while True:
+    username = input("Username (3-15 chars): ")
+
+    # Presence check
+    if username == "":
+        print("Error: Username cannot be empty")
+        continue
+
+    # Length check
+    if len(username) < 3:
+        print("Error: Username too short (min 3 chars)")
+        continue
+    if len(username) > 15:
+        print("Error: Username too long (max 15 chars)")
+        continue
+
+    break`,
+                        subgoal: 'Validate the string length'
+                    },
+                    {
+                        title: 'Add Format Check (Alphanumeric)',
+                        explanation: 'The username should only contain letters and numbers. The isalnum() method returns True if all characters are alphanumeric.',
+                        code: `while True:
+    username = input("Username (3-15 chars): ")
+
+    # Presence check
+    if username == "":
+        print("Error: Username cannot be empty")
+        continue
+
+    # Length check
+    if len(username) < 3:
+        print("Error: Username too short (min 3 chars)")
+        continue
+    if len(username) > 15:
+        print("Error: Username too long (max 15 chars)")
+        continue
+
+    # Format check - only letters and numbers
+    if not username.isalnum():
+        print("Error: Letters and numbers only")
+        continue
+
+    break
+
+print(f"Username '{username}' accepted!")`,
+                        subgoal: 'Check the input format'
+                    },
+                    {
+                        title: 'Create Password Validation Function',
+                        explanation: 'Let\'s make a reusable function for password validation. It needs to be at least 8 characters. We\'ll return True/False to indicate validity.',
+                        code: `def validate_password(password):
+    """Check password meets requirements"""
+    # Presence check
+    if password == "":
+        print("Error: Password cannot be empty")
+        return False
+
+    # Length check
+    if len(password) < 8:
+        print("Error: Password must be at least 8 characters")
+        return False
+
+    return True  # Passed all checks!
+
+# Use the function
+while True:
+    password = input("Password (min 8 chars): ")
+    if validate_password(password):
+        break
+
+print("Password accepted!")`,
+                        subgoal: 'Create a reusable validation function'
+                    },
+                    {
+                        title: 'Add Age Validation (Type + Range)',
+                        explanation: 'Age validation is trickier - we need to check it\'s a valid number (type check) AND within range. We\'ll use try/except to handle non-numeric input.',
+                        code: `def validate_age(age_input):
+    """Check age is valid number in range 13-120"""
+    # Type check - is it a number?
+    try:
+        age = int(age_input)
+    except ValueError:
+        print("Error: Please enter a number")
+        return False, 0
+
+    # Range check
+    if age < 13:
+        print("Error: Must be at least 13 years old")
+        return False, 0
+    if age > 120:
+        print("Error: Invalid age (max 120)")
+        return False, 0
+
+    return True, age  # Return the converted number too
+
+# Use the function
+while True:
+    age_input = input("Age (13-120): ")
+    valid, age = validate_age(age_input)
+    if valid:
+        break
+
+print(f"Age {age} accepted!")`,
+                        subgoal: 'Combine type checking with range checking'
+                    },
+                    {
+                        title: 'Add Email Validation',
+                        explanation: 'For a simple email check, we verify it contains @ and at least one character before and after the @. A full email validation is complex - this covers the basics.',
+                        code: `def validate_email(email):
+    """Check email has basic valid format"""
+    # Presence check
+    if email == "":
+        print("Error: Email cannot be empty")
+        return False
+
+    # Format check - must contain @
+    if "@" not in email:
+        print("Error: Email must contain @")
+        return False
+
+    # Format check - @ not at start or end
+    if email.startswith("@") or email.endswith("@"):
+        print("Error: Invalid email format")
+        return False
+
+    return True
+
+# Use the function
+while True:
+    email = input("Email: ")
+    if validate_email(email):
+        break
+
+print(f"Email '{email}' accepted!")`,
+                        subgoal: 'Validate email format'
+                    },
+                    {
+                        title: 'Complete Registration System',
+                        explanation: 'Now let\'s put it all together into a complete registration system that validates all fields before accepting the registration.',
+                        code: `# Complete Registration with Validation
+
+def get_valid_username():
+    while True:
+        username = input("Username (3-15 chars): ")
+        if username == "":
+            print("Error: Username required")
+            continue
+        if len(username) < 3 or len(username) > 15:
+            print("Error: Must be 3-15 characters")
+            continue
+        if not username.isalnum():
+            print("Error: Letters and numbers only")
+            continue
+        return username
+
+def get_valid_password():
+    while True:
+        password = input("Password (min 8 chars): ")
+        if len(password) < 8:
+            print("Error: At least 8 characters")
+            continue
+        return password
+
+def get_valid_age():
+    while True:
+        try:
+            age = int(input("Age (13-120): "))
+            if 13 <= age <= 120:
+                return age
+            print("Error: Age must be 13-120")
+        except ValueError:
+            print("Error: Enter a number")
+
+def get_valid_email():
+    while True:
+        email = input("Email: ")
+        if "@" in email and not email.startswith("@"):
+            return email
+        print("Error: Invalid email format")
+
+# Main registration
+print("=== Registration Form ===")
+username = get_valid_username()
+password = get_valid_password()
+age = get_valid_age()
+email = get_valid_email()
+
+print("\\n=== Registration Complete ===")
+print(f"Username: {username}")
+print(f"Age: {age}")
+print(f"Email: {email}")
+print("Welcome to the system!")`,
+                        subgoal: 'Combine all validation into a complete system'
+                    }
+                ],
+                finalCode: `# Complete Registration with Validation
+
+def get_valid_username():
+    """Get and validate username"""
+    while True:
+        username = input("Username (3-15 chars): ")
+        if username == "":
+            print("Error: Username required")
+            continue
+        if len(username) < 3 or len(username) > 15:
+            print("Error: Must be 3-15 characters")
+            continue
+        if not username.isalnum():
+            print("Error: Letters and numbers only")
+            continue
+        return username
+
+def get_valid_password():
+    """Get and validate password"""
+    while True:
+        password = input("Password (min 8 chars): ")
+        if len(password) < 8:
+            print("Error: At least 8 characters")
+            continue
+        return password
+
+def get_valid_age():
+    """Get and validate age"""
+    while True:
+        try:
+            age = int(input("Age (13-120): "))
+            if 13 <= age <= 120:
+                return age
+            print("Error: Age must be 13-120")
+        except ValueError:
+            print("Error: Enter a number")
+
+def get_valid_email():
+    """Get and validate email"""
+    while True:
+        email = input("Email: ")
+        if "@" in email and not email.startswith("@"):
+            return email
+        print("Error: Invalid email format")
+
+# Main registration
+print("=== Registration Form ===")
+username = get_valid_username()
+password = get_valid_password()
+age = get_valid_age()
+email = get_valid_email()
+
+print("\\n=== Registration Complete ===")
+print(f"Username: {username}")
+print(f"Age: {age}")
+print(f"Email: {email}")
+print("Welcome to the system!")`,
+                summary: 'We built a complete registration validation system using all five validation types: presence (not empty), length (3-15 for username, 8+ for password), format (alphanumeric username, @ in email), type (age must be integer), and range (age 13-120). Each validation function uses a while loop to keep asking until valid input is received. This pattern - validate then break - is essential for robust programs!'
+            }
+        );
+    </script>
+    <style>
+        .validation-table {
+            overflow-x: auto;
+        }
+        .validation-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .validation-table th,
+        .validation-table td {
+            padding: var(--space-sm) var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .validation-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+        .validation-table code {
+            background: var(--gray-100);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+    </style>
+</body>
+</html>

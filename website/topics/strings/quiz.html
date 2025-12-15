@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: String Manipulation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">String Manipulation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: String Manipulation</h1>
+            <p>Test your understanding of strings, slicing, concatenation, and string methods!</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to String Manipulation</a>
+            <a href="../index.html" class="btn btn-secondary">All Topics</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'strings-quiz-1',
+                title: 'Question 1: Why "Strings"?',
+                code: null,
+                question: 'Why is text data called a "string" in programming?',
+                options: [
+                    'Because it was invented by someone named String',
+                    'Because characters are strung together like beads on a string',
+                    'Because strings can be very long',
+                    'Because they are stored in string memory'
+                ],
+                correctIndex: 1,
+                explanation: 'Text is called a "string" because it\'s a sequence of characters strung together - like beads on a string! This is why strings behave like arrays.'
+            },
+            {
+                id: 'strings-quiz-2',
+                title: 'Question 2: First Index',
+                code: null,
+                question: 'In Python, what index is the first character of a string?',
+                options: ['1', '0', '-1', 'first'],
+                correctIndex: 1,
+                explanation: 'String indexing (like arrays) starts at 0. The first character is at index 0, the second at index 1, etc.'
+            },
+            {
+                id: 'strings-quiz-3',
+                title: 'Question 3: Slicing Result',
+                code: `text = "COMPUTER"
+print(text[0:4])`,
+                question: 'What will be printed?',
+                options: ['COMP', 'COMPU', 'OMPU', 'C'],
+                correctIndex: 0,
+                explanation: 'text[0:4] gets characters at indices 0, 1, 2, 3 (stops BEFORE index 4). That\'s "COMP".'
+            },
+            {
+                id: 'strings-quiz-4',
+                title: 'Question 4: Negative Index',
+                code: `word = "PYTHON"
+print(word[-2])`,
+                question: 'What will be printed?',
+                options: ['P', 'O', 'N', 'Y'],
+                correctIndex: 1,
+                explanation: 'Negative indices count from the end. -1 is "N" (last), -2 is "O" (second to last).'
+            },
+            {
+                id: 'strings-quiz-5',
+                title: 'Question 5: String Length',
+                code: `message = "Hello World"
+print(len(message))`,
+                question: 'What will be printed?',
+                options: ['10', '11', '12', '2'],
+                correctIndex: 1,
+                explanation: '"Hello World" has 11 characters (including the space). len() counts all characters.'
+            },
+            {
+                id: 'strings-quiz-6',
+                title: 'Question 6: Concatenation',
+                code: `a = "Hello"
+b = "World"
+c = a + b
+print(c)`,
+                question: 'What will be printed?',
+                options: ['Hello World', 'HelloWorld', 'Hello + World', 'ab'],
+                correctIndex: 1,
+                explanation: 'The + operator joins strings exactly as they are. No space is added automatically - it\'s "HelloWorld".'
+            },
+            {
+                id: 'strings-quiz-7',
+                title: 'Question 7: Upper Case',
+                code: `text = "Python"
+result = text.upper()
+print(result)`,
+                question: 'What will be printed?',
+                options: ['Python', 'PYTHON', 'python', 'P'],
+                correctIndex: 1,
+                explanation: 'The .upper() method converts all characters to uppercase: "PYTHON".'
+            },
+            {
+                id: 'strings-quiz-8',
+                title: 'Question 8: Finding Substrings',
+                code: `word = "banana"
+pos = word.find("na")
+print(pos)`,
+                question: 'What will be printed?',
+                options: ['True', '2', '3', '-1'],
+                correctIndex: 1,
+                explanation: 'find() returns the position where the substring first appears. "na" first appears at index 2 in "banana".'
+            },
+            {
+                id: 'strings-quiz-9',
+                title: 'Question 9: Slicing Shortcut',
+                code: `text = "PROGRAMMING"`,
+                question: 'Which expression gives the LAST 4 characters ("MING")?',
+                options: ['text[4:]', 'text[-4:]', 'text[7:]', 'Both text[-4:] and text[7:]'],
+                correctIndex: 3,
+                explanation: 'Both work! text[-4:] gets the last 4 characters, and text[7:] starts at index 7 and goes to the end. For this 11-character string, both give "MING".'
+            },
+            {
+                id: 'strings-quiz-10',
+                title: 'Question 10: String as Array',
+                code: `word = "DATA"
+for char in word:
+    print(char)`,
+                question: 'What will this loop print?',
+                options: ['DATA', 'D A T A', 'D\\nA\\nT\\nA', '4'],
+                correctIndex: 2,
+                explanation: 'Looping through a string gives each character one at a time. Each print() outputs on a new line, so we get D, A, T, A on separate lines.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'strings'
+            }
+        );
+    </script>
+</body>
+</html>

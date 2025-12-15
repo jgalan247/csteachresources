@@ -17,6 +17,7 @@
             <li><a href="../../index.html">Home</a></li>
             <li><a href="../index.html" class="active">Topics</a></li>
             <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
             <li><a href="../../help.html">Help</a></li>
         </ul>
     </nav>
@@ -32,15 +33,348 @@
 
         <header class="topic-header">
             <h1><span class="topic-header-icon">🔁</span> While Loops</h1>
-            <p>Learn how to repeat code while a condition is true.</p>
+            <p>Repeat code while a condition is true - perfect for when you don't know how many times to repeat!</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>What while loops are and when to use them</li>
+                    <li>The difference between while loops and for loops</li>
+                    <li>How to avoid infinite loops</li>
+                    <li>Using while loops for input validation</li>
+                </ul>
+            </div>
         </header>
 
-        <section class="coming-soon">
-            <div class="coming-soon-card">
-                <div class="coming-soon-icon">🚧</div>
-                <h2>Coming Soon!</h2>
-                <p>This topic is currently being developed.</p>
-                <p class="mt-lg">In the meantime, try the <a href="../for-loops/index.html">For Loops</a> topic!</p>
+        <section class="loop-comparison mt-xl">
+            <h2>For Loops vs While Loops</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card for-card">
+                    <h3>🔄 For Loop</h3>
+                    <p><strong>Use when:</strong> You know how many times to repeat</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># Print "Hello" 5 times</span>
+<span class="syntax-keyword">for</span> i <span class="syntax-keyword">in</span> range(<span class="syntax-number">5</span>):
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Hello"</span>)</code></pre>
+                    </div>
+                    <p class="example-note">We know exactly: 5 times</p>
+                </div>
+
+                <div class="comparison-card while-card">
+                    <h3>🔁 While Loop</h3>
+                    <p><strong>Use when:</strong> You don't know how many times - repeat until something happens</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># Keep asking until correct</span>
+answer = <span class="syntax-string">""</span>
+<span class="syntax-keyword">while</span> answer != <span class="syntax-string">"yes"</span>:
+    answer = input(<span class="syntax-string">"Ready? "</span>)</code></pre>
+                    </div>
+                    <p class="example-note">Could be 1 time, could be 100!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="while-syntax mt-xl">
+            <h2>While Loop Syntax</h2>
+            <p>A while loop keeps running as long as its condition is <code>True</code>.</p>
+
+            <div class="syntax-breakdown">
+                <div class="code-display">
+                    <div class="code-header">
+                        <span class="code-filename">while_loop_structure.py</span>
+                    </div>
+                    <pre class="code-content"><code><span class="syntax-keyword">while</span> condition:
+    <span class="syntax-comment"># Code to repeat</span>
+    <span class="syntax-comment"># This runs while condition is True</span>
+    <span class="syntax-comment"># Must change something to eventually make condition False!</span></code></pre>
+                </div>
+
+                <div class="syntax-parts">
+                    <div class="syntax-part">
+                        <span class="part-label">while</span>
+                        <span class="part-desc">Keyword that starts the loop</span>
+                    </div>
+                    <div class="syntax-part">
+                        <span class="part-label">condition</span>
+                        <span class="part-desc">Checked before each iteration - loop continues while True</span>
+                    </div>
+                    <div class="syntax-part">
+                        <span class="part-label">:</span>
+                        <span class="part-desc">Colon marks the start of the loop body</span>
+                    </div>
+                    <div class="syntax-part">
+                        <span class="part-label">indented code</span>
+                        <span class="part-desc">Code inside the loop - must be indented</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="while-examples mt-xl">
+            <h2>Common While Loop Patterns</h2>
+
+            <div class="pattern-cards">
+                <div class="pattern-card">
+                    <h3>1. Counting with While</h3>
+                    <p>Count up or down until reaching a target.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># Count from 1 to 5</span>
+count = <span class="syntax-number">1</span>
+<span class="syntax-keyword">while</span> count <= <span class="syntax-number">5</span>:
+    <span class="syntax-keyword">print</span>(count)
+    count = count + <span class="syntax-number">1</span>  <span class="syntax-comment"># Important!</span>
+
+<span class="syntax-comment"># Output: 1, 2, 3, 4, 5</span></code></pre>
+                    </div>
+                    <div class="pattern-warning">
+                        <strong>Key:</strong> Always update the variable used in the condition!
+                    </div>
+                </div>
+
+                <div class="pattern-card">
+                    <h3>2. Input Validation</h3>
+                    <p>Keep asking until the user enters valid input.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># Keep asking until valid age entered</span>
+age = <span class="syntax-number">-1</span>
+<span class="syntax-keyword">while</span> age < <span class="syntax-number">0</span> <span class="syntax-keyword">or</span> age > <span class="syntax-number">120</span>:
+    age = int(input(<span class="syntax-string">"Enter age (0-120): "</span>))
+
+<span class="syntax-keyword">print</span>(<span class="syntax-string">f"Your age is {age}"</span>)</code></pre>
+                    </div>
+                </div>
+
+                <div class="pattern-card">
+                    <h3>3. Password/Menu Loop</h3>
+                    <p>Repeat until a specific value is entered.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># Simple password check</span>
+password = <span class="syntax-string">""</span>
+<span class="syntax-keyword">while</span> password != <span class="syntax-string">"secret123"</span>:
+    password = input(<span class="syntax-string">"Enter password: "</span>)
+
+<span class="syntax-keyword">print</span>(<span class="syntax-string">"Access granted!"</span>)</code></pre>
+                    </div>
+                </div>
+
+                <div class="pattern-card">
+                    <h3>4. While True with Break</h3>
+                    <p>Loop forever until break is called - useful for menus.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-keyword">while</span> <span class="syntax-keyword">True</span>:
+    choice = input(<span class="syntax-string">"Enter Q to quit: "</span>)
+    <span class="syntax-keyword">if</span> choice == <span class="syntax-string">"Q"</span>:
+        <span class="syntax-keyword">break</span>  <span class="syntax-comment"># Exit the loop</span>
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"You entered:"</span>, choice)
+
+<span class="syntax-keyword">print</span>(<span class="syntax-string">"Goodbye!"</span>)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="infinite-loops mt-xl">
+            <h2>Avoiding Infinite Loops</h2>
+            <div class="danger-box">
+                <h3>What is an Infinite Loop?</h3>
+                <p>An <strong>infinite loop</strong> is a loop that never stops because its condition never becomes False. This will freeze your program!</p>
+            </div>
+
+            <div class="infinite-examples">
+                <div class="example-bad">
+                    <h4>Bad - Infinite Loop!</h4>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># This will run FOREVER!</span>
+count = <span class="syntax-number">1</span>
+<span class="syntax-keyword">while</span> count <= <span class="syntax-number">5</span>:
+    <span class="syntax-keyword">print</span>(count)
+    <span class="syntax-comment"># Forgot to increase count!</span>
+    <span class="syntax-comment"># count is always 1, always <= 5</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="example-good">
+                    <h4>Good - Loop Terminates</h4>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-comment"># This stops after 5 iterations</span>
+count = <span class="syntax-number">1</span>
+<span class="syntax-keyword">while</span> count <= <span class="syntax-number">5</span>:
+    <span class="syntax-keyword">print</span>(count)
+    count = count + <span class="syntax-number">1</span>  <span class="syntax-comment"># count changes!</span>
+    <span class="syntax-comment"># Eventually count > 5</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-md">
+                <strong>Tip:</strong> If your program freezes, press <kbd>Ctrl</kbd> + <kbd>C</kbd> to stop it!
+            </div>
+        </section>
+
+        <section class="break-continue mt-xl">
+            <h2>Break and Continue</h2>
+            <p>Two special keywords that control loop flow:</p>
+
+            <div class="control-cards">
+                <div class="control-card">
+                    <h3><code>break</code></h3>
+                    <p>Immediately exits the loop completely.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>count = <span class="syntax-number">0</span>
+<span class="syntax-keyword">while</span> <span class="syntax-keyword">True</span>:
+    count = count + <span class="syntax-number">1</span>
+    <span class="syntax-keyword">if</span> count == <span class="syntax-number">3</span>:
+        <span class="syntax-keyword">break</span>  <span class="syntax-comment"># Exit loop</span>
+    <span class="syntax-keyword">print</span>(count)
+
+<span class="syntax-comment"># Output: 1, 2</span>
+<span class="syntax-comment"># (3 is never printed - loop exits)</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="control-card">
+                    <h3><code>continue</code></h3>
+                    <p>Skips to the next iteration of the loop.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>count = <span class="syntax-number">0</span>
+<span class="syntax-keyword">while</span> count < <span class="syntax-number">5</span>:
+    count = count + <span class="syntax-number">1</span>
+    <span class="syntax-keyword">if</span> count == <span class="syntax-number">3</span>:
+        <span class="syntax-keyword">continue</span>  <span class="syntax-comment"># Skip to next</span>
+    <span class="syntax-keyword">print</span>(count)
+
+<span class="syntax-comment"># Output: 1, 2, 4, 5</span>
+<span class="syntax-comment"># (3 is skipped)</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="learning-path mt-xl">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order to master while loops.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="while-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: Loop Output</h4>
+                        <p>Predict what while loops will output.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="while-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See while loops built step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="while-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Execution</h4>
+                        <p>Track variables through each iteration.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="while-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order to create while loops.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="while-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of while loops.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>while loop</h4>
+                    <p>A loop that repeats while a condition is True.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>condition</h4>
+                    <p>A Boolean expression checked before each iteration.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>iteration</h4>
+                    <p>One execution of the loop body.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>infinite loop</h4>
+                    <p>A loop that never stops because the condition never becomes False.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>break</h4>
+                    <p>A keyword that immediately exits the loop.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>continue</h4>
+                    <p>A keyword that skips to the next iteration.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">while_loop_reference.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Basic while loop</span>
+<span class="syntax-keyword">while</span> condition:
+    <span class="syntax-comment"># code to repeat</span>
+
+<span class="syntax-comment"># Counting pattern</span>
+count = <span class="syntax-number">1</span>
+<span class="syntax-keyword">while</span> count <= <span class="syntax-number">10</span>:
+    <span class="syntax-keyword">print</span>(count)
+    count = count + <span class="syntax-number">1</span>
+
+<span class="syntax-comment"># Input validation pattern</span>
+<span class="syntax-keyword">while</span> <span class="syntax-keyword">True</span>:
+    user_input = input(<span class="syntax-string">"Enter value: "</span>)
+    <span class="syntax-keyword">if</span> is_valid(user_input):
+        <span class="syntax-keyword">break</span>
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Invalid, try again"</span>)
+
+<span class="syntax-comment"># Menu pattern</span>
+choice = <span class="syntax-string">""</span>
+<span class="syntax-keyword">while</span> choice != <span class="syntax-string">"quit"</span>:
+    choice = input(<span class="syntax-string">"Enter choice: "</span>)
+    <span class="syntax-comment"># process choice</span></code></pre>
             </div>
         </section>
     </main>
@@ -49,20 +383,175 @@
         <p>Built on evidence-based teaching methods from computing education research.</p>
     </footer>
 
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
     <script src="../../js/main.js"></script>
     <style>
-        .coming-soon-card {
-            background: white;
-            padding: var(--space-2xl);
-            border-radius: var(--radius-xl);
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            margin: var(--space-xl) 0;
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
         }
-        .coming-soon-icon {
-            font-size: 4rem;
-            margin-bottom: var(--space-md);
+        .comparison-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        .comparison-card.for-card {
+            border-top: 4px solid #3b82f6;
+        }
+        .comparison-card.while-card {
+            border-top: 4px solid #8b5cf6;
+        }
+        .comparison-card h3 {
+            margin-top: 0;
+        }
+        .example-note {
+            font-style: italic;
+            color: var(--gray-600);
+            margin-top: var(--space-sm);
+        }
+        .syntax-breakdown {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-md);
+        }
+        .syntax-parts {
+            display: grid;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+        .syntax-part {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+            padding: var(--space-sm);
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+        }
+        .part-label {
+            font-family: monospace;
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+        }
+        .part-desc {
+            color: var(--gray-600);
+        }
+        .pattern-cards {
+            display: grid;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .pattern-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary);
+        }
+        .pattern-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .pattern-warning {
+            background: #fef3c7;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-md);
+            border-left: 3px solid #f59e0b;
+        }
+        .danger-box {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+        }
+        .danger-box h3 {
+            color: #dc2626;
+            margin-top: 0;
+        }
+        .infinite-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        .example-bad {
+            background: #fee2e2;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 2px solid #ef4444;
+        }
+        .example-bad h4 {
+            color: #dc2626;
+            margin-top: 0;
+        }
+        .example-good {
+            background: #dcfce7;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 2px solid #22c55e;
+        }
+        .example-good h4 {
+            color: #16a34a;
+            margin-top: 0;
+        }
+        .control-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .control-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .control-card h3 {
+            margin-top: 0;
+        }
+        .control-card code {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+        }
+        kbd {
+            background: var(--gray-100);
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-family: monospace;
+        }
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
         }
     </style>
 </body>

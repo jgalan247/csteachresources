@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1D Arrays (Lists) - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">1D Arrays (Lists)</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">📋</span> 1D Arrays (Lists)</h1>
+            <p>Learn how to store multiple values in a single variable using arrays (called lists in Python).</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>What arrays are and why we use them</li>
+                    <li>Creating and accessing array elements by index</li>
+                    <li>Modifying array elements</li>
+                    <li>Using loops to iterate through arrays</li>
+                    <li>Common array operations: length, append, remove</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="learning-path">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="arrays1d-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: What's in the Array?</h4>
+                        <p>Predict what array operations will output.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="arrays1d-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See how to create and manipulate arrays step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="arrays1d-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Array Operations</h4>
+                        <p>Track how array contents change through loops.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="arrays1d-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order to work with arrays.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="arrays1d-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of 1D arrays.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>array / list</h4>
+                    <p>A data structure that stores multiple values in a single variable. In Python, we use lists.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>element</h4>
+                    <p>A single item stored in an array. <code>["a", "b", "c"]</code> has 3 elements.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>index</h4>
+                    <p>The position of an element. Starts at 0! First element is at index 0.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>length</h4>
+                    <p>The number of elements in an array. Use <code>len(array)</code> to find it.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>append</h4>
+                    <p>Add an element to the end of an array. <code>array.append(value)</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>iteration</h4>
+                    <p>Going through each element of an array one by one, usually with a loop.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">arrays_1d_examples.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Creating an array (list)</span>
+scores = [<span class="syntax-number">85</span>, <span class="syntax-number">92</span>, <span class="syntax-number">78</span>, <span class="syntax-number">90</span>, <span class="syntax-number">88</span>]
+names = [<span class="syntax-string">"Alice"</span>, <span class="syntax-string">"Bob"</span>, <span class="syntax-string">"Charlie"</span>]
+empty = []
+
+<span class="syntax-comment"># Accessing elements by index (starts at 0!)</span>
+<span class="syntax-keyword">print</span>(scores[<span class="syntax-number">0</span>])    <span class="syntax-comment"># First element: 85</span>
+<span class="syntax-keyword">print</span>(scores[<span class="syntax-number">2</span>])    <span class="syntax-comment"># Third element: 78</span>
+<span class="syntax-keyword">print</span>(scores[-<span class="syntax-number">1</span>])   <span class="syntax-comment"># Last element: 88</span>
+
+<span class="syntax-comment"># Modifying elements</span>
+scores[<span class="syntax-number">0</span>] = <span class="syntax-number">95</span>      <span class="syntax-comment"># Change first element to 95</span>
+
+<span class="syntax-comment"># Array length</span>
+<span class="syntax-keyword">print</span>(len(scores))  <span class="syntax-comment"># 5</span>
+
+<span class="syntax-comment"># Adding and removing elements</span>
+scores.append(<span class="syntax-number">100</span>)  <span class="syntax-comment"># Add 100 to the end</span>
+scores.remove(<span class="syntax-number">78</span>)   <span class="syntax-comment"># Remove first occurrence of 78</span>
+
+<span class="syntax-comment"># Looping through an array - by element</span>
+<span class="syntax-keyword">for</span> score <span class="syntax-keyword">in</span> scores:
+    <span class="syntax-keyword">print</span>(score)
+
+<span class="syntax-comment"># Looping through an array - by index</span>
+<span class="syntax-keyword">for</span> i <span class="syntax-keyword">in</span> <span class="syntax-keyword">range</span>(len(scores)):
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Index"</span>, i, <span class="syntax-string">"="</span>, scores[i])</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+    </style>
+</body>
+</html>

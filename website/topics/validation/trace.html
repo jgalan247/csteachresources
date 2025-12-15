@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: Input Validation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Input Validation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Investigate: Trace Validation Code</h1>
+            <p>Track how validation checks process different inputs step by step!</p>
+        </header>
+
+        <div id="tracing-exercise"></div>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Arrange the Code →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Worked Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new CodeTracing(
+            document.getElementById('tracing-exercise'),
+            {
+                id: 'validation-trace-1',
+                topicId: 'validation',
+                title: 'Trace: Password Strength Checker',
+                description: 'Track how multiple validation checks work together to validate a password. The input is "Pass12" - trace each variable and the output.',
+                code: `password = "Pass12"
+length_ok = len(password) >= 8
+has_upper = False
+has_digit = False
+
+for char in password:
+    if char.isupper():
+        has_upper = True
+    if char.isdigit():
+        has_digit = True
+
+if length_ok and has_upper and has_digit:
+    result = "Strong"
+elif has_upper or has_digit:
+    result = "Weak"
+else:
+    result = "Invalid"
+
+print(result)`,
+                variables: ['password', 'length_ok', 'has_upper', 'has_digit', 'char', 'result'],
+                prefilled: [0, 1, 2],
+                solution: [
+                    { step: 1, line: 1, variables: { password: '"Pass12"', length_ok: null, has_upper: null, has_digit: null, char: null, result: null }, output: '' },
+                    { step: 2, line: 2, variables: { password: '"Pass12"', length_ok: 'False', has_upper: null, has_digit: null, char: null, result: null }, output: '' },
+                    { step: 3, line: 3, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'False', has_digit: null, char: null, result: null }, output: '' },
+                    { step: 4, line: 4, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'False', has_digit: 'False', char: null, result: null }, output: '' },
+                    { step: 5, line: 6, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'False', has_digit: 'False', char: '"P"', result: null }, output: '' },
+                    { step: 6, line: 7, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'False', char: '"P"', result: null }, output: '' },
+                    { step: 7, line: 6, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'False', char: '"a"', result: null }, output: '' },
+                    { step: 8, line: 6, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'False', char: '"s"', result: null }, output: '' },
+                    { step: 9, line: 6, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'False', char: '"s"', result: null }, output: '' },
+                    { step: 10, line: 6, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'False', char: '"1"', result: null }, output: '' },
+                    { step: 11, line: 9, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'True', char: '"1"', result: null }, output: '' },
+                    { step: 12, line: 6, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'True', char: '"2"', result: null }, output: '' },
+                    { step: 13, line: 13, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'True', char: '"2"', result: '"Weak"' }, output: '' },
+                    { step: 14, line: 17, variables: { password: '"Pass12"', length_ok: 'False', has_upper: 'True', has_digit: 'True', char: '"2"', result: '"Weak"' }, output: 'Weak' }
+                ],
+                hints: {
+                    2: 'len("Pass12") is 6. Is 6 >= 8? No, so length_ok is False.',
+                    5: 'The loop starts. First char is "P".',
+                    6: '"P".isupper() is True, so has_upper becomes True.',
+                    10: '"1" is the first digit we encounter.',
+                    11: '"1".isdigit() is True, so has_digit becomes True.',
+                    13: 'length_ok is False, so the first condition fails. But has_upper OR has_digit is True, so result is "Weak".'
+                }
+            }
+        );
+    </script>
+</body>
+</html>

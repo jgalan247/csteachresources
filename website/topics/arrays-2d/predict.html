@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: 2D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">2D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: What's in the Grid?</h1>
+            <p>Look at each piece of code and predict what will be output. Remember: the first index is the row, the second is the column!</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">Back to 2D Arrays</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'arr2d-predict-1',
+                title: 'Question 1 of 5',
+                code: `grid = [
+    ["A", "B", "C"],
+    ["D", "E", "F"],
+    ["G", "H", "I"]
+]
+print(grid[0][2])`,
+                question: 'What will be printed?',
+                options: ['A', 'C', 'G', 'B'],
+                correctIndex: 1,
+                explanation: 'grid[0] is the first row ["A", "B", "C"]. Then [2] gets the third element of that row, which is "C".',
+                misconceptions: {
+                    0: 'grid[0][2] is row 0, column 2. That\'s "C", not "A" (which is grid[0][0]).'
+                }
+            },
+            {
+                id: 'arr2d-predict-2',
+                title: 'Question 2 of 5',
+                code: `table = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+print(table[1][0])`,
+                question: 'What will be printed?',
+                options: ['1', '2', '4', '5'],
+                correctIndex: 2,
+                explanation: 'table[1] is the second row [4, 5, 6]. Then [0] gets the first element, which is 4.',
+                misconceptions: {
+                    0: 'The indices are [row][column]. [1][0] means row 1 (second row), column 0 (first column).'
+                }
+            },
+            {
+                id: 'arr2d-predict-3',
+                title: 'Question 3 of 5',
+                code: `matrix = [
+    [10, 20],
+    [30, 40],
+    [50, 60]
+]
+print(len(matrix))`,
+                question: 'What will be printed?',
+                options: ['2', '3', '6', 'Error'],
+                correctIndex: 1,
+                explanation: 'len(matrix) returns the number of rows (outer arrays). There are 3 rows, so len(matrix) = 3.',
+                misconceptions: {
+                    0: 'len() counts the rows, not the columns. To get columns: len(matrix[0]).'
+                }
+            },
+            {
+                id: 'arr2d-predict-4',
+                title: 'Question 4 of 5',
+                code: `grid = [
+    [1, 2],
+    [3, 4]
+]
+print(grid[1])`,
+                question: 'What will be printed?',
+                options: ['1', '2', '[1, 2]', '[3, 4]'],
+                correctIndex: 3,
+                explanation: 'grid[1] (with only one index) returns the entire second row, which is [3, 4].',
+                misconceptions: {
+                    2: 'grid[1] is the SECOND row (index 1), not the first row. [1, 2] is grid[0].'
+                }
+            },
+            {
+                id: 'arr2d-predict-5',
+                title: 'Question 5 of 5',
+                code: `grid = [["X", "O"], ["O", "X"]]
+for row in grid:
+    for cell in row:
+        print(cell, end=" ")`,
+                question: 'What will be printed?',
+                options: ['X O O X ', 'X O\nO X', 'X\nO\nO\nX', 'XO OX'],
+                correctIndex: 0,
+                explanation: 'The nested loops print each cell followed by a space. All on one line: X O O X ',
+                misconceptions: {
+                    1: 'There\'s no print() to create new lines between rows - everything is on one line.'
+                }
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'arrays-2d'
+            }
+        );
+    </script>
+</body>
+</html>

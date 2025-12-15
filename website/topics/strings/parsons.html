@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: String Manipulation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">String Manipulation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks to create working string manipulation programs!</p>
+            <div class="alert alert-info">
+                <strong>Remember:</strong> Strings are like arrays - indexing starts at 0, and slicing with [start:end] doesn't include the end position!
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Simple concatenation
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'strings-parsons-1',
+                topicId: 'strings',
+                title: 'Create a Greeting',
+                instructions: 'Arrange the code blocks to create a greeting message that says "Hello, Alice!"',
+                expectedOutput: 'Hello, Alice!',
+                blocks: [
+                    { id: 1, code: 'name = "Alice"', indentLevel: 0 },
+                    { id: 2, code: 'greeting = "Hello, " + name + "!"', indentLevel: 0 },
+                    { id: 3, code: 'print(greeting)', indentLevel: 0 }
+                ],
+                solution: [1, 2, 3],
+                hints: [
+                    'First, create the name variable.',
+                    'Then, build the greeting by concatenating strings.',
+                    'Finally, print the result.'
+                ]
+            }
+        );
+
+        // Parsons Problem 2: Core - Extract first and last character
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'strings-parsons-2',
+                topicId: 'strings',
+                title: 'First and Last Characters',
+                instructions: 'Arrange the code to extract the first and last characters of a word, then print them together. (One block is a distractor.)',
+                expectedOutput: 'Pn',
+                blocks: [
+                    { id: 1, code: 'word = "Python"', indentLevel: 0 },
+                    { id: 2, code: 'first = word[0]', indentLevel: 0 },
+                    { id: 3, code: 'last = word[-1]', indentLevel: 0 },
+                    { id: 4, code: 'print(first + last)', indentLevel: 0 },
+                    { id: 5, code: 'last = word[6]', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4],
+                hints: [
+                    'Create the word first.',
+                    'Get the first character with index 0.',
+                    'Get the last character with index -1 (not 6, which would cause an error!).',
+                    'Concatenate and print the result.'
+                ]
+            }
+        );
+
+        // Parsons Problem 3: Extension - Extract year from date
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'strings-parsons-3',
+                topicId: 'strings',
+                title: 'Extract Year from Date',
+                instructions: 'Arrange the code to extract the year from a date string in DD/MM/YYYY format and print it. (One block is a distractor.)',
+                expectedOutput: '2024',
+                blocks: [
+                    { id: 1, code: 'date = "15/08/2024"', indentLevel: 0 },
+                    { id: 2, code: 'year = date[-4:]', indentLevel: 0 },
+                    { id: 3, code: 'print(year)', indentLevel: 0 },
+                    { id: 4, code: 'year = date[6:10]', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3],
+                hints: [
+                    'Create the date string first.',
+                    'The year is the last 4 characters. Use negative indexing: [-4:]',
+                    'The distractor date[6:10] would also work, but [-4:] is cleaner and more flexible.',
+                    'Print the extracted year.'
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

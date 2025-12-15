@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Validation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Input Validation</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">🛡️</span> Input Validation</h1>
+            <p>Learn to check user input before using it - essential for robust, secure programs!</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>Why validation is essential for good programs</li>
+                    <li>Five types of validation: Presence, Range, Length, Format, Type</li>
+                    <li>How to implement each validation check</li>
+                    <li>Input sanitisation and SQL injection prevention</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="why-validate mt-xl">
+            <div class="why-card">
+                <h2>Why Validate Input?</h2>
+                <p>Never trust user input! Users might enter:</p>
+                <div class="why-grid">
+                    <div class="why-item bad">
+                        <span class="why-icon">😅</span>
+                        <h4>Accidental Mistakes</h4>
+                        <p>Typos, wrong format, empty fields</p>
+                    </div>
+                    <div class="why-item bad">
+                        <span class="why-icon">🤷</span>
+                        <h4>Unexpected Values</h4>
+                        <p>Negative ages, future dates, nonsense text</p>
+                    </div>
+                    <div class="why-item danger">
+                        <span class="why-icon">😈</span>
+                        <h4>Malicious Input</h4>
+                        <p>SQL injection, code injection attacks</p>
+                    </div>
+                    <div class="why-item good">
+                        <span class="why-icon">✅</span>
+                        <h4>Solution: Validate!</h4>
+                        <p>Check ALL input before using it</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="validation-types mt-xl">
+            <h2>The Five Types of Validation</h2>
+
+            <div class="validation-cards">
+                <div class="validation-card">
+                    <div class="val-header presence">
+                        <span class="val-number">1</span>
+                        <h3>Presence Check</h3>
+                    </div>
+                    <p><strong>What:</strong> Check that something was entered (not empty)</p>
+                    <p><strong>When:</strong> Required fields like name, email, password</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>name = input(<span class="syntax-string">"Enter name: "</span>)
+
+<span class="syntax-keyword">if</span> name == <span class="syntax-string">""</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Name is required!"</span>)
+<span class="syntax-keyword">else</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">f"Hello, {name}"</span>)
+
+<span class="syntax-comment"># Or more simply:</span>
+<span class="syntax-keyword">if</span> <span class="syntax-keyword">not</span> name:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Name is required!"</span>)</code></pre>
+                    </div>
+                </div>
+
+                <div class="validation-card">
+                    <div class="val-header range">
+                        <span class="val-number">2</span>
+                        <h3>Range Check</h3>
+                    </div>
+                    <p><strong>What:</strong> Check a number is within acceptable limits</p>
+                    <p><strong>When:</strong> Ages, scores, quantities, percentages</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>age = int(input(<span class="syntax-string">"Enter age: "</span>))
+
+<span class="syntax-keyword">if</span> age < <span class="syntax-number">0</span> <span class="syntax-keyword">or</span> age > <span class="syntax-number">120</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Age must be 0-120"</span>)
+<span class="syntax-keyword">else</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Age accepted"</span>)
+
+<span class="syntax-comment"># Check score is 0-100</span>
+<span class="syntax-keyword">if</span> <span class="syntax-number">0</span> <= score <= <span class="syntax-number">100</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Valid score"</span>)</code></pre>
+                    </div>
+                </div>
+
+                <div class="validation-card">
+                    <div class="val-header length">
+                        <span class="val-number">3</span>
+                        <h3>Length Check</h3>
+                    </div>
+                    <p><strong>What:</strong> Check string has correct number of characters</p>
+                    <p><strong>When:</strong> Passwords, postcodes, phone numbers</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>password = input(<span class="syntax-string">"Enter password: "</span>)
+
+<span class="syntax-keyword">if</span> len(password) < <span class="syntax-number">8</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Password must be at least 8 characters"</span>)
+
+<span class="syntax-comment"># Check postcode is 6-8 characters</span>
+<span class="syntax-keyword">if</span> len(postcode) < <span class="syntax-number">6</span> <span class="syntax-keyword">or</span> len(postcode) > <span class="syntax-number">8</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Invalid postcode length"</span>)</code></pre>
+                    </div>
+                </div>
+
+                <div class="validation-card">
+                    <div class="val-header format">
+                        <span class="val-number">4</span>
+                        <h3>Format Check</h3>
+                    </div>
+                    <p><strong>What:</strong> Check data matches expected pattern</p>
+                    <p><strong>When:</strong> Email addresses, dates, phone numbers</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>email = input(<span class="syntax-string">"Enter email: "</span>)
+
+<span class="syntax-comment"># Simple email check</span>
+<span class="syntax-keyword">if</span> <span class="syntax-string">"@"</span> <span class="syntax-keyword">not</span> <span class="syntax-keyword">in</span> email:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Invalid email - must contain @"</span>)
+
+<span class="syntax-comment"># Check date format DD/MM/YYYY</span>
+date = input(<span class="syntax-string">"Enter date (DD/MM/YYYY): "</span>)
+<span class="syntax-keyword">if</span> len(date) != <span class="syntax-number">10</span> <span class="syntax-keyword">or</span> date[<span class="syntax-number">2</span>] != <span class="syntax-string">"/"</span> <span class="syntax-keyword">or</span> date[<span class="syntax-number">5</span>] != <span class="syntax-string">"/"</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Invalid date format"</span>)</code></pre>
+                    </div>
+                </div>
+
+                <div class="validation-card">
+                    <div class="val-header type">
+                        <span class="val-number">5</span>
+                        <h3>Type Check</h3>
+                    </div>
+                    <p><strong>What:</strong> Check data is the correct type (number, text, etc.)</p>
+                    <p><strong>When:</strong> Any numeric input from users</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>user_input = input(<span class="syntax-string">"Enter a number: "</span>)
+
+<span class="syntax-comment"># Check if it's a valid integer</span>
+<span class="syntax-keyword">if</span> user_input.isdigit():
+    number = int(user_input)
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">f"You entered: {number}"</span>)
+<span class="syntax-keyword">else</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"That's not a valid number!"</span>)
+
+<span class="syntax-comment"># Using try/except (handles negatives too)</span>
+<span class="syntax-keyword">try</span>:
+    number = int(user_input)
+<span class="syntax-keyword">except</span> ValueError:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Invalid number!"</span>)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sanitisation-section mt-xl">
+            <h2>Input Sanitisation & SQL Injection</h2>
+
+            <div class="danger-box">
+                <h3>What is SQL Injection?</h3>
+                <p>SQL injection is a security attack where malicious code is inserted into input fields to manipulate database queries. It's one of the most common and dangerous web vulnerabilities!</p>
+            </div>
+
+            <div class="injection-example mt-lg">
+                <h4>Example Attack:</h4>
+                <div class="code-display">
+                    <pre class="code-content"><code><span class="syntax-comment"># DANGEROUS - Never do this!</span>
+username = input(<span class="syntax-string">"Username: "</span>)
+query = <span class="syntax-string">"SELECT * FROM users WHERE name = '"</span> + username + <span class="syntax-string">"'"</span>
+
+<span class="syntax-comment"># If user enters: ' OR '1'='1</span>
+<span class="syntax-comment"># Query becomes:</span>
+<span class="syntax-comment"># SELECT * FROM users WHERE name = '' OR '1'='1'</span>
+<span class="syntax-comment"># This returns ALL users - security breach!</span></code></pre>
+                </div>
+            </div>
+
+            <div class="sanitisation-methods mt-lg">
+                <h3>How to Prevent SQL Injection</h3>
+                <div class="method-cards">
+                    <div class="method-card">
+                        <h4>1. Parameterised Queries (Best!)</h4>
+                        <p>Use placeholders instead of string concatenation.</p>
+                        <div class="code-display">
+                            <pre class="code-content"><code><span class="syntax-comment"># SAFE - Use parameterised queries</span>
+cursor.execute(
+    <span class="syntax-string">"SELECT * FROM users WHERE name = ?"</span>,
+    (username,)
+)
+
+<span class="syntax-comment"># The database treats input as data, not code</span></code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <h4>2. Input Sanitisation</h4>
+                        <p>Remove or escape dangerous characters.</p>
+                        <div class="code-display">
+                            <pre class="code-content"><code><span class="syntax-comment"># Remove dangerous characters</span>
+<span class="syntax-keyword">def</span> sanitise(text):
+    dangerous = [<span class="syntax-string">"'"</span>, <span class="syntax-string">'"'</span>, <span class="syntax-string">";"</span>, <span class="syntax-string">"--"</span>, <span class="syntax-string">"/*"</span>]
+    <span class="syntax-keyword">for</span> char <span class="syntax-keyword">in</span> dangerous:
+        text = text.replace(char, <span class="syntax-string">""</span>)
+    <span class="syntax-keyword">return</span> text
+
+clean_input = sanitise(user_input)</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <h4>3. Whitelist Validation</h4>
+                        <p>Only allow expected characters.</p>
+                        <div class="code-display">
+                            <pre class="code-content"><code><span class="syntax-comment"># Only allow letters and numbers</span>
+<span class="syntax-keyword">def</span> is_safe(text):
+    <span class="syntax-keyword">return</span> text.isalnum()
+
+<span class="syntax-keyword">if</span> is_safe(username):
+    <span class="syntax-comment"># Process the input</span>
+<span class="syntax-keyword">else</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Invalid characters!"</span>)</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-danger mt-md">
+                <strong>Remember:</strong> Always validate AND sanitise user input. Never trust data from users - it could be malicious!
+            </div>
+        </section>
+
+        <section class="validation-loop mt-xl">
+            <h2>Complete Validation Loop</h2>
+            <p>Keep asking until valid input is received:</p>
+            <div class="code-display">
+                <pre class="code-content"><code><span class="syntax-comment"># Keep asking until we get valid input</span>
+<span class="syntax-keyword">while</span> <span class="syntax-keyword">True</span>:
+    age_input = input(<span class="syntax-string">"Enter your age (0-120): "</span>)
+
+    <span class="syntax-comment"># Type check - is it a number?</span>
+    <span class="syntax-keyword">if</span> <span class="syntax-keyword">not</span> age_input.isdigit():
+        <span class="syntax-keyword">print</span>(<span class="syntax-string">"Please enter a number!"</span>)
+        <span class="syntax-keyword">continue</span>
+
+    age = int(age_input)
+
+    <span class="syntax-comment"># Range check - is it reasonable?</span>
+    <span class="syntax-keyword">if</span> age < <span class="syntax-number">0</span> <span class="syntax-keyword">or</span> age > <span class="syntax-number">120</span>:
+        <span class="syntax-keyword">print</span>(<span class="syntax-string">"Age must be between 0 and 120!"</span>)
+        <span class="syntax-keyword">continue</span>
+
+    <span class="syntax-comment"># Valid! Exit the loop</span>
+    <span class="syntax-keyword">break</span>
+
+<span class="syntax-keyword">print</span>(<span class="syntax-string">f"Your age is {age}"</span>)</code></pre>
+            </div>
+        </section>
+
+        <section class="learning-path mt-xl">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="validation-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: Validation Results</h4>
+                        <p>Predict which inputs will pass validation checks.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="validation-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See how to implement validation step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="validation-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Validation</h4>
+                        <p>Track how validation checks process different inputs.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="validation-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order to create validation.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="validation-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of input validation.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>validation</h4>
+                    <p>Checking that input meets specific requirements before using it.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>presence check</h4>
+                    <p>Verifying that a field is not empty.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>range check</h4>
+                    <p>Verifying a number falls within acceptable limits.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>length check</h4>
+                    <p>Verifying a string has the correct number of characters.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>format check</h4>
+                    <p>Verifying data matches an expected pattern (e.g., email format).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>type check</h4>
+                    <p>Verifying data is the correct type (number, text, etc.).</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>sanitisation</h4>
+                    <p>Cleaning input by removing or escaping dangerous characters.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>SQL injection</h4>
+                    <p>A security attack using malicious input to manipulate database queries.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">validation_reference.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># PRESENCE CHECK - not empty</span>
+<span class="syntax-keyword">if</span> name == <span class="syntax-string">""</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Field required"</span>)
+
+<span class="syntax-comment"># RANGE CHECK - within limits</span>
+<span class="syntax-keyword">if</span> age < <span class="syntax-number">0</span> <span class="syntax-keyword">or</span> age > <span class="syntax-number">120</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Out of range"</span>)
+
+<span class="syntax-comment"># LENGTH CHECK - correct length</span>
+<span class="syntax-keyword">if</span> len(password) < <span class="syntax-number">8</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Too short"</span>)
+
+<span class="syntax-comment"># FORMAT CHECK - matches pattern</span>
+<span class="syntax-keyword">if</span> <span class="syntax-string">"@"</span> <span class="syntax-keyword">not</span> <span class="syntax-keyword">in</span> email:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Invalid email"</span>)
+
+<span class="syntax-comment"># TYPE CHECK - correct data type</span>
+<span class="syntax-keyword">if</span> <span class="syntax-keyword">not</span> user_input.isdigit():
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Not a number"</span>)
+
+<span class="syntax-comment"># SANITISATION - remove dangerous chars</span>
+clean = text.replace(<span class="syntax-string">"'"</span>, <span class="syntax-string">""</span>).replace(<span class="syntax-string">";"</span>, <span class="syntax-string">""</span>)</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .why-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            border: 2px solid #f59e0b;
+        }
+        .why-card h2 {
+            margin-top: 0;
+            color: #92400e;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        .why-item {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .why-item.bad { border-top: 3px solid #f59e0b; }
+        .why-item.danger { border-top: 3px solid #ef4444; }
+        .why-item.good { border-top: 3px solid #22c55e; }
+        .why-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+        .why-item h4 {
+            margin: 0 0 var(--space-xs) 0;
+        }
+        .why-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .validation-cards {
+            display: grid;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .validation-card {
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+        .val-header {
+            padding: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        .val-header.presence { background: #dbeafe; }
+        .val-header.range { background: #dcfce7; }
+        .val-header.length { background: #fef3c7; }
+        .val-header.format { background: #fce7f3; }
+        .val-header.type { background: #e0e7ff; }
+        .val-number {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .val-header h3 {
+            margin: 0;
+        }
+        .validation-card > p {
+            padding: 0 var(--space-md);
+            margin: var(--space-sm) 0;
+        }
+        .validation-card .code-display {
+            margin: var(--space-md);
+        }
+        .danger-box {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+        }
+        .danger-box h3 {
+            color: #dc2626;
+            margin-top: 0;
+        }
+        .method-cards {
+            display: grid;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .method-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid #22c55e;
+        }
+        .method-card h4 {
+            margin-top: 0;
+            color: var(--secondary);
+        }
+        .alert-danger {
+            background: #fee2e2;
+            border: 1px solid #ef4444;
+            color: #991b1b;
+        }
+    </style>
+</body>
+</html>

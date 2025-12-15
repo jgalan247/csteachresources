@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Input Validation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Input Validation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: Validation Results</h1>
+            <p>For each piece of code, predict whether the validation will pass or fail!</p>
+            <div class="alert alert-info">
+                <strong>Remember:</strong> Validation checks if input meets requirements before using it.
+            </div>
+        </header>
+
+        <div id="prediction-exercises"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">← Back to Input Validation</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const predictions = [
+            {
+                id: 'validation-predict-1',
+                title: 'Presence Check',
+                code: `name = ""
+
+if name == "":
+    print("FAIL: Name required")
+else:
+    print("PASS")`,
+                question: 'What will this validation output?',
+                options: ['PASS', 'FAIL: Name required'],
+                correctIndex: 1,
+                explanation: 'The variable name is an empty string "". The presence check name == "" is True, so it prints "FAIL: Name required".'
+            },
+            {
+                id: 'validation-predict-2',
+                title: 'Presence Check with Space',
+                code: `name = " "
+
+if name == "":
+    print("FAIL: Name required")
+else:
+    print("PASS")`,
+                question: 'What will this validation output?',
+                options: ['PASS', 'FAIL: Name required'],
+                correctIndex: 0,
+                explanation: 'A string with just a space " " is NOT the same as an empty string "". The presence check passes! This is why we often use .strip() to remove whitespace first.'
+            },
+            {
+                id: 'validation-predict-3',
+                title: 'Range Check',
+                code: `age = 25
+
+if age < 0 or age > 120:
+    print("FAIL: Invalid age")
+else:
+    print("PASS")`,
+                question: 'What will this validation output?',
+                options: ['PASS', 'FAIL: Invalid age'],
+                correctIndex: 0,
+                explanation: '25 is within the valid range (0-120). The condition age < 0 is False AND age > 120 is False, so the else branch runs.'
+            },
+            {
+                id: 'validation-predict-4',
+                title: 'Range Check Boundary',
+                code: `score = 100
+
+if score < 0 or score > 100:
+    print("FAIL: Score out of range")
+else:
+    print("PASS")`,
+                question: 'What will this validation output?',
+                options: ['PASS', 'FAIL: Score out of range'],
+                correctIndex: 0,
+                explanation: '100 is NOT greater than 100 (100 > 100 is False), so it passes. When checking ranges, think carefully about whether boundaries should be included!'
+            },
+            {
+                id: 'validation-predict-5',
+                title: 'Length Check - Password',
+                code: `password = "abc123"
+
+if len(password) < 8:
+    print("FAIL: Too short")
+else:
+    print("PASS")`,
+                question: 'What will this validation output?',
+                options: ['PASS', 'FAIL: Too short'],
+                correctIndex: 1,
+                explanation: '"abc123" has 6 characters. Since 6 < 8, the password fails the length check.'
+            },
+            {
+                id: 'validation-predict-6',
+                title: 'Length Check - Exact',
+                code: `postcode = "SW1A 1AA"
+
+if len(postcode) < 6 or len(postcode) > 8:
+    print("FAIL: Invalid postcode length")
+else:
+    print("PASS")`,
+                question: 'What will this validation output?',
+                options: ['PASS', 'FAIL: Invalid postcode length'],
+                correctIndex: 0,
+                explanation: '"SW1A 1AA" has 8 characters (including the space). 8 is not less than 6 AND not greater than 8, so it passes.'
+            },
+            {
+                id: 'validation-predict-7',
+                title: 'Format Check - Email',
+                code: `email = "student.school.uk"
+
+if "@" not in email:
+    print("FAIL: Invalid email")
+else:
+    print("PASS")`,
+                question: 'What will this validation output?',
+                options: ['PASS', 'FAIL: Invalid email'],
+                correctIndex: 1,
+                explanation: 'The email "student.school.uk" does not contain the @ symbol. Format check fails.'
+            },
+            {
+                id: 'validation-predict-8',
+                title: 'Type Check - isdigit',
+                code: `user_input = "-5"
+
+if user_input.isdigit():
+    print("PASS: Valid number")
+else:
+    print("FAIL: Not a number")`,
+                question: 'What will this validation output?',
+                options: ['PASS: Valid number', 'FAIL: Not a number'],
+                correctIndex: 1,
+                explanation: 'isdigit() returns True only for strings containing only digits 0-9. The minus sign "-" is not a digit, so "-5".isdigit() is False!'
+            },
+            {
+                id: 'validation-predict-9',
+                title: 'Type Check - Try/Except',
+                code: `user_input = "-5"
+
+try:
+    number = int(user_input)
+    print("PASS:", number)
+except ValueError:
+    print("FAIL: Not a number")`,
+                question: 'What will this validation output?',
+                options: ['PASS: -5', 'FAIL: Not a number'],
+                correctIndex: 0,
+                explanation: 'Unlike isdigit(), int() CAN convert "-5" to the integer -5. No ValueError is raised, so it passes. Use try/except when you need to accept negative numbers!'
+            },
+            {
+                id: 'validation-predict-10',
+                title: 'Combined Validation',
+                code: `username = "Al"
+
+# Length check
+if len(username) < 3:
+    print("FAIL: Username too short")
+elif len(username) > 15:
+    print("FAIL: Username too long")
+elif not username.isalnum():
+    print("FAIL: Letters and numbers only")
+else:
+    print("PASS")`,
+                question: 'What will this validation output?',
+                options: ['PASS', 'FAIL: Username too short', 'FAIL: Username too long', 'FAIL: Letters and numbers only'],
+                correctIndex: 1,
+                explanation: '"Al" has only 2 characters. Since 2 < 3, it fails the first check immediately. The other checks are never reached because of elif.'
+            }
+        ];
+
+        new PredictionExerciseSeries(
+            document.getElementById('prediction-exercises'),
+            {
+                exercises: predictions,
+                topicId: 'validation'
+            }
+        );
+    </script>
+</body>
+</html>

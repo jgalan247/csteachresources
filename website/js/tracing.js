@@ -91,6 +91,13 @@ class CodeTracing {
         // Simple Python syntax highlighting
         let highlighted = this.escapeHtml(code);
 
+        // Strings FIRST (before adding any HTML with quotes)
+        highlighted = highlighted.replace(/"([^"]*)"/g, '<span class="syntax-string">"$1"</span>');
+        highlighted = highlighted.replace(/'([^']*)'/g, '<span class="syntax-string">\'$1\'</span>');
+
+        // Comments (before keywords to avoid highlighting keywords in comments)
+        highlighted = highlighted.replace(/(#.*)$/gm, '<span class="syntax-comment">$1</span>');
+
         // Keywords
         const keywords = ['for', 'while', 'if', 'else', 'elif', 'def', 'return', 'in', 'range', 'print', 'True', 'False', 'None', 'and', 'or', 'not'];
         keywords.forEach(kw => {
@@ -98,15 +105,8 @@ class CodeTracing {
             highlighted = highlighted.replace(regex, '<span class="syntax-keyword">$1</span>');
         });
 
-        // Strings
-        highlighted = highlighted.replace(/"([^"]*)"/g, '<span class="syntax-string">"$1"</span>');
-        highlighted = highlighted.replace(/'([^']*)'/g, '<span class="syntax-string">\'$1\'</span>');
-
         // Numbers
         highlighted = highlighted.replace(/\b(\d+)\b/g, '<span class="syntax-number">$1</span>');
-
-        // Comments
-        highlighted = highlighted.replace(/(#.*)$/gm, '<span class="syntax-comment">$1</span>');
 
         return highlighted;
     }

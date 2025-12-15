@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Common Errors - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Common Errors</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: Error Identification</h1>
+            <p>Test your ability to identify and understand different types of errors! Answer all questions to see your score.</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to Common Errors</a>
+            <a href="../index.html" class="btn btn-secondary">All Topics</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'errors-quiz-1',
+                title: 'Question 1: Error Types',
+                code: null,
+                question: 'What is the main difference between a syntax error and a logic error?',
+                options: [
+                    'Syntax errors crash the program, logic errors give wrong results',
+                    'Syntax errors are easy to find, logic errors are impossible',
+                    'Logic errors are more serious than syntax errors',
+                    'There is no difference'
+                ],
+                correctIndex: 0,
+                explanation: 'Syntax errors prevent the program from running at all - Python shows an error message. Logic errors let the program run but produce incorrect results, which can be harder to spot.'
+            },
+            {
+                id: 'errors-quiz-2',
+                title: 'Question 2: Identify the Error Type',
+                code: `name = "Alice
+print(name)`,
+                question: 'What type of error does this code contain?',
+                options: ['Logic error', 'Runtime error', 'Syntax error', 'No error'],
+                correctIndex: 2,
+                explanation: 'This is a syntax error - the string is missing its closing quotation mark. Python will report: SyntaxError: EOL while scanning string literal'
+            },
+            {
+                id: 'errors-quiz-3',
+                title: 'Question 3: Reading Tracebacks',
+                code: `Traceback (most recent call last):
+  File "test.py", line 4, in <module>
+    result = 10 / count
+ZeroDivisionError: division by zero`,
+                question: 'According to this traceback, what line caused the error?',
+                options: ['Line 1', 'Line 3', 'Line 4', 'The last line'],
+                correctIndex: 2,
+                explanation: 'The traceback shows "line 4" - this is where the error occurred. The ZeroDivisionError means we tried to divide by zero.'
+            },
+            {
+                id: 'errors-quiz-4',
+                title: 'Question 4: Fix the Bug',
+                code: `for i in range(5)
+    print(i)`,
+                question: 'What fix is needed to make this code work?',
+                options: [
+                    'Change range(5) to range(0, 5)',
+                    'Add a colon after range(5)',
+                    'Remove the indentation before print',
+                    'Change print to println'
+                ],
+                correctIndex: 1,
+                explanation: 'The for statement needs a colon at the end. It should be: for i in range(5):'
+            },
+            {
+                id: 'errors-quiz-5',
+                title: 'Question 5: Logic Error Detection',
+                code: `numbers = [10, 20, 30]
+total = 0
+for n in numbers:
+    total = 0
+    total = total + n
+average = total / 3
+print(average)`,
+                question: 'What is the logic error in this code?',
+                options: [
+                    'Should use total / len(numbers)',
+                    'The total variable is reset inside the loop',
+                    'Should use += instead of total = total + n',
+                    'The numbers list is wrong'
+                ],
+                correctIndex: 1,
+                explanation: 'The line "total = 0" inside the loop resets total to 0 on each iteration, so only the last number (30) is counted. Move "total = 0" before the loop.'
+            },
+            {
+                id: 'errors-quiz-6',
+                title: 'Question 6: TypeError',
+                code: `age = 25
+message = "You are " + age + " years old"
+print(message)`,
+                question: 'What error will this code produce?',
+                options: [
+                    'SyntaxError',
+                    'NameError',
+                    'TypeError',
+                    'No error - it will work fine'
+                ],
+                correctIndex: 2,
+                explanation: 'This causes a TypeError because you cannot concatenate (add) a string and an integer. Fix it with str(age) or use an f-string: f"You are {age} years old"'
+            },
+            {
+                id: 'errors-quiz-7',
+                title: 'Question 7: NameError',
+                code: `print(mesage)`,
+                question: 'What causes the NameError in this code?',
+                options: [
+                    'print is not a valid function',
+                    'Missing parentheses',
+                    'Variable "mesage" was never defined (probably a typo)',
+                    'Strings need quotes'
+                ],
+                correctIndex: 2,
+                explanation: 'NameError occurs when Python doesn\'t recognise a name. Here "mesage" is likely a typo for "message", which was never created. Always check spelling!'
+            },
+            {
+                id: 'errors-quiz-8',
+                title: 'Question 8: Off-by-One',
+                code: `# Print numbers 1 to 10
+for i in range(1, 10):
+    print(i)`,
+                question: 'What is wrong with this code?',
+                options: [
+                    'Should start at 0',
+                    'range(1, 10) only goes up to 9, not 10',
+                    'Missing colon',
+                    'Nothing - it correctly prints 1 to 10'
+                ],
+                correctIndex: 1,
+                explanation: 'This is an off-by-one logic error. range(1, 10) produces 1 through 9 (stops BEFORE 10). To include 10, use range(1, 11).'
+            },
+            {
+                id: 'errors-quiz-9',
+                title: 'Question 9: Debugging Strategy',
+                code: null,
+                question: 'What is the BEST first step when you get an error message?',
+                options: [
+                    'Delete the code and start again',
+                    'Read the line number and error type in the traceback',
+                    'Ask someone else to fix it',
+                    'Add more code to work around the error'
+                ],
+                correctIndex: 1,
+                explanation: 'Always read the traceback first! It tells you the line number where the error occurred and what type of error it is. This is your roadmap to fixing the problem.'
+            },
+            {
+                id: 'errors-quiz-10',
+                title: 'Question 10: Comparison vs Assignment',
+                code: `score = 85
+if score = 100:
+    print("Perfect!")`,
+                question: 'What is wrong with this if statement?',
+                options: [
+                    'Should use >= instead of =',
+                    'Missing colon',
+                    'Uses = (assignment) instead of == (comparison)',
+                    'score needs quotes'
+                ],
+                correctIndex: 2,
+                explanation: 'In Python, = is for assignment (storing values) and == is for comparison (checking equality). The if statement should be: if score == 100:'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'errors'
+            }
+        );
+    </script>
+</body>
+</html>

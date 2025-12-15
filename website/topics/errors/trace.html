@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: Find the Logic Error - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Common Errors</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Investigate: Find the Logic Error</h1>
+            <p>Logic errors are tricky because the code runs without crashing - but gives wrong results. Trace through the code carefully to find where it goes wrong!</p>
+            <div class="alert alert-warning">
+                <strong>Remember:</strong> Logic errors don't show error messages. You find them by tracing the code step by step and checking if the output matches what you expect.
+            </div>
+        </header>
+
+        <div id="tracing-exercise"></div>
+
+        <section class="logic-error-strategies mt-xl">
+            <h2>Debugging Strategies for Logic Errors</h2>
+
+            <div class="strategy-card">
+                <h3>1. Print Debugging</h3>
+                <p>Add print statements to see what values variables have at different points:</p>
+                <div class="code-display">
+                    <pre class="code-content"><code>total = 0
+for num in [1, 2, 3]:
+    total + num
+    print(f"After adding {num}, total = {total}")  # Debug line
+print(total)</code></pre>
+                </div>
+                <p class="strategy-result">Output reveals: "total = 0" every time - the bug is clear!</p>
+            </div>
+
+            <div class="strategy-card">
+                <h3>2. Check Your Assumptions</h3>
+                <p>Write down what you EXPECT to happen, then trace what ACTUALLY happens:</p>
+                <div class="code-display">
+                    <pre class="code-content"><code># I expect: range(1, 5) gives 1, 2, 3, 4, 5
+# Actually: range(1, 5) gives 1, 2, 3, 4
+# The bug: range stops BEFORE the end value!</code></pre>
+                </div>
+            </div>
+
+            <div class="strategy-card">
+                <h3>3. Trace Tables</h3>
+                <p>Track every variable's value at each step of the program:</p>
+                <table class="trace-example-table">
+                    <tr><th>Step</th><th>i</th><th>total</th><th>Notes</th></tr>
+                    <tr><td>Start</td><td>-</td><td>0</td><td>Initialised</td></tr>
+                    <tr><td>Loop 1</td><td>1</td><td>0</td><td>total + 1 calculated but not stored!</td></tr>
+                    <tr><td>Loop 2</td><td>2</td><td>0</td><td>Same problem</td></tr>
+                </table>
+            </div>
+
+            <div class="strategy-card">
+                <h3>4. Rubber Duck Debugging</h3>
+                <p>Explain your code line by line to someone (or something!) else. Often you'll spot the bug while explaining:</p>
+                <p class="quote">"So here I'm adding num to total... wait, I'm not STORING it anywhere!"</p>
+            </div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Fix the Code →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Worked Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new CodeTracing(
+            document.getElementById('tracing-exercise'),
+            {
+                id: 'errors-trace-1',
+                topicId: 'errors',
+                title: 'Find the Bug: Calculate Average',
+                description: 'This code is supposed to calculate the average of three test scores, but it gives the wrong answer. Trace through it to find the logic error!',
+                code: `scores = [80, 90, 70]
+total = 0
+for score in scores:
+    total = 0
+    total = total + score
+average = total / 3
+print(average)`,
+                variables: ['score', 'total', 'average'],
+                prefilled: [0, 1],
+                solution: [
+                    { step: 1, line: 1, variables: { score: null, total: null, average: null }, output: '' },
+                    { step: 2, line: 2, variables: { score: null, total: 0, average: null }, output: '' },
+                    { step: 3, line: 4, variables: { score: 80, total: 0, average: null }, output: '' },
+                    { step: 4, line: 5, variables: { score: 80, total: 80, average: null }, output: '' },
+                    { step: 5, line: 4, variables: { score: 90, total: 0, average: null }, output: '' },
+                    { step: 6, line: 5, variables: { score: 90, total: 90, average: null }, output: '' },
+                    { step: 7, line: 4, variables: { score: 70, total: 0, average: null }, output: '' },
+                    { step: 8, line: 5, variables: { score: 70, total: 70, average: null }, output: '' },
+                    { step: 9, line: 6, variables: { score: 70, total: 70, average: 23.33 }, output: '' },
+                    { step: 10, line: 7, variables: { score: 70, total: 70, average: 23.33 }, output: '23.33' }
+                ],
+                hints: {
+                    3: 'First iteration: score=80. But look at line 4 - what happens to total?',
+                    5: 'Second iteration: score=90. Line 4 runs again - total becomes 0!',
+                    7: 'Third iteration: same problem. Only the LAST score gets counted.',
+                    9: 'The bug: "total = 0" is INSIDE the loop, resetting it each time. Expected average: 80 (80+90+70)/3 = 80, but we get 70/3 = 23.33'
+                }
+            }
+        );
+    </script>
+    <style>
+        .strategy-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            border-left: 4px solid var(--secondary);
+        }
+        .strategy-card h3 {
+            margin-top: 0;
+            color: var(--secondary);
+        }
+        .strategy-result {
+            background: #fef3c7;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-style: italic;
+        }
+        .trace-example-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-sm) 0;
+        }
+        .trace-example-table th, .trace-example-table td {
+            border: 1px solid var(--gray-300);
+            padding: var(--space-sm);
+            text-align: left;
+        }
+        .trace-example-table th {
+            background: var(--gray-100);
+        }
+        .quote {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-left: 3px solid var(--primary);
+            font-style: italic;
+            margin: var(--space-sm) 0;
+        }
+    </style>
+</body>
+</html>

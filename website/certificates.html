@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Certificates - Python Learning</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <!-- jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="topics/index.html">Topics</a></li>
+            <li><a href="progress.html">My Progress</a></li>
+            <li><a href="certificates.html" class="active">Certificates</a></li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>🎓 My Certificates</h1>
+            <p class="hero-subtitle">View and download your earned certificates</p>
+        </header>
+
+        <div class="teacher-dashboard">
+            <!-- Student Info Section -->
+            <section id="student-section">
+                <!-- Populated by JavaScript -->
+            </section>
+
+            <!-- Certificates Section -->
+            <section class="mt-xl">
+                <h2>Earned Certificates</h2>
+                <div id="certificates-container">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Actions Section -->
+            <section class="mt-xl">
+                <h2>Actions</h2>
+                <div class="export-buttons">
+                    <button class="btn btn-outline" onclick="exportAllCertificates()">
+                        📤 Export All Data (JSON)
+                    </button>
+                    <button class="btn btn-outline" onclick="downloadAllCertificates()">
+                        📥 Download All Certificates
+                    </button>
+                    <button class="btn btn-outline" onclick="printCertificateList()">
+                        🖨️ Print Certificate List
+                    </button>
+                    <button class="btn btn-danger-outline" onclick="confirmReset()">
+                        🗑️ Reset All Data
+                    </button>
+                </div>
+            </section>
+
+            <!-- Teacher Notes -->
+            <section class="mt-xl">
+                <div class="alert alert-info">
+                    <h3>📋 For Teachers</h3>
+                    <p>This page shows all certificates earned by this student. You can:</p>
+                    <ul>
+                        <li><strong>Export All Data</strong> - Download a JSON file with all certificate records for verification</li>
+                        <li><strong>Download All Certificates</strong> - Download all earned certificates as PDFs</li>
+                        <li><strong>Print Certificate List</strong> - Print a summary of all certificates for records</li>
+                    </ul>
+                    <p class="mt-md"><strong>Note:</strong> Certificate data is stored in the browser's local storage on this device. Each certificate has a unique ID for verification.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="js/progress.js"></script>
+    <script src="js/certificate.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Render the page content
+        function renderCertificatesPage() {
+            renderStudentSection();
+            renderCertificates();
+        }
+
+        function renderStudentSection() {
+            const container = document.getElementById('student-section');
+            const student = CertificateSystem.getStudent();
+            const certificates = CertificateSystem.getAllCertificates();
+
+            if (!student) {
+                container.innerHTML = `
+                    <div class="student-info-card">
+                        <h2>👋 Welcome!</h2>
+                        <p>You haven't registered yet. Complete a module and claim your first certificate to get started!</p>
+                        <div class="mt-md">
+                            <a href="topics/index.html" class="btn btn-primary">Browse Topics</a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                const registeredDate = new Date(student.registeredAt).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+
+                container.innerHTML = `
+                    <div class="student-info-card">
+                        <h2>👤 Student Information</h2>
+                        <div class="student-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Name</div>
+                                <div class="detail-value">${student.name}</div>
+                            </div>
+                            ${student.className ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Class</div>
+                                <div class="detail-value">${student.className}</div>
+                            </div>
+                            ` : ''}
+                            <div class="detail-item">
+                                <div class="detail-label">Registered</div>
+                                <div class="detail-value">${registeredDate}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Certificates Earned</div>
+                                <div class="detail-value">${certificates.length}</div>
+                            </div>
+                        </div>
+                        <div class="mt-md">
+                            <button class="btn btn-secondary" onclick="editStudentInfo()">Edit Details</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function renderCertificates() {
+            const container = document.getElementById('certificates-container');
+            const certificates = CertificateSystem.getAllCertificates();
+
+            if (certificates.length === 0) {
+                container.innerHTML = `
+                    <div class="no-certificates">
+                        <div class="no-certificates-icon">📜</div>
+                        <h3>No Certificates Yet</h3>
+                        <p>Complete modules to earn certificates!</p>
+                        <a href="topics/index.html" class="btn btn-primary mt-md">Start Learning</a>
+                    </div>
+                `;
+            } else {
+                // Sort by completion date (newest first)
+                const sorted = certificates.sort((a, b) =>
+                    new Date(b.completedAt) - new Date(a.completedAt)
+                );
+
+                container.innerHTML = `
+                    <div class="certificates-grid">
+                        ${sorted.map(cert => {
+                            const date = new Date(cert.completedAt).toLocaleDateString('en-GB', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric'
+                            });
+                            return `
+                                <div class="certificate-card">
+                                    <h4>🏆 ${cert.topicName}</h4>
+                                    <p class="cert-date">Completed: ${date}</p>
+                                    <p class="cert-id">ID: ${cert.id}</p>
+                                    <button class="btn btn-primary mt-md" onclick="downloadCert('${cert.topicId}')">
+                                        📥 Download PDF
+                                    </button>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
+        }
+
+        function downloadCert(topicId) {
+            const certificates = CertificateSystem.getAllCertificates();
+            const cert = certificates.find(c => c.topicId === topicId);
+            if (cert) {
+                CertificateSystem.downloadCertificate(cert);
+            }
+        }
+
+        function exportAllCertificates() {
+            const data = CertificateSystem.exportAllCertificates();
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const student = CertificateSystem.getStudent();
+            const filename = student
+                ? `certificates_${student.name.replace(/\s+/g, '_')}.json`
+                : 'certificates_export.json';
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadAllCertificates() {
+            const certificates = CertificateSystem.getAllCertificates();
+            if (certificates.length === 0) {
+                alert('No certificates to download!');
+                return;
+            }
+
+            // Download each certificate with a small delay
+            certificates.forEach((cert, index) => {
+                setTimeout(() => {
+                    CertificateSystem.downloadCertificate(cert);
+                }, index * 500);
+            });
+        }
+
+        function printCertificateList() {
+            const student = CertificateSystem.getStudent();
+            const certificates = CertificateSystem.getAllCertificates();
+
+            const printContent = `
+                <html>
+                <head>
+                    <title>Certificate Record - ${student?.name || 'Student'}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        h1 { color: #1e40af; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+                        th { background: #f0f0f0; }
+                        .header-info { margin-bottom: 20px; }
+                        .footer { margin-top: 30px; font-size: 0.9em; color: #666; }
+                    </style>
+                </head>
+                <body>
+                    <h1>🎓 Certificate Record</h1>
+                    <div class="header-info">
+                        <p><strong>Student:</strong> ${student?.name || 'Not registered'}</p>
+                        ${student?.className ? `<p><strong>Class:</strong> ${student.className}</p>` : ''}
+                        <p><strong>Total Certificates:</strong> ${certificates.length}</p>
+                        <p><strong>Printed:</strong> ${new Date().toLocaleDateString('en-GB')}</p>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Module</th>
+                                <th>Date Completed</th>
+                                <th>Certificate ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${certificates.map(cert => `
+                                <tr>
+                                    <td>${cert.topicName}</td>
+                                    <td>${new Date(cert.completedAt).toLocaleDateString('en-GB')}</td>
+                                    <td style="font-family: monospace; font-size: 0.85em;">${cert.id}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <p>Python Learning - Evidence-Based Programming Education</p>
+                        <p>This record was generated from locally stored data.</p>
+                    </div>
+                </body>
+                </html>
+            `;
+
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        function editStudentInfo() {
+            const student = CertificateSystem.getStudent();
+            const modal = document.createElement('div');
+            modal.className = 'certificate-modal';
+            modal.innerHTML = `
+                <div class="certificate-modal-content">
+                    <button class="modal-close" onclick="this.closest('.certificate-modal').remove()">&times;</button>
+                    <div class="modal-section">
+                        <h2>Edit Student Details</h2>
+                        <form id="edit-student-form" class="student-form">
+                            <div class="form-group">
+                                <label for="edit-name">Name *</label>
+                                <input type="text" id="edit-name" required value="${student?.name || ''}">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-class">Class/Form (optional)</label>
+                                <input type="text" id="edit-class" value="${student?.className || ''}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            document.getElementById('edit-student-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('edit-name').value;
+                const className = document.getElementById('edit-class').value;
+                CertificateSystem.saveStudent(name, className);
+                modal.remove();
+                renderCertificatesPage();
+            });
+        }
+
+        function confirmReset() {
+            if (confirm('Are you sure you want to reset ALL data? This will delete:\n\n- Your student information\n- All certificates\n- All progress data\n\nThis cannot be undone!')) {
+                if (confirm('This is your final warning. All data will be permanently deleted. Continue?')) {
+                    CertificateSystem.clearStudent();
+                    Progress.reset();
+                    renderCertificatesPage();
+                    alert('All data has been reset.');
+                }
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', renderCertificatesPage);
+    </script>
+</body>
+</html>

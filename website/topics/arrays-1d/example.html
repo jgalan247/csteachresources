@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: 1D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">1D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Worked Example: Calculate Class Average</h1>
+            <p>Follow along as we build a program that stores test scores in an array and calculates the class average using a loop.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Arrays →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'arr1d-example-1',
+                topicId: 'arrays-1d',
+                title: 'Calculate Class Average from Test Scores',
+                problem: {
+                    statement: 'Create a program that stores 5 test scores in an array, calculates the total using a loop, and then calculates and displays the average.',
+                    context: 'A teacher wants to find the average score for a class test.'
+                },
+                expectedOutput: 'Scores: [85, 92, 78, 90, 88]\nTotal: 433\nAverage: 86.6',
+                subgoals: [
+                    {
+                        label: 'Create the array of scores',
+                        code: 'scores = [85, 92, 78, 90, 88]',
+                        explanation: 'We create an array (list) containing 5 test scores. Square brackets [] define an array, and commas separate each element.'
+                    },
+                    {
+                        label: 'Display the scores',
+                        code: 'print("Scores:", scores)',
+                        explanation: 'We can print the entire array at once. Python will display it with square brackets showing it\'s an array.'
+                    },
+                    {
+                        label: 'Initialize a total variable',
+                        code: 'total = 0',
+                        explanation: 'Before the loop, we create a variable to accumulate the sum. This is called the "accumulator pattern" - we\'ll add to this variable in the loop.'
+                    },
+                    {
+                        label: 'Loop through the array and sum',
+                        code: 'for score in scores:\n    total = total + score',
+                        explanation: 'The for loop iterates through each element. "score" takes the value of each element in turn (85, then 92, then 78, etc). We add each score to our running total.'
+                    },
+                    {
+                        label: 'Calculate the average',
+                        code: 'average = total / len(scores)',
+                        explanation: 'Average = total ÷ count. We use len(scores) to get the number of elements (5). This is better than hardcoding 5, because if we add more scores, it still works!'
+                    },
+                    {
+                        label: 'Display the results',
+                        code: 'print("Total:", total)\nprint("Average:", average)',
+                        explanation: 'We print both the total (433) and the average (86.6). The average is a float because we used regular division (/).'
+                    }
+                ],
+                completeCode: `scores = [85, 92, 78, 90, 88]
+print("Scores:", scores)
+total = 0
+for score in scores:
+    total = total + score
+average = total / len(scores)
+print("Total:", total)
+print("Average:", average)`
+            }
+        );
+    </script>
+</body>
+</html>

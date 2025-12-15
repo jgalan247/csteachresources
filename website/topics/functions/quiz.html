@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Functions - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Functions</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: Functions</h1>
+            <p>Test your understanding of functions, parameters, return values, and scope!</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to Functions</a>
+            <a href="../index.html" class="btn btn-secondary">All Topics</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'functions-quiz-1',
+                title: 'Question 1: Function Definition',
+                code: null,
+                question: 'Which keyword is used to define a function in Python?',
+                options: ['function', 'def', 'define', 'func'],
+                correctIndex: 1,
+                explanation: 'Python uses the keyword "def" (short for define) to create a function. For example: def my_function():'
+            },
+            {
+                id: 'functions-quiz-2',
+                title: 'Question 2: Parameter vs Argument',
+                code: `def greet(name):
+    print(f"Hello {name}")
+
+greet("Alice")`,
+                question: 'In this code, what is "name" and what is "Alice"?',
+                options: [
+                    'name is an argument, Alice is a parameter',
+                    'name is a parameter, Alice is an argument',
+                    'Both are parameters',
+                    'Both are arguments'
+                ],
+                correctIndex: 1,
+                explanation: 'A parameter is the variable in the function definition (name). An argument is the actual value passed when calling the function ("Alice").'
+            },
+            {
+                id: 'functions-quiz-3',
+                title: 'Question 3: Return Value',
+                code: `def add(a, b):
+    return a + b
+
+x = add(3, 4)`,
+                question: 'What is the value of x after this code runs?',
+                options: ['3', '4', '7', 'None'],
+                correctIndex: 2,
+                explanation: 'The function returns a + b, which is 3 + 4 = 7. This value is stored in x.'
+            },
+            {
+                id: 'functions-quiz-4',
+                title: 'Question 4: No Return Statement',
+                code: `def say_hi():
+    print("Hi")
+
+result = say_hi()
+print(result)`,
+                question: 'What is printed on the SECOND line of output?',
+                options: ['Hi', 'None', 'Error', 'say_hi'],
+                correctIndex: 1,
+                explanation: 'Functions without a return statement return None by default. So result is None, and that\'s what gets printed.'
+            },
+            {
+                id: 'functions-quiz-5',
+                title: 'Question 5: Local Variable',
+                code: `def set_value():
+    x = 50
+
+x = 10
+set_value()
+print(x)`,
+                question: 'What will be printed?',
+                options: ['10', '50', 'Error', 'None'],
+                correctIndex: 0,
+                explanation: 'The x inside set_value() is a LOCAL variable - it doesn\'t affect the global x = 10. The global x remains 10.'
+            },
+            {
+                id: 'functions-quiz-6',
+                title: 'Question 6: Global Keyword',
+                code: `count = 0
+
+def increment():
+    global count
+    count = count + 1
+
+increment()
+increment()
+print(count)`,
+                question: 'What will be printed?',
+                options: ['0', '1', '2', 'Error'],
+                correctIndex: 2,
+                explanation: 'The "global count" statement allows the function to modify the global variable. After two calls, count is 2.'
+            },
+            {
+                id: 'functions-quiz-7',
+                title: 'Question 7: Function Order',
+                code: `say_hello()
+
+def say_hello():
+    print("Hello")`,
+                question: 'What happens when this code runs?',
+                options: ['Prints Hello', 'Prints say_hello', 'Error - function not defined yet', 'Prints nothing'],
+                correctIndex: 2,
+                explanation: 'You must define a function BEFORE calling it. Here, say_hello() is called before def, causing a NameError.'
+            },
+            {
+                id: 'functions-quiz-8',
+                title: 'Question 8: Multiple Parameters',
+                code: `def power(base, exp):
+    return base ** exp
+
+result = power(2, 3)`,
+                question: 'What is the value of result?',
+                options: ['5', '6', '8', '9'],
+                correctIndex: 2,
+                explanation: 'power(2, 3) calculates 2 ** 3 (2 to the power of 3), which is 8.'
+            },
+            {
+                id: 'functions-quiz-9',
+                title: 'Question 9: Scope Understanding',
+                code: null,
+                question: 'What does "scope" mean in programming?',
+                options: [
+                    'How fast a function runs',
+                    'The area of a program where a variable can be accessed',
+                    'The number of parameters a function has',
+                    'The return type of a function'
+                ],
+                correctIndex: 1,
+                explanation: 'Scope refers to where in your code a variable can be accessed. Local variables have local scope (only inside their function). Global variables have global scope (anywhere).'
+            },
+            {
+                id: 'functions-quiz-10',
+                title: 'Question 10: Best Practice',
+                code: null,
+                question: 'Why is it generally better to use parameters and return values instead of global variables?',
+                options: [
+                    'Global variables are slower',
+                    'Parameters make code easier to understand and debug',
+                    'Global variables don\'t work in Python',
+                    'There is no difference'
+                ],
+                correctIndex: 1,
+                explanation: 'Using parameters and returns makes functions self-contained and easier to test, understand, and debug. Global variables can cause unexpected side effects and make code harder to follow.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'functions'
+            }
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Arrays (Nested Lists) - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">2D Arrays (Nested Lists)</span>
+        </nav>
+
+        <header class="topic-header">
+            <h1><span class="topic-header-icon">📊</span> 2D Arrays (Nested Lists)</h1>
+            <p>Learn how to work with data organised in rows and columns, like a table or grid.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>What 2D arrays are and when to use them</li>
+                    <li>Creating 2D arrays (lists of lists)</li>
+                    <li>Accessing elements using two indices: [row][column]</li>
+                    <li>Using nested loops to iterate through 2D arrays</li>
+                    <li>Practical applications: grids, tables, matrices</li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="learning-path">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="arrays2d-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: What's in the Grid?</h4>
+                        <p>Predict what 2D array operations will output.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="arrays2d-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See how to create and navigate 2D arrays step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="arrays2d-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Nested Loops</h4>
+                        <p>Track how nested loops iterate through a 2D array.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="arrays2d-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order to work with 2D arrays.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="arrays2d-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of 2D arrays.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>2D array</h4>
+                    <p>An array of arrays - data organised in rows and columns, like a table or spreadsheet.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>row</h4>
+                    <p>A horizontal line in a 2D array. The first index selects which row.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>column</h4>
+                    <p>A vertical line in a 2D array. The second index selects which column.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>nested loop</h4>
+                    <p>A loop inside another loop. Used to visit every element in a 2D array.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>grid</h4>
+                    <p>Another name for a 2D array. Think of game boards, maps, or spreadsheets.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>matrix</h4>
+                    <p>A mathematical term for a 2D array of numbers. Used in maths and graphics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">arrays_2d_examples.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Creating a 2D array (3 rows x 4 columns)</span>
+grid = [
+    [<span class="syntax-number">1</span>,  <span class="syntax-number">2</span>,  <span class="syntax-number">3</span>,  <span class="syntax-number">4</span>],   <span class="syntax-comment"># Row 0</span>
+    [<span class="syntax-number">5</span>,  <span class="syntax-number">6</span>,  <span class="syntax-number">7</span>,  <span class="syntax-number">8</span>],   <span class="syntax-comment"># Row 1</span>
+    [<span class="syntax-number">9</span>, <span class="syntax-number">10</span>, <span class="syntax-number">11</span>, <span class="syntax-number">12</span>]    <span class="syntax-comment"># Row 2</span>
+]
+
+<span class="syntax-comment"># Accessing elements: array[row][column]</span>
+<span class="syntax-keyword">print</span>(grid[<span class="syntax-number">0</span>][<span class="syntax-number">0</span>])  <span class="syntax-comment"># First row, first column: 1</span>
+<span class="syntax-keyword">print</span>(grid[<span class="syntax-number">1</span>][<span class="syntax-number">2</span>])  <span class="syntax-comment"># Second row, third column: 7</span>
+<span class="syntax-keyword">print</span>(grid[<span class="syntax-number">2</span>][<span class="syntax-number">3</span>])  <span class="syntax-comment"># Third row, fourth column: 12</span>
+
+<span class="syntax-comment"># Getting a whole row</span>
+<span class="syntax-keyword">print</span>(grid[<span class="syntax-number">1</span>])     <span class="syntax-comment"># [5, 6, 7, 8]</span>
+
+<span class="syntax-comment"># Number of rows and columns</span>
+rows = len(grid)           <span class="syntax-comment"># 3 rows</span>
+cols = len(grid[<span class="syntax-number">0</span>])        <span class="syntax-comment"># 4 columns</span>
+
+<span class="syntax-comment"># Nested loop - print every element</span>
+<span class="syntax-keyword">for</span> row <span class="syntax-keyword">in</span> grid:
+    <span class="syntax-keyword">for</span> item <span class="syntax-keyword">in</span> row:
+        <span class="syntax-keyword">print</span>(item, end=<span class="syntax-string">" "</span>)
+    <span class="syntax-keyword">print</span>()  <span class="syntax-comment"># New line after each row</span>
+
+<span class="syntax-comment"># Nested loop with indices</span>
+<span class="syntax-keyword">for</span> r <span class="syntax-keyword">in</span> <span class="syntax-keyword">range</span>(len(grid)):
+    <span class="syntax-keyword">for</span> c <span class="syntax-keyword">in</span> <span class="syntax-keyword">range</span>(len(grid[r])):
+        <span class="syntax-keyword">print</span>(grid[r][c], end=<span class="syntax-string">" "</span>)</code></pre>
+            </div>
+        </section>
+
+        <section class="visualisation mt-xl">
+            <h2>Visualising a 2D Array</h2>
+            <p>Think of a 2D array as a table with rows and columns:</p>
+            <div class="grid-visualisation">
+                <table class="grid-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Col 0</th>
+                            <th>Col 1</th>
+                            <th>Col 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Row 0</th>
+                            <td><code>grid[0][0]</code><br>"A"</td>
+                            <td><code>grid[0][1]</code><br>"B"</td>
+                            <td><code>grid[0][2]</code><br>"C"</td>
+                        </tr>
+                        <tr>
+                            <th>Row 1</th>
+                            <td><code>grid[1][0]</code><br>"D"</td>
+                            <td><code>grid[1][1]</code><br>"E"</td>
+                            <td><code>grid[1][2]</code><br>"F"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .grid-visualisation {
+            margin-top: var(--space-md);
+            overflow-x: auto;
+        }
+        .grid-table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        .grid-table th, .grid-table td {
+            border: 2px solid var(--gray-300);
+            padding: var(--space-sm) var(--space-md);
+            text-align: center;
+        }
+        .grid-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+        .grid-table td {
+            background: white;
+            font-size: 0.9rem;
+        }
+        .grid-table td code {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-bottom: var(--space-xs);
+        }
+    </style>
+</body>
+</html>

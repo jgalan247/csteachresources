@@ -17,6 +17,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="topics/index.html">Topics</a></li>
             <li><a href="progress.html" class="active">My Progress</a></li>
+            <li><a href="certificates.html">Certificates</a></li>
             <li><a href="help.html">Help</a></li>
         </ul>
     </nav>
@@ -41,7 +42,19 @@
                     <div class="stat-number" id="best-score">-</div>
                     <div class="stat-label">Best Quiz Score</div>
                 </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="total-certificates">0</div>
+                    <div class="stat-label">Certificates Earned</div>
+                </div>
             </div>
+        </section>
+
+        <section class="certificates-section mt-xl">
+            <h2>My Certificates</h2>
+            <div id="certificates-list" class="certificates-preview">
+                <!-- Populated by JavaScript -->
+            </div>
+            <a href="certificates.html" class="btn btn-secondary mt-md">View All Certificates</a>
         </section>
 
         <section class="topic-progress-section mt-xl">
@@ -79,16 +92,28 @@
         <p>Built on evidence-based teaching methods from computing education research.</p>
     </footer>
 
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/progress.js"></script>
+    <script src="js/certificate.js"></script>
     <script src="js/main.js"></script>
     <script>
         const topics = [
             { id: 'variables', name: 'Variables', icon: '📦' },
+            { id: 'data-types', name: 'Data Types', icon: '🏷️' },
+            { id: 'operators', name: 'Operators', icon: '➕' },
+            { id: 'strings', name: 'Strings', icon: '📝' },
             { id: 'selection', name: 'Selection', icon: '🔀' },
             { id: 'for-loops', name: 'For Loops', icon: '🔄' },
             { id: 'while-loops', name: 'While Loops', icon: '🔁' },
             { id: 'lists', name: 'Lists', icon: '📋' },
-            { id: 'functions', name: 'Functions', icon: '⚡' }
+            { id: 'arrays-1d', name: '1D Arrays', icon: '📊' },
+            { id: 'arrays-2d', name: '2D Arrays', icon: '🗃️' },
+            { id: 'functions', name: 'Functions', icon: '⚡' },
+            { id: 'file-handling', name: 'File Handling', icon: '📁' },
+            { id: 'errors', name: 'Error Handling', icon: '🐛' },
+            { id: 'validation', name: 'Input Validation', icon: '✅' },
+            { id: 'sql', name: 'SQL & Databases', icon: '🗄️' }
         ];
 
         function updateProgressPage() {
@@ -148,6 +173,39 @@
                         <span class="activity-name">${id}</span>
                         <span class="status-badge ${activity.status}">${formatStatus(activity.status)}</span>
                         ${activity.bestScore !== null ? `<span class="activity-score">${activity.bestScore}%</span>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            // Update certificates
+            updateCertificatesDisplay();
+        }
+
+        function updateCertificatesDisplay() {
+            const certificates = CertificateSystem.getAllCertificates();
+            const certList = document.getElementById('certificates-list');
+            const certCount = document.getElementById('total-certificates');
+
+            certCount.textContent = certificates.length;
+
+            if (certificates.length === 0) {
+                certList.innerHTML = '<p class="text-muted">Complete all activities in a topic to earn a certificate!</p>';
+            } else {
+                // Show up to 4 most recent certificates
+                const recentCerts = certificates
+                    .sort((a, b) => new Date(b.earnedAt) - new Date(a.earnedAt))
+                    .slice(0, 4);
+
+                certList.innerHTML = recentCerts.map(cert => `
+                    <div class="cert-preview-card">
+                        <span class="cert-icon">🏆</span>
+                        <div class="cert-info">
+                            <strong>${CertificateSystem.topicNames[cert.topicId] || cert.topicId}</strong>
+                            <small>${new Date(cert.earnedAt).toLocaleDateString()}</small>
+                        </div>
+                        <button class="btn btn-sm btn-success" onclick="CertificateSystem.downloadCertificate(CertificateSystem.getAllCertificates().find(c => c.id === '${cert.id}'))">
+                            Download
+                        </button>
                     </div>
                 `).join('');
             }
@@ -268,6 +326,35 @@
             display: flex;
             gap: var(--space-md);
             flex-wrap: wrap;
+        }
+        .certificates-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+        }
+        .cert-preview-card {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: linear-gradient(135deg, #fef9e7 0%, #fcf3cf 100%);
+            border-radius: var(--radius-md);
+            border: 2px solid #f4d03f;
+        }
+        .cert-icon {
+            font-size: 1.5rem;
+        }
+        .cert-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .cert-info small {
+            color: var(--gray-600);
+        }
+        .btn-sm {
+            padding: var(--space-xs) var(--space-sm);
+            font-size: 0.8rem;
         }
     </style>
 </body>

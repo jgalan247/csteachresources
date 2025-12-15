@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: SQL Queries - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">SQL & Databases</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Investigate: Trace SQL Query Execution</h1>
+            <p>Understand how SQL processes queries by working through them step by step!</p>
+        </header>
+
+        <div class="reference-table mb-xl">
+            <h3>Reference: employees table</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>department</th>
+                        <th>salary</th>
+                        <th>years</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Anna</td><td>IT</td><td>45000</td><td>3</td></tr>
+                    <tr><td>2</td><td>Ben</td><td>Sales</td><td>38000</td><td>5</td></tr>
+                    <tr><td>3</td><td>Cara</td><td>IT</td><td>52000</td><td>7</td></tr>
+                    <tr><td>4</td><td>Dan</td><td>HR</td><td>35000</td><td>2</td></tr>
+                    <tr><td>5</td><td>Emma</td><td>Sales</td><td>42000</td><td>4</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <section class="trace-exercise mb-xl">
+            <h2>How SQL Processes a Query</h2>
+            <p>Let's trace through this query step by step:</p>
+
+            <div class="query-display">
+                <div class="code-display sql-code">
+                    <div class="code-header">
+                        <span class="code-filename">SQL Query</span>
+                    </div>
+                    <pre class="code-content"><code><span class="sql-keyword">SELECT</span> name, salary
+<span class="sql-keyword">FROM</span> employees
+<span class="sql-keyword">WHERE</span> department = <span class="sql-string">'IT'</span> <span class="sql-keyword">AND</span> salary > <span class="sql-number">40000</span>;</code></pre>
+                </div>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <div class="step-header">
+                        <span class="step-badge">Step 1</span>
+                        <h4>FROM: Identify the table</h4>
+                    </div>
+                    <div class="step-body">
+                        <p>SQL starts by looking at the <code>employees</code> table with all 5 records.</p>
+                        <table class="mini-table">
+                            <thead><tr><th>id</th><th>name</th><th>department</th><th>salary</th><th>years</th></tr></thead>
+                            <tbody>
+                                <tr><td>1</td><td>Anna</td><td>IT</td><td>45000</td><td>3</td></tr>
+                                <tr><td>2</td><td>Ben</td><td>Sales</td><td>38000</td><td>5</td></tr>
+                                <tr><td>3</td><td>Cara</td><td>IT</td><td>52000</td><td>7</td></tr>
+                                <tr><td>4</td><td>Dan</td><td>HR</td><td>35000</td><td>2</td></tr>
+                                <tr><td>5</td><td>Emma</td><td>Sales</td><td>42000</td><td>4</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="trace-step">
+                    <div class="step-header">
+                        <span class="step-badge">Step 2</span>
+                        <h4>WHERE (first condition): department = 'IT'</h4>
+                    </div>
+                    <div class="step-body">
+                        <p>Filter to only IT department employees:</p>
+                        <table class="mini-table">
+                            <thead><tr><th>id</th><th>name</th><th>department</th><th>salary</th><th>years</th><th>Matches?</th></tr></thead>
+                            <tbody>
+                                <tr class="match"><td>1</td><td>Anna</td><td>IT</td><td>45000</td><td>3</td><td>YES</td></tr>
+                                <tr class="no-match"><td>2</td><td>Ben</td><td>Sales</td><td>38000</td><td>5</td><td>NO</td></tr>
+                                <tr class="match"><td>3</td><td>Cara</td><td>IT</td><td>52000</td><td>7</td><td>YES</td></tr>
+                                <tr class="no-match"><td>4</td><td>Dan</td><td>HR</td><td>35000</td><td>2</td><td>NO</td></tr>
+                                <tr class="no-match"><td>5</td><td>Emma</td><td>Sales</td><td>42000</td><td>4</td><td>NO</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="result-note">Remaining: Anna, Cara (2 records)</p>
+                    </div>
+                </div>
+
+                <div class="trace-step">
+                    <div class="step-header">
+                        <span class="step-badge">Step 3</span>
+                        <h4>WHERE (AND): salary > 40000</h4>
+                    </div>
+                    <div class="step-body">
+                        <p>From the IT employees, now filter by salary > 40000:</p>
+                        <table class="mini-table">
+                            <thead><tr><th>name</th><th>department</th><th>salary</th><th>salary > 40000?</th></tr></thead>
+                            <tbody>
+                                <tr class="match"><td>Anna</td><td>IT</td><td>45000</td><td>YES (45000 > 40000)</td></tr>
+                                <tr class="match"><td>Cara</td><td>IT</td><td>52000</td><td>YES (52000 > 40000)</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="result-note">Both Anna and Cara pass this filter too!</p>
+                    </div>
+                </div>
+
+                <div class="trace-step">
+                    <div class="step-header">
+                        <span class="step-badge">Step 4</span>
+                        <h4>SELECT: Choose columns</h4>
+                    </div>
+                    <div class="step-body">
+                        <p>Finally, select only the <code>name</code> and <code>salary</code> columns:</p>
+                        <table class="mini-table result">
+                            <thead><tr><th>name</th><th>salary</th></tr></thead>
+                            <tbody>
+                                <tr><td>Anna</td><td>45000</td></tr>
+                                <tr><td>Cara</td><td>52000</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="result-note final">Final result: 2 rows, 2 columns</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="your-turn mb-xl">
+            <h2>Your Turn: Trace This Query</h2>
+            <p>Work through this query on paper, then check your answer:</p>
+
+            <div class="query-display">
+                <div class="code-display sql-code">
+                    <div class="code-header">
+                        <span class="code-filename">SQL Query</span>
+                    </div>
+                    <pre class="code-content"><code><span class="sql-keyword">SELECT</span> name, years
+<span class="sql-keyword">FROM</span> employees
+<span class="sql-keyword">WHERE</span> years >= <span class="sql-number">4</span> <span class="sql-keyword">OR</span> department = <span class="sql-string">'HR'</span>;</code></pre>
+                </div>
+            </div>
+
+            <div class="exercise-prompt">
+                <h4>Think about:</h4>
+                <ol>
+                    <li>Which employees have years >= 4?</li>
+                    <li>Which employees are in HR?</li>
+                    <li>With OR, if EITHER condition is true, they're included</li>
+                    <li>Which columns will be in the final result?</li>
+                </ol>
+            </div>
+
+            <details class="answer-reveal">
+                <summary>Click to reveal answer</summary>
+                <div class="answer-content">
+                    <h4>Step-by-step solution:</h4>
+                    <p><strong>Condition 1 (years >= 4):</strong> Ben (5), Cara (7), Emma (4)</p>
+                    <p><strong>Condition 2 (department = 'HR'):</strong> Dan</p>
+                    <p><strong>OR means either condition:</strong> Ben, Cara, Dan, Emma</p>
+                    <p><strong>SELECT name, years:</strong></p>
+                    <table class="mini-table result">
+                        <thead><tr><th>name</th><th>years</th></tr></thead>
+                        <tbody>
+                            <tr><td>Ben</td><td>5</td></tr>
+                            <tr><td>Cara</td><td>7</td></tr>
+                            <tr><td>Dan</td><td>2</td></tr>
+                            <tr><td>Emma</td><td>4</td></tr>
+                        </tbody>
+                    </table>
+                    <p><em>Note: Anna is excluded because she has 3 years (< 4) AND is in IT (not HR).</em></p>
+                </div>
+            </details>
+        </section>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Build SQL Queries →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Worked Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .reference-table, .query-display {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .reference-table {
+            border-left: 4px solid var(--primary);
+        }
+        .reference-table h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .data-table, .mini-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th, .data-table td,
+        .mini-table th, .mini-table td {
+            padding: var(--space-sm) var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .data-table th, .mini-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+        .sql-code .code-content {
+            background: #1e293b;
+        }
+        .sql-keyword { color: #60a5fa; font-weight: bold; }
+        .sql-string { color: #4ade80; }
+        .sql-number { color: #fbbf24; }
+        .trace-steps {
+            display: grid;
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        .trace-step {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .step-header {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            padding: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        .step-badge {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .step-header h4 {
+            margin: 0;
+        }
+        .step-body {
+            padding: var(--space-md);
+        }
+        .mini-table tr.match {
+            background: #dcfce7;
+        }
+        .mini-table tr.no-match {
+            background: #fee2e2;
+            color: var(--gray-500);
+        }
+        .mini-table.result {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+        }
+        .result-note {
+            margin-top: var(--space-sm);
+            font-style: italic;
+            color: var(--gray-600);
+        }
+        .result-note.final {
+            color: #16a34a;
+            font-weight: bold;
+        }
+        .your-turn {
+            background: #fef3c7;
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            border: 2px solid #f59e0b;
+        }
+        .your-turn h2 {
+            margin-top: 0;
+            color: #92400e;
+        }
+        .exercise-prompt {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin: var(--space-md) 0;
+        }
+        .exercise-prompt h4 {
+            margin-top: 0;
+        }
+        .answer-reveal {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .answer-reveal summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .answer-content {
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

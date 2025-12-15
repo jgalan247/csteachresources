@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace: 1D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">1D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Trace</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📊</span> Trace: Array Operations with Loops</h1>
+            <p>Track how array contents and variables change as the program executes. Pay attention to how the loop variable changes each iteration!</p>
+        </header>
+
+        <div id="tracing-exercise"></div>
+
+        <div class="mt-xl">
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+            <a href="example.html" class="btn btn-secondary">← Back to Worked Example</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/tracing.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new CodeTracing(
+            document.getElementById('tracing-exercise'),
+            {
+                id: 'arr1d-trace-1',
+                topicId: 'arrays-1d',
+                title: 'Trace: Finding the Maximum',
+                code: `nums = [3, 7, 2, 9, 4]
+maximum = nums[0]
+for n in nums:
+    if n > maximum:
+        maximum = n
+print(maximum)`,
+                variables: ['nums', 'maximum', 'n'],
+                prefilled: [0],
+                solution: [
+                    { step: 1, line: 1, variables: { nums: '[3,7,2,9,4]', maximum: null, n: null }, output: '' },
+                    { step: 2, line: 2, variables: { nums: '[3,7,2,9,4]', maximum: 3, n: null }, output: '' },
+                    { step: 3, line: 3, variables: { nums: '[3,7,2,9,4]', maximum: 3, n: 3 }, output: '' },
+                    { step: 4, line: 3, variables: { nums: '[3,7,2,9,4]', maximum: 7, n: 7 }, output: '' },
+                    { step: 5, line: 3, variables: { nums: '[3,7,2,9,4]', maximum: 7, n: 2 }, output: '' },
+                    { step: 6, line: 3, variables: { nums: '[3,7,2,9,4]', maximum: 9, n: 9 }, output: '' },
+                    { step: 7, line: 3, variables: { nums: '[3,7,2,9,4]', maximum: 9, n: 4 }, output: '' },
+                    { step: 8, line: 6, variables: { nums: '[3,7,2,9,4]', maximum: 9, n: 4 }, output: '9' }
+                ],
+                hints: {
+                    2: 'We start by assuming the first element (nums[0] = 3) is the maximum.',
+                    3: 'First iteration: n = 3. Is 3 > 3? No, so maximum stays 3.',
+                    4: 'Second iteration: n = 7. Is 7 > 3? Yes! So maximum becomes 7.',
+                    5: 'Third iteration: n = 2. Is 2 > 7? No, so maximum stays 7.',
+                    6: 'Fourth iteration: n = 9. Is 9 > 7? Yes! So maximum becomes 9.',
+                    7: 'Fifth iteration: n = 4. Is 4 > 9? No, so maximum stays 9.'
+                }
+            }
+        );
+    </script>
+</body>
+</html>

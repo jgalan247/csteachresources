@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: SQL & Databases - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">SQL & Databases</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🎯</span> Knowledge Quiz: SQL & Databases</h1>
+            <p>Test your understanding of SQL SELECT, FROM, and WHERE!</p>
+        </header>
+
+        <div id="quiz-container"></div>
+
+        <div class="mt-xl">
+            <a href="index.html" class="btn btn-primary">← Back to SQL & Databases</a>
+            <a href="../index.html" class="btn btn-secondary">All Topics</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'sql-quiz-1',
+                title: 'Question 1: What is a Database?',
+                code: null,
+                question: 'What is a database?',
+                options: [
+                    'A type of programming language',
+                    'An organised collection of data stored electronically',
+                    'A spreadsheet application',
+                    'A web browser'
+                ],
+                correctIndex: 1,
+                explanation: 'A database is an organised collection of data stored electronically. It allows efficient storage, retrieval, and management of large amounts of data.'
+            },
+            {
+                id: 'sql-quiz-2',
+                title: 'Question 2: What is SQL?',
+                code: null,
+                question: 'What does SQL stand for?',
+                options: [
+                    'Simple Query Logic',
+                    'Structured Query Language',
+                    'System Query Language',
+                    'Standard Question Language'
+                ],
+                correctIndex: 1,
+                explanation: 'SQL stands for Structured Query Language. It\'s the standard language for communicating with relational databases.'
+            },
+            {
+                id: 'sql-quiz-3',
+                title: 'Question 3: SELECT Purpose',
+                code: null,
+                question: 'What does the SELECT keyword do in SQL?',
+                options: [
+                    'Creates a new table',
+                    'Deletes data from a table',
+                    'Specifies which columns to retrieve',
+                    'Specifies which table to use'
+                ],
+                correctIndex: 2,
+                explanation: 'SELECT specifies which columns you want to retrieve from the database. For example, SELECT name, age gets the name and age columns.'
+            },
+            {
+                id: 'sql-quiz-4',
+                title: 'Question 4: FROM Purpose',
+                code: null,
+                question: 'What does the FROM keyword do in SQL?',
+                options: [
+                    'Filters the results',
+                    'Specifies which table to query',
+                    'Sorts the results',
+                    'Groups the results'
+                ],
+                correctIndex: 1,
+                explanation: 'FROM specifies which table contains the data you want. For example, FROM students tells SQL to look in the students table.'
+            },
+            {
+                id: 'sql-quiz-5',
+                title: 'Question 5: SELECT * Meaning',
+                code: `SELECT * FROM products;`,
+                codeLanguage: 'sql',
+                question: 'What does the * (asterisk) mean in this query?',
+                options: [
+                    'Return no columns',
+                    'Return all columns',
+                    'Return the first column only',
+                    'Multiply all values'
+                ],
+                correctIndex: 1,
+                explanation: 'The asterisk * is a wildcard meaning "all columns". SELECT * FROM products returns every column from the products table.'
+            },
+            {
+                id: 'sql-quiz-6',
+                title: 'Question 6: WHERE Purpose',
+                code: null,
+                question: 'What does the WHERE clause do?',
+                options: [
+                    'Specifies the table name',
+                    'Filters results based on conditions',
+                    'Selects all columns',
+                    'Orders the results'
+                ],
+                correctIndex: 1,
+                explanation: 'WHERE filters results to only include rows that match specified conditions. For example, WHERE age > 18 only returns rows where age is greater than 18.'
+            },
+            {
+                id: 'sql-quiz-7',
+                title: 'Question 7: Text Values',
+                code: `SELECT * FROM students
+WHERE name = ???;`,
+                codeLanguage: 'sql',
+                question: 'To find a student named "Alice", what should replace ???',
+                options: ["Alice", "'Alice'", "\"Alice\"", "(Alice)"],
+                correctIndex: 1,
+                explanation: 'Text values in SQL must be surrounded by single quotes. So it should be WHERE name = \'Alice\'. Double quotes and no quotes are incorrect in standard SQL.'
+            },
+            {
+                id: 'sql-quiz-8',
+                title: 'Question 8: Number Values',
+                code: `SELECT * FROM products
+WHERE price = ???;`,
+                codeLanguage: 'sql',
+                question: 'To find products that cost 50, what should replace ???',
+                options: ["'50'", "fifty", "50", "\"50\""],
+                correctIndex: 2,
+                explanation: 'Numbers do NOT need quotes in SQL. Just use the number directly: WHERE price = 50. Using quotes would treat it as text.'
+            },
+            {
+                id: 'sql-quiz-9',
+                title: 'Question 9: AND Operator',
+                code: `SELECT name FROM students
+WHERE age = 15 AND house = 'Blue';`,
+                codeLanguage: 'sql',
+                question: 'Which students will be returned?',
+                options: [
+                    'All students who are 15',
+                    'All students in Blue house',
+                    'Students who are 15 OR in Blue house',
+                    'Only students who are BOTH 15 AND in Blue house'
+                ],
+                correctIndex: 3,
+                explanation: 'AND means BOTH conditions must be true. Only students who are 15 years old AND in Blue house will be returned. If either condition is false, they\'re excluded.'
+            },
+            {
+                id: 'sql-quiz-10',
+                title: 'Question 10: OR Operator',
+                code: `SELECT name FROM products
+WHERE category = 'Books' OR category = 'Games';`,
+                codeLanguage: 'sql',
+                question: 'Which products will be returned?',
+                options: [
+                    'Only products that are both Books AND Games',
+                    'Products that are Books OR Games (either one)',
+                    'No products',
+                    'All products'
+                ],
+                correctIndex: 1,
+                explanation: 'OR means EITHER condition can be true. Products in the Books category OR products in the Games category will all be returned.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('quiz-container'),
+            {
+                questions: quizQuestions,
+                topicId: 'sql'
+            }
+        );
+    </script>
+</body>
+</html>

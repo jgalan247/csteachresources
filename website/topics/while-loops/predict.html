@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: While Loops - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">While Loops</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: While Loop Output</h1>
+            <p>For each while loop, predict what will be printed!</p>
+            <div class="alert alert-info">
+                <strong>Remember:</strong> While loops repeat while the condition is True. Think about when the condition becomes False!
+            </div>
+        </header>
+
+        <div id="prediction-exercises"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Worked Example →</a>
+            <a href="index.html" class="btn btn-secondary">← Back to While Loops</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const predictions = [
+            {
+                id: 'while-predict-1',
+                title: 'Simple Count',
+                code: `count = 1
+while count <= 3:
+    print(count)
+    count = count + 1`,
+                question: 'What numbers will be printed?',
+                options: ['1, 2, 3', '1, 2, 3, 4', '0, 1, 2, 3', '1, 2'],
+                correctIndex: 0,
+                explanation: 'count starts at 1. While count <= 3: print 1, count becomes 2. Print 2, count becomes 3. Print 3, count becomes 4. Now count (4) is NOT <= 3, so loop stops. Output: 1, 2, 3'
+            },
+            {
+                id: 'while-predict-2',
+                title: 'Countdown',
+                code: `num = 5
+while num > 0:
+    print(num)
+    num = num - 1`,
+                question: 'What numbers will be printed?',
+                options: ['5, 4, 3, 2, 1', '5, 4, 3, 2, 1, 0', '4, 3, 2, 1, 0', '5, 4, 3, 2'],
+                correctIndex: 0,
+                explanation: 'num counts down from 5. While num > 0: print and subtract 1. When num becomes 0, the condition num > 0 is False, so we stop. Output: 5, 4, 3, 2, 1'
+            },
+            {
+                id: 'while-predict-3',
+                title: 'Starting Value',
+                code: `x = 10
+while x < 10:
+    print(x)
+    x = x + 1
+print("Done")`,
+                question: 'What will be printed?',
+                options: ['10, Done', 'Done', '10, 11, 12... (infinite)', 'Nothing'],
+                correctIndex: 1,
+                explanation: 'x starts at 10. The condition x < 10 is immediately False (10 is NOT less than 10). The loop body never runs! Only "Done" is printed.'
+            },
+            {
+                id: 'while-predict-4',
+                title: 'Doubling',
+                code: `num = 1
+while num < 10:
+    print(num)
+    num = num * 2`,
+                question: 'What numbers will be printed?',
+                options: ['1, 2, 4, 8', '1, 2, 4, 8, 16', '2, 4, 8', '1, 2, 3, 4, 5, 6, 7, 8, 9'],
+                correctIndex: 0,
+                explanation: 'num starts at 1, doubles each time. 1 < 10: print 1, num=2. 2 < 10: print 2, num=4. 4 < 10: print 4, num=8. 8 < 10: print 8, num=16. 16 is NOT < 10, stop. Output: 1, 2, 4, 8'
+            },
+            {
+                id: 'while-predict-5',
+                title: 'Sum Accumulator',
+                code: `total = 0
+count = 1
+while count <= 4:
+    total = total + count
+    count = count + 1
+print(total)`,
+                question: 'What will be printed?',
+                options: ['4', '10', '6', '15'],
+                correctIndex: 1,
+                explanation: 'This adds 1+2+3+4. count=1: total=0+1=1. count=2: total=1+2=3. count=3: total=3+3=6. count=4: total=6+4=10. Then count=5 > 4, loop ends. Print 10.'
+            },
+            {
+                id: 'while-predict-6',
+                title: 'Break Statement',
+                code: `count = 1
+while True:
+    if count == 3:
+        break
+    print(count)
+    count = count + 1`,
+                question: 'What numbers will be printed?',
+                options: ['1, 2, 3', '1, 2', '1, 2, 3, 4, 5... (infinite)', '3'],
+                correctIndex: 1,
+                explanation: 'while True runs forever UNLESS break is called. count=1: not 3, print 1. count=2: not 3, print 2. count=3: IS 3, break! Loop exits before printing 3. Output: 1, 2'
+            },
+            {
+                id: 'while-predict-7',
+                title: 'Continue Statement',
+                code: `num = 0
+while num < 5:
+    num = num + 1
+    if num == 3:
+        continue
+    print(num)`,
+                question: 'What numbers will be printed?',
+                options: ['1, 2, 3, 4, 5', '1, 2, 4, 5', '1, 2', '0, 1, 2, 4, 5'],
+                correctIndex: 1,
+                explanation: 'continue skips the rest of the loop body for that iteration. When num=3, continue skips the print. All other numbers (1, 2, 4, 5) are printed.'
+            },
+            {
+                id: 'while-predict-8',
+                title: 'String Condition',
+                code: `password = "abc"
+attempts = 0
+while password != "secret":
+    attempts = attempts + 1
+    password = "secret"
+print(attempts)`,
+                question: 'What will be printed?',
+                options: ['0', '1', '2', 'Infinite loop'],
+                correctIndex: 1,
+                explanation: 'Initially password is "abc" which != "secret", so we enter the loop. attempts becomes 1, password becomes "secret". Now password == "secret", so condition is False, loop ends. Print 1.'
+            },
+            {
+                id: 'while-predict-9',
+                title: 'Nested Condition',
+                code: `x = 0
+while x < 3:
+    if x == 1:
+        print("One!")
+    else:
+        print(x)
+    x = x + 1`,
+                question: 'What will be printed?',
+                options: ['0, 1, 2', '0, One!, 2', 'One!, One!, One!', '0, 2'],
+                correctIndex: 1,
+                explanation: 'x=0: not 1, print 0. x=1: is 1, print "One!". x=2: not 1, print 2. x=3: not < 3, stop. Output: 0, One!, 2'
+            },
+            {
+                id: 'while-predict-10',
+                title: 'Multiple Conditions',
+                code: `a = 1
+b = 10
+while a < 5 and b > 5:
+    print(a, b)
+    a = a + 1
+    b = b - 2`,
+                question: 'How many lines will be printed?',
+                options: ['2', '3', '4', '5'],
+                correctIndex: 1,
+                explanation: 'Both conditions must be True. a=1,b=10: 1<5 AND 10>5, print. a=2,b=8: 2<5 AND 8>5, print. a=3,b=6: 3<5 AND 6>5, print. a=4,b=4: 4<5 but 4 NOT > 5, stop. 3 lines printed.'
+            }
+        ];
+
+        new PredictionExerciseSeries(
+            document.getElementById('prediction-exercises'),
+            {
+                exercises: predictions,
+                topicId: 'while-loops'
+            }
+        );
+    </script>
+</body>
+</html>

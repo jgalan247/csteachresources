@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: Functions - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Functions</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Study: Writing Functions</h1>
+            <p>Follow along as we build a temperature converter using functions.</p>
+        </header>
+
+        <div id="worked-example"></div>
+
+        <section class="scope-explanation mt-xl">
+            <h2>Understanding Local vs Global Variables</h2>
+
+            <div id="worked-example-scope"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace Function Calls →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example'),
+            {
+                id: 'functions-example-1',
+                topicId: 'functions',
+                title: 'Building a Temperature Converter',
+                scenario: 'We want to convert temperatures from Celsius to Fahrenheit. Let\'s create a reusable function for this!',
+                steps: [
+                    {
+                        title: 'Step 1: Define the Function',
+                        explanation: 'We use def to create a function. Give it a descriptive name and add a parameter for the input value.',
+                        code: `def celsius_to_fahrenheit(celsius):
+    # Function body will go here
+    pass`,
+                        note: 'def starts a function definition. The parameter celsius will receive the temperature to convert.'
+                    },
+                    {
+                        title: 'Step 2: Write the Conversion Formula',
+                        explanation: 'The formula to convert Celsius to Fahrenheit is: F = (C × 9/5) + 32',
+                        code: `def celsius_to_fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32`,
+                        note: 'The variable fahrenheit is LOCAL to this function - it only exists inside the function.'
+                    },
+                    {
+                        title: 'Step 3: Return the Result',
+                        explanation: 'Use return to send the calculated value back to whoever called the function.',
+                        code: `def celsius_to_fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit`,
+                        note: 'return sends the value back AND exits the function. Code after return won\'t run!'
+                    },
+                    {
+                        title: 'Step 4: Call the Function',
+                        explanation: 'Now we can use our function by calling it with a value.',
+                        code: `def celsius_to_fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+
+# Call the function
+result = celsius_to_fahrenheit(20)
+print(f"20°C = {result}°F")`,
+                        note: 'The function is called with 20 as the argument. The returned value (68.0) is stored in result.'
+                    },
+                    {
+                        title: 'Step 5: Reuse the Function',
+                        explanation: 'The power of functions - we can call it as many times as we want with different values!',
+                        code: `def celsius_to_fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+
+# Convert several temperatures
+print(celsius_to_fahrenheit(0))    # 32.0 (freezing point)
+print(celsius_to_fahrenheit(100))  # 212.0 (boiling point)
+print(celsius_to_fahrenheit(37))   # 98.6 (body temperature)`,
+                        note: 'Each call uses the same code but with different input values. Much better than repeating the formula!'
+                    }
+                ],
+                keyPoints: [
+                    'Use def to define a function, followed by the name and parentheses',
+                    'Parameters go inside the parentheses - they receive values when called',
+                    'Use return to send a value back from the function',
+                    'Variables created inside a function are LOCAL - they don\'t exist outside',
+                    'Functions can be called multiple times with different arguments'
+                ]
+            }
+        );
+
+        new WorkedExample(
+            document.getElementById('worked-example-scope'),
+            {
+                id: 'functions-example-scope',
+                topicId: 'functions',
+                title: 'Local vs Global Variables',
+                scenario: 'Let\'s explore what happens when we have variables with the same name inside and outside a function.',
+                steps: [
+                    {
+                        title: 'Step 1: Local Variables Stay Local',
+                        explanation: 'Variables created inside a function only exist inside that function.',
+                        code: `def set_value():
+    x = 100       # Local variable
+    print(x)      # Prints 100
+
+set_value()       # Calls function, prints 100
+print(x)          # ERROR! x doesn't exist here`,
+                        note: 'The x inside the function is LOCAL. When the function ends, x disappears!'
+                    },
+                    {
+                        title: 'Step 2: Same Name, Different Variables',
+                        explanation: 'A local variable with the same name as a global variable is a DIFFERENT variable.',
+                        code: `x = 10            # Global x
+
+def show_local():
+    x = 50        # Local x (different variable!)
+    print(x)      # Prints 50 (local x)
+
+show_local()
+print(x)          # Prints 10 (global x unchanged!)`,
+                        note: 'The local x inside the function "shadows" the global x, but doesn\'t change it.'
+                    },
+                    {
+                        title: 'Step 3: Reading Global Variables',
+                        explanation: 'Functions CAN read global variables (if no local variable has the same name).',
+                        code: `score = 100       # Global
+
+def show_score():
+    print(score)  # Reads global score
+
+show_score()      # Prints 100`,
+                        note: 'Since there\'s no local "score", Python looks for a global one and finds it.'
+                    },
+                    {
+                        title: 'Step 4: Modifying Globals (Needs "global" Keyword)',
+                        explanation: 'To CHANGE a global variable from inside a function, you must use the global keyword.',
+                        code: `counter = 0       # Global
+
+def increment():
+    global counter     # Tell Python we mean the global one
+    counter = counter + 1
+
+increment()
+increment()
+print(counter)    # Prints 2`,
+                        note: 'Without "global counter", Python would create a local variable instead of modifying the global one.'
+                    },
+                    {
+                        title: 'Step 5: Better Alternative - Use Parameters and Return',
+                        explanation: 'Instead of global variables, pass values in and return results out. This is cleaner and easier to debug!',
+                        code: `def increment(value):
+    return value + 1
+
+counter = 0
+counter = increment(counter)
+counter = increment(counter)
+print(counter)    # Prints 2`,
+                        note: 'This approach is preferred - the function is "pure" and doesn\'t depend on or modify external state.'
+                    }
+                ],
+                keyPoints: [
+                    'LOCAL variables exist only inside their function',
+                    'GLOBAL variables exist throughout the entire program',
+                    'Functions can READ global variables',
+                    'Functions need the "global" keyword to MODIFY global variables',
+                    'Best practice: Use parameters and return values instead of globals'
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

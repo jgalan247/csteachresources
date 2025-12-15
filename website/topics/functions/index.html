@@ -17,6 +17,7 @@
             <li><a href="../../index.html">Home</a></li>
             <li><a href="../index.html" class="active">Topics</a></li>
             <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
             <li><a href="../../help.html">Help</a></li>
         </ul>
     </nav>
@@ -32,15 +33,257 @@
 
         <header class="topic-header">
             <h1><span class="topic-header-icon">⚡</span> Functions</h1>
-            <p>Learn how to organise code into reusable blocks.</p>
+            <p>Learn how to organise code into reusable blocks that you can call whenever you need them.</p>
+
+            <div class="topic-objectives">
+                <h3>What you'll learn:</h3>
+                <ul>
+                    <li>How to define and call functions</li>
+                    <li>Using parameters to pass data into functions</li>
+                    <li>Return values - getting results back from functions</li>
+                    <li>Local vs global variables - understanding scope</li>
+                </ul>
+            </div>
         </header>
 
-        <section class="coming-soon">
-            <div class="coming-soon-card">
-                <div class="coming-soon-icon">🚧</div>
-                <h2>Coming Soon!</h2>
-                <p>This topic is currently being developed.</p>
-                <p class="mt-lg">In the meantime, try the <a href="../for-loops/index.html">For Loops</a> topic!</p>
+        <section class="concept-cards mt-xl">
+            <h2>Key Concepts</h2>
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3>Defining Functions</h3>
+                    <p>Use <code>def</code> to create a function. Give it a name and add parentheses.</p>
+                    <div class="code-snippet">
+                        <code>def greet():<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Hello!")</code>
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <h3>Calling Functions</h3>
+                    <p>Use the function name with parentheses to run it.</p>
+                    <div class="code-snippet">
+                        <code>greet()  # Runs the function</code>
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <h3>Parameters</h3>
+                    <p>Variables inside the parentheses that receive data.</p>
+                    <div class="code-snippet">
+                        <code>def greet(name):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(f"Hello {name}!")</code>
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <h3>Arguments</h3>
+                    <p>The actual values you pass when calling the function.</p>
+                    <div class="code-snippet">
+                        <code>greet("Alice")  # "Alice" is the argument</code>
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <h3>Return Values</h3>
+                    <p>Use <code>return</code> to send a result back.</p>
+                    <div class="code-snippet">
+                        <code>def add(a, b):<br>&nbsp;&nbsp;&nbsp;&nbsp;return a + b</code>
+                    </div>
+                </div>
+                <div class="concept-card">
+                    <h3>Using Return Values</h3>
+                    <p>Store or use the returned value.</p>
+                    <div class="code-snippet">
+                        <code>result = add(3, 5)<br>print(result)  # 8</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="scope-section mt-xl">
+            <h2>Local vs Global Variables</h2>
+            <p>Understanding where variables can be accessed is crucial when working with functions.</p>
+
+            <div class="scope-comparison">
+                <div class="scope-card local">
+                    <h3>Local Variables</h3>
+                    <p><strong>Created inside a function</strong></p>
+                    <ul>
+                        <li>Only exist inside the function</li>
+                        <li>Cannot be accessed from outside</li>
+                        <li>Destroyed when the function ends</li>
+                        <li>Parameters are local variables too</li>
+                    </ul>
+                    <div class="code-display">
+                        <pre class="code-content"><code><span class="syntax-keyword">def</span> calculate():
+    total = <span class="syntax-number">100</span>   <span class="syntax-comment"># Local variable</span>
+    <span class="syntax-keyword">return</span> total
+
+<span class="syntax-keyword">print</span>(total)      <span class="syntax-comment"># ERROR! total doesn't exist here</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="scope-card global">
+                    <h3>Global Variables</h3>
+                    <p><strong>Created outside all functions</strong></p>
+                    <ul>
+                        <li>Can be accessed from anywhere</li>
+                        <li>Exist for the entire program</li>
+                        <li>Use <code>global</code> keyword to modify inside functions</li>
+                        <li>Generally avoid when possible</li>
+                    </ul>
+                    <div class="code-display">
+                        <pre class="code-content"><code>score = <span class="syntax-number">0</span>          <span class="syntax-comment"># Global variable</span>
+
+<span class="syntax-keyword">def</span> add_point():
+    <span class="syntax-keyword">global</span> score   <span class="syntax-comment"># Need 'global' to modify it</span>
+    score = score + <span class="syntax-number">1</span>
+
+add_point()
+<span class="syntax-keyword">print</span>(score)       <span class="syntax-comment"># 1</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning mt-md">
+                <strong>Best Practice:</strong> Prefer passing values as parameters and using return values instead of global variables. This makes code easier to understand and debug!
+            </div>
+        </section>
+
+        <section class="learning-path mt-xl">
+            <h2>Learning Path</h2>
+            <p>Follow these activities in order.</p>
+
+            <div class="activity-list">
+                <a href="predict.html" class="activity-card" data-activity-id="functions-predict">
+                    <div class="activity-card-icon">🔮</div>
+                    <div class="activity-card-content">
+                        <h4>1. Predict: Function Output</h4>
+                        <p>Predict what functions will output when called.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge foundation">Foundation</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="example.html" class="activity-card" data-activity-id="functions-example">
+                    <div class="activity-card-icon">📖</div>
+                    <div class="activity-card-content">
+                        <h4>2. Study: Worked Example</h4>
+                        <p>See how to write functions step by step.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="trace.html" class="activity-card" data-activity-id="functions-trace">
+                    <div class="activity-card-icon">📊</div>
+                    <div class="activity-card-content">
+                        <h4>3. Investigate: Trace Function Calls</h4>
+                        <p>Follow values through function calls and returns.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="parsons.html" class="activity-card" data-activity-id="functions-parsons">
+                    <div class="activity-card-icon">🧩</div>
+                    <div class="activity-card-content">
+                        <h4>4. Modify: Arrange the Code</h4>
+                        <p>Put code blocks in order to create functions.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+
+                <a href="quiz.html" class="activity-card" data-activity-id="functions-quiz">
+                    <div class="activity-card-icon">🎯</div>
+                    <div class="activity-card-content">
+                        <h4>5. Test: Knowledge Quiz</h4>
+                        <p>Check your understanding of functions.</p>
+                    </div>
+                    <div class="activity-card-status">
+                        <span class="difficulty-badge core">Core</span>
+                        <span class="status-badge not-started">Not Started</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="key-vocabulary mt-xl">
+            <h2>Key Vocabulary</h2>
+            <div class="vocab-grid">
+                <div class="vocab-card">
+                    <h4>function</h4>
+                    <p>A named block of code that performs a specific task. Can be reused multiple times.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>parameter</h4>
+                    <p>A variable in the function definition that receives data. <code>def greet(name):</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>argument</h4>
+                    <p>The actual value passed to a function when calling it. <code>greet("Alice")</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>return</h4>
+                    <p>Sends a value back from the function to where it was called.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>local variable</h4>
+                    <p>A variable created inside a function. Only exists within that function.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>global variable</h4>
+                    <p>A variable created outside all functions. Can be accessed anywhere in the program.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>scope</h4>
+                    <p>The area of a program where a variable can be accessed.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>call</h4>
+                    <p>Running a function by using its name followed by parentheses. <code>greet()</code></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-reference mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="code-display">
+                <div class="code-header">
+                    <span class="code-filename">functions_reference.py</span>
+                </div>
+                <pre class="code-content"><code><span class="syntax-comment"># Defining a simple function</span>
+<span class="syntax-keyword">def</span> say_hello():
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Hello!"</span>)
+
+<span class="syntax-comment"># Function with parameter</span>
+<span class="syntax-keyword">def</span> greet(name):
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">f"Hello, {name}!"</span>)
+
+<span class="syntax-comment"># Function with multiple parameters</span>
+<span class="syntax-keyword">def</span> add(a, b):
+    <span class="syntax-keyword">return</span> a + b
+
+<span class="syntax-comment"># Function with return value</span>
+<span class="syntax-keyword">def</span> calculate_area(width, height):
+    area = width * height
+    <span class="syntax-keyword">return</span> area
+
+<span class="syntax-comment"># Calling functions</span>
+say_hello()                 <span class="syntax-comment"># Hello!</span>
+greet(<span class="syntax-string">"Alice"</span>)              <span class="syntax-comment"># Hello, Alice!</span>
+result = add(<span class="syntax-number">5</span>, <span class="syntax-number">3</span>)         <span class="syntax-comment"># result = 8</span>
+size = calculate_area(<span class="syntax-number">4</span>, <span class="syntax-number">6</span>) <span class="syntax-comment"># size = 24</span>
+
+<span class="syntax-comment"># Global vs Local</span>
+counter = <span class="syntax-number">0</span>  <span class="syntax-comment"># Global</span>
+
+<span class="syntax-keyword">def</span> increment():
+    <span class="syntax-keyword">global</span> counter
+    counter = counter + <span class="syntax-number">1</span>  <span class="syntax-comment"># Modifies global</span></code></pre>
             </div>
         </section>
     </main>
@@ -49,20 +292,84 @@
         <p>Built on evidence-based teaching methods from computing education research.</p>
     </footer>
 
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
     <script src="../../js/main.js"></script>
     <style>
-        .coming-soon-card {
-            background: white;
-            padding: var(--space-2xl);
-            border-radius: var(--radius-xl);
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            margin: var(--space-xl) 0;
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
         }
-        .coming-soon-icon {
-            font-size: 4rem;
-            margin-bottom: var(--space-md);
+        .vocab-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .vocab-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .vocab-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .concept-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .concept-card h3 {
+            margin-top: 0;
+            color: var(--secondary);
+        }
+        .code-snippet {
+            background: var(--gray-100);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin-top: var(--space-sm);
+        }
+        .scope-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .scope-card {
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .scope-card.local {
+            background: #e0f2fe;
+            border: 2px solid #0ea5e9;
+        }
+        .scope-card.global {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+        }
+        .scope-card h3 {
+            margin-top: 0;
+        }
+        .scope-card ul {
+            padding-left: var(--space-md);
+            margin: var(--space-sm) 0;
+        }
+        .scope-card li {
+            margin-bottom: var(--space-xs);
         }
     </style>
 </body>

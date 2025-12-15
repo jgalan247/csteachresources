@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Spot the Error - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Common Errors</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Predict</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🔮</span> Predict: Spot the Error</h1>
+            <p>Look at each code snippet and predict what type of error it contains. Can you identify the problem before running the code?</p>
+        </header>
+
+        <div id="prediction-quiz"></div>
+
+        <div class="mt-xl">
+            <a href="example.html" class="btn btn-primary">Next: Study Error Messages →</a>
+            <a href="index.html" class="btn btn-secondary">← Back to Common Errors</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/prediction.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                id: 'errors-predict-1',
+                title: 'Question 1: Missing Colon',
+                code: `age = 15
+if age >= 18
+    print("Adult")`,
+                question: 'What type of error does this code contain?',
+                options: ['Syntax error - missing colon after if', 'Logic error - wrong comparison', 'No error - code is correct', 'Runtime error - invalid variable'],
+                correctIndex: 0,
+                explanation: 'This is a syntax error. In Python, if statements must end with a colon (:). The correct code would be: if age >= 18:'
+            },
+            {
+                id: 'errors-predict-2',
+                title: 'Question 2: Indentation',
+                code: `for i in range(5):
+print(i)`,
+                question: 'What type of error does this code contain?',
+                options: ['No error - code is correct', 'Logic error - wrong range', 'Syntax error - missing indentation', 'Runtime error - undefined variable'],
+                correctIndex: 2,
+                explanation: 'This is an IndentationError (a type of syntax error). The print statement inside the for loop must be indented. It should be: "    print(i)"'
+            },
+            {
+                id: 'errors-predict-3',
+                title: 'Question 3: Wrong Operator',
+                code: `total = 100
+count = 4
+average = total + count
+print(average)`,
+                question: 'This code runs without crashing. What type of error does it contain?',
+                options: ['Syntax error - invalid operator', 'Logic error - wrong operator used', 'No error - code is correct', 'Runtime error - division by zero'],
+                correctIndex: 1,
+                explanation: 'This is a logic error. The code runs fine but gives wrong results. To calculate an average, we should divide (/) not add (+). The code prints 104 instead of 25.'
+            },
+            {
+                id: 'errors-predict-4',
+                title: 'Question 4: Unclosed String',
+                code: `name = "Alice
+print(name)`,
+                question: 'What type of error does this code contain?',
+                options: ['Logic error - wrong output', 'No error - code is correct', 'Syntax error - unclosed string', 'Runtime error - undefined name'],
+                correctIndex: 2,
+                explanation: 'This is a syntax error. The string "Alice is never closed with a second quotation mark. It should be: name = "Alice"'
+            },
+            {
+                id: 'errors-predict-5',
+                title: 'Question 5: Off-by-One',
+                code: `# Count from 1 to 5
+for i in range(1, 5):
+    print(i)`,
+                question: 'The comment says "count from 1 to 5". What does this code actually print?',
+                options: ['1, 2, 3, 4, 5', '1, 2, 3, 4', '0, 1, 2, 3, 4', '0, 1, 2, 3, 4, 5'],
+                correctIndex: 1,
+                explanation: 'This is a logic error (off-by-one). range(1, 5) produces 1, 2, 3, 4 - it stops BEFORE 5. To include 5, use range(1, 6).'
+            },
+            {
+                id: 'errors-predict-6',
+                title: 'Question 6: Assignment vs Comparison',
+                code: `score = 75
+if score = 100:
+    print("Perfect!")`,
+                question: 'What type of error does this code contain?',
+                options: ['Logic error - should use >=', 'No error - code is correct', 'Runtime error - score undefined', 'Syntax error - used = instead of =='],
+                correctIndex: 3,
+                explanation: 'This is a syntax error. In the if statement, = is assignment but we need == for comparison. The correct code is: if score == 100:'
+            },
+            {
+                id: 'errors-predict-7',
+                title: 'Question 7: Variable Not Updated',
+                code: `numbers = [1, 2, 3, 4, 5]
+total = 0
+for num in numbers:
+    total + num
+print(total)`,
+                question: 'What does this code print?',
+                options: ['15', '0', '5', 'Error message'],
+                correctIndex: 1,
+                explanation: 'This is a logic error. The line "total + num" calculates a value but doesn\'t store it! It should be: total = total + num. The code prints 0 because total never changes.'
+            },
+            {
+                id: 'errors-predict-8',
+                title: 'Question 8: Initialising Inside Loop',
+                code: `numbers = [10, 20, 30]
+for num in numbers:
+    total = 0
+    total = total + num
+print(total)`,
+                question: 'What does this code print?',
+                options: ['60', '30', '0', 'Error message'],
+                correctIndex: 1,
+                explanation: 'This is a logic error. The line "total = 0" is INSIDE the loop, so total resets to 0 on each iteration. Only the last number (30) gets added. Move "total = 0" BEFORE the loop to fix it.'
+            }
+        ];
+
+        new PredictionQuizSeries(
+            document.getElementById('prediction-quiz'),
+            {
+                questions: quizQuestions,
+                topicId: 'errors'
+            }
+        );
+    </script>
+</body>
+</html>

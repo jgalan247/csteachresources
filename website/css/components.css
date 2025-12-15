@@ -189,10 +189,9 @@
     margin-left: calc(var(--space-sm) + 4rem);
 }
 
-/* Distractor blocks */
+/* Distractor blocks - no visual difference (students shouldn't know which are distractors) */
 .parsons-block.distractor {
-    border-color: var(--error);
-    background: var(--error-light);
+    /* Same styling as regular blocks */
 }
 
 /* Feedback */
@@ -726,4 +725,317 @@
 
 .topic-objectives li {
     margin-bottom: var(--space-xs);
+}
+
+/* ===========================================
+   Certificate System
+   =========================================== */
+
+.certificate-available {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    margin-top: var(--space-lg);
+    border: 2px solid #22c55e;
+}
+
+.cert-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.cert-icon {
+    font-size: 2rem;
+}
+
+.cert-text {
+    font-weight: bold;
+    color: #16a34a;
+    font-size: 1.1rem;
+}
+
+.btn-success {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-success:hover {
+    background: #16a34a;
+    transform: translateY(-2px);
+}
+
+/* Certificate Modal */
+.certificate-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--space-md);
+}
+
+.certificate-modal-content {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    box-shadow: var(--shadow-xl);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray-400);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    background: var(--gray-100);
+    color: var(--gray-600);
+}
+
+.modal-section h2 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.student-form {
+    margin-top: var(--space-lg);
+}
+
+.student-form .form-group {
+    margin-bottom: var(--space-md);
+}
+
+.student-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    color: var(--gray-700);
+}
+
+.student-form input {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.student-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.certificate-actions {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+/* Certificate Toast */
+.certificate-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #22c55e;
+    color: white;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+}
+
+.certificate-toast.show {
+    transform: translateX(0);
+}
+
+.toast-icon {
+    font-size: 1.5rem;
+}
+
+.toast-message {
+    font-weight: 500;
+}
+
+/* Teacher Inspection Page */
+.teacher-dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.student-info-card {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    padding: var(--space-xl);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-xl);
+    border: 2px solid #3b82f6;
+}
+
+.student-info-card h2 {
+    margin-top: 0;
+    color: #1e40af;
+}
+
+.student-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.detail-item {
+    background: white;
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin-bottom: var(--space-xs);
+}
+
+.detail-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--gray-800);
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.certificate-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid #22c55e;
+    transition: transform 0.2s;
+}
+
+.certificate-card:hover {
+    transform: translateY(-4px);
+}
+
+.certificate-card h4 {
+    margin-top: 0;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.certificate-card .cert-date {
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    margin-top: var(--space-sm);
+}
+
+.certificate-card .cert-id {
+    color: var(--gray-400);
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    margin-top: var(--space-xs);
+}
+
+.no-certificates {
+    text-align: center;
+    padding: var(--space-2xl);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+}
+
+.no-certificates-icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-md);
+}
+
+.export-buttons {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.btn-outline {
+    background: white;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-danger-outline {
+    background: white;
+    border: 2px solid #ef4444;
+    color: #ef4444;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-danger-outline:hover {
+    background: #ef4444;
+    color: white;
 }

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: Input Validation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Input Validation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks to create working validation programs!</p>
+            <div class="alert alert-info">
+                <strong>Remember:</strong> Validation checks input BEFORE using it. Use while loops to keep asking until valid!
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Simple presence check
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'validation-parsons-1',
+                topicId: 'validation',
+                title: 'Presence Check',
+                instructions: 'Arrange the code blocks to check if a name was entered (presence check).',
+                expectedOutput: 'Please enter your name!',
+                blocks: [
+                    { id: 1, code: 'name = ""', indentLevel: 0 },
+                    { id: 2, code: 'if name == "":', indentLevel: 0 },
+                    { id: 3, code: '    print("Please enter your name!")', indentLevel: 1 },
+                    { id: 4, code: 'else:', indentLevel: 0 },
+                    { id: 5, code: '    print("Hello, " + name)', indentLevel: 1 }
+                ],
+                solution: [1, 2, 3, 4, 5],
+                hints: [
+                    'First, we need a variable with the name (empty string simulates empty input).',
+                    'Then check if the name equals an empty string.',
+                    'The error message must be indented inside the if block.',
+                    'The else handles valid input.'
+                ]
+            }
+        );
+
+        // Parsons Problem 2: Core - Range check with validation loop
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'validation-parsons-2',
+                topicId: 'validation',
+                title: 'Range Check Loop',
+                instructions: 'Arrange the code to validate a score is between 0-100. Keep asking until valid. (One block is a distractor.)',
+                expectedOutput: 'Score 85 accepted!',
+                blocks: [
+                    { id: 1, code: 'while True:', indentLevel: 0 },
+                    { id: 2, code: '    score = int(input("Score (0-100): "))', indentLevel: 1 },
+                    { id: 3, code: '    if score < 0 or score > 100:', indentLevel: 1 },
+                    { id: 4, code: '        print("Invalid! Must be 0-100")', indentLevel: 2 },
+                    { id: 5, code: '        continue', indentLevel: 2 },
+                    { id: 6, code: '    break', indentLevel: 1 },
+                    { id: 7, code: 'print(f"Score {score} accepted!")', indentLevel: 0 },
+                    { id: 8, code: '    if score < 0 and score > 100:', indentLevel: 1, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6, 7],
+                hints: [
+                    'Start with a while True loop to keep asking.',
+                    'Get the score inside the loop.',
+                    'Check if score is LESS THAN 0 OR GREATER THAN 100 (not AND - nothing can be both!).',
+                    'Use continue to go back to the start when invalid.',
+                    'Use break to exit when valid.',
+                    'Print the success message after the loop.'
+                ]
+            }
+        );
+
+        // Parsons Problem 3: Extension - Type and range check combined
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'validation-parsons-3',
+                topicId: 'validation',
+                title: 'Type and Range Check',
+                instructions: 'Arrange the code to validate age input - check it\'s a number AND in range 0-120. (One block is a distractor.)',
+                expectedOutput: 'Age 25 accepted!',
+                blocks: [
+                    { id: 1, code: 'while True:', indentLevel: 0 },
+                    { id: 2, code: '    age_input = input("Enter age: ")', indentLevel: 1 },
+                    { id: 3, code: '    if not age_input.isdigit():', indentLevel: 1 },
+                    { id: 4, code: '        print("Please enter a number")', indentLevel: 2 },
+                    { id: 5, code: '        continue', indentLevel: 2 },
+                    { id: 6, code: '    age = int(age_input)', indentLevel: 1 },
+                    { id: 7, code: '    if age < 0 or age > 120:', indentLevel: 1 },
+                    { id: 8, code: '        print("Age must be 0-120")', indentLevel: 2 },
+                    { id: 9, code: '        continue', indentLevel: 2 },
+                    { id: 10, code: '    break', indentLevel: 1 },
+                    { id: 11, code: 'print(f"Age {age} accepted!")', indentLevel: 0 },
+                    { id: 12, code: '    age = int(input("Enter age: "))', indentLevel: 1, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                hints: [
+                    'Start with while True for the validation loop.',
+                    'Get input as a string first (not directly as int).',
+                    'Check if it\'s a digit BEFORE converting to int.',
+                    'If not a digit, continue to ask again.',
+                    'Convert to int AFTER the type check passes.',
+                    'Then check the range (0-120).',
+                    'The distractor combines input and conversion - this would crash on non-numbers!'
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

@@ -17,6 +17,7 @@
             <li><a href="../../index.html">Home</a></li>
             <li><a href="../index.html" class="active">Topics</a></li>
             <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
             <li><a href="../../help.html">Help</a></li>
         </ul>
     </nav>
@@ -39,6 +40,7 @@
                 <ul>
                     <li>How to use if statements to make decisions</li>
                     <li>Comparison operators: ==, !=, <, >, <=, >=</li>
+                    <li>Boolean operators: and, or, not</li>
                     <li>Using if-else for two-way decisions</li>
                     <li>Using if-elif-else for multiple options</li>
                 </ul>
@@ -112,6 +114,89 @@
             </div>
         </section>
 
+        <section class="operators-section mt-xl">
+            <h2>Comparison Operators</h2>
+            <p>Use these to compare two values. The result is always True or False.</p>
+            <div class="operator-table">
+                <table>
+                    <tr><th>Operator</th><th>Meaning</th><th>Example</th><th>Result</th></tr>
+                    <tr><td><code>==</code></td><td>Equal to</td><td><code>5 == 5</code></td><td>True</td></tr>
+                    <tr><td><code>!=</code></td><td>Not equal to</td><td><code>5 != 3</code></td><td>True</td></tr>
+                    <tr><td><code>&lt;</code></td><td>Less than</td><td><code>3 &lt; 5</code></td><td>True</td></tr>
+                    <tr><td><code>&gt;</code></td><td>Greater than</td><td><code>5 &gt; 3</code></td><td>True</td></tr>
+                    <tr><td><code>&lt;=</code></td><td>Less than or equal</td><td><code>5 &lt;= 5</code></td><td>True</td></tr>
+                    <tr><td><code>&gt;=</code></td><td>Greater than or equal</td><td><code>5 &gt;= 3</code></td><td>True</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="boolean-section mt-xl">
+            <h2>Boolean Operators: and, or, not</h2>
+            <p>Combine multiple conditions together to make more complex decisions.</p>
+
+            <div class="boolean-cards">
+                <div class="boolean-card and-card">
+                    <h3>and</h3>
+                    <p>Both conditions must be True for the result to be True.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>age = <span class="syntax-number">20</span>
+has_ticket = <span class="syntax-keyword">True</span>
+
+<span class="syntax-keyword">if</span> age >= <span class="syntax-number">18</span> <span class="syntax-keyword">and</span> has_ticket:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"You can enter"</span>)</code></pre>
+                    </div>
+                    <div class="truth-table">
+                        <table>
+                            <tr><th>A</th><th>B</th><th>A and B</th></tr>
+                            <tr><td>True</td><td>True</td><td class="result-true">True</td></tr>
+                            <tr><td>True</td><td>False</td><td class="result-false">False</td></tr>
+                            <tr><td>False</td><td>True</td><td class="result-false">False</td></tr>
+                            <tr><td>False</td><td>False</td><td class="result-false">False</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="boolean-card or-card">
+                    <h3>or</h3>
+                    <p>At least one condition must be True for the result to be True.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>is_student = <span class="syntax-keyword">True</span>
+is_senior = <span class="syntax-keyword">False</span>
+
+<span class="syntax-keyword">if</span> is_student <span class="syntax-keyword">or</span> is_senior:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"You get a discount"</span>)</code></pre>
+                    </div>
+                    <div class="truth-table">
+                        <table>
+                            <tr><th>A</th><th>B</th><th>A or B</th></tr>
+                            <tr><td>True</td><td>True</td><td class="result-true">True</td></tr>
+                            <tr><td>True</td><td>False</td><td class="result-true">True</td></tr>
+                            <tr><td>False</td><td>True</td><td class="result-true">True</td></tr>
+                            <tr><td>False</td><td>False</td><td class="result-false">False</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="boolean-card not-card">
+                    <h3>not</h3>
+                    <p>Reverses the condition. True becomes False, False becomes True.</p>
+                    <div class="code-display">
+                        <pre class="code-content"><code>logged_in = <span class="syntax-keyword">False</span>
+
+<span class="syntax-keyword">if</span> <span class="syntax-keyword">not</span> logged_in:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Please log in"</span>)</code></pre>
+                    </div>
+                    <div class="truth-table">
+                        <table>
+                            <tr><th>A</th><th>not A</th></tr>
+                            <tr><td>True</td><td class="result-false">False</td></tr>
+                            <tr><td>False</td><td class="result-true">True</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="key-vocabulary mt-xl">
             <h2>Key Vocabulary</h2>
             <div class="vocab-grid">
@@ -138,6 +223,22 @@
                 <div class="vocab-card">
                     <h4>comparison operator</h4>
                     <p>Symbols that compare values: == != < > <= >=</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>Boolean</h4>
+                    <p>A value that is either True or False. Named after mathematician George Boole.</p>
+                </div>
+                <div class="vocab-card">
+                    <h4>and operator</h4>
+                    <p>Combines conditions: both must be True. <code>x > 0 and x < 10</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>or operator</h4>
+                    <p>Combines conditions: at least one must be True. <code>x == 0 or x == 1</code></p>
+                </div>
+                <div class="vocab-card">
+                    <h4>not operator</h4>
+                    <p>Reverses a condition. <code>not logged_in</code></p>
                 </div>
             </div>
         </section>
@@ -169,7 +270,24 @@ grade = <span class="syntax-number">75</span>
 <span class="syntax-keyword">elif</span> grade >= <span class="syntax-number">50</span>:
     <span class="syntax-keyword">print</span>(<span class="syntax-string">"C"</span>)
 <span class="syntax-keyword">else</span>:
-    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Fail"</span>)</code></pre>
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Fail"</span>)
+
+<span class="syntax-comment"># Using Boolean operators</span>
+age = <span class="syntax-number">25</span>
+has_licence = <span class="syntax-keyword">True</span>
+
+<span class="syntax-comment"># and: both conditions must be True</span>
+<span class="syntax-keyword">if</span> age >= <span class="syntax-number">18</span> <span class="syntax-keyword">and</span> has_licence:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"You can drive"</span>)
+
+<span class="syntax-comment"># or: at least one must be True</span>
+<span class="syntax-keyword">if</span> age < <span class="syntax-number">12</span> <span class="syntax-keyword">or</span> age > <span class="syntax-number">65</span>:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Free ticket"</span>)
+
+<span class="syntax-comment"># not: reverses the condition</span>
+logged_in = <span class="syntax-keyword">False</span>
+<span class="syntax-keyword">if</span> <span class="syntax-keyword">not</span> logged_in:
+    <span class="syntax-keyword">print</span>(<span class="syntax-string">"Please log in"</span>)</code></pre>
             </div>
         </section>
     </main>
@@ -178,7 +296,10 @@ grade = <span class="syntax-number">75</span>
         <p>Built on evidence-based teaching methods from computing education research.</p>
     </footer>
 
+    <!-- jsPDF for certificate generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="../../js/progress.js"></script>
+    <script src="../../js/certificate.js"></script>
     <script src="../../js/main.js"></script>
     <style>
         .vocab-grid {
@@ -201,6 +322,78 @@ grade = <span class="syntax-number">75</span>
             margin: 0;
             font-size: 0.9rem;
             color: var(--gray-600);
+        }
+        .operator-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-top: var(--space-md);
+        }
+        .operator-table th, .operator-table td {
+            padding: var(--space-sm) var(--space-md);
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .operator-table th {
+            background: var(--primary);
+            color: white;
+        }
+        .operator-table code {
+            background: var(--gray-100);
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+        }
+        .boolean-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .boolean-card {
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .boolean-card.and-card {
+            background: #dbeafe;
+            border: 2px solid #3b82f6;
+        }
+        .boolean-card.or-card {
+            background: #dcfce7;
+            border: 2px solid #22c55e;
+        }
+        .boolean-card.not-card {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+        }
+        .boolean-card h3 {
+            margin-top: 0;
+            font-family: monospace;
+            font-size: 1.5rem;
+        }
+        .truth-table {
+            margin-top: var(--space-md);
+        }
+        .truth-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .truth-table th, .truth-table td {
+            padding: var(--space-xs) var(--space-sm);
+            text-align: center;
+            border: 1px solid var(--gray-300);
+        }
+        .truth-table th {
+            background: var(--gray-100);
+        }
+        .result-true {
+            background: #bbf7d0;
+            font-weight: bold;
+        }
+        .result-false {
+            background: #fecaca;
         }
     </style>
 </body>

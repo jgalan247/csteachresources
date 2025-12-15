@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: 1D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">1D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks to create working programs with arrays and loops!</p>
+            <div class="alert alert-info">
+                <strong>Tip:</strong> Think about what needs to happen before the loop (setup), inside the loop (repeated action), and after the loop (result).
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Print each element
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'arr1d-parsons-1',
+                topicId: 'arrays-1d',
+                title: 'Print Each Element',
+                instructions: 'Arrange the code blocks to create an array and print each element on a new line.',
+                expectedOutput: 'red\ngreen\nblue',
+                blocks: [
+                    { id: 1, code: 'colours = ["red", "green", "blue"]', indentLevel: 0 },
+                    { id: 2, code: 'for colour in colours:', indentLevel: 0 },
+                    { id: 3, code: '    print(colour)', indentLevel: 1 }
+                ],
+                solution: [1, 2, 3],
+                hints: [
+                    'First, create the array with the colours.',
+                    'Then set up a for loop to go through each element.',
+                    'Inside the loop, print the current element.',
+                    'The print statement must be indented inside the loop.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 2: Core - Calculate sum with loop
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'arr1d-parsons-2',
+                topicId: 'arrays-1d',
+                title: 'Calculate Total',
+                instructions: 'Arrange the code blocks to calculate and print the sum of all numbers in an array. (One block is a distractor.)',
+                expectedOutput: '15',
+                blocks: [
+                    { id: 1, code: 'numbers = [1, 2, 3, 4, 5]', indentLevel: 0 },
+                    { id: 2, code: 'total = 0', indentLevel: 0 },
+                    { id: 3, code: 'for num in numbers:', indentLevel: 0 },
+                    { id: 4, code: '    total = total + num', indentLevel: 1 },
+                    { id: 5, code: 'print(total)', indentLevel: 0 },
+                    { id: 6, code: '    total = num', indentLevel: 1, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5],
+                hints: [
+                    'First create the array, then initialize total to 0.',
+                    'Set up a for loop to iterate through each number.',
+                    'Inside the loop, ADD each number to the total (don\'t replace it).',
+                    'Print the total AFTER the loop finishes (no indent).',
+                    'The distractor would just replace total instead of adding.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 3: Extension - Count items matching condition
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'arr1d-parsons-3',
+                topicId: 'arrays-1d',
+                title: 'Count Passing Scores',
+                instructions: 'Arrange the code blocks to count how many scores are 50 or above (passing). (One block is a distractor.)',
+                expectedOutput: '3',
+                blocks: [
+                    { id: 1, code: 'scores = [45, 72, 38, 85, 60]', indentLevel: 0 },
+                    { id: 2, code: 'passing = 0', indentLevel: 0 },
+                    { id: 3, code: 'for score in scores:', indentLevel: 0 },
+                    { id: 4, code: '    if score >= 50:', indentLevel: 1 },
+                    { id: 5, code: '        passing = passing + 1', indentLevel: 2 },
+                    { id: 6, code: 'print(passing)', indentLevel: 0 },
+                    { id: 7, code: '    if score > 50:', indentLevel: 1, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6],
+                hints: [
+                    'Create the array and initialize the counter to 0.',
+                    'Loop through each score in the array.',
+                    'Check if the score is >= 50 (50 or above, not just above).',
+                    'If it passes, increment the counter.',
+                    'Print the final count AFTER the loop.',
+                    'The distractor uses > instead of >= (would miss exactly 50).'
+                ],
+                type: '2d'
+            }
+        );
+    </script>
+</body>
+</html>

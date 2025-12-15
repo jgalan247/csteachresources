@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: String Manipulation - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">String Manipulation</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>📖</span> Study: Extracting Data from Strings</h1>
+            <p>Learn how to extract useful information from strings using slicing and string methods.</p>
+        </header>
+
+        <div id="worked-example-1"></div>
+
+        <div class="mt-xl" id="worked-example-2"></div>
+
+        <div class="mt-xl">
+            <a href="trace.html" class="btn btn-primary">Next: Trace String Operations →</a>
+            <a href="predict.html" class="btn btn-secondary">← Back to Predict</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/worked-example.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        new WorkedExample(
+            document.getElementById('worked-example-1'),
+            {
+                id: 'strings-example-1',
+                topicId: 'strings',
+                title: 'Extracting Date Parts',
+                scenario: 'We have a date stored as a string in DD/MM/YYYY format. Let\'s extract the day, month, and year separately.',
+                steps: [
+                    {
+                        title: 'Step 1: Understand the String Structure',
+                        explanation: 'First, let\'s visualise where each part of the date is located.',
+                        code: `date = "25/12/2024"
+
+# Position:  0 1 2 3 4 5 6 7 8 9
+# Character: 2 5 / 1 2 / 2 0 2 4
+#
+# Day:   positions 0-1  (characters "25")
+# Month: positions 3-4  (characters "12")
+# Year:  positions 6-9  (characters "2024")`,
+                        note: 'The slashes are at positions 2 and 5. We need to slice around them.'
+                    },
+                    {
+                        title: 'Step 2: Extract the Day',
+                        explanation: 'The day is the first two characters (positions 0 and 1).',
+                        code: `date = "25/12/2024"
+
+day = date[:2]     # From start to position 2 (not including 2)
+print(day)         # "25"`,
+                        note: 'date[:2] gets everything from the start up to (but not including) position 2.'
+                    },
+                    {
+                        title: 'Step 3: Extract the Month',
+                        explanation: 'The month starts at position 3 and ends at position 4.',
+                        code: `date = "25/12/2024"
+
+month = date[3:5]  # From position 3 to position 5 (not including 5)
+print(month)       # "12"`,
+                        note: 'We skip the first slash at position 2 and get positions 3 and 4.'
+                    },
+                    {
+                        title: 'Step 4: Extract the Year',
+                        explanation: 'The year is the last 4 characters, starting at position 6.',
+                        code: `date = "25/12/2024"
+
+year = date[6:]    # From position 6 to the end
+print(year)        # "2024"
+
+# Or using negative indexing:
+year = date[-4:]   # Last 4 characters
+print(year)        # "2024"`,
+                        note: 'Both methods work! date[6:] and date[-4:] give the same result for this string.'
+                    },
+                    {
+                        title: 'Step 5: Complete Solution',
+                        explanation: 'Let\'s put it all together and format the output nicely.',
+                        code: `date = "25/12/2024"
+
+day = date[:2]
+month = date[3:5]
+year = date[-4:]
+
+print(f"Day: {day}")
+print(f"Month: {month}")
+print(f"Year: {year}")
+
+# Output:
+# Day: 25
+# Month: 12
+# Year: 2024`,
+                        note: 'String slicing lets us extract exactly the parts we need!'
+                    }
+                ],
+                keyPoints: [
+                    'Strings are indexed starting from 0',
+                    'Slicing with [start:end] gets characters from start to end-1',
+                    '[:n] gets the first n characters',
+                    '[n:] gets everything from position n to the end',
+                    '[-n:] gets the last n characters'
+                ]
+            }
+        );
+
+        new WorkedExample(
+            document.getElementById('worked-example-2'),
+            {
+                id: 'strings-example-2',
+                topicId: 'strings',
+                title: 'Username Validation',
+                scenario: 'We need to validate usernames: they must be at least 4 characters long and contain an underscore (_).',
+                steps: [
+                    {
+                        title: 'Step 1: Check the Length',
+                        explanation: 'Use len() to check if the username has at least 4 characters.',
+                        code: `username = "jo_smith"
+
+length = len(username)
+print(f"Length: {length}")  # 8
+
+if len(username) >= 4:
+    print("Length OK")
+else:
+    print("Too short!")`,
+                        note: 'len() returns the number of characters in the string.'
+                    },
+                    {
+                        title: 'Step 2: Check for Underscore',
+                        explanation: 'Use the "in" keyword to check if a character exists in the string.',
+                        code: `username = "jo_smith"
+
+if "_" in username:
+    print("Contains underscore")
+else:
+    print("Missing underscore!")
+
+# We can also use find() to get the position
+position = username.find("_")
+print(f"Underscore at position: {position}")  # 2`,
+                        note: '"in" returns True/False. find() returns the position (or -1 if not found).'
+                    },
+                    {
+                        title: 'Step 3: Combine the Checks',
+                        explanation: 'Use "and" to combine both conditions.',
+                        code: `username = "jo_smith"
+
+if len(username) >= 4 and "_" in username:
+    print("Valid username!")
+else:
+    print("Invalid username!")`,
+                        note: 'Both conditions must be True for the username to be valid.'
+                    },
+                    {
+                        title: 'Step 4: Make it a Function',
+                        explanation: 'Let\'s create a reusable function for validation.',
+                        code: `def validate_username(username):
+    # Check length
+    if len(username) < 4:
+        return "Too short (min 4 characters)"
+
+    # Check for underscore
+    if "_" not in username:
+        return "Must contain an underscore"
+
+    return "Valid!"
+
+# Test it
+print(validate_username("ab"))        # Too short
+print(validate_username("abcd"))      # Must contain underscore
+print(validate_username("jo_smith"))  # Valid!`,
+                        note: 'Functions make our validation reusable and the code cleaner.'
+                    },
+                    {
+                        title: 'Step 5: Extract Parts of Username',
+                        explanation: 'We can use find() and slicing together to extract parts.',
+                        code: `username = "jo_smith"
+
+# Find where the underscore is
+underscore_pos = username.find("_")
+
+# Extract parts
+first_part = username[:underscore_pos]    # Everything before _
+second_part = username[underscore_pos+1:] # Everything after _
+
+print(f"First: {first_part}")   # jo
+print(f"Second: {second_part}") # smith`,
+                        note: 'Combining find() with slicing is powerful for parsing structured strings!'
+                    }
+                ],
+                keyPoints: [
+                    'len() returns the number of characters',
+                    '"x in string" checks if x exists in the string',
+                    'find() returns the position of a substring (-1 if not found)',
+                    'Combine find() with slicing to extract parts of strings',
+                    'String methods can be chained together for complex operations'
+                ]
+            }
+        );
+    </script>
+</body>
+</html>

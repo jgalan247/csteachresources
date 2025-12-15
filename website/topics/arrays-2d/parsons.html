@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems: 2D Arrays - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container-narrow">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">2D Arrays</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Parsons Problems</span>
+        </nav>
+
+        <header class="mb-xl">
+            <h1><span>🧩</span> Arrange the Code Blocks</h1>
+            <p>Drag the code blocks to create working programs with 2D arrays and nested loops!</p>
+            <div class="alert alert-info">
+                <strong>Tip:</strong> Remember the structure: outer loop (rows) → inner loop (columns) → action. Watch the indentation carefully!
+            </div>
+        </header>
+
+        <!-- Parsons Problem 1: Foundation -->
+        <section class="mb-xl">
+            <span class="difficulty-badge foundation mb-md" style="display: inline-block;">Foundation</span>
+            <div id="parsons-1"></div>
+        </section>
+
+        <!-- Parsons Problem 2: Core -->
+        <section class="mb-xl">
+            <span class="difficulty-badge core mb-md" style="display: inline-block;">Core</span>
+            <div id="parsons-2"></div>
+        </section>
+
+        <!-- Parsons Problem 3: Extension -->
+        <section class="mb-xl">
+            <span class="difficulty-badge extension mb-md" style="display: inline-block;">Extension</span>
+            <div id="parsons-3"></div>
+        </section>
+
+        <div class="mt-xl">
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+            <a href="trace.html" class="btn btn-secondary">← Back to Tracing</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/parsons.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Parsons Problem 1: Foundation - Print grid
+        new ParsonsProblem(
+            document.getElementById('parsons-1'),
+            {
+                id: 'arr2d-parsons-1',
+                topicId: 'arrays-2d',
+                title: 'Print a Grid Row by Row',
+                instructions: 'Arrange the code blocks to print each row of the grid on a new line.',
+                expectedOutput: '[1, 2, 3]\n[4, 5, 6]',
+                blocks: [
+                    { id: 1, code: 'grid = [[1, 2, 3], [4, 5, 6]]', indentLevel: 0 },
+                    { id: 2, code: 'for row in grid:', indentLevel: 0 },
+                    { id: 3, code: '    print(row)', indentLevel: 1 }
+                ],
+                solution: [1, 2, 3],
+                hints: [
+                    'First, create the 2D array.',
+                    'Then loop through each row.',
+                    'Print the entire row (this prints the inner list).',
+                    'The print statement must be indented inside the loop.'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 2: Core - Print each element
+        new ParsonsProblem(
+            document.getElementById('parsons-2'),
+            {
+                id: 'arr2d-parsons-2',
+                topicId: 'arrays-2d',
+                title: 'Print Each Element Individually',
+                instructions: 'Arrange the code blocks to print every element in the grid, with each row on a new line. (One block is a distractor.)',
+                expectedOutput: '1 2 \n3 4 ',
+                blocks: [
+                    { id: 1, code: 'grid = [[1, 2], [3, 4]]', indentLevel: 0 },
+                    { id: 2, code: 'for row in grid:', indentLevel: 0 },
+                    { id: 3, code: '    for item in row:', indentLevel: 1 },
+                    { id: 4, code: '        print(item, end=" ")', indentLevel: 2 },
+                    { id: 5, code: '    print()', indentLevel: 1 },
+                    { id: 6, code: 'for item in grid:', indentLevel: 0, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5],
+                hints: [
+                    'Create the grid first.',
+                    'Outer loop goes through each row.',
+                    'Inner loop goes through each item IN that row.',
+                    'Print items with space, then print() starts a new line after each row.',
+                    'The distractor would try to loop items directly from grid (wrong structure).'
+                ],
+                type: '2d'
+            }
+        );
+
+        // Parsons Problem 3: Extension - Count specific value
+        new ParsonsProblem(
+            document.getElementById('parsons-3'),
+            {
+                id: 'arr2d-parsons-3',
+                topicId: 'arrays-2d',
+                title: 'Count Zeros in a Grid',
+                instructions: 'Arrange the code blocks to count how many zeros are in the grid. (One block is a distractor.)',
+                expectedOutput: '3',
+                blocks: [
+                    { id: 1, code: 'grid = [[0, 1, 0], [1, 0, 1]]', indentLevel: 0 },
+                    { id: 2, code: 'count = 0', indentLevel: 0 },
+                    { id: 3, code: 'for row in grid:', indentLevel: 0 },
+                    { id: 4, code: '    for cell in row:', indentLevel: 1 },
+                    { id: 5, code: '        if cell == 0:', indentLevel: 2 },
+                    { id: 6, code: '            count = count + 1', indentLevel: 3 },
+                    { id: 7, code: 'print(count)', indentLevel: 0 },
+                    { id: 8, code: '        if cell = 0:', indentLevel: 2, isDistractor: true }
+                ],
+                solution: [1, 2, 3, 4, 5, 6, 7],
+                hints: [
+                    'Create grid and initialize counter to 0.',
+                    'Use nested loops to visit every cell.',
+                    'Check if the cell equals 0 (use == for comparison).',
+                    'Increment counter inside the if statement.',
+                    'Print count AFTER all loops complete.',
+                    'The distractor uses = (assignment) instead of == (comparison).'
+                ],
+                type: '2d'
+            }
+        );
+    </script>
+</body>
+</html>
