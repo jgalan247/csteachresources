@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Example: Comparing Storage Types - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Secondary Storage</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Worked Example</span>
+        </nav>
+
+        <header class="activity-header">
+            <span class="activity-icon">📖</span>
+            <div class="activity-title">
+                <h1>Worked Example: Comparing Storage Types</h1>
+                <p>Explore each storage type in detail and understand when to use each one.</p>
+            </div>
+        </header>
+
+        <section class="worked-example">
+            <h2>Deep Dive: Understanding Each Storage Type</h2>
+
+            <!-- Magnetic Storage -->
+            <div class="example-section">
+                <div class="section-header magnetic">
+                    <span class="section-icon">🧲</span>
+                    <h3>Magnetic Storage</h3>
+                </div>
+
+                <div class="section-content">
+                    <div class="how-works-visual">
+                        <h4>How Hard Disk Drives Work</h4>
+                        <div class="visual-diagram">
+                            <div class="hdd-diagram">
+                                <div class="platter">
+                                    <div class="platter-label">Spinning Platters</div>
+                                    <div class="spin-arrow">↻ 5400-7200 RPM</div>
+                                </div>
+                                <div class="arm">
+                                    <div class="arm-label">Read/Write Head</div>
+                                    <div class="arm-detail">Hovers nanometers above surface</div>
+                                </div>
+                            </div>
+                            <div class="process-steps">
+                                <div class="process-step">
+                                    <span class="step-num">1</span>
+                                    <p>Platters spin at high speed</p>
+                                </div>
+                                <div class="process-step">
+                                    <span class="step-num">2</span>
+                                    <p>Arm moves to correct position</p>
+                                </div>
+                                <div class="process-step">
+                                    <span class="step-num">3</span>
+                                    <p>Head reads/writes magnetic patterns</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="characteristics-detail">
+                        <h4>Characteristics Explained</h4>
+                        <div class="char-grid">
+                            <div class="char-item">
+                                <h5>💾 Capacity</h5>
+                                <div class="rating">★★★★★ Excellent</div>
+                                <p>Up to 20TB+ per drive. Best for bulk storage.</p>
+                                <div class="real-example">A 4TB HDD costs ~£70 and holds 1 million photos!</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>⚡ Speed</h5>
+                                <div class="rating medium">★★★☆☆ Medium</div>
+                                <p>80-200 MB/s sequential. Slow random access due to physical movement.</p>
+                                <div class="real-example">Loading a game: 30-60 seconds</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>💪 Durability</h5>
+                                <div class="rating poor">★★☆☆☆ Low</div>
+                                <p>Moving parts are vulnerable. A drop can cause "head crash" and data loss.</p>
+                                <div class="real-example">Never move an HDD while it's running!</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>💰 Cost</h5>
+                                <div class="rating">★★★★★ Cheapest</div>
+                                <p>~£15-20 per TB. Best value for large storage needs.</p>
+                                <div class="real-example">1TB HDD: £35 vs 1TB SSD: £60-80</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="best-uses">
+                        <h4>Best Used For:</h4>
+                        <ul>
+                            <li>📸 Storing large photo/video libraries</li>
+                            <li>🗄️ File servers and NAS devices</li>
+                            <li>💾 Desktop computer secondary storage</li>
+                            <li>📼 Backup drives (external HDDs)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Solid State Storage -->
+            <div class="example-section">
+                <div class="section-header solid-state">
+                    <span class="section-icon">⚡</span>
+                    <h3>Solid State Storage</h3>
+                </div>
+
+                <div class="section-content">
+                    <div class="how-works-visual">
+                        <h4>How SSDs Work</h4>
+                        <div class="visual-diagram">
+                            <div class="ssd-diagram">
+                                <div class="flash-chips">
+                                    <div class="chip"></div>
+                                    <div class="chip"></div>
+                                    <div class="chip"></div>
+                                    <div class="chip"></div>
+                                    <div class="chip-label">NAND Flash Chips</div>
+                                </div>
+                                <div class="controller">
+                                    <div class="controller-label">Controller</div>
+                                    <div class="controller-detail">Manages data across chips</div>
+                                </div>
+                            </div>
+                            <div class="process-steps">
+                                <div class="process-step">
+                                    <span class="step-num">1</span>
+                                    <p>Data stored as electrical charges</p>
+                                </div>
+                                <div class="process-step">
+                                    <span class="step-num">2</span>
+                                    <p>No moving parts - purely electronic</p>
+                                </div>
+                                <div class="process-step">
+                                    <span class="step-num">3</span>
+                                    <p>Instant access to any location</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="characteristics-detail">
+                        <h4>Characteristics Explained</h4>
+                        <div class="char-grid">
+                            <div class="char-item">
+                                <h5>⚡ Speed</h5>
+                                <div class="rating">★★★★★ Excellent</div>
+                                <p>SATA SSD: 500 MB/s. NVMe SSD: 3000-7000 MB/s!</p>
+                                <div class="real-example">Loading a game: 5-15 seconds</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>💪 Durability</h5>
+                                <div class="rating">★★★★★ Excellent</div>
+                                <p>No moving parts. Survives drops, shocks, vibration.</p>
+                                <div class="real-example">Safe in laptops, tablets, phones</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>💾 Capacity</h5>
+                                <div class="rating medium">★★★★☆ Good</div>
+                                <p>Up to 8TB available, but expensive at high capacities.</p>
+                                <div class="real-example">Most common: 256GB - 2TB</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>💰 Cost</h5>
+                                <div class="rating poor">★★☆☆☆ Expensive</div>
+                                <p>~£50-80 per TB. Prices dropping but still more than HDD.</p>
+                                <div class="real-example">Worth it for speed-critical tasks</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ssd-types">
+                        <h4>Types of SSDs:</h4>
+                        <div class="type-comparison">
+                            <div class="type-card">
+                                <h5>SATA SSD</h5>
+                                <p>~500 MB/s</p>
+                                <p>Uses same connector as HDD</p>
+                                <p>Good value upgrade from HDD</p>
+                            </div>
+                            <div class="type-card highlight">
+                                <h5>NVMe SSD</h5>
+                                <p>~3000-7000 MB/s</p>
+                                <p>Connects directly to motherboard</p>
+                                <p>Best performance available</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="best-uses">
+                        <h4>Best Used For:</h4>
+                        <ul>
+                            <li>💻 Operating system drive (boot drive)</li>
+                            <li>🎮 Games that need fast loading</li>
+                            <li>🎬 Video editing scratch disk</li>
+                            <li>📱 Smartphones and tablets</li>
+                            <li>🎒 Portable storage (USB flash drives)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optical Storage -->
+            <div class="example-section">
+                <div class="section-header optical">
+                    <span class="section-icon">💿</span>
+                    <h3>Optical Storage</h3>
+                </div>
+
+                <div class="section-content">
+                    <div class="how-works-visual">
+                        <h4>How Optical Discs Work</h4>
+                        <div class="visual-diagram">
+                            <div class="optical-diagram">
+                                <div class="disc">
+                                    <div class="disc-surface">
+                                        <span>Pits and Lands</span>
+                                    </div>
+                                </div>
+                                <div class="laser">
+                                    <div class="laser-beam"></div>
+                                    <div class="laser-label">Laser reads reflections</div>
+                                </div>
+                            </div>
+                            <div class="process-steps">
+                                <div class="process-step">
+                                    <span class="step-num">1</span>
+                                    <p>Laser shines on disc surface</p>
+                                </div>
+                                <div class="process-step">
+                                    <span class="step-num">2</span>
+                                    <p>Pits scatter light, lands reflect it</p>
+                                </div>
+                                <div class="process-step">
+                                    <span class="step-num">3</span>
+                                    <p>Pattern of reflections = data</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="optical-types">
+                        <h4>Types of Optical Media:</h4>
+                        <div class="optical-comparison">
+                            <div class="optical-type">
+                                <h5>CD</h5>
+                                <div class="capacity-bar" style="width: 14%"></div>
+                                <p>700 MB</p>
+                                <p class="use">Music, small files</p>
+                            </div>
+                            <div class="optical-type">
+                                <h5>DVD</h5>
+                                <div class="capacity-bar" style="width: 34%"></div>
+                                <p>4.7 GB (single) / 8.5 GB (dual)</p>
+                                <p class="use">Films, software</p>
+                            </div>
+                            <div class="optical-type">
+                                <h5>Blu-ray</h5>
+                                <div class="capacity-bar" style="width: 100%"></div>
+                                <p>25 GB (single) / 50 GB (dual)</p>
+                                <p class="use">HD video, games, archives</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="characteristics-detail">
+                        <h4>Characteristics Explained</h4>
+                        <div class="char-grid">
+                            <div class="char-item">
+                                <h5>💿 Capacity</h5>
+                                <div class="rating poor">★★☆☆☆ Low</div>
+                                <p>700MB to 50GB max. Tiny compared to HDD/SSD.</p>
+                                <div class="real-example">One Blu-ray = one 4K movie</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>⚡ Speed</h5>
+                                <div class="rating poor">★☆☆☆☆ Slow</div>
+                                <p>1-50 MB/s. Much slower than HDD or SSD.</p>
+                                <div class="real-example">Installing from DVD takes ages</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>📦 Portability</h5>
+                                <div class="rating">★★★★☆ Good</div>
+                                <p>Thin and light. Easy to post or store.</p>
+                                <div class="real-example">Perfect for mailing software</div>
+                            </div>
+                            <div class="char-item">
+                                <h5>💰 Cost</h5>
+                                <div class="rating">★★★★★ Very Cheap</div>
+                                <p>Pennies per disc when mass-produced.</p>
+                                <div class="real-example">50 blank DVDs: £10</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="best-uses">
+                        <h4>Best Used For:</h4>
+                        <ul>
+                            <li>🎬 Film and music distribution</li>
+                            <li>🎮 Game console games (PlayStation, Xbox)</li>
+                            <li>📀 Software installation discs</li>
+                            <li>🗄️ Long-term archival (M-DISC lasts 1000 years!)</li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-note">
+                        <h4>⚠️ Important Note:</h4>
+                        <p>Many modern laptops don't have optical drives! Always check compatibility before choosing optical media.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="decision-flowchart mt-xl">
+            <h2>Decision Guide: Choosing Storage</h2>
+            <div class="flowchart">
+                <div class="decision-node start">
+                    <p>What's most important?</p>
+                </div>
+                <div class="decision-branches">
+                    <div class="branch">
+                        <div class="branch-label">SPEED</div>
+                        <div class="result ssd">Choose SSD</div>
+                    </div>
+                    <div class="branch">
+                        <div class="branch-label">CAPACITY + LOW COST</div>
+                        <div class="result hdd">Choose HDD</div>
+                    </div>
+                    <div class="branch">
+                        <div class="branch-label">MASS DISTRIBUTION</div>
+                        <div class="result optical">Choose Optical</div>
+                    </div>
+                    <div class="branch">
+                        <div class="branch-label">LONG-TERM ARCHIVE</div>
+                        <div class="result tape">Choose Tape</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-navigation">
+            <a href="predict.html" class="btn btn-secondary">← Previous: Predict</a>
+            <a href="trace.html" class="btn btn-primary">Next: Storage Selection →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        Progress.startActivity('storage-example', 'storage');
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
+            margin-bottom: var(--space-xl);
+        }
+        .activity-icon {
+            font-size: 3rem;
+            background: var(--theory, #10b981);
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+        }
+        .example-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            color: white;
+        }
+        .section-header.magnetic { background: #7c3aed; }
+        .section-header.solid-state { background: #059669; }
+        .section-header.optical { background: #2563eb; }
+        .section-icon { font-size: 2rem; }
+        .section-header h3 { margin: 0; }
+        .section-content {
+            padding: var(--space-xl);
+        }
+        .section-content h4 {
+            color: var(--gray-700);
+            margin-bottom: var(--space-md);
+            border-bottom: 2px solid var(--gray-200);
+            padding-bottom: var(--space-xs);
+        }
+        .visual-diagram {
+            display: flex;
+            gap: var(--space-xl);
+            align-items: center;
+            flex-wrap: wrap;
+            padding: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+        .hdd-diagram, .ssd-diagram, .optical-diagram {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+        .platter {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a1a1aa, #d4d4d8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .platter-label { font-size: 0.7rem; color: var(--gray-600); }
+        .spin-arrow { font-size: 0.8rem; color: var(--gray-500); }
+        .arm {
+            background: #52525b;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            color: white;
+            font-size: 0.8rem;
+        }
+        .arm-detail { font-size: 0.7rem; opacity: 0.8; }
+        .flash-chips {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            position: relative;
+        }
+        .chip {
+            width: 40px;
+            height: 30px;
+            background: #065f46;
+            border-radius: 2px;
+        }
+        .chip-label {
+            position: absolute;
+            bottom: -20px;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+        .controller {
+            background: #1f2937;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            color: white;
+            font-size: 0.8rem;
+        }
+        .controller-detail { font-size: 0.7rem; opacity: 0.8; }
+        .disc {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c084fc, #a855f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .disc-surface {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e9d5ff, #d8b4fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            text-align: center;
+        }
+        .laser {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .laser-beam {
+            width: 4px;
+            height: 40px;
+            background: linear-gradient(to bottom, #ef4444, transparent);
+        }
+        .laser-label { font-size: 0.7rem; color: var(--gray-600); }
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--theory, #10b981);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .process-step p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .char-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-md);
+        }
+        .char-item {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .char-item h5 {
+            margin: 0 0 var(--space-xs) 0;
+        }
+        .rating {
+            color: #16a34a;
+            font-weight: bold;
+            margin-bottom: var(--space-xs);
+        }
+        .rating.medium { color: #ca8a04; }
+        .rating.poor { color: #dc2626; }
+        .char-item p {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .real-example {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            font-style: italic;
+            padding-top: var(--space-xs);
+            border-top: 1px dashed var(--gray-300);
+        }
+        .best-uses {
+            margin-top: var(--space-lg);
+            padding: var(--space-md);
+            background: #f0fdf4;
+            border-radius: var(--radius-md);
+        }
+        .best-uses ul {
+            padding-left: var(--space-lg);
+            margin: var(--space-sm) 0 0 0;
+        }
+        .best-uses li {
+            margin-bottom: var(--space-xs);
+        }
+        .type-comparison, .optical-comparison {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+        .type-card, .optical-type {
+            flex: 1;
+            min-width: 200px;
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .type-card.highlight {
+            background: #dcfce7;
+            border: 2px solid #16a34a;
+        }
+        .optical-type {
+            position: relative;
+        }
+        .capacity-bar {
+            height: 8px;
+            background: #2563eb;
+            border-radius: 4px;
+            margin: var(--space-sm) 0;
+        }
+        .optical-type .use {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        .warning-note {
+            background: #fef3c7;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid #f59e0b;
+            margin-top: var(--space-lg);
+        }
+        .warning-note h4 {
+            border: none;
+            padding: 0;
+            margin-bottom: var(--space-xs);
+        }
+        .decision-flowchart {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+        .decision-node.start {
+            background: var(--theory, #10b981);
+            color: white;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-lg);
+            font-weight: bold;
+        }
+        .decision-branches {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .branch-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--gray-600);
+        }
+        .result {
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-weight: bold;
+            color: white;
+        }
+        .result.ssd { background: #059669; }
+        .result.hdd { background: #7c3aed; }
+        .result.optical { background: #2563eb; }
+        .result.tape { background: #dc2626; }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

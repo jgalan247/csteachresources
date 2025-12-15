@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict: Data Units - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Units</a>
+            <h1>Predict: Data Units & File Sizes</h1>
+            <p class="subtitle">Make predictions about file sizes and unit conversions</p>
+        </div>
+
+        <div class="instructions-box">
+            <h3>How This Works</h3>
+            <p>For each scenario, make a prediction BEFORE revealing the answer. This helps develop your intuition for data sizes and calculation skills.</p>
+        </div>
+
+        <!-- Prediction 1: Unit Comparison -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">1</span>
+                <h3>Which is Larger?</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Which of these represents MORE data?</p>
+                <ul class="comparison-list">
+                    <li><strong>Option A:</strong> 5,000 KB</li>
+                    <li><strong>Option B:</strong> 4 MB</li>
+                </ul>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred1" value="a"> Option A (5,000 KB)</label>
+                    <label><input type="radio" name="pred1" value="b"> Option B (4 MB)</label>
+                    <label><input type="radio" name="pred1" value="c"> They're equal</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer1">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer1">
+                <h4>Answer: Option A (5,000 KB) is larger</h4>
+                <div class="explanation">
+                    <p><strong>Working:</strong></p>
+                    <ul>
+                        <li>5,000 KB = 5,000 ÷ 1,000 = <strong>5 MB</strong></li>
+                        <li>4 MB stays as <strong>4 MB</strong></li>
+                        <li>5 MB > 4 MB, so Option A is larger by 1 MB</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 2: Image File Size -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">2</span>
+                <h3>Image File Size</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>A digital photo has these properties:</p>
+                <ul>
+                    <li>Resolution: 800 × 600 pixels</li>
+                    <li>Colour depth: 24 bits (true colour)</li>
+                </ul>
+                <p>What is the approximate file size?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred2" value="a"> About 140 KB</label>
+                    <label><input type="radio" name="pred2" value="b"> About 1.4 MB</label>
+                    <label><input type="radio" name="pred2" value="c"> About 14 MB</label>
+                    <label><input type="radio" name="pred2" value="d"> About 140 MB</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer2">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer2">
+                <h4>Answer: About 1.4 MB</h4>
+                <div class="explanation">
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>Total pixels = 800 × 600 = 480,000 pixels</li>
+                        <li>Size in bits = 480,000 × 24 = 11,520,000 bits</li>
+                        <li>Size in bytes = 11,520,000 ÷ 8 = 1,440,000 bytes</li>
+                        <li>Size in MB = 1,440,000 ÷ 1,000,000 = <strong>1.44 MB</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 3: Audio File Size -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">3</span>
+                <h3>Audio File Size</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>A music track has these properties:</p>
+                <ul>
+                    <li>Duration: 4 minutes</li>
+                    <li>Sample rate: 44,100 Hz (CD quality)</li>
+                    <li>Bit depth: 16 bits</li>
+                    <li>Channels: Stereo (2 channels)</li>
+                </ul>
+                <p>What is the approximate uncompressed file size?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred3" value="a"> About 4 MB</label>
+                    <label><input type="radio" name="pred3" value="b"> About 20 MB</label>
+                    <label><input type="radio" name="pred3" value="c"> About 42 MB</label>
+                    <label><input type="radio" name="pred3" value="d"> About 100 MB</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer3">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer3">
+                <h4>Answer: About 42 MB</h4>
+                <div class="explanation">
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>Duration = 4 × 60 = 240 seconds</li>
+                        <li>Size in bits = 44,100 × 240 × 16 = 169,344,000 bits</li>
+                        <li>For stereo × 2 = 338,688,000 bits</li>
+                        <li>Size in bytes = 338,688,000 ÷ 8 = 42,336,000 bytes</li>
+                        <li>Size in MB = 42,336,000 ÷ 1,000,000 = <strong>42.3 MB</strong></li>
+                    </ul>
+                    <p><em>This is why MP3 compression is useful - it reduces this to about 4 MB!</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 4: Text File Size -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">4</span>
+                <h3>Text File Size</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>A novel has approximately:</p>
+                <ul>
+                    <li>80,000 words</li>
+                    <li>Average 5 characters per word (plus spaces)</li>
+                    <li>ASCII encoding (8 bits per character)</li>
+                </ul>
+                <p>What is the approximate file size as plain text?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred4" value="a"> About 50 KB</label>
+                    <label><input type="radio" name="pred4" value="b"> About 500 KB</label>
+                    <label><input type="radio" name="pred4" value="c"> About 5 MB</label>
+                    <label><input type="radio" name="pred4" value="d"> About 50 MB</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer4">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer4">
+                <h4>Answer: About 500 KB</h4>
+                <div class="explanation">
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>Characters per word (including space) = 5 + 1 = 6</li>
+                        <li>Total characters = 80,000 × 6 = 480,000 characters</li>
+                        <li>Size in bits = 480,000 × 8 = 3,840,000 bits</li>
+                        <li>Size in bytes = 3,840,000 ÷ 8 = 480,000 bytes</li>
+                        <li>Size in KB = 480,000 ÷ 1,000 = <strong>480 KB</strong></li>
+                    </ul>
+                    <p><em>Text is very efficient! That's why ebooks are so small compared to images or video.</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 5: Bits vs Bytes -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">5</span>
+                <h3>Bits vs Bytes Trap</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Your internet speed is advertised as <strong>100 Mbps</strong> (megabits per second).</p>
+                <p>How long would it take to download a 100 MB file?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred5" value="a"> 1 second</label>
+                    <label><input type="radio" name="pred5" value="b"> 8 seconds</label>
+                    <label><input type="radio" name="pred5" value="c"> 80 seconds</label>
+                    <label><input type="radio" name="pred5" value="d"> 800 seconds</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer5">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer5">
+                <h4>Answer: 8 seconds</h4>
+                <div class="explanation">
+                    <p><strong>This is a common trap!</strong></p>
+                    <ul>
+                        <li>Internet speeds are in <strong>bits</strong> (Mbps)</li>
+                        <li>File sizes are in <strong>bytes</strong> (MB)</li>
+                        <li>100 Mbps = 100 megabits per second</li>
+                        <li>100 MB = 100 megabytes = 800 megabits</li>
+                        <li>Time = 800 Mb ÷ 100 Mbps = <strong>8 seconds</strong></li>
+                    </ul>
+                    <p><em>Always check if it's bits (b) or bytes (B) - they differ by a factor of 8!</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 6: Storage Planning -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">6</span>
+                <h3>Storage Planning</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>A photographer wants to store 1,000 photos. Each photo is:</p>
+                <ul>
+                    <li>Resolution: 4000 × 3000 pixels</li>
+                    <li>Colour depth: 24 bits</li>
+                </ul>
+                <p>What size memory card do they need (minimum)?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred6" value="a"> 8 GB</label>
+                    <label><input type="radio" name="pred6" value="b"> 16 GB</label>
+                    <label><input type="radio" name="pred6" value="c"> 32 GB</label>
+                    <label><input type="radio" name="pred6" value="d"> 64 GB</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer6">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer6">
+                <h4>Answer: 32 GB (or 64 GB to be safe)</h4>
+                <div class="explanation">
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>Pixels per photo = 4000 × 3000 = 12,000,000</li>
+                        <li>Bits per photo = 12,000,000 × 24 = 288,000,000 bits</li>
+                        <li>Bytes per photo = 288,000,000 ÷ 8 = 36,000,000 = 36 MB</li>
+                        <li>Total for 1,000 photos = 36 × 1,000 = 36,000 MB = <strong>36 GB</strong></li>
+                    </ul>
+                    <p>Since 36 GB > 32 GB, they need at least a <strong>64 GB</strong> card (the next standard size).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 7: Colour Depth Impact -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">7</span>
+                <h3>Colour Depth Impact</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Two identical images (1000 × 1000 pixels) are saved:</p>
+                <ul>
+                    <li><strong>Image A:</strong> 8-bit colour depth (256 colours)</li>
+                    <li><strong>Image B:</strong> 24-bit colour depth (16.7 million colours)</li>
+                </ul>
+                <p>How many times larger is Image B compared to Image A?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred7" value="a"> 2 times larger</label>
+                    <label><input type="radio" name="pred7" value="b"> 3 times larger</label>
+                    <label><input type="radio" name="pred7" value="c"> 8 times larger</label>
+                    <label><input type="radio" name="pred7" value="d"> 24 times larger</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer7">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer7">
+                <h4>Answer: 3 times larger</h4>
+                <div class="explanation">
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>Image A = 1000 × 1000 × 8 = 8,000,000 bits = 1 MB</li>
+                        <li>Image B = 1000 × 1000 × 24 = 24,000,000 bits = 3 MB</li>
+                        <li>Ratio = 24 ÷ 8 = <strong>3 times larger</strong></li>
+                    </ul>
+                    <p><em>The file size is directly proportional to colour depth - triple the bits means triple the size!</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 8: Unit Prefix Order -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">8</span>
+                <h3>Order These Units</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Put these in order from <strong>smallest to largest</strong>:</p>
+                <ul>
+                    <li>1 nibble</li>
+                    <li>1 GB</li>
+                    <li>1024 bytes</li>
+                    <li>1 MB</li>
+                    <li>1 byte</li>
+                </ul>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred8" value="a"> nibble, byte, 1024 bytes, MB, GB</label>
+                    <label><input type="radio" name="pred8" value="b"> byte, nibble, 1024 bytes, MB, GB</label>
+                    <label><input type="radio" name="pred8" value="c"> nibble, byte, MB, 1024 bytes, GB</label>
+                    <label><input type="radio" name="pred8" value="d"> byte, nibble, MB, 1024 bytes, GB</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer8">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer8">
+                <h4>Answer: nibble, byte, 1024 bytes, MB, GB</h4>
+                <div class="explanation">
+                    <p><strong>Sizes:</strong></p>
+                    <ul>
+                        <li>1 nibble = 4 bits = 0.5 bytes</li>
+                        <li>1 byte = 8 bits</li>
+                        <li>1024 bytes ≈ 1 KB</li>
+                        <li>1 MB = 1,000,000 bytes</li>
+                        <li>1 GB = 1,000,000,000 bytes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 9: Sample Rate Impact -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">9</span>
+                <h3>Sample Rate Impact</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>Two 1-minute audio recordings with the same bit depth (16-bit, mono):</p>
+                <ul>
+                    <li><strong>Recording A:</strong> 22,050 Hz (half CD quality)</li>
+                    <li><strong>Recording B:</strong> 44,100 Hz (CD quality)</li>
+                </ul>
+                <p>How does the file size compare?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred9" value="a"> Recording B is 2x the size of A</label>
+                    <label><input type="radio" name="pred9" value="b"> Recording B is 4x the size of A</label>
+                    <label><input type="radio" name="pred9" value="c"> They're the same size</label>
+                    <label><input type="radio" name="pred9" value="d"> Recording A is larger</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer9">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer9">
+                <h4>Answer: Recording B is 2x the size of A</h4>
+                <div class="explanation">
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>Recording A = 22,050 × 60 × 16 = 21,168,000 bits ≈ 2.6 MB</li>
+                        <li>Recording B = 44,100 × 60 × 16 = 42,336,000 bits ≈ 5.3 MB</li>
+                        <li>44,100 ÷ 22,050 = 2</li>
+                    </ul>
+                    <p><em>Sample rate is directly proportional to file size - double the samples means double the data!</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction 10: Real World Estimation -->
+        <section class="prediction-card">
+            <div class="prediction-header">
+                <span class="prediction-number">10</span>
+                <h3>Real-World Estimation</h3>
+            </div>
+            <div class="prediction-scenario">
+                <p>A student types an essay with 2,000 words. Assuming:</p>
+                <ul>
+                    <li>Average 5 characters per word</li>
+                    <li>Spaces between words</li>
+                    <li>ASCII encoding (1 byte per character)</li>
+                </ul>
+                <p>Approximately how many essays could fit on a 1 MB drive?</p>
+            </div>
+            <div class="prediction-input">
+                <p><strong>Your prediction:</strong></p>
+                <div class="prediction-options">
+                    <label><input type="radio" name="pred10" value="a"> About 10 essays</label>
+                    <label><input type="radio" name="pred10" value="b"> About 80 essays</label>
+                    <label><input type="radio" name="pred10" value="c"> About 500 essays</label>
+                    <label><input type="radio" name="pred10" value="d"> About 5,000 essays</label>
+                </div>
+            </div>
+            <button class="btn btn-primary reveal-btn" data-target="answer10">Reveal Answer</button>
+            <div class="prediction-answer hidden" id="answer10">
+                <h4>Answer: About 80 essays</h4>
+                <div class="explanation">
+                    <p><strong>Calculation:</strong></p>
+                    <ul>
+                        <li>Characters per word (including space) = 6</li>
+                        <li>Total characters per essay = 2,000 × 6 = 12,000</li>
+                        <li>Bytes per essay = 12,000 bytes = 12 KB</li>
+                        <li>Essays per MB = 1,000 KB ÷ 12 KB ≈ <strong>83 essays</strong></li>
+                    </ul>
+                    <p><em>Text is incredibly efficient - you could fit thousands of essays on a smartphone!</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Score Tracker -->
+        <section class="score-section mt-xl">
+            <h2>How Did You Do?</h2>
+            <p>Developing intuition for file sizes takes practice. The more you work with these calculations, the better you'll become at estimating!</p>
+            <div class="score-tips">
+                <h4>Key Takeaways:</h4>
+                <ul>
+                    <li><strong>8 bits = 1 byte</strong> - Always divide by 8 when converting bits to bytes</li>
+                    <li><strong>×1,000</strong> between each unit (KB → MB → GB → TB)</li>
+                    <li><strong>Image size</strong> depends on resolution AND colour depth</li>
+                    <li><strong>Audio size</strong> depends on sample rate, bit depth, duration, AND channels</li>
+                    <li><strong>bits vs bytes</strong> - Internet speeds use bits, file sizes use bytes!</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="example.html" class="btn btn-primary">Worked Examples →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Reveal answer functionality
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.dataset.target;
+                const answerDiv = document.getElementById(targetId);
+                answerDiv.classList.toggle('hidden');
+                this.textContent = answerDiv.classList.contains('hidden') ? 'Reveal Answer' : 'Hide Answer';
+            });
+        });
+
+        // Track completion
+        let revealed = 0;
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                revealed++;
+                if (revealed >= 5) {
+                    Progress.completeActivity('units', 'predict');
+                }
+            });
+        });
+
+        Progress.startTopic('units');
+    </script>
+    <style>
+        .instructions-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+        .instructions-box h3 {
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+        .prediction-card {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-xl);
+        }
+        .prediction-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        .prediction-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .prediction-header h3 {
+            margin: 0;
+        }
+        .prediction-scenario {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+        .prediction-scenario ul {
+            margin: var(--space-sm) 0 0 var(--space-lg);
+        }
+        .comparison-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-md) 0;
+        }
+        .comparison-list li {
+            padding: var(--space-sm);
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-xs);
+        }
+        .prediction-input {
+            margin-bottom: var(--space-lg);
+        }
+        .prediction-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+        .prediction-options label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .prediction-options label:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .prediction-answer {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: #dcfce7;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--success);
+        }
+        .prediction-answer h4 {
+            margin-top: 0;
+            color: var(--success);
+        }
+        .explanation {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .explanation ul {
+            margin: var(--space-sm) 0 0 var(--space-lg);
+        }
+        .explanation p em {
+            color: var(--gray-600);
+        }
+        .hidden {
+            display: none;
+        }
+        .score-section {
+            background: var(--gray-100);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .score-tips {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .score-tips h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .score-tips ul {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+        .score-tips li {
+            margin-bottom: var(--space-sm);
+        }
+    </style>
+</body>
+</html>

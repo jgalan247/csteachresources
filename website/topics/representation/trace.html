@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace - Data Representation</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Representation</a>
+            <h1>Trace Through Calculations</h1>
+            <p class="subtitle">Work through file size calculations step by step</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How to Use This Activity</h2>
+            <p>Complete each calculation step by step. Enter your answer, then check if you're correct before moving on. This helps you understand the <strong>process</strong>, not just get final answers.</p>
+        </div>
+
+        <!-- Exercise 1: Text File Size -->
+        <section class="trace-exercise" id="exercise-1">
+            <h2>Exercise 1: Text File Size (ASCII)</h2>
+            <p class="exercise-instruction">Calculate the file size of a text file containing <strong>"Computer Science is fun!"</strong> (24 characters) using ASCII encoding.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: How many characters are in the text?</label>
+                    <input type="text" class="trace-input" data-answer="24" placeholder="count">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: ASCII uses how many bits per character?</label>
+                    <input type="text" class="trace-input" data-answer="8" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: File size in bits = 24 × 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="192" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 4: File size in bytes = 192 ÷ 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="24" placeholder="bytes">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Unicode vs ASCII -->
+        <section class="trace-exercise" id="exercise-2">
+            <h2>Exercise 2: Unicode File Size Comparison</h2>
+            <p class="exercise-instruction">A document contains <strong>1,000 characters</strong>. Calculate the file size in both ASCII (8-bit) and Unicode (16-bit).</p>
+
+            <div class="trace-steps">
+                <h3>Part A: ASCII</h3>
+                <div class="trace-step">
+                    <label>Step 1: ASCII file size in bits = 1,000 × 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="8000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: ASCII file size in bytes = 8,000 ÷ 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="1000" placeholder="bytes">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+
+                <h3>Part B: Unicode</h3>
+                <div class="trace-step">
+                    <label>Step 3: Unicode file size in bits = 1,000 × 16 = ?</label>
+                    <input type="text" class="trace-input" data-answer="16000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: Unicode file size in bytes = 16,000 ÷ 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="2000" placeholder="bytes">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+
+                <h3>Part C: Comparison</h3>
+                <div class="trace-step final-step">
+                    <label>Step 5: How many times larger is Unicode than ASCII? (2000 ÷ 1000)</label>
+                    <input type="text" class="trace-input" data-answer="2" placeholder="times">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 3: ASCII Character Codes -->
+        <section class="trace-exercise" id="exercise-3">
+            <h2>Exercise 3: ASCII Character Codes</h2>
+            <p class="exercise-instruction">Using the pattern that 'A' = 65, 'a' = 97, and '0' = 48, calculate the codes for other characters.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: 'E' is the 5th letter. Code for 'E' = 65 + 4 = ?</label>
+                    <input type="text" class="trace-input" data-answer="69" placeholder="code">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: 'e' is lowercase. Code for 'e' = 69 + 32 = ?</label>
+                    <input type="text" class="trace-input" data-answer="101" placeholder="code">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: '5' is 5 positions after '0'. Code for '5' = 48 + 5 = ?</label>
+                    <input type="text" class="trace-input" data-answer="53" placeholder="code">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 4: 'Z' is the 26th letter. Code for 'Z' = 65 + 25 = ?</label>
+                    <input type="text" class="trace-input" data-answer="90" placeholder="code">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 4: Image File Size -->
+        <section class="trace-exercise" id="exercise-4">
+            <h2>Exercise 4: Image File Size</h2>
+            <p class="exercise-instruction">Calculate the file size of a <strong>640 × 480 pixel</strong> image with <strong>24-bit colour depth</strong>.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Total pixels = 640 × 480 = ?</label>
+                    <input type="text" class="trace-input" data-answer="307200" placeholder="pixels">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: File size in bits = 307,200 × 24 = ?</label>
+                    <input type="text" class="trace-input" data-answer="7372800" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: File size in bytes = 7,372,800 ÷ 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="921600" placeholder="bytes">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 4: File size in KB = 921,600 ÷ 1,000 = ? (round to 1 decimal)</label>
+                    <input type="text" class="trace-input" data-answer="921.6" placeholder="KB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 5: Colour Depth Comparison -->
+        <section class="trace-exercise" id="exercise-5">
+            <h2>Exercise 5: Colour Depth Comparison</h2>
+            <p class="exercise-instruction">An image has <strong>500,000 pixels</strong>. Compare file sizes at different colour depths.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: At 1-bit colour, how many colours are possible? (2^1)</label>
+                    <input type="text" class="trace-input" data-answer="2" placeholder="colours">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: File size at 1-bit = 500,000 × 1 = ? bits</label>
+                    <input type="text" class="trace-input" data-answer="500000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: At 8-bit colour, how many colours are possible? (2^8)</label>
+                    <input type="text" class="trace-input" data-answer="256" placeholder="colours">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: File size at 8-bit = 500,000 × 8 = ? bits</label>
+                    <input type="text" class="trace-input" data-answer="4000000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 5: How many times larger is 8-bit than 1-bit?</label>
+                    <input type="text" class="trace-input" data-answer="8" placeholder="times">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 6: Sound File Size -->
+        <section class="trace-exercise" id="exercise-6">
+            <h2>Exercise 6: Sound File Size (Mono)</h2>
+            <p class="exercise-instruction">Calculate the file size of a <strong>20-second mono</strong> recording at <strong>22,050 Hz</strong> sample rate with <strong>8-bit</strong> depth.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Total samples = 22,050 × 20 = ?</label>
+                    <input type="text" class="trace-input" data-answer="441000" placeholder="samples">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: File size in bits = 441,000 × 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="3528000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: File size in bytes = 3,528,000 ÷ 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="441000" placeholder="bytes">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 4: File size in KB = 441,000 ÷ 1,000 = ?</label>
+                    <input type="text" class="trace-input" data-answer="441" placeholder="KB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 7: CD Quality Sound -->
+        <section class="trace-exercise" id="exercise-7">
+            <h2>Exercise 7: CD Quality Stereo Sound</h2>
+            <p class="exercise-instruction">Calculate the file size of a <strong>1-minute stereo</strong> track at CD quality (<strong>44,100 Hz</strong>, <strong>16-bit</strong>).</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Duration in seconds = 1 × 60 = ?</label>
+                    <input type="text" class="trace-input" data-answer="60" placeholder="seconds">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Samples per channel = 44,100 × 60 = ?</label>
+                    <input type="text" class="trace-input" data-answer="2646000" placeholder="samples">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: Bits per channel = 2,646,000 × 16 = ?</label>
+                    <input type="text" class="trace-input" data-answer="42336000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: Total bits (stereo = 2 channels) = 42,336,000 × 2 = ?</label>
+                    <input type="text" class="trace-input" data-answer="84672000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 5: Bytes = 84,672,000 ÷ 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="10584000" placeholder="bytes">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 6: MB = 10,584,000 ÷ 1,000,000 = ? (2 decimal places)</label>
+                    <input type="text" class="trace-input" data-answer="10.58" placeholder="MB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 8: Sample Rate Comparison -->
+        <section class="trace-exercise" id="exercise-8">
+            <h2>Exercise 8: Sample Rate Impact</h2>
+            <p class="exercise-instruction">Compare file sizes for a <strong>30-second mono</strong> recording at different sample rates (all 16-bit).</p>
+
+            <div class="trace-steps">
+                <h3>Telephone Quality (8,000 Hz)</h3>
+                <div class="trace-step">
+                    <label>Step 1: Bits = 8,000 × 16 × 30 = ?</label>
+                    <input type="text" class="trace-input" data-answer="3840000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Bytes = 3,840,000 ÷ 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="480000" placeholder="bytes">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+
+                <h3>CD Quality (44,100 Hz)</h3>
+                <div class="trace-step">
+                    <label>Step 3: Bits = 44,100 × 16 × 30 = ?</label>
+                    <input type="text" class="trace-input" data-answer="21168000" placeholder="bits">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: Bytes = 21,168,000 ÷ 8 = ?</label>
+                    <input type="text" class="trace-input" data-answer="2646000" placeholder="bytes">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+
+                <h3>Comparison</h3>
+                <div class="trace-step final-step">
+                    <label>Step 5: CD quality is how many times larger than telephone? (round to 1 decimal)</label>
+                    <input type="text" class="trace-input" data-answer="5.5" placeholder="times">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Summary -->
+        <section class="exercise-summary">
+            <h2>Your Progress</h2>
+            <div class="summary-grid" id="progress-summary">
+                <div class="summary-item" data-exercise="1">
+                    <span class="exercise-name">Text File (ASCII)</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="2">
+                    <span class="exercise-name">Unicode Comparison</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="3">
+                    <span class="exercise-name">ASCII Codes</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="4">
+                    <span class="exercise-name">Image File Size</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="5">
+                    <span class="exercise-name">Colour Depth</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="6">
+                    <span class="exercise-name">Mono Sound</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="7">
+                    <span class="exercise-name">Stereo Sound</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="8">
+                    <span class="exercise-name">Sample Rate</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-nav">
+            <a href="example.html" class="btn btn-secondary">← Worked Examples</a>
+            <a href="parsons.html" class="btn btn-primary">Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Track progress per exercise
+        const exerciseProgress = {};
+
+        // Initialize exercise tracking
+        document.querySelectorAll('.trace-exercise').forEach(ex => {
+            const id = ex.id.split('-')[1];
+            const steps = ex.querySelectorAll('.trace-step').length;
+            exerciseProgress[id] = { total: steps, correct: 0 };
+        });
+
+        // Check answer functionality
+        document.querySelectorAll('.check-step').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const step = this.closest('.trace-step');
+                const input = step.querySelector('.trace-input');
+                const feedback = step.querySelector('.step-feedback');
+                const answer = input.dataset.answer.toLowerCase();
+                const userAnswer = input.value.trim().toLowerCase();
+
+                // Find which exercise this belongs to
+                const exercise = this.closest('.trace-exercise');
+                const exerciseNum = exercise.id.split('-')[1];
+
+                if (userAnswer === answer) {
+                    feedback.textContent = 'Correct!';
+                    feedback.className = 'step-feedback correct';
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    this.disabled = true;
+                    input.disabled = true;
+
+                    // Track progress
+                    exerciseProgress[exerciseNum].correct++;
+                    updateProgressDisplay(exerciseNum);
+                } else {
+                    feedback.textContent = 'Try again';
+                    feedback.className = 'step-feedback incorrect';
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            });
+        });
+
+        // Update progress display
+        function updateProgressDisplay(exerciseNum) {
+            const progress = exerciseProgress[exerciseNum];
+            const summaryItem = document.querySelector(`.summary-item[data-exercise="${exerciseNum}"]`);
+            const statusEl = summaryItem.querySelector('.exercise-status');
+
+            if (progress.correct >= progress.total) {
+                statusEl.textContent = 'Complete!';
+                statusEl.className = 'exercise-status complete';
+                summaryItem.classList.add('complete');
+
+                // Save progress
+                if (typeof Progress !== 'undefined') {
+                    Progress.complete(`representation-trace-${exerciseNum}`);
+                }
+            } else {
+                statusEl.textContent = `${progress.correct}/${progress.total}`;
+                statusEl.className = 'exercise-status in-progress';
+                summaryItem.classList.add('in-progress');
+            }
+        }
+
+        // Allow Enter key to submit
+        document.querySelectorAll('.trace-input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const btn = this.closest('.trace-step').querySelector('.check-step');
+                    if (btn && !btn.disabled) {
+                        btn.click();
+                    }
+                }
+            });
+        });
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('representation-trace');
+        }
+    </script>
+
+    <style>
+        .trace-exercise {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .exercise-instruction {
+            background: var(--primary-light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .trace-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .trace-steps h3 {
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--gray-700);
+            font-size: 1rem;
+        }
+
+        .trace-step {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--gray-300);
+        }
+
+        .trace-step.final-step {
+            border-left-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .trace-step label {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .trace-input {
+            padding: var(--space-sm) var(--space-md);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 1rem;
+            width: 120px;
+        }
+
+        .trace-input.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .trace-input.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+
+        .step-feedback {
+            font-weight: bold;
+            min-width: 80px;
+        }
+
+        .step-feedback.correct {
+            color: var(--success);
+        }
+
+        .step-feedback.incorrect {
+            color: var(--error);
+        }
+
+        .btn-sm {
+            padding: var(--space-xs) var(--space-md);
+            font-size: 0.9rem;
+        }
+
+        .exercise-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .summary-item {
+            padding: var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .summary-item.in-progress {
+            background: #fff3cd;
+        }
+
+        .summary-item.complete {
+            background: #d4edda;
+        }
+
+        .exercise-name {
+            display: block;
+            font-weight: bold;
+            margin-bottom: var(--space-xs);
+        }
+
+        .exercise-status {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .exercise-status.complete {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .exercise-status.in-progress {
+            color: var(--warning);
+        }
+
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Systems - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="../index.html" class="back-link">← Back to Topics</a>
+            <h1>Number Systems</h1>
+            <p class="subtitle">Binary, Denary, and Hexadecimal conversions</p>
+        </div>
+
+        <!-- Learning Objectives -->
+        <section class="objectives-section">
+            <h2>What You'll Learn</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <span class="objective-icon">🔢</span>
+                    <h3>Number Bases</h3>
+                    <p>Denary (base 10), Binary (base 2), Hexadecimal (base 16)</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">🔄</span>
+                    <h3>Conversions</h3>
+                    <p>Convert between all three number systems</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">➕</span>
+                    <h3>Binary Addition</h3>
+                    <p>Add binary numbers and understand overflow</p>
+                </div>
+                <div class="objective-card">
+                    <span class="objective-icon">↔️</span>
+                    <h3>Binary Shifts</h3>
+                    <p>Shift bits left and right to multiply/divide</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Understanding Number Bases -->
+        <section class="content-section mt-xl">
+            <h2>Understanding Number Bases</h2>
+
+            <div class="concept-box">
+                <h3>What is a Number Base?</h3>
+                <p>A <strong>number base</strong> (or radix) tells us how many different digits are used in a number system and how place values work.</p>
+            </div>
+
+            <div class="bases-comparison mt-lg">
+                <div class="base-card denary">
+                    <h3>Denary (Base 10)</h3>
+                    <p class="base-digits">Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</p>
+                    <p>The number system we use every day. Each position is worth 10× the one to its right.</p>
+                    <div class="place-values">
+                        <div class="pv-item"><span class="pv-power">10³</span><span class="pv-value">1000s</span></div>
+                        <div class="pv-item"><span class="pv-power">10²</span><span class="pv-value">100s</span></div>
+                        <div class="pv-item"><span class="pv-power">10¹</span><span class="pv-value">10s</span></div>
+                        <div class="pv-item"><span class="pv-power">10⁰</span><span class="pv-value">1s</span></div>
+                    </div>
+                    <div class="base-example">
+                        Example: 247 = (2×100) + (4×10) + (7×1)
+                    </div>
+                </div>
+
+                <div class="base-card binary">
+                    <h3>Binary (Base 2)</h3>
+                    <p class="base-digits">Digits: 0, 1</p>
+                    <p>Used by computers. Each position is worth 2× the one to its right.</p>
+                    <div class="place-values">
+                        <div class="pv-item"><span class="pv-power">2⁷</span><span class="pv-value">128</span></div>
+                        <div class="pv-item"><span class="pv-power">2⁶</span><span class="pv-value">64</span></div>
+                        <div class="pv-item"><span class="pv-power">2⁵</span><span class="pv-value">32</span></div>
+                        <div class="pv-item"><span class="pv-power">2⁴</span><span class="pv-value">16</span></div>
+                        <div class="pv-item"><span class="pv-power">2³</span><span class="pv-value">8</span></div>
+                        <div class="pv-item"><span class="pv-power">2²</span><span class="pv-value">4</span></div>
+                        <div class="pv-item"><span class="pv-power">2¹</span><span class="pv-value">2</span></div>
+                        <div class="pv-item"><span class="pv-power">2⁰</span><span class="pv-value">1</span></div>
+                    </div>
+                    <div class="base-example">
+                        Example: 11010 = 16 + 8 + 2 = 26
+                    </div>
+                </div>
+
+                <div class="base-card hex">
+                    <h3>Hexadecimal (Base 16)</h3>
+                    <p class="base-digits">Digits: 0-9, A, B, C, D, E, F</p>
+                    <p>Shorthand for binary. Each hex digit = 4 binary digits.</p>
+                    <div class="hex-values">
+                        <table class="hex-table">
+                            <tr><td>A = 10</td><td>B = 11</td><td>C = 12</td></tr>
+                            <tr><td>D = 13</td><td>E = 14</td><td>F = 15</td></tr>
+                        </table>
+                    </div>
+                    <div class="base-example">
+                        Example: 2F = (2×16) + (15×1) = 47
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-terms mt-lg">
+                <h3>Key Terms</h3>
+                <div class="term-grid">
+                    <div class="term-card">
+                        <strong>Most Significant Bit (MSB)</strong>
+                        <p>The leftmost bit - has the highest place value</p>
+                        <div class="term-example"><span class="highlight">1</span>0110101 ← MSB</div>
+                    </div>
+                    <div class="term-card">
+                        <strong>Least Significant Bit (LSB)</strong>
+                        <p>The rightmost bit - has the lowest place value (1)</p>
+                        <div class="term-example">1011010<span class="highlight">1</span> ← LSB</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Binary to Denary Conversion -->
+        <section class="content-section mt-xl">
+            <h2>Binary to Denary Conversion</h2>
+
+            <div class="method-box">
+                <h3>Method: Add Place Values</h3>
+                <ol>
+                    <li>Write out the binary place values (128, 64, 32, 16, 8, 4, 2, 1)</li>
+                    <li>Write the binary number underneath, aligning from the right</li>
+                    <li>Add up the place values where there is a 1</li>
+                </ol>
+            </div>
+
+            <div class="worked-example mt-lg">
+                <h4>Example: Convert 10110101 to denary</h4>
+                <div class="conversion-table">
+                    <div class="conv-row header">
+                        <span>128</span><span>64</span><span>32</span><span>16</span><span>8</span><span>4</span><span>2</span><span>1</span>
+                    </div>
+                    <div class="conv-row binary">
+                        <span class="bit-1">1</span><span class="bit-0">0</span><span class="bit-1">1</span><span class="bit-1">1</span><span class="bit-0">0</span><span class="bit-1">1</span><span class="bit-0">0</span><span class="bit-1">1</span>
+                    </div>
+                </div>
+                <div class="calculation">
+                    = 128 + 32 + 16 + 4 + 1 = <strong>181</strong>
+                </div>
+            </div>
+
+            <!-- Interactive Converter -->
+            <div class="interactive-tool mt-lg">
+                <h3>Try It: Binary to Denary Converter</h3>
+                <div class="binary-input-grid">
+                    <div class="bit-input-row">
+                        <span class="pv-label">128</span>
+                        <span class="pv-label">64</span>
+                        <span class="pv-label">32</span>
+                        <span class="pv-label">16</span>
+                        <span class="pv-label">8</span>
+                        <span class="pv-label">4</span>
+                        <span class="pv-label">2</span>
+                        <span class="pv-label">1</span>
+                    </div>
+                    <div class="bit-input-row">
+                        <input type="checkbox" class="bit-checkbox" data-value="128">
+                        <input type="checkbox" class="bit-checkbox" data-value="64">
+                        <input type="checkbox" class="bit-checkbox" data-value="32">
+                        <input type="checkbox" class="bit-checkbox" data-value="16">
+                        <input type="checkbox" class="bit-checkbox" data-value="8">
+                        <input type="checkbox" class="bit-checkbox" data-value="4">
+                        <input type="checkbox" class="bit-checkbox" data-value="2">
+                        <input type="checkbox" class="bit-checkbox" data-value="1">
+                    </div>
+                </div>
+                <div class="converter-result">
+                    <span>Binary: <strong id="binary-display">00000000</strong></span>
+                    <span>= Denary: <strong id="denary-display">0</strong></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Denary to Binary Conversion -->
+        <section class="content-section mt-xl">
+            <h2>Denary to Binary Conversion</h2>
+
+            <div class="method-box">
+                <h3>Method: Repeated Division by 2</h3>
+                <ol>
+                    <li>Divide the number by 2</li>
+                    <li>Write down the remainder (0 or 1)</li>
+                    <li>Repeat with the quotient until you reach 0</li>
+                    <li>Read the remainders from bottom to top</li>
+                </ol>
+            </div>
+
+            <div class="worked-example mt-lg">
+                <h4>Example: Convert 156 to binary</h4>
+                <div class="division-steps">
+                    <div class="div-step">156 ÷ 2 = 78 remainder <strong>0</strong></div>
+                    <div class="div-step">78 ÷ 2 = 39 remainder <strong>0</strong></div>
+                    <div class="div-step">39 ÷ 2 = 19 remainder <strong>1</strong></div>
+                    <div class="div-step">19 ÷ 2 = 9 remainder <strong>1</strong></div>
+                    <div class="div-step">9 ÷ 2 = 4 remainder <strong>1</strong></div>
+                    <div class="div-step">4 ÷ 2 = 2 remainder <strong>0</strong></div>
+                    <div class="div-step">2 ÷ 2 = 1 remainder <strong>0</strong></div>
+                    <div class="div-step">1 ÷ 2 = 0 remainder <strong>1</strong></div>
+                </div>
+                <div class="calculation">
+                    Read bottom to top: <strong>10011100</strong>
+                </div>
+            </div>
+
+            <div class="alternative-method mt-lg">
+                <h4>Alternative: Subtraction Method</h4>
+                <p>Start with the largest place value that fits, subtract it, and mark a 1. Repeat.</p>
+                <div class="subtraction-example">
+                    <p>156: Does 128 fit? Yes → <strong>1</strong>, 156-128=28</p>
+                    <p>28: Does 64 fit? No → <strong>0</strong></p>
+                    <p>28: Does 32 fit? No → <strong>0</strong></p>
+                    <p>28: Does 16 fit? Yes → <strong>1</strong>, 28-16=12</p>
+                    <p>12: Does 8 fit? Yes → <strong>1</strong>, 12-8=4</p>
+                    <p>4: Does 4 fit? Yes → <strong>1</strong>, 4-4=0</p>
+                    <p>0: 2 and 1 → <strong>0</strong>, <strong>0</strong></p>
+                    <p>Result: <strong>10011100</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Hexadecimal Conversions -->
+        <section class="content-section mt-xl">
+            <h2>Hexadecimal Conversions</h2>
+
+            <div class="hex-reference">
+                <h3>Hexadecimal Reference Table</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Denary</th><th>Binary</th><th>Hex</th><th></th><th>Denary</th><th>Binary</th><th>Hex</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>0000</td><td>0</td><td></td><td>8</td><td>1000</td><td>8</td></tr>
+                        <tr><td>1</td><td>0001</td><td>1</td><td></td><td>9</td><td>1001</td><td>9</td></tr>
+                        <tr><td>2</td><td>0010</td><td>2</td><td></td><td>10</td><td>1010</td><td>A</td></tr>
+                        <tr><td>3</td><td>0011</td><td>3</td><td></td><td>11</td><td>1011</td><td>B</td></tr>
+                        <tr><td>4</td><td>0100</td><td>4</td><td></td><td>12</td><td>1100</td><td>C</td></tr>
+                        <tr><td>5</td><td>0101</td><td>5</td><td></td><td>13</td><td>1101</td><td>D</td></tr>
+                        <tr><td>6</td><td>0110</td><td>6</td><td></td><td>14</td><td>1110</td><td>E</td></tr>
+                        <tr><td>7</td><td>0111</td><td>7</td><td></td><td>15</td><td>1111</td><td>F</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="conversion-methods mt-lg">
+                <div class="method-card">
+                    <h4>Binary ↔ Hexadecimal</h4>
+                    <p>Split binary into groups of 4 bits (from right), convert each group.</p>
+                    <div class="method-example">
+                        <p><strong>Binary to Hex:</strong> 10110101</p>
+                        <p>Split: 1011 | 0101</p>
+                        <p>Convert: B | 5 = <strong>B5</strong></p>
+                    </div>
+                    <div class="method-example">
+                        <p><strong>Hex to Binary:</strong> 3F</p>
+                        <p>3 = 0011, F = 1111</p>
+                        <p>Result: <strong>00111111</strong></p>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h4>Denary ↔ Hexadecimal</h4>
+                    <p>Divide by 16 for each digit, or convert via binary.</p>
+                    <div class="method-example">
+                        <p><strong>Denary to Hex:</strong> 200</p>
+                        <p>200 ÷ 16 = 12 remainder 8</p>
+                        <p>12 = C, 8 = 8 → <strong>C8</strong></p>
+                    </div>
+                    <div class="method-example">
+                        <p><strong>Hex to Denary:</strong> 5A</p>
+                        <p>(5 × 16) + (10 × 1)</p>
+                        <p>= 80 + 10 = <strong>90</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Binary Addition -->
+        <section class="content-section mt-xl">
+            <h2>Binary Addition</h2>
+
+            <div class="rules-box">
+                <h3>Binary Addition Rules</h3>
+                <div class="rules-grid">
+                    <div class="rule">0 + 0 = <strong>0</strong></div>
+                    <div class="rule">0 + 1 = <strong>1</strong></div>
+                    <div class="rule">1 + 0 = <strong>1</strong></div>
+                    <div class="rule">1 + 1 = <strong>10</strong> (0, carry 1)</div>
+                    <div class="rule">1 + 1 + 1 = <strong>11</strong> (1, carry 1)</div>
+                </div>
+            </div>
+
+            <div class="worked-example mt-lg">
+                <h4>Example: Add 01101011 + 00110101</h4>
+                <div class="addition-grid">
+                    <div class="add-row carry">
+                        <span></span><span>1</span><span>1</span><span>1</span><span></span><span>1</span><span>1</span><span></span><span></span>
+                    </div>
+                    <div class="add-row">
+                        <span></span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span>
+                    </div>
+                    <div class="add-row">
+                        <span>+</span><span>0</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span><span>1</span>
+                    </div>
+                    <div class="add-row result">
+                        <span>=</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span>
+                    </div>
+                </div>
+                <p class="verification">Verify: 107 + 53 = 160 ✓</p>
+            </div>
+
+            <div class="overflow-section mt-lg">
+                <h3>Overflow Errors</h3>
+                <div class="warning-box">
+                    <p>An <strong>overflow error</strong> occurs when the result of a calculation is too large to be stored in the available number of bits.</p>
+                </div>
+                <div class="overflow-example">
+                    <h4>Example: 11111111 + 00000001 (255 + 1)</h4>
+                    <div class="addition-grid small">
+                        <div class="add-row">
+                            <span></span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span>
+                        </div>
+                        <div class="add-row">
+                            <span>+</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span>
+                        </div>
+                        <div class="add-row result overflow">
+                            <span>=</span><span class="overflow-bit">1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span>
+                        </div>
+                    </div>
+                    <p>The 9th bit (shown in red) cannot be stored in 8 bits. The result appears as 00000000 (0) instead of 256. This is an <strong>overflow error</strong>.</p>
+                </div>
+                <div class="key-point">
+                    <p><strong>8-bit range:</strong> 0 to 255 (00000000 to 11111111)</p>
+                    <p>Any result above 255 causes overflow in 8 bits.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Binary Shifts -->
+        <section class="content-section mt-xl">
+            <h2>Binary Shifts</h2>
+
+            <div class="concept-box">
+                <h3>What is a Binary Shift?</h3>
+                <p>A binary shift moves all the bits in a binary number left or right by a specified number of positions.</p>
+            </div>
+
+            <div class="shift-types mt-lg">
+                <div class="shift-card left">
+                    <h4>Left Shift (×2 per shift)</h4>
+                    <p>Move bits left, fill empty positions on right with 0s.</p>
+                    <p><strong>Effect:</strong> Multiplies by 2 for each position shifted.</p>
+                    <div class="shift-example">
+                        <p>00001010 (10) shifted left by 1:</p>
+                        <div class="shift-visual">
+                            <span class="lost">←0</span>
+                            <span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span class="new">0</span>
+                        </div>
+                        <p>= 00010100 (20) → 10 × 2 = 20 ✓</p>
+                    </div>
+                    <div class="shift-example">
+                        <p>00000101 (5) shifted left by 2:</p>
+                        <p>= 00010100 (20) → 5 × 4 = 20 ✓</p>
+                    </div>
+                </div>
+
+                <div class="shift-card right">
+                    <h4>Right Shift (÷2 per shift)</h4>
+                    <p>Move bits right, fill empty positions on left with 0s.</p>
+                    <p><strong>Effect:</strong> Divides by 2 for each position (integer division).</p>
+                    <div class="shift-example">
+                        <p>00010100 (20) shifted right by 1:</p>
+                        <div class="shift-visual">
+                            <span class="new">0</span>
+                            <span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span class="lost">0→</span>
+                        </div>
+                        <p>= 00001010 (10) → 20 ÷ 2 = 10 ✓</p>
+                    </div>
+                    <div class="shift-example">
+                        <p>00010101 (21) shifted right by 1:</p>
+                        <p>= 00001010 (10) → 21 ÷ 2 = 10 (LSB lost!)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shift-summary mt-lg">
+                <h3>Quick Reference</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Operation</th><th>Shift Direction</th><th>Effect</th><th>Formula</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Left shift by 1</td><td>←</td><td>×2</td><td>n × 2¹</td></tr>
+                        <tr><td>Left shift by 2</td><td>←←</td><td>×4</td><td>n × 2²</td></tr>
+                        <tr><td>Left shift by 3</td><td>←←←</td><td>×8</td><td>n × 2³</td></tr>
+                        <tr><td>Right shift by 1</td><td>→</td><td>÷2</td><td>n ÷ 2¹</td></tr>
+                        <tr><td>Right shift by 2</td><td>→→</td><td>÷4</td><td>n ÷ 2²</td></tr>
+                        <tr><td>Right shift by 3</td><td>→→→</td><td>÷8</td><td>n ÷ 2³</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tip-box mt-lg">
+                <h4>Important Notes</h4>
+                <ul>
+                    <li><strong>Left shift overflow:</strong> Bits shifted past the MSB are lost</li>
+                    <li><strong>Right shift:</strong> Bits shifted past the LSB are lost (rounds down)</li>
+                    <li>Shifting is faster than multiplication/division in computer hardware</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Quick Reference Card -->
+        <section class="reference-card mt-xl">
+            <h2>Quick Reference</h2>
+            <div class="reference-grid">
+                <div class="ref-item">
+                    <h4>Number Ranges (8-bit)</h4>
+                    <ul>
+                        <li>Denary: 0 to 255</li>
+                        <li>Binary: 00000000 to 11111111</li>
+                        <li>Hex: 00 to FF</li>
+                    </ul>
+                </div>
+                <div class="ref-item">
+                    <h4>Conversion Tips</h4>
+                    <ul>
+                        <li>Binary ↔ Hex: Group by 4 bits</li>
+                        <li>Denary → Binary: Divide by 2</li>
+                        <li>Binary → Denary: Add place values</li>
+                    </ul>
+                </div>
+                <div class="ref-item">
+                    <h4>Binary Addition</h4>
+                    <ul>
+                        <li>1 + 1 = 10 (carry the 1)</li>
+                        <li>1 + 1 + 1 = 11 (carry the 1)</li>
+                        <li>Result > 255 = overflow</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Navigation -->
+        <section class="activities-nav mt-xl">
+            <h2>Practice Activities</h2>
+            <div class="activity-grid">
+                <a href="predict.html" class="activity-card">
+                    <span class="activity-icon">🔮</span>
+                    <h3>Predict</h3>
+                    <p>Estimate conversions before calculating</p>
+                </a>
+                <a href="example.html" class="activity-card">
+                    <span class="activity-icon">📖</span>
+                    <h3>Worked Examples</h3>
+                    <p>Step-by-step conversion walkthroughs</p>
+                </a>
+                <a href="trace.html" class="activity-card">
+                    <span class="activity-icon">🔍</span>
+                    <h3>Trace</h3>
+                    <p>Follow conversion processes</p>
+                </a>
+                <a href="parsons.html" class="activity-card">
+                    <span class="activity-icon">🧩</span>
+                    <h3>Parsons Problems</h3>
+                    <p>Order conversion steps correctly</p>
+                </a>
+                <a href="quiz.html" class="activity-card">
+                    <span class="activity-icon">📝</span>
+                    <h3>Quiz</h3>
+                    <p>Test your knowledge</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Interactive binary to denary converter
+        const checkboxes = document.querySelectorAll('.bit-checkbox');
+        const binaryDisplay = document.getElementById('binary-display');
+        const denaryDisplay = document.getElementById('denary-display');
+
+        function updateConverter() {
+            let binary = '';
+            let denary = 0;
+
+            checkboxes.forEach(cb => {
+                binary += cb.checked ? '1' : '0';
+                if (cb.checked) {
+                    denary += parseInt(cb.dataset.value);
+                }
+            });
+
+            binaryDisplay.textContent = binary;
+            denaryDisplay.textContent = denary;
+        }
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateConverter);
+        });
+
+        // Track progress
+        Progress.startTopic('numbers');
+    </script>
+    <style>
+        .bases-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        .base-card {
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            border: 2px solid;
+        }
+        .base-card.denary {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-color: #f59e0b;
+        }
+        .base-card.binary {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-color: #3b82f6;
+        }
+        .base-card.hex {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-color: #22c55e;
+        }
+        .base-card h3 {
+            margin-top: 0;
+        }
+        .base-digits {
+            font-family: monospace;
+            background: rgba(255,255,255,0.5);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        .place-values {
+            display: flex;
+            gap: var(--space-xs);
+            margin: var(--space-md) 0;
+            flex-wrap: wrap;
+        }
+        .pv-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: var(--space-xs);
+            background: rgba(255,255,255,0.7);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+        .pv-power {
+            font-weight: bold;
+        }
+        .pv-value {
+            color: var(--gray-600);
+        }
+        .base-example {
+            font-family: monospace;
+            background: rgba(255,255,255,0.7);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-md);
+        }
+        .hex-table {
+            width: 100%;
+            font-family: monospace;
+        }
+        .hex-table td {
+            padding: var(--space-xs);
+            background: rgba(255,255,255,0.5);
+            text-align: center;
+        }
+        .term-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .term-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        .term-example {
+            font-family: monospace;
+            font-size: 1.2rem;
+            margin-top: var(--space-sm);
+            background: var(--gray-100);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+        }
+        .term-example .highlight {
+            background: #fef08a;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        .method-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--primary);
+        }
+        .method-box h3 {
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+        .method-box ol {
+            margin: var(--space-md) 0 0 var(--space-lg);
+        }
+        .conversion-table {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin: var(--space-md) 0;
+        }
+        .conv-row {
+            display: flex;
+            gap: 2px;
+        }
+        .conv-row span {
+            width: 40px;
+            padding: var(--space-sm);
+            text-align: center;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+        }
+        .conv-row.header span {
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+        }
+        .conv-row.binary .bit-1 {
+            background: #dcfce7;
+            font-weight: bold;
+        }
+        .conv-row.binary .bit-0 {
+            background: #fef2f2;
+        }
+        .division-steps {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+        }
+        .div-step {
+            padding: var(--space-xs) 0;
+            border-bottom: 1px dotted var(--gray-300);
+        }
+        .div-step:last-child {
+            border-bottom: none;
+        }
+        .alternative-method {
+            background: #fef3c7;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+        }
+        .subtraction-example {
+            font-family: monospace;
+            font-size: 0.9rem;
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .subtraction-example p {
+            margin: var(--space-xs) 0;
+        }
+        .interactive-tool {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .binary-input-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .bit-input-row {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        .pv-label {
+            width: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--gray-600);
+        }
+        .bit-checkbox {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .converter-result {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-top: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 1.2rem;
+        }
+        .hex-reference table {
+            width: 100%;
+        }
+        .conversion-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        .method-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .method-card h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .method-example {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            font-family: monospace;
+        }
+        .method-example p {
+            margin: var(--space-xs) 0;
+        }
+        .rules-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+        }
+        .rules-box h3 {
+            margin-top: 0;
+        }
+        .rules-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        .rule {
+            background: white;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+        }
+        .addition-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin: var(--space-md) 0;
+            font-family: monospace;
+        }
+        .add-row {
+            display: flex;
+            gap: 2px;
+        }
+        .add-row span {
+            width: 30px;
+            padding: var(--space-sm);
+            text-align: center;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+        }
+        .add-row.carry span {
+            background: transparent;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+        .add-row.result span {
+            background: #dcfce7;
+            font-weight: bold;
+        }
+        .add-row.result.overflow span {
+            background: #fef2f2;
+        }
+        .overflow-bit {
+            background: #fee2e2 !important;
+            color: var(--error) !important;
+        }
+        .verification {
+            color: var(--success);
+            font-style: italic;
+        }
+        .warning-box {
+            background: #fef2f2;
+            border: 2px solid var(--error);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+        .overflow-example {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .shift-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        .shift-card {
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            border: 2px solid;
+        }
+        .shift-card.left {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-color: #3b82f6;
+        }
+        .shift-card.right {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-color: #22c55e;
+        }
+        .shift-card h4 {
+            margin-top: 0;
+        }
+        .shift-example {
+            background: rgba(255,255,255,0.7);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            font-family: monospace;
+        }
+        .shift-visual {
+            display: flex;
+            gap: 2px;
+            margin: var(--space-sm) 0;
+        }
+        .shift-visual span {
+            width: 28px;
+            padding: var(--space-xs);
+            text-align: center;
+            background: white;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-300);
+        }
+        .shift-visual .lost {
+            color: var(--error);
+            border-color: var(--error);
+            background: #fef2f2;
+        }
+        .shift-visual .new {
+            color: var(--success);
+            border-color: var(--success);
+            background: #dcfce7;
+        }
+        .shift-summary table {
+            width: 100%;
+        }
+        .reference-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--gray-300);
+        }
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+        .ref-item {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+        .ref-item h4 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: var(--space-sm);
+        }
+        .ref-item ul {
+            margin: 0;
+            padding-left: var(--space-md);
+        }
+        .key-point {
+            background: #e0f2fe;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .tip-box {
+            background: #e0f2fe;
+            border: 2px solid var(--primary);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+        }
+        .tip-box h4 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+    </style>
+</body>
+</html>

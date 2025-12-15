@@ -24,7 +24,13 @@ const CertificateSystem = {
         'errors': 'Common Errors',
         'file-handling': 'File Handling',
         'validation': 'Input Validation',
-        'sql': 'SQL & Databases'
+        'sql': 'SQL & Databases',
+        'cpu': 'CPU & Fetch-Execute Cycle',
+        'memory': 'Memory & Storage',
+        'storage': 'Secondary Storage',
+        'units': 'Data Units & Capacity',
+        'numbers': 'Number Systems',
+        'representation': 'Data Representation'
     },
 
     /**

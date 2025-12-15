@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons: Storage Concepts - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Secondary Storage</a>
+            <h1>Parsons: Storage Concepts</h1>
+            <p class="subtitle">Categorize and order storage devices by their characteristics</p>
+        </div>
+
+        <!-- Exercise 1: Categorize by Storage Type -->
+        <section class="activity-section">
+            <h2>Exercise 1: Categorize by Storage Type</h2>
+            <p>Drag each storage device to its correct category.</p>
+
+            <div class="categorize-exercise" data-exercise="storage-types">
+                <div class="drag-items">
+                    <div class="drag-item" draggable="true" data-category="magnetic">Hard Disk Drive (HDD)</div>
+                    <div class="drag-item" draggable="true" data-category="solid-state">USB Flash Drive</div>
+                    <div class="drag-item" draggable="true" data-category="optical">DVD</div>
+                    <div class="drag-item" draggable="true" data-category="solid-state">SSD</div>
+                    <div class="drag-item" draggable="true" data-category="optical">Blu-ray Disc</div>
+                    <div class="drag-item" draggable="true" data-category="magnetic">Magnetic Tape</div>
+                    <div class="drag-item" draggable="true" data-category="solid-state">SD Card</div>
+                    <div class="drag-item" draggable="true" data-category="optical">CD-ROM</div>
+                    <div class="drag-item" draggable="true" data-category="solid-state">NVMe Drive</div>
+                </div>
+
+                <div class="drop-categories">
+                    <div class="drop-zone" data-category="magnetic">
+                        <h3>Magnetic Storage</h3>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="solid-state">
+                        <h3>Solid State Storage</h3>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="optical">
+                        <h3>Optical Storage</h3>
+                        <div class="drop-area"></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary check-categorize">Check Answers</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Order by Speed -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 2: Order by Speed (Fastest to Slowest)</h2>
+            <p>Drag the storage devices to order them from fastest to slowest access speeds.</p>
+
+            <div class="order-exercise" data-exercise="speed-order">
+                <div class="sortable-list">
+                    <div class="sortable-item" draggable="true" data-order="4">Hard Disk Drive (HDD)</div>
+                    <div class="sortable-item" draggable="true" data-order="2">SATA SSD</div>
+                    <div class="sortable-item" draggable="true" data-order="1">NVMe SSD</div>
+                    <div class="sortable-item" draggable="true" data-order="5">DVD Drive</div>
+                    <div class="sortable-item" draggable="true" data-order="3">USB 3.0 Flash Drive</div>
+                    <div class="sortable-item" draggable="true" data-order="6">Magnetic Tape</div>
+                </div>
+
+                <div class="order-labels">
+                    <span class="label-fast">Fastest</span>
+                    <span class="label-slow">Slowest</span>
+                </div>
+
+                <button class="btn btn-primary check-order">Check Order</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 3: Order by Capacity -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 3: Order by Maximum Capacity (Largest to Smallest)</h2>
+            <p>Drag the storage devices to order them by their maximum capacity.</p>
+
+            <div class="order-exercise" data-exercise="capacity-order">
+                <div class="sortable-list">
+                    <div class="sortable-item" draggable="true" data-order="3">SATA SSD (up to 8TB)</div>
+                    <div class="sortable-item" draggable="true" data-order="5">USB Flash Drive (up to 1TB)</div>
+                    <div class="sortable-item" draggable="true" data-order="2">HDD (up to 20TB)</div>
+                    <div class="sortable-item" draggable="true" data-order="6">DVD (4.7GB)</div>
+                    <div class="sortable-item" draggable="true" data-order="1">Magnetic Tape (up to 45TB)</div>
+                    <div class="sortable-item" draggable="true" data-order="4">Blu-ray (128GB)</div>
+                </div>
+
+                <div class="order-labels">
+                    <span class="label-fast">Largest</span>
+                    <span class="label-slow">Smallest</span>
+                </div>
+
+                <button class="btn btn-primary check-order">Check Order</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 4: Categorize by Durability -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 4: Categorize by Durability</h2>
+            <p>Sort these storage types based on their physical durability (resistance to drops and movement).</p>
+
+            <div class="categorize-exercise" data-exercise="durability">
+                <div class="drag-items">
+                    <div class="drag-item" draggable="true" data-category="high">SSD</div>
+                    <div class="drag-item" draggable="true" data-category="low">HDD</div>
+                    <div class="drag-item" draggable="true" data-category="high">USB Flash Drive</div>
+                    <div class="drag-item" draggable="true" data-category="medium">CD/DVD</div>
+                    <div class="drag-item" draggable="true" data-category="high">SD Card</div>
+                    <div class="drag-item" draggable="true" data-category="low">Magnetic Tape</div>
+                </div>
+
+                <div class="drop-categories">
+                    <div class="drop-zone" data-category="high">
+                        <h3>High Durability</h3>
+                        <p class="hint">No moving parts, shock resistant</p>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="medium">
+                        <h3>Medium Durability</h3>
+                        <p class="hint">Can be scratched but no moving parts</p>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="low">
+                        <h3>Low Durability</h3>
+                        <p class="hint">Moving parts, sensitive to movement</p>
+                        <div class="drop-area"></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary check-categorize">Check Answers</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Exercise 5: Match Use Case to Storage -->
+        <section class="activity-section mt-xl">
+            <h2>Exercise 5: Match Use Case to Best Storage</h2>
+            <p>Drag each use case to the most appropriate storage type.</p>
+
+            <div class="categorize-exercise" data-exercise="use-cases">
+                <div class="drag-items">
+                    <div class="drag-item" draggable="true" data-category="ssd">Gaming PC main drive</div>
+                    <div class="drag-item" draggable="true" data-category="hdd">Home movie collection backup</div>
+                    <div class="drag-item" draggable="true" data-category="tape">Data center long-term archive</div>
+                    <div class="drag-item" draggable="true" data-category="optical">Distributing software to customers</div>
+                    <div class="drag-item" draggable="true" data-category="flash">Transferring files between computers</div>
+                    <div class="drag-item" draggable="true" data-category="ssd">Operating system boot drive</div>
+                    <div class="drag-item" draggable="true" data-category="flash">Digital camera storage</div>
+                    <div class="drag-item" draggable="true" data-category="hdd">CCTV recording storage</div>
+                </div>
+
+                <div class="drop-categories wide">
+                    <div class="drop-zone" data-category="ssd">
+                        <h3>SSD/NVMe</h3>
+                        <p class="hint">Fast, frequent access</p>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="hdd">
+                        <h3>Hard Drive (HDD)</h3>
+                        <p class="hint">Large capacity, good value</p>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="flash">
+                        <h3>Flash (USB/SD)</h3>
+                        <p class="hint">Portable, removable</p>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="optical">
+                        <h3>Optical (CD/DVD)</h3>
+                        <p class="hint">Distribution, compatibility</p>
+                        <div class="drop-area"></div>
+                    </div>
+                    <div class="drop-zone" data-category="tape">
+                        <h3>Magnetic Tape</h3>
+                        <p class="hint">Archive, lowest cost/GB</p>
+                        <div class="drop-area"></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary check-categorize">Check Answers</button>
+                <div class="feedback"></div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="trace.html" class="btn btn-secondary">← Tracing Exercises</a>
+            <a href="quiz.html" class="btn btn-primary">Quiz →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Categorize exercise functionality
+        document.querySelectorAll('.categorize-exercise').forEach(exercise => {
+            const exerciseId = exercise.dataset.exercise;
+            const items = exercise.querySelectorAll('.drag-item');
+            const dropZones = exercise.querySelectorAll('.drop-zone');
+
+            items.forEach(item => {
+                item.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', item.dataset.category);
+                    item.classList.add('dragging');
+                });
+
+                item.addEventListener('dragend', () => {
+                    item.classList.remove('dragging');
+                });
+            });
+
+            dropZones.forEach(zone => {
+                const dropArea = zone.querySelector('.drop-area');
+
+                zone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    zone.classList.add('drag-over');
+                });
+
+                zone.addEventListener('dragleave', () => {
+                    zone.classList.remove('drag-over');
+                });
+
+                zone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    const draggingItem = document.querySelector('.dragging');
+                    if (draggingItem) {
+                        dropArea.appendChild(draggingItem);
+                    }
+                });
+            });
+
+            // Check button
+            const checkBtn = exercise.querySelector('.check-categorize');
+            checkBtn.addEventListener('click', () => {
+                let correct = 0;
+                let total = items.length;
+
+                items.forEach(item => {
+                    const parent = item.closest('.drop-zone');
+                    if (parent && parent.dataset.category === item.dataset.category) {
+                        item.classList.add('correct');
+                        item.classList.remove('incorrect');
+                        correct++;
+                    } else if (parent) {
+                        item.classList.add('incorrect');
+                        item.classList.remove('correct');
+                    }
+                });
+
+                const feedback = exercise.querySelector('.feedback');
+                if (correct === total) {
+                    feedback.innerHTML = `<span class="success">Perfect! All ${total} items categorized correctly!</span>`;
+                    feedback.className = 'feedback success';
+                    Progress.completeActivity('storage', `parsons-${exerciseId}`);
+                } else {
+                    feedback.innerHTML = `<span class="partial">${correct}/${total} correct. Keep trying!</span>`;
+                    feedback.className = 'feedback partial';
+                }
+            });
+        });
+
+        // Order exercise functionality
+        document.querySelectorAll('.order-exercise').forEach(exercise => {
+            const exerciseId = exercise.dataset.exercise;
+            const list = exercise.querySelector('.sortable-list');
+            const items = list.querySelectorAll('.sortable-item');
+            let draggedItem = null;
+
+            items.forEach(item => {
+                item.addEventListener('dragstart', (e) => {
+                    draggedItem = item;
+                    item.classList.add('dragging');
+                });
+
+                item.addEventListener('dragend', () => {
+                    item.classList.remove('dragging');
+                    draggedItem = null;
+                });
+
+                item.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    if (draggedItem && draggedItem !== item) {
+                        const rect = item.getBoundingClientRect();
+                        const midY = rect.top + rect.height / 2;
+                        if (e.clientY < midY) {
+                            list.insertBefore(draggedItem, item);
+                        } else {
+                            list.insertBefore(draggedItem, item.nextSibling);
+                        }
+                    }
+                });
+            });
+
+            // Check button
+            const checkBtn = exercise.querySelector('.check-order');
+            checkBtn.addEventListener('click', () => {
+                const currentItems = list.querySelectorAll('.sortable-item');
+                let correct = true;
+
+                currentItems.forEach((item, index) => {
+                    const expectedOrder = index + 1;
+                    const actualOrder = parseInt(item.dataset.order);
+                    if (expectedOrder === actualOrder) {
+                        item.classList.add('correct');
+                        item.classList.remove('incorrect');
+                    } else {
+                        item.classList.add('incorrect');
+                        item.classList.remove('correct');
+                        correct = false;
+                    }
+                });
+
+                const feedback = exercise.querySelector('.feedback');
+                if (correct) {
+                    feedback.innerHTML = '<span class="success">Perfect! All items in correct order!</span>';
+                    feedback.className = 'feedback success';
+                    Progress.completeActivity('storage', `parsons-${exerciseId}`);
+                } else {
+                    feedback.innerHTML = '<span class="error">Not quite right. Items in green are correct, red are incorrect.</span>';
+                    feedback.className = 'feedback error';
+                }
+            });
+        });
+
+        // Track page visit
+        Progress.startTopic('storage');
+    </script>
+    <style>
+        .drag-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            padding: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            min-height: 60px;
+        }
+        .drag-item {
+            padding: var(--space-sm) var(--space-md);
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-sm);
+            cursor: grab;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .drag-item:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        .drag-item.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .drag-item.correct {
+            background: #dcfce7;
+            border-color: var(--success);
+        }
+        .drag-item.incorrect {
+            background: #fef2f2;
+            border-color: var(--error);
+        }
+        .drop-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        .drop-categories.wide {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        }
+        .drop-zone {
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            min-height: 150px;
+            transition: all 0.2s ease;
+        }
+        .drop-zone h3 {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: 1rem;
+            color: var(--gray-700);
+        }
+        .drop-zone .hint {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin: 0 0 var(--space-sm) 0;
+        }
+        .drop-zone.drag-over {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .drop-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            min-height: 50px;
+        }
+        .sortable-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            padding: var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+        .sortable-item {
+            padding: var(--space-md);
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+        .sortable-item:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .sortable-item.dragging {
+            opacity: 0.5;
+        }
+        .sortable-item.correct {
+            background: #dcfce7;
+            border-color: var(--success);
+        }
+        .sortable-item.incorrect {
+            background: #fef2f2;
+            border-color: var(--error);
+        }
+        .order-labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        .label-fast, .label-slow {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+        .label-fast::before {
+            content: "↑ ";
+        }
+        .label-slow::before {
+            content: "↓ ";
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+        }
+        .feedback.success {
+            background: #dcfce7;
+            color: var(--success);
+        }
+        .feedback.error {
+            background: #fef2f2;
+            color: var(--error);
+        }
+        .feedback.partial {
+            background: #fef3c7;
+            color: #92400e;
+        }
+    </style>
+</body>
+</html>

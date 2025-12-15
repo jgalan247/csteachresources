@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Memory and Storage - CS Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html" class="active">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="../index.html">Topics</a>
+            <span class="breadcrumb-separator">›</span>
+            <a href="index.html">Memory and Storage</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Quiz</span>
+        </nav>
+
+        <header class="activity-header">
+            <span class="activity-icon">🎯</span>
+            <div class="activity-title">
+                <h1>Quiz: Memory and Storage</h1>
+                <p>Test your understanding of computer memory concepts.</p>
+            </div>
+        </header>
+
+        <div class="quiz-container">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quiz-progress" style="width: 0%"></div>
+                </div>
+                <span class="progress-text" id="progress-text">Question 1 of 15</span>
+            </div>
+
+            <form id="quiz-form">
+                <!-- Question 1 -->
+                <div class="quiz-question" data-question="1">
+                    <h3>1. Why do computers need primary storage (memory)?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            <span class="option-text">To store files permanently when the computer is off</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            <span class="option-text">To provide fast storage for data and programs currently in use by the CPU</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            <span class="option-text">To back up important documents</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            <span class="option-text">To connect to the internet</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question" data-question="2">
+                    <h3>2. What does "volatile" mean in terms of memory?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            <span class="option-text">The memory is dangerous and can explode</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            <span class="option-text">The memory loses its contents when power is switched off</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            <span class="option-text">The memory changes constantly</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            <span class="option-text">The memory is very fast</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question" data-question="3">
+                    <h3>3. What is stored in ROM?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            <span class="option-text">Running programs and open documents</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            <span class="option-text">The BIOS - boot instructions for starting the computer</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            <span class="option-text">User files and folders</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            <span class="option-text">Downloaded software</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question" data-question="4">
+                    <h3>4. Which of the following is TRUE about RAM?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            <span class="option-text">It is non-volatile and keeps data when power is off</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            <span class="option-text">It can only be read, not written to</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            <span class="option-text">It stores currently running programs and is volatile</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            <span class="option-text">It is slower than a hard drive</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question" data-question="5">
+                    <h3>5. What is virtual memory?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            <span class="option-text">Memory that exists in virtual reality</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            <span class="option-text">A section of secondary storage used as an extension of RAM when RAM is full</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            <span class="option-text">Extra RAM that can be purchased online</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            <span class="option-text">Cloud storage on the internet</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="quiz-question" data-question="6">
+                    <h3>6. Why might using virtual memory slow down a computer?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            <span class="option-text">Virtual memory uses the internet which can be slow</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            <span class="option-text">The hard drive is much slower than RAM, so swapping data takes time</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            <span class="option-text">Virtual memory reduces the CPU speed</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            <span class="option-text">Virtual memory only works at night</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="quiz-question" data-question="7">
+                    <h3>7. What is the purpose of cache memory?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            <span class="option-text">To store money for online purchases</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            <span class="option-text">To store frequently used data close to the CPU for faster access</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            <span class="option-text">To provide extra storage for large files</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            <span class="option-text">To back up the hard drive</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="quiz-question" data-question="8">
+                    <h3>8. A "cache hit" occurs when:</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            <span class="option-text">The cache memory breaks</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            <span class="option-text">The CPU finds the data it needs in the cache</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            <span class="option-text">The cache runs out of space</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            <span class="option-text">The user clears the browser cache</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="quiz-question" data-question="9">
+                    <h3>9. What is "disk thrashing"?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q9" value="a">
+                            <span class="option-text">When the hard drive makes loud noises</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="b">
+                            <span class="option-text">Excessive swapping between RAM and virtual memory, causing severe slowdown</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="c">
+                            <span class="option-text">Deleting files from the hard drive</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="d">
+                            <span class="option-text">A type of hard drive formatting</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="quiz-question" data-question="10">
+                    <h3>10. Which memory type is typically the FASTEST?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q10" value="a">
+                            <span class="option-text">Hard Disk Drive (HDD)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="b">
+                            <span class="option-text">RAM</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="c">
+                            <span class="option-text">L1 Cache</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="d">
+                            <span class="option-text">SSD</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="quiz-question" data-question="11">
+                    <h3>11. What happens to data in RAM when the computer loses power unexpectedly?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q11" value="a">
+                            <span class="option-text">It is automatically saved to the hard drive</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="b">
+                            <span class="option-text">It is lost permanently</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="c">
+                            <span class="option-text">It is stored in ROM</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="d">
+                            <span class="option-text">It is uploaded to the cloud</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="quiz-question" data-question="12">
+                    <h3>12. What does BIOS stand for?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q12" value="a">
+                            <span class="option-text">Binary Input Output System</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="b">
+                            <span class="option-text">Basic Input Output System</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="c">
+                            <span class="option-text">Boot Initial Operating Software</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="d">
+                            <span class="option-text">Base Integrated Operating System</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="quiz-question" data-question="13">
+                    <h3>13. Why do modern computers have multiple levels of cache (L1, L2, L3)?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q13" value="a">
+                            <span class="option-text">To store different types of files</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="b">
+                            <span class="option-text">To balance speed and size - L1 is fastest but smallest, L3 is slower but larger</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="c">
+                            <span class="option-text">For backup purposes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="d">
+                            <span class="option-text">Each level is for a different user</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 14 -->
+                <div class="quiz-question" data-question="14">
+                    <h3>14. Adding more RAM to a computer would:</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q14" value="a">
+                            <span class="option-text">Reduce the need for virtual memory and improve performance</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="b">
+                            <span class="option-text">Make the hard drive faster</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="c">
+                            <span class="option-text">Replace the need for ROM</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="d">
+                            <span class="option-text">Increase internet speed</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+
+                <!-- Question 15 -->
+                <div class="quiz-question" data-question="15">
+                    <h3>15. Which statement correctly describes the relationship between RAM and the hard drive?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q15" value="a">
+                            <span class="option-text">RAM stores data permanently, hard drive stores data temporarily</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="b">
+                            <span class="option-text">Programs run from RAM (fast, temporary), and are stored on the hard drive (slow, permanent)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="c">
+                            <span class="option-text">RAM and hard drive are the same thing with different names</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="d">
+                            <span class="option-text">The hard drive is faster than RAM</span>
+                        </label>
+                    </div>
+                    <div class="feedback hidden"></div>
+                </div>
+            </form>
+
+            <div class="quiz-controls">
+                <button type="button" class="btn btn-primary" id="submit-quiz">Submit Quiz</button>
+            </div>
+
+            <div class="quiz-results hidden" id="quiz-results">
+                <h2>Quiz Results</h2>
+                <div class="score-display">
+                    <span class="score" id="final-score">0</span>
+                    <span class="total">/ 15</span>
+                </div>
+                <p class="score-message" id="score-message"></p>
+                <div class="results-actions">
+                    <button class="btn btn-secondary" id="review-answers">Review Answers</button>
+                    <a href="index.html" class="btn btn-primary">Back to Topic</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-navigation">
+            <a href="parsons.html" class="btn btn-secondary">← Previous: Parsons</a>
+            <a href="index.html" class="btn btn-primary">Back to Topic →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        Progress.startActivity('memory-quiz', 'memory');
+
+        const answers = {
+            q1: { correct: 'b', explanation: 'Primary storage provides fast access for the CPU to data and programs currently in use. Secondary storage (like hard drives) is too slow for this purpose.' },
+            q2: { correct: 'b', explanation: 'Volatile memory loses all its contents when the power is switched off. RAM is volatile; ROM and hard drives are non-volatile.' },
+            q3: { correct: 'b', explanation: 'ROM stores the BIOS (Basic Input Output System) which contains the boot instructions needed to start the computer.' },
+            q4: { correct: 'c', explanation: 'RAM stores currently running programs and open files, and is volatile (loses data when power is off). It can be both read from and written to.' },
+            q5: { correct: 'b', explanation: 'Virtual memory uses a section of the hard drive (called the page file) as an extension of RAM when RAM becomes full.' },
+            q6: { correct: 'b', explanation: 'Hard drives are much slower than RAM (about 100,000x slower for HDDs). Swapping data between RAM and the hard drive takes significant time.' },
+            q7: { correct: 'b', explanation: 'Cache memory stores frequently used data very close to the CPU, allowing much faster access than retrieving from RAM.' },
+            q8: { correct: 'b', explanation: 'A cache hit occurs when the CPU finds the requested data in the cache, avoiding the slower fetch from RAM.' },
+            q9: { correct: 'b', explanation: 'Disk thrashing occurs when the system constantly swaps data between RAM and virtual memory, causing severe performance degradation.' },
+            q10: { correct: 'c', explanation: 'L1 Cache is the fastest memory, located directly on the CPU. The speed hierarchy is: L1 Cache > L2 > L3 > RAM > SSD > HDD.' },
+            q11: { correct: 'b', explanation: 'RAM is volatile, so all unsaved data is lost permanently when power is cut. This is why saving your work regularly is important.' },
+            q12: { correct: 'b', explanation: 'BIOS stands for Basic Input Output System. It contains the instructions needed to start up the computer and load the operating system.' },
+            q13: { correct: 'b', explanation: 'Multiple cache levels balance speed and capacity: L1 is tiny but ultra-fast, L3 is larger but slower. This hierarchy optimises performance.' },
+            q14: { correct: 'a', explanation: 'More RAM means programs can run entirely in fast RAM without needing slow virtual memory, significantly improving performance.' },
+            q15: { correct: 'b', explanation: 'Programs are stored permanently on the hard drive and loaded into RAM when running. RAM is fast but temporary; hard drives are slow but permanent.' }
+        };
+
+        let submitted = false;
+
+        document.getElementById('submit-quiz').addEventListener('click', submitQuiz);
+
+        function submitQuiz() {
+            if (submitted) return;
+            submitted = true;
+
+            let score = 0;
+            const totalQuestions = Object.keys(answers).length;
+
+            for (const [question, data] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                const questionDiv = document.querySelector(`[data-question="${question.slice(1)}"]`);
+                const feedback = questionDiv.querySelector('.feedback');
+
+                if (selected && selected.value === data.correct) {
+                    score++;
+                    feedback.innerHTML = `<span class="correct-mark">✓</span> Correct! ${data.explanation}`;
+                    feedback.className = 'feedback correct';
+                } else {
+                    const correctOption = questionDiv.querySelector(`input[value="${data.correct}"]`);
+                    feedback.innerHTML = `<span class="incorrect-mark">✗</span> Incorrect. ${data.explanation}`;
+                    feedback.className = 'feedback incorrect';
+                    if (correctOption) {
+                        correctOption.parentElement.classList.add('correct-answer');
+                    }
+                }
+                feedback.classList.remove('hidden');
+
+                // Mark selected option
+                if (selected) {
+                    selected.parentElement.classList.add(selected.value === data.correct ? 'selected-correct' : 'selected-incorrect');
+                }
+            }
+
+            // Show results
+            document.getElementById('final-score').textContent = score;
+            const percentage = Math.round((score / totalQuestions) * 100);
+
+            let message = '';
+            if (percentage >= 90) {
+                message = 'Excellent! You have a strong understanding of computer memory!';
+            } else if (percentage >= 70) {
+                message = 'Good work! You understand most memory concepts.';
+            } else if (percentage >= 50) {
+                message = 'Not bad! Review the topics you found difficult.';
+            } else {
+                message = 'Keep studying! Review the topic materials and try again.';
+            }
+            document.getElementById('score-message').textContent = message;
+            document.getElementById('quiz-results').classList.remove('hidden');
+
+            // Update progress
+            Progress.completeActivity('memory-quiz', percentage);
+
+            // Scroll to results
+            document.getElementById('quiz-results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById('review-answers').addEventListener('click', () => {
+            document.querySelector('.quiz-question').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Update progress bar as user answers
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateProgress);
+        });
+
+        function updateProgress() {
+            const answered = new Set();
+            document.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+                answered.add(input.name);
+            });
+            const progress = (answered.size / 15) * 100;
+            document.getElementById('quiz-progress').style.width = `${progress}%`;
+            document.getElementById('progress-text').textContent = `${answered.size} of 15 answered`;
+        }
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
+            margin-bottom: var(--space-xl);
+        }
+        .activity-icon {
+            font-size: 3rem;
+            background: var(--theory, #10b981);
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+        }
+        .quiz-container {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .quiz-progress {
+            margin-bottom: var(--space-xl);
+        }
+        .quiz-progress .progress-bar {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: var(--space-sm);
+        }
+        .quiz-progress .progress-fill {
+            height: 100%;
+            background: var(--theory, #10b981);
+            transition: width 0.3s ease;
+        }
+        .quiz-progress .progress-text {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .quiz-question {
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .quiz-question h3 {
+            margin-bottom: var(--space-md);
+            color: var(--gray-800);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            border-color: var(--theory, #10b981);
+            background: #f0fdf4;
+        }
+        .option input {
+            margin-top: 2px;
+        }
+        .option.selected-correct {
+            background: #dcfce7;
+            border-color: #16a34a;
+        }
+        .option.selected-incorrect {
+            background: #fef2f2;
+            border-color: #dc2626;
+        }
+        .option.correct-answer {
+            border-color: #16a34a;
+            background: #f0fdf4;
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .feedback.correct {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .feedback.incorrect {
+            background: #fef2f2;
+            color: #991b1b;
+        }
+        .correct-mark, .incorrect-mark {
+            font-weight: bold;
+            margin-right: var(--space-sm);
+        }
+        .quiz-controls {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+        .quiz-results {
+            text-align: center;
+            padding: var(--space-xl);
+            background: #f0fdf4;
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-xl);
+        }
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--theory, #10b981);
+            margin: var(--space-lg) 0;
+        }
+        .score-display .total {
+            color: var(--gray-500);
+            font-size: 2rem;
+        }
+        .score-message {
+            font-size: 1.1rem;
+            color: var(--gray-700);
+            margin-bottom: var(--space-lg);
+        }
+        .results-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+        }
+        .hidden {
+            display: none;
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

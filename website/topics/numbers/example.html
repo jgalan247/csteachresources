@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Examples: Number Systems - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Number Systems</a>
+            <h1>Worked Examples: Number Conversions</h1>
+            <p class="subtitle">Step-by-step solutions for all conversion types</p>
+        </div>
+
+        <!-- Example 1: Binary to Denary -->
+        <section class="example-section">
+            <div class="example-header">
+                <span class="example-badge">Example 1</span>
+                <span class="difficulty easy">Foundation</span>
+            </div>
+            <h2>Binary to Denary</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>Convert the binary number <strong>11010110</strong> to denary.</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Write out the place values</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="place-value-row">
+                            <span>128</span><span>64</span><span>32</span><span>16</span><span>8</span><span>4</span><span>2</span><span>1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Write the binary digits underneath</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="place-value-row">
+                            <span>128</span><span>64</span><span>32</span><span>16</span><span>8</span><span>4</span><span>2</span><span>1</span>
+                        </div>
+                        <div class="binary-row">
+                            <span class="bit-1">1</span><span class="bit-1">1</span><span class="bit-0">0</span><span class="bit-1">1</span><span class="bit-0">0</span><span class="bit-1">1</span><span class="bit-1">1</span><span class="bit-0">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Add place values where there's a 1</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            128 + 64 + 16 + 4 + 2 = <strong>214</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>11010110₂ = <strong>214</strong>₁₀</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2: Denary to Binary -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 2</span>
+                <span class="difficulty easy">Foundation</span>
+            </div>
+            <h2>Denary to Binary (Division Method)</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>Convert denary <strong>179</strong> to an 8-bit binary number.</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Repeatedly divide by 2, recording remainders</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="division-table">
+                            <div class="div-row"><span>179 ÷ 2 = 89</span><span>remainder <strong>1</strong></span></div>
+                            <div class="div-row"><span>89 ÷ 2 = 44</span><span>remainder <strong>1</strong></span></div>
+                            <div class="div-row"><span>44 ÷ 2 = 22</span><span>remainder <strong>0</strong></span></div>
+                            <div class="div-row"><span>22 ÷ 2 = 11</span><span>remainder <strong>0</strong></span></div>
+                            <div class="div-row"><span>11 ÷ 2 = 5</span><span>remainder <strong>1</strong></span></div>
+                            <div class="div-row"><span>5 ÷ 2 = 2</span><span>remainder <strong>1</strong></span></div>
+                            <div class="div-row"><span>2 ÷ 2 = 1</span><span>remainder <strong>0</strong></span></div>
+                            <div class="div-row"><span>1 ÷ 2 = 0</span><span>remainder <strong>1</strong></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Read remainders from bottom to top</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            Reading up: 1 → 0 → 1 → 1 → 0 → 0 → 1 → 1 = <strong>10110011</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>179₁₀ = <strong>10110011</strong>₂</p>
+                    <p class="verification">Verify: 128 + 32 + 16 + 2 + 1 = 179 ✓</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3: Binary Addition -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 3</span>
+                <span class="difficulty medium">Core</span>
+            </div>
+            <h2>Binary Addition</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>Add the binary numbers <strong>01011011</strong> and <strong>00101110</strong>.</p>
+                <p>State whether overflow occurs.</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Set up the addition (rightmost column first)</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="addition-setup">
+                            <pre>  01011011
++ 00101110
+----------</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Add column by column, carrying when needed</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="column-by-column">
+                            <p>Column 1 (rightmost): 1 + 0 = <strong>1</strong></p>
+                            <p>Column 2: 1 + 1 = 10, write <strong>0</strong>, carry 1</p>
+                            <p>Column 3: 0 + 1 + 1(carry) = 10, write <strong>0</strong>, carry 1</p>
+                            <p>Column 4: 1 + 0 + 1(carry) = 10, write <strong>0</strong>, carry 1</p>
+                            <p>Column 5: 1 + 1 + 1(carry) = 11, write <strong>1</strong>, carry 1</p>
+                            <p>Column 6: 0 + 0 + 1(carry) = <strong>1</strong></p>
+                            <p>Column 7: 1 + 1 = 10, write <strong>0</strong>, carry 1</p>
+                            <p>Column 8: 0 + 0 + 1(carry) = <strong>1</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Write the result</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="addition-setup">
+                            <pre>    1 1 1 1  ← carries
+  01011011  (91)
++ 00101110  (46)
+----------
+  10001001  (137)</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>01011011 + 00101110 = <strong>10001001</strong></p>
+                    <p class="verification">Verify: 91 + 46 = 137 ✓</p>
+                    <p><strong>No overflow</strong> - result (137) fits within 8 bits (max 255)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4: Hexadecimal to Denary -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 4</span>
+                <span class="difficulty medium">Core</span>
+            </div>
+            <h2>Hexadecimal to Denary</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>Convert hexadecimal <strong>B7</strong> to denary.</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Identify the hex digits and their denary values</span>
+                    </div>
+                    <div class="step-content">
+                        <p>B = 11, 7 = 7</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Multiply by place values (powers of 16)</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            <p>B (11) is in the 16s column: 11 × 16 = 176</p>
+                            <p>7 is in the 1s column: 7 × 1 = 7</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <span class="step-title">Add the results</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="calculation">
+                            176 + 7 = <strong>183</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>B7₁₆ = <strong>183</strong>₁₀</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5: Binary to Hexadecimal -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 5</span>
+                <span class="difficulty medium">Core</span>
+            </div>
+            <h2>Binary to Hexadecimal</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>Convert binary <strong>11011001</strong> to hexadecimal.</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Split into groups of 4 bits (from right)</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="bit-groups">
+                            <span class="group">1101</span>
+                            <span class="separator">|</span>
+                            <span class="group">1001</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Convert each group to hex</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="conversion-detail">
+                            <p><strong>1101</strong> = 8 + 4 + 1 = 13 = <strong>D</strong></p>
+                            <p><strong>1001</strong> = 8 + 1 = 9 = <strong>9</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Final Answer</h4>
+                    <p>11011001₂ = <strong>D9</strong>₁₆</p>
+                    <p class="verification">Verify: D9 = (13×16) + 9 = 208 + 9 = 217</p>
+                    <p class="verification">Binary: 128+64+16+8+1 = 217 ✓</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 6: Binary Shifts -->
+        <section class="example-section mt-xl">
+            <div class="example-header">
+                <span class="example-badge">Example 6</span>
+                <span class="difficulty medium">Core</span>
+            </div>
+            <h2>Binary Shifts</h2>
+
+            <div class="question-box">
+                <h3>Question</h3>
+                <p>a) Perform a left shift by 2 on <strong>00010100</strong> (20)</p>
+                <p>b) Perform a right shift by 2 on <strong>01100100</strong> (100)</p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution (a) - Left Shift</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Move all bits left by 2 positions</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="shift-diagram">
+                            <p>Original: 0 0 0 1 0 1 0 0</p>
+                            <p>After:    0 1 0 1 0 0 <span class="new-bit">0 0</span></p>
+                        </div>
+                        <p class="note">Fill empty positions on right with 0s</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Calculate expected result</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Left shift by 2 = multiply by 2² = multiply by 4</p>
+                        <p>20 × 4 = <strong>80</strong></p>
+                    </div>
+                </div>
+
+                <div class="partial-answer">
+                    <h4>Answer (a)</h4>
+                    <p>00010100 << 2 = <strong>01010000</strong> (80)</p>
+                </div>
+            </div>
+
+            <div class="solution-steps mt-lg">
+                <h3>Solution (b) - Right Shift</h3>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <span class="step-title">Move all bits right by 2 positions</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="shift-diagram">
+                            <p>Original: 0 1 1 0 0 1 0 0</p>
+                            <p>After:    <span class="new-bit">0 0</span> 0 1 1 0 0 1</p>
+                        </div>
+                        <p class="note">Fill empty positions on left with 0s, rightmost bits are lost</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <span class="step-title">Calculate expected result</span>
+                    </div>
+                    <div class="step-content">
+                        <p>Right shift by 2 = divide by 2² = divide by 4</p>
+                        <p>100 ÷ 4 = <strong>25</strong></p>
+                    </div>
+                </div>
+
+                <div class="final-answer">
+                    <h4>Answer (b)</h4>
+                    <p>01100100 >> 2 = <strong>00011001</strong> (25)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Section -->
+        <section class="practice-section mt-xl">
+            <h2>Practice Problems</h2>
+            <div class="practice-grid">
+                <div class="practice-item">
+                    <h4>1. Convert 10101100 to denary</h4>
+                    <button class="btn btn-sm btn-secondary show-ans" data-ans="ans1">Show</button>
+                    <span class="answer hidden" id="ans1">172</span>
+                </div>
+                <div class="practice-item">
+                    <h4>2. Convert 145 to binary</h4>
+                    <button class="btn btn-sm btn-secondary show-ans" data-ans="ans2">Show</button>
+                    <span class="answer hidden" id="ans2">10010001</span>
+                </div>
+                <div class="practice-item">
+                    <h4>3. Add 01110011 + 00011010</h4>
+                    <button class="btn btn-sm btn-secondary show-ans" data-ans="ans3">Show</button>
+                    <span class="answer hidden" id="ans3">10001101 (141)</span>
+                </div>
+                <div class="practice-item">
+                    <h4>4. Convert C4 to denary</h4>
+                    <button class="btn btn-sm btn-secondary show-ans" data-ans="ans4">Show</button>
+                    <span class="answer hidden" id="ans4">196</span>
+                </div>
+                <div class="practice-item">
+                    <h4>5. Convert 10111010 to hex</h4>
+                    <button class="btn btn-sm btn-secondary show-ans" data-ans="ans5">Show</button>
+                    <span class="answer hidden" id="ans5">BA</span>
+                </div>
+                <div class="practice-item">
+                    <h4>6. Shift 00011000 left by 1</h4>
+                    <button class="btn btn-sm btn-secondary show-ans" data-ans="ans6">Show</button>
+                    <span class="answer hidden" id="ans6">00110000 (48)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="predict.html" class="btn btn-secondary">← Predict</a>
+            <a href="trace.html" class="btn btn-primary">Trace Exercises →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        document.querySelectorAll('.show-ans').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const ansId = this.dataset.ans;
+                document.getElementById(ansId).classList.toggle('hidden');
+            });
+        });
+        Progress.startTopic('numbers');
+        Progress.completeActivity('numbers', 'example');
+    </script>
+    <style>
+        .example-section {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        .example-badge {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-weight: bold;
+        }
+        .difficulty {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+        }
+        .difficulty.easy { background: #dcfce7; color: #166534; }
+        .difficulty.medium { background: #fef3c7; color: #92400e; }
+        .question-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            margin-bottom: var(--space-xl);
+        }
+        .question-box h3 { margin-top: 0; }
+        .solution-steps h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: var(--space-sm);
+        }
+        .step {
+            margin-bottom: var(--space-lg);
+            border-left: 3px solid var(--gray-200);
+            padding-left: var(--space-lg);
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .place-value-row, .binary-row {
+            display: flex;
+            gap: 4px;
+            font-family: monospace;
+        }
+        .place-value-row span, .binary-row span {
+            width: 40px;
+            padding: var(--space-sm);
+            text-align: center;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+        }
+        .place-value-row span {
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+        }
+        .binary-row .bit-1 { background: #dcfce7; }
+        .binary-row .bit-0 { background: #fef2f2; }
+        .calculation {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+        }
+        .division-table {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+        }
+        .div-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-xs) 0;
+            border-bottom: 1px dotted var(--gray-300);
+        }
+        .addition-setup {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+        }
+        .addition-setup pre { margin: 0; }
+        .column-by-column {
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .column-by-column p { margin: var(--space-xs) 0; }
+        .bit-groups {
+            font-family: monospace;
+            font-size: 1.5rem;
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+        }
+        .group {
+            background: #e0f2fe;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+        }
+        .separator { color: var(--gray-400); }
+        .conversion-detail {
+            font-family: monospace;
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .shift-diagram {
+            font-family: monospace;
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .new-bit { color: var(--success); font-weight: bold; }
+        .final-answer, .partial-answer {
+            background: #dcfce7;
+            border: 2px solid var(--success);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-xl);
+        }
+        .partial-answer { background: #e0f2fe; border-color: var(--primary); }
+        .final-answer h4, .partial-answer h4 { margin-top: 0; color: var(--success); }
+        .partial-answer h4 { color: var(--primary); }
+        .verification { color: var(--success); font-style: italic; }
+        .note { color: var(--gray-600); font-style: italic; margin-top: var(--space-sm); }
+        .practice-section {
+            background: var(--gray-100);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+        }
+        .practice-item {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .practice-item h4 { margin: 0; flex: 1; font-size: 0.9rem; }
+        .answer { font-family: monospace; font-weight: bold; color: var(--success); }
+        .hidden { display: none; }
+        .btn-sm { padding: var(--space-xs) var(--space-sm); font-size: 0.8rem; }
+    </style>
+</body>
+</html>

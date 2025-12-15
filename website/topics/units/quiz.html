@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Data Units - Python Learning</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Units</a>
+            <h1>Quiz: Data Units & Capacity</h1>
+            <p class="subtitle">Test your knowledge of data units and file size calculations</p>
+        </div>
+
+        <div class="quiz-container" id="quiz">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quiz-progress" style="width: 0%"></div>
+                </div>
+                <span class="progress-text">Question <span id="current-q">1</span> of 15</span>
+            </div>
+
+            <div class="quiz-questions">
+                <!-- Question 1: Why Binary -->
+                <div class="question-card" data-question="1">
+                    <h3>Question 1</h3>
+                    <p class="question-text">Why do computers store all data in binary format?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            <span>Binary is easier for humans to understand</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            <span>Electronic circuits can reliably distinguish between two states (on/off)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            <span>Binary takes up less storage space than other systems</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            <span>Binary was invented specifically for computers</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2: Bit Definition -->
+                <div class="question-card hidden" data-question="2">
+                    <h3>Question 2</h3>
+                    <p class="question-text">What is the smallest unit of data storage?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            <span>Byte</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            <span>Nibble</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            <span>Bit</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            <span>Kilobyte</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3: Bits in a Byte -->
+                <div class="question-card hidden" data-question="3">
+                    <h3>Question 3</h3>
+                    <p class="question-text">How many bits are in one byte?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            <span>4 bits</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            <span>8 bits</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            <span>16 bits</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            <span>1,000 bits</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4: Nibble -->
+                <div class="question-card hidden" data-question="4">
+                    <h3>Question 4</h3>
+                    <p class="question-text">How many bits are in a nibble?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            <span>2 bits</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            <span>4 bits</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            <span>8 bits</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            <span>16 bits</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5: Unit Conversion -->
+                <div class="question-card hidden" data-question="5">
+                    <h3>Question 5</h3>
+                    <p class="question-text">How many kilobytes (KB) are in 1 megabyte (MB)?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            <span>100 KB</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            <span>1,000 KB</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            <span>1,024 KB</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            <span>10,000 KB</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6: Largest Unit -->
+                <div class="question-card hidden" data-question="6">
+                    <h3>Question 6</h3>
+                    <p class="question-text">Which is the largest unit of data storage?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            <span>Gigabyte (GB)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            <span>Terabyte (TB)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            <span>Petabyte (PB)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            <span>Megabyte (MB)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7: Image Formula -->
+                <div class="question-card hidden" data-question="7">
+                    <h3>Question 7</h3>
+                    <p class="question-text">What is the formula to calculate image file size?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            <span>Width + Height + Colour depth</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            <span>Width × Height × Colour depth</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            <span>Width × Height ÷ Colour depth</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            <span>(Width + Height) × Colour depth</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8: Image Calculation -->
+                <div class="question-card hidden" data-question="8">
+                    <h3>Question 8</h3>
+                    <p class="question-text">An image is 100 × 100 pixels with 8-bit colour. What is the file size in bytes?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            <span>800 bytes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            <span>8,000 bytes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            <span>10,000 bytes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            <span>80,000 bytes</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 9: Sound Formula -->
+                <div class="question-card hidden" data-question="9">
+                    <h3>Question 9</h3>
+                    <p class="question-text">Which factors affect the file size of an audio recording?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q9" value="a">
+                            <span>Only the duration of the recording</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="b">
+                            <span>Sample rate, bit depth, and duration</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="c">
+                            <span>Only the sample rate</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="d">
+                            <span>The volume of the audio</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 10: Stereo Audio -->
+                <div class="question-card hidden" data-question="10">
+                    <h3>Question 10</h3>
+                    <p class="question-text">When calculating stereo audio file size, what must you do?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q10" value="a">
+                            <span>Divide by 2 (two channels)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="b">
+                            <span>Multiply by 2 (two channels)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="c">
+                            <span>Add 2 (two channels)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="d">
+                            <span>Nothing different - stereo is the same as mono</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 11: CD Quality -->
+                <div class="question-card hidden" data-question="11">
+                    <h3>Question 11</h3>
+                    <p class="question-text">What sample rate is used for CD quality audio?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q11" value="a">
+                            <span>8,000 Hz</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="b">
+                            <span>22,050 Hz</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="c">
+                            <span>44,100 Hz</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="d">
+                            <span>96,000 Hz</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 12: Text File -->
+                <div class="question-card hidden" data-question="12">
+                    <h3>Question 12</h3>
+                    <p class="question-text">A text file contains 2,000 characters using ASCII (8 bits per character). What is the file size?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q12" value="a">
+                            <span>250 bytes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="b">
+                            <span>2,000 bytes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="c">
+                            <span>16,000 bytes</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="d">
+                            <span>2,000,000 bytes</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 13: Bits vs Bytes -->
+                <div class="question-card hidden" data-question="13">
+                    <h3>Question 13</h3>
+                    <p class="question-text">Your internet speed is 80 Mbps (megabits per second). How long to download a 40 MB file?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q13" value="a">
+                            <span>0.5 seconds</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="b">
+                            <span>4 seconds</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="c">
+                            <span>40 seconds</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="d">
+                            <span>320 seconds</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 14: Colour Depth -->
+                <div class="question-card hidden" data-question="14">
+                    <h3>Question 14</h3>
+                    <p class="question-text">What colour depth is needed to display 16.7 million colours (true colour)?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q14" value="a">
+                            <span>8-bit</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="b">
+                            <span>16-bit</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="c">
+                            <span>24-bit</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="d">
+                            <span>32-bit</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 15: Storage Planning -->
+                <div class="question-card hidden" data-question="15">
+                    <h3>Question 15</h3>
+                    <p class="question-text">You need to store 50 images, each 2 MB. What is the minimum storage needed?</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q15" value="a">
+                            <span>25 MB</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="b">
+                            <span>100 MB</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="c">
+                            <span>100 GB</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="d">
+                            <span>1 TB</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-actions">
+                <button class="btn btn-secondary" id="prev-btn" disabled>← Previous</button>
+                <button class="btn btn-primary" id="next-btn">Next →</button>
+                <button class="btn btn-success hidden" id="submit-btn">Submit Quiz</button>
+            </div>
+
+            <div class="quiz-results hidden" id="results">
+                <h2>Quiz Results</h2>
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span class="score-number" id="score-percent">0%</span>
+                    </div>
+                    <p class="score-text">You got <span id="score-correct">0</span> out of 15 questions correct</p>
+                </div>
+                <div class="results-breakdown" id="results-breakdown"></div>
+                <div class="results-actions">
+                    <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
+                    <a href="index.html" class="btn btn-secondary">Back to Topic</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation-buttons mt-xl">
+            <a href="parsons.html" class="btn btn-secondary">← Parsons Problems</a>
+            <a href="index.html" class="btn btn-primary">Back to Topic →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const answers = {
+            q1: { correct: 'b', explanation: 'Electronic circuits work reliably with two states (on/off, high/low voltage). This makes binary (0 and 1) the ideal number system for computers.' },
+            q2: { correct: 'c', explanation: 'A bit (binary digit) is the smallest unit - it can only store a 0 or a 1.' },
+            q3: { correct: 'b', explanation: '1 byte = 8 bits. This is a fundamental conversion you must memorise.' },
+            q4: { correct: 'b', explanation: 'A nibble is 4 bits - half a byte. It can represent one hexadecimal digit (0-F).' },
+            q5: { correct: 'b', explanation: '1 MB = 1,000 KB (using decimal/SI units). Note: 1,024 KB is also accepted in some contexts.' },
+            q6: { correct: 'c', explanation: 'The order from smallest to largest is: KB < MB < GB < TB < PB. A petabyte is 1,000 terabytes.' },
+            q7: { correct: 'b', explanation: 'Image size = Width × Height × Colour depth. This gives you the total bits needed to store every pixel.' },
+            q8: { correct: 'c', explanation: '100 × 100 = 10,000 pixels. 10,000 × 8 bits = 80,000 bits. 80,000 ÷ 8 = 10,000 bytes.' },
+            q9: { correct: 'b', explanation: 'Audio file size = Sample rate × Duration × Bit depth (× channels for stereo). All three factors affect the size.' },
+            q10: { correct: 'b', explanation: 'Stereo audio has two channels (left and right), so you multiply by 2. This doubles the file size compared to mono.' },
+            q11: { correct: 'c', explanation: '44,100 Hz (or 44.1 kHz) is the standard CD quality sample rate. It samples the audio 44,100 times per second.' },
+            q12: { correct: 'b', explanation: '2,000 characters × 8 bits = 16,000 bits. 16,000 ÷ 8 = 2,000 bytes. With ASCII (8 bits/char), bytes equals characters.' },
+            q13: { correct: 'b', explanation: '40 MB = 40 × 8 = 320 Mb (megabits). 320 Mb ÷ 80 Mbps = 4 seconds. Remember: internet speeds are in bits!' },
+            q14: { correct: 'c', explanation: '24-bit colour gives 2^24 = 16,777,216 colours (approximately 16.7 million). This is called "true colour".' },
+            q15: { correct: 'b', explanation: '50 images × 2 MB = 100 MB. Simple multiplication for storage planning.' }
+        };
+
+        let currentQuestion = 1;
+        const totalQuestions = 15;
+        const userAnswers = {};
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('quiz-progress').style.width = `${progress}%`;
+            document.getElementById('current-q').textContent = currentQuestion;
+        }
+
+        function showQuestion(num) {
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.classList.add('hidden');
+            });
+            document.querySelector(`.question-card[data-question="${num}"]`).classList.remove('hidden');
+
+            document.getElementById('prev-btn').disabled = num === 1;
+            document.getElementById('next-btn').classList.toggle('hidden', num === totalQuestions);
+            document.getElementById('submit-btn').classList.toggle('hidden', num !== totalQuestions);
+
+            updateProgress();
+        }
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        // Save answers when selected
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const questionNum = e.target.name;
+                userAnswers[questionNum] = e.target.value;
+            });
+        });
+
+        document.getElementById('submit-btn').addEventListener('click', () => {
+            let score = 0;
+            const breakdown = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const qKey = `q${i}`;
+                const userAnswer = userAnswers[qKey];
+                const correctAnswer = answers[qKey].correct;
+                const isCorrect = userAnswer === correctAnswer;
+
+                if (isCorrect) score++;
+
+                breakdown.push({
+                    question: i,
+                    correct: isCorrect,
+                    explanation: answers[qKey].explanation
+                });
+            }
+
+            const percent = Math.round((score / totalQuestions) * 100);
+
+            // Show results
+            document.querySelector('.quiz-questions').classList.add('hidden');
+            document.querySelector('.quiz-actions').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+
+            document.getElementById('score-percent').textContent = `${percent}%`;
+            document.getElementById('score-correct').textContent = score;
+
+            // Show breakdown
+            const breakdownHtml = breakdown.map(item => `
+                <div class="result-item ${item.correct ? 'correct' : 'incorrect'}">
+                    <span class="result-icon">${item.correct ? '✓' : '✗'}</span>
+                    <span class="result-q">Question ${item.question}</span>
+                    <p class="result-explanation">${item.explanation}</p>
+                </div>
+            `).join('');
+            document.getElementById('results-breakdown').innerHTML = breakdownHtml;
+
+            // Track progress
+            Progress.completeActivity('units', 'quiz', percent);
+            if (percent >= 70) {
+                Progress.startTopic('units');
+            }
+        });
+
+        // Initialize
+        showQuestion(1);
+        Progress.startTopic('units');
+    </script>
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .quiz-progress {
+            margin-bottom: var(--space-xl);
+        }
+        .quiz-progress .progress-bar {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: var(--space-sm);
+        }
+        .quiz-progress .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .quiz-progress .progress-text {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .question-card {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .question-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+        }
+        .option input[type="radio"]:checked + span {
+            font-weight: 500;
+        }
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            gap: var(--space-md);
+        }
+        .hidden {
+            display: none !important;
+        }
+        .quiz-results {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        .score-display {
+            margin: var(--space-xl) 0;
+        }
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+        }
+        .score-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        .score-text {
+            font-size: 1.2rem;
+            color: var(--gray-700);
+        }
+        .results-breakdown {
+            text-align: left;
+            margin: var(--space-xl) 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .result-item {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .result-item.correct {
+            background: #dcfce7;
+        }
+        .result-item.incorrect {
+            background: #fef2f2;
+        }
+        .result-icon {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .result-item.correct .result-icon {
+            color: var(--success);
+        }
+        .result-item.incorrect .result-icon {
+            color: var(--error);
+        }
+        .result-q {
+            font-weight: 500;
+        }
+        .result-explanation {
+            width: 100%;
+            margin: var(--space-sm) 0 0 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+        }
+    </style>
+</body>
+</html>

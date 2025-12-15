@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Data Representation</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Data Representation</a>
+            <h1>Knowledge Quiz</h1>
+            <p class="subtitle">Test your understanding of data representation</p>
+        </div>
+
+        <div class="quiz-intro">
+            <h2>Instructions</h2>
+            <p>Answer all 15 questions to test your knowledge of characters, images, and sound representation. You'll see your results at the end.</p>
+            <p><strong>Topics covered:</strong> Character sets (ASCII, Unicode), image file sizes (resolution, colour depth, metadata), sound files (sample rate, bit depth, duration)</p>
+        </div>
+
+        <form id="quiz-form">
+            <!-- Question 1 -->
+            <div class="quiz-question" data-question="1">
+                <h3>Question 1</h3>
+                <p>What is a <strong>character set</strong>?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        <span>A collection of fonts for displaying text</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        <span>A collection of characters with their assigned binary codes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        <span>A keyboard layout for typing</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        <span>A type of file format for text documents</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="b">
+                    <strong>Explanation:</strong> A character set defines which characters are available and assigns a unique binary code to each one.
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-question" data-question="2">
+                <h3>Question 2</h3>
+                <p>ASCII uses 8 bits per character. How many different characters can it represent?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        <span>8</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        <span>128</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        <span>256</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        <span>65,536</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="c">
+                    <strong>Explanation:</strong> With n bits, you can represent 2^n characters. 2^8 = 256 characters.
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-question" data-question="3">
+                <h3>Question 3</h3>
+                <p>In ASCII, if 'A' = 65, what is the code for 'C'?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="a">
+                        <span>63</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="b">
+                        <span>66</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="c">
+                        <span>67</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="d">
+                        <span>68</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="c">
+                    <strong>Explanation:</strong> ASCII characters are logically ordered. C is 2 positions after A, so 65 + 2 = 67.
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-question" data-question="4">
+                <h3>Question 4</h3>
+                <p>Which character set would you choose for a website displaying Japanese, Arabic, and emojis?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        <span>ASCII (smaller files)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        <span>Unicode (supports all languages)</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        <span>Either would work equally well</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        <span>A custom character set</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="b">
+                    <strong>Explanation:</strong> ASCII only supports 256 characters (English letters and basic symbols). Unicode supports over 140,000 characters including all world languages and emojis.
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-question" data-question="5">
+                <h3>Question 5</h3>
+                <p>A text file contains 1,500 characters. Using Unicode (16-bit), what is the file size in bytes?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        <span>1,500 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        <span>3,000 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        <span>12,000 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        <span>24,000 bytes</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="b">
+                    <strong>Explanation:</strong> 1,500 × 16 = 24,000 bits. 24,000 ÷ 8 = 3,000 bytes. (Or simply: 16 bits = 2 bytes per character, so 1,500 × 2 = 3,000)
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="quiz-question" data-question="6">
+                <h3>Question 6</h3>
+                <p>What is a pixel?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a">
+                        <span>A type of image file format</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b">
+                        <span>The smallest element of a digital image</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c">
+                        <span>A measurement of colour depth</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="d">
+                        <span>A type of metadata</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="b">
+                    <strong>Explanation:</strong> A pixel (picture element) is the smallest single point in a digital image. Each pixel has a specific colour represented by a binary code.
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="quiz-question" data-question="7">
+                <h3>Question 7</h3>
+                <p>An image has a colour depth of 24 bits. How many different colours can each pixel display?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="a">
+                        <span>24 colours</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="b">
+                        <span>256 colours</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="c">
+                        <span>65,536 colours</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="d">
+                        <span>16.7 million colours</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="d">
+                    <strong>Explanation:</strong> Number of colours = 2^colour depth. 2^24 = 16,777,216 (approximately 16.7 million colours, known as "true colour").
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="quiz-question" data-question="8">
+                <h3>Question 8</h3>
+                <p>What is the file size of a 800 × 600 pixel image with 8-bit colour depth?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a">
+                        <span>480,000 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b">
+                        <span>960,000 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c">
+                        <span>1,440,000 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="d">
+                        <span>3,840,000 bytes</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="a">
+                    <strong>Explanation:</strong> Pixels = 800 × 600 = 480,000. Bits = 480,000 × 8 = 3,840,000. Bytes = 3,840,000 ÷ 8 = 480,000 bytes.
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="quiz-question" data-question="9">
+                <h3>Question 9</h3>
+                <p>Which of these is NOT typically stored in image metadata?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="a">
+                        <span>Image width and height</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="b">
+                        <span>The actual pixel colour data</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="c">
+                        <span>Date the image was created</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="d">
+                        <span>Camera settings</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="b">
+                    <strong>Explanation:</strong> Metadata is "data about data" - information about the image (dimensions, date, camera settings). The actual pixel colour values are the main image data, not metadata.
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="quiz-question" data-question="10">
+                <h3>Question 10</h3>
+                <p>What does "sample rate" measure in digital audio?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q10" value="a">
+                        <span>The volume of the audio</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="b">
+                        <span>How many samples are taken per second</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="c">
+                        <span>The length of the audio file</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="d">
+                        <span>The number of speakers used</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="b">
+                    <strong>Explanation:</strong> Sample rate is measured in Hertz (Hz) and indicates how many times per second the sound wave is sampled. CD quality is 44,100 Hz (44.1 kHz).
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="quiz-question" data-question="11">
+                <h3>Question 11</h3>
+                <p>What is the standard sample rate for CD quality audio?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q11" value="a">
+                        <span>8,000 Hz</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q11" value="b">
+                        <span>22,050 Hz</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q11" value="c">
+                        <span>44,100 Hz</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q11" value="d">
+                        <span>96,000 Hz</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="c">
+                    <strong>Explanation:</strong> CD quality audio uses 44,100 Hz (44.1 kHz) sample rate with 16-bit depth.
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="quiz-question" data-question="12">
+                <h3>Question 12</h3>
+                <p>What effect does increasing the bit depth have on a sound file?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q12" value="a">
+                        <span>Makes the audio play faster</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="b">
+                        <span>Increases quality (more volume levels) but larger file</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="c">
+                        <span>Decreases the file size</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="d">
+                        <span>Adds more audio channels</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="b">
+                    <strong>Explanation:</strong> Bit depth determines how many different volume levels can be recorded. Higher bit depth = more precise audio with better dynamic range, but larger files.
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="quiz-question" data-question="13">
+                <h3>Question 13</h3>
+                <p>A mono audio file is 5 MB. What size would the same recording be in stereo?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q13" value="a">
+                        <span>2.5 MB</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="b">
+                        <span>5 MB</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="c">
+                        <span>10 MB</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="d">
+                        <span>15 MB</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="c">
+                    <strong>Explanation:</strong> Stereo has 2 channels (left and right), each storing separate audio data. Stereo file size = mono × 2 = 10 MB.
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="quiz-question" data-question="14">
+                <h3>Question 14</h3>
+                <p>Calculate the file size of a 10-second mono sound at 44,100 Hz and 16-bit depth.</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q14" value="a">
+                        <span>441,000 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q14" value="b">
+                        <span>705,600 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q14" value="c">
+                        <span>882,000 bytes</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q14" value="d">
+                        <span>1,764,000 bytes</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="c">
+                    <strong>Explanation:</strong> Bits = 44,100 × 16 × 10 = 7,056,000 bits. Bytes = 7,056,000 ÷ 8 = 882,000 bytes.
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="quiz-question" data-question="15">
+                <h3>Question 15</h3>
+                <p>Which statement best describes the trade-off in data representation?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q15" value="a">
+                        <span>Higher quality always means faster processing</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="b">
+                        <span>Higher quality requires more storage space</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="c">
+                        <span>File size has no relationship to quality</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="d">
+                        <span>Smaller files always have better quality</span>
+                    </label>
+                </div>
+                <div class="explanation" data-correct="b">
+                    <strong>Explanation:</strong> The universal trade-off: more bits per unit (character, pixel, sample) = better quality/more options, but larger file sizes. This applies to text, images, and sound.
+                </div>
+            </div>
+
+            <div class="quiz-actions">
+                <button type="submit" class="btn btn-primary btn-lg">Submit Answers</button>
+            </div>
+        </form>
+
+        <!-- Results Section -->
+        <div id="quiz-results" class="quiz-results" style="display: none;">
+            <h2>Your Results</h2>
+            <div class="score-display">
+                <div class="score-circle">
+                    <span id="score-value">0</span>
+                    <span class="score-total">/15</span>
+                </div>
+                <p id="score-percentage">0%</p>
+            </div>
+            <div class="score-feedback" id="score-feedback"></div>
+            <div class="result-actions">
+                <button class="btn btn-secondary" onclick="location.reload()">Try Again</button>
+                <a href="index.html" class="btn btn-primary">Back to Topic</a>
+            </div>
+        </div>
+
+        <div class="activity-nav">
+            <a href="parsons.html" class="btn btn-secondary">← Parsons Problems</a>
+            <a href="index.html" class="btn btn-primary">Back to Topic</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'c',
+            q4: 'b',
+            q5: 'b',
+            q6: 'b',
+            q7: 'd',
+            q8: 'a',
+            q9: 'b',
+            q10: 'b',
+            q11: 'c',
+            q12: 'b',
+            q13: 'c',
+            q14: 'c',
+            q15: 'b'
+        };
+
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let score = 0;
+            const totalQuestions = 15;
+
+            // Check each answer
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionDiv = document.querySelector(`.quiz-question[data-question="${i}"]`);
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const explanation = questionDiv.querySelector('.explanation');
+                const correctValue = explanation.dataset.correct;
+
+                // Reset styles
+                questionDiv.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect', 'correct-answer');
+                });
+
+                if (selected) {
+                    const selectedOption = selected.closest('.option');
+                    if (selected.value === correctValue) {
+                        score++;
+                        selectedOption.classList.add('correct');
+                    } else {
+                        selectedOption.classList.add('incorrect');
+                        // Show correct answer
+                        questionDiv.querySelector(`input[value="${correctValue}"]`).closest('.option').classList.add('correct-answer');
+                    }
+                } else {
+                    // No answer selected - show correct answer
+                    questionDiv.querySelector(`input[value="${correctValue}"]`).closest('.option').classList.add('correct-answer');
+                }
+
+                // Show explanation
+                explanation.style.display = 'block';
+            }
+
+            // Display results
+            const percentage = Math.round((score / totalQuestions) * 100);
+            document.getElementById('score-value').textContent = score;
+            document.getElementById('score-percentage').textContent = percentage + '%';
+
+            // Feedback based on score
+            const feedback = document.getElementById('score-feedback');
+            if (percentage >= 90) {
+                feedback.innerHTML = '<p class="excellent">Excellent work! You have a strong understanding of data representation.</p>';
+            } else if (percentage >= 70) {
+                feedback.innerHTML = '<p class="good">Good job! You understand most concepts. Review the explanations for questions you missed.</p>';
+            } else if (percentage >= 50) {
+                feedback.innerHTML = '<p class="okay">You\'re getting there! Review the worked examples and try the practice problems again.</p>';
+            } else {
+                feedback.innerHTML = '<p class="needs-work">Keep practicing! Go back through the content and examples before trying again.</p>';
+            }
+
+            document.getElementById('quiz-results').style.display = 'block';
+            document.getElementById('quiz-results').scrollIntoView({ behavior: 'smooth' });
+
+            // Hide submit button
+            document.querySelector('.quiz-actions').style.display = 'none';
+
+            // Save progress
+            if (typeof Progress !== 'undefined') {
+                Progress.complete('representation-quiz', percentage);
+            }
+        });
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('representation-quiz');
+        }
+    </script>
+
+    <style>
+        .quiz-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quiz-question h3 {
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .quiz-question p {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: var(--space-md) var(--space-lg);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background: var(--gray-200);
+            border-color: var(--primary);
+        }
+
+        .option input[type="radio"] {
+            margin-right: var(--space-md);
+            transform: scale(1.2);
+        }
+
+        .option.correct {
+            background: #d4edda;
+            border-color: var(--success);
+        }
+
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: var(--error);
+        }
+
+        .option.correct-answer {
+            background: #fff3cd;
+            border-color: var(--warning);
+        }
+
+        .explanation {
+            display: none;
+            margin-top: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--info-light);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--info);
+        }
+
+        .quiz-actions {
+            text-align: center;
+            margin: var(--space-xl) 0;
+        }
+
+        .btn-lg {
+            padding: var(--space-md) var(--space-xxl);
+            font-size: 1.2rem;
+        }
+
+        .quiz-results {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xxl);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .score-display {
+            margin: var(--space-xl) 0;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+        }
+
+        #score-value {
+            font-size: 3rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .score-total {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        #score-percentage {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .score-feedback p {
+            font-size: 1.2rem;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .score-feedback .excellent {
+            background: #d4edda;
+            color: var(--success);
+        }
+
+        .score-feedback .good {
+            background: #cce5ff;
+            color: var(--info);
+        }
+
+        .score-feedback .okay {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .score-feedback .needs-work {
+            background: #f8d7da;
+            color: var(--error);
+        }
+
+        .result-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

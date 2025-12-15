@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Representation - Characters, Images & Sound</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <span class="topic-icon-large">🎨</span>
+            <h1>Data Representation</h1>
+            <p class="subtitle">Characters, Images & Sound</p>
+        </div>
+
+        <div class="learning-objectives">
+            <h2>What You'll Learn</h2>
+            <ul>
+                <li>How characters are represented using binary codes and character sets</li>
+                <li>The difference between ASCII and Unicode</li>
+                <li>How images are stored as pixels with colour depth and resolution</li>
+                <li>How sound is sampled and stored digitally</li>
+                <li>Calculate file sizes for images and sound</li>
+            </ul>
+        </div>
+
+        <div class="activity-nav-grid">
+            <a href="predict.html" class="activity-card">
+                <span class="activity-icon">🔮</span>
+                <h3>Predict</h3>
+                <p>Test your intuition about data representation</p>
+            </a>
+            <a href="example.html" class="activity-card">
+                <span class="activity-icon">📖</span>
+                <h3>Worked Examples</h3>
+                <p>Step-by-step file size calculations</p>
+            </a>
+            <a href="trace.html" class="activity-card">
+                <span class="activity-icon">🔍</span>
+                <h3>Trace</h3>
+                <p>Work through calculations step by step</p>
+            </a>
+            <a href="parsons.html" class="activity-card">
+                <span class="activity-icon">🧩</span>
+                <h3>Parsons Problems</h3>
+                <p>Put steps in the correct order</p>
+            </a>
+            <a href="quiz.html" class="activity-card">
+                <span class="activity-icon">✅</span>
+                <h3>Quiz</h3>
+                <p>Test your knowledge</p>
+            </a>
+        </div>
+
+        <!-- SECTION 1: CHARACTERS -->
+        <section class="content-section" id="characters">
+            <h2>1. Representing Characters</h2>
+
+            <div class="concept-card">
+                <h3>Why Binary Codes for Characters?</h3>
+                <p>Computers can only understand binary (1s and 0s). Every character you type - letters, numbers, symbols - must be converted to a binary code for the computer to store and process it.</p>
+                <div class="key-point">
+                    <strong>Key Idea:</strong> Each character is assigned a unique binary number. When you press 'A' on your keyboard, the computer stores its binary code, not the letter itself.
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>What is a Character Set?</h3>
+                <p>A <strong>character set</strong> is a collection of characters that a computer can recognise and use. It defines:</p>
+                <ul>
+                    <li>Which characters are available (letters, numbers, symbols)</li>
+                    <li>The binary code assigned to each character</li>
+                    <li>How many bits are used per character</li>
+                </ul>
+
+                <div class="formula-box">
+                    <h4>The Bits vs Characters Relationship</h4>
+                    <p>Number of characters = 2<sup>number of bits</sup></p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Bits per Character</th>
+                                <th>Maximum Characters</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>7 bits</td>
+                                <td>2<sup>7</sup> = 128</td>
+                                <td>Original ASCII</td>
+                            </tr>
+                            <tr>
+                                <td>8 bits (1 byte)</td>
+                                <td>2<sup>8</sup> = 256</td>
+                                <td>Extended ASCII</td>
+                            </tr>
+                            <tr>
+                                <td>16 bits (2 bytes)</td>
+                                <td>2<sup>16</sup> = 65,536</td>
+                                <td>Unicode (basic)</td>
+                            </tr>
+                            <tr>
+                                <td>32 bits (4 bytes)</td>
+                                <td>2<sup>32</sup> = 4+ billion</td>
+                                <td>Unicode (full)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>ASCII (American Standard Code for Information Interchange)</h3>
+                <p>ASCII is one of the oldest and most widely used character sets. In exams, ASCII uses <strong>8 bits per character</strong>.</p>
+
+                <div class="info-box">
+                    <h4>ASCII Key Facts</h4>
+                    <ul>
+                        <li>Uses 8 bits (1 byte) per character</li>
+                        <li>Can represent 256 different characters (2<sup>8</sup>)</li>
+                        <li>Includes: uppercase letters, lowercase letters, digits 0-9, punctuation, control characters</li>
+                        <li>Only supports English and basic symbols</li>
+                    </ul>
+                </div>
+
+                <h4>ASCII is Logically Ordered</h4>
+                <p>Characters in ASCII follow a logical sequence:</p>
+                <div class="code-example">
+                    <p>A = 65, B = 66, C = 67, D = 68...</p>
+                    <p>a = 97, b = 98, c = 99, d = 100...</p>
+                    <p>0 = 48, 1 = 49, 2 = 50, 3 = 51...</p>
+                </div>
+                <div class="key-point">
+                    <strong>Exam Tip:</strong> The code for 'B' is always one more than 'A'. If A = 65, then B = 66. You don't need to memorise codes - just understand the pattern!
+                </div>
+
+                <div class="interactive-demo" id="ascii-demo">
+                    <h4>Try It: ASCII Lookup</h4>
+                    <p>Enter a character to see its ASCII code:</p>
+                    <div class="demo-controls">
+                        <input type="text" id="ascii-input" maxlength="1" placeholder="A">
+                        <button class="btn btn-primary" onclick="showAscii()">Show Code</button>
+                    </div>
+                    <div class="demo-output" id="ascii-output"></div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Unicode</h3>
+                <p>Unicode was created to solve ASCII's limitations. It can represent characters from <strong>every language in the world</strong>, plus emojis and symbols!</p>
+
+                <div class="comparison-table">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>ASCII</th>
+                                <th>Unicode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bits per character</td>
+                                <td>8 bits (1 byte)</td>
+                                <td>8-32 bits (1-4 bytes)</td>
+                            </tr>
+                            <tr>
+                                <td>Total characters</td>
+                                <td>256</td>
+                                <td>Over 140,000</td>
+                            </tr>
+                            <tr>
+                                <td>Languages</td>
+                                <td>English only</td>
+                                <td>All world languages</td>
+                            </tr>
+                            <tr>
+                                <td>Emojis</td>
+                                <td>No</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>File size</td>
+                                <td>Smaller</td>
+                                <td>Larger</td>
+                            </tr>
+                            <tr>
+                                <td>Compatibility</td>
+                                <td>Older systems</td>
+                                <td>Modern systems</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Trade-off: Characters vs File Size</h4>
+                    <p>More bits per character = more possible characters, but larger file sizes.</p>
+                    <p>A text file in Unicode can be <strong>2-4 times larger</strong> than the same text in ASCII!</p>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Calculating Text File Size</h3>
+                <div class="formula-box">
+                    <h4>Formula</h4>
+                    <p><strong>File size (bits)</strong> = Number of characters × Bits per character</p>
+                    <p><strong>File size (bytes)</strong> = Number of characters × Bytes per character</p>
+                </div>
+
+                <div class="worked-example">
+                    <h4>Example: Calculate the file size of "Hello" in ASCII</h4>
+                    <ol>
+                        <li>Count characters: "Hello" = 5 characters</li>
+                        <li>ASCII uses 8 bits (1 byte) per character</li>
+                        <li>File size = 5 × 8 = <strong>40 bits</strong> or <strong>5 bytes</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: IMAGES -->
+        <section class="content-section" id="images">
+            <h2>2. Representing Images</h2>
+
+            <div class="concept-card">
+                <h3>Images as Pixels</h3>
+                <p>Digital images are made up of tiny squares called <strong>pixels</strong> (picture elements). Each pixel has a specific colour, represented by a binary code.</p>
+
+                <div class="pixel-demo">
+                    <div class="pixel-grid" id="pixel-grid">
+                        <!-- Generated by JavaScript -->
+                    </div>
+                    <p class="caption">A simple 8×8 pixel image. Zoom in on any photo to see pixels!</p>
+                </div>
+
+                <div class="key-point">
+                    <strong>Key Idea:</strong> The more pixels an image has, the more detail it can show - but the larger the file size.
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Resolution</h3>
+                <p><strong>Resolution</strong> is the number of pixels in an image, usually expressed as width × height.</p>
+
+                <div class="example-box">
+                    <h4>Common Resolutions</h4>
+                    <ul>
+                        <li><strong>HD:</strong> 1280 × 720 = 921,600 pixels</li>
+                        <li><strong>Full HD:</strong> 1920 × 1080 = 2,073,600 pixels (about 2 megapixels)</li>
+                        <li><strong>4K:</strong> 3840 × 2160 = 8,294,400 pixels (about 8 megapixels)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h4>Effect of Resolution</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Higher Resolution</th>
+                                <th>Lower Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>More pixels</td>
+                                <td>Fewer pixels</td>
+                            </tr>
+                            <tr>
+                                <td>More detail/sharper image</td>
+                                <td>Less detail/blurry when enlarged</td>
+                            </tr>
+                            <tr>
+                                <td>Larger file size</td>
+                                <td>Smaller file size</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Colour Depth</h3>
+                <p><strong>Colour depth</strong> is the number of bits used to represent the colour of each pixel.</p>
+
+                <div class="formula-box">
+                    <h4>Colour Depth Formula</h4>
+                    <p>Number of colours = 2<sup>colour depth</sup></p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Colour Depth</th>
+                            <th>Number of Colours</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 bit</td>
+                            <td>2<sup>1</sup> = 2</td>
+                            <td>Black and white only</td>
+                        </tr>
+                        <tr>
+                            <td>4 bits</td>
+                            <td>2<sup>4</sup> = 16</td>
+                            <td>Simple graphics</td>
+                        </tr>
+                        <tr>
+                            <td>8 bits</td>
+                            <td>2<sup>8</sup> = 256</td>
+                            <td>GIF images</td>
+                        </tr>
+                        <tr>
+                            <td>24 bits</td>
+                            <td>2<sup>24</sup> = 16.7 million</td>
+                            <td>"True colour" photos</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="colour-depth-demo">
+                    <h4>Visual Comparison</h4>
+                    <div class="colour-samples">
+                        <div class="colour-sample">
+                            <div class="sample-image bw"></div>
+                            <p>1-bit (2 colours)</p>
+                        </div>
+                        <div class="colour-sample">
+                            <div class="sample-image limited"></div>
+                            <p>8-bit (256 colours)</p>
+                        </div>
+                        <div class="colour-sample">
+                            <div class="sample-image full"></div>
+                            <p>24-bit (16.7M colours)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Calculating Image File Size</h3>
+                <div class="formula-box">
+                    <h4>Image File Size Formula</h4>
+                    <p><strong>File size (bits)</strong> = Width × Height × Colour depth</p>
+                    <p><strong>File size (bytes)</strong> = (Width × Height × Colour depth) ÷ 8</p>
+                </div>
+
+                <div class="worked-example">
+                    <h4>Example: Calculate the file size of a 1920×1080 image with 24-bit colour</h4>
+                    <ol>
+                        <li>Total pixels = 1920 × 1080 = 2,073,600 pixels</li>
+                        <li>Bits per pixel = 24 bits</li>
+                        <li>Total bits = 2,073,600 × 24 = 49,766,400 bits</li>
+                        <li>Convert to bytes = 49,766,400 ÷ 8 = 6,220,800 bytes</li>
+                        <li>Convert to MB = 6,220,800 ÷ 1,000,000 ≈ <strong>6.2 MB</strong></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Metadata</h3>
+                <p><strong>Metadata</strong> is additional information stored with an image file. It's "data about data".</p>
+
+                <div class="info-box">
+                    <h4>What Metadata Includes</h4>
+                    <ul>
+                        <li><strong>Image dimensions:</strong> Width and height in pixels</li>
+                        <li><strong>Colour depth:</strong> Bits per pixel</li>
+                        <li><strong>File format:</strong> JPEG, PNG, GIF, etc.</li>
+                        <li><strong>Date created:</strong> When the image was taken/created</li>
+                        <li><strong>Camera settings:</strong> For photos - aperture, shutter speed, ISO</li>
+                        <li><strong>GPS location:</strong> Where the photo was taken</li>
+                    </ul>
+                </div>
+
+                <div class="key-point">
+                    <strong>Why Metadata Matters:</strong> Metadata is needed by software to correctly display the image. Without it, the computer wouldn't know how to interpret the binary data!
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SOUND -->
+        <section class="content-section" id="sound">
+            <h2>3. Representing Sound</h2>
+
+            <div class="concept-card">
+                <h3>Analogue vs Digital Sound</h3>
+                <p>Sound in the real world is <strong>analogue</strong> - a continuous wave that varies smoothly. Computers need <strong>digital</strong> data - discrete binary values.</p>
+
+                <div class="wave-demo">
+                    <div class="wave-visual">
+                        <svg viewBox="0 0 400 100" class="sound-wave">
+                            <path d="M 0,50 Q 25,10 50,50 T 100,50 T 150,50 T 200,50 T 250,50 T 300,50 T 350,50 T 400,50"
+                                  stroke="#3b82f6" stroke-width="2" fill="none" class="analogue-wave"/>
+                            <g class="sample-points">
+                                <!-- Sample points added by CSS/JS -->
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="caption">Analogue sound wave with digital sample points</p>
+                </div>
+
+                <div class="key-point">
+                    <strong>Sampling:</strong> To store sound digitally, we take "snapshots" (samples) of the sound wave at regular intervals and convert each measurement to binary.
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Sample Rate</h3>
+                <p><strong>Sample rate</strong> is how many samples are taken per second. It's measured in <strong>Hertz (Hz)</strong>.</p>
+
+                <div class="formula-box">
+                    <p>1 Hz = 1 sample per second</p>
+                    <p>1 kHz = 1,000 samples per second</p>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Sample Rate</th>
+                            <th>Samples per Second</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8,000 Hz (8 kHz)</td>
+                            <td>8,000</td>
+                            <td>Telephone quality</td>
+                        </tr>
+                        <tr>
+                            <td>22,050 Hz</td>
+                            <td>22,050</td>
+                            <td>AM radio quality</td>
+                        </tr>
+                        <tr>
+                            <td>44,100 Hz (44.1 kHz)</td>
+                            <td>44,100</td>
+                            <td>CD quality</td>
+                        </tr>
+                        <tr>
+                            <td>48,000 Hz (48 kHz)</td>
+                            <td>48,000</td>
+                            <td>DVD/professional audio</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <h4>Effect of Sample Rate</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Higher Sample Rate</th>
+                                <th>Lower Sample Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>More samples per second</td>
+                                <td>Fewer samples per second</td>
+                            </tr>
+                            <tr>
+                                <td>More accurate representation</td>
+                                <td>Less accurate (sounds "choppy")</td>
+                            </tr>
+                            <tr>
+                                <td>Better quality playback</td>
+                                <td>Lower quality playback</td>
+                            </tr>
+                            <tr>
+                                <td>Larger file size</td>
+                                <td>Smaller file size</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Bit Depth</h3>
+                <p><strong>Bit depth</strong> (also called sample resolution) is the number of bits used to store each sample.</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Bit Depth</th>
+                            <th>Possible Values</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8 bits</td>
+                            <td>2<sup>8</sup> = 256 levels</td>
+                            <td>Basic audio</td>
+                        </tr>
+                        <tr>
+                            <td>16 bits</td>
+                            <td>2<sup>16</sup> = 65,536 levels</td>
+                            <td>CD quality</td>
+                        </tr>
+                        <tr>
+                            <td>24 bits</td>
+                            <td>2<sup>24</sup> = 16.7 million levels</td>
+                            <td>Professional studio</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <h4>Effect of Bit Depth</h4>
+                    <p><strong>Higher bit depth</strong> = more precise volume levels = better dynamic range = larger files</p>
+                    <p><strong>Lower bit depth</strong> = fewer volume levels = more "noise" = smaller files</p>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Duration</h3>
+                <p><strong>Duration</strong> is simply how many seconds of audio the sound file contains.</p>
+                <div class="key-point">
+                    <strong>Obvious but important:</strong> A 5-minute song will have a file size 5× larger than a 1-minute song (assuming same quality settings).
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Calculating Sound File Size</h3>
+                <div class="formula-box">
+                    <h4>Sound File Size Formula</h4>
+                    <p><strong>File size (bits)</strong> = Sample rate × Bit depth × Duration (seconds)</p>
+                    <p><strong>File size (bytes)</strong> = (Sample rate × Bit depth × Duration) ÷ 8</p>
+                    <p class="note">For stereo audio, multiply by 2 (two channels)</p>
+                </div>
+
+                <div class="worked-example">
+                    <h4>Example: Calculate the file size of a 3-minute CD-quality audio file (mono)</h4>
+                    <ol>
+                        <li>Sample rate = 44,100 Hz</li>
+                        <li>Bit depth = 16 bits</li>
+                        <li>Duration = 3 minutes = 180 seconds</li>
+                        <li>File size (bits) = 44,100 × 16 × 180 = 127,008,000 bits</li>
+                        <li>File size (bytes) = 127,008,000 ÷ 8 = 15,876,000 bytes</li>
+                        <li>File size (MB) = 15,876,000 ÷ 1,000,000 ≈ <strong>15.9 MB</strong></li>
+                    </ol>
+                    <p class="note">For stereo, this would be 31.8 MB (×2 for two channels)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUMMARY SECTION -->
+        <section class="content-section" id="summary">
+            <h2>Quick Reference Card</h2>
+
+            <div class="reference-grid">
+                <div class="reference-card">
+                    <h3>Characters</h3>
+                    <ul>
+                        <li>ASCII: 8 bits = 256 characters</li>
+                        <li>Unicode: 8-32 bits = 140,000+ characters</li>
+                        <li>File size = characters × bits per char</li>
+                        <li>Characters are logically ordered (A=65, B=66...)</li>
+                    </ul>
+                </div>
+
+                <div class="reference-card">
+                    <h3>Images</h3>
+                    <ul>
+                        <li>Made of pixels (picture elements)</li>
+                        <li>Resolution = width × height</li>
+                        <li>Colours = 2<sup>colour depth</sup></li>
+                        <li>File size = width × height × colour depth</li>
+                        <li>Metadata stores dimensions, format, etc.</li>
+                    </ul>
+                </div>
+
+                <div class="reference-card">
+                    <h3>Sound</h3>
+                    <ul>
+                        <li>Analogue sound → digital samples</li>
+                        <li>Sample rate in Hz (44.1kHz = CD)</li>
+                        <li>Bit depth = bits per sample (16-bit = CD)</li>
+                        <li>File size = rate × depth × duration</li>
+                        <li>Stereo = mono × 2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-tradeoff">
+                <h3>The Universal Trade-Off</h3>
+                <p>For ALL data types: <strong>Higher quality = Larger file size</strong></p>
+                <p>More bits per item means more possible values/detail, but more storage needed.</p>
+            </div>
+        </section>
+
+        <div class="activity-nav">
+            <a href="../index.html" class="btn btn-secondary">← Back to Topics</a>
+            <a href="predict.html" class="btn btn-primary">Start Activities →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // ASCII Demo
+        function showAscii() {
+            const input = document.getElementById('ascii-input').value;
+            const output = document.getElementById('ascii-output');
+
+            if (input.length === 0) {
+                output.innerHTML = '<p>Please enter a character</p>';
+                return;
+            }
+
+            const char = input.charAt(0);
+            const code = char.charCodeAt(0);
+            const binary = code.toString(2).padStart(8, '0');
+
+            output.innerHTML = `
+                <p><strong>Character:</strong> '${char}'</p>
+                <p><strong>ASCII Code (denary):</strong> ${code}</p>
+                <p><strong>Binary:</strong> ${binary}</p>
+            `;
+        }
+
+        // Generate pixel grid demo
+        function generatePixelGrid() {
+            const grid = document.getElementById('pixel-grid');
+            if (!grid) return;
+
+            const colours = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9', '#74b9ff', '#a29bfe'];
+            let html = '';
+
+            for (let i = 0; i < 64; i++) {
+                const colour = colours[Math.floor(Math.random() * colours.length)];
+                html += `<div class="pixel" style="background-color: ${colour}"></div>`;
+            }
+
+            grid.innerHTML = html;
+        }
+
+        // Initialize demos
+        document.addEventListener('DOMContentLoaded', function() {
+            generatePixelGrid();
+
+            // Mark as started
+            if (typeof Progress !== 'undefined') {
+                Progress.start('representation');
+            }
+        });
+
+        // Allow Enter key in ASCII input
+        document.getElementById('ascii-input')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                showAscii();
+            }
+        });
+    </script>
+
+    <style>
+        .topic-icon-large {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: var(--space-md);
+        }
+
+        .learning-objectives {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #e0e7ff 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .learning-objectives ul {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+
+        .learning-objectives li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .activity-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-xxl);
+        }
+
+        .activity-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+
+        .activity-card h3 {
+            margin: 0 0 var(--space-xs);
+            font-size: 1rem;
+        }
+
+        .activity-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .content-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .concept-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .concept-card h3 {
+            color: var(--gray-800);
+            margin-bottom: var(--space-md);
+        }
+
+        .key-point {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .formula-box {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-md) 0;
+            text-align: center;
+        }
+
+        .formula-box h4 {
+            margin-bottom: var(--space-sm);
+            color: #16a34a;
+        }
+
+        .formula-box p {
+            font-size: 1.1rem;
+            margin: var(--space-sm) 0;
+        }
+
+        .worked-example {
+            background: #faf5ff;
+            border: 2px solid #a855f7;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-md) 0;
+        }
+
+        .worked-example h4 {
+            color: #7c3aed;
+            margin-bottom: var(--space-md);
+        }
+
+        .worked-example ol {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+
+        .worked-example li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-300);
+            text-align: left;
+        }
+
+        .data-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: var(--gray-100);
+        }
+
+        .code-example {
+            background: var(--gray-800);
+            color: #a5f3fc;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            margin: var(--space-md) 0;
+        }
+
+        .code-example p {
+            margin: var(--space-xs) 0;
+        }
+
+        .interactive-demo {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+
+        .demo-controls input {
+            padding: var(--space-sm) var(--space-md);
+            font-size: 1.5rem;
+            width: 80px;
+            text-align: center;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+        }
+
+        .demo-output {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            min-height: 60px;
+        }
+
+        .demo-output p {
+            margin: var(--space-xs) 0;
+        }
+
+        /* Pixel Grid */
+        .pixel-demo {
+            text-align: center;
+            margin: var(--space-lg) 0;
+        }
+
+        .pixel-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 2px;
+            max-width: 200px;
+            margin: 0 auto;
+            background: var(--gray-300);
+            padding: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        .pixel {
+            aspect-ratio: 1;
+            border-radius: 2px;
+        }
+
+        .caption {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-top: var(--space-sm);
+        }
+
+        /* Colour depth demo */
+        .colour-samples {
+            display: flex;
+            justify-content: space-around;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .colour-sample {
+            text-align: center;
+        }
+
+        .sample-image {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .sample-image.bw {
+            background: linear-gradient(135deg, #000 50%, #fff 50%);
+        }
+
+        .sample-image.limited {
+            background: linear-gradient(135deg, #ff0000, #00ff00, #0000ff, #ffff00);
+        }
+
+        .sample-image.full {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+        }
+
+        /* Sound wave */
+        .wave-demo {
+            text-align: center;
+            margin: var(--space-lg) 0;
+        }
+
+        .sound-wave {
+            max-width: 400px;
+            height: 100px;
+        }
+
+        /* Reference cards */
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .reference-card {
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-top: 4px solid var(--primary);
+        }
+
+        .reference-card h3 {
+            margin-bottom: var(--space-md);
+            color: var(--primary);
+        }
+
+        .reference-card ul {
+            margin: 0;
+            padding-left: var(--space-md);
+        }
+
+        .reference-card li {
+            margin-bottom: var(--space-xs);
+            font-size: 0.9rem;
+        }
+
+        .key-tradeoff {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        .key-tradeoff h3 {
+            color: #92400e;
+        }
+
+        .key-tradeoff p {
+            margin: var(--space-sm) 0 0;
+            font-size: 1.1rem;
+        }
+
+        .example-box {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin: var(--space-md) 0;
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            font-style: italic;
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>
