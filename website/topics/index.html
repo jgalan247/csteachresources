@@ -29,11 +29,8 @@
         </header>
 
         <section class="topics-overview">
-            <h2>All Topics</h2>
-            <p>
-                <span style="display: inline-block; width: 12px; height: 12px; background: var(--primary); border-radius: 2px; margin-right: 4px;"></span> <strong>Programming</strong> - Learn to code in Python
-                <span style="margin-left: var(--space-lg); display: inline-block; width: 12px; height: 12px; background: var(--theory); border-radius: 2px; margin-right: 4px;"></span> <strong>Theory</strong> - Understand how computers work
-            </p>
+            <h2>Programming</h2>
+            <p>Learn to code in Python - from basics to advanced concepts.</p>
 
             <div class="topic-grid">
                 <!-- Programming Topics -->
@@ -266,30 +263,13 @@
             </div>
         </section>
 
-        <section class="additional-topics mt-xl">
-            <h2>Additional Topics</h2>
-            <p>These topics can be studied alongside or after the Python fundamentals:</p>
+        <section class="theory-topics mt-xl">
+            <h2>Theory</h2>
+            <p>Understand how computers work - the concepts behind the code.</p>
 
             <div class="topic-grid">
-                <a href="sql/index.html" class="topic-card supplementary">
-                    <div class="topic-icon">🗄️</div>
-                    <h3>SQL & Databases</h3>
-                    <p>Learn to query databases using SQL - the standard language for working with data!</p>
-                    <ul class="topic-concepts">
-                        <li>What is a database?</li>
-                        <li>SELECT to retrieve data</li>
-                        <li>FROM to specify tables</li>
-                        <li>WHERE to filter results</li>
-                    </ul>
-                    <div class="topic-progress" data-topic="sql">
-                        <div class="progress-bar"><div class="progress-fill"></div></div>
-                        <span class="progress-text">0% complete</span>
-                    </div>
-                    <span class="badge supplementary-badge">Standalone Topic</span>
-                </a>
-
-                <!-- Theory Topics -->
                 <a href="cpu/index.html" class="topic-card theory featured">
+                    <div class="topic-number">1</div>
                     <span class="topic-type-label theory">Theory</span>
                     <div class="topic-icon">🖥️</div>
                     <h3>CPU &amp; Fetch-Execute Cycle</h3>
@@ -304,6 +284,30 @@
                         <span class="progress-text">0% complete</span>
                     </div>
                     <span class="badge">New</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="additional-topics mt-xl">
+            <h2>Additional Topics</h2>
+            <p>These topics can be studied alongside or after the main curriculum:</p>
+
+            <div class="topic-grid">
+                <a href="sql/index.html" class="topic-card supplementary">
+                    <div class="topic-icon">🗄️</div>
+                    <h3>SQL &amp; Databases</h3>
+                    <p>Learn to query databases using SQL - the standard language for working with data!</p>
+                    <ul class="topic-concepts">
+                        <li>What is a database?</li>
+                        <li>SELECT to retrieve data</li>
+                        <li>FROM to specify tables</li>
+                        <li>WHERE to filter results</li>
+                    </ul>
+                    <div class="topic-progress" data-topic="sql">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <span class="progress-text">0% complete</span>
+                    </div>
+                    <span class="badge supplementary-badge">Standalone Topic</span>
                 </a>
             </div>
         </section>
@@ -342,6 +346,13 @@
         }
         .topic-concepts li {
             margin-bottom: var(--space-xs);
+        }
+        .theory-topics {
+            border-top: 2px solid var(--gray-200);
+            padding-top: var(--space-xl);
+        }
+        .theory-topics .topic-number {
+            background: var(--theory, #10b981);
         }
         .additional-topics {
             border-top: 2px solid var(--gray-200);
