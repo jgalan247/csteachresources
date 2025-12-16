@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Examples - Operating Systems</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .example-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        .example-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .example-title {
+            font-size: 1.3rem;
+            color: var(--gray-800);
+        }
+        .scenario-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        .scenario-box h4 {
+            color: #0369a1;
+            margin-bottom: var(--space-sm);
+        }
+        .analysis-section {
+            margin-bottom: var(--space-lg);
+        }
+        .analysis-section h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .step-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+        .step-table th, .step-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border: 1px solid var(--gray-200);
+        }
+        .step-table th {
+            background: var(--gray-100);
+        }
+        .os-function {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .fn-memory { background: #dbeafe; color: #1e40af; }
+        .fn-ui { background: #dcfce7; color: #166534; }
+        .fn-peripheral { background: #fef3c7; color: #92400e; }
+        .fn-user { background: #ede9fe; color: #5b21b6; }
+        .fn-file { background: #fee2e2; color: #991b1b; }
+        .key-insight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #fbbf24;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        .key-insight strong {
+            color: #92400e;
+        }
+        .process-flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            align-items: center;
+            margin: var(--space-md) 0;
+        }
+        .flow-step {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+        .flow-arrow {
+            color: var(--gray-400);
+            font-weight: bold;
+        }
+        .practice-section {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-top: var(--space-xxl);
+        }
+        .practice-problem {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        .reveal-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            margin-top: var(--space-md);
+        }
+        .reveal-btn:hover {
+            background: var(--primary-dark);
+        }
+        .solution-reveal {
+            display: none;
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: #ecfdf5;
+            border-radius: var(--radius-md);
+            border: 1px solid #6ee7b7;
+        }
+        .solution-reveal.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Operating Systems</a>
+            <h1>Worked Examples</h1>
+            <p class="subtitle">Learn to identify and explain OS functions in real scenarios</p>
+        </header>
+
+        <!-- Example 1 -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-number">1</div>
+                <h3 class="example-title">Running Multiple Applications</h3>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Scenario</h4>
+                <p>A student has the following applications open: Google Chrome (8 tabs), Microsoft Word, Spotify (playing music), and a file manager window. She switches between Word and Chrome frequently while music continues playing. Her computer has a single-core processor and 8GB RAM.</p>
+                <p><strong>Question:</strong> Explain how the operating system manages this situation.</p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>🔍 Step 1: Identify the OS Functions Involved</h4>
+                <table class="step-table">
+                    <tr>
+                        <th>What's Happening</th>
+                        <th>OS Function</th>
+                    </tr>
+                    <tr>
+                        <td>Four programs appear to run simultaneously</td>
+                        <td><span class="os-function fn-memory">Memory Management</span> - Multitasking</td>
+                    </tr>
+                    <tr>
+                        <td>Each program needs RAM to store data</td>
+                        <td><span class="os-function fn-memory">Memory Management</span> - Allocation</td>
+                    </tr>
+                    <tr>
+                        <td>User clicks between windows</td>
+                        <td><span class="os-function fn-ui">User Interface</span> - GUI</td>
+                    </tr>
+                    <tr>
+                        <td>Music plays through speakers</td>
+                        <td><span class="os-function fn-peripheral">Peripheral Management</span> - Audio output</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>✅ Step 2: Explain Memory Allocation</h4>
+                <p>The OS allocates a portion of RAM to each application:</p>
+                <table class="step-table">
+                    <tr>
+                        <th>Application</th>
+                        <th>Approximate RAM Usage</th>
+                        <th>What's Stored</th>
+                    </tr>
+                    <tr>
+                        <td>Chrome (8 tabs)</td>
+                        <td>~2GB</td>
+                        <td>Web page content, JavaScript, images for each tab</td>
+                    </tr>
+                    <tr>
+                        <td>Microsoft Word</td>
+                        <td>~500MB</td>
+                        <td>Program code, document content, undo history</td>
+                    </tr>
+                    <tr>
+                        <td>Spotify</td>
+                        <td>~300MB</td>
+                        <td>Application, buffered audio data</td>
+                    </tr>
+                    <tr>
+                        <td>File Manager</td>
+                        <td>~100MB</td>
+                        <td>Folder contents, thumbnails</td>
+                    </tr>
+                    <tr>
+                        <td>Operating System</td>
+                        <td>~2GB</td>
+                        <td>Core OS processes, UI, drivers</td>
+                    </tr>
+                </table>
+                <p><em>Total: ~5GB of 8GB RAM used, leaving headroom for smooth operation.</em></p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>📋 Step 3: Explain Multitasking (Time Slicing)</h4>
+                <p>With a single-core processor, true simultaneous execution is impossible. The OS achieves multitasking through <strong>time slicing</strong>:</p>
+                <div class="process-flow">
+                    <span class="flow-step">Chrome (5ms)</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Word (5ms)</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Spotify (5ms)</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">File Manager (5ms)</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Repeat...</span>
+                </div>
+                <ul>
+                    <li>The OS rapidly switches the CPU between programs (hundreds of times per second)</li>
+                    <li>Each program gets a small "time slice" of CPU attention</li>
+                    <li>This happens so fast that users perceive simultaneous operation</li>
+                    <li>The active window (Word or Chrome) may get priority (more time slices)</li>
+                    <li>Spotify gets consistent slices to prevent audio stuttering</li>
+                </ul>
+            </div>
+
+            <div class="key-insight">
+                <strong>Key Insight:</strong> Memory Management handles two related but different tasks: (1) allocating separate RAM space to each program, and (2) scheduling CPU time between programs. Both are essential for multitasking.
+            </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-number">2</div>
+                <h3 class="example-title">Installing and Using a New Printer</h3>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Scenario</h4>
+                <p>A user connects a new USB printer to their computer. Windows displays "Setting up device..." and then "Your device is ready to use." The user opens a Word document and clicks Print. The document appears in the print queue, then prints successfully.</p>
+                <p><strong>Question:</strong> Explain the role of the OS at each stage of this process.</p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>🔍 Step 1: Device Detection and Driver Installation</h4>
+                <table class="step-table">
+                    <tr>
+                        <th>Step</th>
+                        <th>OS Action</th>
+                        <th>OS Function</th>
+                    </tr>
+                    <tr>
+                        <td>USB cable plugged in</td>
+                        <td>OS detects new hardware via USB interrupt signal</td>
+                        <td><span class="os-function fn-peripheral">Peripheral Management</span></td>
+                    </tr>
+                    <tr>
+                        <td>"Setting up device..."</td>
+                        <td>OS identifies device type and searches for appropriate driver</td>
+                        <td><span class="os-function fn-peripheral">Peripheral Management</span></td>
+                    </tr>
+                    <tr>
+                        <td>Driver installation</td>
+                        <td>OS installs driver software (from Windows Update or device)</td>
+                        <td><span class="os-function fn-file">File Management</span> + <span class="os-function fn-peripheral">Peripheral</span></td>
+                    </tr>
+                    <tr>
+                        <td>"Device ready"</td>
+                        <td>OS confirms driver loaded and communication established</td>
+                        <td><span class="os-function fn-peripheral">Peripheral Management</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>✅ Step 2: The Printing Process</h4>
+                <table class="step-table">
+                    <tr>
+                        <th>Step</th>
+                        <th>OS Action</th>
+                        <th>Why It's Needed</th>
+                    </tr>
+                    <tr>
+                        <td>User clicks Print in Word</td>
+                        <td>Application sends print request to OS</td>
+                        <td>Applications don't communicate directly with hardware</td>
+                    </tr>
+                    <tr>
+                        <td>OS receives request</td>
+                        <td>Print job added to print queue (buffer)</td>
+                        <td>Printer is slower than CPU; queue prevents blocking</td>
+                    </tr>
+                    <tr>
+                        <td>OS processes job</td>
+                        <td>Passes document to printer driver</td>
+                        <td>Driver translates document into printer commands</td>
+                    </tr>
+                    <tr>
+                        <td>Driver sends data</td>
+                        <td>Printer-specific commands sent via USB</td>
+                        <td>Each printer model needs specific commands</td>
+                    </tr>
+                    <tr>
+                        <td>Document prints</td>
+                        <td>Printer executes commands, OS monitors for errors</td>
+                        <td>OS handles issues like "out of paper"</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>📋 Step 3: Why Drivers Are Essential</h4>
+                <p>The driver acts as a translator:</p>
+                <div class="process-flow">
+                    <span class="flow-step">Word says "Print page"</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">OS receives request</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Driver translates</span>
+                    <span class="flow-arrow">→</span>
+                    <span class="flow-step">Printer understands</span>
+                </div>
+                <ul>
+                    <li>Without the driver, the OS wouldn't know how to communicate with this specific printer</li>
+                    <li>Different printers use different command languages</li>
+                    <li>The driver hides this complexity from applications</li>
+                    <li>Applications just say "print" - the OS and driver handle the details</li>
+                </ul>
+            </div>
+
+            <div class="key-insight">
+                <strong>Key Insight:</strong> Peripheral Management involves: detecting devices (Plug and Play), loading drivers, managing data transfer (buffers/queues), and handling communication between applications and hardware.
+            </div>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-number">3</div>
+                <h3 class="example-title">School Network User Management</h3>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Scenario</h4>
+                <p>At a school, students log in with usernames like "2025jsmith". When John logs in, he sees his own Documents folder with his coursework. He cannot see files belonging to other students. He tries to install a game but gets "Administrator privileges required." Teachers can access a shared Teaching Resources folder that students cannot see.</p>
+                <p><strong>Question:</strong> Explain how User Management controls this system.</p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>🔍 Step 1: Account Structure</h4>
+                <table class="step-table">
+                    <tr>
+                        <th>User Type</th>
+                        <th>Account Characteristics</th>
+                        <th>Access Rights</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Students</strong></td>
+                        <td>Standard user account (e.g., 2025jsmith)</td>
+                        <td>Own files only, read shared resources, no software install</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Teachers</strong></td>
+                        <td>Staff account with elevated privileges</td>
+                        <td>Own files, Teaching Resources folder, limited software install</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT Admin</strong></td>
+                        <td>Administrator account</td>
+                        <td>Full access - all files, all settings, software installation</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>✅ Step 2: Authentication Process</h4>
+                <p>When John types his username and password:</p>
+                <ol>
+                    <li>The OS receives the credentials</li>
+                    <li>Credentials are checked against the user database (often on a server)</li>
+                    <li>If correct, the OS creates a session for that user</li>
+                    <li>John's profile is loaded, including his settings and permissions</li>
+                    <li>His personal folder (H:\2025jsmith\) is mounted as his Documents</li>
+                </ol>
+            </div>
+
+            <div class="analysis-section">
+                <h4>📋 Step 3: Access Rights in Action</h4>
+                <table class="step-table">
+                    <tr>
+                        <th>Action John Tries</th>
+                        <th>Result</th>
+                        <th>How OS Enforces This</th>
+                    </tr>
+                    <tr>
+                        <td>Open his own document</td>
+                        <td>✓ Allowed</td>
+                        <td>He has Read/Write permission on his folder</td>
+                    </tr>
+                    <tr>
+                        <td>View another student's folder</td>
+                        <td>✗ Denied</td>
+                        <td>No permission to read other students' folders</td>
+                    </tr>
+                    <tr>
+                        <td>Open Teaching Resources</td>
+                        <td>✗ Denied / Not visible</td>
+                        <td>Student group has no access to this folder</td>
+                    </tr>
+                    <tr>
+                        <td>Install a game</td>
+                        <td>✗ Denied</td>
+                        <td>Software installation requires Admin rights</td>
+                    </tr>
+                    <tr>
+                        <td>Change desktop wallpaper</td>
+                        <td>✓ Allowed</td>
+                        <td>Personal settings are permitted</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="key-insight">
+                <strong>Key Insight:</strong> User Management provides three key benefits: <strong>Security</strong> (protecting data from unauthorised access), <strong>Privacy</strong> (keeping each user's data separate), and <strong>Control</strong> (limiting what actions users can perform to protect the system).
+            </div>
+        </div>
+
+        <!-- Example 4 -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-number">4</div>
+                <h3 class="example-title">File Management Operations</h3>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Scenario</h4>
+                <p>Sarah downloads a file called "download(1).pdf" to her Downloads folder. She wants to organise it properly. She: (1) Creates a new folder "Computing" inside Documents, (2) Renames the file to "Unit1_Notes.pdf", (3) Moves it to the new folder, (4) Double-clicks to open it in Adobe Reader.</p>
+                <p><strong>Question:</strong> Explain the file management operations and how the OS handles them.</p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>🔍 Step 1: Understanding the File System</h4>
+                <p>The OS maintains a hierarchical file system:</p>
+                <pre style="background: var(--gray-100); padding: var(--space-md); border-radius: var(--radius-sm); overflow-x: auto;">
+C:\
+├── Users\
+│   └── Sarah\
+│       ├── Documents\
+│       │   └── Computing\          ← New folder created here
+│       │       └── Unit1_Notes.pdf  ← File moved here
+│       └── Downloads\
+│           └── download(1).pdf     ← Original location
+└── Program Files\
+    └── Adobe Reader\               ← Application to open PDF
+                </pre>
+            </div>
+
+            <div class="analysis-section">
+                <h4>✅ Step 2: Each Operation Explained</h4>
+                <table class="step-table">
+                    <tr>
+                        <th>Operation</th>
+                        <th>What the OS Does</th>
+                        <th>File System Changes</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Create folder "Computing"</strong></td>
+                        <td>Allocates space in file system, creates folder entry</td>
+                        <td>New directory entry added under Documents</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rename file</strong></td>
+                        <td>Changes the filename in the file system table</td>
+                        <td>File data unchanged, only the name reference updates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Move file</strong></td>
+                        <td>Updates file's location reference in file system</td>
+                        <td>File data may stay in same physical location; pointer changes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Open file</strong></td>
+                        <td>Looks up .pdf association, launches Adobe Reader, loads file to RAM</td>
+                        <td>File read from storage into memory</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>📋 Step 3: File Extensions and Associations</h4>
+                <p>When Sarah double-clicks "Unit1_Notes.pdf":</p>
+                <ol>
+                    <li>OS reads the file extension (.pdf)</li>
+                    <li>OS checks its registry of file associations</li>
+                    <li>Finds that .pdf files should open with Adobe Reader</li>
+                    <li>Launches Adobe Reader application</li>
+                    <li>Passes the file path to Adobe Reader</li>
+                    <li>Adobe Reader loads the PDF into memory</li>
+                </ol>
+            </div>
+
+            <div class="key-insight">
+                <strong>Key Insight:</strong> The file system provides a logical, organised view of storage. When you "move" a file to another folder on the same drive, the actual data often doesn't move - just the reference to its location changes. This is why moving is usually instant, but copying takes time.
+            </div>
+        </div>
+
+        <!-- Practice Problems -->
+        <div class="practice-section">
+            <h2>Practice Problems</h2>
+            <p>Now try analysing these scenarios yourself:</p>
+
+            <div class="practice-problem">
+                <h4>Problem 1: Computer Running Slowly</h4>
+                <p>A user complains their computer is very slow. Task Manager shows: CPU: 15%, RAM: 98% used, Disk: 100% active. They have many browser tabs and applications open. What is happening and which OS function is involved?</p>
+                <button class="reveal-btn" onclick="toggleSolution('sol1')">Reveal Solution</button>
+                <div class="solution-reveal" id="sol1">
+                    <p><strong>Memory Management</strong> is the key function:</p>
+                    <ul>
+                        <li>RAM is 98% full - almost all physical memory is in use</li>
+                        <li>Disk at 100% indicates heavy use of <strong>virtual memory</strong></li>
+                        <li>The OS is swapping data between RAM and hard drive (much slower)</li>
+                        <li>This "thrashing" causes the slowdown, not CPU (which is only 15% used)</li>
+                    </ul>
+                    <p><strong>Solution:</strong> Close some applications to free RAM, or add more RAM to the computer.</p>
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Problem 2: Device Not Working</h4>
+                <p>After a Windows update, a user's wireless mouse stops working. The mouse worked fine yesterday. The USB receiver is plugged in and the light is on. What is the most likely cause and solution?</p>
+                <button class="reveal-btn" onclick="toggleSolution('sol2')">Reveal Solution</button>
+                <div class="solution-reveal" id="sol2">
+                    <p><strong>Peripheral Management / Driver</strong> issue:</p>
+                    <ul>
+                        <li>The Windows update may have changed or broken the mouse driver</li>
+                        <li>Hardware is fine (light is on) but OS can't communicate with it</li>
+                        <li>The driver that translates between OS and mouse is not working correctly</li>
+                    </ul>
+                    <p><strong>Solution:</strong> Go to Device Manager, find the mouse, and either:</p>
+                    <ul>
+                        <li>Update the driver (download latest from manufacturer)</li>
+                        <li>Roll back the driver to the previous version</li>
+                        <li>Uninstall and reinstall the driver</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Problem 3: GUI vs CLI</h4>
+                <p>A system administrator needs to rename 500 files, changing "report_2024_" to "archive_2024_" at the start of each filename. Why might they choose to use Command Line Interface instead of the GUI?</p>
+                <button class="reveal-btn" onclick="toggleSolution('sol3')">Reveal Solution</button>
+                <div class="solution-reveal" id="sol3">
+                    <p><strong>Advantages of CLI for this task:</strong></p>
+                    <ul>
+                        <li><strong>Speed:</strong> One command can rename all 500 files at once</li>
+                        <li><strong>Automation:</strong> The command can be saved as a script for future use</li>
+                        <li><strong>Precision:</strong> Pattern matching ensures only correct files are renamed</li>
+                        <li><strong>Efficiency:</strong> GUI would require 500 individual rename operations</li>
+                    </ul>
+                    <p><strong>Example command (PowerShell):</strong></p>
+                    <code>Get-ChildItem report_2024_* | Rename-Item -NewName { $_.Name -replace 'report_2024_','archive_2024_' }</code>
+                    <p>This single command does what would take hours in a GUI.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            solution.classList.toggle('show');
+
+            if (solution.classList.contains('show')) {
+                Progress.saveActivity(`operating-systems-example-${id}`, 'completed', 100);
+            }
+        }
+
+        Progress.startActivity('operating-systems-example', 'example');
+    </script>
+</body>
+</html>
