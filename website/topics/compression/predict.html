@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict - Compression</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Compression</a>
+            <h1>Predict</h1>
+            <p class="subtitle">Test your intuition about compression</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How This Works</h2>
+            <p>For each scenario, predict the best answer before revealing the explanation. This helps you develop intuition about when and how to use different compression types.</p>
+        </div>
+
+        <div class="predictions-container">
+            <!-- Prediction 1 -->
+            <div class="prediction-card" data-prediction="1">
+                <div class="prediction-header">
+                    <span class="prediction-number">1</span>
+                    <span class="prediction-category">Compression Type</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Text Document Compression</h3>
+                    <p>You need to email a 50-page Word document to your teacher.</p>
+                    <p><strong>Which compression type should you use?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Lossy (smaller file)</button>
+                    <button class="option-btn" data-value="b">Lossless (preserve everything)</button>
+                    <button class="option-btn" data-value="c">Either would work</button>
+                    <button class="option-btn" data-value="d">No compression needed</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: Lossless</h4>
+                    <p>Text documents require <strong>lossless compression</strong> (like ZIP). Every character and formatting detail must be preserved exactly. Losing even a single character could change the meaning!</p>
+                </div>
+            </div>
+
+            <!-- Prediction 2 -->
+            <div class="prediction-card" data-prediction="2">
+                <div class="prediction-header">
+                    <span class="prediction-number">2</span>
+                    <span class="prediction-category">Compression Type</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Holiday Photos for Social Media</h3>
+                    <p>You want to share holiday photos on Instagram. The original photos are 25MB each.</p>
+                    <p><strong>Which compression type is most appropriate?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Lossy (JPEG)</button>
+                    <button class="option-btn" data-value="b">Lossless (PNG)</button>
+                    <button class="option-btn" data-value="c">No compression</button>
+                    <button class="option-btn" data-value="d">Both equally good</button>
+                </div>
+                <div class="prediction-answer" data-correct="a">
+                    <h4>Answer: Lossy (JPEG)</h4>
+                    <p>Social media photos don't need perfect quality. <strong>JPEG (lossy)</strong> will dramatically reduce file size (to ~2-3MB) while looking virtually identical on screen. Instagram will compress them further anyway!</p>
+                </div>
+            </div>
+
+            <!-- Prediction 3 -->
+            <div class="prediction-card" data-prediction="3">
+                <div class="prediction-header">
+                    <span class="prediction-number">3</span>
+                    <span class="prediction-category">File Effects</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>MP3 Compression</h3>
+                    <p>You convert a WAV music file to MP3 format.</p>
+                    <p><strong>What happens to the file?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">File gets smaller, original quality preserved</button>
+                    <button class="option-btn" data-value="b">File gets smaller, some audio data permanently removed</button>
+                    <button class="option-btn" data-value="c">File gets bigger to add metadata</button>
+                    <button class="option-btn" data-value="d">File stays the same size</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: Smaller file, data permanently removed</h4>
+                    <p>MP3 is <strong>lossy compression</strong>. It removes audio frequencies that humans typically can't hear or don't notice. The removed data is gone forever - you can't convert an MP3 back to the original WAV quality.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 4 -->
+            <div class="prediction-card" data-prediction="4">
+                <div class="prediction-header">
+                    <span class="prediction-number">4</span>
+                    <span class="prediction-category">Compression Type</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Software Distribution</h3>
+                    <p>A company needs to distribute a software installer that's 500MB.</p>
+                    <p><strong>Which compression type must they use?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Lossy (smaller download)</button>
+                    <button class="option-btn" data-value="b">Lossless (preserve code exactly)</button>
+                    <button class="option-btn" data-value="c">Either is fine</button>
+                    <button class="option-btn" data-value="d">Software can't be compressed</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: Lossless</h4>
+                    <p>Software <strong>must use lossless compression</strong>. A single bit changed in executable code could crash the program or create security vulnerabilities. ZIP is commonly used for software distribution.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 5 -->
+            <div class="prediction-card" data-prediction="5">
+                <div class="prediction-header">
+                    <span class="prediction-number">5</span>
+                    <span class="prediction-category">File Effects</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Re-saving a JPEG</h3>
+                    <p>You open a JPEG image, make no changes, and save it again as JPEG.</p>
+                    <p><strong>What happens to the image quality?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Quality stays the same</button>
+                    <button class="option-btn" data-value="b">Quality improves slightly</button>
+                    <button class="option-btn" data-value="c">Quality gets worse (generation loss)</button>
+                    <button class="option-btn" data-value="d">Quality doubles</button>
+                </div>
+                <div class="prediction-answer" data-correct="c">
+                    <h4>Answer: Quality gets worse</h4>
+                    <p>This is called <strong>generation loss</strong>. Each time you save a JPEG, lossy compression removes more data. After many re-saves, the image noticeably degrades. This is why photographers keep original files!</p>
+                </div>
+            </div>
+
+            <!-- Prediction 6 -->
+            <div class="prediction-card" data-prediction="6">
+                <div class="prediction-header">
+                    <span class="prediction-number">6</span>
+                    <span class="prediction-category">Scenario</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Video Streaming</h3>
+                    <p>Netflix streams 4K movies to millions of users simultaneously.</p>
+                    <p><strong>What type of compression do they use?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Lossless only</button>
+                    <button class="option-btn" data-value="b">Lossy only</button>
+                    <button class="option-btn" data-value="c">No compression</button>
+                    <button class="option-btn" data-value="d">Mixed approach</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: Lossy</h4>
+                    <p>Video streaming <strong>requires lossy compression</strong>. An uncompressed 4K movie would be about 1TB! Codecs like H.264 and H.265 compress video to manageable sizes while maintaining acceptable quality.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 7 -->
+            <div class="prediction-card" data-prediction="7">
+                <div class="prediction-header">
+                    <span class="prediction-number">7</span>
+                    <span class="prediction-category">File Effects</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>ZIP File Extraction</h3>
+                    <p>You compress a folder of documents into a ZIP file, then extract it.</p>
+                    <p><strong>What do you get back?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Slightly different files</button>
+                    <button class="option-btn" data-value="b">Exact original files, bit-for-bit</button>
+                    <button class="option-btn" data-value="c">Smaller versions of the files</button>
+                    <button class="option-btn" data-value="d">Corrupted files</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: Exact original files</h4>
+                    <p>ZIP uses <strong>lossless compression</strong>. When you extract the files, you get back <strong>exactly</strong> what you put in - every bit is identical to the original. That's the key property of lossless compression!</p>
+                </div>
+            </div>
+
+            <!-- Prediction 8 -->
+            <div class="prediction-card" data-prediction="8">
+                <div class="prediction-header">
+                    <span class="prediction-number">8</span>
+                    <span class="prediction-category">Compression Type</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Medical X-Ray Images</h3>
+                    <p>A hospital needs to store and transmit X-ray images for diagnosis.</p>
+                    <p><strong>Which compression type should they use?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Lossy (smaller files)</button>
+                    <button class="option-btn" data-value="b">Lossless (preserve all detail)</button>
+                    <button class="option-btn" data-value="c">Either is acceptable</button>
+                    <button class="option-btn" data-value="d">No compression allowed</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: Lossless</h4>
+                    <p>Medical images <strong>must use lossless compression</strong>. Doctors need to see every detail for accurate diagnosis. Lossy compression could hide subtle signs of disease or injury.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 9 -->
+            <div class="prediction-card" data-prediction="9">
+                <div class="prediction-header">
+                    <span class="prediction-number">9</span>
+                    <span class="prediction-category">File Size</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Compression Ratio</h3>
+                    <p>A 100MB photo is compressed to JPEG and also to PNG.</p>
+                    <p><strong>Which format produces the smaller file?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">PNG (lossless) is smaller</button>
+                    <button class="option-btn" data-value="b">JPEG (lossy) is smaller</button>
+                    <button class="option-btn" data-value="c">Both are the same size</button>
+                    <button class="option-btn" data-value="d">Depends on the image</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: JPEG (lossy) is smaller</h4>
+                    <p>Lossy compression (JPEG) typically achieves <strong>much smaller file sizes</strong> than lossless (PNG) because it can discard data. A photo might be 3MB as JPEG but 30MB as PNG.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 10 -->
+            <div class="prediction-card" data-prediction="10">
+                <div class="prediction-header">
+                    <span class="prediction-number">10</span>
+                    <span class="prediction-category">Compression Type</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Logo for Website</h3>
+                    <p>A company logo has solid colours and sharp edges. It needs to go on a website.</p>
+                    <p><strong>Which format is best?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">JPEG (good for web)</button>
+                    <button class="option-btn" data-value="b">PNG (sharp edges preserved)</button>
+                    <button class="option-btn" data-value="c">MP3</button>
+                    <button class="option-btn" data-value="d">Uncompressed BMP</button>
+                </div>
+                <div class="prediction-answer" data-correct="b">
+                    <h4>Answer: PNG</h4>
+                    <p><strong>PNG is best for graphics with sharp edges</strong> and solid colours (logos, icons, diagrams). JPEG's lossy compression creates visible artifacts around sharp edges. PNG keeps them crisp!</p>
+                </div>
+            </div>
+
+            <!-- Prediction 11 -->
+            <div class="prediction-card" data-prediction="11">
+                <div class="prediction-header">
+                    <span class="prediction-number">11</span>
+                    <span class="prediction-category">Advantages</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Main Advantage of Lossless</h3>
+                    <p><strong>What is the PRIMARY advantage of lossless compression over lossy?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Smaller file sizes</button>
+                    <button class="option-btn" data-value="b">Faster compression</button>
+                    <button class="option-btn" data-value="c">Original data perfectly preserved</button>
+                    <button class="option-btn" data-value="d">Better for photos</button>
+                </div>
+                <div class="prediction-answer" data-correct="c">
+                    <h4>Answer: Original data perfectly preserved</h4>
+                    <p>The key advantage of lossless is that <strong>no information is lost</strong>. You can decompress and get back exactly what you started with. This is essential for text, code, and important documents.</p>
+                </div>
+            </div>
+
+            <!-- Prediction 12 -->
+            <div class="prediction-card" data-prediction="12">
+                <div class="prediction-header">
+                    <span class="prediction-number">12</span>
+                    <span class="prediction-category">Disadvantages</span>
+                </div>
+                <div class="prediction-scenario">
+                    <h3>Main Disadvantage of Lossy</h3>
+                    <p><strong>What is the PRIMARY disadvantage of lossy compression?</strong></p>
+                </div>
+                <div class="prediction-options">
+                    <button class="option-btn" data-value="a">Files are too large</button>
+                    <button class="option-btn" data-value="b">Takes too long to compress</button>
+                    <button class="option-btn" data-value="c">Quality loss is permanent and irreversible</button>
+                    <button class="option-btn" data-value="d">Doesn't work on any file type</button>
+                </div>
+                <div class="prediction-answer" data-correct="c">
+                    <h4>Answer: Quality loss is permanent and irreversible</h4>
+                    <p>Once lossy compression removes data, <strong>it's gone forever</strong>. You can't "decompress" a JPEG back to its original quality. Always keep original files if quality matters!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-tracker">
+            <h3>Your Progress</h3>
+            <p><span id="correct-count">0</span> / 12 correct</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="activity-nav">
+            <a href="index.html" class="btn btn-secondary">← Back to Content</a>
+            <a href="example.html" class="btn btn-primary">Worked Examples →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        let correctAnswers = 0;
+        const totalQuestions = 12;
+
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.prediction-card');
+                const answer = card.querySelector('.prediction-answer');
+                const correctValue = answer.dataset.correct;
+                const selectedValue = this.dataset.value;
+
+                // Disable all buttons in this card
+                card.querySelectorAll('.option-btn').forEach(b => {
+                    b.disabled = true;
+                    if (b.dataset.value === correctValue) {
+                        b.classList.add('correct');
+                    }
+                });
+
+                // Mark selected answer
+                if (selectedValue === correctValue) {
+                    this.classList.add('correct');
+                    correctAnswers++;
+                } else {
+                    this.classList.add('incorrect');
+                }
+
+                // Show answer
+                answer.classList.add('revealed');
+
+                // Update progress
+                updateProgress();
+            });
+        });
+
+        function updateProgress() {
+            document.getElementById('correct-count').textContent = correctAnswers;
+            const percentage = (correctAnswers / totalQuestions) * 100;
+            document.getElementById('progress-fill').style.width = percentage + '%';
+
+            // Save progress
+            if (typeof Progress !== 'undefined') {
+                if (document.querySelectorAll('.prediction-answer.revealed').length === totalQuestions) {
+                    Progress.complete('compression-predict', Math.round(percentage));
+                }
+            }
+        }
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('compression-predict');
+        }
+    </script>
+
+    <style>
+        .predictions-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .prediction-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .prediction-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .prediction-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .prediction-category {
+            background: var(--gray-200);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .prediction-scenario {
+            margin-bottom: var(--space-lg);
+        }
+
+        .prediction-scenario h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .prediction-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .option-btn {
+            padding: var(--space-md);
+            border: 2px solid var(--gray-300);
+            background: white;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .option-btn.correct {
+            background: #d4edda;
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .option-btn.incorrect {
+            background: #f8d7da;
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        .prediction-answer {
+            display: none;
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--success);
+        }
+
+        .prediction-answer.revealed {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .prediction-answer h4 {
+            color: var(--success);
+            margin-bottom: var(--space-sm);
+        }
+
+        .progress-tracker {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-top: var(--space-xl);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .progress-tracker h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: var(--gray-200);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: var(--space-md);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            transition: width 0.3s ease;
+        }
+
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

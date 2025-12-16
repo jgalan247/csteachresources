@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace - Compression</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Compression</a>
+            <h1>Trace Through Compression Decisions</h1>
+            <p class="subtitle">Work through compression scenarios step by step</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How to Use This Activity</h2>
+            <p>Work through each scenario step by step. Enter your answer, then check if you're correct before moving on. This helps you understand the <strong>decision-making process</strong> for choosing compression types.</p>
+        </div>
+
+        <!-- Exercise 1: Simple Compression Decision -->
+        <section class="trace-exercise" id="exercise-1">
+            <h2>Exercise 1: Compressing a Text Document</h2>
+            <p class="exercise-instruction">A student needs to email their 5 MB Word document. The email limit is 10 MB. Trace through the decision process.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: What type of file is a Word document? (text/media)</label>
+                    <input type="text" class="trace-input" data-answer="text" placeholder="type">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Can text documents have any data loss? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="no" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: Which compression type must be used? (lossy/lossless)</label>
+                    <input type="text" class="trace-input" data-answer="lossless" placeholder="type">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 4: If ZIP achieves 60% reduction, compressed size = 5 × 0.4 = ? MB</label>
+                    <input type="text" class="trace-input" data-answer="2" placeholder="MB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Photo Compression Decision -->
+        <section class="trace-exercise" id="exercise-2">
+            <h2>Exercise 2: Holiday Photo Storage</h2>
+            <p class="exercise-instruction">100 photos at 20 MB each need to fit on a 500 MB memory card. Trace through the options.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Total uncompressed size = 100 × 20 = ? MB</label>
+                    <input type="text" class="trace-input" data-answer="2000" placeholder="MB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Space available = 500 MB. Do photos fit uncompressed? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="no" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: Photos can accept slight quality loss. Which compression? (lossy/lossless)</label>
+                    <input type="text" class="trace-input" data-answer="lossy" placeholder="type">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: JPEG at 90% compression: new size = 2000 × 0.1 = ? MB</label>
+                    <input type="text" class="trace-input" data-answer="200" placeholder="MB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 5: Does 200 MB fit on 500 MB card? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="yes" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 3: File Size Calculation -->
+        <section class="trace-exercise" id="exercise-3">
+            <h2>Exercise 3: Calculating Compressed File Sizes</h2>
+            <p class="exercise-instruction">An uncompressed music file is 80 MB. Calculate sizes for different compression levels.</p>
+
+            <div class="trace-steps">
+                <h3>Lossless (FLAC)</h3>
+                <div class="trace-step">
+                    <label>Step 1: FLAC achieves 35% reduction. Remaining = 100% - 35% = ?%</label>
+                    <input type="text" class="trace-input" data-answer="65" placeholder="%">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: FLAC size = 80 × 0.65 = ? MB</label>
+                    <input type="text" class="trace-input" data-answer="52" placeholder="MB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+
+                <h3>Lossy (MP3 320kbps)</h3>
+                <div class="trace-step">
+                    <label>Step 3: MP3 achieves 85% reduction. Remaining = 100% - 85% = ?%</label>
+                    <input type="text" class="trace-input" data-answer="15" placeholder="%">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: MP3 size = 80 × 0.15 = ? MB</label>
+                    <input type="text" class="trace-input" data-answer="12" placeholder="MB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+
+                <h3>Comparison</h3>
+                <div class="trace-step final-step">
+                    <label>Step 5: How many times smaller is MP3 than FLAC? (52 ÷ 12, round to 1 decimal)</label>
+                    <input type="text" class="trace-input" data-answer="4.3" placeholder="times">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 4: Software Distribution -->
+        <section class="trace-exercise" id="exercise-4">
+            <h2>Exercise 4: Software Download Decision</h2>
+            <p class="exercise-instruction">A game developer needs to distribute a 4 GB game. Trace through the compression choice.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Game files include code and executables. Can any bits be changed? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="no" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: If bits are changed, what happens? (works/corrupted)</label>
+                    <input type="text" class="trace-input" data-answer="corrupted" placeholder="result">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: Which compression type is required? (lossy/lossless)</label>
+                    <input type="text" class="trace-input" data-answer="lossless" placeholder="type">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: Lossless achieves 40% reduction on game files. Size = 4 × 0.6 = ? GB</label>
+                    <input type="text" class="trace-input" data-answer="2.4" placeholder="GB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 5: Common format for software distribution? (zip/jpeg)</label>
+                    <input type="text" class="trace-input" data-answer="zip" placeholder="format">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 5: Video Streaming -->
+        <section class="trace-exercise" id="exercise-5">
+            <h2>Exercise 5: Video Streaming Quality</h2>
+            <p class="exercise-instruction">A streaming service offers different quality levels. A 2-hour movie at full quality is 50 GB uncompressed.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Video is watched once, then discarded. Is perfect quality essential? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="no" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Which compression can achieve greater size reduction? (lossy/lossless)</label>
+                    <input type="text" class="trace-input" data-answer="lossy" placeholder="type">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: HD streaming at 95% compression: size = 50 × 0.05 = ? GB</label>
+                    <input type="text" class="trace-input" data-answer="2.5" placeholder="GB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: SD streaming at 98% compression: size = 50 × 0.02 = ? GB</label>
+                    <input type="text" class="trace-input" data-answer="1" placeholder="GB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 5: What's the trade-off with higher compression? (quality/speed)</label>
+                    <input type="text" class="trace-input" data-answer="quality" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 6: Medical Records -->
+        <section class="trace-exercise" id="exercise-6">
+            <h2>Exercise 6: Hospital Database Backup</h2>
+            <p class="exercise-instruction">A hospital needs to backup 500 GB of patient records including scanned documents and X-rays.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Could missing or altered data harm patients? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="yes" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Must the backup be bit-for-bit identical? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="yes" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: Which compression type must be used? (lossy/lossless)</label>
+                    <input type="text" class="trace-input" data-answer="lossless" placeholder="type">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: Lossless achieves 45% reduction. Backup size = 500 × 0.55 = ? GB</label>
+                    <input type="text" class="trace-input" data-answer="275" placeholder="GB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 5: Even X-ray images use lossless. Why? (convenience/accuracy)</label>
+                    <input type="text" class="trace-input" data-answer="accuracy" placeholder="reason">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 7: Web Page Optimization -->
+        <section class="trace-exercise" id="exercise-7">
+            <h2>Exercise 7: Website Speed Optimization</h2>
+            <p class="exercise-instruction">A webpage has 8 images at 3 MB each. Page load time is too slow.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: Total image size = 8 × 3 = ? MB</label>
+                    <input type="text" class="trace-input" data-answer="24" placeholder="MB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: Are website images viewed at high zoom? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="no" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: Slight quality loss acceptable for web? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="yes" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: JPEG at 85% quality achieves 90% reduction. New total = 24 × 0.1 = ? MB</label>
+                    <input type="text" class="trace-input" data-answer="2.4" placeholder="MB">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 5: If original loaded in 12 seconds, new load time = 12 × 0.1 = ? seconds</label>
+                    <input type="text" class="trace-input" data-answer="1.2" placeholder="seconds">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 8: Generation Loss -->
+        <section class="trace-exercise" id="exercise-8">
+            <h2>Exercise 8: Understanding Generation Loss</h2>
+            <p class="exercise-instruction">A photo is edited and saved as JPEG 5 times. Each save loses 5% quality from the previous version.</p>
+
+            <div class="trace-steps">
+                <div class="trace-step">
+                    <label>Step 1: After save 1, quality = 100% - 5% = ?%</label>
+                    <input type="text" class="trace-input" data-answer="95" placeholder="%">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 2: After save 2, quality = 95% × 0.95 = ?% (round to 1 decimal)</label>
+                    <input type="text" class="trace-input" data-answer="90.3" placeholder="%">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 3: What is this degradation effect called? (generation loss/pixel loss)</label>
+                    <input type="text" class="trace-input" data-answer="generation loss" placeholder="name">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step">
+                    <label>Step 4: Does generation loss occur with PNG? (yes/no)</label>
+                    <input type="text" class="trace-input" data-answer="no" placeholder="answer">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+                <div class="trace-step final-step">
+                    <label>Step 5: To avoid generation loss when editing, use which compression? (lossy/lossless)</label>
+                    <input type="text" class="trace-input" data-answer="lossless" placeholder="type">
+                    <button class="btn btn-sm check-step">Check</button>
+                    <span class="step-feedback"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Summary -->
+        <section class="exercise-summary">
+            <h2>Your Progress</h2>
+            <div class="summary-grid" id="progress-summary">
+                <div class="summary-item" data-exercise="1">
+                    <span class="exercise-name">Text Document</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="2">
+                    <span class="exercise-name">Photo Storage</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="3">
+                    <span class="exercise-name">File Size Calculation</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="4">
+                    <span class="exercise-name">Software Download</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="5">
+                    <span class="exercise-name">Video Streaming</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="6">
+                    <span class="exercise-name">Hospital Backup</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="7">
+                    <span class="exercise-name">Website Speed</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+                <div class="summary-item" data-exercise="8">
+                    <span class="exercise-name">Generation Loss</span>
+                    <span class="exercise-status">Not started</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-nav">
+            <a href="example.html" class="btn btn-secondary">← Worked Examples</a>
+            <a href="parsons.html" class="btn btn-primary">Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Track progress per exercise
+        const exerciseProgress = {};
+
+        // Initialize exercise tracking
+        document.querySelectorAll('.trace-exercise').forEach(ex => {
+            const id = ex.id.split('-')[1];
+            const steps = ex.querySelectorAll('.trace-step').length;
+            exerciseProgress[id] = { total: steps, correct: 0 };
+        });
+
+        // Check answer functionality
+        document.querySelectorAll('.check-step').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const step = this.closest('.trace-step');
+                const input = step.querySelector('.trace-input');
+                const feedback = step.querySelector('.step-feedback');
+                const answer = input.dataset.answer.toLowerCase();
+                const userAnswer = input.value.trim().toLowerCase();
+
+                // Find which exercise this belongs to
+                const exercise = this.closest('.trace-exercise');
+                const exerciseNum = exercise.id.split('-')[1];
+
+                if (userAnswer === answer) {
+                    feedback.textContent = 'Correct!';
+                    feedback.className = 'step-feedback correct';
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    this.disabled = true;
+                    input.disabled = true;
+
+                    // Track progress
+                    exerciseProgress[exerciseNum].correct++;
+                    updateProgressDisplay(exerciseNum);
+                } else {
+                    feedback.textContent = 'Try again';
+                    feedback.className = 'step-feedback incorrect';
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            });
+        });
+
+        // Update progress display
+        function updateProgressDisplay(exerciseNum) {
+            const progress = exerciseProgress[exerciseNum];
+            const summaryItem = document.querySelector(`.summary-item[data-exercise="${exerciseNum}"]`);
+            const statusEl = summaryItem.querySelector('.exercise-status');
+
+            if (progress.correct >= progress.total) {
+                statusEl.textContent = 'Complete!';
+                statusEl.className = 'exercise-status complete';
+                summaryItem.classList.add('complete');
+
+                // Save progress
+                if (typeof Progress !== 'undefined') {
+                    Progress.complete(`compression-trace-${exerciseNum}`);
+                }
+            } else {
+                statusEl.textContent = `${progress.correct}/${progress.total}`;
+                statusEl.className = 'exercise-status in-progress';
+                summaryItem.classList.add('in-progress');
+            }
+        }
+
+        // Allow Enter key to submit
+        document.querySelectorAll('.trace-input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const btn = this.closest('.trace-step').querySelector('.check-step');
+                    if (btn && !btn.disabled) {
+                        btn.click();
+                    }
+                }
+            });
+        });
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('compression-trace');
+        }
+    </script>
+
+    <style>
+        .trace-exercise {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .exercise-instruction {
+            background: var(--primary-light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .trace-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .trace-steps h3 {
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--gray-700);
+            font-size: 1rem;
+        }
+
+        .trace-step {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            border-left: 3px solid var(--gray-300);
+        }
+
+        .trace-step.final-step {
+            border-left-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .trace-step label {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .trace-input {
+            padding: var(--space-sm) var(--space-md);
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 1rem;
+            width: 140px;
+        }
+
+        .trace-input.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .trace-input.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+
+        .step-feedback {
+            font-weight: bold;
+            min-width: 80px;
+        }
+
+        .step-feedback.correct {
+            color: var(--success);
+        }
+
+        .step-feedback.incorrect {
+            color: var(--error);
+        }
+
+        .btn-sm {
+            padding: var(--space-xs) var(--space-md);
+            font-size: 0.9rem;
+        }
+
+        .exercise-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .summary-item {
+            padding: var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .summary-item.in-progress {
+            background: #fff3cd;
+        }
+
+        .summary-item.complete {
+            background: #d4edda;
+        }
+
+        .exercise-name {
+            display: block;
+            font-weight: bold;
+            margin-bottom: var(--space-xs);
+        }
+
+        .exercise-status {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .exercise-status.complete {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .exercise-status.in-progress {
+            color: var(--warning);
+        }
+
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>
