@@ -36,7 +36,8 @@ const CertificateSystem = {
         'protocols': 'Protocols & Layers',
         'security': 'Network Security',
         'prevention': 'Preventing Vulnerabilities',
-        'operating-systems': 'Operating Systems'
+        'operating-systems': 'Operating Systems',
+        'utility-software': 'Utility Software'
     },
 
     /**

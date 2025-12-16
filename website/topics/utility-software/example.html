@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Examples - Utility Software</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/theory-styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="index.html">Utility Software</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="activity-header example-header">
+            <div class="activity-icon">📖</div>
+            <div class="activity-title-section">
+                <h1>Worked Examples: Utility Software</h1>
+                <p class="activity-subtitle">Study model answers to exam-style questions</p>
+            </div>
+        </header>
+
+        <div class="activity-intro">
+            <p>Study these worked examples carefully. Pay attention to the structure of the answers and the key terminology used. Then try the practice questions at the end.</p>
+        </div>
+
+        <!-- Worked Example 1 -->
+        <div class="worked-example">
+            <div class="example-header-bar">
+                <span class="example-number">Worked Example 1</span>
+                <span class="example-marks">[4 marks]</span>
+            </div>
+
+            <div class="example-question">
+                <h3>Question</h3>
+                <p>Explain the purpose of encryption software and give two reasons why it is needed.</p>
+            </div>
+
+            <div class="example-answer">
+                <h3>Model Answer</h3>
+                <div class="answer-content">
+                    <p><strong>Purpose:</strong> Encryption software scrambles data into an unreadable format (ciphertext) that can only be converted back to readable text using a decryption key. <span class="mark">[1]</span></p>
+
+                    <p><strong>Reason 1:</strong> It protects sensitive data if a device is lost or stolen. Even if someone gains physical access to the storage device, they cannot read the encrypted files without the key. <span class="mark">[1½]</span></p>
+
+                    <p><strong>Reason 2:</strong> It ensures data transmitted over networks remains confidential. If data is intercepted during transmission, it appears as meaningless characters without the decryption key. <span class="mark">[1½]</span></p>
+                </div>
+            </div>
+
+            <div class="example-breakdown">
+                <h3>Why This Answer Works</h3>
+                <ul>
+                    <li><strong>Clear definition:</strong> Explains what encryption does (scrambles to ciphertext, needs key to decrypt)</li>
+                    <li><strong>Two distinct reasons:</strong> Covers both storage security and transmission security</li>
+                    <li><strong>Technical terminology:</strong> Uses terms like "ciphertext" and "decryption key"</li>
+                    <li><strong>Practical examples:</strong> References lost devices and intercepted data</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Worked Example 2 -->
+        <div class="worked-example">
+            <div class="example-header-bar">
+                <span class="example-number">Worked Example 2</span>
+                <span class="example-marks">[4 marks]</span>
+            </div>
+
+            <div class="example-question">
+                <h3>Question</h3>
+                <p>Describe how defragmentation software improves the performance of a hard disk drive (HDD).</p>
+            </div>
+
+            <div class="example-answer">
+                <h3>Model Answer</h3>
+                <div class="answer-content">
+                    <p>Over time, files become <strong>fragmented</strong> - stored in non-contiguous (scattered) locations across the disk. <span class="mark">[1]</span></p>
+
+                    <p>This happens because when files are deleted, gaps are created, and new files are saved in whatever space is available, often split across multiple locations. <span class="mark">[1]</span></p>
+
+                    <p>Defragmentation software <strong>reorganises</strong> the data so that files are stored in contiguous (adjacent) blocks. <span class="mark">[1]</span></p>
+
+                    <p>This improves performance because the HDD's read/write head doesn't need to move to multiple locations to access a single file, reducing <strong>seek time</strong> and making file access faster. <span class="mark">[1]</span></p>
+                </div>
+            </div>
+
+            <div class="example-breakdown">
+                <h3>Why This Answer Works</h3>
+                <ul>
+                    <li><strong>Explains the problem:</strong> Describes how fragmentation occurs</li>
+                    <li><strong>Explains the solution:</strong> Describes what defragmentation does</li>
+                    <li><strong>Links to hardware:</strong> Mentions read/write head movement</li>
+                    <li><strong>Key terms:</strong> Uses "contiguous", "fragmented", "seek time"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Worked Example 3 -->
+        <div class="worked-example">
+            <div class="example-header-bar">
+                <span class="example-number">Worked Example 3</span>
+                <span class="example-marks">[6 marks]</span>
+            </div>
+
+            <div class="example-question">
+                <h3>Question</h3>
+                <p>Compare lossy and lossless compression. Include in your answer when each type would be appropriate to use.</p>
+            </div>
+
+            <div class="example-answer">
+                <h3>Model Answer</h3>
+                <div class="answer-content">
+                    <p><strong>Lossy compression</strong> permanently removes some data from the file to achieve high compression ratios. The original file cannot be perfectly restored. <span class="mark">[1]</span></p>
+
+                    <p><strong>Lossless compression</strong> reduces file size without losing any data. The original file can be perfectly reconstructed from the compressed version. <span class="mark">[1]</span></p>
+
+                    <p>Lossy compression achieves much <strong>higher compression ratios</strong> than lossless (often 90%+ reduction) because it discards data deemed less important. <span class="mark">[1]</span></p>
+
+                    <p>Lossy is appropriate for <strong>media files</strong> (images, audio, video) where small quality loss is acceptable and smaller file sizes are important for streaming or web use. Examples: JPEG, MP3, MP4. <span class="mark">[1½]</span></p>
+
+                    <p>Lossless is appropriate for <strong>text documents, source code, and executable files</strong> where every byte must be preserved exactly. Even one changed bit could corrupt a program or change the meaning of a document. Examples: ZIP, PNG. <span class="mark">[1½]</span></p>
+                </div>
+            </div>
+
+            <div class="example-breakdown">
+                <h3>Why This Answer Works</h3>
+                <ul>
+                    <li><strong>Clear comparison:</strong> Explains both types with their key difference</li>
+                    <li><strong>Compression ratio mentioned:</strong> Notes lossy achieves higher compression</li>
+                    <li><strong>Appropriate use cases:</strong> Gives specific examples for each type</li>
+                    <li><strong>File format examples:</strong> Names actual formats (JPEG, MP3, ZIP, PNG)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Worked Example 4 -->
+        <div class="worked-example">
+            <div class="example-header-bar">
+                <span class="example-number">Worked Example 4</span>
+                <span class="example-marks">[3 marks]</span>
+            </div>
+
+            <div class="example-question">
+                <h3>Question</h3>
+                <p>Explain why utility software is needed in addition to the operating system.</p>
+            </div>
+
+            <div class="example-answer">
+                <h3>Model Answer</h3>
+                <div class="answer-content">
+                    <p>The operating system handles <strong>core functions</strong> such as memory management, process scheduling, file system management, and hardware communication. <span class="mark">[1]</span></p>
+
+                    <p>Utility software provides <strong>additional housekeeping tasks</strong> that the operating system may not include or may only offer in basic form. <span class="mark">[1]</span></p>
+
+                    <p>These tasks include encryption for security, defragmentation for HDD performance optimisation, and compression for reducing file sizes. Third-party utilities often provide more features than built-in OS tools. <span class="mark">[1]</span></p>
+                </div>
+            </div>
+
+            <div class="example-breakdown">
+                <h3>Why This Answer Works</h3>
+                <ul>
+                    <li><strong>Acknowledges OS role:</strong> Shows understanding of what the OS does</li>
+                    <li><strong>Key phrase:</strong> Uses "housekeeping tasks"</li>
+                    <li><strong>Specific examples:</strong> Lists actual utility types</li>
+                    <li><strong>Third-party note:</strong> Mentions additional software options</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Practice Questions -->
+        <section class="practice-section">
+            <h2>Practice Questions</h2>
+            <p>Now try these questions yourself. Click to reveal the model answer after attempting each question.</p>
+
+            <!-- Practice 1 -->
+            <div class="practice-question">
+                <div class="question-header">
+                    <span class="question-number">Practice Question 1</span>
+                    <span class="question-marks">[2 marks]</span>
+                </div>
+                <div class="question-content">
+                    <p>State two purposes of data compression software.</p>
+                </div>
+                <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+                <div class="reveal-content">
+                    <div class="model-answer">
+                        <h4>Model Answer</h4>
+                        <ol>
+                            <li><strong>Reduce file size to save storage space</strong> - allows more files to be stored on a disk <span class="mark">[1]</span></li>
+                            <li><strong>Reduce transmission time when sending files</strong> - smaller files transfer faster over networks <span class="mark">[1]</span></li>
+                        </ol>
+                        <p><em>Other acceptable answers: reduce bandwidth usage, allow files to fit within email attachment limits, create archives combining multiple files</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice 2 -->
+            <div class="practice-question">
+                <div class="question-header">
+                    <span class="question-number">Practice Question 2</span>
+                    <span class="question-marks">[3 marks]</span>
+                </div>
+                <div class="question-content">
+                    <p>Explain why you should not defragment a solid-state drive (SSD).</p>
+                </div>
+                <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+                <div class="reveal-content">
+                    <div class="model-answer">
+                        <h4>Model Answer</h4>
+                        <p>SSDs have <strong>no moving parts</strong> - they can access any storage location equally fast, so fragmentation doesn't cause performance issues. <span class="mark">[1]</span></p>
+                        <p>SSDs have a <strong>limited number of write cycles</strong>. Defragmentation involves many unnecessary write operations. <span class="mark">[1]</span></p>
+                        <p>These unnecessary writes <strong>reduce the lifespan</strong> of the SSD without providing any performance benefit. <span class="mark">[1]</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice 3 -->
+            <div class="practice-question">
+                <div class="question-header">
+                    <span class="question-number">Practice Question 3</span>
+                    <span class="question-marks">[4 marks]</span>
+                </div>
+                <div class="question-content">
+                    <p>A hospital stores patient medical records on computer systems. Explain why encryption is essential for this data and describe how it protects patient information.</p>
+                </div>
+                <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+                <div class="reveal-content">
+                    <div class="model-answer">
+                        <h4>Model Answer</h4>
+                        <p>Medical records contain <strong>sensitive personal data</strong> that must be kept confidential under laws like GDPR. <span class="mark">[1]</span></p>
+                        <p>Encryption <strong>scrambles the data</strong> into unreadable ciphertext that cannot be understood without the decryption key. <span class="mark">[1]</span></p>
+                        <p>If a computer is hacked or a storage device is stolen, the <strong>encrypted data remains protected</strong> - the attacker cannot read patient information. <span class="mark">[1]</span></p>
+                        <p>When data is transmitted between hospital systems, encryption ensures it <strong>cannot be intercepted</strong> and read by unauthorised parties. <span class="mark">[1]</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="key-points-summary">
+            <h2>Key Points for Exam Success</h2>
+            <div class="key-points-grid">
+                <div class="key-point">
+                    <span class="point-icon">🔐</span>
+                    <div class="point-content">
+                        <strong>Encryption</strong>
+                        <p>Scrambles data to ciphertext; needs key to decrypt; protects stored data and transmissions</p>
+                    </div>
+                </div>
+                <div class="key-point">
+                    <span class="point-icon">💿</span>
+                    <div class="point-content">
+                        <strong>Defragmentation</strong>
+                        <p>HDD only; reorganises files to contiguous blocks; reduces head movement; improves access speed</p>
+                    </div>
+                </div>
+                <div class="key-point">
+                    <span class="point-icon">📦</span>
+                    <div class="point-content">
+                        <strong>Compression</strong>
+                        <p>Lossy (media, high ratio, data lost) vs Lossless (text/code, reversible, lower ratio)</p>
+                    </div>
+                </div>
+                <div class="key-point">
+                    <span class="point-icon">🔧</span>
+                    <div class="point-content">
+                        <strong>Utility vs OS</strong>
+                        <p>Utilities perform housekeeping tasks that supplement OS core functions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-navigation">
+            <a href="predict.html" class="btn btn-secondary">← Predict</a>
+            <a href="trace.html" class="btn btn-primary">Next: Trace →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>GCSE Computer Science - Utility Software</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        function toggleReveal(btn) {
+            const content = btn.nextElementSibling;
+            const isShowing = content.classList.contains('show');
+
+            if (isShowing) {
+                content.classList.remove('show');
+                btn.textContent = 'Reveal Answer';
+            } else {
+                content.classList.add('show');
+                btn.textContent = 'Hide Answer';
+            }
+        }
+
+        // Track progress
+        Progress.startActivity('utility-software', 'example');
+
+        let examplesViewed = 0;
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                examplesViewed++;
+                if (examplesViewed >= 3) {
+                    Progress.completeActivity('utility-software', 'example');
+                }
+            });
+        });
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .example-header {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .activity-icon {
+            font-size: 3rem;
+        }
+        .activity-intro {
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .worked-example {
+            background: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        .example-header-bar {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .example-number {
+            font-weight: 600;
+        }
+        .example-marks {
+            background: rgba(255,255,255,0.2);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+        }
+        .example-question {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--gray-200);
+            background: var(--gray-50);
+        }
+        .example-question h3 {
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+        .example-answer {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .example-answer h3 {
+            color: var(--success);
+            margin-bottom: var(--space-md);
+        }
+        .answer-content {
+            line-height: 1.8;
+        }
+        .answer-content p {
+            margin-bottom: var(--space-md);
+        }
+        .mark {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0 var(--space-xs);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .example-breakdown {
+            padding: var(--space-lg);
+            background: #f0fdf4;
+        }
+        .example-breakdown h3 {
+            color: var(--success);
+            margin-bottom: var(--space-md);
+        }
+        .example-breakdown ul {
+            padding-left: var(--space-lg);
+        }
+        .example-breakdown li {
+            margin-bottom: var(--space-sm);
+        }
+        .practice-section {
+            margin-top: var(--space-xxl);
+            padding-top: var(--space-xl);
+            border-top: 2px solid var(--gray-200);
+        }
+        .practice-question {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary);
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        .question-number {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .question-marks {
+            background: var(--gray-100);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+        }
+        .reveal-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            margin-top: var(--space-md);
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .reveal-btn:hover {
+            background: var(--primary-dark);
+        }
+        .reveal-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .reveal-content.show {
+            max-height: 500px;
+        }
+        .model-answer {
+            background: #f0fdf4;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            border-left: 4px solid var(--success);
+        }
+        .model-answer h4 {
+            color: var(--success);
+            margin-bottom: var(--space-md);
+        }
+        .model-answer ol {
+            padding-left: var(--space-lg);
+        }
+        .model-answer li {
+            margin-bottom: var(--space-sm);
+        }
+        .key-points-summary {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-xxl);
+        }
+        .key-points-summary h2 {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+        .key-points-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+        .key-point {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
+        }
+        .point-icon {
+            font-size: 1.5rem;
+        }
+        .point-content strong {
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+        .point-content p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xxl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>
