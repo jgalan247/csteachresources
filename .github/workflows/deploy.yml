@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - claude/programming-teaching-architecture-01NkumHqJZPmNdd6yLBnwaQR
   workflow_dispatch:
 
 permissions:
