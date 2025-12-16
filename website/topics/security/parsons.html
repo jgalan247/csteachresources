@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order the Steps - Network Security</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .parsons-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .problem-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .problem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        .problem-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .difficulty-badge {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .difficulty-badge.foundation { background: #d4edda; color: #155724; }
+        .difficulty-badge.core { background: #cce5ff; color: #004085; }
+        .difficulty-badge.extension { background: #f8d7da; color: #721c24; }
+
+        .problem-question {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            color: var(--gray-800);
+        }
+        .parsons-workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        @media (max-width: 600px) {
+            .parsons-workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+        .blocks-pool, .answer-zone {
+            min-height: 200px;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .blocks-pool {
+            background: var(--gray-100);
+            border: 2px dashed var(--gray-300);
+        }
+        .answer-zone {
+            background: #e8f4f8;
+            border: 2px dashed var(--primary);
+        }
+        .zone-label {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-sm);
+            font-weight: 500;
+        }
+        .draggable-block {
+            background: white;
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-300);
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .draggable-block:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .draggable-block.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .draggable-block.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+        .draggable-block.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: var(--space-sm);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .answer-zone .step-number {
+            background: var(--primary);
+            color: white;
+        }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: var(--space-sm);
+        }
+        .check-btn:hover {
+            background: var(--primary-dark);
+        }
+        .reset-btn {
+            background: var(--gray-200);
+            color: var(--gray-700);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .reset-btn:hover {
+            background: var(--gray-300);
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .feedback.correct {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .explanation {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: #e7f3ff;
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .explanation.show {
+            display: block;
+        }
+        .progress-indicator {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            color: var(--gray-600);
+        }
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gray-300);
+        }
+        .progress-dot.completed {
+            background: var(--success);
+        }
+        .progress-dot.current {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Network Security</a>
+            <h1>Order the Steps</h1>
+            <p class="subtitle">Drag and drop to arrange steps in the correct order</p>
+        </header>
+
+        <div class="progress-indicator">
+            <span id="progress-text">Problem 1 of 8</span>
+            <div class="progress-dots" id="progress-dots"></div>
+        </div>
+
+        <div class="parsons-container" id="problems-container">
+            <!-- Problems populated by JavaScript -->
+        </div>
+    </main>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const problems = [
+            {
+                id: 1,
+                difficulty: 'foundation',
+                question: 'Order the steps of a phishing attack from the attacker\'s perspective:',
+                blocks: [
+                    'Create a fake email that looks like it\'s from a trusted company',
+                    'Set up a fake website that looks like the real one',
+                    'Send the email to many potential victims',
+                    'Victim clicks the link and enters their details',
+                    'Attacker collects the stolen login credentials',
+                    'Attacker uses the credentials to access victim\'s accounts'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Phishing attacks follow this sequence: preparation (fake email/site), distribution (sending), harvesting (collecting entered data), and exploitation (using stolen details).'
+            },
+            {
+                id: 2,
+                difficulty: 'foundation',
+                question: 'Order the steps showing how a computer virus spreads:',
+                blocks: [
+                    'User downloads an infected file or opens an email attachment',
+                    'The virus code executes and copies itself into memory',
+                    'The virus attaches itself to other programs on the computer',
+                    'User shares infected files with others or they\'re sent automatically',
+                    'Other users open the infected files',
+                    'The cycle repeats on new computers'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Viruses spread by attaching to files and programs, then being transferred to new hosts where they execute and repeat the process.'
+            },
+            {
+                id: 3,
+                difficulty: 'core',
+                question: 'Order the steps of a ransomware attack:',
+                blocks: [
+                    'Victim opens malicious email attachment or visits compromised website',
+                    'Ransomware downloads and installs silently on the system',
+                    'Malware scans for important files (documents, photos, databases)',
+                    'Files are encrypted with a strong encryption key',
+                    'Ransom demand message is displayed to the user',
+                    'Attacker waits for payment before (possibly) providing decryption key'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Ransomware follows this pattern: infection, installation, file discovery, encryption, extortion demand. Paying the ransom is not recommended as there\'s no guarantee of file recovery.'
+            },
+            {
+                id: 4,
+                difficulty: 'core',
+                question: 'Order the steps of a brute-force password attack:',
+                blocks: [
+                    'Attacker identifies the target login page or system',
+                    'Automated tool generates password combinations to try',
+                    'Each password is submitted to the login system',
+                    'System either accepts or rejects each attempt',
+                    'Tool continues until correct password is found or all options exhausted',
+                    'If successful, attacker gains access to the account'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Brute-force attacks systematically try every possible password combination. Strong passwords with length and complexity make these attacks impractical due to the time required.'
+            },
+            {
+                id: 5,
+                difficulty: 'core',
+                question: 'Order the steps of a DDoS (Distributed Denial of Service) attack:',
+                blocks: [
+                    'Attacker builds or rents a botnet of compromised computers',
+                    'Target website or service is identified',
+                    'Command is sent to all bots to attack simultaneously',
+                    'Thousands of devices flood the target with requests',
+                    'Server becomes overwhelmed and cannot handle legitimate traffic',
+                    'Website or service becomes unavailable to real users'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'DDoS attacks use many compromised devices to overwhelm a target with traffic. The distributed nature makes them difficult to block as requests come from many sources.'
+            },
+            {
+                id: 6,
+                difficulty: 'extension',
+                question: 'Order the steps of an SQL injection attack on a login form:',
+                blocks: [
+                    'Attacker finds a website with a login form',
+                    'Instead of a normal username, attacker enters: \' OR \'1\'=\'1',
+                    'The website puts this directly into an SQL query',
+                    'The modified query becomes: SELECT * FROM users WHERE username=\'\' OR \'1\'=\'1\'',
+                    'Because \'1\'=\'1\' is always true, the query returns all users',
+                    'Attacker gains unauthorized access to the system'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'SQL injection exploits poor input validation. The attacker\'s input becomes part of the database query, changing its logic. Prevention requires parameterized queries and input sanitization.'
+            },
+            {
+                id: 7,
+                difficulty: 'extension',
+                question: 'Order the steps of a man-in-the-middle (MitM) data interception attack:',
+                blocks: [
+                    'Attacker positions themselves between victim and the network (e.g., fake WiFi)',
+                    'Victim connects to what they think is a legitimate network',
+                    'All victim\'s internet traffic passes through the attacker\'s device',
+                    'Attacker captures unencrypted data (passwords, messages)',
+                    'Attacker can modify data in transit without detection',
+                    'Victim remains unaware their communications are compromised'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'MitM attacks rely on intercepting traffic between two parties. Using HTTPS and VPNs helps protect against this by encrypting data even if it passes through an attacker\'s device.'
+            },
+            {
+                id: 8,
+                difficulty: 'extension',
+                question: 'Order the correct response steps when a company discovers a security breach:',
+                blocks: [
+                    'Detect and confirm that a security incident has occurred',
+                    'Contain the breach by isolating affected systems',
+                    'Investigate to determine the scope and source of the attack',
+                    'Eradicate the threat and patch the vulnerability',
+                    'Recover systems and restore from clean backups',
+                    'Review the incident and update security measures to prevent recurrence'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Incident response follows: Detection, Containment, Investigation, Eradication, Recovery, and Lessons Learned. Acting quickly while following proper procedures minimizes damage.'
+            }
+        ];
+
+        let currentProblem = 0;
+        let completedProblems = new Set();
+        let draggedElement = null;
+
+        function initProblems() {
+            const container = document.getElementById('problems-container');
+            container.innerHTML = '';
+
+            problems.forEach((problem, index) => {
+                const card = createProblemCard(problem, index);
+                container.appendChild(card);
+            });
+
+            updateProgressDots();
+            showProblem(0);
+        }
+
+        function createProblemCard(problem, index) {
+            const card = document.createElement('div');
+            card.className = 'problem-card';
+            card.id = `problem-${index}`;
+            card.style.display = index === 0 ? 'block' : 'none';
+
+            // Shuffle blocks for display
+            const shuffledBlocks = [...problem.blocks]
+                .map((block, i) => ({ text: block, originalIndex: i }))
+                .sort(() => Math.random() - 0.5);
+
+            card.innerHTML = `
+                <div class="problem-header">
+                    <div class="problem-number">${problem.id}</div>
+                    <span class="difficulty-badge ${problem.difficulty}">${problem.difficulty}</span>
+                </div>
+                <p class="problem-question">${problem.question}</p>
+                <div class="parsons-workspace">
+                    <div class="blocks-pool" id="pool-${index}">
+                        <div class="zone-label">Available Steps</div>
+                        ${shuffledBlocks.map((block, i) => `
+                            <div class="draggable-block" draggable="true" data-original="${block.originalIndex}">
+                                <span class="step-number">?</span>${block.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="answer-zone" id="answer-${index}">
+                        <div class="zone-label">Your Answer (drag steps here in order)</div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="check-btn" onclick="checkAnswer(${index})">Check Answer</button>
+                    <button class="reset-btn" onclick="resetProblem(${index})">Reset</button>
+                    ${index < problems.length - 1 ? `<button class="check-btn" onclick="nextProblem()" style="background: var(--success);">Next →</button>` : ''}
+                </div>
+                <div class="feedback" id="feedback-${index}"></div>
+                <div class="explanation" id="explanation-${index}">
+                    <strong>Explanation:</strong> ${problem.explanation}
+                </div>
+            `;
+
+            // Set up drag and drop after element is created
+            setTimeout(() => setupDragDrop(index), 0);
+
+            return card;
+        }
+
+        function setupDragDrop(problemIndex) {
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const answer = document.getElementById(`answer-${problemIndex}`);
+
+            if (!pool || !answer) return;
+
+            const blocks = pool.querySelectorAll('.draggable-block');
+
+            blocks.forEach(block => {
+                block.addEventListener('dragstart', handleDragStart);
+                block.addEventListener('dragend', handleDragEnd);
+            });
+
+            [pool, answer].forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('drop', (e) => handleDrop(e, problemIndex));
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDrop(e, problemIndex) {
+            e.preventDefault();
+            if (!draggedElement) return;
+
+            const dropZone = e.target.closest('.blocks-pool, .answer-zone');
+            if (!dropZone) return;
+
+            // Remove from current position
+            draggedElement.remove();
+
+            // Add to new position
+            const label = dropZone.querySelector('.zone-label');
+            dropZone.appendChild(draggedElement);
+
+            // Update step numbers in answer zone
+            updateStepNumbers(problemIndex);
+        }
+
+        function updateStepNumbers(problemIndex) {
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+
+            blocks.forEach((block, index) => {
+                const stepNum = block.querySelector('.step-number');
+                stepNum.textContent = index + 1;
+            });
+
+            // Reset numbers in pool
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const poolBlocks = pool.querySelectorAll('.draggable-block');
+            poolBlocks.forEach(block => {
+                const stepNum = block.querySelector('.step-number');
+                stepNum.textContent = '?';
+            });
+        }
+
+        function checkAnswer(problemIndex) {
+            const problem = problems[problemIndex];
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+            const feedback = document.getElementById(`feedback-${problemIndex}`);
+            const explanation = document.getElementById(`explanation-${problemIndex}`);
+
+            if (blocks.length !== problem.blocks.length) {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = `Please place all ${problem.blocks.length} steps in the answer zone.`;
+                return;
+            }
+
+            const userOrder = Array.from(blocks).map(b => parseInt(b.dataset.original));
+            const isCorrect = userOrder.every((val, idx) => val === problem.correctOrder[idx]);
+
+            blocks.forEach((block, index) => {
+                const originalIndex = parseInt(block.dataset.original);
+                if (originalIndex === problem.correctOrder[index]) {
+                    block.classList.add('correct');
+                    block.classList.remove('incorrect');
+                } else {
+                    block.classList.add('incorrect');
+                    block.classList.remove('correct');
+                }
+            });
+
+            if (isCorrect) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = 'Correct! You\'ve arranged the steps in the right order.';
+                completedProblems.add(problemIndex);
+                updateProgressDots();
+
+                Progress.saveActivity(`security-parsons-${problemIndex + 1}`, 'completed', 100);
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = 'Not quite right. Check the highlighted steps and try again.';
+            }
+
+            explanation.classList.add('show');
+        }
+
+        function resetProblem(problemIndex) {
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const feedback = document.getElementById(`feedback-${problemIndex}`);
+            const explanation = document.getElementById(`explanation-${problemIndex}`);
+
+            // Move all blocks back to pool
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+            blocks.forEach(block => {
+                block.classList.remove('correct', 'incorrect');
+                block.querySelector('.step-number').textContent = '?';
+                pool.appendChild(block);
+            });
+
+            feedback.className = 'feedback';
+            explanation.classList.remove('show');
+        }
+
+        function showProblem(index) {
+            document.querySelectorAll('.problem-card').forEach((card, i) => {
+                card.style.display = i === index ? 'block' : 'none';
+            });
+            currentProblem = index;
+            document.getElementById('progress-text').textContent = `Problem ${index + 1} of ${problems.length}`;
+            updateProgressDots();
+        }
+
+        function nextProblem() {
+            if (currentProblem < problems.length - 1) {
+                showProblem(currentProblem + 1);
+            }
+        }
+
+        function updateProgressDots() {
+            const container = document.getElementById('progress-dots');
+            container.innerHTML = problems.map((_, i) => {
+                let className = 'progress-dot';
+                if (completedProblems.has(i)) className += ' completed';
+                else if (i === currentProblem) className += ' current';
+                return `<div class="${className}" onclick="showProblem(${i})"></div>`;
+            }).join('');
+        }
+
+        // Touch support for mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            initProblems();
+
+            // Add touch support
+            document.querySelectorAll('.draggable-block').forEach(block => {
+                block.addEventListener('touchstart', handleTouchStart, { passive: false });
+                block.addEventListener('touchmove', handleTouchMove, { passive: false });
+                block.addEventListener('touchend', handleTouchEnd);
+            });
+        });
+
+        let touchStartY = 0;
+        let touchElement = null;
+
+        function handleTouchStart(e) {
+            touchElement = e.target.closest('.draggable-block');
+            if (touchElement) {
+                touchStartY = e.touches[0].clientY;
+                touchElement.classList.add('dragging');
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (touchElement) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!touchElement) return;
+
+            const touch = e.changedTouches[0];
+            const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+            const dropZone = dropTarget?.closest('.blocks-pool, .answer-zone');
+
+            if (dropZone) {
+                touchElement.remove();
+                dropZone.appendChild(touchElement);
+
+                const problemCard = dropZone.closest('.problem-card');
+                const problemIndex = parseInt(problemCard.id.split('-')[1]);
+                updateStepNumbers(problemIndex);
+            }
+
+            touchElement.classList.remove('dragging');
+            touchElement = null;
+        }
+
+        Progress.startActivity('security-parsons', 'parsons');
+    </script>
+</body>
+</html>

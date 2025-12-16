@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Security - Threats to Computer Systems</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="../index.html" class="back-link">← Back to Topics</a>
+            <div class="topic-title">
+                <span class="topic-icon-large">🔒</span>
+                <div>
+                    <h1>Network Security</h1>
+                    <p class="subtitle">Threats to computer systems and networks</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Learning Objectives -->
+        <section class="learning-objectives card">
+            <h2>What You'll Learn</h2>
+            <div class="objectives-grid">
+                <div class="objective">
+                    <span class="objective-icon">🦠</span>
+                    <div>
+                        <strong>Malware</strong>
+                        <p>Understand viruses, worms, trojans, ransomware, and spyware</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">🎭</span>
+                    <div>
+                        <strong>Social Engineering</strong>
+                        <p>Learn how attackers exploit human psychology</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">🔨</span>
+                    <div>
+                        <strong>Brute-Force Attacks</strong>
+                        <p>Understand password cracking techniques</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">🚫</span>
+                    <div>
+                        <strong>Denial of Service</strong>
+                        <p>Learn how attackers overwhelm systems</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">👁️</span>
+                    <div>
+                        <strong>Data Interception</strong>
+                        <p>Understand how data can be stolen in transit</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">💉</span>
+                    <div>
+                        <strong>SQL Injection</strong>
+                        <p>Learn how databases can be attacked</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section class="content-section card" id="introduction">
+            <h2>Why Network Security Matters</h2>
+            <p>As more of our lives move online, computer systems become targets for attackers. Understanding threats helps us protect ourselves, our data, and the systems we use.</p>
+
+            <div class="threat-overview">
+                <div class="threat-stat">
+                    <span class="stat-number">300,000+</span>
+                    <span class="stat-label">New malware created daily</span>
+                </div>
+                <div class="threat-stat">
+                    <span class="stat-number">91%</span>
+                    <span class="stat-label">of cyber attacks start with phishing</span>
+                </div>
+                <div class="threat-stat">
+                    <span class="stat-number">£4.35m</span>
+                    <span class="stat-label">Average cost of a data breach</span>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <strong>People are the Weak Point:</strong> The most sophisticated security systems can be bypassed if attackers can trick people. Social engineering exploits human psychology rather than technical vulnerabilities.
+            </div>
+        </section>
+
+        <!-- Section 1: Malware -->
+        <section class="content-section card" id="malware">
+            <h2>1. Malware</h2>
+
+            <p><strong>Malware</strong> (malicious software) is any software designed to harm, exploit, or damage computer systems, networks, or users.</p>
+
+            <div class="malware-grid">
+                <div class="malware-type">
+                    <div class="malware-icon">🦠</div>
+                    <h3>Virus</h3>
+                    <p><strong>How it works:</strong> Attaches itself to legitimate programs or files. Spreads when the infected file is shared or executed.</p>
+                    <p><strong>Purpose:</strong> Damage files, corrupt systems, spread to other computers.</p>
+                    <div class="example-label">Example: A virus hidden in a downloaded game that corrupts your documents when run.</div>
+                </div>
+
+                <div class="malware-type">
+                    <div class="malware-icon">🐛</div>
+                    <h3>Worm</h3>
+                    <p><strong>How it works:</strong> Self-replicating malware that spreads across networks automatically without needing a host file.</p>
+                    <p><strong>Purpose:</strong> Spread rapidly, consume bandwidth, deliver other malware payloads.</p>
+                    <div class="example-label">Example: A worm that spreads via email, sending copies of itself to all contacts.</div>
+                </div>
+
+                <div class="malware-type">
+                    <div class="malware-icon">🐴</div>
+                    <h3>Trojan</h3>
+                    <p><strong>How it works:</strong> Disguises itself as legitimate software. Users willingly install it, not knowing it contains malicious code.</p>
+                    <p><strong>Purpose:</strong> Create backdoors for attackers, steal data, install other malware.</p>
+                    <div class="example-label">Example: A "free antivirus" that actually gives hackers access to your computer.</div>
+                </div>
+
+                <div class="malware-type">
+                    <div class="malware-icon">💰</div>
+                    <h3>Ransomware</h3>
+                    <p><strong>How it works:</strong> Encrypts files on the victim's computer, making them inaccessible. Demands payment for the decryption key.</p>
+                    <p><strong>Purpose:</strong> Extort money from victims who need their files back.</p>
+                    <div class="example-label">Example: All your photos and documents are locked, with a message demanding £500 in Bitcoin.</div>
+                </div>
+
+                <div class="malware-type">
+                    <div class="malware-icon">👁️</div>
+                    <h3>Spyware</h3>
+                    <p><strong>How it works:</strong> Secretly monitors user activity. May record keystrokes (keylogger), capture screenshots, or track browsing.</p>
+                    <p><strong>Purpose:</strong> Steal passwords, financial details, personal information, or monitor activity.</p>
+                    <div class="example-label">Example: Spyware that records every password you type and sends it to hackers.</div>
+                </div>
+
+                <div class="malware-type">
+                    <div class="malware-icon">📢</div>
+                    <h3>Adware</h3>
+                    <p><strong>How it works:</strong> Displays unwanted advertisements, often through pop-ups or browser redirects.</p>
+                    <p><strong>Purpose:</strong> Generate advertising revenue for attackers, may also collect browsing data.</p>
+                    <div class="example-label">Example: Constant pop-up ads appear even when you're not browsing the web.</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>How Malware Spreads</h4>
+                <ul>
+                    <li><strong>Email attachments:</strong> Opening infected files attached to emails</li>
+                    <li><strong>Malicious downloads:</strong> Downloading software from untrusted sources</li>
+                    <li><strong>Infected websites:</strong> Visiting compromised websites (drive-by downloads)</li>
+                    <li><strong>USB drives:</strong> Plugging in infected removable media</li>
+                    <li><strong>Network vulnerabilities:</strong> Exploiting unpatched security holes</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: Social Engineering -->
+        <section class="content-section card" id="social-engineering">
+            <h2>2. Social Engineering</h2>
+
+            <p><strong>Social engineering</strong> attacks manipulate people into revealing confidential information or performing actions that compromise security. These attacks exploit human psychology rather than technical vulnerabilities.</p>
+
+            <div class="warning-box">
+                <strong>People are the Weak Point!</strong> Even the most secure computer systems can be compromised if an attacker can trick a person with access. Social engineering is extremely effective because it bypasses technical security measures.
+            </div>
+
+            <div class="subsection">
+                <h3>Phishing</h3>
+                <p><strong>How it works:</strong> Attackers send fraudulent messages (usually emails) that appear to come from trusted sources (banks, companies, colleagues). The message tricks victims into:</p>
+                <ul>
+                    <li>Clicking malicious links</li>
+                    <li>Entering login credentials on fake websites</li>
+                    <li>Downloading malware attachments</li>
+                    <li>Revealing sensitive information</li>
+                </ul>
+                <p><strong>Purpose:</strong> Steal login credentials, financial information, or install malware.</p>
+
+                <div class="phishing-example">
+                    <h4>Example Phishing Email</h4>
+                    <div class="fake-email">
+                        <div class="email-header">
+                            <span class="email-from">From: security@amaz0n-support.com</span>
+                            <span class="email-subject">Subject: URGENT: Your account has been suspended!</span>
+                        </div>
+                        <div class="email-body">
+                            <p>Dear Customer,</p>
+                            <p>We have detected unusual activity on your account. Your account has been temporarily suspended.</p>
+                            <p>Click here to verify your identity: <span class="fake-link">http://amaz0n-verify.suspicious-site.com/login</span></p>
+                            <p>If you do not verify within 24 hours, your account will be permanently deleted.</p>
+                        </div>
+                        <div class="warning-signs">
+                            <strong>Warning Signs:</strong>
+                            <ul>
+                                <li>Sender address uses "0" instead of "o" (amaz0n)</li>
+                                <li>Creates urgency and fear</li>
+                                <li>Link goes to suspicious domain, not amazon.com</li>
+                                <li>Threatens account deletion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Other Social Engineering Techniques</h3>
+
+                <div class="technique-grid">
+                    <div class="technique">
+                        <h4>Pretexting</h4>
+                        <p>Creating a fake scenario to gain trust. Example: Calling and pretending to be IT support to get login details.</p>
+                    </div>
+                    <div class="technique">
+                        <h4>Baiting</h4>
+                        <p>Leaving infected USB drives in public places, hoping someone will plug them into their computer.</p>
+                    </div>
+                    <div class="technique">
+                        <h4>Tailgating</h4>
+                        <p>Following an authorised person through a secure door without proper credentials.</p>
+                    </div>
+                    <div class="technique">
+                        <h4>Quid Pro Quo</h4>
+                        <p>Offering something (like free tech support) in exchange for information or access.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <strong>Protection:</strong> Always verify requests for sensitive information through official channels. Don't click links in unexpected emails - go directly to websites by typing the address.
+            </div>
+        </section>
+
+        <!-- Section 3: Brute-Force Attacks -->
+        <section class="content-section card" id="brute-force">
+            <h2>3. Brute-Force Attacks</h2>
+
+            <p>A <strong>brute-force attack</strong> attempts to crack passwords or encryption by systematically trying every possible combination until the correct one is found.</p>
+
+            <div class="concept-box">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Attacker obtains a password hash or encrypted data</li>
+                    <li>Software automatically tries millions of password combinations</li>
+                    <li>Each guess is compared to the target until a match is found</li>
+                    <li>Simple passwords can be cracked in seconds; complex ones take years</li>
+                </ol>
+            </div>
+
+            <div class="subsection">
+                <h3>Types of Brute-Force Attacks</h3>
+
+                <div class="attack-types">
+                    <div class="attack-type">
+                        <h4>Pure Brute-Force</h4>
+                        <p>Tries every possible combination of characters.</p>
+                        <p class="example-text">Tries: a, b, c... aa, ab, ac... aaa, aab...</p>
+                    </div>
+                    <div class="attack-type">
+                        <h4>Dictionary Attack</h4>
+                        <p>Uses a list of common passwords and words.</p>
+                        <p class="example-text">Tries: password, 123456, qwerty, letmein...</p>
+                    </div>
+                    <div class="attack-type">
+                        <h4>Hybrid Attack</h4>
+                        <p>Combines dictionary words with numbers/symbols.</p>
+                        <p class="example-text">Tries: password1, password123, P@ssword...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Password Cracking Time</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Password</th>
+                            <th>Type</th>
+                            <th>Time to Crack</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>123456</code></td>
+                            <td>Numbers only</td>
+                            <td class="danger">Instant</td>
+                        </tr>
+                        <tr>
+                            <td><code>password</code></td>
+                            <td>Dictionary word</td>
+                            <td class="danger">Instant</td>
+                        </tr>
+                        <tr>
+                            <td><code>Fluffy2019</code></td>
+                            <td>Word + numbers</td>
+                            <td class="warning">Minutes to hours</td>
+                        </tr>
+                        <tr>
+                            <td><code>Tr0ub4dor&3</code></td>
+                            <td>Mixed characters</td>
+                            <td class="caution">Days to weeks</td>
+                        </tr>
+                        <tr>
+                            <td><code>correct-horse-battery-staple</code></td>
+                            <td>Long passphrase</td>
+                            <td class="safe">Centuries</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="key-point">
+                <strong>Purpose:</strong> Gain unauthorised access to accounts, systems, or encrypted data by discovering passwords or encryption keys.
+            </div>
+        </section>
+
+        <!-- Section 4: Denial of Service -->
+        <section class="content-section card" id="dos">
+            <h2>4. Denial of Service (DoS) Attacks</h2>
+
+            <p>A <strong>Denial of Service (DoS)</strong> attack aims to make a system, network, or website unavailable to legitimate users by overwhelming it with traffic or requests.</p>
+
+            <div class="concept-box">
+                <h3>How It Works</h3>
+                <div class="dos-diagram">
+                    <div class="dos-step">
+                        <span class="dos-icon">💻</span>
+                        <p>Attacker sends massive amounts of requests</p>
+                    </div>
+                    <div class="dos-arrow">→</div>
+                    <div class="dos-step">
+                        <span class="dos-icon">🖥️</span>
+                        <p>Server becomes overwhelmed</p>
+                    </div>
+                    <div class="dos-arrow">→</div>
+                    <div class="dos-step">
+                        <span class="dos-icon">🚫</span>
+                        <p>Legitimate users cannot access the service</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Types of DoS Attacks</h3>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>DoS (Single Source)</h4>
+                        <p>Attack comes from a single computer or location.</p>
+                        <ul>
+                            <li>Easier to block (block one IP)</li>
+                            <li>Limited attack power</li>
+                            <li>Less common today</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item highlight">
+                        <h4>DDoS (Distributed)</h4>
+                        <p>Attack comes from many computers simultaneously (often a botnet).</p>
+                        <ul>
+                            <li>Very difficult to block</li>
+                            <li>Massive attack power</li>
+                            <li>Uses thousands of infected computers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>What is a Botnet?</h3>
+                <div class="info-box">
+                    <p>A <strong>botnet</strong> is a network of computers infected with malware and controlled by an attacker. The owners often don't know their computers are being used for attacks.</p>
+                    <ul>
+                        <li>Computers in a botnet are called "zombies" or "bots"</li>
+                        <li>Botnets can contain millions of infected devices</li>
+                        <li>IoT devices (cameras, routers) are often targeted</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Impact of DoS Attacks</h3>
+                <ul>
+                    <li><strong>Website downtime:</strong> Online shops, banks, services become inaccessible</li>
+                    <li><strong>Financial losses:</strong> Every minute of downtime costs money</li>
+                    <li><strong>Reputation damage:</strong> Customers lose trust in unreliable services</li>
+                    <li><strong>Distraction:</strong> May cover up other attacks happening simultaneously</li>
+                </ul>
+            </div>
+
+            <div class="key-point">
+                <strong>Purpose:</strong> Disrupt services, cause financial damage, extort money (pay to stop the attack), or as a smokescreen for other malicious activities.
+            </div>
+        </section>
+
+        <!-- Section 5: Data Interception and Theft -->
+        <section class="content-section card" id="interception">
+            <h2>5. Data Interception and Theft</h2>
+
+            <p><strong>Data interception</strong> occurs when attackers capture data as it travels across a network. This is sometimes called a "man-in-the-middle" attack.</p>
+
+            <div class="concept-box">
+                <h3>How It Works</h3>
+                <div class="mitm-diagram">
+                    <div class="mitm-party">
+                        <span class="party-icon">👤</span>
+                        <span class="party-label">User</span>
+                    </div>
+                    <div class="mitm-arrow">
+                        <span>Data sent →</span>
+                    </div>
+                    <div class="mitm-party attacker">
+                        <span class="party-icon">🕵️</span>
+                        <span class="party-label">Attacker (hidden)</span>
+                        <span class="intercept-label">Intercepts & copies data</span>
+                    </div>
+                    <div class="mitm-arrow">
+                        <span>→ Forwarded</span>
+                    </div>
+                    <div class="mitm-party">
+                        <span class="party-icon">🏦</span>
+                        <span class="party-label">Bank/Website</span>
+                    </div>
+                </div>
+                <p class="diagram-note">Neither the user nor the website knows the attacker is in the middle!</p>
+            </div>
+
+            <div class="subsection">
+                <h3>Methods of Data Interception</h3>
+
+                <div class="method-list">
+                    <div class="method">
+                        <h4>Packet Sniffing</h4>
+                        <p>Using software to capture network traffic. Effective on unencrypted connections.</p>
+                    </div>
+                    <div class="method">
+                        <h4>WiFi Eavesdropping</h4>
+                        <p>Monitoring unsecured or poorly secured wireless networks.</p>
+                    </div>
+                    <div class="method">
+                        <h4>Fake WiFi Hotspots</h4>
+                        <p>Creating a fake public WiFi (e.g., "Free_Coffee_Shop_WiFi") to capture all traffic.</p>
+                    </div>
+                    <div class="method">
+                        <h4>ARP Spoofing</h4>
+                        <p>Redirecting network traffic through the attacker's computer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>What Data Can Be Stolen?</h3>
+                <ul>
+                    <li><strong>Login credentials:</strong> Usernames and passwords</li>
+                    <li><strong>Financial data:</strong> Credit card numbers, bank details</li>
+                    <li><strong>Personal information:</strong> Names, addresses, dates of birth</li>
+                    <li><strong>Session cookies:</strong> Allowing account takeover</li>
+                    <li><strong>Emails and messages:</strong> Private communications</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <strong>Public WiFi Warning:</strong> Never enter sensitive information (banking, passwords) on public WiFi networks. Use HTTPS websites (look for the padlock 🔒) and consider using a VPN.
+            </div>
+
+            <div class="key-point">
+                <strong>Purpose:</strong> Steal sensitive data (passwords, financial details, personal information) for identity theft, fraud, or selling on the dark web.
+            </div>
+        </section>
+
+        <!-- Section 6: SQL Injection -->
+        <section class="content-section card" id="sql-injection">
+            <h2>6. SQL Injection</h2>
+
+            <p><strong>SQL Injection</strong> is an attack that inserts malicious SQL code into application queries, allowing attackers to manipulate databases.</p>
+
+            <div class="concept-box">
+                <h3>How It Works</h3>
+                <p>Websites often use forms (login boxes, search fields) that send user input to a database. If the website doesn't properly validate input, attackers can inject SQL commands.</p>
+
+                <div class="sql-example">
+                    <h4>Normal Login Process</h4>
+                    <div class="code-block">
+                        <p>User enters: <code>Username: alice</code> <code>Password: secret123</code></p>
+                        <p>Query becomes: <code>SELECT * FROM users WHERE username='alice' AND password='secret123'</code></p>
+                        <p class="result">Result: Returns Alice's account if credentials are correct</p>
+                    </div>
+                </div>
+
+                <div class="sql-example attack">
+                    <h4>SQL Injection Attack</h4>
+                    <div class="code-block">
+                        <p>Attacker enters: <code>Username: ' OR '1'='1</code> <code>Password: ' OR '1'='1</code></p>
+                        <p>Query becomes: <code>SELECT * FROM users WHERE username='' OR '1'='1' AND password='' OR '1'='1'</code></p>
+                        <p class="result danger">Result: '1'='1' is always TRUE - returns ALL users! Attacker gains access!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>What Attackers Can Do</h3>
+                <ul>
+                    <li><strong>Bypass authentication:</strong> Log in without valid credentials</li>
+                    <li><strong>Access data:</strong> Retrieve sensitive information from the database</li>
+                    <li><strong>Modify data:</strong> Change prices, grades, account balances</li>
+                    <li><strong>Delete data:</strong> Drop tables, destroy records</li>
+                    <li><strong>Execute commands:</strong> Sometimes run system commands on the server</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>Real-World Impact</h3>
+                <div class="info-box">
+                    <p>SQL injection has been used in major data breaches affecting millions of users. It consistently ranks in the OWASP Top 10 most critical web security risks.</p>
+                    <p><strong>Example attacks:</strong></p>
+                    <ul>
+                        <li>2017 Equifax breach - 147 million people affected</li>
+                        <li>TalkTalk breach - 157,000 customers' data stolen</li>
+                        <li>Sony Pictures hack - internal data leaked</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <strong>Purpose:</strong> Gain unauthorised access to databases, steal sensitive data, modify or delete records, or take control of the server.
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section card" id="summary">
+            <h2>Summary: Forms of Attack</h2>
+
+            <table class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Attack Type</th>
+                        <th>How It's Used</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Malware</strong></td>
+                        <td>Installed via downloads, emails, infected media</td>
+                        <td>Damage systems, steal data, extort money, gain control</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social Engineering</strong></td>
+                        <td>Manipulates people through deception</td>
+                        <td>Obtain credentials, sensitive info, or system access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brute-Force</strong></td>
+                        <td>Tries all possible password combinations</td>
+                        <td>Crack passwords to gain unauthorised access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DoS/DDoS</strong></td>
+                        <td>Floods systems with traffic</td>
+                        <td>Make services unavailable, cause disruption</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Interception</strong></td>
+                        <td>Captures data travelling across networks</td>
+                        <td>Steal sensitive data in transit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SQL Injection</strong></td>
+                        <td>Inserts malicious code into database queries</td>
+                        <td>Access, modify, or delete database contents</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Activities Section -->
+        <section class="activities-section card">
+            <h2>Practice Activities</h2>
+            <p>Apply what you've learned with these interactive exercises:</p>
+
+            <div class="activity-grid">
+                <a href="predict.html" class="activity-card">
+                    <span class="activity-icon">🔮</span>
+                    <h3>Predict</h3>
+                    <p>Identify attacks and predict security outcomes</p>
+                </a>
+
+                <a href="example.html" class="activity-card">
+                    <span class="activity-icon">📖</span>
+                    <h3>Worked Examples</h3>
+                    <p>Study detailed attack scenarios and analysis</p>
+                </a>
+
+                <a href="trace.html" class="activity-card">
+                    <span class="activity-icon">🔍</span>
+                    <h3>Step-by-Step</h3>
+                    <p>Trace through attack processes</p>
+                </a>
+
+                <a href="parsons.html" class="activity-card">
+                    <span class="activity-icon">🧩</span>
+                    <h3>Parsons Problems</h3>
+                    <p>Order the steps of various attacks</p>
+                </a>
+
+                <a href="quiz.html" class="activity-card">
+                    <span class="activity-icon">✅</span>
+                    <h3>Knowledge Check</h3>
+                    <p>Test your understanding with a quiz</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Key Terms -->
+        <section class="key-terms card">
+            <h2>Key Terms</h2>
+            <dl class="terms-grid">
+                <div class="term">
+                    <dt>Malware</dt>
+                    <dd>Malicious software designed to harm or exploit systems</dd>
+                </div>
+                <div class="term">
+                    <dt>Virus</dt>
+                    <dd>Malware that attaches to files and spreads when executed</dd>
+                </div>
+                <div class="term">
+                    <dt>Ransomware</dt>
+                    <dd>Malware that encrypts files and demands payment</dd>
+                </div>
+                <div class="term">
+                    <dt>Social Engineering</dt>
+                    <dd>Manipulating people to reveal information or grant access</dd>
+                </div>
+                <div class="term">
+                    <dt>Phishing</dt>
+                    <dd>Fraudulent messages designed to steal credentials</dd>
+                </div>
+                <div class="term">
+                    <dt>Brute-Force Attack</dt>
+                    <dd>Trying all possible password combinations</dd>
+                </div>
+                <div class="term">
+                    <dt>DoS/DDoS</dt>
+                    <dd>Overwhelming a system to make it unavailable</dd>
+                </div>
+                <div class="term">
+                    <dt>Botnet</dt>
+                    <dd>Network of infected computers controlled by an attacker</dd>
+                </div>
+                <div class="term">
+                    <dt>Data Interception</dt>
+                    <dd>Capturing data as it travels across a network</dd>
+                </div>
+                <div class="term">
+                    <dt>SQL Injection</dt>
+                    <dd>Inserting malicious SQL into database queries</dd>
+                </div>
+            </dl>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+
+    <style>
+        .topic-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+        .topic-icon-large {
+            font-size: 3rem;
+        }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+        }
+        .objective {
+            display: flex;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .objective-icon {
+            font-size: 1.5rem;
+        }
+        .objective p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .threat-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        .threat-stat {
+            text-align: center;
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border-radius: var(--radius-md);
+            border: 1px solid #fca5a5;
+        }
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #dc2626;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .content-section {
+            margin-top: var(--space-xl);
+        }
+        .content-section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: var(--space-sm);
+        }
+        .malware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        .malware-type {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--error);
+        }
+        .malware-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        .malware-type h3 {
+            margin: 0 0 var(--space-sm) 0;
+            color: var(--gray-800);
+        }
+        .example-label {
+            background: var(--blue-50);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            margin-top: var(--space-sm);
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+        }
+        .info-box {
+            background: var(--blue-50);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+        }
+        .key-point {
+            background: linear-gradient(135deg, var(--blue-50), var(--green-50));
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-lg);
+            border: 1px solid var(--primary);
+        }
+        .phishing-example {
+            margin-top: var(--space-lg);
+        }
+        .fake-email {
+            background: white;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .email-header {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--gray-300);
+        }
+        .email-from, .email-subject {
+            display: block;
+            font-size: 0.9rem;
+        }
+        .email-subject {
+            color: var(--error);
+            font-weight: bold;
+        }
+        .email-body {
+            padding: var(--space-md);
+        }
+        .fake-link {
+            color: var(--primary);
+            text-decoration: underline;
+            word-break: break-all;
+        }
+        .warning-signs {
+            background: #fef2f2;
+            padding: var(--space-md);
+            border-top: 1px solid #fca5a5;
+        }
+        .warning-signs ul {
+            margin: var(--space-sm) 0 0 0;
+        }
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .technique {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .technique h4 {
+            margin: 0 0 var(--space-xs) 0;
+            color: var(--primary);
+        }
+        .technique p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .concept-box {
+            background: white;
+            border: 2px solid var(--primary);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+        }
+        .attack-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+        .attack-type {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .attack-type h4 {
+            margin: 0 0 var(--space-sm) 0;
+        }
+        .example-text {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200);
+            text-align: left;
+        }
+        .comparison-table th {
+            background: var(--gray-100);
+        }
+        .comparison-table code {
+            background: var(--gray-100);
+            padding: 0.1em 0.3em;
+            border-radius: var(--radius-sm);
+        }
+        .danger { background: #fee2e2; color: #dc2626; font-weight: bold; }
+        .warning { background: #fef3c7; color: #d97706; font-weight: bold; }
+        .caution { background: #fef9c3; color: #ca8a04; font-weight: bold; }
+        .safe { background: #dcfce7; color: #16a34a; font-weight: bold; }
+        .dos-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin: var(--space-lg) 0;
+        }
+        .dos-step {
+            text-align: center;
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            min-width: 120px;
+        }
+        .dos-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+        .dos-arrow {
+            font-size: 1.5rem;
+            color: var(--error);
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        .comparison-item {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--gray-400);
+        }
+        .comparison-item.highlight {
+            border-left-color: var(--error);
+            background: #fef2f2;
+        }
+        .mitm-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin: var(--space-lg) 0;
+            padding: var(--space-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .mitm-party {
+            text-align: center;
+            padding: var(--space-md);
+            background: white;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+        }
+        .mitm-party.attacker {
+            background: #fef2f2;
+            border-color: var(--error);
+        }
+        .party-icon {
+            font-size: 2rem;
+            display: block;
+        }
+        .party-label {
+            font-weight: bold;
+            display: block;
+        }
+        .intercept-label {
+            font-size: 0.8rem;
+            color: var(--error);
+            display: block;
+        }
+        .mitm-arrow {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+        }
+        .diagram-note {
+            text-align: center;
+            font-style: italic;
+            color: var(--gray-600);
+            margin-top: var(--space-md);
+        }
+        .method-list {
+            display: grid;
+            gap: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        .method {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .method h4 {
+            margin: 0 0 var(--space-xs) 0;
+        }
+        .method p {
+            margin: 0;
+        }
+        .sql-example {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin: var(--space-md) 0;
+        }
+        .sql-example.attack {
+            background: #fef2f2;
+            border: 1px solid var(--error);
+        }
+        .sql-example h4 {
+            margin: 0 0 var(--space-sm) 0;
+        }
+        .code-block {
+            background: var(--gray-800);
+            color: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        .code-block code {
+            color: #4ade80;
+        }
+        .code-block .result {
+            color: var(--gray-400);
+            margin-top: var(--space-sm);
+        }
+        .code-block .result.danger {
+            color: #f87171;
+            background: transparent;
+        }
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .summary-table th, .summary-table td {
+            padding: var(--space-md);
+            border: 1px solid var(--gray-200);
+            text-align: left;
+            vertical-align: top;
+        }
+        .summary-table th {
+            background: var(--primary);
+            color: white;
+        }
+        .summary-table tr:nth-child(even) {
+            background: var(--gray-50);
+        }
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        .activity-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        .activity-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .activity-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        .activity-card h3 {
+            margin: 0 0 var(--space-xs) 0;
+            color: var(--primary);
+        }
+        .activity-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+        .term {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .term dt {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .term dd {
+            margin: 0;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+        .subsection {
+            margin-top: var(--space-lg);
+        }
+    </style>
+</body>
+</html>

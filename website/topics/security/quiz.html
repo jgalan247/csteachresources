@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Check - Network Security</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        .question-number {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .question-text {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            margin-bottom: var(--space-lg);
+            line-height: 1.5;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .option-item {
+            margin-bottom: var(--space-sm);
+        }
+        .option-label {
+            display: flex;
+            align-items: flex-start;
+            padding: var(--space-md);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option-label:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+        .option-label input {
+            margin-right: var(--space-md);
+            margin-top: 3px;
+        }
+        .option-label.selected {
+            border-color: var(--primary);
+            background: #e7f3ff;
+        }
+        .option-label.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+        .option-label.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+        .option-label.disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        .feedback-box {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .feedback-box.correct {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback-box.incorrect {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .quiz-progress {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+        .progress-bar {
+            height: 10px;
+            background: var(--gray-200);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: var(--space-sm);
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .quiz-results {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: var(--space-xl);
+            display: none;
+        }
+        .quiz-results.show {
+            display: block;
+        }
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: var(--space-lg) 0;
+        }
+        .score-display.excellent { color: var(--success); }
+        .score-display.good { color: #f0ad4e; }
+        .score-display.needs-work { color: var(--error); }
+        .result-message {
+            font-size: 1.2rem;
+            color: var(--gray-700);
+            margin-bottom: var(--space-lg);
+        }
+        .retry-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: var(--space-sm);
+        }
+        .retry-btn:hover {
+            background: var(--primary-dark);
+        }
+        .category-badge {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Network Security</a>
+            <h1>Knowledge Check</h1>
+            <p class="subtitle">Test your understanding of network security threats</p>
+        </header>
+
+        <div class="quiz-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                <span id="answered-count">0 of 15 answered</span>
+                <span id="score-count">Score: 0</span>
+            </div>
+        </div>
+
+        <div class="quiz-container" id="quiz-container">
+            <!-- Questions populated by JavaScript -->
+        </div>
+
+        <div class="quiz-results" id="quiz-results">
+            <h2>Quiz Complete!</h2>
+            <div class="score-display" id="final-score">0%</div>
+            <p class="result-message" id="result-message"></p>
+            <button class="retry-btn" onclick="resetQuiz()">Try Again</button>
+            <a href="index.html" class="retry-btn" style="background: var(--success); text-decoration: none;">Back to Topic</a>
+        </div>
+    </main>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const questions = [
+            {
+                id: 1,
+                category: 'Malware',
+                question: 'What is the key characteristic that distinguishes a computer virus from other types of malware?',
+                options: [
+                    'It encrypts files for ransom',
+                    'It attaches itself to other programs and spreads when those programs run',
+                    'It records keystrokes',
+                    'It allows remote access to a computer'
+                ],
+                correct: 1,
+                explanation: 'A virus specifically attaches itself to legitimate programs or files and spreads when those infected programs are executed. This self-replicating behavior through host files is unique to viruses.'
+            },
+            {
+                id: 2,
+                category: 'Malware',
+                question: 'Which type of malware can spread across networks without any user interaction?',
+                options: [
+                    'Virus',
+                    'Trojan',
+                    'Worm',
+                    'Adware'
+                ],
+                correct: 2,
+                explanation: 'Worms are self-replicating malware that can spread automatically across networks without needing a user to open a file or click a link. Unlike viruses, they don\'t need a host program.'
+            },
+            {
+                id: 3,
+                category: 'Malware',
+                question: 'What does ransomware typically do to a victim\'s computer?',
+                options: [
+                    'Deletes all files permanently',
+                    'Encrypts files and demands payment for the decryption key',
+                    'Creates copies of itself to spread to other computers',
+                    'Displays unwanted advertisements'
+                ],
+                correct: 1,
+                explanation: 'Ransomware encrypts the victim\'s files with a strong encryption key and demands payment (usually in cryptocurrency) in exchange for the decryption key to recover the files.'
+            },
+            {
+                id: 4,
+                category: 'Malware',
+                question: 'Why is a Trojan named after the Trojan Horse from Greek mythology?',
+                options: [
+                    'It attacks in the night',
+                    'It appears to be legitimate software but contains hidden malicious code',
+                    'It comes from Greece',
+                    'It is very large in file size'
+                ],
+                correct: 1,
+                explanation: 'Just like the Greek soldiers hidden inside a gift horse, a Trojan appears to be useful, legitimate software but secretly contains malicious code that activates once installed.'
+            },
+            {
+                id: 5,
+                category: 'Social Engineering',
+                question: 'Which of the following best describes a phishing attack?',
+                options: [
+                    'Guessing passwords by trying many combinations',
+                    'Flooding a server with requests to crash it',
+                    'Tricking people into revealing sensitive information through fake communications',
+                    'Intercepting data as it travels across a network'
+                ],
+                correct: 2,
+                explanation: 'Phishing involves sending fraudulent communications (usually emails) that appear to come from trusted sources, tricking victims into revealing passwords, credit card numbers, or other sensitive information.'
+            },
+            {
+                id: 6,
+                category: 'Social Engineering',
+                question: 'Why are social engineering attacks often successful even against people who understand technology?',
+                options: [
+                    'They exploit advanced software vulnerabilities',
+                    'They use sophisticated encryption methods',
+                    'They exploit human psychology rather than technical weaknesses',
+                    'They only target non-technical users'
+                ],
+                correct: 2,
+                explanation: 'Social engineering attacks target human vulnerabilities like trust, fear, and urgency rather than technical systems. Even tech-savvy people can be manipulated through psychological tactics.'
+            },
+            {
+                id: 7,
+                category: 'Brute Force',
+                question: 'Which password would take the LONGEST for a brute-force attack to crack?',
+                options: [
+                    'password123',
+                    'John1985',
+                    'Tr0ub4dor&3',
+                    'P@55w0rd'
+                ],
+                correct: 2,
+                explanation: 'Tr0ub4dor&3 contains uppercase, lowercase, numbers, and special characters, making it exponentially harder to crack. Common words and patterns (like "password" or birth years) are tried early in brute-force attacks.'
+            },
+            {
+                id: 8,
+                category: 'Brute Force',
+                question: 'What is an effective defence against brute-force attacks on login systems?',
+                options: [
+                    'Using HTTP instead of HTTPS',
+                    'Account lockout after multiple failed attempts',
+                    'Storing passwords in plain text',
+                    'Using the same password for all accounts'
+                ],
+                correct: 1,
+                explanation: 'Account lockout prevents brute-force attacks by temporarily blocking access after several failed login attempts, making it impractical to try millions of password combinations.'
+            },
+            {
+                id: 9,
+                category: 'DoS/DDoS',
+                question: 'What is the main goal of a Denial of Service (DoS) attack?',
+                options: [
+                    'To steal data from a server',
+                    'To make a service unavailable to legitimate users',
+                    'To gain administrative access to a system',
+                    'To install malware on victim computers'
+                ],
+                correct: 1,
+                explanation: 'The primary goal of a DoS attack is to overwhelm a service with traffic or requests so it cannot respond to legitimate users, effectively taking the service offline.'
+            },
+            {
+                id: 10,
+                category: 'DoS/DDoS',
+                question: 'What makes a Distributed Denial of Service (DDoS) attack more dangerous than a regular DoS attack?',
+                options: [
+                    'It uses stronger encryption',
+                    'It attacks multiple targets simultaneously',
+                    'It comes from many sources, making it harder to block',
+                    'It specifically targets databases'
+                ],
+                correct: 2,
+                explanation: 'A DDoS attack uses thousands of compromised computers (a botnet) to attack from many different IP addresses, making it much harder to distinguish and block malicious traffic from legitimate traffic.'
+            },
+            {
+                id: 11,
+                category: 'Data Interception',
+                question: 'What type of attack involves an attacker secretly intercepting and possibly altering communications between two parties?',
+                options: [
+                    'Phishing attack',
+                    'Brute-force attack',
+                    'Man-in-the-middle attack',
+                    'SQL injection'
+                ],
+                correct: 2,
+                explanation: 'A man-in-the-middle (MitM) attack positions the attacker between two communicating parties, allowing them to intercept, read, and potentially modify messages without either party knowing.'
+            },
+            {
+                id: 12,
+                category: 'Data Interception',
+                question: 'Which technology helps protect against data interception when browsing websites?',
+                options: [
+                    'HTTP',
+                    'FTP',
+                    'HTTPS (SSL/TLS encryption)',
+                    'SMTP'
+                ],
+                correct: 2,
+                explanation: 'HTTPS uses SSL/TLS encryption to create a secure, encrypted connection between your browser and the website. Even if data is intercepted, it cannot be read without the encryption keys.'
+            },
+            {
+                id: 13,
+                category: 'SQL Injection',
+                question: 'What does SQL injection exploit?',
+                options: [
+                    'Weak passwords in databases',
+                    'Poor input validation in web applications',
+                    'Outdated antivirus software',
+                    'Unencrypted network connections'
+                ],
+                correct: 1,
+                explanation: 'SQL injection exploits web applications that don\'t properly validate user input before including it in database queries. Attackers insert malicious SQL code that the database then executes.'
+            },
+            {
+                id: 14,
+                category: 'SQL Injection',
+                question: 'A website login form is vulnerable to SQL injection. An attacker enters: \' OR \'1\'=\'1\' -- \nWhat might this achieve?',
+                options: [
+                    'It crashes the web server',
+                    'It encrypts the database',
+                    'It could bypass authentication and grant unauthorized access',
+                    'It speeds up the login process'
+                ],
+                correct: 2,
+                explanation: 'The injected code makes the WHERE clause always true (because 1=1 is always true) and comments out the rest of the query. This could bypass password checking and grant access without valid credentials.'
+            },
+            {
+                id: 15,
+                category: 'Prevention',
+                question: 'Which combination of security measures provides the BEST protection against multiple types of attacks?',
+                options: [
+                    'Antivirus software only',
+                    'Strong passwords only',
+                    'Firewalls, antivirus, regular updates, strong passwords, and user education',
+                    'Encryption only'
+                ],
+                correct: 2,
+                explanation: 'Defence in depth uses multiple layers of security. No single measure protects against all threats, so combining firewalls, antivirus, updates, strong authentication, and user awareness provides comprehensive protection.'
+            }
+        ];
+
+        let userAnswers = {};
+        let score = 0;
+
+        function initQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                const card = createQuestionCard(q, index);
+                container.appendChild(card);
+            });
+
+            updateProgress();
+        }
+
+        function createQuestionCard(question, index) {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.id = `question-${index}`;
+
+            card.innerHTML = `
+                <div class="question-header">
+                    <span class="question-number">Question ${question.id}</span>
+                    <span class="category-badge">${question.category}</span>
+                </div>
+                <p class="question-text">${question.question}</p>
+                <ul class="options-list">
+                    ${question.options.map((option, i) => `
+                        <li class="option-item">
+                            <label class="option-label" id="option-${index}-${i}">
+                                <input type="radio" name="question-${index}" value="${i}" onchange="selectAnswer(${index}, ${i})">
+                                <span>${option}</span>
+                            </label>
+                        </li>
+                    `).join('')}
+                </ul>
+                <div class="feedback-box" id="feedback-${index}">
+                    <strong id="feedback-title-${index}"></strong>
+                    <p id="feedback-text-${index}"></p>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function selectAnswer(questionIndex, optionIndex) {
+            const question = questions[questionIndex];
+            const wasAnswered = userAnswers[questionIndex] !== undefined;
+
+            // Store answer
+            userAnswers[questionIndex] = optionIndex;
+
+            // Disable all options for this question
+            const options = document.querySelectorAll(`input[name="question-${questionIndex}"]`);
+            options.forEach(opt => {
+                opt.disabled = true;
+                opt.closest('.option-label').classList.add('disabled');
+            });
+
+            // Mark selected option
+            const selectedLabel = document.getElementById(`option-${questionIndex}-${optionIndex}`);
+            selectedLabel.classList.add('selected');
+
+            // Show correct/incorrect
+            const isCorrect = optionIndex === question.correct;
+
+            if (isCorrect) {
+                selectedLabel.classList.add('correct');
+                if (!wasAnswered) score++;
+            } else {
+                selectedLabel.classList.add('incorrect');
+                // Show correct answer
+                const correctLabel = document.getElementById(`option-${questionIndex}-${question.correct}`);
+                correctLabel.classList.add('correct');
+            }
+
+            // Show feedback
+            const feedbackBox = document.getElementById(`feedback-${questionIndex}`);
+            const feedbackTitle = document.getElementById(`feedback-title-${questionIndex}`);
+            const feedbackText = document.getElementById(`feedback-text-${questionIndex}`);
+
+            feedbackBox.className = `feedback-box ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedbackTitle.textContent = isCorrect ? 'Correct!' : 'Incorrect';
+            feedbackText.textContent = question.explanation;
+
+            updateProgress();
+            checkCompletion();
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(userAnswers).length;
+            const total = questions.length;
+            const percentage = (answered / total) * 100;
+
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            document.getElementById('answered-count').textContent = `${answered} of ${total} answered`;
+            document.getElementById('score-count').textContent = `Score: ${score}`;
+        }
+
+        function checkCompletion() {
+            if (Object.keys(userAnswers).length === questions.length) {
+                setTimeout(showResults, 500);
+            }
+        }
+
+        function showResults() {
+            const percentage = Math.round((score / questions.length) * 100);
+            const resultsDiv = document.getElementById('quiz-results');
+            const scoreDisplay = document.getElementById('final-score');
+            const resultMessage = document.getElementById('result-message');
+
+            scoreDisplay.textContent = `${percentage}%`;
+            scoreDisplay.className = 'score-display';
+
+            if (percentage >= 80) {
+                scoreDisplay.classList.add('excellent');
+                resultMessage.textContent = `Excellent! You scored ${score} out of ${questions.length}. You have a strong understanding of network security threats!`;
+            } else if (percentage >= 60) {
+                scoreDisplay.classList.add('good');
+                resultMessage.textContent = `Good job! You scored ${score} out of ${questions.length}. Review the explanations for questions you missed.`;
+            } else {
+                scoreDisplay.classList.add('needs-work');
+                resultMessage.textContent = `You scored ${score} out of ${questions.length}. Consider reviewing the topic content and trying again.`;
+            }
+
+            resultsDiv.classList.add('show');
+
+            // Save progress
+            Progress.saveActivity('security-quiz', 'completed', percentage);
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            score = 0;
+            document.getElementById('quiz-results').classList.remove('show');
+            initQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initQuiz();
+            Progress.startActivity('security-quiz', 'quiz');
+        });
+    </script>
+</body>
+</html>

@@ -33,7 +33,8 @@ const CertificateSystem = {
         'representation': 'Data Representation',
         'compression': 'Compression',
         'networks': 'Computer Networks',
-        'protocols': 'Protocols & Layers'
+        'protocols': 'Protocols & Layers',
+        'security': 'Network Security'
     },
 
     /**

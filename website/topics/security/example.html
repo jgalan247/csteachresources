@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Security - Worked Examples</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Security</a>
+            <h1>Worked Examples</h1>
+            <p class="subtitle">Detailed analysis of security threats and attacks</p>
+        </header>
+
+        <div class="activity-intro card">
+            <h2>How to Use These Examples</h2>
+            <p>Study each worked example to understand how attacks work, their purpose, and how to identify them.</p>
+        </div>
+
+        <!-- Example 1: Analysing a Phishing Email -->
+        <section class="worked-example card" id="example-1">
+            <h2>Example 1: Analysing a Phishing Email</h2>
+
+            <div class="problem-statement">
+                <h3>Scenario</h3>
+                <p>A user receives this email. Analyse it to identify phishing indicators.</p>
+                <div class="email-display">
+                    <div class="email-header">
+                        <p><strong>From:</strong> accounts@amaz0n-security.com</p>
+                        <p><strong>Subject:</strong> Your Order #298-4827591 Cannot Be Shipped</p>
+                        <p><strong>To:</strong> customer@email.com</p>
+                    </div>
+                    <div class="email-body">
+                        <p>Dear Valued Customer,</p>
+                        <p>We were unable to process payment for your recent order. Your account has been temporarily limited.</p>
+                        <p>To restore access to your account and complete your order, please verify your payment information immediately:</p>
+                        <p><a class="fake-link">http://amaz0n-verify.suspicious-domain.com/account/verify</a></p>
+                        <p>If you do not verify within 24 hours, your order will be cancelled and your account may be permanently suspended.</p>
+                        <p>Amazon Customer Service</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution">
+                <h3>Analysis</h3>
+
+                <div class="step">
+                    <h4>Step 1: Check the sender's email address</h4>
+                    <p><code>accounts@amaz0n-security.com</code></p>
+                    <ul>
+                        <li><span class="warning-flag">🚩</span> Uses "0" (zero) instead of "o" in "amazon"</li>
+                        <li><span class="warning-flag">🚩</span> Domain is "amaz0n-security.com" not "amazon.com"</li>
+                        <li>Legitimate Amazon emails come from @amazon.com or @amazon.co.uk</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Analyse the greeting and tone</h4>
+                    <ul>
+                        <li><span class="warning-flag">🚩</span> Generic greeting "Dear Valued Customer" - real companies use your name</li>
+                        <li><span class="warning-flag">🚩</span> Creates urgency and fear ("temporarily limited", "permanently suspended")</li>
+                        <li>Pressure tactics are a key social engineering technique</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 3: Examine the link</h4>
+                    <p><code>http://amaz0n-verify.suspicious-domain.com/account/verify</code></p>
+                    <ul>
+                        <li><span class="warning-flag">🚩</span> Uses HTTP, not HTTPS (no encryption)</li>
+                        <li><span class="warning-flag">🚩</span> Domain is "suspicious-domain.com" - not Amazon</li>
+                        <li><span class="warning-flag">🚩</span> "amaz0n-verify" is just a subdomain to trick users</li>
+                        <li>Legitimate Amazon links would go to amazon.com or amazon.co.uk</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 4: Conclusion</h4>
+                    <div class="answer-box">
+                        <p><strong>Verdict:</strong> This is a PHISHING email</p>
+                        <p><strong>Attack type:</strong> Social Engineering</p>
+                        <p><strong>Purpose:</strong> Steal login credentials and/or payment information</p>
+                        <p><strong>Action:</strong> Delete the email. If concerned about an order, go directly to amazon.com and log in there.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2: SQL Injection Attack -->
+        <section class="worked-example card" id="example-2">
+            <h2>Example 2: Understanding SQL Injection</h2>
+
+            <div class="problem-statement">
+                <h3>Scenario</h3>
+                <p>A website has a login form. The backend code constructs a SQL query like this:</p>
+                <div class="code-block">
+                    <code>query = "SELECT * FROM users WHERE username='" + username + "' AND password='" + password + "'"</code>
+                </div>
+                <p>Explain how an attacker could exploit this vulnerability.</p>
+            </div>
+
+            <div class="solution">
+                <h3>Analysis</h3>
+
+                <div class="step">
+                    <h4>Step 1: Normal login attempt</h4>
+                    <p>User enters: <code>Username: alice</code> <code>Password: mypassword</code></p>
+                    <div class="code-block">
+                        <code>SELECT * FROM users WHERE username='alice' AND password='mypassword'</code>
+                    </div>
+                    <p class="result-good">Result: Returns Alice's record only if both username AND password are correct.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Attack attempt</h4>
+                    <p>Attacker enters: <code>Username: ' OR '1'='1</code> <code>Password: ' OR '1'='1</code></p>
+                    <div class="code-block">
+                        <code>SELECT * FROM users WHERE username='' OR '1'='1' AND password='' OR '1'='1'</code>
+                    </div>
+                    <p class="result-bad">Result: '1'='1' is ALWAYS true, so this returns ALL users!</p>
+                </div>
+
+                <div class="step">
+                    <h4>Step 3: Why this works</h4>
+                    <table class="breakdown-table">
+                        <tr>
+                            <th>Original Query Part</th>
+                            <th>With Injected Code</th>
+                            <th>Effect</th>
+                        </tr>
+                        <tr>
+                            <td><code>username='alice'</code></td>
+                            <td><code>username='' OR '1'='1'</code></td>
+                            <td>Always true (bypass username check)</td>
+                        </tr>
+                        <tr>
+                            <td><code>password='mypassword'</code></td>
+                            <td><code>password='' OR '1'='1'</code></td>
+                            <td>Always true (bypass password check)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="step">
+                    <h4>Step 4: Other possible attacks</h4>
+                    <div class="attack-variations">
+                        <div class="variation">
+                            <p><strong>Delete all users:</strong></p>
+                            <code>'; DROP TABLE users; --</code>
+                        </div>
+                        <div class="variation">
+                            <p><strong>Extract all data:</strong></p>
+                            <code>' UNION SELECT * FROM credit_cards --</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>Summary</h4>
+                    <div class="answer-box">
+                        <p><strong>Vulnerability:</strong> User input is directly inserted into SQL without validation</p>
+                        <p><strong>Purpose:</strong> Bypass authentication, steal data, modify/delete records</p>
+                        <p><strong>Prevention:</strong> Use parameterised queries, input validation, prepared statements</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3: DDoS Attack Analysis -->
+        <section class="worked-example card" id="example-3">
+            <h2>Example 3: DDoS Attack on an Online Store</h2>
+
+            <div class="problem-statement">
+                <h3>Scenario</h3>
+                <p>On Black Friday, an online retailer's website becomes unavailable. Their network monitoring shows:</p>
+                <ul>
+                    <li>Normal traffic: 10,000 requests per minute</li>
+                    <li>Current traffic: 5,000,000 requests per minute</li>
+                    <li>Requests coming from 50,000+ different IP addresses worldwide</li>
+                    <li>Many requests from IoT devices (cameras, routers)</li>
+                </ul>
+                <p>Analyse this attack.</p>
+            </div>
+
+            <div class="solution">
+                <h3>Analysis</h3>
+
+                <div class="step">
+                    <h4>Step 1: Identify the attack type</h4>
+                    <p><strong>Attack:</strong> DDoS (Distributed Denial of Service)</p>
+                    <ul>
+                        <li>Traffic is 500x normal levels</li>
+                        <li>Coming from many different sources (distributed)</li>
+                        <li>Purpose is to make the service unavailable (denial of service)</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Identify the source</h4>
+                    <p><strong>Source:</strong> A botnet of compromised IoT devices</p>
+                    <ul>
+                        <li>50,000+ unique IP addresses suggests a large botnet</li>
+                        <li>IoT devices (cameras, routers) are often poorly secured</li>
+                        <li>Device owners likely don't know their devices are infected</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 3: Assess the impact</h4>
+                    <table class="impact-table">
+                        <tr>
+                            <th>Impact Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>Immediate</td>
+                            <td>Website completely unavailable to customers</td>
+                        </tr>
+                        <tr>
+                            <td>Financial</td>
+                            <td>Lost sales on busiest shopping day of the year</td>
+                        </tr>
+                        <tr>
+                            <td>Reputation</td>
+                            <td>Customers lose trust, may shop elsewhere</td>
+                        </tr>
+                        <tr>
+                            <td>Long-term</td>
+                            <td>Need to invest in DDoS protection infrastructure</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="step">
+                    <h4>Step 4: Possible motives</h4>
+                    <div class="answer-box">
+                        <ul>
+                            <li><strong>Extortion:</strong> "Pay us to stop the attack"</li>
+                            <li><strong>Competition:</strong> Rival business sabotage</li>
+                            <li><strong>Hacktivism:</strong> Protest against the company</li>
+                            <li><strong>Distraction:</strong> Cover for another attack (data theft)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4: Malware Infection Chain -->
+        <section class="worked-example card" id="example-4">
+            <h2>Example 4: Ransomware Infection</h2>
+
+            <div class="problem-statement">
+                <h3>Scenario</h3>
+                <p>An employee receives an email with an attachment called "Invoice_March.pdf.exe". After opening it, the following sequence occurs:</p>
+                <ol>
+                    <li>Nothing appears to happen initially</li>
+                    <li>30 minutes later, files start becoming inaccessible</li>
+                    <li>File icons change to a padlock symbol</li>
+                    <li>A message appears demanding payment</li>
+                </ol>
+                <p>Explain what happened at each stage.</p>
+            </div>
+
+            <div class="solution">
+                <h3>Analysis</h3>
+
+                <div class="step">
+                    <h4>Stage 1: Initial Infection</h4>
+                    <p><strong>The attachment "Invoice_March.pdf.exe"</strong></p>
+                    <ul>
+                        <li>Appears to be a PDF but is actually an executable (.exe)</li>
+                        <li>Uses double extension to trick users</li>
+                        <li>This is a <strong>Trojan</strong> - disguised as legitimate file</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Stage 2: Preparation (30-minute delay)</h4>
+                    <p>During this time, the ransomware:</p>
+                    <ul>
+                        <li>Disables security software (antivirus)</li>
+                        <li>Deletes shadow copies (Windows backup points)</li>
+                        <li>Scans for valuable files (documents, photos, databases)</li>
+                        <li>Connects to attacker's server to get encryption key</li>
+                        <li>Spreads to network drives and other connected computers</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Stage 3: Encryption</h4>
+                    <p>The ransomware encrypts files:</p>
+                    <ul>
+                        <li>Uses strong encryption (typically AES-256)</li>
+                        <li>Targets documents, images, videos, databases</li>
+                        <li>Changes file extensions (e.g., .encrypted, .locked)</li>
+                        <li>Only the attacker has the decryption key</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Stage 4: Ransom Demand</h4>
+                    <div class="ransom-note">
+                        <p>Typical ransom message:</p>
+                        <ul>
+                            <li>Demands cryptocurrency payment (Bitcoin, Monero)</li>
+                            <li>Includes deadline with increasing price</li>
+                            <li>Threatens permanent deletion if not paid</li>
+                            <li>May provide "proof" by decrypting one file free</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>Summary</h4>
+                    <div class="answer-box">
+                        <p><strong>Attack chain:</strong> Social Engineering (email) → Trojan → Ransomware</p>
+                        <p><strong>Purpose:</strong> Extort money by holding data hostage</p>
+                        <p><strong>Prevention:</strong> Don't open unexpected attachments, keep backups offline, train staff to recognise threats</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Problems -->
+        <section class="practice-section card">
+            <h2>Practice Problems</h2>
+
+            <div class="practice-problem" id="practice-1">
+                <h3>Practice 1: Identify the Attack</h3>
+                <p>A company's security logs show login attempts from a single IP address trying these passwords in sequence: 123456, password, qwerty, letmein, admin123, welcome1...</p>
+                <p>What attack is this and what type of technique is being used?</p>
+
+                <button class="btn btn-secondary reveal-practice">Reveal Answer</button>
+                <div class="practice-answer hidden">
+                    <p><strong>Attack:</strong> Brute-force attack using dictionary technique</p>
+                    <p><strong>Technique:</strong> Dictionary attack - trying common passwords from a list rather than all possible combinations</p>
+                    <p><strong>Prevention:</strong> Account lockout after failed attempts, CAPTCHA, strong password requirements</p>
+                </div>
+            </div>
+
+            <div class="practice-problem" id="practice-2">
+                <h3>Practice 2: Man-in-the-Middle</h3>
+                <p>A user connects to a public WiFi network called "Free Airport WiFi". They visit their bank's website, but the padlock icon doesn't appear. They enter their credentials anyway. Later, money is stolen from their account.</p>
+                <p>What type of attack occurred and how did it work?</p>
+
+                <button class="btn btn-secondary reveal-practice">Reveal Answer</button>
+                <div class="practice-answer hidden">
+                    <p><strong>Attack:</strong> Data interception / Man-in-the-middle attack</p>
+                    <p><strong>How it worked:</strong></p>
+                    <ul>
+                        <li>Attacker set up fake WiFi hotspot</li>
+                        <li>User connected, thinking it was legitimate</li>
+                        <li>Attacker intercepted traffic and presented fake bank page (HTTP, not HTTPS)</li>
+                        <li>User entered credentials which attacker captured</li>
+                    </ul>
+                    <p><strong>The missing padlock was the warning sign!</strong></p>
+                </div>
+            </div>
+
+            <div class="practice-problem" id="practice-3">
+                <h3>Practice 3: Social Engineering</h3>
+                <p>An attacker calls a company's IT helpdesk: "Hi, this is Mike from the London office. I'm locked out of my account and I have an important presentation in 10 minutes. Can you reset my password to something temporary?"</p>
+                <p>What social engineering technique is being used?</p>
+
+                <button class="btn btn-secondary reveal-practice">Reveal Answer</button>
+                <div class="practice-answer hidden">
+                    <p><strong>Technique:</strong> Pretexting (creating a fake scenario) combined with urgency</p>
+                    <p><strong>Methods used:</strong></p>
+                    <ul>
+                        <li>Claims to be an employee ("Mike from London")</li>
+                        <li>Creates urgency ("presentation in 10 minutes")</li>
+                        <li>Exploits helpdesk's desire to be helpful</li>
+                        <li>Bypasses security by social pressure</li>
+                    </ul>
+                    <p><strong>Proper response:</strong> Verify identity through official channels before resetting passwords</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="activity-nav">
+            <a href="predict.html" class="btn btn-secondary">← Previous: Predict</a>
+            <a href="trace.html" class="btn btn-primary">Next: Step-by-Step →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealBtns = document.querySelectorAll('.reveal-practice');
+
+            revealBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('hidden');
+
+                    if (answer.classList.contains('hidden')) {
+                        this.textContent = 'Reveal Answer';
+                    } else {
+                        this.textContent = 'Hide Answer';
+                        const problem = this.closest('.practice-problem');
+                        const activityId = 'security-example-' + problem.id;
+                        Progress.completeActivity(activityId, 'security', 100);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .worked-example {
+            margin-bottom: var(--space-xl);
+        }
+        .problem-statement {
+            background: var(--blue-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            margin-bottom: var(--space-lg);
+        }
+        .email-display {
+            background: white;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            overflow: hidden;
+        }
+        .email-header {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--gray-300);
+        }
+        .email-header p {
+            margin: var(--space-xs) 0;
+            font-size: 0.9rem;
+        }
+        .email-body {
+            padding: var(--space-md);
+        }
+        .fake-link {
+            color: var(--primary);
+            word-break: break-all;
+        }
+        .solution {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+        }
+        .step {
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px dashed var(--gray-200);
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .step h4 {
+            color: var(--primary);
+        }
+        .warning-flag {
+            margin-right: var(--space-xs);
+        }
+        .code-block {
+            background: var(--gray-800);
+            color: #4ade80;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            overflow-x: auto;
+            margin: var(--space-sm) 0;
+        }
+        .result-good {
+            color: var(--success);
+            font-weight: 500;
+        }
+        .result-bad {
+            color: var(--error);
+            font-weight: 500;
+        }
+        .breakdown-table, .impact-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+        .breakdown-table th, .breakdown-table td,
+        .impact-table th, .impact-table td {
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-200);
+            text-align: left;
+        }
+        .breakdown-table th, .impact-table th {
+            background: var(--gray-100);
+        }
+        .attack-variations {
+            display: grid;
+            gap: var(--space-md);
+        }
+        .variation {
+            background: #fef2f2;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--error);
+        }
+        .variation code {
+            display: block;
+            background: var(--gray-800);
+            color: #f87171;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            margin-top: var(--space-xs);
+        }
+        .answer-box {
+            background: var(--green-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--success);
+        }
+        .ransom-note {
+            background: #fef2f2;
+            border: 2px solid var(--error);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .practice-section {
+            margin-top: var(--space-xl);
+        }
+        .practice-problem {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+        .practice-answer {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: var(--green-50);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--success);
+        }
+        .practice-answer.hidden {
+            display: none;
+        }
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>
