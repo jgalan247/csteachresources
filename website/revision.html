@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision - Flashcard Review</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="topics/index.html">Topics</a></li>
+            <li><a href="progress.html">My Progress</a></li>
+            <li><a href="revision.html" class="active">Revision</a></li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Revision Mode</h1>
+            <p class="hero-subtitle">Review flashcards targeting your weak areas using spaced repetition</p>
+        </header>
+
+        <!-- Stats Overview -->
+        <section class="revision-stats">
+            <div class="stats-grid">
+                <div class="stat-card due">
+                    <div class="stat-number" id="stat-due">0</div>
+                    <div class="stat-label">Due Today</div>
+                </div>
+                <div class="stat-card new">
+                    <div class="stat-number" id="stat-new">0</div>
+                    <div class="stat-label">New Cards</div>
+                </div>
+                <div class="stat-card learning">
+                    <div class="stat-number" id="stat-learning">0</div>
+                    <div class="stat-label">Learning</div>
+                </div>
+                <div class="stat-card mature">
+                    <div class="stat-number" id="stat-mature">0</div>
+                    <div class="stat-label">Mastered</div>
+                </div>
+            </div>
+            <div class="streak-display" id="streak-display">
+                <span class="streak-icon">🔥</span>
+                <span class="streak-count" id="streak-count">0</span>
+                <span class="streak-label">day streak</span>
+            </div>
+        </section>
+
+        <!-- Main Flashcard Area -->
+        <section class="flashcard-section" id="flashcard-section">
+            <!-- Empty State -->
+            <div class="empty-state" id="empty-state">
+                <div class="empty-icon">📚</div>
+                <h2>No Cards Due</h2>
+                <p>You're all caught up! Complete some quizzes to generate flashcards from your mistakes, or check back later.</p>
+                <div class="empty-actions">
+                    <button class="btn btn-primary" onclick="importCards()">
+                        Import from Quiz History
+                    </button>
+                    <a href="topics/index.html" class="btn btn-secondary">
+                        Browse Topics
+                    </a>
+                </div>
+            </div>
+
+            <!-- Flashcard Display -->
+            <div class="flashcard-container" id="flashcard-container" style="display: none;">
+                <div class="session-progress">
+                    <span id="session-progress-text">Card 1 of 10</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="session-progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="flashcard" id="flashcard">
+                    <div class="card-topic" id="card-topic">Topic</div>
+                    <div class="card-front" id="card-front">
+                        <div class="card-question" id="card-question">
+                            Question will appear here
+                        </div>
+                        <button class="btn btn-primary btn-lg" id="show-answer-btn" onclick="showAnswer()">
+                            Show Answer
+                        </button>
+                    </div>
+                    <div class="card-back" id="card-back" style="display: none;">
+                        <div class="card-answer">
+                            <h3>Correct Answer:</h3>
+                            <p id="card-answer-text">Answer</p>
+                        </div>
+                        <div class="card-your-answer" id="card-your-answer">
+                            <h4>Your original answer:</h4>
+                            <p id="card-user-answer">Your answer</p>
+                        </div>
+                        <div class="card-explanation">
+                            <h4>Explanation:</h4>
+                            <p id="card-explanation">Explanation</p>
+                        </div>
+                        <div class="rating-buttons">
+                            <p class="rating-prompt">How well did you remember this?</p>
+                            <div class="rating-grid">
+                                <button class="rating-btn again" onclick="rateCard(0)">
+                                    <span class="rating-label">Again</span>
+                                    <span class="rating-interval">&lt;10 min</span>
+                                </button>
+                                <button class="rating-btn hard" onclick="rateCard(1)">
+                                    <span class="rating-label">Hard</span>
+                                    <span class="rating-interval" id="interval-hard">1 day</span>
+                                </button>
+                                <button class="rating-btn good" onclick="rateCard(2)">
+                                    <span class="rating-label">Good</span>
+                                    <span class="rating-interval" id="interval-good">3 days</span>
+                                </button>
+                                <button class="rating-btn easy" onclick="rateCard(3)">
+                                    <span class="rating-label">Easy</span>
+                                    <span class="rating-interval" id="interval-easy">4 days</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Session Complete -->
+            <div class="session-complete" id="session-complete" style="display: none;">
+                <div class="complete-icon">🎉</div>
+                <h2>Session Complete!</h2>
+                <div class="session-summary">
+                    <p>You reviewed <strong id="summary-reviewed">0</strong> cards</p>
+                    <div class="summary-breakdown">
+                        <span class="summary-item again"><span id="summary-again">0</span> Again</span>
+                        <span class="summary-item hard"><span id="summary-hard">0</span> Hard</span>
+                        <span class="summary-item good"><span id="summary-good">0</span> Good</span>
+                        <span class="summary-item easy"><span id="summary-easy">0</span> Easy</span>
+                    </div>
+                </div>
+                <div class="complete-actions">
+                    <button class="btn btn-primary" onclick="startNewSession()">
+                        Continue Reviewing
+                    </button>
+                    <a href="topics/index.html" class="btn btn-secondary">
+                        Study More Topics
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic Filter -->
+        <section class="topic-filter-section mt-xl">
+            <h2>Cards by Topic</h2>
+            <div class="topic-cards-grid" id="topic-cards-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Management Section -->
+        <section class="management-section mt-xl">
+            <h2>Manage Flashcards</h2>
+            <div class="management-actions">
+                <button class="btn btn-secondary" onclick="importCards()">
+                    📥 Import from Quizzes
+                </button>
+                <button class="btn btn-secondary" onclick="exportData()">
+                    💾 Export Data
+                </button>
+                <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">
+                    📂 Import Data
+                </button>
+                <button class="btn btn-secondary" onclick="showAddCardModal()">
+                    ➕ Add Custom Card
+                </button>
+                <button class="btn btn-secondary danger" onclick="resetProgress()">
+                    🔄 Reset Progress
+                </button>
+            </div>
+            <input type="file" id="import-file" accept=".json" style="display: none;" onchange="importData(event)">
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works mt-xl">
+            <h2>How Spaced Repetition Works</h2>
+            <div class="explanation-grid">
+                <div class="explanation-card">
+                    <span class="explanation-icon">🧠</span>
+                    <h3>Learn from Mistakes</h3>
+                    <p>When you answer quiz questions incorrectly, they're automatically converted into flashcards for review.</p>
+                </div>
+                <div class="explanation-card">
+                    <span class="explanation-icon">📅</span>
+                    <h3>Optimal Timing</h3>
+                    <p>Cards are shown just before you're likely to forget them. The harder a card, the more often you'll see it.</p>
+                </div>
+                <div class="explanation-card">
+                    <span class="explanation-icon">📈</span>
+                    <h3>Track Progress</h3>
+                    <p>As you remember cards more easily, the intervals between reviews grow longer until they're mastered.</p>
+                </div>
+                <div class="explanation-card">
+                    <span class="explanation-icon">🎯</span>
+                    <h3>Focus on Weaknesses</h3>
+                    <p>Spend your time where it matters most - reviewing concepts you find difficult, not what you already know.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Card Modal -->
+    <div class="modal" id="add-card-modal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>Add Custom Flashcard</h2>
+            <form id="add-card-form" onsubmit="addCustomCard(event)">
+                <div class="form-group">
+                    <label for="custom-topic">Topic</label>
+                    <select id="custom-topic" required>
+                        <option value="">Select a topic...</option>
+                        <option value="variables">Variables</option>
+                        <option value="operators">Arithmetic Operators</option>
+                        <option value="data-types">Data Types</option>
+                        <option value="selection">Selection</option>
+                        <option value="for-loops">For Loops</option>
+                        <option value="while-loops">While Loops</option>
+                        <option value="arrays-1d">1D Arrays</option>
+                        <option value="arrays-2d">2D Arrays</option>
+                        <option value="strings">String Manipulation</option>
+                        <option value="functions">Functions</option>
+                        <option value="file-handling">File Handling</option>
+                        <option value="cpu">CPU & Fetch-Execute</option>
+                        <option value="memory">Memory & Storage</option>
+                        <option value="storage">Secondary Storage</option>
+                        <option value="networks">Computer Networks</option>
+                        <option value="security">Network Security</option>
+                        <option value="operating-systems">Operating Systems</option>
+                        <option value="utility-software">Utility Software</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="custom-question">Question</label>
+                    <textarea id="custom-question" rows="3" required placeholder="Enter the question..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="custom-answer">Answer</label>
+                    <textarea id="custom-answer" rows="2" required placeholder="Enter the correct answer..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="custom-explanation">Explanation (optional)</label>
+                    <textarea id="custom-explanation" rows="2" placeholder="Why is this the answer?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Card</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="js/progress.js"></script>
+    <script src="js/flashcards.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Session state
+        let currentSession = {
+            cards: [],
+            currentIndex: 0,
+            ratings: { 0: 0, 1: 0, 2: 0, 3: 0 }
+        };
+
+        // Initialize page
+        function initPage() {
+            updateStats();
+            updateTopicGrid();
+            checkForDueCards();
+        }
+
+        // Update statistics display
+        function updateStats() {
+            const stats = FlashcardSystem.getStats();
+
+            document.getElementById('stat-due').textContent = stats.dueToday;
+            document.getElementById('stat-new').textContent = stats.newCards;
+            document.getElementById('stat-learning').textContent = stats.learning;
+            document.getElementById('stat-mature').textContent = stats.mature;
+            document.getElementById('streak-count').textContent = stats.currentStreak;
+
+            // Show/hide streak
+            if (stats.currentStreak > 0) {
+                document.getElementById('streak-display').classList.add('active');
+            }
+        }
+
+        // Update topic breakdown grid
+        function updateTopicGrid() {
+            const stats = FlashcardSystem.getStats();
+            const grid = document.getElementById('topic-cards-grid');
+
+            if (Object.keys(stats.topicBreakdown).length === 0) {
+                grid.innerHTML = '<p class="text-muted">No flashcards yet. Complete some quizzes to generate cards!</p>';
+                return;
+            }
+
+            grid.innerHTML = Object.entries(stats.topicBreakdown)
+                .sort((a, b) => b[1] - a[1])
+                .map(([topic, count]) => {
+                    const topicCards = FlashcardSystem.getCardsByTopic(topic);
+                    const dueCount = topicCards.filter(c => new Date(c.dueDate) <= new Date()).length;
+                    return `
+                        <div class="topic-card-item ${dueCount > 0 ? 'has-due' : ''}">
+                            <div class="topic-card-name">${FlashcardSystem.getTopicName(topic)}</div>
+                            <div class="topic-card-stats">
+                                <span class="card-count">${count} cards</span>
+                                ${dueCount > 0 ? `<span class="due-count">${dueCount} due</span>` : ''}
+                            </div>
+                            <button class="btn btn-sm btn-secondary" onclick="startTopicSession('${topic}')">
+                                Review
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+        }
+
+        // Check for due cards and show appropriate state
+        function checkForDueCards() {
+            const dueCards = FlashcardSystem.getDueCards();
+            const newCards = FlashcardSystem.getNewCards(5);
+
+            // Combine due cards with some new cards
+            const sessionCards = [...dueCards, ...newCards.filter(c => !dueCards.includes(c))];
+
+            if (sessionCards.length === 0) {
+                document.getElementById('empty-state').style.display = 'block';
+                document.getElementById('flashcard-container').style.display = 'none';
+                document.getElementById('session-complete').style.display = 'none';
+            } else {
+                startSession(sessionCards.slice(0, 20)); // Limit session to 20 cards
+            }
+        }
+
+        // Start a review session
+        function startSession(cards) {
+            currentSession = {
+                cards: cards,
+                currentIndex: 0,
+                ratings: { 0: 0, 1: 0, 2: 0, 3: 0 }
+            };
+
+            document.getElementById('empty-state').style.display = 'none';
+            document.getElementById('flashcard-container').style.display = 'block';
+            document.getElementById('session-complete').style.display = 'none';
+
+            showCurrentCard();
+        }
+
+        // Start session for specific topic
+        function startTopicSession(topic) {
+            const topicCards = FlashcardSystem.getCardsByTopic(topic);
+            const dueCards = topicCards.filter(c => new Date(c.dueDate) <= new Date());
+
+            if (dueCards.length === 0) {
+                // If no due cards, review all cards from this topic
+                if (topicCards.length > 0) {
+                    startSession(topicCards.slice(0, 20));
+                } else {
+                    showToast('No cards available for this topic', 'info');
+                }
+            } else {
+                startSession(dueCards.slice(0, 20));
+            }
+        }
+
+        // Show current flashcard
+        function showCurrentCard() {
+            const card = currentSession.cards[currentSession.currentIndex];
+            if (!card) return;
+
+            // Update progress
+            const progress = ((currentSession.currentIndex) / currentSession.cards.length) * 100;
+            document.getElementById('session-progress-text').textContent =
+                `Card ${currentSession.currentIndex + 1} of ${currentSession.cards.length}`;
+            document.getElementById('session-progress-bar').style.width = `${progress}%`;
+
+            // Show card front
+            document.getElementById('card-topic').textContent = FlashcardSystem.getTopicName(card.topic);
+            document.getElementById('card-question').textContent = card.question;
+            document.getElementById('card-answer-text').textContent = card.correctAnswer;
+
+            if (card.userAnswer) {
+                document.getElementById('card-your-answer').style.display = 'block';
+                document.getElementById('card-user-answer').textContent = card.userAnswer;
+            } else {
+                document.getElementById('card-your-answer').style.display = 'none';
+            }
+
+            document.getElementById('card-explanation').textContent =
+                card.explanation || 'No additional explanation available.';
+
+            // Calculate and show intervals
+            updateIntervalPreviews(card);
+
+            // Reset card state
+            document.getElementById('card-front').style.display = 'block';
+            document.getElementById('card-back').style.display = 'none';
+        }
+
+        // Update interval preview text
+        function updateIntervalPreviews(card) {
+            const intervals = [1, 2, 3].map(rating => {
+                const schedule = FlashcardSystem.calculateNextInterval(card, rating);
+                return formatInterval(schedule.interval);
+            });
+
+            document.getElementById('interval-hard').textContent = intervals[0];
+            document.getElementById('interval-good').textContent = intervals[1];
+            document.getElementById('interval-easy').textContent = intervals[2];
+        }
+
+        // Format interval for display
+        function formatInterval(days) {
+            if (days === 0) return '<10 min';
+            if (days === 1) return '1 day';
+            if (days < 30) return `${days} days`;
+            if (days < 365) return `${Math.round(days / 30)} months`;
+            return `${Math.round(days / 365)} years`;
+        }
+
+        // Show answer
+        function showAnswer() {
+            document.getElementById('card-front').style.display = 'none';
+            document.getElementById('card-back').style.display = 'block';
+        }
+
+        // Rate card and move to next
+        function rateCard(rating) {
+            const card = currentSession.cards[currentSession.currentIndex];
+
+            // Record rating
+            FlashcardSystem.reviewCard(card.id, rating);
+            currentSession.ratings[rating]++;
+
+            // Move to next card
+            currentSession.currentIndex++;
+
+            if (currentSession.currentIndex >= currentSession.cards.length) {
+                showSessionComplete();
+            } else {
+                showCurrentCard();
+            }
+
+            updateStats();
+        }
+
+        // Show session complete screen
+        function showSessionComplete() {
+            document.getElementById('flashcard-container').style.display = 'none';
+            document.getElementById('session-complete').style.display = 'block';
+
+            const total = Object.values(currentSession.ratings).reduce((a, b) => a + b, 0);
+            document.getElementById('summary-reviewed').textContent = total;
+            document.getElementById('summary-again').textContent = currentSession.ratings[0];
+            document.getElementById('summary-hard').textContent = currentSession.ratings[1];
+            document.getElementById('summary-good').textContent = currentSession.ratings[2];
+            document.getElementById('summary-easy').textContent = currentSession.ratings[3];
+
+            updateTopicGrid();
+        }
+
+        // Start new session
+        function startNewSession() {
+            document.getElementById('session-complete').style.display = 'none';
+            checkForDueCards();
+        }
+
+        // Import cards from quiz history
+        function importCards() {
+            const newCards = FlashcardSystem.importFromQuizHistory();
+            if (newCards > 0) {
+                showToast(`Imported ${newCards} new flashcards from quiz history!`, 'success');
+                updateStats();
+                updateTopicGrid();
+                checkForDueCards();
+            } else {
+                showToast('No new cards to import. Complete some quizzes first!', 'info');
+            }
+        }
+
+        // Export flashcard data
+        function exportData() {
+            const data = FlashcardSystem.export();
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'flashcard-data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Flashcard data exported!', 'success');
+        }
+
+        // Import flashcard data
+        function importData(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    if (FlashcardSystem.import(e.target.result)) {
+                        showToast('Flashcard data imported!', 'success');
+                        initPage();
+                    } else {
+                        showToast('Failed to import data. Invalid format.', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        // Show add card modal
+        function showAddCardModal() {
+            document.getElementById('add-card-modal').style.display = 'flex';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('add-card-modal').style.display = 'none';
+        }
+
+        // Add custom card
+        function addCustomCard(event) {
+            event.preventDefault();
+
+            const topic = document.getElementById('custom-topic').value;
+            const question = document.getElementById('custom-question').value;
+            const answer = document.getElementById('custom-answer').value;
+            const explanation = document.getElementById('custom-explanation').value;
+
+            const card = FlashcardSystem.addCard(question, answer, explanation, topic, topic);
+
+            if (card) {
+                showToast('Custom flashcard added!', 'success');
+                closeModal();
+                document.getElementById('add-card-form').reset();
+                updateStats();
+                updateTopicGrid();
+            } else {
+                showToast('This card already exists.', 'error');
+            }
+        }
+
+        // Reset progress
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all flashcard progress? Your cards will be kept but scheduling will be reset.')) {
+                FlashcardSystem.resetProgress();
+                showToast('Progress reset. All cards are due for review.', 'info');
+                initPage();
+            }
+        }
+
+        // Initialize
+        initPage();
+    </script>
+    <style>
+        .revision-stats {
+            margin-bottom: var(--space-xl);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--space-md);
+        }
+        .stat-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .stat-card.due { border-top: 4px solid var(--primary); }
+        .stat-card.new { border-top: 4px solid var(--info, #3b82f6); }
+        .stat-card.learning { border-top: 4px solid var(--warning); }
+        .stat-card.mature { border-top: 4px solid var(--success); }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gray-800);
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .streak-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            opacity: 0.5;
+        }
+        .streak-display.active {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            opacity: 1;
+        }
+        .streak-icon { font-size: 1.5rem; }
+        .streak-count { font-size: 1.5rem; font-weight: bold; }
+
+        .flashcard-section {
+            min-height: 400px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: var(--space-xxl);
+            background: white;
+            border-radius: var(--radius-lg);
+        }
+        .empty-icon { font-size: 4rem; margin-bottom: var(--space-lg); }
+        .empty-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-top: var(--space-xl);
+        }
+
+        .flashcard-container {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .session-progress {
+            margin-bottom: var(--space-lg);
+        }
+        #session-progress-text {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .flashcard {
+            text-align: center;
+        }
+        .card-topic {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            margin-bottom: var(--space-lg);
+        }
+        .card-question {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            padding: var(--space-xl);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .card-back {
+            text-align: left;
+        }
+        .card-answer {
+            background: #d1fae5;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+        .card-answer h3 { color: var(--success); margin-bottom: var(--space-sm); }
+        .card-your-answer {
+            background: #fee2e2;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+        .card-your-answer h4 { color: var(--error); margin-bottom: var(--space-xs); font-size: 0.9rem; }
+        .card-explanation {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .card-explanation h4 { color: var(--gray-700); margin-bottom: var(--space-sm); }
+
+        .rating-prompt {
+            text-align: center;
+            color: var(--gray-600);
+            margin-bottom: var(--space-md);
+        }
+        .rating-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-sm);
+        }
+        .rating-btn {
+            padding: var(--space-md);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .rating-btn:hover { transform: translateY(-2px); }
+        .rating-label { display: block; font-weight: 600; }
+        .rating-interval { display: block; font-size: 0.75rem; color: var(--gray-500); }
+        .rating-btn.again { border-color: var(--error); }
+        .rating-btn.again:hover { background: #fee2e2; }
+        .rating-btn.hard { border-color: var(--warning); }
+        .rating-btn.hard:hover { background: #fef3c7; }
+        .rating-btn.good { border-color: var(--success); }
+        .rating-btn.good:hover { background: #d1fae5; }
+        .rating-btn.easy { border-color: var(--primary); }
+        .rating-btn.easy:hover { background: #dbeafe; }
+
+        .session-complete {
+            text-align: center;
+            padding: var(--space-xxl);
+            background: white;
+            border-radius: var(--radius-lg);
+        }
+        .complete-icon { font-size: 4rem; margin-bottom: var(--space-lg); }
+        .session-summary {
+            margin: var(--space-xl) 0;
+        }
+        .summary-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .summary-item {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .summary-item.again { background: #fee2e2; color: var(--error); }
+        .summary-item.hard { background: #fef3c7; color: #92400e; }
+        .summary-item.good { background: #d1fae5; color: var(--success); }
+        .summary-item.easy { background: #dbeafe; color: var(--primary); }
+        .complete-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+        }
+
+        .topic-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+        .topic-card-item {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .topic-card-item.has-due {
+            border-left: 4px solid var(--primary);
+        }
+        .topic-card-name { font-weight: 600; }
+        .topic-card-stats {
+            display: flex;
+            gap: var(--space-md);
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .due-count {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .btn-sm {
+            padding: var(--space-xs) var(--space-sm);
+            font-size: 0.85rem;
+        }
+
+        .management-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        .management-actions .danger {
+            color: var(--error);
+        }
+
+        .how-it-works {
+            background: var(--gray-50);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        .explanation-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .explanation-icon { font-size: 2rem; display: block; margin-bottom: var(--space-sm); }
+        .explanation-card h3 { font-size: 1rem; margin-bottom: var(--space-sm); }
+        .explanation-card p { font-size: 0.9rem; color: var(--gray-600); margin: 0; }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-500);
+        }
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+        }
+        .btn-lg {
+            padding: var(--space-md) var(--space-xl);
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            .rating-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .empty-actions, .complete-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -74,6 +74,7 @@
                     "To play multimedia files"
                 ],
                 correct: 1,
+                concept: "utility-software.purpose",
                 explanation: "Utility software performs housekeeping tasks like maintenance, optimisation, and security tasks that supplement the operating system's core functions."
             },
             {
@@ -86,6 +87,7 @@
                     "Deletes unnecessary files"
                 ],
                 correct: 2,
+                concept: "utility-software.encryption",
                 explanation: "Encryption software scrambles data into ciphertext that can only be converted back to readable plaintext using the correct decryption key."
             },
             {
@@ -98,6 +100,7 @@
                     "Defragmentation software doesn't work with SSDs"
                 ],
                 correct: 1,
+                concept: "utility-software.defragmentation.ssd",
                 explanation: "SSDs access any location equally fast (no moving parts), so fragmentation doesn't slow them down. Defragmentation causes many write operations that wear out the SSD's limited write cycles."
             },
             {
@@ -110,6 +113,7 @@
                     "Documents cannot be compressed"
                 ],
                 correct: 1,
+                concept: "utility-software.compression.lossless",
                 explanation: "Lossless compression (ZIP) is appropriate for documents because every character must be preserved exactly. Lossy compression would corrupt the document by permanently removing data."
             },
             {
@@ -122,6 +126,7 @@
                     "Lossy works only on text files"
                 ],
                 correct: 1,
+                concept: "utility-software.compression.types",
                 explanation: "Lossy compression permanently discards some data to achieve higher compression ratios. Lossless compression encodes data more efficiently without losing any information."
             },
             {
@@ -134,6 +139,7 @@
                     "Virus infection"
                 ],
                 correct: 1,
+                concept: "utility-software.defragmentation.cause",
                 explanation: "As files are deleted, gaps form. New files fill available space, often split across multiple locations. Over time, single files become scattered across the disk."
             },
             {
@@ -146,6 +152,7 @@
                     "It prevents the USB from being formatted"
                 ],
                 correct: 2,
+                concept: "utility-software.encryption.purpose",
                 explanation: "USB drives are easily lost or stolen. Encryption ensures that even if someone finds the drive, they cannot access the confidential data without the decryption key."
             },
             {
@@ -158,6 +165,7 @@
                     "The hard drive is formatted"
                 ],
                 correct: 2,
+                concept: "utility-software.defragmentation.process",
                 explanation: "Defragmentation reorganises data so that file fragments are moved to contiguous locations, reducing the distance the read/write head needs to travel."
             },
             {
@@ -170,6 +178,7 @@
                     "TXT"
                 ],
                 correct: 2,
+                concept: "utility-software.compression.formats",
                 explanation: "JPEG uses lossy compression, permanently removing image data that humans are less likely to notice. ZIP and PNG are lossless, and TXT is uncompressed plain text."
             },
             {
@@ -182,6 +191,7 @@
                     "The operating system runs inside utility software"
                 ],
                 correct: 2,
+                concept: "utility-software.purpose",
                 explanation: "Utility software provides additional housekeeping and maintenance functions that go beyond the OS's core responsibilities like memory management and process scheduling."
             },
             {
@@ -194,6 +204,7 @@
                     "To reduce storage space"
                 ],
                 correct: 1,
+                concept: "utility-software.encryption.purpose",
                 explanation: "Encrypting laptops protects confidential business data if devices are lost or stolen, and helps companies comply with data protection regulations like GDPR."
             },
             {
@@ -206,6 +217,7 @@
                     "A type of backup file"
                 ],
                 correct: 1,
+                concept: "utility-software.encryption.terminology",
                 explanation: "Ciphertext is the scrambled, unreadable output of the encryption process. It can only be converted back to readable 'plaintext' using the correct decryption key."
             },
             {
@@ -218,6 +230,7 @@
                     "Allows files to fit within email size limits"
                 ],
                 correct: 2,
+                concept: "utility-software.compression.benefits",
                 explanation: "Compression reduces file size (saving space and transfer time) but does not improve security. Encryption is the utility software used for security purposes."
             },
             {
@@ -230,6 +243,7 @@
                     "When compressing legal documents"
                 ],
                 correct: 2,
+                concept: "utility-software.compression.lossy",
                 explanation: "Lossy compression is suitable for media files (images, audio, video) where small quality reductions are acceptable. It should never be used for documents, code, or data where accuracy is critical."
             },
             {
@@ -242,6 +256,7 @@
                     "By compressing files to make them smaller"
                 ],
                 correct: 2,
+                concept: "utility-software.defragmentation.benefits",
                 explanation: "When files are stored in contiguous blocks, the HDD's read/write head only needs to move to one location instead of multiple scattered locations, reducing seek time and improving speed."
             }
         ];
@@ -329,7 +344,7 @@
                         userAnswer: q.options[userAnswer],
                         correctAnswer: q.options[q.correct],
                         explanation: q.explanation,
-                        concept: 'utility-software'
+                        concept: q.concept || 'utility-software'
                     });
                 }
             });
