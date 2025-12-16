@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networks - Parsons Problems</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Networks</a>
+            <h1>Parsons Problems</h1>
+            <p class="subtitle">Arrange the steps in the correct order</p>
+        </header>
+
+        <div class="activity-intro card">
+            <h2>How to Solve These Problems</h2>
+            <p>Drag and drop the steps to put them in the correct order. Each problem describes a network process - your task is to sequence the steps correctly.</p>
+        </div>
+
+        <!-- Problem 1: DNS Lookup -->
+        <section class="parsons-problem card" id="problem-1">
+            <h2>Problem 1: DNS Lookup Process</h2>
+            <p class="problem-description">Arrange these steps to show how a web browser finds a website's IP address.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-1">
+                    <div class="parsons-block" data-order="4">DNS server returns the IP address to the browser</div>
+                    <div class="parsons-block" data-order="1">User types a URL into the browser</div>
+                    <div class="parsons-block" data-order="5">Browser connects to web server using the IP address</div>
+                    <div class="parsons-block" data-order="3">DNS server looks up the IP address for the domain name</div>
+                    <div class="parsons-block" data-order="2">Browser sends a query to the DNS server</div>
+                </div>
+                <div class="parsons-target" id="target-1">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-parsons">Reset</button>
+                <button class="btn btn-primary check-parsons">Check Answer</button>
+            </div>
+            <div class="parsons-feedback hidden"></div>
+        </section>
+
+        <!-- Problem 2: Sending an Email -->
+        <section class="parsons-problem card" id="problem-2">
+            <h2>Problem 2: Sending an Email (Client-Server)</h2>
+            <p class="problem-description">Arrange these steps to show how an email is sent using client-server architecture.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-2">
+                    <div class="parsons-block" data-order="3">The email client sends the email to the mail server</div>
+                    <div class="parsons-block" data-order="5">Recipient's email client downloads the email from their server</div>
+                    <div class="parsons-block" data-order="1">User composes an email in their email client</div>
+                    <div class="parsons-block" data-order="4">Mail server forwards the email to recipient's mail server</div>
+                    <div class="parsons-block" data-order="2">User clicks the Send button</div>
+                </div>
+                <div class="parsons-target" id="target-2">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-parsons">Reset</button>
+                <button class="btn btn-primary check-parsons">Check Answer</button>
+            </div>
+            <div class="parsons-feedback hidden"></div>
+        </section>
+
+        <!-- Problem 3: Data Through a Switch -->
+        <section class="parsons-problem card" id="problem-3">
+            <h2>Problem 3: Data Through a Switch</h2>
+            <p class="problem-description">Arrange these steps to show how a switch forwards data to the correct device.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-3">
+                    <div class="parsons-block" data-order="2">Switch receives the data packet on one of its ports</div>
+                    <div class="parsons-block" data-order="4">Switch forwards the packet to the correct port</div>
+                    <div class="parsons-block" data-order="1">Computer A sends data to Computer B</div>
+                    <div class="parsons-block" data-order="5">Destination computer receives the data</div>
+                    <div class="parsons-block" data-order="3">Switch reads the destination MAC address and checks its table</div>
+                </div>
+                <div class="parsons-target" id="target-3">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-parsons">Reset</button>
+                <button class="btn btn-primary check-parsons">Check Answer</button>
+            </div>
+            <div class="parsons-feedback hidden"></div>
+        </section>
+
+        <!-- Problem 4: Connecting to WiFi -->
+        <section class="parsons-problem card" id="problem-4">
+            <h2>Problem 4: Connecting to a WiFi Network</h2>
+            <p class="problem-description">Arrange these steps to show how a device connects to a wireless network.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-4">
+                    <div class="parsons-block" data-order="5">Device receives an IP address and can access the network</div>
+                    <div class="parsons-block" data-order="2">Device's NIC detects available wireless networks</div>
+                    <div class="parsons-block" data-order="4">WAP authenticates the device and grants access</div>
+                    <div class="parsons-block" data-order="1">User enables WiFi on their device</div>
+                    <div class="parsons-block" data-order="3">User selects network name and enters the password</div>
+                </div>
+                <div class="parsons-target" id="target-4">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-parsons">Reset</button>
+                <button class="btn btn-primary check-parsons">Check Answer</button>
+            </div>
+            <div class="parsons-feedback hidden"></div>
+        </section>
+
+        <!-- Problem 5: Router Packet Forwarding -->
+        <section class="parsons-problem card" id="problem-5">
+            <h2>Problem 5: Router Forwarding Between Networks</h2>
+            <p class="problem-description">Arrange these steps to show how a router forwards data between different networks.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-5">
+                    <div class="parsons-block" data-order="4">Router forwards packet out of the appropriate interface</div>
+                    <div class="parsons-block" data-order="2">Router receives the packet from the source network</div>
+                    <div class="parsons-block" data-order="1">Computer on Network A sends data to computer on Network B</div>
+                    <div class="parsons-block" data-order="5">Destination computer on Network B receives the data</div>
+                    <div class="parsons-block" data-order="3">Router reads destination IP and consults routing table</div>
+                </div>
+                <div class="parsons-target" id="target-5">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-parsons">Reset</button>
+                <button class="btn btn-primary check-parsons">Check Answer</button>
+            </div>
+            <div class="parsons-feedback hidden"></div>
+        </section>
+
+        <!-- Problem 6: Setting Up a LAN -->
+        <section class="parsons-problem card" id="problem-6">
+            <h2>Problem 6: Setting Up a Small Office LAN</h2>
+            <p class="problem-description">Arrange these steps in a logical order to set up a local area network.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-6">
+                    <div class="parsons-block" data-order="4">Connect all devices to the switch using cables</div>
+                    <div class="parsons-block" data-order="2">Install a network switch as the central connection point</div>
+                    <div class="parsons-block" data-order="6">Test connectivity between devices</div>
+                    <div class="parsons-block" data-order="3">Ensure each device has a NIC installed</div>
+                    <div class="parsons-block" data-order="1">Plan the network layout and topology (star)</div>
+                    <div class="parsons-block" data-order="5">Configure IP addresses for each device</div>
+                </div>
+                <div class="parsons-target" id="target-6">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-parsons">Reset</button>
+                <button class="btn btn-primary check-parsons">Check Answer</button>
+            </div>
+            <div class="parsons-feedback hidden"></div>
+        </section>
+
+        <!-- Problem 7: Cloud File Sync -->
+        <section class="parsons-problem card" id="problem-7">
+            <h2>Problem 7: Saving a File to the Cloud</h2>
+            <p class="problem-description">Arrange these steps to show how a document is saved to cloud storage.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-7">
+                    <div class="parsons-block" data-order="4">Cloud server stores the file in its data centre</div>
+                    <div class="parsons-block" data-order="2">User clicks Save or changes are auto-saved</div>
+                    <div class="parsons-block" data-order="5">Cloud confirms the file is safely stored</div>
+                    <div class="parsons-block" data-order="1">User creates or edits a document in a cloud application</div>
+                    <div class="parsons-block" data-order="3">File data is transmitted over the internet to cloud servers</div>
+                    <div class="parsons-block" data-order="6">File is now accessible from any device with internet access</div>
+                </div>
+                <div class="parsons-target" id="target-7">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-parsons">Reset</button>
+                <button class="btn btn-primary check-parsons">Check Answer</button>
+            </div>
+            <div class="parsons-feedback hidden"></div>
+        </section>
+
+        <!-- Problem 8: Mesh Network Failover -->
+        <section class="parsons-problem card" id="problem-8">
+            <h2>Problem 8: Mesh Network Handling a Failed Link</h2>
+            <p class="problem-description">Arrange these steps to show how a mesh network responds when a connection fails.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-8">
+                    <div class="parsons-block" data-order="5">Network continues operating with no service disruption</div>
+                    <div class="parsons-block" data-order="3">Network detects the failed link</div>
+                    <div class="parsons-block" data-order="1">Data is being sent between two devices via a direct link</div>
+                    <div class="parsons-block" data-order="4">Routing protocol finds alternative path through other nodes</div>
+                    <div class="parsons-block" data-order="2">The direct link between the devices fails</div>
+                </div>
+                <div class="parsons-target" id="target-8">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+
+            <div class="parsons-controls">
+                <button class="btn btn-secondary reset-parsons">Reset</button>
+                <button class="btn btn-primary check-parsons">Check Answer</button>
+            </div>
+            <div class="parsons-feedback hidden"></div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="activity-nav">
+            <a href="trace.html" class="btn btn-secondary">← Previous: Step-by-Step Exercises</a>
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Check →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all Parsons problems
+            const problems = document.querySelectorAll('.parsons-problem');
+
+            problems.forEach(problem => {
+                const source = problem.querySelector('.parsons-source');
+                const target = problem.querySelector('.parsons-target');
+                const checkBtn = problem.querySelector('.check-parsons');
+                const resetBtn = problem.querySelector('.reset-parsons');
+                const feedback = problem.querySelector('.parsons-feedback');
+
+                // Shuffle blocks initially
+                shuffleBlocks(source);
+
+                // Make blocks draggable
+                const blocks = source.querySelectorAll('.parsons-block');
+                blocks.forEach(block => {
+                    block.draggable = true;
+                    block.addEventListener('dragstart', handleDragStart);
+                    block.addEventListener('dragend', handleDragEnd);
+                });
+
+                // Set up drop zones
+                [source, target].forEach(zone => {
+                    zone.addEventListener('dragover', handleDragOver);
+                    zone.addEventListener('drop', handleDrop);
+                    zone.addEventListener('dragleave', handleDragLeave);
+                });
+
+                // Check answer
+                checkBtn.addEventListener('click', () => {
+                    const targetBlocks = target.querySelectorAll('.parsons-block');
+                    let correct = true;
+                    let expectedOrder = 1;
+
+                    targetBlocks.forEach(block => {
+                        const order = parseInt(block.dataset.order);
+                        if (order !== expectedOrder) {
+                            correct = false;
+                            block.classList.add('incorrect');
+                        } else {
+                            block.classList.remove('incorrect');
+                            block.classList.add('correct');
+                        }
+                        expectedOrder++;
+                    });
+
+                    // Check if all blocks are in target
+                    const sourceBlocks = source.querySelectorAll('.parsons-block');
+                    if (sourceBlocks.length > 0) {
+                        correct = false;
+                    }
+
+                    feedback.classList.remove('hidden');
+                    if (correct) {
+                        feedback.className = 'parsons-feedback success';
+                        feedback.textContent = 'Correct! Well done!';
+                        // Track progress
+                        const activityId = 'networks-parsons-' + problem.id;
+                        Progress.completeActivity(activityId, 'networks', 100);
+                    } else {
+                        feedback.className = 'parsons-feedback error';
+                        feedback.textContent = 'Not quite right. Check the highlighted blocks and try again.';
+                    }
+                });
+
+                // Reset problem
+                resetBtn.addEventListener('click', () => {
+                    const allBlocks = problem.querySelectorAll('.parsons-block');
+                    allBlocks.forEach(block => {
+                        source.appendChild(block);
+                        block.classList.remove('correct', 'incorrect');
+                    });
+                    shuffleBlocks(source);
+                    feedback.classList.add('hidden');
+                });
+            });
+
+            // Drag and drop handlers
+            let draggedElement = null;
+
+            function handleDragStart(e) {
+                draggedElement = this;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            }
+
+            function handleDragEnd(e) {
+                this.classList.remove('dragging');
+                document.querySelectorAll('.parsons-source, .parsons-target').forEach(zone => {
+                    zone.classList.remove('drag-over');
+                });
+            }
+
+            function handleDragOver(e) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                this.classList.add('drag-over');
+
+                // Find the element we're hovering over
+                const afterElement = getDragAfterElement(this, e.clientY);
+                if (afterElement) {
+                    afterElement.classList.add('drag-above');
+                }
+            }
+
+            function handleDragLeave(e) {
+                this.classList.remove('drag-over');
+                this.querySelectorAll('.drag-above').forEach(el => el.classList.remove('drag-above'));
+            }
+
+            function handleDrop(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+
+                if (draggedElement) {
+                    const afterElement = getDragAfterElement(this, e.clientY);
+                    if (afterElement) {
+                        this.insertBefore(draggedElement, afterElement);
+                    } else {
+                        this.appendChild(draggedElement);
+                    }
+                    draggedElement.classList.remove('correct', 'incorrect');
+                }
+
+                this.querySelectorAll('.drag-above').forEach(el => el.classList.remove('drag-above'));
+            }
+
+            function getDragAfterElement(container, y) {
+                const draggableElements = [...container.querySelectorAll('.parsons-block:not(.dragging)')];
+
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            }
+
+            function shuffleBlocks(container) {
+                const blocks = Array.from(container.querySelectorAll('.parsons-block'));
+                for (let i = blocks.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    container.appendChild(blocks[j]);
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .parsons-problem {
+            margin-bottom: var(--space-xl);
+        }
+        .problem-description {
+            color: var(--gray-600);
+            margin-bottom: var(--space-lg);
+        }
+        .parsons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        @media (max-width: 768px) {
+            .parsons-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .parsons-source, .parsons-target {
+            min-height: 200px;
+            padding: var(--space-md);
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--radius-md);
+            background: var(--gray-50);
+        }
+        .parsons-target {
+            border-color: var(--primary);
+            background: var(--blue-50);
+        }
+        .target-label {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+        }
+        .parsons-block {
+            background: white;
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-200);
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .parsons-block:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .parsons-block.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .parsons-block.correct {
+            background: var(--green-50);
+            border-color: var(--success);
+        }
+        .parsons-block.incorrect {
+            background: var(--red-50);
+            border-color: var(--error);
+        }
+        .parsons-block.drag-above {
+            border-top: 3px solid var(--primary);
+        }
+        .parsons-source.drag-over, .parsons-target.drag-over {
+            background: var(--blue-100);
+            border-style: solid;
+        }
+        .parsons-controls {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .parsons-feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+        }
+        .parsons-feedback.success {
+            background: var(--green-50);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+        .parsons-feedback.error {
+            background: var(--red-50);
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+        .parsons-feedback.hidden {
+            display: none;
+        }
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>
