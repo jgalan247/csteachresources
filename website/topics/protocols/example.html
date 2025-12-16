@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocols - Worked Examples</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Protocols</a>
+            <h1>Worked Examples</h1>
+            <p class="subtitle">Step-by-step solutions for protocols and connections</p>
+        </header>
+
+        <div class="activity-intro card">
+            <h2>How to Use These Examples</h2>
+            <p>Study each worked example carefully. Follow the step-by-step reasoning, then try the practice problems to test your understanding.</p>
+        </div>
+
+        <!-- Example 1: Choosing Connection Type -->
+        <section class="worked-example card" id="example-1">
+            <h2>Example 1: Choosing Wired vs Wireless</h2>
+
+            <div class="problem-statement">
+                <h3>Problem</h3>
+                <p>A small business is setting up a new office with the following needs:</p>
+                <ul>
+                    <li>5 desktop computers at fixed desks</li>
+                    <li>3 laptops that move between meeting rooms</li>
+                    <li>1 network printer in the corner</li>
+                    <li>A server that stores important business files</li>
+                </ul>
+                <p>Recommend the best connection type for each device and justify your choices.</p>
+            </div>
+
+            <div class="solution">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <h4>Step 1: Identify device requirements</h4>
+                    <p>Consider each device's needs:</p>
+                    <ul>
+                        <li><strong>Desktop computers:</strong> Fixed location, need reliable connection</li>
+                        <li><strong>Laptops:</strong> Need mobility between rooms</li>
+                        <li><strong>Printer:</strong> Fixed location, moderate usage</li>
+                        <li><strong>Server:</strong> Fixed, critical device, needs maximum reliability and speed</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Apply wired vs wireless criteria</h4>
+                    <table class="solution-table">
+                        <tr>
+                            <th>Device</th>
+                            <th>Recommended</th>
+                            <th>Justification</th>
+                        </tr>
+                        <tr>
+                            <td>Desktop computers (5)</td>
+                            <td><strong>Wired (Ethernet)</strong></td>
+                            <td>Fixed location, faster and more reliable than WiFi</td>
+                        </tr>
+                        <tr>
+                            <td>Laptops (3)</td>
+                            <td><strong>Wireless (WiFi)</strong></td>
+                            <td>Need to move between meeting rooms; mobility essential</td>
+                        </tr>
+                        <tr>
+                            <td>Printer</td>
+                            <td><strong>Either (WiFi acceptable)</strong></td>
+                            <td>Fixed location but WiFi is convenient; print jobs don't need ultra-high speed</td>
+                        </tr>
+                        <tr>
+                            <td>Server</td>
+                            <td><strong>Wired (Ethernet)</strong></td>
+                            <td>Critical device needs maximum speed, reliability, and security</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="step">
+                    <h4>Step 3: Final recommendation</h4>
+                    <div class="answer-box">
+                        <p><strong>Use wired connections for:</strong> All 5 desktops and the server (7 Ethernet ports needed)</p>
+                        <p><strong>Use wireless connections for:</strong> All 3 laptops and optionally the printer</p>
+                        <p><strong>Equipment needed:</strong> A network switch with at least 8 ports, a wireless access point (WAP) for WiFi coverage</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2: IP Address Format -->
+        <section class="worked-example card" id="example-2">
+            <h2>Example 2: Identifying Valid IP Addresses</h2>
+
+            <div class="problem-statement">
+                <h3>Problem</h3>
+                <p>Which of the following are valid IPv4 addresses? Explain why each is valid or invalid.</p>
+                <ol type="a">
+                    <li><code>192.168.1.1</code></li>
+                    <li><code>256.100.50.1</code></li>
+                    <li><code>10.0.0.255</code></li>
+                    <li><code>172.16.0</code></li>
+                    <li><code>192.168.1.1.5</code></li>
+                </ol>
+            </div>
+
+            <div class="solution">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <h4>Step 1: Recall IPv4 format rules</h4>
+                    <ul>
+                        <li>Exactly 4 numbers (octets) separated by dots</li>
+                        <li>Each number must be between 0 and 255 (inclusive)</li>
+                        <li>No extra dots or numbers</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Check each address</h4>
+                    <table class="solution-table">
+                        <tr>
+                            <th>Address</th>
+                            <th>Valid?</th>
+                            <th>Reason</th>
+                        </tr>
+                        <tr>
+                            <td><code>192.168.1.1</code></td>
+                            <td class="valid">Valid</td>
+                            <td>4 numbers, all between 0-255</td>
+                        </tr>
+                        <tr>
+                            <td><code>256.100.50.1</code></td>
+                            <td class="invalid">Invalid</td>
+                            <td>256 is too high - maximum is 255</td>
+                        </tr>
+                        <tr>
+                            <td><code>10.0.0.255</code></td>
+                            <td class="valid">Valid</td>
+                            <td>4 numbers, all between 0-255 (0 and 255 are allowed)</td>
+                        </tr>
+                        <tr>
+                            <td><code>172.16.0</code></td>
+                            <td class="invalid">Invalid</td>
+                            <td>Only 3 numbers - needs exactly 4</td>
+                        </tr>
+                        <tr>
+                            <td><code>192.168.1.1.5</code></td>
+                            <td class="invalid">Invalid</td>
+                            <td>5 numbers - has one too many</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="step">
+                    <h4>Final Answer</h4>
+                    <div class="answer-box">
+                        <p>Valid addresses: <strong>(a)</strong> 192.168.1.1 and <strong>(c)</strong> 10.0.0.255</p>
+                        <p>Invalid addresses: (b), (d), (e)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3: Protocol Selection -->
+        <section class="worked-example card" id="example-3">
+            <h2>Example 3: Selecting the Right Protocol</h2>
+
+            <div class="problem-statement">
+                <h3>Problem</h3>
+                <p>Match each task to the most appropriate protocol and explain why:</p>
+                <ol>
+                    <li>Browsing a shopping website</li>
+                    <li>Uploading files to a web server</li>
+                    <li>Logging into online banking</li>
+                    <li>Sending an email to a colleague</li>
+                    <li>Checking email on multiple devices</li>
+                </ol>
+                <p><strong>Protocols:</strong> HTTP, HTTPS, FTP, SMTP, IMAP, POP3</p>
+            </div>
+
+            <div class="solution">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <h4>Step 1: Recall protocol purposes</h4>
+                    <ul>
+                        <li><strong>HTTP:</strong> Transfer web pages (no encryption)</li>
+                        <li><strong>HTTPS:</strong> Transfer web pages securely (encrypted)</li>
+                        <li><strong>FTP:</strong> Transfer files to/from servers</li>
+                        <li><strong>SMTP:</strong> Send emails</li>
+                        <li><strong>IMAP:</strong> Receive emails with sync across devices</li>
+                        <li><strong>POP3:</strong> Download emails to one device</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Match each task</h4>
+                    <table class="solution-table">
+                        <tr>
+                            <th>Task</th>
+                            <th>Protocol</th>
+                            <th>Reasoning</th>
+                        </tr>
+                        <tr>
+                            <td>1. Browsing a shopping website</td>
+                            <td><strong>HTTPS</strong></td>
+                            <td>Shopping involves personal data; needs encryption</td>
+                        </tr>
+                        <tr>
+                            <td>2. Uploading files to web server</td>
+                            <td><strong>FTP</strong></td>
+                            <td>Designed specifically for file transfers</td>
+                        </tr>
+                        <tr>
+                            <td>3. Logging into online banking</td>
+                            <td><strong>HTTPS</strong></td>
+                            <td>Financial data must be encrypted; HTTP would be insecure</td>
+                        </tr>
+                        <tr>
+                            <td>4. Sending an email</td>
+                            <td><strong>SMTP</strong></td>
+                            <td>SMTP is the protocol for outgoing email</td>
+                        </tr>
+                        <tr>
+                            <td>5. Checking email on multiple devices</td>
+                            <td><strong>IMAP</strong></td>
+                            <td>IMAP syncs across devices; POP3 would cause issues</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4: MAC Address Analysis -->
+        <section class="worked-example card" id="example-4">
+            <h2>Example 4: Understanding MAC Addresses</h2>
+
+            <div class="problem-statement">
+                <h3>Problem</h3>
+                <p>A network administrator sees these two MAC addresses on the network:</p>
+                <ul>
+                    <li>Device A: <code>00:1A:2B:3C:4D:5E</code></li>
+                    <li>Device B: <code>00:1A:2B:7F:8A:9B</code></li>
+                </ul>
+                <p>What can you deduce about these devices?</p>
+            </div>
+
+            <div class="solution">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <h4>Step 1: Recall MAC address structure</h4>
+                    <p>A MAC address has two parts:</p>
+                    <ul>
+                        <li><strong>First 3 pairs (OUI):</strong> Identifies the manufacturer</li>
+                        <li><strong>Last 3 pairs:</strong> Unique device identifier</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Analyse the addresses</h4>
+                    <div class="mac-comparison">
+                        <div class="mac-item">
+                            <p><strong>Device A:</strong></p>
+                            <code><span class="oui">00:1A:2B</span>:<span class="device-id">3C:4D:5E</span></code>
+                        </div>
+                        <div class="mac-item">
+                            <p><strong>Device B:</strong></p>
+                            <code><span class="oui">00:1A:2B</span>:<span class="device-id">7F:8A:9B</span></code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>Step 3: Draw conclusions</h4>
+                    <div class="answer-box">
+                        <p><strong>Same manufacturer:</strong> Both devices have the OUI <code>00:1A:2B</code>, meaning they were made by the same company.</p>
+                        <p><strong>Different devices:</strong> The device IDs are different, so they are two separate physical devices.</p>
+                        <p><strong>Possible scenario:</strong> Two laptops or network cards from the same manufacturer (e.g., both Dell, or both Intel NICs).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5: Layered Model -->
+        <section class="worked-example card" id="example-5">
+            <h2>Example 5: Understanding the TCP/IP Layers</h2>
+
+            <div class="problem-statement">
+                <h3>Problem</h3>
+                <p>A user opens their web browser and types <code>https://www.example.com</code>. Describe what happens at each layer of the TCP/IP model.</p>
+            </div>
+
+            <div class="solution">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <h4>Step 1: Identify the layers (top to bottom)</h4>
+                    <ol>
+                        <li>Application Layer</li>
+                        <li>Transport Layer</li>
+                        <li>Internet Layer</li>
+                        <li>Network Access Layer</li>
+                    </ol>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Describe each layer's role</h4>
+
+                    <div class="layer-explanation">
+                        <div class="layer-box layer-4-box">
+                            <h5>Layer 4: Application Layer</h5>
+                            <ul>
+                                <li>Browser uses <strong>HTTPS</strong> protocol to request the web page</li>
+                                <li>DNS is used to convert <code>www.example.com</code> to an IP address</li>
+                                <li>Creates an HTTP request: "GET / HTTP/1.1"</li>
+                            </ul>
+                        </div>
+
+                        <div class="layer-box layer-3-box">
+                            <h5>Layer 3: Transport Layer</h5>
+                            <ul>
+                                <li><strong>TCP</strong> breaks the data into segments</li>
+                                <li>Adds port numbers (port 443 for HTTPS)</li>
+                                <li>Ensures reliable delivery with acknowledgements</li>
+                            </ul>
+                        </div>
+
+                        <div class="layer-box layer-2-box">
+                            <h5>Layer 2: Internet Layer</h5>
+                            <ul>
+                                <li><strong>IP</strong> adds source and destination IP addresses</li>
+                                <li>Creates packets that can be routed across networks</li>
+                                <li>Determines the path to the destination</li>
+                            </ul>
+                        </div>
+
+                        <div class="layer-box layer-1-box">
+                            <h5>Layer 1: Network Access Layer</h5>
+                            <ul>
+                                <li>Adds <strong>MAC addresses</strong> for local delivery</li>
+                                <li>Converts data to electrical signals (Ethernet) or radio waves (WiFi)</li>
+                                <li>Physically transmits the data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>Step 3: Summary</h4>
+                    <div class="answer-box">
+                        <p>Each layer adds its own information (headers) as data moves down. The receiving server reverses the process, moving up through layers to deliver the web page to the browser.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 6: Security Analysis -->
+        <section class="worked-example card" id="example-6">
+            <h2>Example 6: Encryption and Security</h2>
+
+            <div class="problem-statement">
+                <h3>Problem</h3>
+                <p>A school is setting up a new WiFi network. The head teacher asks: "Why do we need to encrypt the WiFi? What's the worst that could happen?"</p>
+                <p>Explain the importance of WiFi encryption.</p>
+            </div>
+
+            <div class="solution">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <h4>Step 1: Explain how unencrypted WiFi works</h4>
+                    <ul>
+                        <li>WiFi signals are radio waves that travel through the air</li>
+                        <li>Without encryption, anyone within range can capture these signals</li>
+                        <li>Special software can read the data being transmitted</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h4>Step 2: Identify the risks</h4>
+                    <div class="risk-box">
+                        <h5>Risks of Unencrypted WiFi:</h5>
+                        <ul>
+                            <li><strong>Data interception:</strong> Login details, emails, and documents could be captured</li>
+                            <li><strong>Student data breach:</strong> Personal student information could be stolen</li>
+                            <li><strong>Unauthorised access:</strong> Anyone could connect to the network</li>
+                            <li><strong>Bandwidth theft:</strong> Nearby residents could use the school's internet</li>
+                            <li><strong>Legal liability:</strong> Illegal activities could be traced back to the school</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h4>Step 3: Explain how encryption helps</h4>
+                    <div class="answer-box">
+                        <p><strong>WiFi encryption (WPA2/WPA3):</strong></p>
+                        <ul>
+                            <li>Scrambles all data so it can't be read without the password</li>
+                            <li>Only authorised users with the password can connect</li>
+                            <li>Each connection uses a unique encryption key</li>
+                            <li>Protects student and staff data in transit</li>
+                        </ul>
+                        <p><strong>Recommendation:</strong> Use WPA3 encryption with a strong password. Consider separate networks for staff, students, and guests.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Problems -->
+        <section class="practice-section card">
+            <h2>Practice Problems</h2>
+            <p>Try these problems on your own before revealing the answers.</p>
+
+            <div class="practice-problem" id="practice-1">
+                <h3>Practice 1</h3>
+                <p>A doctor's surgery needs to set up computers for:</p>
+                <ul>
+                    <li>Reception desk (handles patient check-in)</li>
+                    <li>Doctor's consulting room (accesses patient records)</li>
+                    <li>Waiting room tablet (patients fill in forms)</li>
+                </ul>
+                <p>Recommend wired or wireless for each and explain why.</p>
+
+                <button class="btn btn-secondary reveal-practice">Reveal Answer</button>
+                <div class="practice-answer hidden">
+                    <table class="solution-table">
+                        <tr>
+                            <th>Device</th>
+                            <th>Connection</th>
+                            <th>Reason</th>
+                        </tr>
+                        <tr>
+                            <td>Reception desk</td>
+                            <td><strong>Wired</strong></td>
+                            <td>Fixed location, needs reliable connection for check-in system, handles sensitive patient data</td>
+                        </tr>
+                        <tr>
+                            <td>Doctor's room</td>
+                            <td><strong>Wired</strong></td>
+                            <td>Fixed location, accessing confidential medical records requires maximum security and reliability</td>
+                        </tr>
+                        <tr>
+                            <td>Waiting room tablet</td>
+                            <td><strong>Wireless</strong></td>
+                            <td>Needs to be portable for patients to use while waiting; less sensitive data</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="practice-problem" id="practice-2">
+                <h3>Practice 2</h3>
+                <p>Which of these are valid MAC addresses?</p>
+                <ol type="a">
+                    <li><code>00:1A:2B:3C:4D:5E</code></li>
+                    <li><code>00:1A:2B:3C:4D</code></li>
+                    <li><code>00:1A:2B:3C:4D:5E:6F</code></li>
+                    <li><code>GG:1A:2B:3C:4D:5E</code></li>
+                </ol>
+
+                <button class="btn btn-secondary reveal-practice">Reveal Answer</button>
+                <div class="practice-answer hidden">
+                    <ul>
+                        <li><strong>(a) Valid:</strong> 6 pairs of valid hex digits (0-9, A-F)</li>
+                        <li><strong>(b) Invalid:</strong> Only 5 pairs - needs exactly 6</li>
+                        <li><strong>(c) Invalid:</strong> 7 pairs - has one too many</li>
+                        <li><strong>(d) Invalid:</strong> "GG" is not valid hexadecimal (only 0-9 and A-F allowed)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="practice-problem" id="practice-3">
+                <h3>Practice 3</h3>
+                <p>Explain why a company might use both HTTP and HTTPS on their website.</p>
+
+                <button class="btn btn-secondary reveal-practice">Reveal Answer</button>
+                <div class="practice-answer hidden">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ul>
+                        <li><strong>Public pages (HTTP or HTTPS):</strong> General information pages may not need encryption</li>
+                        <li><strong>Login and account pages (HTTPS required):</strong> Any page handling passwords or personal data must be encrypted</li>
+                        <li><strong>Shopping/payment (HTTPS required):</strong> Credit card and payment info needs protection</li>
+                    </ul>
+                    <p><strong>Best practice:</strong> Modern websites should use HTTPS everywhere. Google favours HTTPS sites in search rankings, and browsers now warn users about HTTP sites.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="activity-nav">
+            <a href="predict.html" class="btn btn-secondary">← Previous: Predict</a>
+            <a href="trace.html" class="btn btn-primary">Next: Step-by-Step →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealBtns = document.querySelectorAll('.reveal-practice');
+
+            revealBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('hidden');
+
+                    if (answer.classList.contains('hidden')) {
+                        this.textContent = 'Reveal Answer';
+                    } else {
+                        this.textContent = 'Hide Answer';
+
+                        // Track progress
+                        const problem = this.closest('.practice-problem');
+                        const activityId = 'protocols-example-' + problem.id;
+                        Progress.completeActivity(activityId, 'protocols', 100);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .worked-example {
+            margin-bottom: var(--space-xl);
+        }
+        .problem-statement {
+            background: var(--blue-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+            margin-bottom: var(--space-lg);
+        }
+        .problem-statement h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .solution {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+        }
+        .solution h3 {
+            color: var(--success);
+            margin-top: 0;
+        }
+        .step {
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px dashed var(--gray-200);
+        }
+        .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .step h4 {
+            color: var(--primary);
+        }
+        .solution-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+        .solution-table th, .solution-table td {
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-200);
+            text-align: left;
+        }
+        .solution-table th {
+            background: var(--gray-100);
+        }
+        .solution-table code {
+            background: var(--gray-100);
+            padding: 0.1em 0.3em;
+            border-radius: var(--radius-sm);
+        }
+        .valid {
+            color: var(--success);
+            font-weight: bold;
+        }
+        .invalid {
+            color: var(--error);
+            font-weight: bold;
+        }
+        .answer-box {
+            background: var(--green-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--success);
+        }
+        .mac-comparison {
+            display: flex;
+            gap: var(--space-xl);
+            justify-content: center;
+            margin: var(--space-md) 0;
+        }
+        .mac-item {
+            text-align: center;
+        }
+        .mac-item code {
+            font-size: 1.2rem;
+            font-family: monospace;
+        }
+        .oui {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .device-id {
+            color: var(--success);
+        }
+        .layer-explanation {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .layer-box {
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .layer-box h5 {
+            margin-top: 0;
+        }
+        .layer-4-box { background: #dbeafe; border-left: 4px solid #2563eb; }
+        .layer-3-box { background: #dcfce7; border-left: 4px solid #16a34a; }
+        .layer-2-box { background: #fef3c7; border-left: 4px solid #d97706; }
+        .layer-1-box { background: #fce7f3; border-left: 4px solid #db2777; }
+        .risk-box {
+            background: #fef2f2;
+            border-left: 4px solid var(--error);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .practice-section {
+            margin-top: var(--space-xl);
+        }
+        .practice-problem {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+        .practice-problem h3 {
+            margin-top: 0;
+        }
+        .practice-answer {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: var(--green-50);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--success);
+        }
+        .practice-answer.hidden {
+            display: none;
+        }
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

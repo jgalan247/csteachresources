@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wired & Wireless Networks, Protocols and Layers - Computer Science</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="../index.html" class="back-link">← Back to Topics</a>
+            <div class="topic-title">
+                <span class="topic-icon-large">📡</span>
+                <div>
+                    <h1>Wired & Wireless Networks, Protocols and Layers</h1>
+                    <p class="subtitle">How devices connect and communicate using standards and rules</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Learning Objectives -->
+        <section class="learning-objectives card">
+            <h2>What You'll Learn</h2>
+            <div class="objectives-grid">
+                <div class="objective">
+                    <span class="objective-icon">🔌</span>
+                    <div>
+                        <strong>Connection Types</strong>
+                        <p>Compare wired (Ethernet) and wireless (WiFi, Bluetooth) connections</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">🔐</span>
+                    <div>
+                        <strong>Encryption</strong>
+                        <p>Understand how data is secured across network connections</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">🏷️</span>
+                    <div>
+                        <strong>Addressing</strong>
+                        <p>Learn about IP addresses (IPv4/IPv6) and MAC addresses</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">📋</span>
+                    <div>
+                        <strong>Protocols</strong>
+                        <p>Understand common protocols: TCP/IP, HTTP, HTTPS, FTP, email protocols</p>
+                    </div>
+                </div>
+                <div class="objective">
+                    <span class="objective-icon">📚</span>
+                    <div>
+                        <strong>Layers</strong>
+                        <p>Learn how layers organise network communication</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Connection Types -->
+        <section class="content-section card" id="connections">
+            <h2>1. Wired vs Wireless Connections</h2>
+
+            <p>Devices can connect to networks in two main ways: using physical cables (wired) or using radio signals (wireless). Each method has advantages and disadvantages.</p>
+
+            <div class="subsection">
+                <h3>Wired Connections: Ethernet</h3>
+                <p><strong>Ethernet</strong> is the most common wired networking technology. It uses cables (usually Cat5e or Cat6) to connect devices directly to network switches or routers.</p>
+
+                <div class="info-box">
+                    <h4>Ethernet Characteristics</h4>
+                    <ul>
+                        <li><strong>Speed:</strong> Very fast - typically 1 Gbps, up to 10 Gbps</li>
+                        <li><strong>Reliability:</strong> Stable connection with minimal interference</li>
+                        <li><strong>Security:</strong> More secure - requires physical access to tap</li>
+                        <li><strong>Mobility:</strong> Devices must stay connected to the cable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Wireless Connections</h3>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>WiFi</h4>
+                        <p>Wireless networking for local area networks. Uses radio waves to connect devices to a wireless access point.</p>
+                        <ul>
+                            <li><strong>Range:</strong> Typically 30-50 metres indoors</li>
+                            <li><strong>Speed:</strong> Up to several Gbps (WiFi 6)</li>
+                            <li><strong>Use:</strong> Laptops, phones, tablets, IoT devices</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Bluetooth</h4>
+                        <p>Short-range wireless technology for connecting personal devices.</p>
+                        <ul>
+                            <li><strong>Range:</strong> Typically up to 10 metres</li>
+                            <li><strong>Speed:</strong> Up to 3 Mbps</li>
+                            <li><strong>Use:</strong> Headphones, keyboards, mice, speakers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Wired vs Wireless Comparison</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Factor</th>
+                            <th>Wired (Ethernet)</th>
+                            <th>Wireless (WiFi)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Speed</strong></td>
+                            <td class="pro">Faster, more consistent</td>
+                            <td>Slower, varies with distance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reliability</strong></td>
+                            <td class="pro">Very reliable, no interference</td>
+                            <td>Can be affected by walls, other devices</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Security</strong></td>
+                            <td class="pro">More secure (physical access needed)</td>
+                            <td>Signals can be intercepted</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mobility</strong></td>
+                            <td>Devices are fixed in place</td>
+                            <td class="pro">Users can move freely</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Installation</strong></td>
+                            <td>Requires running cables</td>
+                            <td class="pro">Easy to set up, no cables</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cost</strong></td>
+                            <td>Cable installation can be expensive</td>
+                            <td class="pro">Lower installation cost</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="key-point">
+                <strong>Choosing a Connection:</strong> Use wired connections for devices that need speed and reliability (gaming PCs, servers, office desktops). Use wireless for mobile devices and convenience.
+            </div>
+        </section>
+
+        <!-- Section 2: Encryption -->
+        <section class="content-section card" id="encryption">
+            <h2>2. Encryption</h2>
+
+            <p><strong>Encryption</strong> is the process of converting data into a coded format that can only be read by someone with the correct key. It's essential for securing data transmitted across networks.</p>
+
+            <div class="concept-box">
+                <h3>Why Encryption Matters</h3>
+                <p>When data travels across a network, it could potentially be intercepted. Encryption ensures that even if data is captured, it cannot be read without the decryption key.</p>
+
+                <div class="encryption-diagram">
+                    <div class="encryption-step">
+                        <span class="step-label">Original Data</span>
+                        <code>"Password123"</code>
+                    </div>
+                    <div class="encryption-arrow">→ Encrypt →</div>
+                    <div class="encryption-step">
+                        <span class="step-label">Encrypted Data</span>
+                        <code>"X7#kL9@mQ2..."</code>
+                    </div>
+                    <div class="encryption-arrow">→ Decrypt →</div>
+                    <div class="encryption-step">
+                        <span class="step-label">Original Data</span>
+                        <code>"Password123"</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Where Encryption is Used</h3>
+                <ul>
+                    <li><strong>WiFi networks:</strong> WPA2/WPA3 encryption protects wireless traffic</li>
+                    <li><strong>Websites:</strong> HTTPS uses encryption (the padlock icon in your browser)</li>
+                    <li><strong>Email:</strong> Many email services encrypt messages in transit</li>
+                    <li><strong>Online banking:</strong> All financial transactions are encrypted</li>
+                    <li><strong>VPNs:</strong> Virtual Private Networks encrypt all your internet traffic</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <strong>Security Note:</strong> Always look for the padlock icon (🔒) in your browser when entering sensitive information. This indicates the connection is encrypted using HTTPS.
+            </div>
+        </section>
+
+        <!-- Section 3: IP and MAC Addressing -->
+        <section class="content-section card" id="addressing">
+            <h2>3. IP Addressing and MAC Addressing</h2>
+
+            <p>Every device on a network needs addresses to send and receive data. There are two main types of addresses: IP addresses and MAC addresses.</p>
+
+            <div class="subsection">
+                <h3>IP Addresses</h3>
+                <p>An <strong>IP (Internet Protocol) address</strong> is a logical address assigned to a device on a network. It identifies where to send data across networks.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>IPv4 (Internet Protocol version 4)</h4>
+                        <p>The older and more common format.</p>
+                        <ul>
+                            <li><strong>Format:</strong> Four numbers separated by dots</li>
+                            <li><strong>Range:</strong> Each number is 0-255</li>
+                            <li><strong>Example:</strong> <code>192.168.1.100</code></li>
+                            <li><strong>Total addresses:</strong> About 4.3 billion</li>
+                        </ul>
+                        <div class="example-box">
+                            <code>192.168.1.100</code>
+                            <p>Each section uses 8 bits (1 byte), total = 32 bits</p>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>IPv6 (Internet Protocol version 6)</h4>
+                        <p>The newer format with more addresses.</p>
+                        <ul>
+                            <li><strong>Format:</strong> Eight groups of hexadecimal, separated by colons</li>
+                            <li><strong>Example:</strong> <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+                            <li><strong>Total addresses:</strong> 340 undecillion (340 trillion trillion trillion)</li>
+                        </ul>
+                        <div class="example-box">
+                            <code>2001:0db8:85a3::8a2e:0370:7334</code>
+                            <p>128 bits total - enough for every grain of sand on Earth!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Why IPv6?</strong> IPv4 addresses are running out! With billions of devices connecting to the internet (phones, computers, IoT devices), we need the much larger address space that IPv6 provides.
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>MAC Addresses</h3>
+                <p>A <strong>MAC (Media Access Control) address</strong> is a physical address permanently assigned to a device's network interface card (NIC) by the manufacturer.</p>
+
+                <div class="concept-box">
+                    <h4>MAC Address Characteristics</h4>
+                    <ul>
+                        <li><strong>Format:</strong> Six pairs of hexadecimal digits, separated by colons or hyphens</li>
+                        <li><strong>Example:</strong> <code>00:1A:2B:3C:4D:5E</code> or <code>00-1A-2B-3C-4D-5E</code></li>
+                        <li><strong>Uniqueness:</strong> Every NIC has a unique MAC address worldwide</li>
+                        <li><strong>Permanent:</strong> Set by the manufacturer, doesn't change</li>
+                    </ul>
+
+                    <div class="mac-breakdown">
+                        <code>00:1A:2B:3C:4D:5E</code>
+                        <div class="mac-parts">
+                            <span class="mac-part oui">00:1A:2B</span>
+                            <span class="mac-label">Manufacturer ID (OUI)</span>
+                            <span class="mac-part device">3C:4D:5E</span>
+                            <span class="mac-label">Device ID</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>IP vs MAC Addresses</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>IP Address</th>
+                            <th>MAC Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Type</strong></td>
+                            <td>Logical (software-assigned)</td>
+                            <td>Physical (hardware-assigned)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Can change?</strong></td>
+                            <td>Yes - can be reassigned</td>
+                            <td>No - permanently set by manufacturer</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Used for</strong></td>
+                            <td>Routing data between networks</td>
+                            <td>Identifying devices within a local network</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scope</strong></td>
+                            <td>Global (internet-wide)</td>
+                            <td>Local (within same network)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="key-point">
+                <strong>Analogy:</strong> Think of a MAC address like your name (permanent, given at birth) and an IP address like your postal address (can change when you move house).
+            </div>
+        </section>
+
+        <!-- Section 4: Standards -->
+        <section class="content-section card" id="standards">
+            <h2>4. Standards</h2>
+
+            <p>A <strong>standard</strong> is a set of agreed rules or specifications that ensure hardware and software from different manufacturers can work together.</p>
+
+            <div class="concept-box">
+                <h3>Why Standards Matter</h3>
+                <p>Without standards, devices from different companies wouldn't be able to communicate. Imagine if every phone manufacturer used their own unique charging port!</p>
+
+                <div class="example-grid">
+                    <div class="example-item">
+                        <span class="example-icon">🔌</span>
+                        <strong>USB Standard</strong>
+                        <p>Allows any USB device to connect to any USB port</p>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-icon">📶</span>
+                        <strong>WiFi Standards</strong>
+                        <p>Any WiFi device can connect to any WiFi router</p>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-icon">🌐</span>
+                        <strong>HTML Standard</strong>
+                        <p>Web pages work in any browser</p>
+                    </div>
+                    <div class="example-item">
+                        <span class="example-icon">📁</span>
+                        <strong>File Format Standards</strong>
+                        <p>JPEG images open in any image viewer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Benefits of Standards</h3>
+                <ul>
+                    <li><strong>Interoperability:</strong> Devices from different manufacturers work together</li>
+                    <li><strong>Competition:</strong> Multiple companies can make compatible products, reducing prices</li>
+                    <li><strong>Consumer choice:</strong> Users aren't locked into one manufacturer</li>
+                    <li><strong>Innovation:</strong> Companies can focus on improving products rather than reinventing basics</li>
+                    <li><strong>Reliability:</strong> Tested, proven specifications reduce errors</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>Who Creates Standards?</strong> Standards are created by organisations like IEEE (Institute of Electrical and Electronics Engineers), ISO (International Organization for Standardization), and W3C (World Wide Web Consortium).
+            </div>
+        </section>
+
+        <!-- Section 5: Protocols -->
+        <section class="content-section card" id="protocols">
+            <h2>5. Communication Protocols</h2>
+
+            <p>A <strong>protocol</strong> is a set of rules that govern how data is transmitted between devices. Different protocols are designed for different purposes.</p>
+
+            <div class="protocol-grid">
+                <div class="protocol-card">
+                    <h3>TCP/IP</h3>
+                    <p class="protocol-full">Transmission Control Protocol / Internet Protocol</p>
+                    <div class="protocol-details">
+                        <p><strong>Purpose:</strong> The fundamental protocols of the internet. Controls how data is packaged, addressed, transmitted, routed, and received.</p>
+                        <p><strong>Key features:</strong></p>
+                        <ul>
+                            <li>Breaks data into packets</li>
+                            <li>Ensures reliable delivery (checks all packets arrive)</li>
+                            <li>Handles addressing and routing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="protocol-card">
+                    <h3>HTTP</h3>
+                    <p class="protocol-full">Hypertext Transfer Protocol</p>
+                    <div class="protocol-details">
+                        <p><strong>Purpose:</strong> Transfers web pages from servers to browsers.</p>
+                        <p><strong>Key features:</strong></p>
+                        <ul>
+                            <li>Request-response model</li>
+                            <li>Transfers HTML, images, videos</li>
+                            <li>Stateless (each request is independent)</li>
+                        </ul>
+                        <p class="protocol-note">URLs starting with <code>http://</code></p>
+                    </div>
+                </div>
+
+                <div class="protocol-card highlight">
+                    <h3>HTTPS</h3>
+                    <p class="protocol-full">Hypertext Transfer Protocol Secure</p>
+                    <div class="protocol-details">
+                        <p><strong>Purpose:</strong> Secure version of HTTP - encrypts web traffic.</p>
+                        <p><strong>Key features:</strong></p>
+                        <ul>
+                            <li>All data is encrypted</li>
+                            <li>Verifies website identity</li>
+                            <li>Protects sensitive information</li>
+                        </ul>
+                        <p class="protocol-note">🔒 URLs starting with <code>https://</code></p>
+                    </div>
+                </div>
+
+                <div class="protocol-card">
+                    <h3>FTP</h3>
+                    <p class="protocol-full">File Transfer Protocol</p>
+                    <div class="protocol-details">
+                        <p><strong>Purpose:</strong> Transfer files between computers over a network.</p>
+                        <p><strong>Key features:</strong></p>
+                        <ul>
+                            <li>Upload and download files</li>
+                            <li>Navigate remote directories</li>
+                            <li>Used for website deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Email Protocols</h3>
+                <p>Email uses three different protocols, each with a specific purpose:</p>
+
+                <div class="email-protocols">
+                    <div class="email-protocol">
+                        <h4>SMTP</h4>
+                        <p class="protocol-full">Simple Mail Transfer Protocol</p>
+                        <p><strong>Purpose:</strong> <em>Sending</em> emails from your device to the mail server, and between mail servers.</p>
+                        <p>Think of SMTP as the postal service that delivers your letter.</p>
+                    </div>
+
+                    <div class="email-protocol">
+                        <h4>POP3</h4>
+                        <p class="protocol-full">Post Office Protocol (version 3)</p>
+                        <p><strong>Purpose:</strong> <em>Receiving</em> emails - downloads emails to your device and typically deletes them from the server.</p>
+                        <ul>
+                            <li>Emails stored locally on your device</li>
+                            <li>Good for accessing email on one device</li>
+                            <li>Works offline after download</li>
+                        </ul>
+                    </div>
+
+                    <div class="email-protocol">
+                        <h4>IMAP</h4>
+                        <p class="protocol-full">Internet Message Access Protocol</p>
+                        <p><strong>Purpose:</strong> <em>Receiving</em> emails - syncs emails between server and multiple devices.</p>
+                        <ul>
+                            <li>Emails remain on the server</li>
+                            <li>Access same emails from any device</li>
+                            <li>Changes sync across all devices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-point">
+                    <strong>POP3 vs IMAP:</strong> Use POP3 if you only check email on one device. Use IMAP if you want to access emails from multiple devices (phone, laptop, tablet) - your emails stay synchronised.
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>Protocol Summary</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Protocol</th>
+                            <th>Purpose</th>
+                            <th>Common Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>TCP/IP</strong></td>
+                            <td>Core internet communication</td>
+                            <td>All internet traffic</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HTTP</strong></td>
+                            <td>Transfer web pages</td>
+                            <td>Browsing websites</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HTTPS</strong></td>
+                            <td>Secure web page transfer</td>
+                            <td>Online banking, shopping, login pages</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FTP</strong></td>
+                            <td>Transfer files</td>
+                            <td>Uploading website files to a server</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SMTP</strong></td>
+                            <td>Send emails</td>
+                            <td>Outgoing email</td>
+                        </tr>
+                        <tr>
+                            <td><strong>POP3</strong></td>
+                            <td>Download emails (single device)</td>
+                            <td>Email on one computer</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IMAP</strong></td>
+                            <td>Sync emails (multiple devices)</td>
+                            <td>Email on phone, laptop, tablet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 6: Layers -->
+        <section class="content-section card" id="layers">
+            <h2>6. The Concept of Layers</h2>
+
+            <p>Network communication is organised into <strong>layers</strong>. Each layer handles a specific aspect of communication and passes data to the next layer.</p>
+
+            <div class="subsection">
+                <h3>Why Use Layers?</h3>
+                <p>Breaking network communication into layers provides several benefits:</p>
+
+                <ul>
+                    <li><strong>Modularity:</strong> Each layer can be developed and updated independently</li>
+                    <li><strong>Simplicity:</strong> Complex processes are broken into manageable parts</li>
+                    <li><strong>Standardisation:</strong> Layers define clear interfaces between components</li>
+                    <li><strong>Interoperability:</strong> Different manufacturers can create compatible products for each layer</li>
+                    <li><strong>Troubleshooting:</strong> Problems can be isolated to specific layers</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <h3>The TCP/IP Model (4 Layers)</h3>
+                <p>The TCP/IP model is the most commonly used layered model for internet communication:</p>
+
+                <div class="layers-diagram">
+                    <div class="layer layer-4">
+                        <div class="layer-number">4</div>
+                        <div class="layer-content">
+                            <h4>Application Layer</h4>
+                            <p>Provides network services to applications</p>
+                            <p class="layer-examples">HTTP, HTTPS, FTP, SMTP, POP3, IMAP</p>
+                        </div>
+                    </div>
+                    <div class="layer-arrow">↓ Data passed down ↓</div>
+                    <div class="layer layer-3">
+                        <div class="layer-number">3</div>
+                        <div class="layer-content">
+                            <h4>Transport Layer</h4>
+                            <p>Ensures reliable data transfer between hosts</p>
+                            <p class="layer-examples">TCP, UDP</p>
+                        </div>
+                    </div>
+                    <div class="layer-arrow">↓ Data passed down ↓</div>
+                    <div class="layer layer-2">
+                        <div class="layer-number">2</div>
+                        <div class="layer-content">
+                            <h4>Internet Layer</h4>
+                            <p>Handles addressing and routing across networks</p>
+                            <p class="layer-examples">IP (IPv4, IPv6)</p>
+                        </div>
+                    </div>
+                    <div class="layer-arrow">↓ Data passed down ↓</div>
+                    <div class="layer layer-1">
+                        <div class="layer-number">1</div>
+                        <div class="layer-content">
+                            <h4>Network Access Layer</h4>
+                            <p>Handles physical transmission of data</p>
+                            <p class="layer-examples">Ethernet, WiFi, hardware</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection">
+                <h3>How Layers Work Together</h3>
+                <div class="layer-analogy">
+                    <h4>Analogy: Sending a Letter</h4>
+                    <p>Think of layers like sending a letter through the postal system:</p>
+                    <ol>
+                        <li><strong>Application Layer:</strong> You write the letter content</li>
+                        <li><strong>Transport Layer:</strong> You put it in an envelope with a return address</li>
+                        <li><strong>Internet Layer:</strong> The postal service reads the address and routes it</li>
+                        <li><strong>Network Access Layer:</strong> The van physically delivers the letter</li>
+                    </ol>
+                    <p>Each layer adds its own information (like addressing) and handles its own responsibility.</p>
+                </div>
+            </div>
+
+            <div class="key-point">
+                <strong>Encapsulation:</strong> As data passes down through layers, each layer adds its own header information. When received, the data passes back up through layers, with each layer removing its header.
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section class="activities-section card">
+            <h2>Practice Activities</h2>
+            <p>Apply what you've learned with these interactive exercises:</p>
+
+            <div class="activity-grid">
+                <a href="predict.html" class="activity-card">
+                    <span class="activity-icon">🔮</span>
+                    <h3>Predict</h3>
+                    <p>Predict which protocols and connections to use in different scenarios</p>
+                </a>
+
+                <a href="example.html" class="activity-card">
+                    <span class="activity-icon">📖</span>
+                    <h3>Worked Examples</h3>
+                    <p>Study detailed examples of protocol usage and addressing</p>
+                </a>
+
+                <a href="trace.html" class="activity-card">
+                    <span class="activity-icon">🔍</span>
+                    <h3>Step-by-Step</h3>
+                    <p>Trace through network processes step by step</p>
+                </a>
+
+                <a href="parsons.html" class="activity-card">
+                    <span class="activity-icon">🧩</span>
+                    <h3>Parsons Problems</h3>
+                    <p>Arrange steps in the correct order</p>
+                </a>
+
+                <a href="quiz.html" class="activity-card">
+                    <span class="activity-icon">✅</span>
+                    <h3>Knowledge Check</h3>
+                    <p>Test your understanding with a quiz</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Key Terms -->
+        <section class="key-terms card">
+            <h2>Key Terms</h2>
+            <dl class="terms-grid">
+                <div class="term">
+                    <dt>Ethernet</dt>
+                    <dd>Wired networking technology using cables for reliable, fast connections</dd>
+                </div>
+                <div class="term">
+                    <dt>WiFi</dt>
+                    <dd>Wireless networking technology using radio waves</dd>
+                </div>
+                <div class="term">
+                    <dt>Bluetooth</dt>
+                    <dd>Short-range wireless technology for personal device connections</dd>
+                </div>
+                <div class="term">
+                    <dt>Encryption</dt>
+                    <dd>Converting data into a coded format for security</dd>
+                </div>
+                <div class="term">
+                    <dt>IP Address</dt>
+                    <dd>Logical address assigned to a device for network routing</dd>
+                </div>
+                <div class="term">
+                    <dt>MAC Address</dt>
+                    <dd>Permanent physical address assigned to a NIC by the manufacturer</dd>
+                </div>
+                <div class="term">
+                    <dt>Standard</dt>
+                    <dd>Agreed rules that allow hardware/software from different manufacturers to work together</dd>
+                </div>
+                <div class="term">
+                    <dt>Protocol</dt>
+                    <dd>A set of rules for transmitting data between devices</dd>
+                </div>
+                <div class="term">
+                    <dt>TCP/IP</dt>
+                    <dd>The fundamental protocols of the internet</dd>
+                </div>
+                <div class="term">
+                    <dt>Layers</dt>
+                    <dd>Organised levels that each handle different aspects of network communication</dd>
+                </div>
+            </dl>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+
+    <style>
+        .topic-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+        .topic-icon-large {
+            font-size: 3rem;
+        }
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+        }
+        .objective {
+            display: flex;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .objective-icon {
+            font-size: 1.5rem;
+        }
+        .objective p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .content-section {
+            margin-top: var(--space-xl);
+        }
+        .content-section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: var(--space-sm);
+        }
+        .subsection {
+            margin-top: var(--space-lg);
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .comparison-item {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .comparison-item h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--space-md);
+        }
+        .comparison-table th, .comparison-table td {
+            padding: var(--space-md);
+            border: 1px solid var(--gray-200);
+            text-align: left;
+        }
+        .comparison-table th {
+            background: var(--gray-100);
+        }
+        .comparison-table .pro {
+            background: var(--green-50);
+        }
+        .info-box {
+            background: var(--blue-50);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .key-point {
+            background: linear-gradient(135deg, var(--blue-50), var(--green-50));
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-lg);
+            border: 1px solid var(--primary);
+        }
+        .concept-box {
+            background: white;
+            border: 2px solid var(--primary);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .encryption-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-top: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .encryption-step {
+            text-align: center;
+        }
+        .encryption-step code {
+            display: block;
+            background: var(--gray-800);
+            color: var(--green-400);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+        }
+        .step-label {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        .encryption-arrow {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .example-box {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-md);
+            text-align: center;
+        }
+        .example-box code {
+            font-size: 1.2rem;
+            font-family: monospace;
+        }
+        .mac-breakdown {
+            margin-top: var(--space-md);
+            text-align: center;
+        }
+        .mac-breakdown code {
+            font-size: 1.3rem;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+        .mac-parts {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .mac-part {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+        }
+        .mac-part.oui {
+            background: var(--blue-100);
+            color: var(--primary);
+        }
+        .mac-part.device {
+            background: var(--green-100);
+            color: var(--success);
+        }
+        .mac-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        .example-item {
+            text-align: center;
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+        }
+        .example-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+        .protocol-card {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-top: 4px solid var(--primary);
+        }
+        .protocol-card.highlight {
+            border-top-color: var(--success);
+            background: var(--green-50);
+        }
+        .protocol-card h3 {
+            margin: 0;
+            color: var(--primary);
+        }
+        .protocol-full {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin: var(--space-xs) 0 var(--space-md) 0;
+        }
+        .protocol-note {
+            background: var(--gray-100);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            margin-top: var(--space-sm);
+        }
+        .email-protocols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+        }
+        .email-protocol {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .email-protocol h4 {
+            margin: 0;
+            color: var(--primary);
+        }
+        .layers-diagram {
+            max-width: 600px;
+            margin: var(--space-lg) auto;
+        }
+        .layer {
+            display: flex;
+            align-items: stretch;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: var(--space-xs);
+        }
+        .layer-number {
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        .layer-content {
+            flex: 1;
+            padding: var(--space-md);
+        }
+        .layer-content h4 {
+            margin: 0 0 var(--space-xs) 0;
+        }
+        .layer-content p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .layer-examples {
+            color: var(--gray-500);
+            font-family: monospace;
+            font-size: 0.85rem !important;
+        }
+        .layer-4 { background: #dbeafe; }
+        .layer-4 .layer-number { background: #2563eb; }
+        .layer-3 { background: #dcfce7; }
+        .layer-3 .layer-number { background: #16a34a; }
+        .layer-2 { background: #fef3c7; }
+        .layer-2 .layer-number { background: #d97706; }
+        .layer-1 { background: #fce7f3; }
+        .layer-1 .layer-number { background: #db2777; }
+        .layer-arrow {
+            text-align: center;
+            color: var(--gray-400);
+            font-size: 0.85rem;
+            padding: var(--space-xs) 0;
+        }
+        .layer-analogy {
+            background: var(--blue-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .layer-analogy ol {
+            margin: var(--space-md) 0 0 0;
+        }
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        .activity-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+        .activity-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .activity-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        .activity-card h3 {
+            margin: 0 0 var(--space-xs) 0;
+            color: var(--primary);
+        }
+        .activity-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+        }
+        .term {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .term dt {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: var(--space-xs);
+        }
+        .term dd {
+            margin: 0;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+    </style>
+</body>
+</html>

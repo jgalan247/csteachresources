@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocols - Step-by-Step Exercises</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Protocols</a>
+            <h1>Step-by-Step Exercises</h1>
+            <p class="subtitle">Trace through protocol and network processes</p>
+        </header>
+
+        <div class="activity-intro card">
+            <h2>How to Use These Exercises</h2>
+            <p>Work through each step carefully. Click "Show Next Step" to reveal each stage, and think about what happens before revealing the answer.</p>
+        </div>
+
+        <!-- Exercise 1: HTTPS Web Request -->
+        <section class="trace-exercise card" id="exercise-1">
+            <h2>Exercise 1: Loading a Secure Web Page (HTTPS)</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A student types <code>https://www.school.ac.uk</code> into their browser. Trace the process from request to page display.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>DNS Lookup</strong></p>
+                        <p>Browser sends a DNS query to find the IP address for "www.school.ac.uk".</p>
+                        <p class="step-result">DNS returns: 185.230.63.107</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>TCP Connection Established</strong></p>
+                        <p>Browser establishes a TCP connection to port 443 (HTTPS) on the server.</p>
+                        <p class="step-result">Three-way handshake completes - connection ready.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>TLS/SSL Handshake</strong></p>
+                        <p>Browser and server negotiate encryption. Server sends its certificate to prove identity.</p>
+                        <p class="step-result">🔒 Encrypted connection established. Padlock icon appears in browser.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>HTTP Request (Encrypted)</strong></p>
+                        <p>Browser sends encrypted HTTP GET request: "Please send me the homepage".</p>
+                        <p class="step-result">Request: GET / HTTP/1.1 Host: www.school.ac.uk</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Server Processes Request</strong></p>
+                        <p>Web server receives and decrypts the request. Finds the homepage HTML file.</p>
+                        <p class="step-result">Server prepares response with HTML content.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Response Sent (Encrypted)</strong></p>
+                        <p>Server encrypts and sends the HTML back to the browser.</p>
+                        <p class="step-result">Response: HTTP/1.1 200 OK + encrypted HTML content</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="7">
+                    <div class="step-header">
+                        <span class="step-number">Step 7</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Page Displayed</strong></p>
+                        <p>Browser decrypts response, parses HTML, and renders the page.</p>
+                        <p class="step-result">Student sees the school website with 🔒 indicating secure connection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced an HTTPS web request.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Email Sending Process -->
+        <section class="trace-exercise card" id="exercise-2">
+            <h2>Exercise 2: Sending an Email</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> Alice (alice@gmail.com) sends an email to Bob (bob@outlook.com). Trace the journey of the email.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Alice Composes Email</strong></p>
+                        <p>Alice writes her email and clicks Send in her email client.</p>
+                        <p class="step-result">Email ready: To: bob@outlook.com, Subject: "Hello Bob!"</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>SMTP: Client to Gmail Server</strong></p>
+                        <p>Alice's email client uses SMTP to send the email to Gmail's mail server.</p>
+                        <p class="step-result">Email received by smtp.gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>DNS Lookup for Recipient</strong></p>
+                        <p>Gmail server looks up the mail server for outlook.com (MX record).</p>
+                        <p class="step-result">Found: outlook-com.olc.protection.outlook.com</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>SMTP: Gmail to Outlook Server</strong></p>
+                        <p>Gmail's server uses SMTP to forward the email to Outlook's mail server.</p>
+                        <p class="step-result">Email delivered to Microsoft's mail server.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Email Stored in Bob's Mailbox</strong></p>
+                        <p>Outlook server places the email in Bob's inbox, waiting to be retrieved.</p>
+                        <p class="step-result">Email stored on server. Bob has 1 new message.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>IMAP/POP3: Bob Retrieves Email</strong></p>
+                        <p>Bob's email client uses IMAP (or POP3) to download the email from the server.</p>
+                        <p class="step-result">Email appears in Bob's inbox - "Hello Bob!" from Alice.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced email protocols: SMTP (sending) and IMAP/POP3 (receiving).</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 3: Data Through TCP/IP Layers -->
+        <section class="trace-exercise card" id="exercise-3">
+            <h2>Exercise 3: Data Through the TCP/IP Layers</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A user submits a form on a website. Trace the data as it moves down through the TCP/IP layers before transmission.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Application Layer</strong></p>
+                        <p>User fills in form data. Browser creates an HTTP POST request with the form data.</p>
+                        <p class="step-result">Data: Form contents (name, email, message) + HTTP headers</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Transport Layer (TCP)</strong></p>
+                        <p>TCP breaks data into segments. Adds source port, destination port (80 or 443), and sequence numbers.</p>
+                        <p class="step-result">Data now has: Port 12345 → Port 443, sequence number, checksum</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Internet Layer (IP)</strong></p>
+                        <p>IP adds source and destination IP addresses. Creates packets for routing.</p>
+                        <p class="step-result">Data now has: From 192.168.1.50 → To 203.0.113.45</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Network Access Layer</strong></p>
+                        <p>MAC addresses added for local network delivery. Data converted to frames.</p>
+                        <p class="step-result">Data now has: MAC 00:1A:2B:3C:4D:5E → Router MAC</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Physical Transmission</strong></p>
+                        <p>Frames converted to electrical signals (Ethernet) or radio waves (WiFi) and transmitted.</p>
+                        <p class="step-result">Data physically travels through cable/air to the router.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>At Destination: Reverse Process</strong></p>
+                        <p>Server receives data and passes it up through layers, removing headers at each level.</p>
+                        <p class="step-result">Web server receives original form data and processes submission.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced data encapsulation through TCP/IP layers.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 4: FTP File Upload -->
+        <section class="trace-exercise card" id="exercise-4">
+            <h2>Exercise 4: Uploading a Website via FTP</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A web developer uploads a new index.html file to their web server using an FTP client.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Connect to FTP Server</strong></p>
+                        <p>Developer opens FTP client and enters server address: ftp.mywebsite.com</p>
+                        <p class="step-result">Connection established to FTP server on port 21.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Authentication</strong></p>
+                        <p>Developer enters username and password. Server verifies credentials.</p>
+                        <p class="step-result">Login successful. Access granted to web directory.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Navigate to Destination</strong></p>
+                        <p>FTP client shows remote directory structure. Developer navigates to /public_html/</p>
+                        <p class="step-result">Current directory: /public_html/ (contains old website files)</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Initiate Upload</strong></p>
+                        <p>Developer drags index.html from local computer to remote directory. FTP STOR command sent.</p>
+                        <p class="step-result">Upload starting: index.html (45 KB)</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Data Transfer</strong></p>
+                        <p>File data transferred over a separate data connection. Progress bar shows transfer.</p>
+                        <p class="step-result">Transferring: 45 KB at 150 KB/s... 100% complete.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Upload Complete</strong></p>
+                        <p>Server confirms file received. New index.html replaces the old one on the web server.</p>
+                        <p class="step-result">File uploaded successfully. Website updated!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced an FTP file upload process.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 5: WiFi Connection -->
+        <section class="trace-exercise card" id="exercise-5">
+            <h2>Exercise 5: Connecting to a WiFi Network</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A student connects their laptop to the school WiFi network for the first time.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>WiFi Scan</strong></p>
+                        <p>Laptop's wireless NIC scans for available networks. Detects "School-WiFi" network.</p>
+                        <p class="step-result">Available networks: School-WiFi (secured), Guest-WiFi, CafeNext</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Network Selection</strong></p>
+                        <p>Student clicks on "School-WiFi". System prompts for password (WPA2 encryption).</p>
+                        <p class="step-result">Prompt: "Enter password for School-WiFi"</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Authentication</strong></p>
+                        <p>Student enters password. Laptop sends credentials to the Wireless Access Point (WAP).</p>
+                        <p class="step-result">WAP verifies password against stored credentials.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Encryption Key Exchange</strong></p>
+                        <p>WAP and laptop negotiate encryption keys. All future traffic will be encrypted.</p>
+                        <p class="step-result">🔒 Encrypted connection established using WPA2.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>DHCP: IP Address Assignment</strong></p>
+                        <p>Laptop sends DHCP request. Server assigns an IP address from the school's range.</p>
+                        <p class="step-result">Assigned IP: 10.50.12.87, Gateway: 10.50.12.1, DNS: 10.50.1.1</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Connected!</strong></p>
+                        <p>Laptop is now fully connected to the network and can access the internet.</p>
+                        <p class="step-result">Status: "Connected to School-WiFi" - student can browse, email, etc.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You understand WiFi connection with WPA2 encryption.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 6: MAC and IP Address Resolution -->
+        <section class="trace-exercise card" id="exercise-6">
+            <h2>Exercise 6: How IP and MAC Addresses Work Together</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> Computer A (IP: 192.168.1.10) needs to send data to Computer B (IP: 192.168.1.20) on the same local network. Trace how addresses are used.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Application Creates Data</strong></p>
+                        <p>An application on Computer A wants to send data to Computer B (IP: 192.168.1.20).</p>
+                        <p class="step-result">Destination IP known: 192.168.1.20. But what's the MAC address?</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>ARP Request</strong></p>
+                        <p>Computer A broadcasts an ARP (Address Resolution Protocol) request: "Who has 192.168.1.20?"</p>
+                        <p class="step-result">ARP broadcast sent to all devices on the network.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>ARP Reply</strong></p>
+                        <p>Computer B recognises its IP address and responds with its MAC address.</p>
+                        <p class="step-result">ARP reply: "192.168.1.20 is at MAC 00:2B:3C:4D:5E:6F"</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>ARP Cache Updated</strong></p>
+                        <p>Computer A stores the IP-to-MAC mapping in its ARP cache for future use.</p>
+                        <p class="step-result">Cache: 192.168.1.20 → 00:2B:3C:4D:5E:6F (cached for efficiency)</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Frame Created</strong></p>
+                        <p>Computer A creates an Ethernet frame with both IP and MAC addresses.</p>
+                        <p class="step-result">Frame: Dest MAC 00:2B:3C:4D:5E:6F, Dest IP 192.168.1.20</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Switch Delivers Frame</strong></p>
+                        <p>The switch uses the destination MAC address to forward the frame only to Computer B's port.</p>
+                        <p class="step-result">Data successfully delivered to Computer B.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You understand how IP and MAC addresses work together.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="activity-nav">
+            <a href="example.html" class="btn btn-secondary">← Previous: Worked Examples</a>
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const exercises = document.querySelectorAll('.trace-exercise');
+
+            exercises.forEach(exercise => {
+                const steps = exercise.querySelectorAll('.trace-step');
+                const completeMessage = exercise.querySelector('.trace-complete');
+                let completedSteps = 0;
+
+                steps.forEach(step => {
+                    const revealBtn = step.querySelector('.reveal-step');
+                    const content = step.querySelector('.step-content');
+
+                    revealBtn.addEventListener('click', function() {
+                        content.classList.remove('hidden');
+                        revealBtn.textContent = 'Done';
+                        revealBtn.disabled = true;
+                        revealBtn.classList.add('btn-success');
+                        completedSteps++;
+
+                        if (completedSteps === steps.length) {
+                            completeMessage.classList.remove('hidden');
+                            const activityId = 'protocols-trace-' + exercise.id;
+                            Progress.completeActivity(activityId, 'protocols', 100);
+                        }
+                    });
+                });
+
+                const resetBtn = exercise.querySelector('.reset-trace');
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', function() {
+                        steps.forEach(step => {
+                            const revealBtn = step.querySelector('.reveal-step');
+                            const content = step.querySelector('.step-content');
+                            content.classList.add('hidden');
+                            revealBtn.textContent = 'Show Step';
+                            revealBtn.disabled = false;
+                            revealBtn.classList.remove('btn-success');
+                        });
+                        completeMessage.classList.add('hidden');
+                        completedSteps = 0;
+                    });
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .trace-exercise {
+            margin-bottom: var(--space-xl);
+        }
+        .scenario {
+            background: var(--blue-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--primary);
+        }
+        .scenario code {
+            background: var(--gray-100);
+            padding: 0.1em 0.3em;
+            border-radius: var(--radius-sm);
+        }
+        .trace-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .trace-step {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            background: var(--gray-50);
+        }
+        .step-number {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .step-content {
+            padding: var(--space-md);
+            border-top: 1px solid var(--gray-200);
+        }
+        .step-content.hidden {
+            display: none;
+        }
+        .step-result {
+            background: var(--green-50);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-sm);
+            color: var(--success);
+            font-weight: 500;
+        }
+        .trace-complete {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, var(--green-50), var(--blue-50));
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .success-message {
+            font-size: 1.1rem;
+            color: var(--success);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+        .btn-sm {
+            padding: var(--space-xs) var(--space-sm);
+            font-size: 0.9rem;
+        }
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+    </style>
+</body>
+</html>

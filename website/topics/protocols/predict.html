@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocols - Predict Activities</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Protocols</a>
+            <h1>Predict: Protocols and Connections</h1>
+            <p class="subtitle">Think about which protocols, connections, and addresses to use in different scenarios</p>
+        </header>
+
+        <div class="activity-intro card">
+            <h2>How to Use This Activity</h2>
+            <p>For each scenario, make your prediction before revealing the answer. Think about what you know about protocols, wired/wireless connections, and addressing.</p>
+        </div>
+
+        <!-- Scenario 1 -->
+        <section class="predict-card card" id="scenario-1">
+            <h2>Scenario 1: Gaming PC Setup</h2>
+            <div class="scenario-description">
+                <p>Alex is setting up a gaming PC in their bedroom. They want the fastest, most reliable internet connection for online gaming where lag could mean losing a match.</p>
+                <p><strong>Question:</strong> Should Alex use a wired (Ethernet) or wireless (WiFi) connection? Why?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Wired (Ethernet)</h3>
+                    <p><strong>Reasons:</strong></p>
+                    <ul>
+                        <li><strong>Lower latency:</strong> Wired connections have less delay, crucial for competitive gaming</li>
+                        <li><strong>Consistent speed:</strong> No interference from walls or other devices</li>
+                        <li><strong>Higher bandwidth:</strong> Gigabit Ethernet provides faster speeds than most WiFi</li>
+                        <li><strong>Reliability:</strong> No risk of signal drops during intense gaming sessions</li>
+                    </ul>
+                    <p>Since the gaming PC is stationary (doesn't need to move), the lack of mobility isn't a problem.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 2 -->
+        <section class="predict-card card" id="scenario-2">
+            <h2>Scenario 2: Wireless Headphones</h2>
+            <div class="scenario-description">
+                <p>Sarah wants to connect wireless headphones to her phone to listen to music while walking around the house.</p>
+                <p><strong>Question:</strong> Which wireless technology would be used - WiFi or Bluetooth?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Bluetooth</h3>
+                    <p><strong>Reasons:</strong></p>
+                    <ul>
+                        <li><strong>Designed for personal devices:</strong> Bluetooth is specifically made for connecting peripherals</li>
+                        <li><strong>Low power:</strong> Uses less battery than WiFi</li>
+                        <li><strong>Range is sufficient:</strong> 10m range is enough since headphones stay close to the phone</li>
+                        <li><strong>Simple pairing:</strong> Easy one-time setup between devices</li>
+                    </ul>
+                    <p>WiFi would be overkill for this purpose and would drain battery faster.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 3 -->
+        <section class="predict-card card" id="scenario-3">
+            <h2>Scenario 3: Secure Banking</h2>
+            <div class="scenario-description">
+                <p>Tom is about to log into his online banking to transfer money. He notices the website URL.</p>
+                <p><strong>Question:</strong> Should the URL start with <code>http://</code> or <code>https://</code>? Why does it matter?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: https://</h3>
+                    <p><strong>Reasons:</strong></p>
+                    <ul>
+                        <li><strong>Encryption:</strong> HTTPS encrypts all data sent between browser and server</li>
+                        <li><strong>Protection:</strong> Login credentials and financial data cannot be intercepted</li>
+                        <li><strong>Verification:</strong> The padlock icon confirms the website's identity</li>
+                        <li><strong>Requirement:</strong> Banks MUST use HTTPS - if a banking site uses HTTP, it's likely fake!</li>
+                    </ul>
+                    <p>Always look for the 🔒 padlock before entering sensitive information.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 4 -->
+        <section class="predict-card card" id="scenario-4">
+            <h2>Scenario 4: Multi-Device Email Access</h2>
+            <div class="scenario-description">
+                <p>Emma checks her email on her laptop, phone, and tablet throughout the day. She wants to see the same inbox on all devices, and when she reads an email on one device, she wants it to show as read on all devices.</p>
+                <p><strong>Question:</strong> Should Emma's email be configured to use POP3 or IMAP?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: IMAP</h3>
+                    <p><strong>Reasons:</strong></p>
+                    <ul>
+                        <li><strong>Synchronisation:</strong> IMAP keeps emails on the server, syncing across all devices</li>
+                        <li><strong>Consistent state:</strong> Read/unread status, folders, and labels sync automatically</li>
+                        <li><strong>Multiple devices:</strong> IMAP is designed for accessing email from many devices</li>
+                        <li><strong>No duplicates:</strong> Unlike POP3, you won't have different emails on different devices</li>
+                    </ul>
+                    <p>POP3 would download emails to one device and potentially delete them from the server, making multi-device access problematic.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 5 -->
+        <section class="predict-card card" id="scenario-5">
+            <h2>Scenario 5: Website Deployment</h2>
+            <div class="scenario-description">
+                <p>A web developer has finished building a website on their computer. They now need to upload all the HTML, CSS, and image files to the web hosting server.</p>
+                <p><strong>Question:</strong> Which protocol would they most likely use - HTTP, HTTPS, or FTP?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: FTP (or SFTP)</h3>
+                    <p><strong>Reasons:</strong></p>
+                    <ul>
+                        <li><strong>File transfer:</strong> FTP is specifically designed for uploading and downloading files</li>
+                        <li><strong>Bulk transfers:</strong> Can upload many files and folders efficiently</li>
+                        <li><strong>Directory navigation:</strong> Can browse and manage files on the remote server</li>
+                        <li><strong>Resume capability:</strong> Can resume interrupted transfers</li>
+                    </ul>
+                    <p>HTTP/HTTPS are for viewing web pages, not for uploading files to a server. Modern practice often uses SFTP (Secure FTP) for encrypted transfers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 6 -->
+        <section class="predict-card card" id="scenario-6">
+            <h2>Scenario 6: Identifying a Device</h2>
+            <div class="scenario-description">
+                <p>A network administrator needs to find a specific laptop that has been reported lost somewhere in the school building. The laptop is still connected to the school network.</p>
+                <p><strong>Question:</strong> Would the admin use the laptop's IP address or MAC address to identify it? Why?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: MAC Address</h3>
+                    <p><strong>Reasons:</strong></p>
+                    <ul>
+                        <li><strong>Permanent identifier:</strong> MAC address is fixed and unique to that specific laptop</li>
+                        <li><strong>Doesn't change:</strong> Unlike IP addresses which can be reassigned</li>
+                        <li><strong>Physical identification:</strong> Each NIC has a manufacturer-assigned MAC</li>
+                        <li><strong>Network tracking:</strong> Switches track which MAC addresses connect to which ports</li>
+                    </ul>
+                    <p>The IP address might change if the laptop reconnects to a different part of the network, but the MAC address always stays the same.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 7 -->
+        <section class="predict-card card" id="scenario-7">
+            <h2>Scenario 7: Smart Home Devices</h2>
+            <div class="scenario-description">
+                <p>A family is setting up several smart home devices: a video doorbell, smart light bulbs, a smart thermostat, and voice assistants. None of these devices have Ethernet ports.</p>
+                <p><strong>Question:</strong> What type of connection will these devices use?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: WiFi (Wireless)</h3>
+                    <p><strong>Reasons:</strong></p>
+                    <ul>
+                        <li><strong>No physical ports:</strong> Most IoT devices don't have Ethernet connections</li>
+                        <li><strong>Placement flexibility:</strong> Devices can be placed anywhere in range of WiFi</li>
+                        <li><strong>No cable installation:</strong> Practical for devices throughout the home</li>
+                        <li><strong>Always connected:</strong> WiFi provides constant connectivity for remote control</li>
+                    </ul>
+                    <p>Some smart devices use Bluetooth for initial setup, then connect to WiFi for internet access.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 8 -->
+        <section class="predict-card card" id="scenario-8">
+            <h2>Scenario 8: IPv4 Running Out</h2>
+            <div class="scenario-description">
+                <p>A news article mentions that IPv4 addresses have essentially run out globally. A student asks why we simply don't create more IPv4 addresses.</p>
+                <p><strong>Question:</strong> Why can't we just create more IPv4 addresses? What's the solution?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: IPv4 format limits the number possible</h3>
+                    <p><strong>Explanation:</strong></p>
+                    <ul>
+                        <li><strong>Fixed format:</strong> IPv4 uses 32 bits (4 numbers, 0-255 each)</li>
+                        <li><strong>Maximum addresses:</strong> 2^32 = approximately 4.3 billion addresses</li>
+                        <li><strong>More devices than addresses:</strong> With billions of phones, computers, IoT devices, we've run out</li>
+                        <li><strong>Can't change the format:</strong> Changing IPv4 would break the entire internet!</li>
+                    </ul>
+                    <p><strong>Solution:</strong> IPv6 uses 128 bits, providing 340 undecillion addresses - enough for every grain of sand on Earth to have its own address!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 9 -->
+        <section class="predict-card card" id="scenario-9">
+            <h2>Scenario 9: Email Sending and Receiving</h2>
+            <div class="scenario-description">
+                <p>Maya sends an email from her Gmail to her friend who uses Outlook. The email successfully arrives.</p>
+                <p><strong>Question:</strong> Which email protocols were used in this process?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: SMTP (for sending) and IMAP or POP3 (for receiving)</h3>
+                    <p><strong>The process:</strong></p>
+                    <ol>
+                        <li><strong>SMTP:</strong> Maya's email client sends the email to Gmail's mail server</li>
+                        <li><strong>SMTP:</strong> Gmail's server forwards the email to Outlook's mail server</li>
+                        <li><strong>IMAP/POP3:</strong> Maya's friend's email client downloads the email from Outlook's server</li>
+                    </ol>
+                    <p>SMTP is always used for sending. The receiving protocol depends on how the recipient has configured their email client.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 10 -->
+        <section class="predict-card card" id="scenario-10">
+            <h2>Scenario 10: Coffee Shop Connection</h2>
+            <div class="scenario-description">
+                <p>Jamie is working at a coffee shop using the free public WiFi. They need to check their bank balance and make a payment.</p>
+                <p><strong>Question:</strong> What security concerns should Jamie have, and what should they check before logging in?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Public WiFi can be intercepted</h3>
+                    <p><strong>Security concerns:</strong></p>
+                    <ul>
+                        <li><strong>No encryption:</strong> Public WiFi often has weak or no encryption</li>
+                        <li><strong>Man-in-the-middle:</strong> Attackers on the same network could intercept traffic</li>
+                        <li><strong>Fake hotspots:</strong> The network might not even be the real coffee shop WiFi</li>
+                    </ul>
+                    <p><strong>What to check:</strong></p>
+                    <ul>
+                        <li>🔒 Ensure the bank website uses HTTPS (encrypted connection)</li>
+                        <li>Verify the URL is the correct bank address</li>
+                        <li>Consider using a VPN for additional encryption</li>
+                        <li>Avoid accessing sensitive accounts on public WiFi if possible</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 11 -->
+        <section class="predict-card card" id="scenario-11">
+            <h2>Scenario 11: Why Standards Matter</h2>
+            <div class="scenario-description">
+                <p>Imagine if every phone manufacturer used their own unique charging cable, every WiFi router used proprietary signals that only worked with that brand's devices, and every file format could only be opened by one specific program.</p>
+                <p><strong>Question:</strong> What problems would this cause? How do standards help?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Standards enable interoperability</h3>
+                    <p><strong>Problems without standards:</strong></p>
+                    <ul>
+                        <li><strong>Vendor lock-in:</strong> Stuck with one manufacturer forever</li>
+                        <li><strong>Higher costs:</strong> No competition means higher prices</li>
+                        <li><strong>Incompatibility:</strong> Devices and software can't work together</li>
+                        <li><strong>Waste:</strong> Need different cables, adapters, software for everything</li>
+                        <li><strong>Limited choice:</strong> Can't choose the best product for your needs</li>
+                    </ul>
+                    <p><strong>How standards help:</strong></p>
+                    <ul>
+                        <li>Any USB device works with any USB port</li>
+                        <li>Any WiFi device connects to any WiFi router</li>
+                        <li>JPEG images open in any image viewer</li>
+                        <li>Competition drives innovation and lowers prices</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 12 -->
+        <section class="predict-card card" id="scenario-12">
+            <h2>Scenario 12: Layered Troubleshooting</h2>
+            <div class="scenario-description">
+                <p>A user complains they can't load websites. An IT technician starts troubleshooting by checking if the network cable is plugged in.</p>
+                <p><strong>Question:</strong> Using the concept of layers, why would the technician start with the physical connection rather than checking the web browser first?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Lower layers must work before higher layers can function</h3>
+                    <p><strong>Layer-based troubleshooting:</strong></p>
+                    <ul>
+                        <li><strong>Layer 1 (Network Access):</strong> Physical cable must be connected and working</li>
+                        <li><strong>Layer 2 (Internet):</strong> Device needs a valid IP address</li>
+                        <li><strong>Layer 3 (Transport):</strong> Data packets must be able to reach the server</li>
+                        <li><strong>Layer 4 (Application):</strong> Browser and website must work correctly</li>
+                    </ul>
+                    <p><strong>Why start at the bottom:</strong></p>
+                    <ul>
+                        <li>If the cable is unplugged (Layer 1), nothing else can work</li>
+                        <li>Each layer depends on the layers below it</li>
+                        <li>Start simple - check physical connections first</li>
+                        <li>Work up through layers systematically to isolate the problem</li>
+                    </ul>
+                    <p>This is why IT often asks "Is it plugged in?" first!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="activity-nav">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="example.html" class="btn btn-primary">Next: Worked Examples →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealBtns = document.querySelectorAll('.reveal-btn');
+
+            revealBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const answer = this.parentElement.querySelector('.answer');
+                    answer.classList.toggle('hidden');
+
+                    if (answer.classList.contains('hidden')) {
+                        this.textContent = 'Reveal Answer';
+                    } else {
+                        this.textContent = 'Hide Answer';
+
+                        // Track progress
+                        const card = this.closest('.predict-card');
+                        const activityId = 'protocols-predict-' + card.id;
+                        Progress.completeActivity(activityId, 'protocols', 100);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .predict-card {
+            margin-bottom: var(--space-xl);
+        }
+        .scenario-description {
+            background: var(--blue-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--primary);
+        }
+        .scenario-description code {
+            background: var(--gray-100);
+            padding: 0.1em 0.4em;
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+        }
+        .prediction-section {
+            text-align: center;
+        }
+        .answer {
+            text-align: left;
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: var(--green-50);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--success);
+        }
+        .answer h3 {
+            color: var(--success);
+            margin-top: 0;
+        }
+        .answer.hidden {
+            display: none;
+        }
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>
