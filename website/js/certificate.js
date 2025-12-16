@@ -31,7 +31,13 @@ const CertificateSystem = {
         'units': 'Data Units & Capacity',
         'numbers': 'Number Systems',
         'representation': 'Data Representation',
-        'compression': 'Compression'
+        'compression': 'Compression',
+        'networks': 'Computer Networks',
+        'protocols': 'Protocols & Layers',
+        'security': 'Network Security',
+        'prevention': 'Preventing Vulnerabilities',
+        'operating-systems': 'Operating Systems',
+        'utility-software': 'Utility Software'
     },
 
     /**

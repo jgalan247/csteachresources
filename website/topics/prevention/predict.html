@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict - Preventing Vulnerabilities</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .scenario-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        .scenario-number {
+            background: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .difficulty-badge {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .difficulty-badge.foundation { background: #d4edda; color: #155724; }
+        .difficulty-badge.core { background: #cce5ff; color: #004085; }
+        .difficulty-badge.extension { background: #f8d7da; color: #721c24; }
+
+        .scenario-context {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--primary);
+        }
+        .scenario-question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: var(--space-lg);
+            color: var(--gray-800);
+        }
+        .options-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: var(--space-md);
+            text-align: left;
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: white;
+        }
+        .option-btn.selected {
+            border-color: var(--primary);
+            background: #e7f3ff;
+        }
+        .option-btn.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+        .option-btn.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+        .option-btn.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .feedback-panel {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .feedback-panel.show {
+            display: block;
+        }
+        .feedback-panel.correct {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback-panel.incorrect {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        .feedback-title {
+            font-weight: bold;
+            margin-bottom: var(--space-sm);
+        }
+        .progress-bar-container {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Preventing Vulnerabilities</a>
+            <h1>Predict - Security Scenarios</h1>
+            <p class="subtitle">Which prevention method is most appropriate for each scenario?</p>
+        </header>
+
+        <div class="progress-bar-container">
+            <div class="progress-stats">
+                <span id="progress-text">0 of 12 completed</span>
+                <span id="score-text">Score: 0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div id="scenarios-container">
+            <!-- Scenarios populated by JavaScript -->
+        </div>
+    </main>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const scenarios = [
+            {
+                id: 1,
+                difficulty: 'foundation',
+                context: 'A school network has been infected by a virus that arrived via an email attachment. Several computers are now running slowly and displaying strange pop-ups.',
+                question: 'What prevention method should be prioritised to address this immediate threat?',
+                options: [
+                    'Install and run anti-malware software on all affected computers',
+                    'Change all user passwords immediately',
+                    'Install more CCTV cameras around the school',
+                    'Conduct a penetration test on the network'
+                ],
+                correct: 0,
+                explanation: 'Anti-malware software is specifically designed to detect, quarantine, and remove viruses and other malware. It should be the immediate response to a known malware infection. While other measures like password changes may be needed later, removing the malware is the priority.'
+            },
+            {
+                id: 2,
+                difficulty: 'foundation',
+                context: 'A company\'s server room contains critical equipment including file servers and network infrastructure. Currently, anyone can walk in through the unlocked door.',
+                question: 'What prevention method should be implemented first?',
+                options: [
+                    'Install stronger anti-malware software',
+                    'Implement physical security measures like locks and access badges',
+                    'Set up a firewall',
+                    'Encrypt all data on the servers'
+                ],
+                correct: 1,
+                explanation: 'Physical security is fundamental - if unauthorised people can physically access servers, they can bypass many other security measures. Locks, access badges, and restricted entry should be the first priority for a server room.'
+            },
+            {
+                id: 3,
+                difficulty: 'foundation',
+                context: 'An employee uses the password "password123" for their work account. The same password is used for their personal email and social media.',
+                question: 'What security weakness does this create, and what should be recommended?',
+                options: [
+                    'The firewall should be upgraded',
+                    'Strong, unique passwords should be used for each account',
+                    'Anti-malware software needs updating',
+                    'Physical security needs improvement'
+                ],
+                correct: 1,
+                explanation: 'Weak, reused passwords are a major vulnerability. If one account is breached, attackers can access all accounts using the same password (credential stuffing). Strong, unique passwords for each account limit the damage from any single breach.'
+            },
+            {
+                id: 4,
+                difficulty: 'core',
+                context: 'A company allows employees to access work files remotely over the internet. They are concerned that sensitive data could be intercepted while being transmitted.',
+                question: 'Which prevention method best addresses this concern?',
+                options: [
+                    'Install anti-malware on all remote devices',
+                    'Use encryption for all data in transit (e.g., VPN, HTTPS)',
+                    'Implement stricter password policies',
+                    'Conduct regular penetration testing'
+                ],
+                correct: 1,
+                explanation: 'Encryption protects data in transit by making it unreadable to anyone who intercepts it. Using a VPN or HTTPS ensures that even if data is captured, attackers cannot read its contents without the encryption key.'
+            },
+            {
+                id: 5,
+                difficulty: 'core',
+                context: 'A small business has been receiving reports of unknown external IP addresses attempting to connect to their internal network. The attempts are blocked, but they are increasing.',
+                question: 'Which prevention method is already working, and what additional measure should be considered?',
+                options: [
+                    'Anti-malware is working; add more encryption',
+                    'Firewall is working; consider penetration testing to find vulnerabilities',
+                    'Physical security is working; add user access levels',
+                    'Passwords are working; add CCTV'
+                ],
+                correct: 1,
+                explanation: 'The firewall is blocking unauthorised connection attempts, which is its primary function. Since attacks are increasing, penetration testing would help identify any weaknesses the attackers might eventually exploit.'
+            },
+            {
+                id: 6,
+                difficulty: 'core',
+                context: 'A hospital receptionist accidentally opened a ransomware attachment. However, the ransomware was unable to encrypt most patient records or access medical equipment.',
+                question: 'Which prevention method likely limited the damage?',
+                options: [
+                    'The receptionist had a strong password',
+                    'User access levels restricted what the receptionist\'s account could access',
+                    'CCTV recorded the incident',
+                    'The hospital used encryption'
+                ],
+                correct: 1,
+                explanation: 'User access levels (principle of least privilege) meant the receptionist\'s account only had access to what they needed for their job. When the ransomware ran with their permissions, it couldn\'t reach critical systems or patient records requiring higher access levels.'
+            },
+            {
+                id: 7,
+                difficulty: 'core',
+                context: 'A web application for online banking contains a vulnerability that allows SQL injection attacks. The development team is unaware of this weakness.',
+                question: 'Which prevention method would most likely identify this vulnerability?',
+                options: [
+                    'Installing a hardware firewall',
+                    'Penetration testing',
+                    'Adding physical locks to the server room',
+                    'Implementing password complexity requirements'
+                ],
+                correct: 1,
+                explanation: 'Penetration testing specifically looks for vulnerabilities like SQL injection. Professional pen testers would attempt to exploit the input fields just as a real attacker would, discovering the weakness before malicious actors do.'
+            },
+            {
+                id: 8,
+                difficulty: 'core',
+                context: 'A laptop containing sensitive customer data was stolen from an employee\'s car. The data includes names, addresses, and payment information.',
+                question: 'Which prevention method would have best protected the data in this situation?',
+                options: [
+                    'A stronger firewall on the company network',
+                    'Full disk encryption on the laptop',
+                    'Anti-malware software on the laptop',
+                    'Stricter user access levels'
+                ],
+                correct: 1,
+                explanation: 'Full disk encryption means the data on the stolen laptop cannot be read without the encryption key/password. Even with physical possession of the device, the thief cannot access the sensitive customer data.'
+            },
+            {
+                id: 9,
+                difficulty: 'extension',
+                context: 'An organisation has excellent technical security: firewalls, encryption, anti-malware, and strong passwords. However, an attacker phoned the IT helpdesk pretending to be the CEO and convinced them to reset a password.',
+                question: 'What security gap does this reveal, and what should be addressed?',
+                options: [
+                    'The firewall needs upgrading',
+                    'Staff training and verification procedures for social engineering',
+                    'Anti-malware needs to be updated more frequently',
+                    'Physical security should be improved'
+                ],
+                correct: 1,
+                explanation: 'This is a social engineering attack that bypasses technical controls by exploiting human trust. Staff need training to recognise such attacks and verification procedures (like callback verification) before performing sensitive actions like password resets.'
+            },
+            {
+                id: 10,
+                difficulty: 'extension',
+                context: 'A company\'s network experienced a DDoS attack that overwhelmed their web servers with traffic. Their firewall blocked individual suspicious IPs but couldn\'t stop the attack because it came from thousands of different sources.',
+                question: 'What limitation of firewalls does this demonstrate, and what additional protection is needed?',
+                options: [
+                    'Firewalls cannot stop malware; add anti-malware software',
+                    'Firewalls struggle with distributed attacks; add cloud-based DDoS protection',
+                    'Firewalls don\'t encrypt data; add encryption',
+                    'Firewalls don\'t control user access; add access levels'
+                ],
+                correct: 1,
+                explanation: 'Traditional firewalls have limited effectiveness against DDoS because they cannot block thousands of individual attacking IPs fast enough. Cloud-based DDoS protection services can absorb massive traffic volumes and filter attacks before they reach the network.'
+            },
+            {
+                id: 11,
+                difficulty: 'extension',
+                context: 'A security audit found that an organisation has administrator accounts shared between 5 IT staff members. When a security incident occurred, it was impossible to determine which staff member was responsible.',
+                question: 'Which security principle has been violated, and what should be implemented?',
+                options: [
+                    'Encryption principle; implement data encryption',
+                    'Individual accountability; each user should have unique admin credentials',
+                    'Physical security; add CCTV to monitor staff',
+                    'Anti-malware principle; update virus definitions'
+                ],
+                correct: 1,
+                explanation: 'Shared accounts violate individual accountability - a key security principle. Each administrator should have their own unique account so actions can be traced to specific individuals. This supports audit trails and deters misuse.'
+            },
+            {
+                id: 12,
+                difficulty: 'extension',
+                context: 'A penetration test on a banking application found 3 critical vulnerabilities. The development team fixed all three issues. One month later, a new feature was added to the application.',
+                question: 'What should happen next regarding security testing?',
+                options: [
+                    'No action needed - the previous test fixed all issues',
+                    'Another penetration test should be conducted after the code change',
+                    'Only update the anti-malware software',
+                    'Strengthen the firewall rules'
+                ],
+                correct: 1,
+                explanation: 'Penetration testing should be repeated after significant changes to an application. New features can introduce new vulnerabilities. Security testing should be an ongoing process, not a one-time event.'
+            }
+        ];
+
+        let answers = {};
+        let correctCount = 0;
+
+        function initScenarios() {
+            const container = document.getElementById('scenarios-container');
+            container.innerHTML = scenarios.map(scenario => createScenarioCard(scenario)).join('');
+            updateProgress();
+        }
+
+        function createScenarioCard(scenario) {
+            return `
+                <div class="scenario-card" id="scenario-${scenario.id}">
+                    <div class="scenario-header">
+                        <div class="scenario-number">${scenario.id}</div>
+                        <span class="difficulty-badge ${scenario.difficulty}">${scenario.difficulty}</span>
+                    </div>
+                    <div class="scenario-context">
+                        <strong>Scenario:</strong> ${scenario.context}
+                    </div>
+                    <p class="scenario-question">${scenario.question}</p>
+                    <div class="options-grid">
+                        ${scenario.options.map((option, index) => `
+                            <button class="option-btn" onclick="selectOption(${scenario.id}, ${index})">
+                                ${String.fromCharCode(65 + index)}. ${option}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback-panel" id="feedback-${scenario.id}">
+                        <div class="feedback-title" id="feedback-title-${scenario.id}"></div>
+                        <div class="feedback-text" id="feedback-text-${scenario.id}"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectOption(scenarioId, optionIndex) {
+            if (answers[scenarioId] !== undefined) return;
+
+            const scenario = scenarios.find(s => s.id === scenarioId);
+            const card = document.getElementById(`scenario-${scenarioId}`);
+            const buttons = card.querySelectorAll('.option-btn');
+            const feedback = document.getElementById(`feedback-${scenarioId}`);
+            const feedbackTitle = document.getElementById(`feedback-title-${scenarioId}`);
+            const feedbackText = document.getElementById(`feedback-text-${scenarioId}`);
+
+            answers[scenarioId] = optionIndex;
+            const isCorrect = optionIndex === scenario.correct;
+
+            buttons.forEach((btn, index) => {
+                btn.classList.add('disabled');
+                if (index === scenario.correct) {
+                    btn.classList.add('correct');
+                } else if (index === optionIndex && !isCorrect) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+            feedbackTitle.textContent = isCorrect ? '✓ Correct!' : '✗ Not quite right';
+            feedbackText.textContent = scenario.explanation;
+
+            if (isCorrect) correctCount++;
+            updateProgress();
+
+            Progress.saveActivity(`prevention-predict-${scenarioId}`, 'completed', isCorrect ? 100 : 0);
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(answers).length;
+            const total = scenarios.length;
+            const percentage = total > 0 ? Math.round((answered / total) * 100) : 0;
+            const score = answered > 0 ? Math.round((correctCount / answered) * 100) : 0;
+
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            document.getElementById('progress-text').textContent = `${answered} of ${total} completed`;
+            document.getElementById('score-text').textContent = `Score: ${score}%`;
+        }
+
+        // Initialize
+        initScenarios();
+        Progress.startActivity('prevention-predict', 'predict');
+    </script>
+</body>
+</html>

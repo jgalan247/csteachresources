@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order the Steps - Preventing Vulnerabilities</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .parsons-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .problem-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .problem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        .problem-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .difficulty-badge {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .difficulty-badge.foundation { background: #d4edda; color: #155724; }
+        .difficulty-badge.core { background: #cce5ff; color: #004085; }
+        .difficulty-badge.extension { background: #f8d7da; color: #721c24; }
+
+        .problem-question {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            color: var(--gray-800);
+        }
+        .parsons-workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        @media (max-width: 600px) {
+            .parsons-workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+        .blocks-pool, .answer-zone {
+            min-height: 200px;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .blocks-pool {
+            background: var(--gray-100);
+            border: 2px dashed var(--gray-300);
+        }
+        .answer-zone {
+            background: #e8f4f8;
+            border: 2px dashed var(--primary);
+        }
+        .zone-label {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-sm);
+            font-weight: 500;
+        }
+        .draggable-block {
+            background: white;
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-300);
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .draggable-block:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .draggable-block.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .draggable-block.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+        .draggable-block.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: var(--space-sm);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .answer-zone .step-number {
+            background: var(--primary);
+            color: white;
+        }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: var(--space-sm);
+        }
+        .check-btn:hover {
+            background: var(--primary-dark);
+        }
+        .reset-btn {
+            background: var(--gray-200);
+            color: var(--gray-700);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .reset-btn:hover {
+            background: var(--gray-300);
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .feedback.correct {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .explanation {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: #e7f3ff;
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .explanation.show {
+            display: block;
+        }
+        .progress-indicator {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            color: var(--gray-600);
+        }
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gray-300);
+            cursor: pointer;
+        }
+        .progress-dot.completed {
+            background: var(--success);
+        }
+        .progress-dot.current {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Preventing Vulnerabilities</a>
+            <h1>Order the Steps</h1>
+            <p class="subtitle">Drag and drop to arrange security procedures in the correct order</p>
+        </header>
+
+        <div class="progress-indicator">
+            <span id="progress-text">Problem 1 of 8</span>
+            <div class="progress-dots" id="progress-dots"></div>
+        </div>
+
+        <div class="parsons-container" id="problems-container">
+            <!-- Problems populated by JavaScript -->
+        </div>
+    </main>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const problems = [
+            {
+                id: 1,
+                difficulty: 'foundation',
+                question: 'Order the steps for installing and configuring anti-malware software:',
+                blocks: [
+                    'Download anti-malware from a trusted vendor website',
+                    'Install the software on all computers',
+                    'Update the malware signature database',
+                    'Run a full system scan to check for existing infections',
+                    'Configure automatic updates and scheduled scans',
+                    'Monitor the dashboard for any detected threats'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Anti-malware setup follows this sequence: get the software from a trusted source, install it, update the signatures (essential for detecting recent threats), scan for existing problems, then configure ongoing protection.'
+            },
+            {
+                id: 2,
+                difficulty: 'foundation',
+                question: 'Order the steps for creating a strong password:',
+                blocks: [
+                    'Think of a random phrase or sentence you can remember',
+                    'Use at least 12 characters',
+                    'Include a mix of uppercase and lowercase letters',
+                    'Add numbers by substituting or inserting them',
+                    'Include at least one special character (!@#$%)',
+                    'Verify the password is unique (not used elsewhere)'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Creating strong passwords: start with something memorable, ensure adequate length (most important factor), add complexity with mixed case, numbers, and symbols, then verify you haven\'t used it before.'
+            },
+            {
+                id: 3,
+                difficulty: 'core',
+                question: 'Order the steps of a professional penetration test:',
+                blocks: [
+                    'Define scope and obtain written authorization',
+                    'Gather information about the target (reconnaissance)',
+                    'Scan for potential vulnerabilities',
+                    'Attempt to exploit discovered vulnerabilities',
+                    'Document all findings with evidence',
+                    'Provide a report with remediation recommendations'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Penetration testing must start with proper authorization (otherwise it\'s illegal!). Then follows reconnaissance, scanning, exploitation, and finally comprehensive documentation with recommendations for fixing issues.'
+            },
+            {
+                id: 4,
+                difficulty: 'core',
+                question: 'Order the steps for implementing encryption on a company laptop:',
+                blocks: [
+                    'Back up all important data',
+                    'Enable full disk encryption (e.g., BitLocker)',
+                    'Create a strong encryption password/key',
+                    'Store the recovery key in a secure, separate location',
+                    'Verify the encryption is working correctly',
+                    'Document the encryption status for IT records'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Always backup before encrypting (in case of problems). Enable encryption, set a strong password, then critically - store the recovery key separately. If you lose the key and forget the password, data is permanently lost!'
+            },
+            {
+                id: 5,
+                difficulty: 'core',
+                question: 'Order the steps for setting up user access levels in a new system:',
+                blocks: [
+                    'Identify all user roles in the organisation',
+                    'Define what data/functions each role needs to access',
+                    'Create permission groups based on roles',
+                    'Apply the principle of least privilege to each group',
+                    'Assign users to appropriate groups',
+                    'Review and audit access permissions regularly'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Access control design: first understand who does what, determine their minimum access needs, create role-based groups, apply least privilege, assign users, then maintain ongoing review.'
+            },
+            {
+                id: 6,
+                difficulty: 'core',
+                question: 'Order the steps for configuring a firewall for a small business:',
+                blocks: [
+                    'Set the default policy to deny all traffic',
+                    'Identify which services need to be accessible',
+                    'Create allow rules for necessary inbound traffic (e.g., web, email)',
+                    'Create rules for legitimate outbound traffic',
+                    'Enable logging for blocked and suspicious traffic',
+                    'Test that legitimate services work and threats are blocked'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Firewalls should start with "deny all" then whitelist needed traffic. Identify requirements, create specific allow rules for inbound and outbound, enable logging for monitoring, and test thoroughly.'
+            },
+            {
+                id: 7,
+                difficulty: 'extension',
+                question: 'Order the steps for responding to a security incident:',
+                blocks: [
+                    'Detect and confirm the incident is real',
+                    'Contain the threat (isolate affected systems)',
+                    'Preserve evidence for investigation',
+                    'Eradicate the threat and patch the vulnerability',
+                    'Recover systems and restore from backups if needed',
+                    'Conduct post-incident review and update defences'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Incident response: first confirm it\'s real, then contain to stop spreading, preserve evidence before cleaning (important for investigation), remove the threat, restore operations, and finally learn from it.'
+            },
+            {
+                id: 8,
+                difficulty: 'extension',
+                question: 'Order the steps for implementing a complete physical security plan:',
+                blocks: [
+                    'Conduct a risk assessment of the premises',
+                    'Install perimeter security (fences, gates, lighting)',
+                    'Implement building access controls (ID badges, locks)',
+                    'Add monitoring systems (CCTV, alarms)',
+                    'Secure sensitive areas (server room, safes)',
+                    'Train staff on security procedures and visitor policies'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Physical security works from outside in: assess risks first, secure the perimeter, control building access, add monitoring, protect the most sensitive areas specifically, and train people - the last link in the chain.'
+            }
+        ];
+
+        let currentProblem = 0;
+        let completedProblems = new Set();
+        let draggedElement = null;
+
+        function initProblems() {
+            const container = document.getElementById('problems-container');
+            container.innerHTML = '';
+
+            problems.forEach((problem, index) => {
+                const card = createProblemCard(problem, index);
+                container.appendChild(card);
+            });
+
+            updateProgressDots();
+            showProblem(0);
+        }
+
+        function createProblemCard(problem, index) {
+            const card = document.createElement('div');
+            card.className = 'problem-card';
+            card.id = `problem-${index}`;
+            card.style.display = index === 0 ? 'block' : 'none';
+
+            // Shuffle blocks for display
+            const shuffledBlocks = [...problem.blocks]
+                .map((block, i) => ({ text: block, originalIndex: i }))
+                .sort(() => Math.random() - 0.5);
+
+            card.innerHTML = `
+                <div class="problem-header">
+                    <div class="problem-number">${problem.id}</div>
+                    <span class="difficulty-badge ${problem.difficulty}">${problem.difficulty}</span>
+                </div>
+                <p class="problem-question">${problem.question}</p>
+                <div class="parsons-workspace">
+                    <div class="blocks-pool" id="pool-${index}">
+                        <div class="zone-label">Available Steps</div>
+                        ${shuffledBlocks.map((block, i) => `
+                            <div class="draggable-block" draggable="true" data-original="${block.originalIndex}">
+                                <span class="step-number">?</span>${block.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="answer-zone" id="answer-${index}">
+                        <div class="zone-label">Your Answer (drag steps here in order)</div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="check-btn" onclick="checkAnswer(${index})">Check Answer</button>
+                    <button class="reset-btn" onclick="resetProblem(${index})">Reset</button>
+                    ${index < problems.length - 1 ? `<button class="check-btn" onclick="nextProblem()" style="background: var(--success);">Next →</button>` : ''}
+                </div>
+                <div class="feedback" id="feedback-${index}"></div>
+                <div class="explanation" id="explanation-${index}">
+                    <strong>Explanation:</strong> ${problem.explanation}
+                </div>
+            `;
+
+            // Set up drag and drop after element is created
+            setTimeout(() => setupDragDrop(index), 0);
+
+            return card;
+        }
+
+        function setupDragDrop(problemIndex) {
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const answer = document.getElementById(`answer-${problemIndex}`);
+
+            if (!pool || !answer) return;
+
+            const blocks = pool.querySelectorAll('.draggable-block');
+
+            blocks.forEach(block => {
+                block.addEventListener('dragstart', handleDragStart);
+                block.addEventListener('dragend', handleDragEnd);
+            });
+
+            [pool, answer].forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('drop', (e) => handleDrop(e, problemIndex));
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDrop(e, problemIndex) {
+            e.preventDefault();
+            if (!draggedElement) return;
+
+            const dropZone = e.target.closest('.blocks-pool, .answer-zone');
+            if (!dropZone) return;
+
+            // Remove from current position
+            draggedElement.remove();
+
+            // Add to new position
+            dropZone.appendChild(draggedElement);
+
+            // Update step numbers in answer zone
+            updateStepNumbers(problemIndex);
+        }
+
+        function updateStepNumbers(problemIndex) {
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+
+            blocks.forEach((block, index) => {
+                const stepNum = block.querySelector('.step-number');
+                stepNum.textContent = index + 1;
+            });
+
+            // Reset numbers in pool
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const poolBlocks = pool.querySelectorAll('.draggable-block');
+            poolBlocks.forEach(block => {
+                const stepNum = block.querySelector('.step-number');
+                stepNum.textContent = '?';
+            });
+        }
+
+        function checkAnswer(problemIndex) {
+            const problem = problems[problemIndex];
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+            const feedback = document.getElementById(`feedback-${problemIndex}`);
+            const explanation = document.getElementById(`explanation-${problemIndex}`);
+
+            if (blocks.length !== problem.blocks.length) {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = `Please place all ${problem.blocks.length} steps in the answer zone.`;
+                return;
+            }
+
+            const userOrder = Array.from(blocks).map(b => parseInt(b.dataset.original));
+            const isCorrect = userOrder.every((val, idx) => val === problem.correctOrder[idx]);
+
+            blocks.forEach((block, index) => {
+                const originalIndex = parseInt(block.dataset.original);
+                if (originalIndex === problem.correctOrder[index]) {
+                    block.classList.add('correct');
+                    block.classList.remove('incorrect');
+                } else {
+                    block.classList.add('incorrect');
+                    block.classList.remove('correct');
+                }
+            });
+
+            if (isCorrect) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = 'Correct! You\'ve arranged the steps in the right order.';
+                completedProblems.add(problemIndex);
+                updateProgressDots();
+
+                Progress.saveActivity(`prevention-parsons-${problemIndex + 1}`, 'completed', 100);
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = 'Not quite right. Check the highlighted steps and try again.';
+            }
+
+            explanation.classList.add('show');
+        }
+
+        function resetProblem(problemIndex) {
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const feedback = document.getElementById(`feedback-${problemIndex}`);
+            const explanation = document.getElementById(`explanation-${problemIndex}`);
+
+            // Move all blocks back to pool
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+            blocks.forEach(block => {
+                block.classList.remove('correct', 'incorrect');
+                block.querySelector('.step-number').textContent = '?';
+                pool.appendChild(block);
+            });
+
+            feedback.className = 'feedback';
+            explanation.classList.remove('show');
+        }
+
+        function showProblem(index) {
+            document.querySelectorAll('.problem-card').forEach((card, i) => {
+                card.style.display = i === index ? 'block' : 'none';
+            });
+            currentProblem = index;
+            document.getElementById('progress-text').textContent = `Problem ${index + 1} of ${problems.length}`;
+            updateProgressDots();
+        }
+
+        function nextProblem() {
+            if (currentProblem < problems.length - 1) {
+                showProblem(currentProblem + 1);
+            }
+        }
+
+        function updateProgressDots() {
+            const container = document.getElementById('progress-dots');
+            container.innerHTML = problems.map((_, i) => {
+                let className = 'progress-dot';
+                if (completedProblems.has(i)) className += ' completed';
+                else if (i === currentProblem) className += ' current';
+                return `<div class="${className}" onclick="showProblem(${i})"></div>`;
+            }).join('');
+        }
+
+        // Touch support for mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            initProblems();
+
+            // Add touch support
+            document.querySelectorAll('.draggable-block').forEach(block => {
+                block.addEventListener('touchstart', handleTouchStart, { passive: false });
+                block.addEventListener('touchmove', handleTouchMove, { passive: false });
+                block.addEventListener('touchend', handleTouchEnd);
+            });
+        });
+
+        let touchElement = null;
+
+        function handleTouchStart(e) {
+            touchElement = e.target.closest('.draggable-block');
+            if (touchElement) {
+                touchElement.classList.add('dragging');
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (touchElement) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!touchElement) return;
+
+            const touch = e.changedTouches[0];
+            const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+            const dropZone = dropTarget?.closest('.blocks-pool, .answer-zone');
+
+            if (dropZone) {
+                touchElement.remove();
+                dropZone.appendChild(touchElement);
+
+                const problemCard = dropZone.closest('.problem-card');
+                const problemIndex = parseInt(problemCard.id.split('-')[1]);
+                updateStepNumbers(problemIndex);
+            }
+
+            touchElement.classList.remove('dragging');
+            touchElement = null;
+        }
+
+        Progress.startActivity('prevention-parsons', 'parsons');
+    </script>
+</body>
+</html>

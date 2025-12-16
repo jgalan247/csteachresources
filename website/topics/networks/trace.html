@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networks - Step-by-Step Exercises</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Networks</a>
+            <h1>Step-by-Step Exercises</h1>
+            <p class="subtitle">Trace through network processes and understand how data travels</p>
+        </header>
+
+        <div class="activity-intro card">
+            <h2>How to Use These Exercises</h2>
+            <p>Work through each step carefully to understand network processes. Click "Show Next Step" to reveal each stage, and think about what happens before revealing the answer.</p>
+        </div>
+
+        <!-- Exercise 1: DNS Lookup -->
+        <section class="trace-exercise card" id="exercise-1">
+            <h2>Exercise 1: DNS Lookup Process</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A user types "www.bbc.co.uk" into their web browser. Trace the DNS lookup process.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Browser checks local cache</strong></p>
+                        <p>The browser first checks if it has recently visited this website and has the IP address stored in its local cache.</p>
+                        <p class="step-result">Cache miss - the IP address is not stored locally.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Query sent to DNS resolver</strong></p>
+                        <p>The computer sends a DNS query to the configured DNS resolver (usually provided by the ISP or set manually like 8.8.8.8).</p>
+                        <p class="step-result">Query: "What is the IP address for www.bbc.co.uk?"</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>DNS resolver queries root server</strong></p>
+                        <p>If the resolver doesn't have the answer cached, it asks a root DNS server which directs it to the .uk TLD servers.</p>
+                        <p class="step-result">Root server responds: "Ask the .uk name servers"</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Query to authoritative DNS server</strong></p>
+                        <p>The resolver eventually reaches the BBC's authoritative DNS server which has the actual IP address mapping.</p>
+                        <p class="step-result">Response: "www.bbc.co.uk = 151.101.0.81"</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>IP address returned to browser</strong></p>
+                        <p>The DNS resolver caches the result and returns the IP address to the user's computer. The browser can now connect directly to 151.101.0.81.</p>
+                        <p class="step-result">Browser now connects to the web server using the IP address.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced a DNS lookup process.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Client-Server Request -->
+        <section class="trace-exercise card" id="exercise-2">
+            <h2>Exercise 2: Client-Server Web Request</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A student searches for "computer networks" on a school library website. Trace the client-server interaction.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Client sends request</strong></p>
+                        <p>The student's computer (client) sends an HTTP request to the library web server. The request includes the search query "computer networks".</p>
+                        <p class="step-result">HTTP GET request sent with search parameters.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Server receives and processes request</strong></p>
+                        <p>The web server receives the request and queries its database for books matching "computer networks".</p>
+                        <p class="step-result">Server finds 15 matching book records.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Server generates response</strong></p>
+                        <p>The server creates an HTML page containing the search results, including book titles, authors, and availability status.</p>
+                        <p class="step-result">HTML response page generated with 15 results.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Server sends response to client</strong></p>
+                        <p>The server sends the HTTP response containing the HTML page back to the student's computer through the network.</p>
+                        <p class="step-result">HTTP 200 OK response with HTML content.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Client displays results</strong></p>
+                        <p>The browser on the student's computer receives the HTML, renders it, and displays the search results on screen.</p>
+                        <p class="step-result">Student sees the list of 15 books about computer networks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced a client-server web request.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 3: Packet Journey -->
+        <section class="trace-exercise card" id="exercise-3">
+            <h2>Exercise 3: Packet Journey Through a Network</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> An email is sent from a computer in the Marketing department to the Finance department in a large office LAN. Trace the packet's journey.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Data prepared by sender's NIC</strong></p>
+                        <p>The marketing computer's Network Interface Card (NIC) prepares the email data, adding the destination MAC and IP addresses.</p>
+                        <p class="step-result">Packet created with header information and email payload.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Packet reaches the switch</strong></p>
+                        <p>The packet travels through the Ethernet cable to the Marketing department's network switch.</p>
+                        <p class="step-result">Switch receives the packet on port 3.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Switch consults MAC address table</strong></p>
+                        <p>The switch reads the destination MAC address and looks up which port to forward the packet to. It determines the packet needs to go to the router.</p>
+                        <p class="step-result">MAC address found - forward to port 24 (router).</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Router determines destination network</strong></p>
+                        <p>The router reads the destination IP address and determines the Finance department is on a different subnet. It consults its routing table.</p>
+                        <p class="step-result">Route to Finance subnet found - forward to Finance switch.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Finance switch delivers packet</strong></p>
+                        <p>The Finance department's switch receives the packet and uses its MAC address table to forward it to the correct computer.</p>
+                        <p class="step-result">Packet delivered to the destination computer's NIC.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Recipient's NIC processes packet</strong></p>
+                        <p>The Finance computer's NIC receives the packet, strips the headers, and passes the email data to the email application.</p>
+                        <p class="step-result">Email appears in the recipient's inbox.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced a packet's journey through a LAN.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 4: Star Topology Failure -->
+        <section class="trace-exercise card" id="exercise-4">
+            <h2>Exercise 4: Star Topology Failure Scenario</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> In a school computer lab with a star topology, the central switch suddenly fails. Trace what happens to network communication.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Initial state: Normal operation</strong></p>
+                        <p>30 computers are connected to a central switch. Students are printing, accessing the internet, and sharing files.</p>
+                        <p class="step-result">All network traffic flows through the central switch.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Switch failure occurs</strong></p>
+                        <p>A power surge causes the central switch to fail. It stops processing all network traffic immediately.</p>
+                        <p class="step-result">All ports on the switch go down simultaneously.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Immediate network isolation</strong></p>
+                        <p>All 30 computers lose connectivity. No computer can communicate with any other computer or network resource.</p>
+                        <p class="step-result">Network connection icons show "disconnected" on all computers.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Services become unavailable</strong></p>
+                        <p>Students cannot: access the internet, print documents, save to network drives, or access shared resources.</p>
+                        <p class="step-result">Error messages appear: "Network path not found", "Printer offline".</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Single point of failure demonstrated</strong></p>
+                        <p>This illustrates the main disadvantage of star topology - the entire network depends on the central switch. One failure affects everyone.</p>
+                        <p class="step-result">Total network outage until switch is replaced or repaired.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You understand star topology's single point of failure.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 5: Mesh Network Resilience -->
+        <section class="trace-exercise card" id="exercise-5">
+            <h2>Exercise 5: Mesh Network Resilience</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A hospital uses a mesh network for critical systems. One network cable is accidentally cut during construction work. Trace how the network responds.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Initial state: Normal operation</strong></p>
+                        <p>The mesh network connects 6 critical systems (A, B, C, D, E, F). Each device has multiple direct connections to other devices.</p>
+                        <p class="step-result">Device A connects to B, C, and D. Device B connects to A, C, E, etc.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Cable cut between A and B</strong></p>
+                        <p>Construction work accidentally severs the cable connecting Device A directly to Device B.</p>
+                        <p class="step-result">Direct A-B connection lost. Network detects the failure.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Automatic route recalculation</strong></p>
+                        <p>The network routing protocol detects the failed link and recalculates paths. Device A can still reach B via alternative routes.</p>
+                        <p class="step-result">New route found: A → C → B (via device C).</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Traffic rerouted automatically</strong></p>
+                        <p>All traffic that previously used the A-B link is now routed through alternative paths. This happens automatically with minimal delay.</p>
+                        <p class="step-result">Communication continues - slight increase in latency on affected routes.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Network remains fully operational</strong></p>
+                        <p>Unlike star topology, the mesh network continues operating despite the failure. Critical hospital systems remain connected.</p>
+                        <p class="step-result">No service disruption - mesh topology's redundancy has protected the network.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You understand mesh topology's fault tolerance.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 6: Cloud File Access -->
+        <section class="trace-exercise card" id="exercise-6">
+            <h2>Exercise 6: Accessing Files from the Cloud</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A student opens a document stored in Google Drive from their home computer. Trace the process.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>User initiates request</strong></p>
+                        <p>The student logs into Google Drive in their web browser and clicks on a document called "History Essay.docx".</p>
+                        <p class="step-result">Browser sends request to drive.google.com with authentication credentials.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Request travels to Google's data centre</strong></p>
+                        <p>The request travels across the internet through multiple routers, potentially crossing countries, to reach Google's cloud servers.</p>
+                        <p class="step-result">Request arrives at a Google data centre (possibly in Ireland or Belgium for UK users).</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Server authenticates and locates file</strong></p>
+                        <p>Google's servers verify the student's login credentials, check file permissions, and locate the document across their distributed storage system.</p>
+                        <p class="step-result">File found and access confirmed - student owns the document.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>File data transmitted</strong></p>
+                        <p>The document data is sent from Google's servers back across the internet to the student's computer.</p>
+                        <p class="step-result">Document data (250KB) transmitted via encrypted HTTPS connection.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Document opens in browser</strong></p>
+                        <p>Google Docs renders the document in the browser. The student can now read and edit the file - changes will sync back to the cloud.</p>
+                        <p class="step-result">Student sees their History Essay and can continue working on it.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You understand how cloud storage works.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 7: Performance Troubleshooting -->
+        <section class="trace-exercise card" id="exercise-7">
+            <h2>Exercise 7: Diagnosing Slow Network Performance</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> Students in an ICT lesson complain that the internet is very slow. The technician investigates. Trace the diagnostic process.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Check number of connected devices</strong></p>
+                        <p>The technician logs into the network switch and counts active connections. They find 32 devices connected to a network designed for 25.</p>
+                        <p class="step-result">Finding: Network is overloaded with too many devices.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Check bandwidth usage</strong></p>
+                        <p>Network monitoring shows that 3 computers are streaming 4K video (using 75% of available bandwidth).</p>
+                        <p class="step-result">Finding: High bandwidth activities are consuming most capacity.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Test network latency</strong></p>
+                        <p>The technician runs a ping test to the router. Latency is 150ms when it should be under 5ms.</p>
+                        <p class="step-result">Finding: High latency indicates congestion or hardware issues.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Check transmission media</strong></p>
+                        <p>Physical inspection reveals a damaged Ethernet cable to the main switch - it's kinked and partially severed.</p>
+                        <p class="step-result">Finding: Physical cable damage is causing packet loss and retransmissions.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Identify root causes</strong></p>
+                        <p>Multiple factors are causing slow performance: (1) too many devices, (2) bandwidth-heavy activities, and (3) damaged cabling.</p>
+                        <p class="step-result">All three network performance factors are contributing to the problem.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Apply solutions</strong></p>
+                        <p>The technician: (1) replaces the damaged cable, (2) asks teacher to stop video streaming, (3) recommends capacity planning for future.</p>
+                        <p class="step-result">Network speed returns to normal after fixing the physical cable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced a network troubleshooting process.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 8: Peer-to-Peer File Sharing -->
+        <section class="trace-exercise card" id="exercise-8">
+            <h2>Exercise 8: Peer-to-Peer File Sharing</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> In a home network, one family member wants to share a large video file with another family member. Trace the peer-to-peer transfer.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>File sharing enabled</strong></p>
+                        <p>Computer A enables file sharing and makes the video file available on the network. No central server is involved.</p>
+                        <p class="step-result">File "holiday_video.mp4" (2GB) is shared on the local network.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Computer B discovers shared file</strong></p>
+                        <p>Computer B browses the network and finds Computer A. It can see the shared video file.</p>
+                        <p class="step-result">Network discovery shows Computer A with 1 shared file.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Direct connection established</strong></p>
+                        <p>Computer B connects directly to Computer A - no intermediary server is needed. Both computers act as equals (peers).</p>
+                        <p class="step-result">Direct peer-to-peer connection established over home WiFi.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>File transfer begins</strong></p>
+                        <p>The video file is transferred directly from Computer A to Computer B. Computer A sends the data, Computer B receives it.</p>
+                        <p class="step-result">Transfer speed: 50MB/s - estimated time 40 seconds.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Transfer completes</strong></p>
+                        <p>The file is now on both computers. Either computer could now share the file with others - demonstrating the equal nature of P2P networks.</p>
+                        <p class="step-result">Both computers now have a copy of the video file.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You understand peer-to-peer file sharing.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="activity-nav">
+            <a href="example.html" class="btn btn-secondary">← Previous: Worked Examples</a>
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track exercise completion
+            const exercises = document.querySelectorAll('.trace-exercise');
+
+            exercises.forEach(exercise => {
+                const steps = exercise.querySelectorAll('.trace-step');
+                const completeMessage = exercise.querySelector('.trace-complete');
+                let completedSteps = 0;
+
+                steps.forEach(step => {
+                    const revealBtn = step.querySelector('.reveal-step');
+                    const content = step.querySelector('.step-content');
+
+                    revealBtn.addEventListener('click', function() {
+                        content.classList.remove('hidden');
+                        revealBtn.textContent = 'Done';
+                        revealBtn.disabled = true;
+                        revealBtn.classList.add('btn-success');
+                        completedSteps++;
+
+                        // Check if all steps completed
+                        if (completedSteps === steps.length) {
+                            completeMessage.classList.remove('hidden');
+                            // Track progress
+                            const activityId = 'networks-trace-' + exercise.id;
+                            Progress.completeActivity(activityId, 'networks', 100);
+                        }
+                    });
+                });
+
+                // Reset functionality
+                const resetBtn = exercise.querySelector('.reset-trace');
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', function() {
+                        steps.forEach(step => {
+                            const revealBtn = step.querySelector('.reveal-step');
+                            const content = step.querySelector('.step-content');
+                            content.classList.add('hidden');
+                            revealBtn.textContent = 'Show Step';
+                            revealBtn.disabled = false;
+                            revealBtn.classList.remove('btn-success');
+                        });
+                        completeMessage.classList.add('hidden');
+                        completedSteps = 0;
+                    });
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .trace-exercise {
+            margin-bottom: var(--space-xl);
+        }
+        .scenario {
+            background: var(--blue-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--primary);
+        }
+        .trace-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .trace-step {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            background: var(--gray-50);
+        }
+        .step-number {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .step-content {
+            padding: var(--space-md);
+            border-top: 1px solid var(--gray-200);
+        }
+        .step-content.hidden {
+            display: none;
+        }
+        .step-result {
+            background: var(--green-50);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-sm);
+            color: var(--success);
+            font-weight: 500;
+        }
+        .trace-complete {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, var(--green-50), var(--blue-50));
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .success-message {
+            font-size: 1.1rem;
+            color: var(--success);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+        .btn-sm {
+            padding: var(--space-xs) var(--space-sm);
+            font-size: 0.9rem;
+        }
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+    </style>
+</body>
+</html>

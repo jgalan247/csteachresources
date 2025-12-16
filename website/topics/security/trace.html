@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Security - Step-by-Step Exercises</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Security</a>
+            <h1>Step-by-Step Exercises</h1>
+            <p class="subtitle">Trace through attack processes to understand how they work</p>
+        </header>
+
+        <div class="activity-intro card">
+            <h2>How to Use These Exercises</h2>
+            <p>Work through each step to understand how different attacks unfold. Click "Show Step" to reveal each stage.</p>
+        </div>
+
+        <!-- Exercise 1: Phishing Attack -->
+        <section class="trace-exercise card" id="exercise-1">
+            <h2>Exercise 1: Phishing Attack Chain</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> An attacker wants to steal login credentials from employees at a company. Trace the phishing attack from preparation to success.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Research and Preparation</strong></p>
+                        <p>Attacker researches the target company - finds employee emails, identifies which systems they use (e.g., Microsoft 365).</p>
+                        <p class="step-result">Attacker creates a list of target email addresses.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Create Fake Login Page</strong></p>
+                        <p>Attacker creates a convincing copy of the Microsoft login page on a domain they control (e.g., micr0soft-login.com).</p>
+                        <p class="step-result">Fake page looks identical to real Microsoft login.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Craft Phishing Email</strong></p>
+                        <p>Attacker creates an email that appears to be from IT department: "Your password expires today. Click here to update it."</p>
+                        <p class="step-result">Email contains link to the fake login page.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Victim Receives Email</strong></p>
+                        <p>Employee receives the email, believes it's legitimate due to urgent tone and familiar appearance.</p>
+                        <p class="step-result">Employee clicks the link, is taken to fake login page.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Credentials Captured</strong></p>
+                        <p>Employee enters username and password on fake page. Credentials are sent to attacker's server.</p>
+                        <p class="step-result">Attacker now has valid login credentials.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Account Compromise</strong></p>
+                        <p>Attacker uses stolen credentials to access the employee's real account, gaining access to emails, files, and systems.</p>
+                        <p class="step-result">Attacker has full access to employee's corporate account.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced a phishing attack.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 2: Ransomware Attack -->
+        <section class="trace-exercise card" id="exercise-2">
+            <h2>Exercise 2: Ransomware Infection</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> A user opens an email attachment containing ransomware. Trace what happens to their computer.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Initial Execution</strong></p>
+                        <p>User opens "Invoice.pdf.exe" - the malware executes with user's permissions.</p>
+                        <p class="step-result">Ransomware begins running silently in background.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Disable Security</strong></p>
+                        <p>Ransomware attempts to disable antivirus and Windows Defender.</p>
+                        <p class="step-result">Security software is disabled or bypassed.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Delete Backups</strong></p>
+                        <p>Ransomware deletes Windows shadow copies and restore points to prevent recovery.</p>
+                        <p class="step-result">Local backup options are destroyed.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Contact Command Server</strong></p>
+                        <p>Ransomware connects to attacker's server to receive unique encryption key.</p>
+                        <p class="step-result">Unique encryption key generated for this victim.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Encrypt Files</strong></p>
+                        <p>Ransomware scans for documents, photos, databases and encrypts them with strong encryption (AES-256).</p>
+                        <p class="step-result">All valuable files are now encrypted and inaccessible.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Display Ransom Note</strong></p>
+                        <p>Desktop wallpaper changes, ransom note appears demanding Bitcoin payment within 72 hours.</p>
+                        <p class="step-result">User discovers they are a ransomware victim.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced a ransomware attack.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 3: DDoS Attack -->
+        <section class="trace-exercise card" id="exercise-3">
+            <h2>Exercise 3: DDoS Attack</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> Attackers launch a DDoS attack against an online store during a major sale event.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Build the Botnet</strong></p>
+                        <p>Attacker has previously infected thousands of devices with malware, creating a botnet of "zombie" computers.</p>
+                        <p class="step-result">Botnet of 100,000 infected devices ready to attack.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Send Attack Command</strong></p>
+                        <p>Attacker sends command to all botnet devices: "Attack target website now."</p>
+                        <p class="step-result">All 100,000 devices begin sending requests simultaneously.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Traffic Flood Begins</strong></p>
+                        <p>Website receives millions of requests per second from IP addresses worldwide.</p>
+                        <p class="step-result">Server resources are consumed handling fake requests.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Server Overload</strong></p>
+                        <p>Web servers cannot handle the volume. Response times increase dramatically.</p>
+                        <p class="step-result">Website becomes extremely slow for real customers.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Service Unavailable</strong></p>
+                        <p>Servers crash or become completely unresponsive. Website displays error messages.</p>
+                        <p class="step-result">Denial of Service achieved - legitimate customers cannot shop.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">Step 6</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Impact</strong></p>
+                        <p>Company loses sales, customers go to competitors, reputation damaged.</p>
+                        <p class="step-result">Attack achieves its goal of disrupting business.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced a DDoS attack.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 4: SQL Injection -->
+        <section class="trace-exercise card" id="exercise-4">
+            <h2>Exercise 4: SQL Injection Attack</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> An attacker discovers a vulnerable login form and exploits it to access the database.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Test for Vulnerability</strong></p>
+                        <p>Attacker enters a single quote (') in the username field to see if it causes an error.</p>
+                        <p class="step-result">Website shows SQL error - vulnerable to injection!</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Craft Injection Payload</strong></p>
+                        <p>Attacker prepares input: <code>' OR '1'='1' --</code></p>
+                        <p class="step-result">This will make the WHERE clause always true.</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Submit Malicious Input</strong></p>
+                        <p>Attacker enters the payload in the login form and submits.</p>
+                        <p class="step-result">SQL query becomes: SELECT * FROM users WHERE username='' OR '1'='1'...</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Authentication Bypassed</strong></p>
+                        <p>Query returns all users (because '1'='1' is always true). Attacker logged in as first user (often admin).</p>
+                        <p class="step-result">Attacker gains admin access without knowing any password!</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Data Extraction</strong></p>
+                        <p>Attacker uses more advanced injection to extract data: user details, passwords, credit cards.</p>
+                        <p class="step-result">Sensitive data is stolen from the database.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced an SQL injection attack.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Exercise 5: Brute-Force Attack -->
+        <section class="trace-exercise card" id="exercise-5">
+            <h2>Exercise 5: Brute-Force Password Attack</h2>
+            <div class="scenario">
+                <p><strong>Scenario:</strong> An attacker attempts to crack a user's password using brute-force techniques.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">Step 1</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Obtain Target</strong></p>
+                        <p>Attacker identifies username/email from data breach or public information.</p>
+                        <p class="step-result">Target: john.smith@company.com</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">Step 2</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Load Password List</strong></p>
+                        <p>Attacker loads a dictionary of common passwords (millions of entries) into cracking software.</p>
+                        <p class="step-result">Password list includes: password, 123456, qwerty, letmein...</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">Step 3</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Begin Automated Attack</strong></p>
+                        <p>Software automatically tries each password, thousands per second.</p>
+                        <p class="step-result">Attempt 1: password - Failed. Attempt 2: 123456 - Failed...</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">Step 4</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Try Variations</strong></p>
+                        <p>Software tries hybrid attacks - adding numbers and symbols to dictionary words.</p>
+                        <p class="step-result">Trying: Company2023, company123!, C0mpany!, Company1...</p>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">Step 5</span>
+                        <button class="btn btn-sm reveal-step">Show Step</button>
+                    </div>
+                    <div class="step-content hidden">
+                        <p><strong>Password Cracked</strong></p>
+                        <p>After 50,000 attempts, the weak password is found: Summer2023!</p>
+                        <p class="step-result">SUCCESS! Password cracked: Summer2023!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-complete hidden">
+                <p class="success-message">Exercise complete! You've traced a brute-force attack.</p>
+                <button class="btn btn-secondary reset-trace">Reset Exercise</button>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="activity-nav">
+            <a href="example.html" class="btn btn-secondary">← Previous: Worked Examples</a>
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const exercises = document.querySelectorAll('.trace-exercise');
+
+            exercises.forEach(exercise => {
+                const steps = exercise.querySelectorAll('.trace-step');
+                const completeMessage = exercise.querySelector('.trace-complete');
+                let completedSteps = 0;
+
+                steps.forEach(step => {
+                    const revealBtn = step.querySelector('.reveal-step');
+                    const content = step.querySelector('.step-content');
+
+                    revealBtn.addEventListener('click', function() {
+                        content.classList.remove('hidden');
+                        revealBtn.textContent = 'Done';
+                        revealBtn.disabled = true;
+                        revealBtn.classList.add('btn-success');
+                        completedSteps++;
+
+                        if (completedSteps === steps.length) {
+                            completeMessage.classList.remove('hidden');
+                            const activityId = 'security-trace-' + exercise.id;
+                            Progress.completeActivity(activityId, 'security', 100);
+                        }
+                    });
+                });
+
+                const resetBtn = exercise.querySelector('.reset-trace');
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', function() {
+                        steps.forEach(step => {
+                            const revealBtn = step.querySelector('.reveal-step');
+                            const content = step.querySelector('.step-content');
+                            content.classList.add('hidden');
+                            revealBtn.textContent = 'Show Step';
+                            revealBtn.disabled = false;
+                            revealBtn.classList.remove('btn-success');
+                        });
+                        completeMessage.classList.add('hidden');
+                        completedSteps = 0;
+                    });
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .trace-exercise { margin-bottom: var(--space-xl); }
+        .scenario { background: var(--blue-50); padding: var(--space-md); border-radius: var(--radius-md); margin-bottom: var(--space-lg); border-left: 4px solid var(--primary); }
+        .trace-steps { display: flex; flex-direction: column; gap: var(--space-md); }
+        .trace-step { border: 1px solid var(--gray-200); border-radius: var(--radius-md); overflow: hidden; }
+        .step-header { display: flex; justify-content: space-between; align-items: center; padding: var(--space-md); background: var(--gray-50); }
+        .step-number { font-weight: bold; color: var(--primary); }
+        .step-content { padding: var(--space-md); border-top: 1px solid var(--gray-200); }
+        .step-content.hidden { display: none; }
+        .step-result { background: var(--green-50); padding: var(--space-sm); border-radius: var(--radius-sm); margin-top: var(--space-sm); color: var(--success); font-weight: 500; }
+        .trace-complete { margin-top: var(--space-lg); padding: var(--space-lg); background: linear-gradient(135deg, var(--green-50), var(--blue-50)); border-radius: var(--radius-md); text-align: center; }
+        .success-message { font-size: 1.1rem; color: var(--success); font-weight: 500; margin-bottom: var(--space-md); }
+        .activity-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--gray-200); }
+        .btn-sm { padding: var(--space-xs) var(--space-sm); font-size: 0.9rem; }
+        .btn-success { background: var(--success); color: white; }
+    </style>
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating Systems - GCSE Computer Science</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .function-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary);
+        }
+        .function-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .function-icon {
+            font-size: 1.5rem;
+        }
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-lg) 0;
+            font-size: 0.9rem;
+        }
+        .feature-table th, .feature-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border: 1px solid var(--gray-200);
+        }
+        .feature-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+        .feature-table tr:nth-child(even) {
+            background: var(--gray-50);
+        }
+        .key-point {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 1px solid #93c5fd;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        .key-point strong {
+            color: #1e40af;
+        }
+        .example-box {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        .example-box strong {
+            color: #166534;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        .comparison-item {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .comparison-item h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+        .os-diagram {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+            border: 2px solid var(--gray-200);
+        }
+        .layer-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .layer {
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-weight: 500;
+        }
+        .layer-user { background: #dbeafe; color: #1e40af; }
+        .layer-apps { background: #dcfce7; color: #166534; }
+        .layer-os { background: #fef3c7; color: #92400e; }
+        .layer-hardware { background: #fee2e2; color: #991b1b; }
+        .ui-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+        .ui-card {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-200);
+        }
+        .ui-card h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+        .process-list {
+            list-style: none;
+            padding: 0;
+        }
+        .process-list li {
+            padding: var(--space-sm) var(--space-md);
+            margin-bottom: var(--space-sm);
+            background: white;
+            border-left: 3px solid var(--primary);
+            border-radius: var(--radius-sm);
+        }
+        .nav-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-top: var(--space-xl);
+        }
+        .nav-buttons .btn {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <span class="topic-badge">Theory - Systems Software</span>
+            <h1>Operating Systems</h1>
+            <p class="subtitle">Understanding the software that manages your computer</p>
+        </header>
+
+        <section class="content-section">
+            <h2>What is an Operating System?</h2>
+            <p>An <strong>operating system (OS)</strong> is a collection of programs that manage the computer's hardware and provide services for application software. It acts as an intermediary between users, applications, and hardware.</p>
+
+            <div class="os-diagram">
+                <h4>The Layered Structure</h4>
+                <div class="layer-stack">
+                    <div class="layer layer-user">User</div>
+                    <div class="layer layer-apps">Application Software (Word, Chrome, Games)</div>
+                    <div class="layer layer-os">Operating System (Windows, macOS, Linux)</div>
+                    <div class="layer layer-hardware">Hardware (CPU, RAM, Storage, Peripherals)</div>
+                </div>
+                <p style="text-align: center; margin-top: var(--space-md); color: var(--gray-600);">
+                    Each layer only communicates with the layers directly above and below it
+                </p>
+            </div>
+
+            <div class="example-box">
+                <strong>Common Operating Systems:</strong>
+                <ul>
+                    <li><strong>Desktop/Laptop:</strong> Windows, macOS, Linux (Ubuntu, Fedora)</li>
+                    <li><strong>Mobile:</strong> Android, iOS</li>
+                    <li><strong>Servers:</strong> Windows Server, Linux (Red Hat, CentOS)</li>
+                    <li><strong>Embedded:</strong> Real-time OS in cars, appliances, IoT devices</li>
+                </ul>
+            </div>
+
+            <div class="key-point">
+                <strong>Key Concept:</strong> Without an operating system, you would need to write code to directly control every piece of hardware - the OS provides a layer of abstraction that makes this manageable.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>1. User Interface</h2>
+
+            <div class="function-card">
+                <h3><span class="function-icon">🖥️</span> What is a User Interface?</h3>
+                <p>The <strong>user interface (UI)</strong> is how users interact with the computer. The operating system provides the interface that allows users to give commands and receive feedback.</p>
+
+                <div class="ui-types">
+                    <div class="ui-card">
+                        <h4>Graphical User Interface (GUI)</h4>
+                        <p>Uses windows, icons, menus, and pointers (WIMP). Most common on desktops and phones.</p>
+                        <ul>
+                            <li>Windows and dialog boxes</li>
+                            <li>Icons representing files/programs</li>
+                            <li>Menus with options</li>
+                            <li>Mouse/touch pointer control</li>
+                        </ul>
+                        <p><em>Examples: Windows desktop, macOS Finder, Android home screen</em></p>
+                    </div>
+                    <div class="ui-card">
+                        <h4>Command Line Interface (CLI)</h4>
+                        <p>Text-based interface where users type commands. Preferred by advanced users and administrators.</p>
+                        <ul>
+                            <li>Text commands typed at a prompt</li>
+                            <li>Powerful for automation/scripting</li>
+                            <li>Lower resource usage</li>
+                            <li>Steeper learning curve</li>
+                        </ul>
+                        <p><em>Examples: Windows Command Prompt, PowerShell, Linux Terminal, macOS Terminal</em></p>
+                    </div>
+                </div>
+
+                <h4>Features of a User Interface</h4>
+                <table class="feature-table">
+                    <tr>
+                        <th>Feature</th>
+                        <th>GUI</th>
+                        <th>CLI</th>
+                    </tr>
+                    <tr>
+                        <td>Ease of learning</td>
+                        <td>Easy - visual and intuitive</td>
+                        <td>Difficult - must learn commands</td>
+                    </tr>
+                    <tr>
+                        <td>Speed of use (expert)</td>
+                        <td>Slower - many clicks needed</td>
+                        <td>Faster - direct commands</td>
+                    </tr>
+                    <tr>
+                        <td>Memory/processor usage</td>
+                        <td>Higher - graphics need resources</td>
+                        <td>Lower - text only</td>
+                    </tr>
+                    <tr>
+                        <td>Automation</td>
+                        <td>Limited</td>
+                        <td>Excellent - scripts can automate tasks</td>
+                    </tr>
+                    <tr>
+                        <td>Error prevention</td>
+                        <td>Better - visual feedback, confirmations</td>
+                        <td>Worse - easy to make typos</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Key Concept:</strong> The OS provides the user interface, but applications can create their own interfaces within windows provided by the OS.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>2. Memory Management and Multitasking</h2>
+
+            <div class="function-card">
+                <h3><span class="function-icon">🧠</span> What is Memory Management?</h3>
+                <p>Memory management is how the OS controls and coordinates computer memory (RAM). It allocates memory to programs, keeps track of what memory is in use, and reclaims memory when programs close.</p>
+
+                <h4>Key Memory Management Functions</h4>
+                <table class="feature-table">
+                    <tr>
+                        <th>Function</th>
+                        <th>What It Does</th>
+                        <th>Why It's Important</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Allocation</strong></td>
+                        <td>Assigns portions of RAM to applications when they start</td>
+                        <td>Applications need memory to store data and instructions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tracking</strong></td>
+                        <td>Keeps a record of which memory locations are in use and which are free</td>
+                        <td>Prevents programs from overwriting each other's data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Protection</strong></td>
+                        <td>Prevents one program from accessing another program's memory</td>
+                        <td>Security and stability - one crash doesn't affect others</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deallocation</strong></td>
+                        <td>Reclaims memory when programs close or no longer need it</td>
+                        <td>Frees up memory for other applications to use</td>
+                    </tr>
+                </table>
+
+                <h4>Transfer of Data Between Memory</h4>
+                <p>The OS manages the movement of data between different types of storage:</p>
+                <ul class="process-list">
+                    <li><strong>Secondary Storage → RAM:</strong> When you open a program, the OS loads it from the hard drive/SSD into RAM</li>
+                    <li><strong>RAM → CPU Cache:</strong> Frequently used data is copied closer to the CPU for faster access</li>
+                    <li><strong>RAM → Secondary Storage:</strong> When you save a file, data moves from RAM to permanent storage</li>
+                    <li><strong>Virtual Memory:</strong> When RAM is full, the OS can use part of the hard drive as temporary RAM</li>
+                </ul>
+
+                <h4>How Multitasking Works</h4>
+                <p><strong>Multitasking</strong> allows multiple programs to run "simultaneously" on a computer. The OS achieves this through:</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>Time Slicing</h4>
+                        <p>CPU switches between tasks very quickly, giving each a small "slice" of time. Appears simultaneous to users.</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Scheduling</h4>
+                        <p>OS decides which program runs next and for how long based on priority and requirements.</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Memory Partitioning</h4>
+                        <p>Each program gets its own section of RAM. OS prevents programs from interfering with each other.</p>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <strong>Example:</strong> You have Chrome, Word, and Spotify open. The OS:
+                    <ol>
+                        <li>Allocates memory to each application</li>
+                        <li>Rapidly switches CPU between them (e.g., 100 times per second)</li>
+                        <li>Prioritises the application you're actively using</li>
+                        <li>Keeps Spotify playing audio even while you type in Word</li>
+                    </ol>
+                </div>
+
+                <div class="key-point">
+                    <strong>Key Concept:</strong> Modern computers don't truly run programs simultaneously (unless they have multiple cores). The OS creates the illusion of multitasking by switching between programs extremely quickly.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>3. Peripheral Management and Drivers</h2>
+
+            <div class="function-card">
+                <h3><span class="function-icon">🖨️</span> What is Peripheral Management?</h3>
+                <p><strong>Peripherals</strong> are external devices connected to a computer (printers, keyboards, mice, monitors, USB drives, etc.). The OS manages communication between the CPU and these devices.</p>
+
+                <h4>The Challenge</h4>
+                <p>Each peripheral device is different - a printer works differently from a keyboard. The OS needs to:</p>
+                <ul>
+                    <li>Detect when devices are connected or disconnected</li>
+                    <li>Establish communication with each device</li>
+                    <li>Transfer data to and from devices</li>
+                    <li>Handle multiple devices wanting attention at once</li>
+                </ul>
+
+                <h4>Device Drivers</h4>
+                <p>A <strong>driver</strong> is a small program that translates between the operating system and a specific hardware device. It allows the OS to communicate with hardware without needing to know exactly how each device works internally.</p>
+
+                <table class="feature-table">
+                    <tr>
+                        <th>Component</th>
+                        <th>Role</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Application</strong></td>
+                        <td>Says "print this document"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operating System</strong></td>
+                        <td>Receives print request, passes to printer driver</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Printer Driver</strong></td>
+                        <td>Translates request into specific commands the printer understands</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Printer Hardware</strong></td>
+                        <td>Receives commands and prints the document</td>
+                    </tr>
+                </table>
+
+                <h4>Data Transfer Between Devices and Processor</h4>
+                <p>The OS manages how data flows between peripherals and the CPU:</p>
+                <ul class="process-list">
+                    <li><strong>Interrupts:</strong> Devices signal the CPU when they need attention (e.g., keyboard key pressed)</li>
+                    <li><strong>Buffers:</strong> Temporary storage areas that hold data during transfer (e.g., print queue)</li>
+                    <li><strong>I/O Scheduling:</strong> OS decides which device requests to handle first</li>
+                    <li><strong>Plug and Play:</strong> OS automatically detects new devices and loads appropriate drivers</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Example - Why Drivers Matter:</strong> When you buy a new graphics card:
+                    <ol>
+                        <li>You install the card (hardware)</li>
+                        <li>The OS detects new hardware</li>
+                        <li>You install the graphics driver (software)</li>
+                        <li>The driver enables the OS to use all the card's features</li>
+                        <li>Without the correct driver, the card may not work or work poorly</li>
+                    </ol>
+                </div>
+
+                <div class="key-point">
+                    <strong>Key Concept:</strong> Drivers act as translators. The OS speaks one language, each device speaks its own language, and drivers translate between them.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>4. User Management</h2>
+
+            <div class="function-card">
+                <h3><span class="function-icon">👤</span> What is User Management?</h3>
+                <p>User management controls who can access the computer, what they can do, and keeps each user's data separate and secure. This is essential for shared computers (schools, offices, families).</p>
+
+                <h4>User Management Functions</h4>
+                <table class="feature-table">
+                    <tr>
+                        <th>Function</th>
+                        <th>What It Does</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Account Allocation</strong></td>
+                        <td>Creates and manages user accounts</td>
+                        <td>Creating a new student account "jsmith" on the school network</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Authentication</strong></td>
+                        <td>Verifies user identity (login)</td>
+                        <td>Checking username and password match records</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Access Rights</strong></td>
+                        <td>Controls what each user can access and modify</td>
+                        <td>Students can read shared resources but not delete them</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resource Quotas</strong></td>
+                        <td>Limits how much storage/resources each user can use</td>
+                        <td>Each student gets 500MB of network storage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security Policies</strong></td>
+                        <td>Enforces password rules and security settings</td>
+                        <td>Passwords must be 8+ characters and changed every 90 days</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Audit Logging</strong></td>
+                        <td>Records user activities for security monitoring</td>
+                        <td>Logging when users log in/out and what files they access</td>
+                    </tr>
+                </table>
+
+                <h4>Types of User Accounts</h4>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>Administrator</h4>
+                        <p>Full control - install software, change settings, manage other users</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Standard User</h4>
+                        <p>Normal use - run programs, access own files, limited settings</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Guest</h4>
+                        <p>Minimal access - temporary use, no personal storage</p>
+                    </div>
+                </div>
+
+                <h4>Access Rights in Detail</h4>
+                <p>The OS controls permissions at multiple levels:</p>
+                <ul class="process-list">
+                    <li><strong>File Level:</strong> Who can read, write, or execute specific files</li>
+                    <li><strong>Folder Level:</strong> Who can view folder contents, create/delete files within</li>
+                    <li><strong>Application Level:</strong> Who can run certain programs</li>
+                    <li><strong>System Level:</strong> Who can change system settings, install software</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>Example - School Network:</strong>
+                    <ul>
+                        <li><strong>IT Admin:</strong> Can access all files, install software, create/delete accounts</li>
+                        <li><strong>Teachers:</strong> Can access teaching resources, own files, student submission folders</li>
+                        <li><strong>Students:</strong> Can access own files and read-only shared resources</li>
+                        <li>Each user only sees and can modify what they have permission for</li>
+                    </ul>
+                </div>
+
+                <div class="key-point">
+                    <strong>Key Concept:</strong> User management provides security (protecting data from unauthorised access), privacy (keeping each user's data separate), and accountability (knowing who did what).
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>5. File Management</h2>
+
+            <div class="function-card">
+                <h3><span class="function-icon">📁</span> What is File Management?</h3>
+                <p>The <strong>file management system</strong> organises how data is stored, retrieved, and organised on storage devices. It provides the folder structure and file operations users interact with daily.</p>
+
+                <h4>Key File Management Features</h4>
+                <table class="feature-table">
+                    <tr>
+                        <th>Feature</th>
+                        <th>What It Does</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Naming</strong></td>
+                        <td>Assigns names to files so they can be identified</td>
+                        <td>homework.docx, photo_001.jpg</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Extensions</strong></td>
+                        <td>File type indicators that tell OS which program to use</td>
+                        <td>.docx = Word, .pdf = PDF reader, .py = Python</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Folder Organisation</strong></td>
+                        <td>Hierarchical structure for grouping related files</td>
+                        <td>Documents → School → Year 10 → Computing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Moving/Copying</strong></td>
+                        <td>Relocating or duplicating files between locations</td>
+                        <td>Moving photos from Downloads to Pictures folder</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Saving</strong></td>
+                        <td>Writing data from RAM to permanent storage</td>
+                        <td>Pressing Ctrl+S to save your document</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Deleting</strong></td>
+                        <td>Removing files (often to Recycle Bin first)</td>
+                        <td>Deleting old files to free up space</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Searching</strong></td>
+                        <td>Finding files by name, content, or properties</td>
+                        <td>Searching for "homework" to find all matching files</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Properties/Metadata</strong></td>
+                        <td>Storing information about files (size, date, type)</td>
+                        <td>Date created: 15/01/2025, Size: 2.4 MB</td>
+                    </tr>
+                </table>
+
+                <h4>File Paths</h4>
+                <p>A <strong>file path</strong> is the complete location of a file in the folder hierarchy:</p>
+                <div class="example-box">
+                    <strong>Windows:</strong> C:\Users\JSmith\Documents\Computing\homework.docx<br>
+                    <strong>macOS/Linux:</strong> /home/jsmith/Documents/Computing/homework.docx
+                </div>
+
+                <h4>How File Management Works</h4>
+                <ul class="process-list">
+                    <li><strong>File System:</strong> The OS uses a file system (like NTFS on Windows or APFS on Mac) to organise data on the disk</li>
+                    <li><strong>File Allocation Table:</strong> The OS keeps a record of where each file is physically stored on the disk</li>
+                    <li><strong>Fragmentation:</strong> When files are deleted, gaps appear. The OS may spread new files across these gaps (fragmentation)</li>
+                    <li><strong>Permissions:</strong> File management integrates with user management to control who can access each file</li>
+                </ul>
+
+                <h4>File Operations</h4>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>Create</h4>
+                        <p>Make a new file and allocate storage space</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Open</h4>
+                        <p>Load file from storage into RAM</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Read</h4>
+                        <p>Access contents of a file</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Write</h4>
+                        <p>Modify or add to file contents</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Close</h4>
+                        <p>Finish using file, save changes</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Delete</h4>
+                        <p>Remove file and free storage</p>
+                    </div>
+                </div>
+
+                <div class="key-point">
+                    <strong>Key Concept:</strong> The file system provides an organised, logical view of storage. Without it, you would need to remember the exact physical location of every piece of data on the disk.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Summary: Operating System Functions</h2>
+
+            <table class="feature-table">
+                <tr>
+                    <th>Function</th>
+                    <th>Purpose</th>
+                    <th>Key Actions</th>
+                </tr>
+                <tr>
+                    <td><strong>User Interface</strong></td>
+                    <td>Allow users to interact with the computer</td>
+                    <td>GUI (windows, icons, menus) or CLI (commands)</td>
+                </tr>
+                <tr>
+                    <td><strong>Memory Management</strong></td>
+                    <td>Control RAM allocation and enable multitasking</td>
+                    <td>Allocate, track, protect, and deallocate memory</td>
+                </tr>
+                <tr>
+                    <td><strong>Peripheral Management</strong></td>
+                    <td>Handle communication with external devices</td>
+                    <td>Use drivers, manage interrupts, handle I/O</td>
+                </tr>
+                <tr>
+                    <td><strong>User Management</strong></td>
+                    <td>Control who can access the system and what they can do</td>
+                    <td>Accounts, authentication, access rights, security</td>
+                </tr>
+                <tr>
+                    <td><strong>File Management</strong></td>
+                    <td>Organise and control access to stored data</td>
+                    <td>Naming, folders, moving, saving, permissions</td>
+                </tr>
+            </table>
+
+            <div class="key-point">
+                <strong>Remember:</strong> The operating system acts as a bridge between users, applications, and hardware. It manages resources, provides security, and creates an environment where software can run and users can work productively.
+            </div>
+        </section>
+
+        <section class="activities-section">
+            <h2>Practice Activities</h2>
+            <p>Test your understanding of operating systems:</p>
+
+            <div class="nav-buttons">
+                <a href="predict.html" class="btn btn-primary">Predict - OS Scenarios</a>
+                <a href="example.html" class="btn btn-secondary">Worked Examples</a>
+                <a href="trace.html" class="btn btn-secondary">Step-by-Step Exercises</a>
+                <a href="parsons.html" class="btn btn-secondary">Order the Steps</a>
+                <a href="quiz.html" class="btn btn-success">Knowledge Quiz</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        Progress.startTopic('operating-systems');
+    </script>
+</body>
+</html>

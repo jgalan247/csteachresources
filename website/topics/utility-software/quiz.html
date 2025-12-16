@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Utility Software</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/theory-styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="index.html">Utility Software</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="activity-header quiz-header">
+            <div class="activity-icon">✅</div>
+            <div class="activity-title-section">
+                <h1>Knowledge Check: Utility Software</h1>
+                <p class="activity-subtitle">Test your understanding of utility software concepts</p>
+            </div>
+        </header>
+
+        <div class="quiz-container" id="quiz">
+            <!-- Questions will be inserted here -->
+        </div>
+
+        <div class="quiz-results" id="results" style="display: none;">
+            <h2>Quiz Complete!</h2>
+            <div class="score-display">
+                <div class="score-circle">
+                    <span class="score-number" id="score-number">0</span>
+                    <span class="score-total">/ 15</span>
+                </div>
+                <p class="score-percentage" id="score-percentage">0%</p>
+            </div>
+            <div class="results-feedback" id="results-feedback"></div>
+            <div class="results-actions">
+                <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
+                <a href="index.html" class="btn btn-secondary">Back to Topic</a>
+            </div>
+        </div>
+
+        <div class="activity-navigation" id="nav-buttons">
+            <a href="parsons.html" class="btn btn-secondary">← Parsons Problems</a>
+            <button class="btn btn-primary" onclick="submitQuiz()" id="submit-btn" disabled>Submit Quiz</button>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>GCSE Computer Science - Utility Software</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        const questions = [
+            {
+                id: 1,
+                question: "What is the main purpose of utility software?",
+                options: [
+                    "To create documents and spreadsheets",
+                    "To perform housekeeping tasks that maintain and optimise the computer",
+                    "To browse the internet",
+                    "To play multimedia files"
+                ],
+                correct: 1,
+                concept: "utility-software.purpose",
+                explanation: "Utility software performs housekeeping tasks like maintenance, optimisation, and security tasks that supplement the operating system's core functions."
+            },
+            {
+                id: 2,
+                question: "What does encryption software do to data?",
+                options: [
+                    "Compresses data to make it smaller",
+                    "Reorganises data on the hard drive",
+                    "Scrambles data into an unreadable format that requires a key to decrypt",
+                    "Deletes unnecessary files"
+                ],
+                correct: 2,
+                concept: "utility-software.encryption",
+                explanation: "Encryption software scrambles data into ciphertext that can only be converted back to readable plaintext using the correct decryption key."
+            },
+            {
+                id: 3,
+                question: "Why should you NOT defragment a Solid State Drive (SSD)?",
+                options: [
+                    "SSDs are too fast to benefit from defragmentation",
+                    "SSDs have no moving parts so fragmentation doesn't affect performance, and defragmentation causes unnecessary writes that reduce SSD lifespan",
+                    "SSDs automatically defragment themselves",
+                    "Defragmentation software doesn't work with SSDs"
+                ],
+                correct: 1,
+                concept: "utility-software.defragmentation.ssd",
+                explanation: "SSDs access any location equally fast (no moving parts), so fragmentation doesn't slow them down. Defragmentation causes many write operations that wear out the SSD's limited write cycles."
+            },
+            {
+                id: 4,
+                question: "Which type of compression would be most appropriate for a Word document?",
+                options: [
+                    "Lossy compression (like JPEG)",
+                    "Lossless compression (like ZIP)",
+                    "Either type would work equally well",
+                    "Documents cannot be compressed"
+                ],
+                correct: 1,
+                concept: "utility-software.compression.lossless",
+                explanation: "Lossless compression (ZIP) is appropriate for documents because every character must be preserved exactly. Lossy compression would corrupt the document by permanently removing data."
+            },
+            {
+                id: 5,
+                question: "What is the key difference between lossy and lossless compression?",
+                options: [
+                    "Lossy is faster than lossless",
+                    "Lossy permanently removes data while lossless preserves all original data",
+                    "Lossless works only on images",
+                    "Lossy works only on text files"
+                ],
+                correct: 1,
+                concept: "utility-software.compression.types",
+                explanation: "Lossy compression permanently discards some data to achieve higher compression ratios. Lossless compression encodes data more efficiently without losing any information."
+            },
+            {
+                id: 6,
+                question: "What causes a hard disk drive to become fragmented?",
+                options: [
+                    "The disk is too full",
+                    "Files being saved, deleted, and modified over time create gaps that new files fill in scattered locations",
+                    "The computer running too slowly",
+                    "Virus infection"
+                ],
+                correct: 1,
+                concept: "utility-software.defragmentation.cause",
+                explanation: "As files are deleted, gaps form. New files fill available space, often split across multiple locations. Over time, single files become scattered across the disk."
+            },
+            {
+                id: 7,
+                question: "Why is encryption important for data stored on USB drives?",
+                options: [
+                    "It makes files load faster",
+                    "It reduces the file size",
+                    "If the USB is lost or stolen, the encrypted data cannot be read without the key",
+                    "It prevents the USB from being formatted"
+                ],
+                correct: 2,
+                concept: "utility-software.encryption.purpose",
+                explanation: "USB drives are easily lost or stolen. Encryption ensures that even if someone finds the drive, they cannot access the confidential data without the decryption key."
+            },
+            {
+                id: 8,
+                question: "What happens during the defragmentation process?",
+                options: [
+                    "Files are deleted to create more space",
+                    "Files are encrypted for security",
+                    "File fragments are moved so each file is stored in contiguous (adjacent) blocks",
+                    "The hard drive is formatted"
+                ],
+                correct: 2,
+                concept: "utility-software.defragmentation.process",
+                explanation: "Defragmentation reorganises data so that file fragments are moved to contiguous locations, reducing the distance the read/write head needs to travel."
+            },
+            {
+                id: 9,
+                question: "Which file format uses lossy compression?",
+                options: [
+                    "ZIP",
+                    "PNG",
+                    "JPEG",
+                    "TXT"
+                ],
+                correct: 2,
+                concept: "utility-software.compression.formats",
+                explanation: "JPEG uses lossy compression, permanently removing image data that humans are less likely to notice. ZIP and PNG are lossless, and TXT is uncompressed plain text."
+            },
+            {
+                id: 10,
+                question: "What is the relationship between utility software and the operating system?",
+                options: [
+                    "Utility software is the same as the operating system",
+                    "Utility software replaces the operating system",
+                    "Utility software performs additional tasks that supplement the operating system's core functions",
+                    "The operating system runs inside utility software"
+                ],
+                correct: 2,
+                concept: "utility-software.purpose",
+                explanation: "Utility software provides additional housekeeping and maintenance functions that go beyond the OS's core responsibilities like memory management and process scheduling."
+            },
+            {
+                id: 11,
+                question: "Why might a company encrypt all laptops used by employees?",
+                options: [
+                    "To make the laptops run faster",
+                    "To comply with data protection laws and protect sensitive information if devices are lost or stolen",
+                    "To prevent employees from installing software",
+                    "To reduce storage space"
+                ],
+                correct: 1,
+                concept: "utility-software.encryption.purpose",
+                explanation: "Encrypting laptops protects confidential business data if devices are lost or stolen, and helps companies comply with data protection regulations like GDPR."
+            },
+            {
+                id: 12,
+                question: "What is 'ciphertext'?",
+                options: [
+                    "A type of compression format",
+                    "Data that has been encrypted and appears as unreadable scrambled characters",
+                    "A defragmentation term for scattered files",
+                    "A type of backup file"
+                ],
+                correct: 1,
+                concept: "utility-software.encryption.terminology",
+                explanation: "Ciphertext is the scrambled, unreadable output of the encryption process. It can only be converted back to readable 'plaintext' using the correct decryption key."
+            },
+            {
+                id: 13,
+                question: "Which is NOT a benefit of data compression?",
+                options: [
+                    "Saves storage space",
+                    "Faster file transfer over networks",
+                    "Improved computer security",
+                    "Allows files to fit within email size limits"
+                ],
+                correct: 2,
+                concept: "utility-software.compression.benefits",
+                explanation: "Compression reduces file size (saving space and transfer time) but does not improve security. Encryption is the utility software used for security purposes."
+            },
+            {
+                id: 14,
+                question: "When would lossy compression be acceptable?",
+                options: [
+                    "When compressing source code",
+                    "When compressing financial spreadsheets",
+                    "When compressing photographs for a website where small quality loss is acceptable",
+                    "When compressing legal documents"
+                ],
+                correct: 2,
+                concept: "utility-software.compression.lossy",
+                explanation: "Lossy compression is suitable for media files (images, audio, video) where small quality reductions are acceptable. It should never be used for documents, code, or data where accuracy is critical."
+            },
+            {
+                id: 15,
+                question: "How does defragmentation improve hard drive performance?",
+                options: [
+                    "By deleting unnecessary files",
+                    "By encrypting data for faster access",
+                    "By reducing the movement needed by the read/write head to access files stored in contiguous blocks",
+                    "By compressing files to make them smaller"
+                ],
+                correct: 2,
+                concept: "utility-software.defragmentation.benefits",
+                explanation: "When files are stored in contiguous blocks, the HDD's read/write head only needs to move to one location instead of multiple scattered locations, reducing seek time and improving speed."
+            }
+        ];
+
+        let answers = {};
+        let quizSubmitted = false;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz');
+            container.innerHTML = questions.map((q, index) => `
+                <div class="quiz-question" id="question-${q.id}">
+                    <div class="question-header">
+                        <span class="question-number">Question ${index + 1}</span>
+                    </div>
+                    <p class="question-text">${q.question}</p>
+                    <div class="options">
+                        ${q.options.map((opt, i) => `
+                            <label class="option" data-question="${q.id}" data-option="${i}">
+                                <input type="radio" name="q${q.id}" value="${i}"
+                                    onchange="selectAnswer(${q.id}, ${i})">
+                                <span class="option-text">${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div class="explanation" id="explanation-${q.id}" style="display: none;"></div>
+                </div>
+            `).join('');
+        }
+
+        function selectAnswer(questionId, optionIndex) {
+            answers[questionId] = optionIndex;
+
+            // Update visual selection
+            document.querySelectorAll(`[data-question="${questionId}"]`).forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            document.querySelector(`[data-question="${questionId}"][data-option="${optionIndex}"]`)
+                .classList.add('selected');
+
+            // Enable submit button when all questions answered
+            if (Object.keys(answers).length === questions.length) {
+                document.getElementById('submit-btn').disabled = false;
+            }
+        }
+
+        function submitQuiz() {
+            if (quizSubmitted) return;
+            quizSubmitted = true;
+
+            let score = 0;
+            const wrongAnswers = [];
+
+            questions.forEach(q => {
+                const userAnswer = answers[q.id];
+                const isCorrect = userAnswer === q.correct;
+                if (isCorrect) score++;
+
+                // Show correct/incorrect styling
+                const options = document.querySelectorAll(`[data-question="${q.id}"]`);
+                options.forEach((opt, i) => {
+                    opt.classList.remove('selected');
+                    if (i === q.correct) {
+                        opt.classList.add('correct');
+                    } else if (i === userAnswer && !isCorrect) {
+                        opt.classList.add('incorrect');
+                    }
+                    // Disable further selection
+                    opt.querySelector('input').disabled = true;
+                });
+
+                // Show explanation
+                const explanation = document.getElementById(`explanation-${q.id}`);
+                explanation.innerHTML = `
+                    <div class="${isCorrect ? 'correct-explanation' : 'incorrect-explanation'}">
+                        <strong>${isCorrect ? '✓ Correct!' : '✗ Incorrect'}</strong>
+                        <p>${q.explanation}</p>
+                    </div>
+                `;
+                explanation.style.display = 'block';
+
+                // Track wrong answers for potential flashcard generation
+                if (!isCorrect) {
+                    wrongAnswers.push({
+                        question: q.question,
+                        userAnswer: q.options[userAnswer],
+                        correctAnswer: q.options[q.correct],
+                        explanation: q.explanation,
+                        concept: q.concept || 'utility-software'
+                    });
+                }
+            });
+
+            // Store quiz results for analytics
+            const quizResult = {
+                topic: 'utility-software',
+                score: score,
+                total: questions.length,
+                percentage: Math.round((score / questions.length) * 100),
+                wrongAnswers: wrongAnswers,
+                timestamp: new Date().toISOString()
+            };
+
+            // Save to localStorage for potential future use
+            const quizHistory = JSON.parse(localStorage.getItem('quiz_history') || '[]');
+            quizHistory.push(quizResult);
+            localStorage.setItem('quiz_history', JSON.stringify(quizHistory));
+
+            // Show results
+            showResults(score, wrongAnswers);
+
+            // Update progress
+            Progress.completeActivity('utility-software', 'quiz', Math.round((score / questions.length) * 100));
+
+            // Hide submit button
+            document.getElementById('submit-btn').style.display = 'none';
+        }
+
+        function showResults(score, wrongAnswers) {
+            const percentage = Math.round((score / questions.length) * 100);
+            document.getElementById('score-number').textContent = score;
+            document.getElementById('score-percentage').textContent = `${percentage}%`;
+
+            let feedback = '';
+            if (percentage >= 90) {
+                feedback = '<p class="feedback-excellent">Excellent! You have a strong understanding of utility software.</p>';
+            } else if (percentage >= 70) {
+                feedback = '<p class="feedback-good">Good work! Review the explanations for any questions you missed.</p>';
+            } else if (percentage >= 50) {
+                feedback = '<p class="feedback-ok">Keep practicing! Review the topic material and try again.</p>';
+            } else {
+                feedback = '<p class="feedback-improve">Review the topic material carefully before trying again.</p>';
+            }
+
+            if (wrongAnswers.length > 0) {
+                feedback += '<h3>Areas to Review:</h3><ul class="review-list">';
+                wrongAnswers.forEach(wa => {
+                    feedback += `<li>${wa.question}</li>`;
+                });
+                feedback += '</ul>';
+            }
+
+            document.getElementById('results-feedback').innerHTML = feedback;
+            document.getElementById('results').style.display = 'block';
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function restartQuiz() {
+            answers = {};
+            quizSubmitted = false;
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('submit-btn').style.display = 'inline-block';
+            document.getElementById('submit-btn').disabled = true;
+            renderQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize
+        renderQuiz();
+        Progress.startActivity('utility-software', 'quiz');
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .quiz-header {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .activity-icon {
+            font-size: 3rem;
+        }
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+        .quiz-question {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+        .question-header {
+            margin-bottom: var(--space-md);
+        }
+        .question-number {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .question-text {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            margin-bottom: var(--space-lg);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option:hover {
+            border-color: var(--primary);
+            background: var(--gray-100);
+        }
+        .option.selected {
+            border-color: var(--primary);
+            background: #dbeafe;
+        }
+        .option.correct {
+            border-color: var(--success);
+            background: #d1fae5;
+        }
+        .option.incorrect {
+            border-color: var(--error);
+            background: #fee2e2;
+        }
+        .option input {
+            margin-right: var(--space-md);
+        }
+        .option-text {
+            flex: 1;
+        }
+        .explanation {
+            margin-top: var(--space-lg);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .correct-explanation {
+            background: #d1fae5;
+            border-left: 4px solid var(--success);
+            padding: var(--space-md);
+        }
+        .incorrect-explanation {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: var(--space-md);
+        }
+        .explanation strong {
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+        .quiz-results {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xxl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            margin-top: var(--space-xl);
+        }
+        .score-display {
+            margin: var(--space-xl) 0;
+        }
+        .score-circle {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 100%);
+            color: white;
+        }
+        .score-number {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .score-total {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .score-percentage {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: var(--space-md);
+        }
+        .results-feedback {
+            text-align: left;
+            margin: var(--space-xl) 0;
+        }
+        .feedback-excellent { color: var(--success); }
+        .feedback-good { color: var(--primary); }
+        .feedback-ok { color: var(--warning); }
+        .feedback-improve { color: var(--error); }
+        .review-list {
+            margin-top: var(--space-md);
+            padding-left: var(--space-xl);
+        }
+        .review-list li {
+            margin-bottom: var(--space-sm);
+            color: var(--gray-700);
+        }
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xxl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+        #submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</body>
+</html>

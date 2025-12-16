@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Security - Predict Activities</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Security</a>
+            <h1>Predict: Security Threats</h1>
+            <p class="subtitle">Identify attacks and predict security outcomes</p>
+        </header>
+
+        <div class="activity-intro card">
+            <h2>How to Use This Activity</h2>
+            <p>For each scenario, identify the type of attack or predict the security outcome before revealing the answer.</p>
+        </div>
+
+        <!-- Scenario 1 -->
+        <section class="predict-card card" id="scenario-1">
+            <h2>Scenario 1: Suspicious Email</h2>
+            <div class="scenario-description">
+                <p>Emma receives an email that appears to be from her bank:</p>
+                <div class="email-preview">
+                    <p><strong>From:</strong> security@barclays-alerts.net</p>
+                    <p><strong>Subject:</strong> Urgent: Suspicious Activity Detected</p>
+                    <p>"We have detected unusual activity on your account. Please click the link below to verify your identity within 24 hours, or your account will be suspended."</p>
+                </div>
+                <p><strong>Question:</strong> What type of attack is this, and what warning signs indicate it's not genuine?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Phishing (Social Engineering)</h3>
+                    <p><strong>Warning signs:</strong></p>
+                    <ul>
+                        <li><strong>Fake domain:</strong> "barclays-alerts.net" is not the real Barclays domain (barclays.co.uk)</li>
+                        <li><strong>Urgency and threats:</strong> Creates panic with "24 hours" deadline and "suspended" threat</li>
+                        <li><strong>Generic greeting:</strong> Doesn't use Emma's name</li>
+                        <li><strong>Requesting action:</strong> Asks user to click a link (likely to a fake login page)</li>
+                    </ul>
+                    <p><strong>What Emma should do:</strong> Don't click the link. Go directly to barclays.co.uk and log in there to check her account.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 2 -->
+        <section class="predict-card card" id="scenario-2">
+            <h2>Scenario 2: Website Goes Offline</h2>
+            <div class="scenario-description">
+                <p>A popular online shop suddenly becomes very slow and then completely unavailable. The company's IT team discovers that millions of connection requests are coming from thousands of different IP addresses around the world, all at the same time.</p>
+                <p><strong>Question:</strong> What type of attack is this? How does it work?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: DDoS (Distributed Denial of Service)</h3>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Attackers control a botnet (network of infected computers)</li>
+                        <li>All infected computers send requests simultaneously</li>
+                        <li>The website's servers become overwhelmed</li>
+                        <li>Legitimate customers cannot access the site</li>
+                    </ul>
+                    <p><strong>Purpose:</strong> The attackers may be trying to extort money, damage the company's reputation, or cause financial losses during a busy sales period.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 3 -->
+        <section class="predict-card card" id="scenario-3">
+            <h2>Scenario 3: Free USB Drive</h2>
+            <div class="scenario-description">
+                <p>Tom finds a USB drive in the school car park with a label saying "Confidential - Exam Answers". Out of curiosity, he plugs it into his computer to see what's on it.</p>
+                <p><strong>Question:</strong> What type of attack could this be? What might happen when Tom plugs in the USB?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Baiting (Social Engineering) + Malware Delivery</h3>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Attacker leaves USB drives in places where targets will find them</li>
+                        <li>Tempting labels exploit curiosity ("Exam Answers", "Payroll", "Private Photos")</li>
+                        <li>When plugged in, malware automatically installs on the computer</li>
+                    </ul>
+                    <p><strong>What could happen:</strong></p>
+                    <ul>
+                        <li>Trojan could give attackers remote access</li>
+                        <li>Ransomware could encrypt Tom's files</li>
+                        <li>Spyware could steal passwords and personal data</li>
+                        <li>Worm could spread through the school network</li>
+                    </ul>
+                    <p><strong>What Tom should do:</strong> Never plug in unknown USB drives. Give it to IT staff to investigate safely.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 4 -->
+        <section class="predict-card card" id="scenario-4">
+            <h2>Scenario 4: Locked Files</h2>
+            <div class="scenario-description">
+                <p>A hospital's IT systems suddenly display a message: "Your files have been encrypted. Pay 5 Bitcoin to this address within 48 hours to receive the decryption key. If you don't pay, your files will be permanently deleted."</p>
+                <p><strong>Question:</strong> What type of malware is this? Why are hospitals often targeted?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Ransomware</h3>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Malware encrypts all files on the system</li>
+                        <li>Victims cannot access their own data</li>
+                        <li>Attackers demand cryptocurrency payment (hard to trace)</li>
+                        <li>May or may not provide decryption key after payment</li>
+                    </ul>
+                    <p><strong>Why hospitals are targeted:</strong></p>
+                    <ul>
+                        <li>Patient lives depend on access to medical records</li>
+                        <li>Urgency means they may pay quickly</li>
+                        <li>Often have older, vulnerable systems</li>
+                        <li>Large organisations with resources to pay</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 5 -->
+        <section class="predict-card card" id="scenario-5">
+            <h2>Scenario 5: Password Attempts</h2>
+            <div class="scenario-description">
+                <p>A website's security logs show 50,000 login attempts for a single user account in the last hour. The attempts are using combinations like: password1, password2, password123, Password!, p@ssword...</p>
+                <p><strong>Question:</strong> What type of attack is this? What type of brute-force technique is being used?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Brute-Force Attack (Dictionary/Hybrid)</h3>
+                    <p><strong>Type of technique:</strong></p>
+                    <ul>
+                        <li><strong>Dictionary attack:</strong> Using common passwords ("password")</li>
+                        <li><strong>Hybrid attack:</strong> Combining dictionary words with numbers and symbols</li>
+                    </ul>
+                    <p><strong>Why this works:</strong> Many people use simple, predictable passwords. The attack tries common variations automatically.</p>
+                    <p><strong>Protection measures:</strong></p>
+                    <ul>
+                        <li>Account lockout after failed attempts</li>
+                        <li>CAPTCHA to prevent automated attempts</li>
+                        <li>Two-factor authentication</li>
+                        <li>Using strong, unique passwords</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 6 -->
+        <section class="predict-card card" id="scenario-6">
+            <h2>Scenario 6: Coffee Shop WiFi</h2>
+            <div class="scenario-description">
+                <p>Sarah is at a coffee shop and connects to "Free_CoffeeShop_WiFi" (no password required). She logs into her online banking to check her balance.</p>
+                <p><strong>Question:</strong> What security risks has Sarah exposed herself to? What attack could occur?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Data Interception / Man-in-the-Middle Risk</h3>
+                    <p><strong>Risks:</strong></p>
+                    <ul>
+                        <li><strong>Fake hotspot:</strong> The WiFi might not be the coffee shop's - it could be an attacker's</li>
+                        <li><strong>Unencrypted traffic:</strong> Data on public WiFi can potentially be intercepted</li>
+                        <li><strong>Man-in-the-middle:</strong> Attacker could be positioned between Sarah and her bank</li>
+                    </ul>
+                    <p><strong>Potential consequences:</strong></p>
+                    <ul>
+                        <li>Banking credentials could be captured</li>
+                        <li>Session could be hijacked</li>
+                        <li>Financial data could be stolen</li>
+                    </ul>
+                    <p><strong>What Sarah should do:</strong> Use mobile data for banking, or ensure she's using HTTPS (padlock icon) and consider a VPN.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 7 -->
+        <section class="predict-card card" id="scenario-7">
+            <h2>Scenario 7: Helpful IT Support</h2>
+            <div class="scenario-description">
+                <p>A teacher receives a phone call from someone claiming to be from the school's IT department: "We're updating the email system this weekend. I need to verify your login details to ensure your account migrates correctly. Can you confirm your username and password?"</p>
+                <p><strong>Question:</strong> What type of attack is this? What should the teacher do?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Social Engineering (Pretexting)</h3>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Attacker creates a believable scenario (the "pretext")</li>
+                        <li>Impersonates authority figure (IT department)</li>
+                        <li>Creates urgency ("this weekend")</li>
+                        <li>Requests sensitive information (login credentials)</li>
+                    </ul>
+                    <p><strong>Red flags:</strong></p>
+                    <ul>
+                        <li>Legitimate IT never asks for passwords over the phone</li>
+                        <li>Email migrations don't require sharing passwords</li>
+                        <li>The caller initiated contact (not the teacher)</li>
+                    </ul>
+                    <p><strong>What the teacher should do:</strong> Hang up and call the IT department directly using the official number to verify the request.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 8 -->
+        <section class="predict-card card" id="scenario-8">
+            <h2>Scenario 8: Slow Computer</h2>
+            <div class="scenario-description">
+                <p>After downloading a "free video converter" from an unknown website, James notices his computer has become very slow. Pop-up adverts appear constantly, even when he's not using a browser. His web searches are redirected to strange websites.</p>
+                <p><strong>Question:</strong> What types of malware might be on James's computer?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Multiple Types of Malware</h3>
+                    <p><strong>Likely infections:</strong></p>
+                    <ul>
+                        <li><strong>Trojan:</strong> The "free video converter" was disguised malware</li>
+                        <li><strong>Adware:</strong> Causing the pop-up advertisements</li>
+                        <li><strong>Browser hijacker:</strong> Redirecting searches to malicious sites</li>
+                        <li><strong>Possibly spyware:</strong> May be monitoring James's activity in the background</li>
+                    </ul>
+                    <p><strong>Why the computer is slow:</strong> Multiple malware programs running in the background consuming resources.</p>
+                    <p><strong>What James should do:</strong></p>
+                    <ul>
+                        <li>Run a reputable antivirus/anti-malware scan</li>
+                        <li>Uninstall the suspicious software</li>
+                        <li>Only download software from official sources in future</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 9 -->
+        <section class="predict-card card" id="scenario-9">
+            <h2>Scenario 9: Website Vulnerability</h2>
+            <div class="scenario-description">
+                <p>A web developer notices that when users search on their website, the search term is directly inserted into a database query like this:</p>
+                <code>SELECT * FROM products WHERE name = '[user input]'</code>
+                <p>No input validation is performed on what users type.</p>
+                <p><strong>Question:</strong> What type of attack is this website vulnerable to? What could an attacker do?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: SQL Injection Vulnerability</h3>
+                    <p><strong>The vulnerability:</strong> User input is directly inserted into SQL queries without validation or sanitisation.</p>
+                    <p><strong>What an attacker could do:</strong></p>
+                    <ul>
+                        <li><strong>Extract data:</strong> Get customer details, passwords, credit card numbers</li>
+                        <li><strong>Modify data:</strong> Change prices, modify user accounts</li>
+                        <li><strong>Delete data:</strong> Drop tables, destroy records</li>
+                        <li><strong>Bypass login:</strong> Access admin accounts without passwords</li>
+                    </ul>
+                    <p><strong>Example attack:</strong> An attacker could enter: <code>' OR '1'='1' --</code> to bypass authentication or extract all data.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 10 -->
+        <section class="predict-card card" id="scenario-10">
+            <h2>Scenario 10: Email Spreading</h2>
+            <div class="scenario-description">
+                <p>Several employees at a company receive emails from a colleague's account containing a link to "important documents." After clicking the link, their computers start sending the same email to everyone in their address books, without the users doing anything.</p>
+                <p><strong>Question:</strong> What type of malware is spreading through the organisation? How does it propagate?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Email Worm</h3>
+                    <p><strong>How it spreads:</strong></p>
+                    <ul>
+                        <li>User clicks malicious link or opens attachment</li>
+                        <li>Worm installs itself on the computer</li>
+                        <li>Worm accesses the user's email contacts</li>
+                        <li>Sends copies of itself to all contacts</li>
+                        <li>Recipients trust emails from known contacts, so they click too</li>
+                        <li>Cycle repeats, spreading exponentially</li>
+                    </ul>
+                    <p><strong>Why worms are dangerous:</strong></p>
+                    <ul>
+                        <li>Self-replicating - spreads without user action after initial infection</li>
+                        <li>Can overwhelm networks with traffic</li>
+                        <li>Exploits trust between colleagues</li>
+                        <li>Often carries additional malware payloads</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 11 -->
+        <section class="predict-card card" id="scenario-11">
+            <h2>Scenario 11: Competitor Advantage</h2>
+            <div class="scenario-description">
+                <p>A company notices that every time they're about to launch a new product, their competitor announces a very similar product first. An IT audit reveals that keylogging software has been installed on the computers of several executives.</p>
+                <p><strong>Question:</strong> What type of malware was used? What was the attacker's purpose?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Spyware (Keylogger)</h3>
+                    <p><strong>How keyloggers work:</strong></p>
+                    <ul>
+                        <li>Records every keystroke made on the computer</li>
+                        <li>Captures passwords, emails, documents as they're typed</li>
+                        <li>Sends recorded data back to the attacker</li>
+                        <li>Runs invisibly in the background</li>
+                    </ul>
+                    <p><strong>Purpose in this case:</strong> Corporate espionage - stealing trade secrets and competitive intelligence</p>
+                    <p><strong>What the attacker gained:</strong></p>
+                    <ul>
+                        <li>Product development plans</li>
+                        <li>Launch dates and strategies</li>
+                        <li>Possibly login credentials for company systems</li>
+                        <li>Internal communications and decisions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario 12 -->
+        <section class="predict-card card" id="scenario-12">
+            <h2>Scenario 12: The Tailgater</h2>
+            <div class="scenario-description">
+                <p>At a secure office building, an employee holds the door open for someone carrying coffee cups who says "Thanks, I forgot my pass." The person then goes to an empty desk, plugs a small device into a computer, and leaves after a few minutes.</p>
+                <p><strong>Question:</strong> What social engineering technique was used to gain entry? What might the attacker have done?</p>
+            </div>
+
+            <div class="prediction-section">
+                <button class="btn btn-primary reveal-btn">Reveal Answer</button>
+                <div class="answer hidden">
+                    <h3>Answer: Tailgating + Physical Access Attack</h3>
+                    <p><strong>Tailgating explained:</strong></p>
+                    <ul>
+                        <li>Following an authorised person through a secure entrance</li>
+                        <li>Exploits politeness - people hold doors for others</li>
+                        <li>Coffee cups suggest the person belongs and is just busy</li>
+                        <li>Bypasses electronic access controls entirely</li>
+                    </ul>
+                    <p><strong>What the device might do:</strong></p>
+                    <ul>
+                        <li>Install malware or a backdoor</li>
+                        <li>Capture network traffic</li>
+                        <li>Steal login credentials</li>
+                        <li>Provide remote access to the network</li>
+                    </ul>
+                    <p><strong>Prevention:</strong> Always verify unknown people, don't hold doors for strangers, report suspicious behaviour.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="activity-nav">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="example.html" class="btn btn-primary">Next: Worked Examples →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealBtns = document.querySelectorAll('.reveal-btn');
+
+            revealBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const answer = this.parentElement.querySelector('.answer');
+                    answer.classList.toggle('hidden');
+
+                    if (answer.classList.contains('hidden')) {
+                        this.textContent = 'Reveal Answer';
+                    } else {
+                        this.textContent = 'Hide Answer';
+
+                        const card = this.closest('.predict-card');
+                        const activityId = 'security-predict-' + card.id;
+                        Progress.completeActivity(activityId, 'security', 100);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .predict-card {
+            margin-bottom: var(--space-xl);
+        }
+        .scenario-description {
+            background: var(--blue-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--primary);
+        }
+        .email-preview {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-300);
+            margin: var(--space-md) 0;
+            font-size: 0.95rem;
+        }
+        .scenario-description code {
+            background: var(--gray-100);
+            padding: 0.2em 0.5em;
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            display: block;
+            margin: var(--space-sm) 0;
+        }
+        .prediction-section {
+            text-align: center;
+        }
+        .answer {
+            text-align: left;
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: var(--green-50);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--success);
+        }
+        .answer h3 {
+            color: var(--success);
+            margin-top: 0;
+        }
+        .answer.hidden {
+            display: none;
+        }
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

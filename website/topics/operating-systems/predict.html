@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict - Operating Systems</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .scenario-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        .scenario-number {
+            background: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .category-badge {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+        .scenario-context {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--primary);
+        }
+        .scenario-question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: var(--space-lg);
+            color: var(--gray-800);
+        }
+        .options-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: var(--space-md);
+            text-align: left;
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: white;
+        }
+        .option-btn.selected {
+            border-color: var(--primary);
+            background: #e7f3ff;
+        }
+        .option-btn.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+        .option-btn.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+        .option-btn.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .feedback-panel {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .feedback-panel.show {
+            display: block;
+        }
+        .feedback-panel.correct {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback-panel.incorrect {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        .feedback-title {
+            font-weight: bold;
+            margin-bottom: var(--space-sm);
+        }
+        .progress-bar-container {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Operating Systems</a>
+            <h1>Predict - OS Scenarios</h1>
+            <p class="subtitle">Which OS function is responsible for each scenario?</p>
+        </header>
+
+        <div class="progress-bar-container">
+            <div class="progress-stats">
+                <span id="progress-text">0 of 12 completed</span>
+                <span id="score-text">Score: 0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div id="scenarios-container">
+            <!-- Scenarios populated by JavaScript -->
+        </div>
+    </main>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const scenarios = [
+            {
+                id: 1,
+                category: 'User Interface',
+                context: 'Sarah clicks on a folder icon on her desktop. A window opens showing the contents of that folder. She double-clicks on a Word document, and Microsoft Word launches.',
+                question: 'Which OS function provides this interaction method?',
+                options: [
+                    'Memory Management',
+                    'User Interface (GUI)',
+                    'File Management',
+                    'Peripheral Management'
+                ],
+                correct: 1,
+                explanation: 'The graphical user interface (GUI) allows Sarah to interact through clicking icons and windows. While File Management organises the files themselves, it\'s the GUI that provides the visual, clickable interface.'
+            },
+            {
+                id: 2,
+                category: 'User Interface',
+                context: 'A network administrator types "dir /s *.log" in Command Prompt to find all log files on a server. The results appear as text on screen.',
+                question: 'What type of user interface is being used?',
+                options: [
+                    'Graphical User Interface (GUI)',
+                    'Command Line Interface (CLI)',
+                    'Touch Interface',
+                    'Voice Interface'
+                ],
+                correct: 1,
+                explanation: 'The Command Line Interface (CLI) is a text-based interface where users type commands. It\'s powerful for automation and preferred by system administrators for tasks like searching files.'
+            },
+            {
+                id: 3,
+                category: 'Memory Management',
+                context: 'James has Chrome with 15 tabs open, Spotify playing music, and is editing a video. His computer shows "95% memory in use" in Task Manager. The video editor is running slowly.',
+                question: 'Which OS function is struggling to cope with this situation?',
+                options: [
+                    'User Management',
+                    'Memory Management',
+                    'File Management',
+                    'Peripheral Management'
+                ],
+                correct: 1,
+                explanation: 'Memory Management allocates RAM to applications. With many programs running, the OS must allocate memory to each. When RAM is nearly full, the OS may use slower virtual memory, causing applications to run slowly.'
+            },
+            {
+                id: 4,
+                category: 'Memory Management',
+                context: 'Lisa is listening to music while writing an essay. She switches between Word, Chrome for research, and Spotify - all three appear to run at the same time on her single-core processor.',
+                question: 'How does the OS achieve this "simultaneous" running?',
+                options: [
+                    'By duplicating the CPU',
+                    'By rapidly switching between tasks (time slicing)',
+                    'By running each program on a different hard drive',
+                    'By using the internet to process tasks'
+                ],
+                correct: 1,
+                explanation: 'The OS uses time slicing - rapidly switching the CPU between tasks (many times per second). This creates the illusion of multitasking even on a single-core processor. Each program gets small "slices" of CPU time.'
+            },
+            {
+                id: 5,
+                category: 'Memory Management',
+                context: 'When Tom opens Photoshop, the OS loads the program from his SSD into RAM. While editing, his work is temporarily stored in RAM. When he saves, the file is written back to the SSD.',
+                question: 'What memory management process is being described?',
+                options: [
+                    'User authentication',
+                    'Transfer of data between memory (storage ↔ RAM)',
+                    'Device driver installation',
+                    'File naming conventions'
+                ],
+                correct: 1,
+                explanation: 'This describes the transfer of data between different storage levels. Programs load from secondary storage (SSD) to RAM for execution. Changes are saved back to secondary storage for permanent storage.'
+            },
+            {
+                id: 6,
+                category: 'Peripheral Management',
+                context: 'Emma plugs a new USB printer into her computer. Windows displays "Installing device driver software" and then says "Your device is ready to use."',
+                question: 'Which OS function is handling this situation?',
+                options: [
+                    'User Management',
+                    'Memory Management',
+                    'Peripheral Management (using drivers)',
+                    'File Management'
+                ],
+                correct: 2,
+                explanation: 'Peripheral Management handles communication with external devices. The OS uses a driver to translate between itself and the printer hardware. Plug and Play automatically detects and configures new devices.'
+            },
+            {
+                id: 7,
+                category: 'Peripheral Management',
+                context: 'After updating Windows, Ben\'s graphics card stops working properly - games won\'t run and the display looks wrong. He downloads and installs a new driver from the manufacturer\'s website, which fixes the problem.',
+                question: 'Why did the graphics card stop working after the update?',
+                options: [
+                    'The RAM was corrupted',
+                    'The graphics card driver became incompatible',
+                    'The user password expired',
+                    'The file system was damaged'
+                ],
+                correct: 1,
+                explanation: 'Drivers act as translators between the OS and hardware. When the OS updated, the old driver may have become incompatible. Installing a new driver restored proper communication between the OS and graphics card.'
+            },
+            {
+                id: 8,
+                category: 'User Management',
+                context: 'At school, students log in with their own username and password. Each student sees their own files in their Documents folder and cannot see other students\' work. They cannot install software.',
+                question: 'Which OS function provides this separation and control?',
+                options: [
+                    'File Management',
+                    'Memory Management',
+                    'User Management',
+                    'Peripheral Management'
+                ],
+                correct: 2,
+                explanation: 'User Management creates separate accounts, authenticates users (login), sets access rights (can\'t install software), and keeps data separate. Each user has their own permissions and private storage space.'
+            },
+            {
+                id: 9,
+                category: 'User Management',
+                context: 'An IT administrator creates a new account for a teacher. She sets the account type to "Staff" which allows access to teaching resources and the ability to add grades, but not to change system settings.',
+                question: 'What user management feature is being configured?',
+                options: [
+                    'File compression',
+                    'Access rights and permissions',
+                    'Device driver installation',
+                    'Memory allocation'
+                ],
+                correct: 1,
+                explanation: 'Access rights control what each user can do on the system. Different user types (Admin, Staff, Student) have different permissions. This follows the principle of least privilege - users get only the access they need.'
+            },
+            {
+                id: 10,
+                category: 'File Management',
+                context: 'Alex creates a new folder called "GCSE Work", then creates subfolders for each subject. He moves existing files from Downloads into the appropriate subject folders and renames some files to be more descriptive.',
+                question: 'Which OS function is Alex using?',
+                options: [
+                    'Memory Management',
+                    'User Management',
+                    'File Management',
+                    'Peripheral Management'
+                ],
+                correct: 2,
+                explanation: 'File Management provides the folder structure, allows creating/naming/moving files and folders, and organises data on storage devices. Alex is using key file management features: creating folders, moving, and renaming.'
+            },
+            {
+                id: 11,
+                category: 'File Management',
+                context: 'Sophie double-clicks "report.docx" and Word opens with her document. She knows .docx files always open in Word, while .pdf files open in Adobe Reader.',
+                question: 'Which file management feature associates file types with applications?',
+                options: [
+                    'File permissions',
+                    'File extensions and file type associations',
+                    'Memory allocation',
+                    'User authentication'
+                ],
+                correct: 1,
+                explanation: 'File extensions (.docx, .pdf, .py) indicate file types. The OS maintains associations between extensions and applications, so it knows which program to use when opening each file type.'
+            },
+            {
+                id: 12,
+                category: 'Multiple Functions',
+                context: 'When you turn on your computer: the OS loads, you see the login screen, enter your password, the desktop appears with icons, and you can click to open applications that load into memory.',
+                question: 'Which statement best describes what\'s happening?',
+                options: [
+                    'Only Memory Management is involved',
+                    'Only User Interface is involved',
+                    'Multiple OS functions work together (UI, User Management, Memory, File Management)',
+                    'Only File Management is involved'
+                ],
+                correct: 2,
+                explanation: 'Starting a computer involves multiple OS functions: the User Interface shows the login screen, User Management authenticates you, File Management loads the OS files, Memory Management allocates RAM, and the GUI displays your desktop.'
+            }
+        ];
+
+        let answers = {};
+        let correctCount = 0;
+
+        function initScenarios() {
+            const container = document.getElementById('scenarios-container');
+            container.innerHTML = scenarios.map(scenario => createScenarioCard(scenario)).join('');
+            updateProgress();
+        }
+
+        function createScenarioCard(scenario) {
+            return `
+                <div class="scenario-card" id="scenario-${scenario.id}">
+                    <div class="scenario-header">
+                        <div class="scenario-number">${scenario.id}</div>
+                        <span class="category-badge">${scenario.category}</span>
+                    </div>
+                    <div class="scenario-context">
+                        <strong>Scenario:</strong> ${scenario.context}
+                    </div>
+                    <p class="scenario-question">${scenario.question}</p>
+                    <div class="options-grid">
+                        ${scenario.options.map((option, index) => `
+                            <button class="option-btn" onclick="selectOption(${scenario.id}, ${index})">
+                                ${String.fromCharCode(65 + index)}. ${option}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div class="feedback-panel" id="feedback-${scenario.id}">
+                        <div class="feedback-title" id="feedback-title-${scenario.id}"></div>
+                        <div class="feedback-text" id="feedback-text-${scenario.id}"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectOption(scenarioId, optionIndex) {
+            if (answers[scenarioId] !== undefined) return;
+
+            const scenario = scenarios.find(s => s.id === scenarioId);
+            const card = document.getElementById(`scenario-${scenarioId}`);
+            const buttons = card.querySelectorAll('.option-btn');
+            const feedback = document.getElementById(`feedback-${scenarioId}`);
+            const feedbackTitle = document.getElementById(`feedback-title-${scenarioId}`);
+            const feedbackText = document.getElementById(`feedback-text-${scenarioId}`);
+
+            answers[scenarioId] = optionIndex;
+            const isCorrect = optionIndex === scenario.correct;
+
+            buttons.forEach((btn, index) => {
+                btn.classList.add('disabled');
+                if (index === scenario.correct) {
+                    btn.classList.add('correct');
+                } else if (index === optionIndex && !isCorrect) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+            feedbackTitle.textContent = isCorrect ? '✓ Correct!' : '✗ Not quite right';
+            feedbackText.textContent = scenario.explanation;
+
+            if (isCorrect) correctCount++;
+            updateProgress();
+
+            Progress.saveActivity(`operating-systems-predict-${scenarioId}`, 'completed', isCorrect ? 100 : 0);
+        }
+
+        function updateProgress() {
+            const answered = Object.keys(answers).length;
+            const total = scenarios.length;
+            const percentage = total > 0 ? Math.round((answered / total) * 100) : 0;
+            const score = answered > 0 ? Math.round((correctCount / answered) * 100) : 0;
+
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+            document.getElementById('progress-text').textContent = `${answered} of ${total} completed`;
+            document.getElementById('score-text').textContent = `Score: ${score}%`;
+        }
+
+        // Initialize
+        initScenarios();
+        Progress.startActivity('operating-systems-predict', 'predict');
+    </script>
+</body>
+</html>

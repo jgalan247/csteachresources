@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networks & Topologies - Computer Science</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="../index.html" class="back-link">← Back to Topics</a>
+            <h1>Networks & Topologies</h1>
+            <p class="subtitle">How computers connect and communicate</p>
+        </div>
+
+        <div class="learning-objectives">
+            <h2>What You'll Learn</h2>
+            <ul>
+                <li>Types of networks: LAN and WAN</li>
+                <li>Factors that affect network performance</li>
+                <li>Client-server vs peer-to-peer networks</li>
+                <li>Network hardware: routers, switches, NICs, and more</li>
+                <li>The Internet, DNS, and the Cloud</li>
+                <li>Star and Mesh network topologies</li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Types of Networks -->
+        <section class="content-section" id="network-types">
+            <h2>1. Types of Networks</h2>
+
+            <div class="concept-card">
+                <h3>What is a Network?</h3>
+                <p>A <strong>computer network</strong> is two or more computers connected together to share resources (files, printers, internet) and communicate with each other.</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-item lan">
+                    <h3>LAN - Local Area Network</h3>
+                    <div class="network-icon">🏠</div>
+                    <p><strong>Definition:</strong> A network covering a small geographical area, typically a single building or site.</p>
+
+                    <h4>Characteristics:</h4>
+                    <ul>
+                        <li>Covers a small area (room, building, campus)</li>
+                        <li>Usually owned and managed by one organisation</li>
+                        <li>High-speed connections (typically 100 Mbps - 10 Gbps)</li>
+                        <li>Lower cost to set up and maintain</li>
+                        <li>Uses private infrastructure</li>
+                    </ul>
+
+                    <h4>Common Examples:</h4>
+                    <ul>
+                        <li>School computer network</li>
+                        <li>Home WiFi network</li>
+                        <li>Office network in one building</li>
+                        <li>Internet cafe</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-item wan">
+                    <h3>WAN - Wide Area Network</h3>
+                    <div class="network-icon">🌍</div>
+                    <p><strong>Definition:</strong> A network covering a large geographical area, connecting multiple LANs across cities, countries, or continents.</p>
+
+                    <h4>Characteristics:</h4>
+                    <ul>
+                        <li>Covers a large area (cities, countries, worldwide)</li>
+                        <li>Often uses third-party telecommunications</li>
+                        <li>Generally slower than LAN (depends on connection)</li>
+                        <li>Higher cost due to infrastructure</li>
+                        <li>Uses public or leased infrastructure</li>
+                    </ul>
+
+                    <h4>Common Examples:</h4>
+                    <ul>
+                        <li>The Internet (largest WAN)</li>
+                        <li>Bank networks connecting branches</li>
+                        <li>Company network linking offices worldwide</li>
+                        <li>Government networks</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-difference">
+                <h4>Key Difference</h4>
+                <p><strong>LAN</strong> = Small area, owned by you, fast, cheap<br>
+                <strong>WAN</strong> = Large area, uses external providers, can be slower, more expensive</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Network Performance -->
+        <section class="content-section" id="performance">
+            <h2>2. Factors Affecting Network Performance</h2>
+
+            <p>Several factors determine how fast and reliably a network operates:</p>
+
+            <div class="factors-grid">
+                <div class="factor-card">
+                    <div class="factor-icon">📊</div>
+                    <h3>Bandwidth</h3>
+                    <p><strong>What it is:</strong> The maximum amount of data that can be transmitted per second, measured in bits per second (bps, Mbps, Gbps).</p>
+                    <p><strong>Effect:</strong> Higher bandwidth = faster potential speeds. Like a wider pipe allowing more water to flow.</p>
+                    <div class="example-box">
+                        <strong>Example:</strong> A 100 Mbps connection can transfer data 10× faster than a 10 Mbps connection.
+                    </div>
+                </div>
+
+                <div class="factor-card">
+                    <div class="factor-icon">💻</div>
+                    <h3>Number of Devices</h3>
+                    <p><strong>What it is:</strong> How many computers, phones, and other devices are using the network simultaneously.</p>
+                    <p><strong>Effect:</strong> More devices = bandwidth shared between them = slower speeds for each user.</p>
+                    <div class="example-box">
+                        <strong>Example:</strong> 100 Mbps shared by 10 devices = roughly 10 Mbps each.
+                    </div>
+                </div>
+
+                <div class="factor-card">
+                    <div class="factor-icon">📡</div>
+                    <h3>Transmission Media</h3>
+                    <p><strong>What it is:</strong> The physical medium used to carry data (cables or wireless signals).</p>
+                    <p><strong>Effect:</strong> Different media have different speeds and reliability.</p>
+                    <div class="media-comparison">
+                        <p><strong>Fibre optic:</strong> Fastest, most reliable, expensive</p>
+                        <p><strong>Ethernet cable:</strong> Fast, reliable, affordable</p>
+                        <p><strong>WiFi:</strong> Convenient, slower, affected by interference</p>
+                    </div>
+                </div>
+
+                <div class="factor-card">
+                    <div class="factor-icon">⚡</div>
+                    <h3>Network Traffic</h3>
+                    <p><strong>What it is:</strong> The amount of data currently being transmitted across the network.</p>
+                    <p><strong>Effect:</strong> High traffic during peak times causes congestion and slower speeds.</p>
+                    <div class="example-box">
+                        <strong>Example:</strong> Internet is slower at 8pm when everyone is streaming video.
+                    </div>
+                </div>
+
+                <div class="factor-card">
+                    <div class="factor-icon">⏱️</div>
+                    <h3>Latency</h3>
+                    <p><strong>What it is:</strong> The delay between sending data and it arriving at its destination.</p>
+                    <p><strong>Effect:</strong> High latency causes lag in games and video calls, even with fast bandwidth.</p>
+                    <div class="example-box">
+                        <strong>Example:</strong> Satellite internet has high latency due to signal travel distance.
+                    </div>
+                </div>
+
+                <div class="factor-card">
+                    <div class="factor-icon">❌</div>
+                    <h3>Errors & Interference</h3>
+                    <p><strong>What it is:</strong> Data corruption or signal interference requiring retransmission.</p>
+                    <p><strong>Effect:</strong> Data must be resent, slowing overall transmission.</p>
+                    <div class="example-box">
+                        <strong>Example:</strong> Microwave ovens can interfere with 2.4GHz WiFi signals.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Client-Server vs Peer-to-Peer -->
+        <section class="content-section" id="network-models">
+            <h2>3. Network Models: Client-Server vs Peer-to-Peer</h2>
+
+            <div class="comparison-grid">
+                <div class="comparison-item client-server">
+                    <h3>Client-Server Network</h3>
+                    <div class="network-diagram">
+                        <div class="server-icon">🖥️</div>
+                        <div class="server-label">Server</div>
+                        <div class="client-icons">
+                            <span>💻</span><span>💻</span><span>💻</span>
+                        </div>
+                        <div class="client-label">Clients</div>
+                    </div>
+
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>One or more powerful <strong>servers</strong> provide services</li>
+                        <li><strong>Clients</strong> (user computers) request services</li>
+                        <li>Server manages all shared resources centrally</li>
+                    </ul>
+
+                    <h4>Server Types:</h4>
+                    <ul>
+                        <li><strong>File server:</strong> Stores and shares files</li>
+                        <li><strong>Web server:</strong> Hosts websites and web pages</li>
+                        <li><strong>Print server:</strong> Manages shared printers</li>
+                        <li><strong>Email server:</strong> Handles email sending/receiving</li>
+                        <li><strong>Database server:</strong> Stores and manages data</li>
+                    </ul>
+
+                    <h4>Advantages:</h4>
+                    <ul class="pros">
+                        <li>Centralised security and backup</li>
+                        <li>Easier to manage and update</li>
+                        <li>Better security controls</li>
+                        <li>More scalable for large networks</li>
+                    </ul>
+
+                    <h4>Disadvantages:</h4>
+                    <ul class="cons">
+                        <li>Expensive server hardware required</li>
+                        <li>Needs specialist IT staff</li>
+                        <li>If server fails, services stop</li>
+                        <li>Server can become a bottleneck</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-item peer-to-peer">
+                    <h3>Peer-to-Peer (P2P) Network</h3>
+                    <div class="network-diagram">
+                        <div class="p2p-icons">
+                            <span>💻</span>
+                            <span class="p2p-connector">↔️</span>
+                            <span>💻</span>
+                            <span class="p2p-connector">↔️</span>
+                            <span>💻</span>
+                        </div>
+                        <div class="p2p-label">All computers are equal</div>
+                    </div>
+
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>All computers are <strong>equal</strong> (peers)</li>
+                        <li>Each computer can be both client AND server</li>
+                        <li>Resources shared directly between computers</li>
+                    </ul>
+
+                    <h4>Common Uses:</h4>
+                    <ul>
+                        <li>Small home/office networks</li>
+                        <li>File sharing applications</li>
+                        <li>Cryptocurrency networks (Bitcoin)</li>
+                        <li>Some online gaming</li>
+                    </ul>
+
+                    <h4>Advantages:</h4>
+                    <ul class="pros">
+                        <li>No expensive server needed</li>
+                        <li>Easy to set up</li>
+                        <li>No single point of failure</li>
+                        <li>Each user controls their own computer</li>
+                    </ul>
+
+                    <h4>Disadvantages:</h4>
+                    <ul class="cons">
+                        <li>Harder to secure</li>
+                        <li>No centralised backup</li>
+                        <li>Difficult to manage when network grows</li>
+                        <li>Each computer must be individually maintained</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Network Hardware -->
+        <section class="content-section" id="hardware">
+            <h2>4. Network Hardware</h2>
+
+            <p>These devices are needed to connect computers into a LAN:</p>
+
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <div class="hardware-icon">🔌</div>
+                    <h3>NIC (Network Interface Card)</h3>
+                    <p><strong>What it does:</strong> Allows a computer to connect to a network. Converts data into signals for transmission.</p>
+                    <p><strong>Types:</strong></p>
+                    <ul>
+                        <li><strong>Wired NIC:</strong> Ethernet port (RJ45 connector)</li>
+                        <li><strong>Wireless NIC:</strong> WiFi adapter</li>
+                    </ul>
+                    <p><strong>Location:</strong> Built into motherboard or added as expansion card/USB adapter.</p>
+                    <p><strong>Key fact:</strong> Every NIC has a unique MAC address for identification.</p>
+                </div>
+
+                <div class="hardware-card">
+                    <div class="hardware-icon">🔀</div>
+                    <h3>Switch</h3>
+                    <p><strong>What it does:</strong> Connects multiple devices within a LAN. Sends data only to the intended recipient device.</p>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Learns MAC addresses of connected devices</li>
+                        <li>Creates direct connection between sender and receiver</li>
+                        <li>More efficient than a hub (which broadcasts to all)</li>
+                    </ul>
+                    <p><strong>Location:</strong> Central point in a LAN, often in server room or network cabinet.</p>
+                </div>
+
+                <div class="hardware-card">
+                    <div class="hardware-icon">🌐</div>
+                    <h3>Router</h3>
+                    <p><strong>What it does:</strong> Connects different networks together (e.g., LAN to the Internet). Directs data packets to their destination.</p>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Uses IP addresses to route data</li>
+                        <li>Finds the best path for data to travel</li>
+                        <li>Acts as gateway between networks</li>
+                    </ul>
+                    <p><strong>Home routers:</strong> Often combine router + switch + wireless access point in one device.</p>
+                </div>
+
+                <div class="hardware-card">
+                    <div class="hardware-icon">📶</div>
+                    <h3>Wireless Access Point (WAP)</h3>
+                    <p><strong>What it does:</strong> Allows wireless devices to connect to a wired network using WiFi.</p>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Converts wired signal to wireless (and vice versa)</li>
+                        <li>Broadcasts SSID (network name)</li>
+                        <li>Handles wireless security (WPA2, WPA3)</li>
+                    </ul>
+                    <p><strong>Range:</strong> Typically 30-50 metres indoors, affected by walls and interference.</p>
+                </div>
+
+                <div class="hardware-card">
+                    <div class="hardware-icon">🔗</div>
+                    <h3>Transmission Media</h3>
+                    <p><strong>What it is:</strong> The physical cables or wireless signals that carry data.</p>
+
+                    <table class="media-table">
+                        <tr>
+                            <th>Type</th>
+                            <th>Speed</th>
+                            <th>Use</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Ethernet (Cat5e/Cat6)</strong></td>
+                            <td>1-10 Gbps</td>
+                            <td>Office/home networks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fibre Optic</strong></td>
+                            <td>10-100+ Gbps</td>
+                            <td>Backbone, data centres</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WiFi (802.11ac/ax)</strong></td>
+                            <td>Up to 10 Gbps</td>
+                            <td>Wireless devices</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: The Internet -->
+        <section class="content-section" id="internet">
+            <h2>5. The Internet</h2>
+
+            <div class="concept-card highlight">
+                <h3>What is the Internet?</h3>
+                <p>The Internet is a <strong>worldwide collection of interconnected computer networks</strong> - a "network of networks". It connects millions of private, public, academic, business, and government networks.</p>
+            </div>
+
+            <div class="internet-components">
+                <div class="component-card">
+                    <h3>DNS - Domain Name System</h3>
+                    <div class="dns-diagram">
+                        <div class="dns-step">
+                            <span class="step-num">1</span>
+                            <p>You type: <strong>www.google.com</strong></p>
+                        </div>
+                        <div class="dns-arrow">→</div>
+                        <div class="dns-step">
+                            <span class="step-num">2</span>
+                            <p>DNS Server looks up the name</p>
+                        </div>
+                        <div class="dns-arrow">→</div>
+                        <div class="dns-step">
+                            <span class="step-num">3</span>
+                            <p>Returns IP: <strong>142.250.187.46</strong></p>
+                        </div>
+                        <div class="dns-arrow">→</div>
+                        <div class="dns-step">
+                            <span class="step-num">4</span>
+                            <p>Browser connects to that IP address</p>
+                        </div>
+                    </div>
+
+                    <p><strong>What it does:</strong> Translates human-readable domain names (URLs) into IP addresses that computers use.</p>
+                    <p><strong>Why needed:</strong> Humans remember names easily; computers use numbers.</p>
+                    <p><strong>Key fact:</strong> The DNS is made up of <strong>multiple DNS servers</strong> distributed worldwide, working together hierarchically.</p>
+                </div>
+
+                <div class="component-card">
+                    <h3>Web Servers and Clients</h3>
+                    <div class="web-diagram">
+                        <div class="client-side">
+                            <span class="icon">💻</span>
+                            <p><strong>Client</strong><br>(Your browser)</p>
+                            <p class="action">Requests web page</p>
+                        </div>
+                        <div class="arrows">
+                            <span>→ Request →</span>
+                            <span>← Response ←</span>
+                        </div>
+                        <div class="server-side">
+                            <span class="icon">🖥️</span>
+                            <p><strong>Web Server</strong><br>(Hosts website)</p>
+                            <p class="action">Sends HTML, images, etc.</p>
+                        </div>
+                    </div>
+
+                    <p><strong>Web Server:</strong> A computer that stores website files and serves them to clients on request.</p>
+                    <p><strong>Client:</strong> A program (like a web browser) that requests and displays content from servers.</p>
+                </div>
+
+                <div class="component-card">
+                    <h3>Hosting</h3>
+                    <p><strong>What it is:</strong> Storing website files on a web server so they're accessible via the Internet 24/7.</p>
+                    <p><strong>Types:</strong></p>
+                    <ul>
+                        <li><strong>Shared hosting:</strong> Multiple websites on one server (cheapest)</li>
+                        <li><strong>Dedicated hosting:</strong> Your own server (expensive)</li>
+                        <li><strong>Cloud hosting:</strong> Distributed across multiple servers</li>
+                    </ul>
+                </div>
+
+                <div class="component-card cloud-card">
+                    <h3>The Cloud</h3>
+                    <p><strong>What it is:</strong> Remote servers accessed via the Internet that provide storage, software, and processing power.</p>
+
+                    <div class="cloud-services">
+                        <div class="service">
+                            <span class="icon">💾</span>
+                            <p><strong>Storage</strong><br>Google Drive, Dropbox, iCloud</p>
+                        </div>
+                        <div class="service">
+                            <span class="icon">📝</span>
+                            <p><strong>Software</strong><br>Google Docs, Office 365, Photoshop</p>
+                        </div>
+                        <div class="service">
+                            <span class="icon">⚡</span>
+                            <p><strong>Processing</strong><br>AWS, Azure, game streaming</p>
+                        </div>
+                    </div>
+
+                    <div class="pros-cons-grid">
+                        <div class="pros">
+                            <h4>Advantages</h4>
+                            <ul>
+                                <li>Access files from anywhere</li>
+                                <li>Automatic backups</li>
+                                <li>No need for expensive hardware</li>
+                                <li>Easy collaboration</li>
+                                <li>Scales up/down as needed</li>
+                                <li>Provider handles maintenance</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h4>Disadvantages</h4>
+                            <ul>
+                                <li>Requires Internet connection</li>
+                                <li>Ongoing subscription costs</li>
+                                <li>Data security concerns</li>
+                                <li>Less control over your data</li>
+                                <li>Dependent on provider's reliability</li>
+                                <li>Privacy concerns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Network Topologies -->
+        <section class="content-section" id="topologies">
+            <h2>6. Network Topologies</h2>
+
+            <p>A <strong>network topology</strong> is the arrangement of devices and connections in a network. It affects performance, reliability, and cost.</p>
+
+            <div class="topology-grid">
+                <div class="topology-card star">
+                    <h3>Star Topology</h3>
+                    <div class="topology-diagram star-diagram">
+                        <div class="center-device">Switch/Hub</div>
+                        <div class="outer-devices">
+                            <span class="device top">💻</span>
+                            <span class="device right">💻</span>
+                            <span class="device bottom">💻</span>
+                            <span class="device left">💻</span>
+                        </div>
+                        <div class="connections">
+                            <div class="line top"></div>
+                            <div class="line right"></div>
+                            <div class="line bottom"></div>
+                            <div class="line left"></div>
+                        </div>
+                    </div>
+
+                    <p><strong>Structure:</strong> All devices connect to a central switch or hub.</p>
+
+                    <h4>Advantages</h4>
+                    <ul class="pros">
+                        <li>Easy to add new devices</li>
+                        <li>If one cable fails, only that device is affected</li>
+                        <li>Easy to troubleshoot problems</li>
+                        <li>Good performance - no data collisions</li>
+                        <li>Centralised management</li>
+                    </ul>
+
+                    <h4>Disadvantages</h4>
+                    <ul class="cons">
+                        <li>If central switch fails, whole network fails</li>
+                        <li>Requires more cable than bus topology</li>
+                        <li>Central switch is a single point of failure</li>
+                        <li>Can be expensive for large networks</li>
+                    </ul>
+
+                    <p class="usage"><strong>Common use:</strong> Most modern LANs, offices, schools</p>
+                </div>
+
+                <div class="topology-card mesh">
+                    <h3>Mesh Topology</h3>
+                    <div class="topology-diagram mesh-diagram">
+                        <div class="mesh-devices">
+                            <span class="device d1">💻</span>
+                            <span class="device d2">💻</span>
+                            <span class="device d3">💻</span>
+                            <span class="device d4">💻</span>
+                        </div>
+                        <svg class="mesh-lines" viewBox="0 0 100 100">
+                            <line x1="20" y1="20" x2="80" y2="20"/>
+                            <line x1="20" y1="20" x2="20" y2="80"/>
+                            <line x1="20" y1="20" x2="80" y2="80"/>
+                            <line x1="80" y1="20" x2="80" y2="80"/>
+                            <line x1="80" y1="20" x2="20" y2="80"/>
+                            <line x1="20" y1="80" x2="80" y2="80"/>
+                        </svg>
+                    </div>
+
+                    <p><strong>Structure:</strong> Every device connects to every other device (full mesh) or to several others (partial mesh).</p>
+
+                    <h4>Advantages</h4>
+                    <ul class="pros">
+                        <li>Very reliable - many redundant paths</li>
+                        <li>No single point of failure</li>
+                        <li>Data can take alternative routes if one fails</li>
+                        <li>Good for critical systems</li>
+                        <li>Can handle high traffic</li>
+                    </ul>
+
+                    <h4>Disadvantages</h4>
+                    <ul class="cons">
+                        <li>Very expensive - lots of cabling/connections</li>
+                        <li>Complex to set up and manage</li>
+                        <li>Difficult to troubleshoot</li>
+                        <li>Each device needs multiple NICs</li>
+                        <li>Not practical for large networks</li>
+                    </ul>
+
+                    <p class="usage"><strong>Common use:</strong> Internet backbone, military networks, critical infrastructure</p>
+                </div>
+            </div>
+
+            <div class="topology-comparison">
+                <h3>Quick Comparison</h3>
+                <table>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Star</th>
+                        <th>Mesh</th>
+                    </tr>
+                    <tr>
+                        <td>Cost</td>
+                        <td>Moderate</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Reliability</td>
+                        <td>Central point of failure</td>
+                        <td>Very high (redundant paths)</td>
+                    </tr>
+                    <tr>
+                        <td>Complexity</td>
+                        <td>Simple</td>
+                        <td>Complex</td>
+                    </tr>
+                    <tr>
+                        <td>Scalability</td>
+                        <td>Easy to expand</td>
+                        <td>Difficult to expand</td>
+                    </tr>
+                    <tr>
+                        <td>Best for</td>
+                        <td>Offices, schools, homes</td>
+                        <td>Critical systems, Internet backbone</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="content-section summary-section">
+            <h2>Summary</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4>Network Types</h4>
+                    <p><strong>LAN:</strong> Local, fast, cheap, single site<br>
+                    <strong>WAN:</strong> Wide area, connects LANs, Internet</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Performance Factors</h4>
+                    <p>Bandwidth, number of devices, transmission media, traffic, latency, errors</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Network Models</h4>
+                    <p><strong>Client-Server:</strong> Centralised, managed, scalable<br>
+                    <strong>P2P:</strong> Decentralised, simple, equal peers</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Hardware</h4>
+                    <p>NIC, Switch, Router, WAP, Transmission media</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Internet Concepts</h4>
+                    <p>DNS (URL → IP), Web servers/clients, Hosting, The Cloud</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Topologies</h4>
+                    <p><strong>Star:</strong> Central hub, easy to manage<br>
+                    <strong>Mesh:</strong> All connected, very reliable</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section class="activities-section">
+            <h2>Practice Activities</h2>
+            <div class="activity-grid">
+                <a href="predict.html" class="activity-card predict">
+                    <div class="activity-icon">🔮</div>
+                    <h3>Predict</h3>
+                    <p>Can you predict which network type, topology, or hardware is needed?</p>
+                </a>
+                <a href="example.html" class="activity-card example">
+                    <div class="activity-icon">📝</div>
+                    <h3>Worked Examples</h3>
+                    <p>See step-by-step solutions to network scenarios.</p>
+                </a>
+                <a href="trace.html" class="activity-card trace">
+                    <div class="activity-icon">👣</div>
+                    <h3>Trace</h3>
+                    <p>Follow data through networks and understand each step.</p>
+                </a>
+                <a href="parsons.html" class="activity-card parsons">
+                    <div class="activity-icon">🧩</div>
+                    <h3>Parsons Problems</h3>
+                    <p>Put the steps in the correct order.</p>
+                </a>
+                <a href="quiz.html" class="activity-card quiz">
+                    <div class="activity-icon">✅</div>
+                    <h3>Knowledge Quiz</h3>
+                    <p>Test your understanding with 15 questions.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Mark topic as started when page loads
+        if (typeof Progress !== 'undefined') {
+            Progress.startTopic('networks');
+        }
+    </script>
+
+    <style>
+        .learning-objectives {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid #0284c7;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .concept-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .concept-card.highlight {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left-color: #2563eb;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            margin: var(--space-lg) 0;
+        }
+
+        .comparison-item {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+        }
+
+        .comparison-item.lan {
+            border-top: 4px solid #22c55e;
+        }
+
+        .comparison-item.wan {
+            border-top: 4px solid #3b82f6;
+        }
+
+        .comparison-item.client-server {
+            border-top: 4px solid #8b5cf6;
+        }
+
+        .comparison-item.peer-to-peer {
+            border-top: 4px solid #f59e0b;
+        }
+
+        .network-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin: var(--space-md) 0;
+        }
+
+        .key-difference {
+            background: #fef3c7;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            border-left: 4px solid #f59e0b;
+            margin-top: var(--space-lg);
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .factor-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            border-top: 3px solid var(--primary);
+        }
+
+        .factor-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .example-box {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-sm);
+            font-size: 0.9rem;
+        }
+
+        .network-diagram {
+            text-align: center;
+            padding: var(--space-lg);
+            background: white;
+            border-radius: var(--radius-md);
+            margin: var(--space-md) 0;
+        }
+
+        .server-icon, .server-label, .client-icons, .client-label {
+            margin: var(--space-sm) 0;
+        }
+
+        .server-icon {
+            font-size: 2.5rem;
+        }
+
+        .client-icons span {
+            font-size: 1.5rem;
+            margin: 0 var(--space-sm);
+        }
+
+        .p2p-icons {
+            font-size: 1.5rem;
+        }
+
+        .p2p-connector {
+            font-size: 1rem;
+            margin: 0 var(--space-xs);
+        }
+
+        ul.pros li::marker {
+            color: #22c55e;
+        }
+
+        ul.cons li::marker {
+            color: #ef4444;
+        }
+
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .hardware-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            border-left: 4px solid var(--primary);
+        }
+
+        .hardware-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .media-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--space-md);
+            font-size: 0.9rem;
+        }
+
+        .media-table th, .media-table td {
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-300);
+            text-align: left;
+        }
+
+        .media-table th {
+            background: var(--gray-200);
+        }
+
+        .internet-components {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+
+        .component-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+
+        .dns-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin: var(--space-lg) 0;
+            padding: var(--space-lg);
+            background: white;
+            border-radius: var(--radius-md);
+        }
+
+        .dns-step {
+            text-align: center;
+            padding: var(--space-md);
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
+            min-width: 150px;
+        }
+
+        .step-num {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.8rem;
+            line-height: 24px;
+            margin-bottom: var(--space-xs);
+        }
+
+        .dns-arrow {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .web-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-xl);
+            padding: var(--space-xl);
+            background: white;
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .client-side, .server-side {
+            text-align: center;
+        }
+
+        .client-side .icon, .server-side .icon {
+            font-size: 3rem;
+            display: block;
+        }
+
+        .arrows {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .cloud-card {
+            background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .cloud-services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: var(--space-lg);
+            margin: var(--space-lg) 0;
+        }
+
+        .cloud-services .service {
+            text-align: center;
+            padding: var(--space-md);
+            background: white;
+            border-radius: var(--radius-md);
+            min-width: 150px;
+        }
+
+        .cloud-services .icon {
+            font-size: 2rem;
+        }
+
+        .pros-cons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        .pros-cons-grid .pros {
+            background: #dcfce7;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+
+        .pros-cons-grid .cons {
+            background: #fee2e2;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+
+        .topology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .topology-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+
+        .topology-card.star {
+            border-top: 4px solid #22c55e;
+        }
+
+        .topology-card.mesh {
+            border-top: 4px solid #3b82f6;
+        }
+
+        .topology-diagram {
+            height: 200px;
+            background: white;
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .star-diagram .center-device {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .star-diagram .outer-devices {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star-diagram .device {
+            position: absolute;
+            font-size: 1.5rem;
+        }
+
+        .star-diagram .device.top { top: 10px; left: 50%; transform: translateX(-50%); }
+        .star-diagram .device.right { right: 20px; top: 50%; transform: translateY(-50%); }
+        .star-diagram .device.bottom { bottom: 10px; left: 50%; transform: translateX(-50%); }
+        .star-diagram .device.left { left: 20px; top: 50%; transform: translateY(-50%); }
+
+        .mesh-diagram {
+            flex-direction: column;
+        }
+
+        .mesh-devices {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .mesh-devices .device {
+            position: absolute;
+            font-size: 1.5rem;
+        }
+
+        .mesh-devices .d1 { top: 0; left: 0; }
+        .mesh-devices .d2 { top: 0; right: 0; }
+        .mesh-devices .d3 { bottom: 0; left: 0; }
+        .mesh-devices .d4 { bottom: 0; right: 0; }
+
+        .mesh-lines {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+        }
+
+        .mesh-lines line {
+            stroke: var(--primary);
+            stroke-width: 2;
+        }
+
+        .usage {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-md);
+        }
+
+        .topology-comparison {
+            margin-top: var(--space-xl);
+        }
+
+        .topology-comparison table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .topology-comparison th, .topology-comparison td {
+            padding: var(--space-md);
+            border: 1px solid var(--gray-300);
+            text-align: left;
+        }
+
+        .topology-comparison th {
+            background: var(--gray-200);
+        }
+
+        .summary-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .summary-item {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+
+        .summary-item h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .activities-section {
+            margin-top: var(--space-xl);
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid var(--gray-200);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid, .factors-grid, .hardware-grid, .topology-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dns-diagram {
+                flex-direction: column;
+            }
+
+            .dns-arrow {
+                transform: rotate(90deg);
+            }
+
+            .web-diagram {
+                flex-direction: column;
+            }
+
+            .pros-cons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

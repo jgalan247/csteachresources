@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict - Utility Software</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/theory-styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="index.html">Utility Software</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="activity-header predict-header">
+            <div class="activity-icon">🔮</div>
+            <div class="activity-title-section">
+                <h1>Predict: Utility Software</h1>
+                <p class="activity-subtitle">Predict which utility software is needed and why</p>
+            </div>
+        </header>
+
+        <div class="activity-intro">
+            <p>For each scenario, predict which utility software would be most appropriate and explain why. Think about what each utility does before revealing the answer.</p>
+        </div>
+
+        <!-- Scenario 1 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 1</div>
+            <div class="scenario-content">
+                <h3>Protecting Confidential Documents</h3>
+                <p>A solicitor needs to store sensitive client information on their laptop. They are concerned that if the laptop is lost or stolen, the confidential files could be read by whoever finds it.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which utility software should be used, and why?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Encryption Software</h4>
+                    <p><strong>Explanation:</strong> Encryption software should be used to scramble the confidential files so they cannot be read without the decryption key.</p>
+                    <ul>
+                        <li>Even if the laptop is stolen, the data remains unreadable</li>
+                        <li>Full disk encryption protects all files automatically</li>
+                        <li>Helps meet legal requirements (GDPR) for protecting personal data</li>
+                        <li>The solicitor keeps the decryption key secure, so only they can access the files</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 2 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 2</div>
+            <div class="scenario-content">
+                <h3>Slow Computer Performance</h3>
+                <p>A user notices their old desktop computer with a hard disk drive (HDD) is running slowly. Programs take a long time to load, and the computer makes frequent clicking noises when accessing files.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which utility software could help, and why?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Defragmentation Software</h4>
+                    <p><strong>Explanation:</strong> The clicking noises and slow loading suggest the read/write head is moving frequently to access fragmented files.</p>
+                    <ul>
+                        <li>Files have become scattered across the disk over time</li>
+                        <li>Defragmentation reorganises files into contiguous blocks</li>
+                        <li>This reduces head movement and speeds up file access</li>
+                        <li>Note: This only applies to HDDs, not SSDs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 3 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 3</div>
+            <div class="scenario-content">
+                <h3>Emailing Large Files</h3>
+                <p>A photographer needs to send 50 high-resolution images (totalling 200MB) to a client via email. However, their email provider has a 25MB attachment limit.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which utility software should be used, and why?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Data Compression Software</h4>
+                    <p><strong>Explanation:</strong> Compression software can reduce the total file size to fit within the email limit.</p>
+                    <ul>
+                        <li>ZIP compression can combine all 50 images into one archive</li>
+                        <li>The compressed archive will be significantly smaller</li>
+                        <li>May need to send in multiple compressed batches if still over 25MB</li>
+                        <li>Lossy compression (JPEG) could further reduce image file sizes if quality loss is acceptable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 4 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 4</div>
+            <div class="scenario-content">
+                <h3>Running Out of Storage</h3>
+                <p>A student has a 500GB hard drive that is nearly full. They have many old documents, photos, and videos that they want to keep but don't access frequently.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which utility software could help free up space?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Data Compression Software</h4>
+                    <p><strong>Explanation:</strong> Compressing infrequently accessed files saves storage space.</p>
+                    <ul>
+                        <li>Old files can be compressed into ZIP archives</li>
+                        <li>Documents often compress very well (50-80% reduction)</li>
+                        <li>Videos and photos may have less compression potential if already compressed</li>
+                        <li>Files can be decompressed when needed again</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 5 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 5</div>
+            <div class="scenario-content">
+                <h3>New SSD Performance</h3>
+                <p>A user has recently upgraded from an HDD to an SSD. Their IT friend suggests running the same utility they used on their old hard drive to "optimise performance".</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Should they run defragmentation on their new SSD? Why or why not?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: NO - Do NOT defragment an SSD</h4>
+                    <p><strong>Explanation:</strong> Defragmentation is unnecessary and harmful for SSDs.</p>
+                    <ul>
+                        <li>SSDs have no moving parts - they access any location equally fast</li>
+                        <li>Defragmentation causes many unnecessary write operations</li>
+                        <li>SSDs have limited write cycles - unnecessary writes reduce lifespan</li>
+                        <li>Modern operating systems disable defrag for SSDs automatically</li>
+                        <li>SSDs use TRIM instead to manage deleted data efficiently</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 6 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 6</div>
+            <div class="scenario-content">
+                <h3>Secure Online Banking</h3>
+                <p>A bank wants to ensure that when customers log into their online banking, their password and financial data cannot be intercepted by hackers monitoring the network.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which utility technology protects this data?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Encryption</h4>
+                    <p><strong>Explanation:</strong> Encryption protects data during transmission over networks.</p>
+                    <ul>
+                        <li>HTTPS uses encryption to secure the connection</li>
+                        <li>Data is encrypted before being sent across the internet</li>
+                        <li>Even if intercepted, the data appears as meaningless characters</li>
+                        <li>Only the bank's server can decrypt the information</li>
+                        <li>Look for the padlock icon in browsers indicating encryption</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 7 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 7</div>
+            <div class="scenario-content">
+                <h3>Slow File Saving</h3>
+                <p>An office worker notices that saving large documents takes much longer than it used to on their desktop PC with a traditional hard drive. The computer has been in use for 3 years without any maintenance.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> What utility might help, and what is the underlying problem?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Defragmentation Software</h4>
+                    <p><strong>Explanation:</strong> Over 3 years, files have become fragmented, causing slow write operations.</p>
+                    <ul>
+                        <li>Files and deletions over time create gaps in storage</li>
+                        <li>New files get split across multiple locations</li>
+                        <li>The HDD's read/write head must move to many positions</li>
+                        <li>Defragmentation consolidates free space and files</li>
+                        <li>Regular defragmentation (e.g., monthly) prevents this buildup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 8 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 8</div>
+            <div class="scenario-content">
+                <h3>Streaming Music Quality</h3>
+                <p>A music streaming service wants to deliver songs quickly to users, even those with slow internet connections. They need to reduce the file size of audio tracks while maintaining acceptable listening quality.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which type of compression would they use, and why?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Lossy Compression (e.g., MP3, AAC)</h4>
+                    <p><strong>Explanation:</strong> Lossy compression dramatically reduces audio file sizes.</p>
+                    <ul>
+                        <li>Removes audio frequencies humans can't easily hear</li>
+                        <li>Can reduce files by 90% compared to uncompressed audio</li>
+                        <li>Quality loss is usually acceptable for casual listening</li>
+                        <li>Enables faster streaming with less bandwidth</li>
+                        <li>Different quality settings let users choose file size vs quality balance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 9 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 9</div>
+            <div class="scenario-content">
+                <h3>USB Drive Security</h3>
+                <p>A business executive travels frequently with a USB drive containing confidential business plans and financial forecasts. They are worried about what would happen if they lose the USB drive in an airport.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which utility should be used to protect this data?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Encryption Software</h4>
+                    <p><strong>Explanation:</strong> Encrypting the USB drive protects data if the drive is lost.</p>
+                    <ul>
+                        <li>Many USB drives have built-in encryption features</li>
+                        <li>Third-party encryption software can also be used</li>
+                        <li>Data is unreadable without the password or key</li>
+                        <li>BitLocker (Windows) or FileVault (Mac) can encrypt drives</li>
+                        <li>Even if found, the contents remain confidential</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 10 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 10</div>
+            <div class="scenario-content">
+                <h3>Source Code Backup</h3>
+                <p>A software developer wants to compress their project folder containing 1000 text-based source code files for backup. They need to ensure they can restore the exact original files later.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which type of compression should they use, and why?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Lossless Compression (e.g., ZIP)</h4>
+                    <p><strong>Explanation:</strong> Source code must be preserved exactly - any data loss would break the programs.</p>
+                    <ul>
+                        <li>Lossy compression removes data permanently</li>
+                        <li>Even one changed character could cause code errors</li>
+                        <li>Text files compress very well with lossless methods (often 70-90%)</li>
+                        <li>ZIP preserves the exact original bytes</li>
+                        <li>The compressed archive can be extracted to get identical files</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 11 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 11</div>
+            <div class="scenario-content">
+                <h3>Housekeeping Tasks</h3>
+                <p>A teacher explains that utility software performs "housekeeping tasks" on a computer. A student asks what this means and why the operating system doesn't do these tasks itself.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> How would you explain this?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Utility software provides additional maintenance the OS doesn't include</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <ul>
+                        <li><strong>Housekeeping tasks</strong> = maintenance and optimisation activities</li>
+                        <li>The OS handles core functions: memory, processes, files, hardware</li>
+                        <li>Utility software adds extra features for security and performance</li>
+                        <li>Examples: encryption (security), defragmentation (optimisation), compression (efficiency)</li>
+                        <li>Some utilities come pre-installed, others can be added later</li>
+                        <li>Third-party utilities often have more features than built-in options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 12 -->
+        <div class="scenario-card">
+            <div class="scenario-number">Scenario 12</div>
+            <div class="scenario-content">
+                <h3>Website Image Optimisation</h3>
+                <p>A web developer has uploaded high-quality photographs to a website, but pages are loading slowly. They need to reduce image file sizes to improve loading speed while keeping images looking good.</p>
+                <div class="prediction-prompt">
+                    <strong>Predict:</strong> Which compression approach would be best?
+                </div>
+            </div>
+            <button class="reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="reveal-content">
+                <div class="answer-section">
+                    <h4>Answer: Lossy Compression (JPEG)</h4>
+                    <p><strong>Explanation:</strong> JPEG lossy compression is ideal for photographs on websites.</p>
+                    <ul>
+                        <li>Photographs don't need to be pixel-perfect on websites</li>
+                        <li>JPEG compression can reduce images by 80-95%</li>
+                        <li>Quality settings let developers balance size vs appearance</li>
+                        <li>Smaller images = faster page loading = better user experience</li>
+                        <li>For logos/graphics with sharp edges, PNG (lossless) may be better</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-navigation">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="example.html" class="btn btn-primary">Next: Worked Examples →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>GCSE Computer Science - Utility Software</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        function toggleReveal(btn) {
+            const content = btn.nextElementSibling;
+            const isShowing = content.classList.contains('show');
+
+            if (isShowing) {
+                content.classList.remove('show');
+                btn.textContent = 'Reveal Answer';
+            } else {
+                content.classList.add('show');
+                btn.textContent = 'Hide Answer';
+            }
+        }
+
+        // Track progress when page loads
+        Progress.startActivity('utility-software', 'predict');
+
+        // Mark complete after some engagement
+        let revealsClicked = 0;
+        document.querySelectorAll('.reveal-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                revealsClicked++;
+                if (revealsClicked >= 6) {
+                    Progress.completeActivity('utility-software', 'predict');
+                }
+            });
+        });
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .predict-header {
+            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .activity-icon {
+            font-size: 3rem;
+        }
+        .activity-intro {
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .scenario-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--purple);
+        }
+        .scenario-number {
+            background: var(--purple);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: var(--space-md);
+        }
+        .scenario-content h3 {
+            margin-bottom: var(--space-md);
+            color: var(--gray-800);
+        }
+        .prediction-prompt {
+            background: #f3e8ff;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .reveal-btn {
+            background: var(--purple);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            margin-top: var(--space-md);
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .reveal-btn:hover {
+            background: #7c3aed;
+        }
+        .reveal-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .reveal-content.show {
+            max-height: 600px;
+        }
+        .answer-section {
+            background: #f0fdf4;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+            border-left: 4px solid var(--success);
+        }
+        .answer-section h4 {
+            color: var(--success);
+            margin-bottom: var(--space-md);
+        }
+        .answer-section ul {
+            margin-top: var(--space-md);
+            padding-left: var(--space-lg);
+        }
+        .answer-section li {
+            margin-bottom: var(--space-xs);
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xxl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

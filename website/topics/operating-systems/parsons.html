@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order the Steps - Operating Systems</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .parsons-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .problem-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .problem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        .problem-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .difficulty-badge {
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .difficulty-badge.foundation { background: #d4edda; color: #155724; }
+        .difficulty-badge.core { background: #cce5ff; color: #004085; }
+        .difficulty-badge.extension { background: #f8d7da; color: #721c24; }
+
+        .problem-question {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            color: var(--gray-800);
+        }
+        .parsons-workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        @media (max-width: 600px) {
+            .parsons-workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+        .blocks-pool, .answer-zone {
+            min-height: 200px;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .blocks-pool {
+            background: var(--gray-100);
+            border: 2px dashed var(--gray-300);
+        }
+        .answer-zone {
+            background: #e8f4f8;
+            border: 2px dashed var(--primary);
+        }
+        .zone-label {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-sm);
+            font-weight: 500;
+        }
+        .draggable-block {
+            background: white;
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-300);
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .draggable-block:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .draggable-block.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .draggable-block.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+        .draggable-block.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: var(--space-sm);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .answer-zone .step-number {
+            background: var(--primary);
+            color: white;
+        }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            margin-right: var(--space-sm);
+        }
+        .check-btn:hover {
+            background: var(--primary-dark);
+        }
+        .reset-btn {
+            background: var(--gray-200);
+            color: var(--gray-700);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .reset-btn:hover {
+            background: var(--gray-300);
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .feedback.correct {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+        }
+        .feedback.incorrect {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .explanation {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: #e7f3ff;
+            border-radius: var(--radius-md);
+            display: none;
+        }
+        .explanation.show {
+            display: block;
+        }
+        .progress-indicator {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            color: var(--gray-600);
+        }
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gray-300);
+            cursor: pointer;
+        }
+        .progress-dot.completed {
+            background: var(--success);
+        }
+        .progress-dot.current {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Operating Systems</a>
+            <h1>Order the Steps</h1>
+            <p class="subtitle">Drag and drop to arrange OS processes in the correct order</p>
+        </header>
+
+        <div class="progress-indicator">
+            <span id="progress-text">Problem 1 of 8</span>
+            <div class="progress-dots" id="progress-dots"></div>
+        </div>
+
+        <div class="parsons-container" id="problems-container">
+            <!-- Problems populated by JavaScript -->
+        </div>
+    </main>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const problems = [
+            {
+                id: 1,
+                difficulty: 'foundation',
+                question: 'Order the steps when a user turns on their computer (boot process):',
+                blocks: [
+                    'Power button pressed - hardware powers on',
+                    'BIOS/UEFI performs basic hardware checks',
+                    'Bootloader loads the operating system from storage',
+                    'OS kernel loads into RAM and initialises',
+                    'Device drivers load for hardware components',
+                    'Login screen appears (User Interface)'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'The boot sequence: hardware powers on, BIOS checks hardware, bootloader finds and loads the OS, the kernel initialises, drivers load for peripherals, and finally the login screen appears.'
+            },
+            {
+                id: 2,
+                difficulty: 'foundation',
+                question: 'Order the steps when a user opens a program by double-clicking its icon:',
+                blocks: [
+                    'User double-clicks the program icon (GUI interaction)',
+                    'OS uses File Management to locate the executable file',
+                    'Memory Management allocates RAM for the program',
+                    'Program code is loaded from storage into RAM',
+                    'OS creates a new process and adds it to the scheduler',
+                    'Program window appears on screen'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Opening a program: GUI detects the click, File Management finds the file, Memory Management allocates space, code loads to RAM, a process is created for multitasking, and the UI displays the window.'
+            },
+            {
+                id: 3,
+                difficulty: 'foundation',
+                question: 'Order the steps when printing a document:',
+                blocks: [
+                    'User clicks Print in the application',
+                    'Application sends print request to the OS',
+                    'OS adds the job to the print queue (buffer)',
+                    'Print driver translates document to printer commands',
+                    'Data is sent to the printer via USB/network',
+                    'Printer receives commands and prints the document'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Printing process: application requests print, OS queues the job (buffering), driver translates to printer language, data transfers to printer, and the physical printing occurs.'
+            },
+            {
+                id: 4,
+                difficulty: 'core',
+                question: 'Order the steps of how the OS enables multitasking (time slicing):',
+                blocks: [
+                    'Multiple applications are loaded in separate memory spaces',
+                    'CPU begins executing instructions from Application A',
+                    'Timer interrupt signals the end of the time slice',
+                    'OS saves Application A\'s current state (registers, position)',
+                    'Scheduler selects Application B to run next',
+                    'OS restores Application B\'s state and resumes it'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Time slicing: apps are in separate memory, CPU runs one app, timer interrupt occurs, OS saves current state (context), scheduler picks next app, OS restores that app\'s state - this cycle repeats hundreds of times per second.'
+            },
+            {
+                id: 5,
+                difficulty: 'core',
+                question: 'Order the steps when a new USB device is connected (Plug and Play):',
+                blocks: [
+                    'USB device is physically connected to the port',
+                    'USB controller sends an interrupt to the CPU',
+                    'OS detects the device and reads its identification',
+                    'OS searches for a matching driver in its database',
+                    'Driver is loaded into memory and initialised',
+                    'OS notifies user that the device is ready to use'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Plug and Play: device connects, hardware interrupt alerts OS, OS identifies the device, finds and loads the appropriate driver, and notifies the user - all handled by Peripheral Management.'
+            },
+            {
+                id: 6,
+                difficulty: 'core',
+                question: 'Order the steps when a user saves a file:',
+                blocks: [
+                    'User presses Ctrl+S (keyboard input via Peripheral Management)',
+                    'Application prepares the file data in RAM',
+                    'Application requests OS to save file to specified path',
+                    'File Management determines physical location on disk',
+                    'Data is transferred from RAM to secondary storage',
+                    'File system updates directory entry with new file info'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Saving involves: input detection, preparing data in RAM, requesting save through File Management, determining disk location, transferring data to storage, and updating the file system records.'
+            },
+            {
+                id: 7,
+                difficulty: 'extension',
+                question: 'Order the steps when a user logs into a network computer:',
+                blocks: [
+                    'OS displays the login screen (User Interface)',
+                    'User enters username and password',
+                    'Credentials are sent to the authentication server',
+                    'Server verifies credentials and returns user permissions',
+                    'OS creates a session with the user\'s access rights',
+                    'User\'s profile and home folder are mounted/accessible'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Network login: UI shows login screen, user enters credentials, they\'re verified against the server (User Management), permissions are applied, and the user\'s profile/files become available through File Management.'
+            },
+            {
+                id: 8,
+                difficulty: 'extension',
+                question: 'Order the steps when RAM becomes full and virtual memory is used:',
+                blocks: [
+                    'User opens another application, but RAM is nearly full',
+                    'Memory Management identifies least recently used data in RAM',
+                    'This data is written to a swap file/partition on the hard drive',
+                    'The RAM space is freed and allocated to the new application',
+                    'When the swapped data is needed, OS retrieves it from disk',
+                    'Data is loaded back into RAM, potentially swapping other data out'
+                ],
+                correctOrder: [0, 1, 2, 3, 4, 5],
+                explanation: 'Virtual memory: when RAM is full, the OS moves unused data to disk (swap space), frees RAM for new apps. When that data is needed again, it\'s swapped back - this is slower than RAM but allows running more programs.'
+            }
+        ];
+
+        let currentProblem = 0;
+        let completedProblems = new Set();
+        let draggedElement = null;
+
+        function initProblems() {
+            const container = document.getElementById('problems-container');
+            container.innerHTML = '';
+
+            problems.forEach((problem, index) => {
+                const card = createProblemCard(problem, index);
+                container.appendChild(card);
+            });
+
+            updateProgressDots();
+            showProblem(0);
+        }
+
+        function createProblemCard(problem, index) {
+            const card = document.createElement('div');
+            card.className = 'problem-card';
+            card.id = `problem-${index}`;
+            card.style.display = index === 0 ? 'block' : 'none';
+
+            // Shuffle blocks for display
+            const shuffledBlocks = [...problem.blocks]
+                .map((block, i) => ({ text: block, originalIndex: i }))
+                .sort(() => Math.random() - 0.5);
+
+            card.innerHTML = `
+                <div class="problem-header">
+                    <div class="problem-number">${problem.id}</div>
+                    <span class="difficulty-badge ${problem.difficulty}">${problem.difficulty}</span>
+                </div>
+                <p class="problem-question">${problem.question}</p>
+                <div class="parsons-workspace">
+                    <div class="blocks-pool" id="pool-${index}">
+                        <div class="zone-label">Available Steps</div>
+                        ${shuffledBlocks.map((block, i) => `
+                            <div class="draggable-block" draggable="true" data-original="${block.originalIndex}">
+                                <span class="step-number">?</span>${block.text}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="answer-zone" id="answer-${index}">
+                        <div class="zone-label">Your Answer (drag steps here in order)</div>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="check-btn" onclick="checkAnswer(${index})">Check Answer</button>
+                    <button class="reset-btn" onclick="resetProblem(${index})">Reset</button>
+                    ${index < problems.length - 1 ? `<button class="check-btn" onclick="nextProblem()" style="background: var(--success);">Next →</button>` : ''}
+                </div>
+                <div class="feedback" id="feedback-${index}"></div>
+                <div class="explanation" id="explanation-${index}">
+                    <strong>Explanation:</strong> ${problem.explanation}
+                </div>
+            `;
+
+            setTimeout(() => setupDragDrop(index), 0);
+
+            return card;
+        }
+
+        function setupDragDrop(problemIndex) {
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const answer = document.getElementById(`answer-${problemIndex}`);
+
+            if (!pool || !answer) return;
+
+            const blocks = pool.querySelectorAll('.draggable-block');
+
+            blocks.forEach(block => {
+                block.addEventListener('dragstart', handleDragStart);
+                block.addEventListener('dragend', handleDragEnd);
+            });
+
+            [pool, answer].forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('drop', (e) => handleDrop(e, problemIndex));
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDrop(e, problemIndex) {
+            e.preventDefault();
+            if (!draggedElement) return;
+
+            const dropZone = e.target.closest('.blocks-pool, .answer-zone');
+            if (!dropZone) return;
+
+            draggedElement.remove();
+            dropZone.appendChild(draggedElement);
+            updateStepNumbers(problemIndex);
+        }
+
+        function updateStepNumbers(problemIndex) {
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+
+            blocks.forEach((block, index) => {
+                const stepNum = block.querySelector('.step-number');
+                stepNum.textContent = index + 1;
+            });
+
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const poolBlocks = pool.querySelectorAll('.draggable-block');
+            poolBlocks.forEach(block => {
+                const stepNum = block.querySelector('.step-number');
+                stepNum.textContent = '?';
+            });
+        }
+
+        function checkAnswer(problemIndex) {
+            const problem = problems[problemIndex];
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+            const feedback = document.getElementById(`feedback-${problemIndex}`);
+            const explanation = document.getElementById(`explanation-${problemIndex}`);
+
+            if (blocks.length !== problem.blocks.length) {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = `Please place all ${problem.blocks.length} steps in the answer zone.`;
+                return;
+            }
+
+            const userOrder = Array.from(blocks).map(b => parseInt(b.dataset.original));
+            const isCorrect = userOrder.every((val, idx) => val === problem.correctOrder[idx]);
+
+            blocks.forEach((block, index) => {
+                const originalIndex = parseInt(block.dataset.original);
+                if (originalIndex === problem.correctOrder[index]) {
+                    block.classList.add('correct');
+                    block.classList.remove('incorrect');
+                } else {
+                    block.classList.add('incorrect');
+                    block.classList.remove('correct');
+                }
+            });
+
+            if (isCorrect) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = 'Correct! You\'ve arranged the steps in the right order.';
+                completedProblems.add(problemIndex);
+                updateProgressDots();
+                Progress.saveActivity(`operating-systems-parsons-${problemIndex + 1}`, 'completed', 100);
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = 'Not quite right. Check the highlighted steps and try again.';
+            }
+
+            explanation.classList.add('show');
+        }
+
+        function resetProblem(problemIndex) {
+            const pool = document.getElementById(`pool-${problemIndex}`);
+            const answerZone = document.getElementById(`answer-${problemIndex}`);
+            const feedback = document.getElementById(`feedback-${problemIndex}`);
+            const explanation = document.getElementById(`explanation-${problemIndex}`);
+
+            const blocks = answerZone.querySelectorAll('.draggable-block');
+            blocks.forEach(block => {
+                block.classList.remove('correct', 'incorrect');
+                block.querySelector('.step-number').textContent = '?';
+                pool.appendChild(block);
+            });
+
+            feedback.className = 'feedback';
+            explanation.classList.remove('show');
+        }
+
+        function showProblem(index) {
+            document.querySelectorAll('.problem-card').forEach((card, i) => {
+                card.style.display = i === index ? 'block' : 'none';
+            });
+            currentProblem = index;
+            document.getElementById('progress-text').textContent = `Problem ${index + 1} of ${problems.length}`;
+            updateProgressDots();
+        }
+
+        function nextProblem() {
+            if (currentProblem < problems.length - 1) {
+                showProblem(currentProblem + 1);
+            }
+        }
+
+        function updateProgressDots() {
+            const container = document.getElementById('progress-dots');
+            container.innerHTML = problems.map((_, i) => {
+                let className = 'progress-dot';
+                if (completedProblems.has(i)) className += ' completed';
+                else if (i === currentProblem) className += ' current';
+                return `<div class="${className}" onclick="showProblem(${i})"></div>`;
+            }).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initProblems();
+
+            document.querySelectorAll('.draggable-block').forEach(block => {
+                block.addEventListener('touchstart', handleTouchStart, { passive: false });
+                block.addEventListener('touchmove', handleTouchMove, { passive: false });
+                block.addEventListener('touchend', handleTouchEnd);
+            });
+        });
+
+        let touchElement = null;
+
+        function handleTouchStart(e) {
+            touchElement = e.target.closest('.draggable-block');
+            if (touchElement) {
+                touchElement.classList.add('dragging');
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (touchElement) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!touchElement) return;
+
+            const touch = e.changedTouches[0];
+            const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+            const dropZone = dropTarget?.closest('.blocks-pool, .answer-zone');
+
+            if (dropZone) {
+                touchElement.remove();
+                dropZone.appendChild(touchElement);
+
+                const problemCard = dropZone.closest('.problem-card');
+                const problemIndex = parseInt(problemCard.id.split('-')[1]);
+                updateStepNumbers(problemIndex);
+            }
+
+            touchElement.classList.remove('dragging');
+            touchElement = null;
+        }
+
+        Progress.startActivity('operating-systems-parsons', 'parsons');
+    </script>
+</body>
+</html>

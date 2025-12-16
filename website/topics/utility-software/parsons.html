@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems - Utility Software</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/theory-styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="index.html">Utility Software</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="activity-header parsons-header">
+            <div class="activity-icon">🧩</div>
+            <div class="activity-title-section">
+                <h1>Parsons Problems: Utility Software</h1>
+                <p class="activity-subtitle">Arrange the steps in the correct order</p>
+            </div>
+        </header>
+
+        <div class="activity-intro">
+            <p>Drag and drop the steps into the correct order. Each problem describes a process related to utility software. Think carefully about the logical sequence of each operation.</p>
+        </div>
+
+        <!-- Problem 1: File Encryption -->
+        <div class="parsons-problem" id="problem1">
+            <div class="problem-header">
+                <span class="problem-number">Problem 1</span>
+                <span class="problem-title">Encrypting a File</span>
+            </div>
+            <p class="problem-description">Arrange the steps for encrypting a confidential file:</p>
+
+            <div class="parsons-container">
+                <div class="parsons-blocks" id="blocks1">
+                    <div class="parsons-block" data-order="3">Encryption algorithm scrambles data using the key</div>
+                    <div class="parsons-block" data-order="1">Select the file to be encrypted</div>
+                    <div class="parsons-block" data-order="4">Encrypted ciphertext file is saved</div>
+                    <div class="parsons-block" data-order="2">Enter password/generate encryption key</div>
+                    <div class="parsons-block" data-order="5">Original plaintext is unreadable without the key</div>
+                </div>
+            </div>
+            <button class="check-btn" onclick="checkOrder('problem1')">Check Order</button>
+            <div class="feedback" id="feedback1"></div>
+        </div>
+
+        <!-- Problem 2: File Decryption -->
+        <div class="parsons-problem" id="problem2">
+            <div class="problem-header">
+                <span class="problem-number">Problem 2</span>
+                <span class="problem-title">Decrypting an Encrypted File</span>
+            </div>
+            <p class="problem-description">Arrange the steps for decrypting a file:</p>
+
+            <div class="parsons-container">
+                <div class="parsons-blocks" id="blocks2">
+                    <div class="parsons-block" data-order="4">Original plaintext file is restored</div>
+                    <div class="parsons-block" data-order="2">Enter the correct decryption key/password</div>
+                    <div class="parsons-block" data-order="1">Open the encrypted ciphertext file</div>
+                    <div class="parsons-block" data-order="3">Decryption algorithm reverses the encryption</div>
+                    <div class="parsons-block" data-order="5">File can now be read and edited normally</div>
+                </div>
+            </div>
+            <button class="check-btn" onclick="checkOrder('problem2')">Check Order</button>
+            <div class="feedback" id="feedback2"></div>
+        </div>
+
+        <!-- Problem 3: Defragmentation Process -->
+        <div class="parsons-problem" id="problem3">
+            <div class="problem-header">
+                <span class="problem-number">Problem 3</span>
+                <span class="problem-title">Defragmenting a Hard Drive</span>
+            </div>
+            <p class="problem-description">Arrange the steps of the defragmentation process:</p>
+
+            <div class="parsons-container">
+                <div class="parsons-blocks" id="blocks3">
+                    <div class="parsons-block" data-order="2">Calculate optimal arrangement of data</div>
+                    <div class="parsons-block" data-order="4">Update file system with new file locations</div>
+                    <div class="parsons-block" data-order="1">Analyse disk to identify fragmented files</div>
+                    <div class="parsons-block" data-order="3">Move file fragments to contiguous locations</div>
+                    <div class="parsons-block" data-order="5">Disk performance is improved</div>
+                </div>
+            </div>
+            <button class="check-btn" onclick="checkOrder('problem3')">Check Order</button>
+            <div class="feedback" id="feedback3"></div>
+        </div>
+
+        <!-- Problem 4: Why Fragmentation Occurs -->
+        <div class="parsons-problem" id="problem4">
+            <div class="problem-header">
+                <span class="problem-number">Problem 4</span>
+                <span class="problem-title">How Fragmentation Occurs</span>
+            </div>
+            <p class="problem-description">Arrange the steps showing how a disk becomes fragmented:</p>
+
+            <div class="parsons-container">
+                <div class="parsons-blocks" id="blocks4">
+                    <div class="parsons-block" data-order="3">New files fill in the gaps, often split across locations</div>
+                    <div class="parsons-block" data-order="1">Files are saved to disk in contiguous blocks</div>
+                    <div class="parsons-block" data-order="4">Over time, single files become scattered across disk</div>
+                    <div class="parsons-block" data-order="2">Some files are deleted, creating gaps</div>
+                    <div class="parsons-block" data-order="5">Read/write head must move to multiple locations to access one file</div>
+                </div>
+            </div>
+            <button class="check-btn" onclick="checkOrder('problem4')">Check Order</button>
+            <div class="feedback" id="feedback4"></div>
+        </div>
+
+        <!-- Problem 5: Lossless Compression -->
+        <div class="parsons-problem" id="problem5">
+            <div class="problem-header">
+                <span class="problem-number">Problem 5</span>
+                <span class="problem-title">Lossless Compression (ZIP)</span>
+            </div>
+            <p class="problem-description">Arrange the steps for compressing files with lossless compression:</p>
+
+            <div class="parsons-container">
+                <div class="parsons-blocks" id="blocks5">
+                    <div class="parsons-block" data-order="4">Compressed archive is smaller than original files</div>
+                    <div class="parsons-block" data-order="1">Select files to compress</div>
+                    <div class="parsons-block" data-order="2">Algorithm analyses data for repeated patterns</div>
+                    <div class="parsons-block" data-order="5">Files can be extracted with no data loss</div>
+                    <div class="parsons-block" data-order="3">Patterns are encoded more efficiently</div>
+                </div>
+            </div>
+            <button class="check-btn" onclick="checkOrder('problem5')">Check Order</button>
+            <div class="feedback" id="feedback5"></div>
+        </div>
+
+        <!-- Problem 6: Lossy Compression -->
+        <div class="parsons-problem" id="problem6">
+            <div class="problem-header">
+                <span class="problem-number">Problem 6</span>
+                <span class="problem-title">Lossy Compression (JPEG)</span>
+            </div>
+            <p class="problem-description">Arrange the steps for compressing an image with lossy compression:</p>
+
+            <div class="parsons-container">
+                <div class="parsons-blocks" id="blocks6">
+                    <div class="parsons-block" data-order="2">Algorithm identifies data humans won't easily notice</div>
+                    <div class="parsons-block" data-order="5">File size greatly reduced but quality cannot be fully restored</div>
+                    <div class="parsons-block" data-order="3">Unimportant data is permanently removed</div>
+                    <div class="parsons-block" data-order="1">Load original high-quality image</div>
+                    <div class="parsons-block" data-order="4">Remaining data is compressed efficiently</div>
+                </div>
+            </div>
+            <button class="check-btn" onclick="checkOrder('problem6')">Check Order</button>
+            <div class="feedback" id="feedback6"></div>
+        </div>
+
+        <!-- Problem 7: Choosing Compression Type -->
+        <div class="parsons-problem" id="problem7">
+            <div class="problem-header">
+                <span class="problem-number">Problem 7</span>
+                <span class="problem-title">Choosing Between Lossy and Lossless</span>
+            </div>
+            <p class="problem-description">Arrange the decision process for choosing compression type:</p>
+
+            <div class="parsons-container">
+                <div class="parsons-blocks" id="blocks7">
+                    <div class="parsons-block" data-order="4">If yes: use lossless (ZIP, PNG)</div>
+                    <div class="parsons-block" data-order="2">Ask: "Does this file need to be exactly the same after decompression?"</div>
+                    <div class="parsons-block" data-order="1">Identify the type of file (text, code, image, audio, video)</div>
+                    <div class="parsons-block" data-order="5">If no: lossy compression acceptable (JPEG, MP3)</div>
+                    <div class="parsons-block" data-order="3">Consider if any data loss would cause problems</div>
+                </div>
+            </div>
+            <button class="check-btn" onclick="checkOrder('problem7')">Check Order</button>
+            <div class="feedback" id="feedback7"></div>
+        </div>
+
+        <!-- Problem 8: Utility Software Selection -->
+        <div class="parsons-problem" id="problem8">
+            <div class="problem-header">
+                <span class="problem-number">Problem 8</span>
+                <span class="problem-title">Diagnosing Slow Computer Performance</span>
+            </div>
+            <p class="problem-description">Arrange the diagnostic steps for a slow computer with HDD:</p>
+
+            <div class="parsons-container">
+                <div class="parsons-blocks" id="blocks8">
+                    <div class="parsons-block" data-order="3">Check fragmentation level of the HDD</div>
+                    <div class="parsons-block" data-order="5">Run defragmentation if fragmentation is high</div>
+                    <div class="parsons-block" data-order="1">Confirm the computer uses HDD (not SSD)</div>
+                    <div class="parsons-block" data-order="4">Identify if fragmentation is causing slow file access</div>
+                    <div class="parsons-block" data-order="2">Check how long since last maintenance</div>
+                </div>
+            </div>
+            <button class="check-btn" onclick="checkOrder('problem8')">Check Order</button>
+            <div class="feedback" id="feedback8"></div>
+        </div>
+
+        <div class="progress-summary" id="progress-summary">
+            <h3>Your Progress</h3>
+            <p>Completed: <span id="completed-count">0</span> / 8 problems</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="activity-navigation">
+            <a href="trace.html" class="btn btn-secondary">← Trace</a>
+            <a href="quiz.html" class="btn btn-primary">Next: Knowledge Quiz →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>GCSE Computer Science - Utility Software</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        // Initialize draggable blocks
+        document.querySelectorAll('.parsons-blocks').forEach(container => {
+            const blocks = Array.from(container.querySelectorAll('.parsons-block'));
+            // Shuffle blocks
+            blocks.sort(() => Math.random() - 0.5);
+            blocks.forEach(block => container.appendChild(block));
+
+            // Add drag functionality
+            blocks.forEach(block => {
+                block.draggable = true;
+                block.addEventListener('dragstart', handleDragStart);
+                block.addEventListener('dragover', handleDragOver);
+                block.addEventListener('drop', handleDrop);
+                block.addEventListener('dragend', handleDragEnd);
+            });
+        });
+
+        let draggedElement = null;
+
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+
+            const target = e.target.closest('.parsons-block');
+            if (target && target !== draggedElement) {
+                const container = target.parentNode;
+                const blocks = Array.from(container.querySelectorAll('.parsons-block'));
+                const draggedIndex = blocks.indexOf(draggedElement);
+                const targetIndex = blocks.indexOf(target);
+
+                if (draggedIndex < targetIndex) {
+                    target.parentNode.insertBefore(draggedElement, target.nextSibling);
+                } else {
+                    target.parentNode.insertBefore(draggedElement, target);
+                }
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        // Touch support for mobile
+        document.querySelectorAll('.parsons-block').forEach(block => {
+            block.addEventListener('touchstart', handleTouchStart, { passive: false });
+            block.addEventListener('touchmove', handleTouchMove, { passive: false });
+            block.addEventListener('touchend', handleTouchEnd);
+        });
+
+        let touchedElement = null;
+        let touchStartY = 0;
+
+        function handleTouchStart(e) {
+            touchedElement = this;
+            touchStartY = e.touches[0].clientY;
+            this.classList.add('dragging');
+        }
+
+        function handleTouchMove(e) {
+            if (!touchedElement) return;
+            e.preventDefault();
+
+            const touch = e.touches[0];
+            const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+            const targetBlock = elementBelow?.closest('.parsons-block');
+
+            if (targetBlock && targetBlock !== touchedElement && targetBlock.parentNode === touchedElement.parentNode) {
+                const container = targetBlock.parentNode;
+                const blocks = Array.from(container.querySelectorAll('.parsons-block'));
+                const draggedIndex = blocks.indexOf(touchedElement);
+                const targetIndex = blocks.indexOf(targetBlock);
+
+                if (draggedIndex < targetIndex) {
+                    targetBlock.parentNode.insertBefore(touchedElement, targetBlock.nextSibling);
+                } else {
+                    targetBlock.parentNode.insertBefore(touchedElement, targetBlock);
+                }
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (touchedElement) {
+                touchedElement.classList.remove('dragging');
+                touchedElement = null;
+            }
+        }
+
+        // Track completed problems
+        let completedProblems = new Set();
+
+        function checkOrder(problemId) {
+            const container = document.querySelector(`#${problemId} .parsons-blocks`);
+            const blocks = container.querySelectorAll('.parsons-block');
+            const feedback = document.getElementById(`feedback${problemId.replace('problem', '')}`);
+
+            let correct = true;
+            blocks.forEach((block, index) => {
+                const expectedOrder = parseInt(block.dataset.order);
+                if (expectedOrder !== index + 1) {
+                    correct = false;
+                }
+                block.classList.remove('correct', 'incorrect');
+                block.classList.add(expectedOrder === index + 1 ? 'correct' : 'incorrect');
+            });
+
+            if (correct) {
+                feedback.innerHTML = '<span class="success">✓ Correct! Well done!</span>';
+                feedback.className = 'feedback success';
+                completedProblems.add(problemId);
+                updateProgress();
+            } else {
+                feedback.innerHTML = '<span class="error">✗ Not quite right. Look at the highlighted blocks and try again.</span>';
+                feedback.className = 'feedback error';
+            }
+        }
+
+        function updateProgress() {
+            const count = completedProblems.size;
+            document.getElementById('completed-count').textContent = count;
+            document.getElementById('progress-fill').style.width = (count / 8 * 100) + '%';
+
+            if (count >= 6) {
+                Progress.completeActivity('utility-software', 'parsons');
+            }
+        }
+
+        // Track progress
+        Progress.startActivity('utility-software', 'parsons');
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .parsons-header {
+            background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .activity-icon {
+            font-size: 3rem;
+        }
+        .activity-intro {
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .parsons-problem {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+        .problem-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        .problem-number {
+            background: var(--primary);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .problem-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+        .problem-description {
+            color: var(--gray-600);
+            margin-bottom: var(--space-lg);
+        }
+        .parsons-container {
+            margin-bottom: var(--space-lg);
+        }
+        .parsons-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+        .parsons-block {
+            background: var(--gray-100);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--gray-200);
+            cursor: move;
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .parsons-block:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+        .parsons-block.dragging {
+            opacity: 0.5;
+            border-color: var(--primary);
+        }
+        .parsons-block.correct {
+            background: #d1fae5;
+            border-color: var(--success);
+        }
+        .parsons-block.incorrect {
+            background: #fee2e2;
+            border-color: var(--error);
+        }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-xl);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .check-btn:hover {
+            background: var(--primary-dark);
+        }
+        .feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+        }
+        .feedback.success {
+            background: #d1fae5;
+            color: var(--success);
+        }
+        .feedback.error {
+            background: #fee2e2;
+            color: var(--error);
+        }
+        .progress-summary {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+        .progress-summary h3 {
+            margin-bottom: var(--space-md);
+        }
+        .progress-bar {
+            background: var(--gray-200);
+            border-radius: var(--radius-full);
+            height: 12px;
+            margin-top: var(--space-md);
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: var(--success);
+            height: 100%;
+            border-radius: var(--radius-full);
+            transition: width 0.3s;
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xxl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>

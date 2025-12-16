@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Examples - Preventing Vulnerabilities</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .example-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        .example-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .example-title {
+            font-size: 1.3rem;
+            color: var(--gray-800);
+        }
+        .scenario-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        .scenario-box h4 {
+            color: #0369a1;
+            margin-bottom: var(--space-sm);
+        }
+        .analysis-section {
+            margin-bottom: var(--space-lg);
+        }
+        .analysis-section h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .threat-list, .solution-list {
+            list-style: none;
+            padding: 0;
+        }
+        .threat-list li, .solution-list li {
+            padding: var(--space-sm) var(--space-md);
+            margin-bottom: var(--space-sm);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+        }
+        .threat-list li {
+            background: #fef2f2;
+            border-left: 3px solid var(--error);
+        }
+        .solution-list li {
+            background: #f0fdf4;
+            border-left: 3px solid var(--success);
+        }
+        .solution-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+        .solution-table th, .solution-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border: 1px solid var(--gray-200);
+        }
+        .solution-table th {
+            background: var(--gray-100);
+        }
+        .key-insight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #fbbf24;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        .key-insight strong {
+            color: #92400e;
+        }
+        .practice-section {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-top: var(--space-xxl);
+        }
+        .practice-problem {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        .reveal-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            margin-top: var(--space-md);
+        }
+        .reveal-btn:hover {
+            background: var(--primary-dark);
+        }
+        .solution-reveal {
+            display: none;
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: #ecfdf5;
+            border-radius: var(--radius-md);
+            border: 1px solid #6ee7b7;
+        }
+        .solution-reveal.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Preventing Vulnerabilities</a>
+            <h1>Worked Examples</h1>
+            <p class="subtitle">Learn to analyse security scenarios and recommend appropriate prevention methods</p>
+        </header>
+
+        <!-- Example 1 -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-number">1</div>
+                <h3 class="example-title">Securing a Small Business Network</h3>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Scenario</h4>
+                <p>A small accounting firm with 15 employees handles sensitive financial data for their clients. They have a basic network setup with a router, Wi-Fi access, and file servers. Currently, they have no dedicated security measures beyond the router's built-in firewall. What security measures should they implement?</p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>🔍 Step 1: Identify the Threats</h4>
+                <ul class="threat-list">
+                    <li><span>⚠️</span> <strong>Malware:</strong> Employees may accidentally download viruses from emails or websites</li>
+                    <li><span>⚠️</span> <strong>Data theft:</strong> Client financial data is valuable to criminals</li>
+                    <li><span>⚠️</span> <strong>Unauthorised access:</strong> Anyone could potentially access the Wi-Fi network</li>
+                    <li><span>⚠️</span> <strong>Physical theft:</strong> Laptops containing data could be stolen</li>
+                    <li><span>⚠️</span> <strong>Ransomware:</strong> Financial firms are often targeted</li>
+                </ul>
+            </div>
+
+            <div class="analysis-section">
+                <h4>✅ Step 2: Match Prevention Methods to Threats</h4>
+                <table class="solution-table">
+                    <tr>
+                        <th>Prevention Method</th>
+                        <th>What It Addresses</th>
+                        <th>Priority</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Anti-malware software</strong></td>
+                        <td>Protects against viruses, trojans, and ransomware</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Encryption</strong></td>
+                        <td>Protects data if devices are stolen or communications intercepted</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Strong password policy</strong></td>
+                        <td>Prevents unauthorised account access</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td><strong>User access levels</strong></td>
+                        <td>Limits damage from compromised accounts; not all staff need all data</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dedicated firewall</strong></td>
+                        <td>Better protection than router firewall; blocks suspicious connections</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Physical security</strong></td>
+                        <td>Secure server room, cable locks for laptops</td>
+                        <td>Medium</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>📋 Step 3: Recommended Implementation</h4>
+                <ul class="solution-list">
+                    <li><span>✓</span> Install business-grade anti-malware on all computers</li>
+                    <li><span>✓</span> Enable full-disk encryption on all laptops and workstations</li>
+                    <li><span>✓</span> Use encrypted connections (VPN) for remote access</li>
+                    <li><span>✓</span> Implement password policy: minimum 12 characters, complexity requirements</li>
+                    <li><span>✓</span> Create user groups: accountants access client files, admin staff don't</li>
+                    <li><span>✓</span> Secure the server with a locked cabinet in a restricted area</li>
+                </ul>
+            </div>
+
+            <div class="key-insight">
+                <strong>Key Insight:</strong> The firm handles sensitive financial data, so encryption and access controls are particularly important. A breach could result in regulatory penalties and loss of client trust.
+            </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-number">2</div>
+                <h3 class="example-title">Analysing a Security Incident</h3>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Scenario</h4>
+                <p>A company discovered that customer data was stolen. Investigation revealed: (1) An employee clicked a phishing link and entered their password on a fake login page. (2) The attacker used these credentials to access the company database remotely. (3) The employee had full administrator access to the database. (4) No encryption was used on the database. What prevention methods failed or were missing?</p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>🔍 Step 1: Trace the Attack Path</h4>
+                <table class="solution-table">
+                    <tr>
+                        <th>Stage</th>
+                        <th>What Happened</th>
+                        <th>What Could Have Prevented It</th>
+                    </tr>
+                    <tr>
+                        <td>1. Initial Access</td>
+                        <td>Employee fell for phishing email</td>
+                        <td><strong>User training</strong> - recognise phishing attacks</td>
+                    </tr>
+                    <tr>
+                        <td>2. Credential Theft</td>
+                        <td>Password entered on fake site</td>
+                        <td><strong>Multi-factor authentication (MFA)</strong> - password alone wouldn't be enough</td>
+                    </tr>
+                    <tr>
+                        <td>3. Remote Access</td>
+                        <td>Attacker logged in from outside</td>
+                        <td><strong>Firewall rules</strong> - restrict database access to internal network or VPN only</td>
+                    </tr>
+                    <tr>
+                        <td>4. Data Access</td>
+                        <td>Employee had admin access to database</td>
+                        <td><strong>User access levels</strong> - principle of least privilege</td>
+                    </tr>
+                    <tr>
+                        <td>5. Data Theft</td>
+                        <td>Data was readable in plain text</td>
+                        <td><strong>Encryption</strong> - stolen data would be unreadable</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>✅ Step 2: Identify Missing Defences</h4>
+                <ul class="threat-list">
+                    <li><span>❌</span> <strong>No security awareness training:</strong> Employee didn't recognise phishing</li>
+                    <li><span>❌</span> <strong>No multi-factor authentication:</strong> Single password was enough for access</li>
+                    <li><span>❌</span> <strong>Excessive permissions:</strong> Regular employee had database admin access</li>
+                    <li><span>❌</span> <strong>No network segmentation:</strong> Database accessible from internet</li>
+                    <li><span>❌</span> <strong>No encryption:</strong> Data stored in plaintext</li>
+                </ul>
+            </div>
+
+            <div class="analysis-section">
+                <h4>📋 Step 3: Remediation Recommendations</h4>
+                <ul class="solution-list">
+                    <li><span>✓</span> Implement mandatory security awareness training for all staff</li>
+                    <li><span>✓</span> Enable multi-factor authentication for all accounts</li>
+                    <li><span>✓</span> Review and restrict user access levels - minimum necessary permissions</li>
+                    <li><span>✓</span> Configure firewall to block external database access</li>
+                    <li><span>✓</span> Encrypt sensitive data in the database</li>
+                    <li><span>✓</span> Conduct penetration testing to find other vulnerabilities</li>
+                </ul>
+            </div>
+
+            <div class="key-insight">
+                <strong>Key Insight:</strong> This breach succeeded because multiple defences were missing. Any single measure (MFA, access controls, encryption, or training) might have prevented the attack or limited its impact. This demonstrates the importance of defence in depth.
+            </div>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-number">3</div>
+                <h3 class="example-title">Evaluating Prevention Method Effectiveness</h3>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Scenario</h4>
+                <p>A school IT manager needs to justify security spending to the headteacher. They want to implement: (A) New anti-malware software, (B) A penetration test, (C) Physical security for the server room. The budget only allows for two of these. Which two should be prioritised?</p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>🔍 Step 1: Evaluate Each Option</h4>
+                <table class="solution-table">
+                    <tr>
+                        <th>Option</th>
+                        <th>What It Protects Against</th>
+                        <th>Limitations</th>
+                    </tr>
+                    <tr>
+                        <td><strong>A: Anti-malware</strong></td>
+                        <td>Viruses, trojans, ransomware, spyware - constant, ongoing protection</td>
+                        <td>May not catch brand-new (zero-day) threats</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B: Penetration test</strong></td>
+                        <td>Identifies unknown vulnerabilities; one-time assessment</td>
+                        <td>Doesn't provide ongoing protection; needs follow-up to fix issues</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C: Physical security</strong></td>
+                        <td>Theft, sabotage, unauthorised physical access to servers</td>
+                        <td>Doesn't protect against remote/network attacks</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>✅ Step 2: Consider the Context</h4>
+                <p>For a school environment:</p>
+                <ul class="solution-list">
+                    <li><span>📊</span> <strong>High malware risk:</strong> Students may visit risky websites, click suspicious links</li>
+                    <li><span>📊</span> <strong>Moderate physical risk:</strong> School is public building with many people</li>
+                    <li><span>📊</span> <strong>Lower sophisticated attack risk:</strong> Schools less likely to be targeted by advanced attacks</li>
+                </ul>
+            </div>
+
+            <div class="analysis-section">
+                <h4>📋 Step 3: Recommendation</h4>
+                <p><strong>Prioritise: A (Anti-malware) and C (Physical security)</strong></p>
+                <ul class="solution-list">
+                    <li><span>✓</span> <strong>Anti-malware:</strong> Provides constant protection against the most likely threat (accidental malware infection). Schools face daily malware risks from student activity.</li>
+                    <li><span>✓</span> <strong>Physical security:</strong> Many people access the school; servers need protection from theft and tampering. Foundation for all other security.</li>
+                </ul>
+                <p><em>Penetration testing can be deferred because:</em> The school is less likely to be targeted by sophisticated attackers specifically looking for vulnerabilities. The other two measures address more probable daily threats.</p>
+            </div>
+
+            <div class="key-insight">
+                <strong>Key Insight:</strong> Security decisions should consider the specific context and threat landscape. What's most important for a bank (penetration testing) may be less critical for a school, where everyday malware protection matters more.
+            </div>
+        </div>
+
+        <!-- Example 4 -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-number">4</div>
+                <h3 class="example-title">Designing Access Control for a Hospital</h3>
+            </div>
+
+            <div class="scenario-box">
+                <h4>Scenario</h4>
+                <p>A hospital needs to set up user access levels for their patient records system. Staff roles include: Doctors, Nurses, Receptionists, IT Administrators, and Billing Staff. Design appropriate access levels following the principle of least privilege.</p>
+            </div>
+
+            <div class="analysis-section">
+                <h4>🔍 Step 1: Identify What Each Role Needs</h4>
+                <table class="solution-table">
+                    <tr>
+                        <th>Role</th>
+                        <th>Job Requirements</th>
+                        <th>Data Needed</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Doctors</strong></td>
+                        <td>Diagnose, treat, prescribe</td>
+                        <td>Full medical records, test results, treatment history</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nurses</strong></td>
+                        <td>Administer care, record observations</td>
+                        <td>Medical records, medication schedules, observations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Receptionists</strong></td>
+                        <td>Schedule appointments, check in patients</td>
+                        <td>Contact details, appointment schedules only</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT Administrators</strong></td>
+                        <td>Maintain systems, manage accounts</td>
+                        <td>System settings, user accounts (NOT patient data)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Billing Staff</strong></td>
+                        <td>Process payments, insurance claims</td>
+                        <td>Billing codes, insurance details, payment records</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>✅ Step 2: Design Access Levels</h4>
+                <table class="solution-table">
+                    <tr>
+                        <th>Role</th>
+                        <th>Medical Records</th>
+                        <th>Appointments</th>
+                        <th>Billing</th>
+                        <th>System Admin</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Doctors</strong></td>
+                        <td>Read/Write</td>
+                        <td>Read</td>
+                        <td>None</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nurses</strong></td>
+                        <td>Read/Limited Write</td>
+                        <td>Read</td>
+                        <td>None</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Receptionists</strong></td>
+                        <td>None</td>
+                        <td>Read/Write</td>
+                        <td>None</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT Admins</strong></td>
+                        <td>None</td>
+                        <td>None</td>
+                        <td>None</td>
+                        <td>Full</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Billing</strong></td>
+                        <td>None</td>
+                        <td>Read</td>
+                        <td>Read/Write</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="analysis-section">
+                <h4>📋 Step 3: Security Benefits</h4>
+                <ul class="solution-list">
+                    <li><span>✓</span> <strong>Patient privacy:</strong> Receptionists can't see medical details - only what they need</li>
+                    <li><span>✓</span> <strong>Limited breach impact:</strong> If a receptionist's account is compromised, no medical data exposed</li>
+                    <li><span>✓</span> <strong>IT separation:</strong> IT can maintain systems without accessing sensitive patient data</li>
+                    <li><span>✓</span> <strong>Compliance:</strong> Meets healthcare data protection regulations</li>
+                </ul>
+            </div>
+
+            <div class="key-insight">
+                <strong>Key Insight:</strong> The principle of least privilege means each user should have only the minimum access required for their job. This limits damage from both accidental errors and malicious attacks - a compromised account can only access what that role permits.
+            </div>
+        </div>
+
+        <!-- Practice Problems -->
+        <div class="practice-section">
+            <h2>Practice Problems</h2>
+            <p>Now try analysing these scenarios yourself:</p>
+
+            <div class="practice-problem">
+                <h4>Problem 1: E-commerce Website</h4>
+                <p>An online shop stores customer credit card details and has experienced several data breaches at competitors. What three prevention methods should be their highest priority, and why?</p>
+                <button class="reveal-btn" onclick="toggleSolution('sol1')">Reveal Solution</button>
+                <div class="solution-reveal" id="sol1">
+                    <p><strong>Top 3 priorities:</strong></p>
+                    <ol>
+                        <li><strong>Encryption:</strong> Credit card data must be encrypted both in storage (at rest) and during transmission (in transit). Even if stolen, encrypted data is useless to attackers.</li>
+                        <li><strong>Penetration testing:</strong> E-commerce sites are prime targets for SQL injection and other attacks. Regular pen testing finds vulnerabilities before attackers do.</li>
+                        <li><strong>Firewall (application-level):</strong> A Web Application Firewall (WAF) can block common attack patterns targeting web applications.</li>
+                    </ol>
+                    <p><em>Supporting measures:</em> Strong passwords, user access levels, regular security updates.</p>
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Problem 2: Ransomware Protection</h4>
+                <p>A company is particularly worried about ransomware after hearing about attacks on similar businesses. Which prevention methods specifically help against ransomware, and how?</p>
+                <button class="reveal-btn" onclick="toggleSolution('sol2')">Reveal Solution</button>
+                <div class="solution-reveal" id="sol2">
+                    <p><strong>Ransomware-specific protection:</strong></p>
+                    <ul>
+                        <li><strong>Anti-malware software:</strong> Can detect and block known ransomware variants before execution</li>
+                        <li><strong>User access levels:</strong> Limits what files ransomware can encrypt (only those the infected user can access)</li>
+                        <li><strong>User training:</strong> Most ransomware arrives via phishing - trained users don't click suspicious attachments</li>
+                        <li><strong>Regular backups (offline):</strong> Even if encrypted, files can be restored from backups</li>
+                        <li><strong>Firewalls:</strong> Can block ransomware's communication with command servers</li>
+                    </ul>
+                    <p><em>Note:</em> No single measure stops all ransomware - defence in depth is essential.</p>
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Problem 3: Security Audit Findings</h4>
+                <p>A security audit found: (1) 40% of employees use passwords under 8 characters, (2) The server room door is propped open during business hours, (3) Anti-malware definitions are 6 months out of date. Prioritise these issues and explain why.</p>
+                <button class="reveal-btn" onclick="toggleSolution('sol3')">Reveal Solution</button>
+                <div class="solution-reveal" id="sol3">
+                    <p><strong>Priority order:</strong></p>
+                    <ol>
+                        <li><strong>Update anti-malware (URGENT):</strong> Six-month-old definitions miss all recent malware. This is an immediate vulnerability that could result in infection at any moment.</li>
+                        <li><strong>Physical security (HIGH):</strong> An open server room allows anyone to access, steal, or damage critical equipment. Easy fix with significant risk reduction.</li>
+                        <li><strong>Password policy (MEDIUM):</strong> Weak passwords are a vulnerability, but exploiting them typically requires additional attack steps. Implement policy and give users time to change passwords.</li>
+                    </ol>
+                    <p><em>Reasoning:</em> Outdated anti-malware is an active, exploitable vulnerability right now. Physical security is a quick fix. Passwords are important but require user behaviour change.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            solution.classList.toggle('show');
+
+            if (solution.classList.contains('show')) {
+                Progress.saveActivity(`prevention-example-${id}`, 'completed', 100);
+            }
+        }
+
+        Progress.startActivity('prevention-example', 'example');
+    </script>
+</body>
+</html>

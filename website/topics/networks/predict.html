@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict - Networks & Topologies</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Networks</a>
+            <h1>Predict: Network Scenarios</h1>
+            <p class="subtitle">Test your intuition about networks before learning the details</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How This Works</h2>
+            <p>For each scenario, predict the answer before revealing the solution. This helps you engage with the concepts and identify what you already know.</p>
+        </div>
+
+        <!-- Scenario 1: LAN vs WAN -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">1</span>
+                <span class="scenario-category">Network Types</span>
+            </div>
+            <h3>School Network Classification</h3>
+            <div class="scenario-content">
+                <p>A school has 200 computers spread across 3 buildings on the same campus. All computers are connected and share resources like printers and the internet.</p>
+                <p class="question"><strong>Is this a LAN or a WAN?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: LAN (Local Area Network)</h4>
+                <div class="explanation">
+                    <p><strong>Why?</strong></p>
+                    <ul>
+                        <li>All buildings are on the <strong>same campus</strong> (small geographical area)</li>
+                        <li>The network is <strong>owned and managed by the school</strong></li>
+                        <li>Uses <strong>private infrastructure</strong> (the school's own cables/WiFi)</li>
+                        <li>Even though it spans multiple buildings, it's still considered local</li>
+                    </ul>
+                    <p><strong>Key insight:</strong> LAN doesn't mean "one building" - it means "one site or campus owned by one organisation."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 2: WAN Example -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">2</span>
+                <span class="scenario-category">Network Types</span>
+            </div>
+            <h3>Bank Branch Network</h3>
+            <div class="scenario-content">
+                <p>A bank has branches in 50 different cities across the UK. Each branch needs to access the central customer database and share information with other branches.</p>
+                <p class="question"><strong>Is this a LAN or a WAN?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: WAN (Wide Area Network)</h4>
+                <div class="explanation">
+                    <p><strong>Why?</strong></p>
+                    <ul>
+                        <li>Covers a <strong>large geographical area</strong> (multiple cities)</li>
+                        <li>Connects <strong>multiple LANs</strong> (each branch has its own LAN)</li>
+                        <li>Uses <strong>third-party infrastructure</strong> (leased lines, internet)</li>
+                        <li>The bank doesn't own all the cables between cities</li>
+                    </ul>
+                    <p><strong>Key insight:</strong> A WAN connects LANs together over large distances. Each bank branch has a LAN, and the WAN connects all branches.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 3: Network Performance -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">3</span>
+                <span class="scenario-category">Performance</span>
+            </div>
+            <h3>Slow Internet at Lunchtime</h3>
+            <div class="scenario-content">
+                <p>A school notices that their WiFi is fast in the morning but becomes very slow during lunch break when hundreds of students connect their phones.</p>
+                <p class="question"><strong>What is the main factor causing this slowdown?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Number of Devices Connected</h4>
+                <div class="explanation">
+                    <p><strong>Why?</strong></p>
+                    <ul>
+                        <li>The <strong>bandwidth is shared</strong> between all connected devices</li>
+                        <li>If 100 Mbps is shared by 200 phones = ~0.5 Mbps each</li>
+                        <li>More devices = less bandwidth per user</li>
+                        <li>Also increases network traffic/congestion</li>
+                    </ul>
+                    <p><strong>Solutions could include:</strong> More access points, limiting connections, prioritising traffic, increasing bandwidth.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 4: Client-Server vs P2P -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">4</span>
+                <span class="scenario-category">Network Models</span>
+            </div>
+            <h3>Small Office Setup</h3>
+            <div class="scenario-content">
+                <p>A small office has 4 computers. The staff want to share files with each other, but they have a limited budget and no IT specialist.</p>
+                <p class="question"><strong>Should they use Client-Server or Peer-to-Peer networking?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Peer-to-Peer (P2P)</h4>
+                <div class="explanation">
+                    <p><strong>Why P2P is better here:</strong></p>
+                    <ul>
+                        <li><strong>No expensive server</strong> needed</li>
+                        <li><strong>Easy to set up</strong> without IT expertise</li>
+                        <li><strong>Low cost</strong> - just connect the computers</li>
+                        <li>Only <strong>4 computers</strong> - small enough to manage</li>
+                        <li>Each user can share their own files directly</li>
+                    </ul>
+                    <p><strong>When would Client-Server be better?</strong> If they grew to 50+ computers, needed central backups, or required tight security controls.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 5: Client-Server -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">5</span>
+                <span class="scenario-category">Network Models</span>
+            </div>
+            <h3>Large Hospital Network</h3>
+            <div class="scenario-content">
+                <p>A hospital has 500 computers across multiple departments. Patient records must be secure, regularly backed up, and accessible from any computer. They have an IT team.</p>
+                <p class="question"><strong>Should they use Client-Server or Peer-to-Peer networking?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Client-Server</h4>
+                <div class="explanation">
+                    <p><strong>Why Client-Server is essential here:</strong></p>
+                    <ul>
+                        <li><strong>Centralised security</strong> - patient data is protected</li>
+                        <li><strong>Automatic backups</strong> from central servers</li>
+                        <li><strong>Access control</strong> - who can see what records</li>
+                        <li><strong>Scalable</strong> - can handle 500+ computers</li>
+                        <li><strong>IT team can manage</strong> everything from one place</li>
+                        <li><strong>Audit trails</strong> - track who accessed what</li>
+                    </ul>
+                    <p><strong>P2P would be dangerous here</strong> - no central control over sensitive medical data!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 6: Hardware Identification -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">6</span>
+                <span class="scenario-category">Hardware</span>
+            </div>
+            <h3>Connecting to WiFi</h3>
+            <div class="scenario-content">
+                <p>A laptop can connect to a wired Ethernet network, but when you unplug it and try to use WiFi, it says "No wireless adapters found."</p>
+                <p class="question"><strong>Which hardware component is missing or broken?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Wireless NIC (Network Interface Card)</h4>
+                <div class="explanation">
+                    <p><strong>Why?</strong></p>
+                    <ul>
+                        <li>The laptop has a <strong>wired NIC</strong> (Ethernet works)</li>
+                        <li>But is missing or has a faulty <strong>wireless NIC</strong></li>
+                        <li>Each type of connection needs its own NIC</li>
+                        <li>The NIC converts data into signals for transmission</li>
+                    </ul>
+                    <p><strong>Solutions:</strong> USB WiFi adapter, repair internal wireless card, or enable it in BIOS/settings if disabled.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 7: Router vs Switch -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">7</span>
+                <span class="scenario-category">Hardware</span>
+            </div>
+            <h3>Connecting to the Internet</h3>
+            <div class="scenario-content">
+                <p>Five computers in an office are connected to a switch and can share files with each other. However, none of them can access the internet.</p>
+                <p class="question"><strong>What hardware is needed to give them internet access?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Router</h4>
+                <div class="explanation">
+                    <p><strong>Why?</strong></p>
+                    <ul>
+                        <li>A <strong>switch</strong> only connects devices within the same LAN</li>
+                        <li>A <strong>router</strong> connects different networks together</li>
+                        <li>The router directs traffic between the LAN and the internet</li>
+                        <li>It uses IP addresses to route data to the correct destination</li>
+                    </ul>
+                    <p><strong>Key difference:</strong> Switch = within a network. Router = between networks.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 8: DNS -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">8</span>
+                <span class="scenario-category">Internet</span>
+            </div>
+            <h3>Website Not Loading</h3>
+            <div class="scenario-content">
+                <p>You type "www.example.com" in your browser, but get an error "DNS server not responding". However, when you type the IP address 93.184.216.34 directly, the website loads.</p>
+                <p class="question"><strong>What does this tell you about DNS?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: DNS converts domain names to IP addresses</h4>
+                <div class="explanation">
+                    <p><strong>What's happening:</strong></p>
+                    <ul>
+                        <li>Your computer can reach the web server (IP works)</li>
+                        <li>But it can't convert the domain name to an IP</li>
+                        <li>DNS servers are down or unreachable</li>
+                        <li>Without DNS, you'd need to memorise IP addresses!</li>
+                    </ul>
+                    <p><strong>DNS is like a phone book:</strong> You look up a name (www.example.com) and get the number (IP address) to call.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 9: The Cloud -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">9</span>
+                <span class="scenario-category">Internet</span>
+            </div>
+            <h3>Working Offline</h3>
+            <div class="scenario-content">
+                <p>A student uses Google Docs to write essays. During a power cut at home, they lose internet but their laptop still works on battery. They cannot access their essay.</p>
+                <p class="question"><strong>What is the main disadvantage of cloud computing shown here?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Requires Internet Connection</h4>
+                <div class="explanation">
+                    <p><strong>Why this is a problem:</strong></p>
+                    <ul>
+                        <li>Cloud services need <strong>constant internet access</strong></li>
+                        <li>No internet = no access to your files</li>
+                        <li>You're <strong>dependent on your connection</strong></li>
+                        <li>Also dependent on the cloud provider being online</li>
+                    </ul>
+                    <p><strong>Workarounds:</strong> Many cloud apps now offer "offline mode" that syncs when reconnected. Always have local backups of important files!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 10: Cloud Security -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">10</span>
+                <span class="scenario-category">Internet</span>
+            </div>
+            <h3>Company Data Security</h3>
+            <div class="scenario-content">
+                <p>A company is considering moving all their confidential business plans to cloud storage. The IT manager is concerned because the company won't physically control where their data is stored.</p>
+                <p class="question"><strong>What cloud computing disadvantage is the IT manager worried about?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Data Security/Privacy Concerns & Less Control</h4>
+                <div class="explanation">
+                    <p><strong>Valid concerns include:</strong></p>
+                    <ul>
+                        <li><strong>Data stored on someone else's servers</strong></li>
+                        <li><strong>Less control</strong> over who can access it</li>
+                        <li>Data might be stored in <strong>different countries</strong> with different laws</li>
+                        <li>Trusting the cloud provider's <strong>security measures</strong></li>
+                        <li>Risk of <strong>data breaches</strong> at the provider</li>
+                    </ul>
+                    <p><strong>Mitigations:</strong> Encryption, choosing trusted providers, keeping highly sensitive data on-premises.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 11: Star Topology -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">11</span>
+                <span class="scenario-category">Topologies</span>
+            </div>
+            <h3>Adding New Computers</h3>
+            <div class="scenario-content">
+                <p>A school IT department needs to add 20 new computers to their network quickly and easily, without disrupting the existing network. They want minimal downtime for other users.</p>
+                <p class="question"><strong>Star or Mesh topology - which is better for this?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Star Topology</h4>
+                <div class="explanation">
+                    <p><strong>Why Star is better here:</strong></p>
+                    <ul>
+                        <li><strong>Easy to add devices</strong> - just plug into the switch</li>
+                        <li><strong>No disruption</strong> to existing connections</li>
+                        <li>Each new computer gets its own cable to the central switch</li>
+                        <li>Existing devices keep working during setup</li>
+                    </ul>
+                    <p><strong>Mesh would require:</strong> Running cables to multiple existing devices, complex configuration, more disruption.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario 12: Mesh Topology -->
+        <div class="prediction-card">
+            <div class="scenario-header">
+                <span class="scenario-number">12</span>
+                <span class="scenario-category">Topologies</span>
+            </div>
+            <h3>Critical Systems</h3>
+            <div class="scenario-content">
+                <p>An air traffic control centre needs a network where communication MUST continue even if multiple cables or devices fail. Reliability is more important than cost.</p>
+                <p class="question"><strong>Star or Mesh topology - which is better for this?</strong></p>
+            </div>
+            <button class="btn btn-primary reveal-btn" onclick="toggleReveal(this)">Reveal Answer</button>
+            <div class="answer-content">
+                <h4>Answer: Mesh Topology</h4>
+                <div class="explanation">
+                    <p><strong>Why Mesh is essential here:</strong></p>
+                    <ul>
+                        <li><strong>Multiple redundant paths</strong> between devices</li>
+                        <li><strong>No single point of failure</strong></li>
+                        <li>If one connection fails, data takes another route</li>
+                        <li>Critical systems need <strong>maximum reliability</strong></li>
+                        <li>Cost is secondary to safety (lives at stake)</li>
+                    </ul>
+                    <p><strong>Star would be risky:</strong> If the central switch fails, the entire network goes down - unacceptable for air traffic control!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="progress-section">
+            <h2>Your Progress</h2>
+            <p>You've worked through <span id="revealed-count">0</span> of 12 scenarios.</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="activity-nav">
+            <a href="index.html" class="btn btn-secondary">← Back to Topic</a>
+            <a href="example.html" class="btn btn-primary">Worked Examples →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        let revealedCount = 0;
+        const totalScenarios = 12;
+
+        function toggleReveal(button) {
+            const card = button.closest('.prediction-card');
+            const answer = card.querySelector('.answer-content');
+
+            if (!answer.classList.contains('revealed')) {
+                answer.classList.add('revealed');
+                button.textContent = 'Hide Answer';
+                button.classList.remove('btn-primary');
+                button.classList.add('btn-secondary');
+
+                // Update progress
+                revealedCount++;
+                updateProgress();
+            } else {
+                answer.classList.remove('revealed');
+                button.textContent = 'Reveal Answer';
+                button.classList.remove('btn-secondary');
+                button.classList.add('btn-primary');
+            }
+        }
+
+        function updateProgress() {
+            document.getElementById('revealed-count').textContent = revealedCount;
+            const percentage = (revealedCount / totalScenarios) * 100;
+            document.getElementById('progress-fill').style.width = percentage + '%';
+
+            // Save progress if all revealed
+            if (revealedCount >= totalScenarios && typeof Progress !== 'undefined') {
+                Progress.complete('networks-predict');
+            }
+        }
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('networks-predict');
+        }
+    </script>
+
+    <style>
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .prediction-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .scenario-number {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .scenario-category {
+            background: var(--gray-200);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .scenario-content {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .question {
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 2px dashed var(--gray-300);
+            color: var(--primary);
+        }
+
+        .reveal-btn {
+            width: 100%;
+        }
+
+        .answer-content {
+            display: none;
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: #d4edda;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--success);
+        }
+
+        .answer-content.revealed {
+            display: block;
+        }
+
+        .answer-content h4 {
+            color: var(--success);
+            margin-bottom: var(--space-md);
+        }
+
+        .explanation {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+
+        .explanation ul {
+            margin: var(--space-sm) 0;
+            padding-left: var(--space-lg);
+        }
+
+        .progress-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--gray-200);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: var(--space-md);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            transition: width 0.3s ease;
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

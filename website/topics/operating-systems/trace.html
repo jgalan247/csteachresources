@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step-by-Step - Operating Systems</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .trace-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .trace-exercise {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+        }
+        .trace-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        .trace-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        .trace-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .trace-scenario {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        .trace-scenario h4 {
+            color: #0369a1;
+            margin-bottom: var(--space-sm);
+        }
+        .steps-container {
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        .trace-step {
+            display: flex;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .trace-step:last-child {
+            border-bottom: none;
+        }
+        .step-number-col {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--gray-600);
+        }
+        .step-content {
+            flex: 1;
+            padding: var(--space-md);
+        }
+        .step-description {
+            font-weight: 500;
+            margin-bottom: var(--space-sm);
+        }
+        .step-question {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+        }
+        .step-input {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+        }
+        .step-input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        .step-input.correct {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+        .step-input.incorrect {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+        .step-feedback {
+            margin-top: var(--space-sm);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            display: none;
+        }
+        .step-feedback.show {
+            display: block;
+        }
+        .step-feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        .step-feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .check-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: var(--space-lg);
+        }
+        .check-btn:hover {
+            background: var(--primary-dark);
+        }
+        .show-answer-btn {
+            background: var(--gray-200);
+            color: var(--gray-700);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: var(--space-sm);
+        }
+        .exercise-score {
+            text-align: center;
+            padding: var(--space-lg);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-lg);
+            display: none;
+        }
+        .exercise-score.show {
+            display: block;
+        }
+        .progress-indicator {
+            background: var(--gray-100);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Operating Systems</a>
+            <h1>Step-by-Step Exercises</h1>
+            <p class="subtitle">Work through OS processes step by step</p>
+        </header>
+
+        <div class="progress-indicator">
+            <span id="overall-progress">Exercise 1 of 5</span>
+        </div>
+
+        <div class="trace-container" id="exercises-container">
+            <!-- Exercises populated by JavaScript -->
+        </div>
+    </main>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const exercises = [
+            {
+                id: 1,
+                title: 'Opening an Application',
+                scenario: 'A user double-clicks the Microsoft Word icon on their desktop. Trace what the operating system does from the click until Word is ready to use.',
+                steps: [
+                    {
+                        description: 'User Input Detection',
+                        question: 'Which OS function detects the mouse click on the icon?',
+                        answer: 'user interface',
+                        acceptAlternatives: ['ui', 'gui', 'graphical user interface'],
+                        feedback: 'The User Interface (GUI) detects and interprets the mouse click on the desktop icon.'
+                    },
+                    {
+                        description: 'File Location',
+                        question: 'Which OS function finds where Word.exe is stored on the hard drive?',
+                        answer: 'file management',
+                        acceptAlternatives: ['file system', 'file manager'],
+                        feedback: 'File Management uses the file system to locate the application executable file on the storage device.'
+                    },
+                    {
+                        description: 'Loading to Memory',
+                        question: 'Which OS function allocates RAM for Word and loads the program from storage?',
+                        answer: 'memory management',
+                        acceptAlternatives: ['memory manager', 'ram management'],
+                        feedback: 'Memory Management allocates a portion of RAM and loads the program code from secondary storage into this memory space.'
+                    },
+                    {
+                        description: 'Process Creation',
+                        question: 'The OS creates a new "process" for Word. What does this allow? (multitasking/single-tasking)',
+                        answer: 'multitasking',
+                        acceptAlternatives: ['multi-tasking', 'multi tasking'],
+                        feedback: 'Creating a process allows multitasking - Word can run alongside other applications, with the OS managing CPU time between them.'
+                    },
+                    {
+                        description: 'Display Window',
+                        question: 'Which OS function displays the Word window on screen?',
+                        answer: 'user interface',
+                        acceptAlternatives: ['ui', 'gui', 'graphical user interface'],
+                        feedback: 'The User Interface (GUI) renders the Word window, title bar, menu, and all visual elements on the display.'
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: 'Saving a File',
+                scenario: 'A user is editing a document and presses Ctrl+S to save. Trace the OS operations from the keyboard press to the file being saved.',
+                steps: [
+                    {
+                        description: 'Keyboard Input',
+                        question: 'The keyboard sends an interrupt signal. Which OS function handles communication with the keyboard?',
+                        answer: 'peripheral management',
+                        acceptAlternatives: ['device management', 'driver', 'peripheral'],
+                        feedback: 'Peripheral Management receives the interrupt from the keyboard and uses the keyboard driver to interpret the key codes.'
+                    },
+                    {
+                        description: 'Application Response',
+                        question: 'Ctrl+S is passed to Word, which requests a file save. What data needs to move: from RAM to storage, or storage to RAM?',
+                        answer: 'ram to storage',
+                        acceptAlternatives: ['from ram to storage', 'memory to storage', 'ram to disk', 'ram to ssd'],
+                        feedback: 'The document is currently in RAM (working memory). Saving transfers it to secondary storage (HDD/SSD) for permanent storage.'
+                    },
+                    {
+                        description: 'File Location',
+                        question: 'The OS needs to know where to save. Which function determines the file path (e.g., C:\\Users\\Documents\\)?',
+                        answer: 'file management',
+                        acceptAlternatives: ['file system', 'file manager'],
+                        feedback: 'File Management handles the file path, folder structure, and determines where on the storage device to write the data.'
+                    },
+                    {
+                        description: 'Data Transfer',
+                        question: 'The OS writes data to the SSD. Which function manages communication with the storage device?',
+                        answer: 'peripheral management',
+                        acceptAlternatives: ['device management', 'driver', 'peripheral'],
+                        feedback: 'Peripheral Management uses the storage device driver to write data to the correct location on the SSD.'
+                    },
+                    {
+                        description: 'Confirmation',
+                        question: 'Word shows "Document saved." Which function displays this message to the user?',
+                        answer: 'user interface',
+                        acceptAlternatives: ['ui', 'gui'],
+                        feedback: 'The User Interface displays the confirmation message, updating the title bar or showing a notification.'
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: 'User Login Process',
+                scenario: 'A student arrives at school and logs into a computer with their username and password. Trace the OS operations.',
+                steps: [
+                    {
+                        description: 'Login Screen',
+                        question: 'Which OS function displays the login screen with username and password fields?',
+                        answer: 'user interface',
+                        acceptAlternatives: ['ui', 'gui'],
+                        feedback: 'The User Interface displays the login screen where users can enter their credentials.'
+                    },
+                    {
+                        description: 'Credential Entry',
+                        question: 'The student types their password. Which function captures the keyboard input?',
+                        answer: 'peripheral management',
+                        acceptAlternatives: ['device management', 'peripheral'],
+                        feedback: 'Peripheral Management handles the keyboard input through the keyboard driver, passing characters to the login interface.'
+                    },
+                    {
+                        description: 'Authentication',
+                        question: 'The OS checks if the username and password are correct. Which function handles this?',
+                        answer: 'user management',
+                        acceptAlternatives: ['user manager', 'account management', 'authentication'],
+                        feedback: 'User Management authenticates the user by checking credentials against the stored user database.'
+                    },
+                    {
+                        description: 'Access Rights',
+                        question: 'After login, the OS applies the student\'s permissions (no software install, own files only). Which function controls this?',
+                        answer: 'user management',
+                        acceptAlternatives: ['user manager', 'access control', 'permissions'],
+                        feedback: 'User Management sets up the session with the appropriate access rights and permissions for that user type.'
+                    },
+                    {
+                        description: 'Profile Loading',
+                        question: 'The student\'s personal settings and Documents folder are loaded. Which function organises access to their files?',
+                        answer: 'file management',
+                        acceptAlternatives: ['file system', 'file manager'],
+                        feedback: 'File Management sets up access to the user\'s home folder and applies folder permissions determined by User Management.'
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: 'Multitasking Scenario',
+                scenario: 'A user has Chrome, Word, and Spotify open on a computer with 8GB RAM and a single-core CPU. Trace how the OS manages running all three.',
+                steps: [
+                    {
+                        description: 'Memory Allocation',
+                        question: 'Each application needs RAM. Which function divides the 8GB between the three programs?',
+                        answer: 'memory management',
+                        acceptAlternatives: ['memory manager', 'ram allocation'],
+                        feedback: 'Memory Management allocates separate portions of RAM to each application - perhaps 2GB to Chrome, 500MB to Word, 300MB to Spotify.'
+                    },
+                    {
+                        description: 'Memory Protection',
+                        question: 'What does the OS do to prevent Chrome from accidentally overwriting Word\'s data in RAM?',
+                        answer: 'memory protection',
+                        acceptAlternatives: ['isolate memory', 'separate memory', 'protect memory', 'memory isolation'],
+                        feedback: 'Memory Management provides memory protection - each application is isolated and cannot access another application\'s allocated memory.'
+                    },
+                    {
+                        description: 'CPU Sharing',
+                        question: 'With only one CPU core, how does the OS let all three appear to run at once? (one word)',
+                        answer: 'time slicing',
+                        acceptAlternatives: ['timeslicing', 'time-slicing', 'scheduling', 'multitasking'],
+                        feedback: 'Time slicing rapidly switches the CPU between tasks - each gets a small slice of time (milliseconds), creating the illusion of simultaneous execution.'
+                    },
+                    {
+                        description: 'Priority',
+                        question: 'The user is actively typing in Word. Should Word get more or fewer CPU time slices than background apps?',
+                        answer: 'more',
+                        acceptAlternatives: ['more time', 'more slices', 'higher priority'],
+                        feedback: 'The active (foreground) application typically gets higher priority and more CPU time slices to ensure responsive user interaction.'
+                    },
+                    {
+                        description: 'Audio Continuity',
+                        question: 'Spotify must play audio smoothly without gaps. How does the OS ensure this even when Spotify isn\'t the active window?',
+                        answer: 'regular time slices',
+                        acceptAlternatives: ['consistent scheduling', 'priority', 'guaranteed slices', 'buffer', 'audio buffer'],
+                        feedback: 'The OS gives Spotify regular, consistent time slices and uses audio buffers to ensure smooth playback even when other apps are active.'
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: 'Installing a New Device',
+                scenario: 'A user plugs a new USB webcam into their computer. Trace the OS operations from plug-in to the device being ready to use.',
+                steps: [
+                    {
+                        description: 'Hardware Detection',
+                        question: 'The USB port sends an interrupt signal. Which OS function receives notification of new hardware?',
+                        answer: 'peripheral management',
+                        acceptAlternatives: ['device management', 'plug and play', 'peripheral'],
+                        feedback: 'Peripheral Management receives the USB interrupt signal indicating new hardware has been connected.'
+                    },
+                    {
+                        description: 'Device Identification',
+                        question: 'The OS reads the webcam\'s vendor and product ID. Why does it need this information?',
+                        answer: 'to find the correct driver',
+                        acceptAlternatives: ['find driver', 'identify driver', 'load driver', 'match driver', 'driver'],
+                        feedback: 'The OS needs the device ID to search for and load the correct driver that knows how to communicate with this specific webcam model.'
+                    },
+                    {
+                        description: 'Driver Location',
+                        question: 'The OS searches for a driver. Which function locates the driver file on the system?',
+                        answer: 'file management',
+                        acceptAlternatives: ['file system', 'file manager'],
+                        feedback: 'File Management searches the driver store and system folders to find a matching driver file.'
+                    },
+                    {
+                        description: 'Driver Loading',
+                        question: 'The driver is loaded. Which function allocates memory for the driver to run?',
+                        answer: 'memory management',
+                        acceptAlternatives: ['memory manager'],
+                        feedback: 'Memory Management allocates RAM for the driver code to be loaded and executed.'
+                    },
+                    {
+                        description: 'Ready Notification',
+                        question: 'Windows displays "Your device is ready to use." Which function shows this message?',
+                        answer: 'user interface',
+                        acceptAlternatives: ['ui', 'gui'],
+                        feedback: 'The User Interface displays the notification balloon/toast message informing the user that device setup is complete.'
+                    }
+                ]
+            }
+        ];
+
+        let currentExercise = 0;
+
+        function initExercises() {
+            const container = document.getElementById('exercises-container');
+            container.innerHTML = exercises.map((ex, index) => createExercise(ex, index)).join('');
+            updateOverallProgress();
+        }
+
+        function createExercise(exercise, index) {
+            return `
+                <div class="trace-exercise" id="exercise-${index}" style="display: ${index === 0 ? 'block' : 'none'}">
+                    <div class="trace-header">
+                        <div class="trace-title">
+                            <div class="trace-number">${exercise.id}</div>
+                            <h3>${exercise.title}</h3>
+                        </div>
+                    </div>
+
+                    <div class="trace-scenario">
+                        <h4>Scenario</h4>
+                        <p>${exercise.scenario}</p>
+                    </div>
+
+                    <div class="steps-container">
+                        ${exercise.steps.map((step, stepIndex) => `
+                            <div class="trace-step">
+                                <div class="step-number-col">${stepIndex + 1}</div>
+                                <div class="step-content">
+                                    <div class="step-description">${step.description}</div>
+                                    <div class="step-question">${step.question}</div>
+                                    <input type="text" class="step-input" id="input-${index}-${stepIndex}" placeholder="Type your answer...">
+                                    <div class="step-feedback" id="feedback-${index}-${stepIndex}"></div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <button class="check-btn" onclick="checkExercise(${index})">Check Answers</button>
+                    <button class="show-answer-btn" onclick="showAnswers(${index})">Show Answers</button>
+
+                    <div class="exercise-score" id="score-${index}">
+                        <p id="score-text-${index}"></p>
+                        ${index < exercises.length - 1 ? `<button class="check-btn" onclick="nextExercise()" style="margin-top: var(--space-md);">Next Exercise →</button>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkExercise(exerciseIndex) {
+            const exercise = exercises[exerciseIndex];
+            let correct = 0;
+
+            exercise.steps.forEach((step, stepIndex) => {
+                const input = document.getElementById(`input-${exerciseIndex}-${stepIndex}`);
+                const feedback = document.getElementById(`feedback-${exerciseIndex}-${stepIndex}`);
+                const userAnswer = input.value.toLowerCase().trim();
+
+                const isCorrect = userAnswer === step.answer.toLowerCase() ||
+                    (step.acceptAlternatives && step.acceptAlternatives.some(alt =>
+                        userAnswer.includes(alt.toLowerCase()) || alt.toLowerCase().includes(userAnswer)
+                    ));
+
+                input.classList.remove('correct', 'incorrect');
+                input.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+                feedback.classList.add('show');
+                feedback.classList.remove('correct', 'incorrect');
+                feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
+                feedback.textContent = isCorrect ? step.feedback : `Not quite. ${step.feedback}`;
+
+                if (isCorrect) correct++;
+            });
+
+            const score = Math.round((correct / exercise.steps.length) * 100);
+            const scoreDiv = document.getElementById(`score-${exerciseIndex}`);
+            const scoreText = document.getElementById(`score-text-${exerciseIndex}`);
+
+            scoreDiv.classList.add('show');
+            scoreText.textContent = `You got ${correct} out of ${exercise.steps.length} correct (${score}%)`;
+
+            Progress.saveActivity(`operating-systems-trace-${exerciseIndex + 1}`, 'completed', score);
+        }
+
+        function showAnswers(exerciseIndex) {
+            const exercise = exercises[exerciseIndex];
+
+            exercise.steps.forEach((step, stepIndex) => {
+                const input = document.getElementById(`input-${exerciseIndex}-${stepIndex}`);
+                const feedback = document.getElementById(`feedback-${exerciseIndex}-${stepIndex}`);
+
+                input.value = step.answer;
+                input.classList.add('correct');
+
+                feedback.classList.add('show', 'correct');
+                feedback.textContent = step.feedback;
+            });
+        }
+
+        function nextExercise() {
+            const current = document.getElementById(`exercise-${currentExercise}`);
+            current.style.display = 'none';
+
+            currentExercise++;
+            const next = document.getElementById(`exercise-${currentExercise}`);
+            next.style.display = 'block';
+
+            updateOverallProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateOverallProgress() {
+            document.getElementById('overall-progress').textContent =
+                `Exercise ${currentExercise + 1} of ${exercises.length}`;
+        }
+
+        // Initialize
+        initExercises();
+        Progress.startActivity('operating-systems-trace', 'trace');
+    </script>
+</body>
+</html>

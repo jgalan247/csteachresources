@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocols - Knowledge Check</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="../../index.html" class="brand-link">
+                <span class="logo">🐍</span>
+                <span class="brand-text">Python Learning</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <a href="index.html" class="back-link">← Back to Protocols</a>
+            <h1>Knowledge Check</h1>
+            <p class="subtitle">Test your understanding of protocols and connections</p>
+        </header>
+
+        <div class="quiz-container" id="quiz">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quiz-progress-bar" style="width: 0%"></div>
+                </div>
+                <span class="progress-text" id="quiz-progress-text">Question 1 of 15</span>
+            </div>
+
+            <div class="quiz-questions" id="quiz-questions">
+            </div>
+
+            <div class="quiz-results hidden" id="quiz-results">
+                <h2>Quiz Complete!</h2>
+                <div class="results-score">
+                    <span class="score-number" id="final-score">0</span>
+                    <span class="score-label">out of 15</span>
+                </div>
+                <p class="results-message" id="results-message"></p>
+                <div class="results-actions">
+                    <button class="btn btn-secondary" id="review-answers">Review Answers</button>
+                    <button class="btn btn-primary" id="retry-quiz">Try Again</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-nav">
+            <a href="parsons.html" class="btn btn-secondary">← Previous: Parsons Problems</a>
+            <a href="index.html" class="btn btn-primary">Back to Topic Overview →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        const quizQuestions = [
+            {
+                question: "Which connection type is generally faster and more reliable?",
+                options: [
+                    "Wireless (WiFi)",
+                    "Wired (Ethernet)",
+                    "Bluetooth",
+                    "They are all the same"
+                ],
+                correct: 1,
+                explanation: "Wired (Ethernet) connections are generally faster and more reliable because they have a direct physical connection without interference from walls or other wireless signals."
+            },
+            {
+                question: "What is the main advantage of wireless connections over wired?",
+                options: [
+                    "Higher speed",
+                    "Better security",
+                    "Mobility and convenience",
+                    "Lower cost"
+                ],
+                correct: 2,
+                explanation: "The main advantage of wireless is mobility - users can move freely around the coverage area without being tethered to a cable."
+            },
+            {
+                question: "What is the purpose of encryption in networking?",
+                options: [
+                    "To speed up data transmission",
+                    "To convert data into a secure coded format",
+                    "To compress files for storage",
+                    "To find IP addresses"
+                ],
+                correct: 1,
+                explanation: "Encryption converts data into a coded format that can only be read by someone with the correct decryption key, protecting data from being intercepted and read by unauthorised parties."
+            },
+            {
+                question: "Which protocol uses encryption to secure web traffic?",
+                options: [
+                    "HTTP",
+                    "FTP",
+                    "HTTPS",
+                    "SMTP"
+                ],
+                correct: 2,
+                explanation: "HTTPS (Hypertext Transfer Protocol Secure) encrypts all data between the browser and server. Look for the padlock icon in your browser."
+            },
+            {
+                question: "What is the format of an IPv4 address?",
+                options: [
+                    "Six pairs of hexadecimal digits",
+                    "Four numbers (0-255) separated by dots",
+                    "Eight groups of hexadecimal separated by colons",
+                    "A single 12-digit number"
+                ],
+                correct: 1,
+                explanation: "IPv4 addresses consist of four numbers (each 0-255) separated by dots, for example: 192.168.1.1"
+            },
+            {
+                question: "Why was IPv6 developed?",
+                options: [
+                    "IPv4 was too fast",
+                    "IPv4 addresses are running out",
+                    "IPv4 was too secure",
+                    "IPv4 was too expensive"
+                ],
+                correct: 1,
+                explanation: "IPv4 provides about 4.3 billion addresses, which is not enough for all devices worldwide. IPv6 provides a vastly larger address space."
+            },
+            {
+                question: "What is a MAC address?",
+                options: [
+                    "A temporary address assigned by the router",
+                    "A permanent physical address assigned to a NIC by the manufacturer",
+                    "An address used only for email",
+                    "A type of encryption key"
+                ],
+                correct: 1,
+                explanation: "A MAC (Media Access Control) address is a permanent, unique identifier assigned to every network interface card by the manufacturer."
+            },
+            {
+                question: "What is the purpose of standards in computing?",
+                options: [
+                    "To make products more expensive",
+                    "To allow hardware and software from different manufacturers to work together",
+                    "To limit competition",
+                    "To slow down innovation"
+                ],
+                correct: 1,
+                explanation: "Standards provide agreed rules that allow products from different manufacturers to be compatible, enabling interoperability and consumer choice."
+            },
+            {
+                question: "What is a protocol in networking?",
+                options: [
+                    "A type of cable",
+                    "A set of rules for transmitting data",
+                    "A security password",
+                    "A type of hardware"
+                ],
+                correct: 1,
+                explanation: "A protocol is a set of rules that governs how data is formatted, transmitted, and received between devices on a network."
+            },
+            {
+                question: "Which protocol is used for SENDING emails?",
+                options: [
+                    "POP3",
+                    "IMAP",
+                    "SMTP",
+                    "FTP"
+                ],
+                correct: 2,
+                explanation: "SMTP (Simple Mail Transfer Protocol) is used for sending emails from clients to servers and between mail servers."
+            },
+            {
+                question: "Which email protocol would you use to access the same inbox from multiple devices?",
+                options: [
+                    "SMTP",
+                    "POP3",
+                    "IMAP",
+                    "HTTP"
+                ],
+                correct: 2,
+                explanation: "IMAP (Internet Message Access Protocol) keeps emails on the server and syncs across all your devices. POP3 downloads emails to one device."
+            },
+            {
+                question: "What is FTP primarily used for?",
+                options: [
+                    "Sending emails",
+                    "Browsing websites",
+                    "Transferring files between computers",
+                    "Making video calls"
+                ],
+                correct: 2,
+                explanation: "FTP (File Transfer Protocol) is designed for uploading and downloading files between a local computer and a remote server."
+            },
+            {
+                question: "What is the benefit of using layers in network protocols?",
+                options: [
+                    "It makes networks slower but more secure",
+                    "Each layer can be developed and updated independently",
+                    "It reduces the number of devices needed",
+                    "It makes encryption unnecessary"
+                ],
+                correct: 1,
+                explanation: "Layering provides modularity - each layer can be developed, updated, and troubleshot independently without affecting other layers."
+            },
+            {
+                question: "In the TCP/IP model, which layer handles IP addresses and routing?",
+                options: [
+                    "Application Layer",
+                    "Transport Layer",
+                    "Internet Layer",
+                    "Network Access Layer"
+                ],
+                correct: 2,
+                explanation: "The Internet Layer (Layer 2 in TCP/IP) handles IP addressing and routing data across different networks."
+            },
+            {
+                question: "When troubleshooting network issues, why should you check the physical connection first?",
+                options: [
+                    "Because physical problems are most common",
+                    "Because higher layers depend on lower layers working",
+                    "Because cables are the most expensive component",
+                    "Because software issues fix themselves"
+                ],
+                correct: 1,
+                explanation: "Each layer in the TCP/IP model depends on the layers below it. If the physical connection (Layer 1) isn't working, nothing above it can work."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answers = [];
+        let quizCompleted = false;
+
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answers = [];
+            quizCompleted = false;
+            renderQuestion();
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-questions').classList.remove('hidden');
+            updateProgress();
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('quiz-questions');
+            const q = quizQuestions[currentQuestion];
+
+            container.innerHTML = `
+                <div class="question-card">
+                    <h3 class="question-number">Question ${currentQuestion + 1}</h3>
+                    <p class="question-text">${q.question}</p>
+                    <div class="options-list">
+                        ${q.options.map((option, index) => `
+                            <button class="option-btn" data-index="${index}">
+                                <span class="option-letter">${String.fromCharCode(65 + index)}</span>
+                                <span class="option-text">${option}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div class="question-feedback hidden" id="feedback"></div>
+                    <div class="question-nav">
+                        <button class="btn btn-primary hidden" id="next-btn">
+                            ${currentQuestion < quizQuestions.length - 1 ? 'Next Question' : 'See Results'}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            const optionBtns = container.querySelectorAll('.option-btn');
+            optionBtns.forEach(btn => {
+                btn.addEventListener('click', () => selectAnswer(parseInt(btn.dataset.index)));
+            });
+
+            document.getElementById('next-btn').addEventListener('click', nextQuestion);
+        }
+
+        function selectAnswer(selectedIndex) {
+            const q = quizQuestions[currentQuestion];
+            const isCorrect = selectedIndex === q.correct;
+
+            if (isCorrect) score++;
+            answers[currentQuestion] = { selected: selectedIndex, correct: q.correct, isCorrect };
+
+            const optionBtns = document.querySelectorAll('.option-btn');
+            optionBtns.forEach((btn, index) => {
+                btn.disabled = true;
+                if (index === q.correct) {
+                    btn.classList.add('correct');
+                } else if (index === selectedIndex && !isCorrect) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            const feedback = document.getElementById('feedback');
+            feedback.classList.remove('hidden');
+            feedback.className = `question-feedback ${isCorrect ? 'success' : 'error'}`;
+            feedback.innerHTML = `
+                <strong>${isCorrect ? 'Correct!' : 'Incorrect'}</strong>
+                <p>${q.explanation}</p>
+            `;
+
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+                updateProgress();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion) / quizQuestions.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = progress + '%';
+            document.getElementById('quiz-progress-text').textContent =
+                `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+        }
+
+        function showResults() {
+            quizCompleted = true;
+            document.getElementById('quiz-questions').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+            document.getElementById('final-score').textContent = score;
+
+            const percentage = Math.round((score / quizQuestions.length) * 100);
+            let message;
+
+            if (percentage >= 90) {
+                message = "Excellent! You have a strong understanding of protocols and networking!";
+            } else if (percentage >= 70) {
+                message = "Good work! You understand most networking concepts well.";
+            } else if (percentage >= 50) {
+                message = "Not bad, but review the topics you found challenging.";
+            } else {
+                message = "Keep studying! Review the content and try again.";
+            }
+
+            document.getElementById('results-message').textContent = message;
+            document.getElementById('quiz-progress-bar').style.width = '100%';
+            document.getElementById('quiz-progress-text').textContent = 'Complete!';
+
+            Progress.completeActivity('protocols-quiz', 'protocols', percentage);
+        }
+
+        function reviewAnswers() {
+            const container = document.getElementById('quiz-questions');
+            container.classList.remove('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+
+            let reviewHTML = '<div class="review-container">';
+
+            quizQuestions.forEach((q, index) => {
+                const answer = answers[index];
+                reviewHTML += `
+                    <div class="review-question ${answer?.isCorrect ? 'correct' : 'incorrect'}">
+                        <h4>Question ${index + 1}</h4>
+                        <p class="question-text">${q.question}</p>
+                        <div class="review-options">
+                            ${q.options.map((option, optIndex) => `
+                                <div class="review-option ${optIndex === q.correct ? 'correct-answer' : ''} ${optIndex === answer?.selected && !answer?.isCorrect ? 'wrong-answer' : ''}">
+                                    <span class="option-letter">${String.fromCharCode(65 + optIndex)}</span>
+                                    ${option}
+                                    ${optIndex === q.correct ? ' ✓' : ''}
+                                    ${optIndex === answer?.selected && !answer?.isCorrect ? ' ✗' : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="review-explanation">
+                            <strong>Explanation:</strong> ${q.explanation}
+                        </div>
+                    </div>
+                `;
+            });
+
+            reviewHTML += `
+                <div class="review-actions">
+                    <button class="btn btn-secondary" onclick="showResultsAgain()">Back to Results</button>
+                    <button class="btn btn-primary" onclick="initQuiz()">Try Again</button>
+                </div>
+            </div>`;
+
+            container.innerHTML = reviewHTML;
+        }
+
+        function showResultsAgain() {
+            document.getElementById('quiz-questions').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+        }
+
+        document.getElementById('retry-quiz').addEventListener('click', initQuiz);
+        document.getElementById('review-answers').addEventListener('click', reviewAnswers);
+
+        initQuiz();
+    </script>
+
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .quiz-progress {
+            margin-bottom: var(--space-xl);
+        }
+        .quiz-progress .progress-bar {
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: var(--space-xs);
+        }
+        .quiz-progress .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .quiz-progress .progress-text {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+        .question-card {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .question-number {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-sm);
+        }
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-lg);
+            line-height: 1.5;
+        }
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .option-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            width: 100%;
+        }
+        .option-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: var(--blue-50);
+        }
+        .option-btn:disabled {
+            cursor: default;
+        }
+        .option-btn.correct {
+            background: var(--green-50);
+            border-color: var(--success);
+        }
+        .option-btn.incorrect {
+            background: var(--red-50);
+            border-color: var(--error);
+        }
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .option-btn.correct .option-letter {
+            background: var(--success);
+            color: white;
+        }
+        .option-btn.incorrect .option-letter {
+            background: var(--error);
+            color: white;
+        }
+        .option-text {
+            flex: 1;
+        }
+        .question-feedback {
+            margin-top: var(--space-lg);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+        .question-feedback.success {
+            background: var(--green-50);
+            border: 1px solid var(--success);
+        }
+        .question-feedback.error {
+            background: var(--red-50);
+            border: 1px solid var(--error);
+        }
+        .question-nav {
+            margin-top: var(--space-lg);
+            text-align: right;
+        }
+        .quiz-results {
+            text-align: center;
+            background: white;
+            padding: var(--space-xxl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .results-score {
+            margin: var(--space-xl) 0;
+        }
+        .score-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .score-label {
+            font-size: 1.5rem;
+            color: var(--gray-600);
+        }
+        .results-message {
+            font-size: 1.1rem;
+            color: var(--gray-700);
+            margin-bottom: var(--space-xl);
+        }
+        .results-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+        }
+        .review-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        .review-question {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--gray-300);
+        }
+        .review-question.correct {
+            border-left-color: var(--success);
+        }
+        .review-question.incorrect {
+            border-left-color: var(--error);
+        }
+        .review-options {
+            margin: var(--space-md) 0;
+        }
+        .review-option {
+            padding: var(--space-sm);
+            margin-bottom: var(--space-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .review-option.correct-answer {
+            background: var(--green-50);
+            border-radius: var(--radius-sm);
+            color: var(--success);
+        }
+        .review-option.wrong-answer {
+            background: var(--red-50);
+            border-radius: var(--radius-sm);
+            color: var(--error);
+        }
+        .review-explanation {
+            background: var(--blue-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+        }
+        .review-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            padding-top: var(--space-lg);
+        }
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-200);
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</body>
+</html>

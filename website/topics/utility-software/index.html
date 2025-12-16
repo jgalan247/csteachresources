@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility Software - GCSE Computer Science</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/theory-styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <div class="topic-icon">🔧</div>
+            <div class="topic-title-section">
+                <h1>Utility Software</h1>
+                <p class="topic-subtitle">Purpose and functionality of utility system software</p>
+                <p class="topic-spec">Spec Reference: 1.5.2</p>
+            </div>
+        </header>
+
+        <nav class="primm-nav" aria-label="PRIMM Navigation">
+            <a href="predict.html" class="primm-link predict">
+                <span class="primm-icon">🔮</span>
+                <span class="primm-label">Predict</span>
+            </a>
+            <a href="example.html" class="primm-link run">
+                <span class="primm-icon">📖</span>
+                <span class="primm-label">Examples</span>
+            </a>
+            <a href="trace.html" class="primm-link investigate">
+                <span class="primm-icon">🔍</span>
+                <span class="primm-label">Trace</span>
+            </a>
+            <a href="parsons.html" class="primm-link modify">
+                <span class="primm-icon">🧩</span>
+                <span class="primm-label">Parsons</span>
+            </a>
+            <a href="quiz.html" class="primm-link make">
+                <span class="primm-icon">✅</span>
+                <span class="primm-label">Quiz</span>
+            </a>
+        </nav>
+
+        <!-- Learning Objectives -->
+        <section class="content-section">
+            <h2>Learning Objectives</h2>
+            <div class="objectives-box">
+                <ul class="objectives-list">
+                    <li>Understand that computers often come with utility software</li>
+                    <li>Know how utility software performs housekeeping tasks</li>
+                    <li>Understand the purpose of encryption software and why it is required</li>
+                    <li>Understand the purpose of defragmentation software and why it is required</li>
+                    <li>Understand the purpose of data compression software and why it is required</li>
+                    <li>Know that utility software performs additional tasks not carried out by the OS</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- What is Utility Software -->
+        <section class="content-section">
+            <h2>What is Utility Software?</h2>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p><strong>Utility software</strong> is a type of system software designed to help analyse, configure, optimise, and maintain a computer system. It performs "housekeeping" tasks that keep your computer running efficiently.</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Key Points About Utility Software</h3>
+                <ul>
+                    <li><strong>Pre-installed:</strong> Most computers come with utility software already installed</li>
+                    <li><strong>Housekeeping tasks:</strong> Performs maintenance and optimisation tasks</li>
+                    <li><strong>Supplements the OS:</strong> Provides additional functionality beyond what the operating system offers</li>
+                    <li><strong>Background operation:</strong> Many utilities run automatically in the background</li>
+                    <li><strong>Third-party options:</strong> Additional utility software can be purchased or downloaded</li>
+                </ul>
+            </div>
+
+            <div class="diagram-container">
+                <h3>Utility Software vs Operating System</h3>
+                <div class="comparison-diagram">
+                    <div class="comparison-box os-box">
+                        <h4>Operating System</h4>
+                        <p>Core functions:</p>
+                        <ul>
+                            <li>Memory management</li>
+                            <li>Process scheduling</li>
+                            <li>File system basics</li>
+                            <li>Hardware communication</li>
+                            <li>User interface</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-arrow">→</div>
+                    <div class="comparison-box utility-box">
+                        <h4>Utility Software</h4>
+                        <p>Additional tasks:</p>
+                        <ul>
+                            <li>Encryption</li>
+                            <li>Defragmentation</li>
+                            <li>Compression</li>
+                            <li>Antivirus scanning</li>
+                            <li>Backup management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Encryption Software -->
+        <section class="content-section">
+            <h2>Encryption Software</h2>
+
+            <div class="key-concept">
+                <h3>What is Encryption?</h3>
+                <p><strong>Encryption software</strong> scrambles data into an unreadable format (ciphertext) that can only be converted back to readable format (plaintext) using a decryption key. This protects sensitive information from unauthorised access.</p>
+            </div>
+
+            <div class="process-diagram">
+                <h3>How Encryption Works</h3>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-icon">📄</div>
+                        <div class="step-content">
+                            <strong>Plaintext</strong>
+                            <p>Original readable data</p>
+                            <code>"Password123"</code>
+                        </div>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step highlight">
+                        <div class="step-icon">🔐</div>
+                        <div class="step-content">
+                            <strong>Encryption</strong>
+                            <p>Algorithm + Key applied</p>
+                        </div>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    <div class="process-step">
+                        <div class="step-icon">🔒</div>
+                        <div class="step-content">
+                            <strong>Ciphertext</strong>
+                            <p>Scrambled unreadable data</p>
+                            <code>"x7#kL9$mN2@qR"</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box purpose-box">
+                <h3>Purpose of Encryption Software</h3>
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>Purpose</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Data Protection</strong></td>
+                            <td>Protects sensitive files from being read if accessed by unauthorised users</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Secure Transmission</strong></td>
+                            <td>Ensures data sent over networks cannot be intercepted and read</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Device Security</strong></td>
+                            <td>Full disk encryption protects all data if a device is lost or stolen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compliance</strong></td>
+                            <td>Meets legal requirements (e.g., GDPR) for protecting personal data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="example-box">
+                <h3>When Encryption is Used</h3>
+                <ul>
+                    <li><strong>Online banking:</strong> Encrypts financial transactions and login details</li>
+                    <li><strong>Email:</strong> Protects message content from being read during transmission</li>
+                    <li><strong>File storage:</strong> Encrypts confidential documents on hard drives</li>
+                    <li><strong>USB drives:</strong> Protects portable storage devices if lost</li>
+                    <li><strong>Cloud backup:</strong> Secures data before uploading to cloud services</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Defragmentation Software -->
+        <section class="content-section">
+            <h2>Defragmentation Software</h2>
+
+            <div class="key-concept">
+                <h3>What is Defragmentation?</h3>
+                <p><strong>Defragmentation</strong> is the process of reorganising data on a hard disk drive (HDD) so that related pieces of data are stored together in contiguous (adjacent) blocks. This reduces the time it takes to read files.</p>
+            </div>
+
+            <div class="warning-box">
+                <h3>Important Note</h3>
+                <p>Defragmentation is only needed for traditional <strong>Hard Disk Drives (HDDs)</strong>. Solid State Drives (SSDs) should <strong>NOT</strong> be defragmented as:</p>
+                <ul>
+                    <li>SSDs have no moving parts and access any location equally fast</li>
+                    <li>Defragmentation causes unnecessary writes that reduce SSD lifespan</li>
+                </ul>
+            </div>
+
+            <div class="diagram-container">
+                <h3>Why Fragmentation Occurs</h3>
+                <div class="fragmentation-example">
+                    <div class="disk-state">
+                        <h4>When files are saved and deleted over time:</h4>
+                        <div class="disk-blocks fragmented">
+                            <span class="block file-a">A</span>
+                            <span class="block empty">-</span>
+                            <span class="block file-b">B</span>
+                            <span class="block file-a">A</span>
+                            <span class="block file-c">C</span>
+                            <span class="block empty">-</span>
+                            <span class="block file-a">A</span>
+                            <span class="block file-b">B</span>
+                        </div>
+                        <p class="disk-label">Fragmented: File A is split across 3 locations</p>
+                    </div>
+                    <div class="arrow-down">↓ Defragmentation ↓</div>
+                    <div class="disk-state">
+                        <h4>After defragmentation:</h4>
+                        <div class="disk-blocks defragmented">
+                            <span class="block file-a">A</span>
+                            <span class="block file-a">A</span>
+                            <span class="block file-a">A</span>
+                            <span class="block file-b">B</span>
+                            <span class="block file-b">B</span>
+                            <span class="block file-c">C</span>
+                            <span class="block empty">-</span>
+                            <span class="block empty">-</span>
+                        </div>
+                        <p class="disk-label">Defragmented: File A is stored together</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box purpose-box">
+                <h3>Purpose of Defragmentation Software</h3>
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>Purpose</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Faster File Access</strong></td>
+                            <td>Read/write head doesn't need to move to multiple locations to access a single file</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Improved Performance</strong></td>
+                            <td>Programs and files load faster when stored in contiguous blocks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reduced Wear</strong></td>
+                            <td>Less movement of the read/write head reduces mechanical wear on the HDD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Organised Storage</strong></td>
+                            <td>Groups free space together, making it easier to store new large files</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="process-diagram">
+                <h3>How Defragmentation Works</h3>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <span class="step-number">1</span>
+                        <div class="step-detail">
+                            <strong>Analysis</strong>
+                            <p>Scans the disk to identify fragmented files</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">2</span>
+                        <div class="step-detail">
+                            <strong>Planning</strong>
+                            <p>Calculates the optimal arrangement of data</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">3</span>
+                        <div class="step-detail">
+                            <strong>Moving Data</strong>
+                            <p>Relocates file fragments to contiguous locations</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">4</span>
+                        <div class="step-detail">
+                            <strong>Updating Index</strong>
+                            <p>Updates file system records with new locations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Compression Software -->
+        <section class="content-section">
+            <h2>Data Compression Software</h2>
+
+            <div class="key-concept">
+                <h3>What is Data Compression?</h3>
+                <p><strong>Data compression software</strong> reduces the size of files by encoding information using fewer bits than the original. This saves storage space and reduces transmission time when sending files.</p>
+            </div>
+
+            <div class="comparison-table">
+                <h3>Types of Compression</h3>
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>Lossy Compression</th>
+                            <th>Lossless Compression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Permanently removes some data</td>
+                            <td>No data is lost - fully reversible</td>
+                        </tr>
+                        <tr>
+                            <td>Achieves higher compression ratios</td>
+                            <td>Lower compression ratios</td>
+                        </tr>
+                        <tr>
+                            <td>Cannot restore original quality</td>
+                            <td>Original file can be perfectly restored</td>
+                        </tr>
+                        <tr>
+                            <td>Best for: images, audio, video</td>
+                            <td>Best for: text, code, documents</td>
+                        </tr>
+                        <tr>
+                            <td>Examples: JPEG, MP3, MP4</td>
+                            <td>Examples: ZIP, PNG, FLAC</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box purpose-box">
+                <h3>Purpose of Data Compression Software</h3>
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th>Purpose</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Save Storage Space</strong></td>
+                            <td>Smaller files mean more data can be stored on the same disk</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Faster Transmission</strong></td>
+                            <td>Smaller files upload and download more quickly</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reduced Bandwidth</strong></td>
+                            <td>Uses less network capacity when transferring files</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email Attachments</strong></td>
+                            <td>Allows large files to fit within email size limits</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Archiving</strong></td>
+                            <td>Combines multiple files into one compressed archive</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="example-box">
+                <h3>Compression in Practice</h3>
+                <div class="compression-example">
+                    <div class="file-comparison">
+                        <div class="original-file">
+                            <h4>Original Files</h4>
+                            <ul>
+                                <li>Document.docx - 2 MB</li>
+                                <li>Spreadsheet.xlsx - 5 MB</li>
+                                <li>Presentation.pptx - 8 MB</li>
+                            </ul>
+                            <p class="total">Total: 15 MB</p>
+                        </div>
+                        <div class="compression-arrow">→ ZIP →</div>
+                        <div class="compressed-file">
+                            <h4>Compressed Archive</h4>
+                            <p>Files.zip</p>
+                            <p class="compressed-size">6 MB</p>
+                            <p class="savings">60% space saved!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Table -->
+        <section class="content-section">
+            <h2>Summary: Utility Software Comparison</h2>
+
+            <table class="info-table summary-table">
+                <thead>
+                    <tr>
+                        <th>Utility</th>
+                        <th>Purpose</th>
+                        <th>Why Required</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Encryption</strong></td>
+                        <td>Scrambles data to make it unreadable without the decryption key</td>
+                        <td>Protects sensitive data from unauthorised access; legal compliance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Defragmentation</strong></td>
+                        <td>Reorganises files on HDD so they are stored in contiguous blocks</td>
+                        <td>Improves file access speed; reduces read/write head movement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compression</strong></td>
+                        <td>Reduces file size by encoding data more efficiently</td>
+                        <td>Saves storage space; speeds up file transfers; reduces bandwidth usage</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Other Common Utilities -->
+        <section class="content-section">
+            <h2>Other Common Utility Software</h2>
+
+            <div class="info-box">
+                <p>While encryption, defragmentation, and compression are specified in the syllabus, you should also be aware of other utility software:</p>
+                <ul>
+                    <li><strong>Antivirus/Anti-malware:</strong> Detects and removes malicious software</li>
+                    <li><strong>Backup software:</strong> Creates copies of data for recovery</li>
+                    <li><strong>Disk cleanup:</strong> Removes temporary files and frees up space</li>
+                    <li><strong>Firewall:</strong> Monitors and controls network traffic</li>
+                    <li><strong>System monitor:</strong> Displays CPU, memory, and disk usage</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Practice Activities -->
+        <section class="content-section">
+            <h2>Practice Activities</h2>
+            <div class="activity-links">
+                <a href="predict.html" class="activity-card predict">
+                    <span class="activity-icon">🔮</span>
+                    <div class="activity-info">
+                        <h3>Predict</h3>
+                        <p>Predict which utility software is needed in different scenarios</p>
+                    </div>
+                </a>
+                <a href="example.html" class="activity-card example">
+                    <span class="activity-icon">📖</span>
+                    <div class="activity-info">
+                        <h3>Worked Examples</h3>
+                        <p>Study solutions to utility software questions</p>
+                    </div>
+                </a>
+                <a href="trace.html" class="activity-card trace">
+                    <span class="activity-icon">🔍</span>
+                    <div class="activity-info">
+                        <h3>Trace</h3>
+                        <p>Follow step-by-step through utility processes</p>
+                    </div>
+                </a>
+                <a href="parsons.html" class="activity-card parsons">
+                    <span class="activity-icon">🧩</span>
+                    <div class="activity-info">
+                        <h3>Parsons Problems</h3>
+                        <p>Arrange steps in the correct order</p>
+                    </div>
+                </a>
+                <a href="quiz.html" class="activity-card quiz">
+                    <span class="activity-icon">✅</span>
+                    <div class="activity-info">
+                        <h3>Knowledge Check</h3>
+                        <p>Test your understanding with a quiz</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>GCSE Computer Science - Utility Software (Spec 1.5.2)</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .comparison-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+            margin: var(--space-lg) 0;
+        }
+        .comparison-box {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            min-width: 200px;
+            flex: 1;
+        }
+        .comparison-box h4 {
+            margin-bottom: var(--space-sm);
+            color: var(--primary);
+        }
+        .comparison-box ul {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+        .os-box {
+            border: 2px solid var(--primary);
+        }
+        .utility-box {
+            border: 2px solid var(--success);
+        }
+        .comparison-arrow {
+            font-size: 2rem;
+            color: var(--gray-400);
+        }
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin: var(--space-lg) 0;
+        }
+        .process-step {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+            min-width: 150px;
+            border: 2px solid var(--gray-200);
+        }
+        .process-step.highlight {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+        .process-step .step-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        .process-step code {
+            display: block;
+            margin-top: var(--space-sm);
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+        .process-arrow {
+            font-size: 1.5rem;
+            color: var(--gray-400);
+        }
+        .fragmentation-example {
+            background: var(--gray-100);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .disk-blocks {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin: var(--space-md) 0;
+        }
+        .block {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            font-weight: bold;
+            color: white;
+        }
+        .block.file-a { background: var(--primary); }
+        .block.file-b { background: var(--success); }
+        .block.file-c { background: var(--warning); }
+        .block.empty { background: var(--gray-300); color: var(--gray-600); }
+        .disk-label {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-top: var(--space-sm);
+        }
+        .arrow-down {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin: var(--space-lg) 0;
+        }
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .step-detail p {
+            margin: var(--space-xs) 0 0;
+            color: var(--gray-600);
+        }
+        .file-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+            margin: var(--space-lg) 0;
+        }
+        .original-file, .compressed-file {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .original-file {
+            border: 2px solid var(--gray-300);
+        }
+        .original-file ul {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-md) 0;
+        }
+        .original-file li {
+            padding: var(--space-xs) 0;
+        }
+        .total {
+            font-weight: bold;
+            border-top: 1px solid var(--gray-200);
+            padding-top: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+        .compressed-file {
+            border: 2px solid var(--success);
+            background: var(--success-light);
+        }
+        .compressed-size {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+        .savings {
+            color: var(--success);
+            font-weight: bold;
+        }
+        .compression-arrow {
+            font-size: 1.5rem;
+            color: var(--gray-400);
+        }
+        .purpose-box {
+            background: var(--primary-light);
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+        }
+        .warning-box h3 {
+            color: #856404;
+            margin-bottom: var(--space-sm);
+        }
+        .summary-table {
+            margin-top: var(--space-lg);
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trace - Utility Software</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/theory-styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🖥️</span>
+            <span class="brand-text">CS Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="index.html">Utility Software</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="activity-header trace-header">
+            <div class="activity-icon">🔍</div>
+            <div class="activity-title-section">
+                <h1>Trace: Utility Software</h1>
+                <p class="activity-subtitle">Follow utility software processes step by step</p>
+            </div>
+        </header>
+
+        <div class="activity-intro">
+            <p>Work through each scenario step by step. Click each step to reveal the next part of the process and build your understanding of how these utilities work.</p>
+        </div>
+
+        <!-- Trace 1: Encryption Process -->
+        <div class="trace-exercise">
+            <div class="trace-header-bar">
+                <span class="trace-title">Trace 1: File Encryption Process</span>
+            </div>
+            <div class="trace-scenario">
+                <h3>Scenario</h3>
+                <p>A user wants to encrypt a confidential document called "financial_report.docx" before storing it on a USB drive. Trace through the encryption process.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Select File for Encryption</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> User selects "financial_report.docx" in the encryption software</p>
+                            <p><strong>File state:</strong> Plaintext (readable by anyone)</p>
+                            <p><strong>File content preview:</strong> "Q3 Revenue: £1,250,000..."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Generate/Enter Encryption Key</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> User enters a password, which is used to generate the encryption key</p>
+                            <p><strong>Password entered:</strong> "SecurePass2024!"</p>
+                            <p><strong>Key generated:</strong> 256-bit encryption key derived from password</p>
+                            <p><strong>Important:</strong> This key must be remembered - without it, data cannot be recovered</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Encryption Algorithm Applied</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Encryption algorithm (e.g., AES-256) processes the file</p>
+                            <p><strong>Process:</strong> Original data is mathematically scrambled using the key</p>
+                            <p><strong>Before:</strong> "Q3 Revenue: £1,250,000..."</p>
+                            <p><strong>After:</strong> "x7#kL9$mN2@qR5^tY8..."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Encrypted File Saved</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Encrypted file saved to USB drive</p>
+                            <p><strong>File name:</strong> "financial_report.docx.enc" (or similar)</p>
+                            <p><strong>File state:</strong> Ciphertext (unreadable without key)</p>
+                            <p><strong>Result:</strong> If USB is lost, finder cannot read the document</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-summary">
+                <h4>Process Summary</h4>
+                <p>Plaintext → Key Applied → Ciphertext. The encrypted file is now protected even if the USB drive is lost or stolen.</p>
+            </div>
+        </div>
+
+        <!-- Trace 2: Defragmentation Process -->
+        <div class="trace-exercise">
+            <div class="trace-header-bar">
+                <span class="trace-title">Trace 2: Defragmentation Process</span>
+            </div>
+            <div class="trace-scenario">
+                <h3>Scenario</h3>
+                <p>A hard disk has become fragmented after months of use. A 4-block file called "report.doc" is currently stored in blocks 2, 7, 12, and 15. Trace through the defragmentation process.</p>
+                <div class="disk-visual">
+                    <h4>Initial Disk State:</h4>
+                    <div class="disk-blocks">
+                        <span class="block empty">1</span>
+                        <span class="block file-a">2:R</span>
+                        <span class="block file-b">3:B</span>
+                        <span class="block empty">4</span>
+                        <span class="block file-b">5:B</span>
+                        <span class="block empty">6</span>
+                        <span class="block file-a">7:R</span>
+                        <span class="block empty">8</span>
+                        <span class="block empty">9</span>
+                        <span class="block file-c">10:C</span>
+                        <span class="block file-c">11:C</span>
+                        <span class="block file-a">12:R</span>
+                        <span class="block empty">13</span>
+                        <span class="block empty">14</span>
+                        <span class="block file-a">15:R</span>
+                        <span class="block empty">16</span>
+                    </div>
+                    <p class="disk-key"><strong>Key:</strong> R = report.doc, B = backup.zip, C = config.sys, Empty = free space</p>
+                </div>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Analysis Phase</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Defragmentation software scans the disk</p>
+                            <p><strong>Findings:</strong></p>
+                            <ul>
+                                <li>report.doc - 4 fragments (blocks 2, 7, 12, 15) - FRAGMENTED</li>
+                                <li>backup.zip - 2 fragments (blocks 3, 5) - FRAGMENTED</li>
+                                <li>config.sys - 2 contiguous blocks (10, 11) - OK</li>
+                            </ul>
+                            <p><strong>Fragmentation level:</strong> 67% fragmented</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Planning Phase</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Software calculates optimal file arrangement</p>
+                            <p><strong>Plan:</strong></p>
+                            <ul>
+                                <li>Move report.doc fragments to blocks 1-4</li>
+                                <li>Move backup.zip to blocks 5-6</li>
+                                <li>Keep config.sys at blocks 7-8 (will shift)</li>
+                                <li>Consolidate free space at end</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Moving Data</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Files are relocated to contiguous locations</p>
+                            <p><strong>Moves made:</strong></p>
+                            <ol>
+                                <li>Copy block 2 content to block 1</li>
+                                <li>Copy block 7 content to block 2</li>
+                                <li>Copy block 12 content to block 3</li>
+                                <li>Copy block 15 content to block 4</li>
+                                <li>Consolidate other files similarly</li>
+                            </ol>
+                            <p><strong>Note:</strong> This takes time as data physically moves on the disk</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Update File System</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> File system index updated with new locations</p>
+                            <p><strong>New file table:</strong></p>
+                            <ul>
+                                <li>report.doc → blocks 1, 2, 3, 4 (contiguous)</li>
+                                <li>backup.zip → blocks 5, 6 (contiguous)</li>
+                                <li>config.sys → blocks 7, 8 (contiguous)</li>
+                            </ul>
+                            <div class="disk-blocks final">
+                                <span class="block file-a">1:R</span>
+                                <span class="block file-a">2:R</span>
+                                <span class="block file-a">3:R</span>
+                                <span class="block file-a">4:R</span>
+                                <span class="block file-b">5:B</span>
+                                <span class="block file-b">6:B</span>
+                                <span class="block file-c">7:C</span>
+                                <span class="block file-c">8:C</span>
+                                <span class="block empty">9</span>
+                                <span class="block empty">10</span>
+                                <span class="block empty">11</span>
+                                <span class="block empty">12</span>
+                                <span class="block empty">13</span>
+                                <span class="block empty">14</span>
+                                <span class="block empty">15</span>
+                                <span class="block empty">16</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-summary">
+                <h4>Result</h4>
+                <p>report.doc now loads faster because the read/write head moves to one location instead of four. Free space is consolidated at the end of the disk for future files.</p>
+            </div>
+        </div>
+
+        <!-- Trace 3: Lossless Compression -->
+        <div class="trace-exercise">
+            <div class="trace-header-bar">
+                <span class="trace-title">Trace 3: Lossless Compression (ZIP)</span>
+            </div>
+            <div class="trace-scenario">
+                <h3>Scenario</h3>
+                <p>A user wants to compress a text file containing repetitive data. Trace through a simplified lossless compression process.</p>
+                <div class="file-example">
+                    <h4>Original File Content:</h4>
+                    <code>AAAAAABBBCCCCCCCCDDDD</code>
+                    <p>Size: 21 characters</p>
+                </div>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Analyse for Patterns</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Compression algorithm scans for repeated patterns</p>
+                            <p><strong>Patterns found:</strong></p>
+                            <ul>
+                                <li>"A" repeated 6 times</li>
+                                <li>"B" repeated 3 times</li>
+                                <li>"C" repeated 8 times</li>
+                                <li>"D" repeated 4 times</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Apply Run-Length Encoding</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Replace repeated characters with character + count</p>
+                            <p><strong>Encoding:</strong></p>
+                            <ul>
+                                <li>AAAAAA → A6</li>
+                                <li>BBB → B3</li>
+                                <li>CCCCCCCC → C8</li>
+                                <li>DDDD → D4</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Create Compressed File</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Compressed content:</strong> <code>A6B3C8D4</code></p>
+                            <p><strong>New size:</strong> 8 characters</p>
+                            <p><strong>Compression ratio:</strong> 21 → 8 = 62% reduction</p>
+                            <p><strong>Key feature:</strong> No data lost - can be perfectly restored</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Decompression (Reversible)</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> When file is opened, algorithm reverses the process</p>
+                            <p><strong>Decoding:</strong></p>
+                            <ul>
+                                <li>A6 → AAAAAA</li>
+                                <li>B3 → BBB</li>
+                                <li>C8 → CCCCCCCC</li>
+                                <li>D4 → DDDD</li>
+                            </ul>
+                            <p><strong>Result:</strong> <code>AAAAAABBBCCCCCCCCDDDD</code></p>
+                            <p><strong>Verification:</strong> Identical to original - lossless!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-summary">
+                <h4>Why Lossless Works Here</h4>
+                <p>Text files often have repetitive patterns. The algorithm stores the pattern and count instead of repeating data. Original data is perfectly recoverable.</p>
+            </div>
+        </div>
+
+        <!-- Trace 4: Lossy Compression -->
+        <div class="trace-exercise">
+            <div class="trace-header-bar">
+                <span class="trace-title">Trace 4: Lossy Compression (JPEG Image)</span>
+            </div>
+            <div class="trace-scenario">
+                <h3>Scenario</h3>
+                <p>A photographer compresses a 10MB photograph for website use. Trace through the lossy compression process.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Analyse Image Data</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Original:</strong> 10MB RAW image (4000 x 3000 pixels)</p>
+                            <p><strong>Colour depth:</strong> 24-bit (16.7 million colours)</p>
+                            <p><strong>Analysis:</strong> Algorithm identifies:</p>
+                            <ul>
+                                <li>Areas of similar colour that can be simplified</li>
+                                <li>Fine details humans may not notice</li>
+                                <li>High-frequency data (sharp edges, noise)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Colour Subsampling</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Reduces colour information (humans are less sensitive to colour than brightness)</p>
+                            <p><strong>Process:</strong> Groups of pixels share colour data</p>
+                            <p><strong>Data removed:</strong> ~50% of colour information</p>
+                            <p><strong>Visual impact:</strong> Minimal - human eyes don't easily detect this</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Quantization (Data Removal)</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Fine details and high-frequency data removed</p>
+                            <p><strong>Quality setting:</strong> User chose 80% quality</p>
+                            <p><strong>Data permanently discarded:</strong></p>
+                            <ul>
+                                <li>Subtle gradients simplified</li>
+                                <li>Small details merged</li>
+                                <li>Image "noise" removed</li>
+                            </ul>
+                            <p><strong>Warning:</strong> This data is GONE forever</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Final JPEG Created</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Final file:</strong> 800KB JPEG</p>
+                            <p><strong>Compression achieved:</strong> 10MB → 800KB = 92% reduction</p>
+                            <p><strong>Visual quality:</strong> Looks nearly identical to casual viewing</p>
+                            <p><strong>Trade-off:</strong> Original quality cannot be restored</p>
+                            <p><strong>Best practice:</strong> Always keep the original file as backup</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-summary">
+                <h4>Lossy vs Lossless Summary</h4>
+                <p>Lossy achieved 92% reduction by permanently removing data. This is acceptable for web images but unsuitable for documents or code where every bit matters.</p>
+            </div>
+        </div>
+
+        <!-- Trace 5: Choosing the Right Utility -->
+        <div class="trace-exercise">
+            <div class="trace-header-bar">
+                <span class="trace-title">Trace 5: Utility Selection Decision Process</span>
+            </div>
+            <div class="trace-scenario">
+                <h3>Scenario</h3>
+                <p>A user reports their computer is "slow and running out of space". Trace through the diagnostic process to determine which utilities might help.</p>
+            </div>
+
+            <div class="trace-steps">
+                <div class="trace-step" data-step="1">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 1</span>
+                        <span class="step-title">Identify Storage Type</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Question:</strong> Is the computer using HDD or SSD?</p>
+                            <p><strong>Answer:</strong> Traditional HDD (hard disk drive)</p>
+                            <p><strong>Implication:</strong> Defragmentation MAY be beneficial</p>
+                            <p><strong>If SSD:</strong> Would skip defragmentation entirely</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="2">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 2</span>
+                        <span class="step-title">Check Fragmentation Level</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Run disk analysis tool</p>
+                            <p><strong>Result:</strong> 45% fragmented</p>
+                            <p><strong>Recommendation:</strong> Defragmentation would help performance</p>
+                            <p><strong>Expected improvement:</strong> Faster file loading, reduced clicking sounds</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="3">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 3</span>
+                        <span class="step-title">Analyse Storage Usage</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Action:</strong> Check what's using disk space</p>
+                            <p><strong>Findings:</strong></p>
+                            <ul>
+                                <li>50GB of old documents rarely accessed</li>
+                                <li>30GB of photos from 3 years ago</li>
+                                <li>10GB of temporary files</li>
+                            </ul>
+                            <p><strong>Recommendation:</strong> Compression software for archiving old files</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trace-step" data-step="4">
+                    <div class="step-header" onclick="toggleStep(this)">
+                        <span class="step-number">Step 4</span>
+                        <span class="step-title">Final Recommendations</span>
+                        <span class="step-toggle">+</span>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-state">
+                            <p><strong>Utilities to use:</strong></p>
+                            <ol>
+                                <li><strong>Disk Cleanup:</strong> Remove 10GB of temporary files</li>
+                                <li><strong>Compression:</strong> ZIP old documents (50GB → ~15GB)</li>
+                                <li><strong>Defragmentation:</strong> Reorganise remaining files</li>
+                            </ol>
+                            <p><strong>Not needed:</strong> Encryption (no security concerns mentioned)</p>
+                            <p><strong>Expected result:</strong> ~45GB freed + faster performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trace-summary">
+                <h4>Key Takeaway</h4>
+                <p>Different problems require different utilities. Understanding what each utility does helps you choose the right tool for the situation.</p>
+            </div>
+        </div>
+
+        <div class="activity-navigation">
+            <a href="example.html" class="btn btn-secondary">← Worked Examples</a>
+            <a href="parsons.html" class="btn btn-primary">Next: Parsons Problems →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>GCSE Computer Science - Utility Software</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script src="../../js/main.js"></script>
+    <script>
+        function toggleStep(header) {
+            const step = header.parentElement;
+            const content = step.querySelector('.step-content');
+            const toggle = header.querySelector('.step-toggle');
+            const isOpen = step.classList.contains('open');
+
+            if (isOpen) {
+                step.classList.remove('open');
+                content.style.maxHeight = '0';
+                toggle.textContent = '+';
+            } else {
+                step.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                toggle.textContent = '−';
+                stepsRevealed++;
+                if (stepsRevealed >= 10) {
+                    Progress.completeActivity('utility-software', 'trace');
+                }
+            }
+        }
+
+        let stepsRevealed = 0;
+        Progress.startActivity('utility-software', 'trace');
+    </script>
+    <style>
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        .trace-header {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+        }
+        .activity-icon {
+            font-size: 3rem;
+        }
+        .activity-intro {
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+        }
+        .trace-exercise {
+            background: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        .trace-header-bar {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+        }
+        .trace-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .trace-scenario {
+            padding: var(--space-lg);
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .trace-scenario h3 {
+            margin-bottom: var(--space-sm);
+            color: var(--gray-700);
+        }
+        .trace-steps {
+            padding: var(--space-lg);
+        }
+        .trace-step {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            overflow: hidden;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            padding: var(--space-md);
+            background: var(--gray-50);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .step-header:hover {
+            background: var(--gray-100);
+        }
+        .step-number {
+            background: var(--warning);
+            color: white;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: var(--space-md);
+        }
+        .step-title {
+            flex: 1;
+            font-weight: 500;
+        }
+        .step-toggle {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--gray-500);
+            width: 24px;
+            text-align: center;
+        }
+        .step-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .trace-step.open .step-content {
+            border-top: 1px solid var(--gray-200);
+        }
+        .step-state {
+            padding: var(--space-lg);
+        }
+        .step-state p {
+            margin-bottom: var(--space-sm);
+        }
+        .step-state ul, .step-state ol {
+            margin: var(--space-sm) 0 var(--space-md) var(--space-lg);
+        }
+        .step-state li {
+            margin-bottom: var(--space-xs);
+        }
+        .trace-summary {
+            padding: var(--space-lg);
+            background: #f0fdf4;
+            border-top: 2px solid var(--success);
+        }
+        .trace-summary h4 {
+            color: var(--success);
+            margin-bottom: var(--space-sm);
+        }
+        .disk-visual {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: white;
+            border-radius: var(--radius-md);
+        }
+        .disk-blocks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin: var(--space-md) 0;
+        }
+        .block {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+        }
+        .block.file-a { background: var(--primary); }
+        .block.file-b { background: var(--success); }
+        .block.file-c { background: var(--warning); }
+        .block.empty { background: var(--gray-300); color: var(--gray-600); }
+        .disk-key {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .file-example {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-md);
+        }
+        .file-example code {
+            display: block;
+            background: var(--gray-100);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            margin: var(--space-sm) 0;
+        }
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xxl);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--gray-200);
+        }
+    </style>
+</body>
+</html>
