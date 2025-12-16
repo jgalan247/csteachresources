@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preventing Vulnerabilities - GCSE Computer Science</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <style>
+        .prevention-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--success);
+        }
+        .prevention-card h3 {
+            color: var(--success);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        .prevention-icon {
+            font-size: 1.5rem;
+        }
+        .threat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-lg) 0;
+            font-size: 0.9rem;
+        }
+        .threat-table th, .threat-table td {
+            padding: var(--space-md);
+            text-align: left;
+            border: 1px solid var(--gray-200);
+        }
+        .threat-table th {
+            background: var(--gray-100);
+            font-weight: 600;
+        }
+        .threat-table tr:nth-child(even) {
+            background: var(--gray-50);
+        }
+        .effectiveness-high {
+            color: var(--success);
+            font-weight: bold;
+        }
+        .effectiveness-medium {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+        .effectiveness-low {
+            color: var(--error);
+            font-weight: bold;
+        }
+        .key-point {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 1px solid #6ee7b7;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+        }
+        .key-point strong {
+            color: #047857;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        .comparison-item {
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .comparison-item h4 {
+            color: var(--primary);
+            margin-bottom: var(--space-sm);
+        }
+        .layer-diagram {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+        }
+        .layer {
+            padding: var(--space-md);
+            margin: var(--space-sm) 0;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            font-weight: 500;
+        }
+        .layer-physical { background: #fee2e2; color: #991b1b; }
+        .layer-network { background: #fef3c7; color: #92400e; }
+        .layer-system { background: #dbeafe; color: #1e40af; }
+        .layer-application { background: #d1fae5; color: #065f46; }
+        .layer-user { background: #ede9fe; color: #5b21b6; }
+        .nav-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-top: var(--space-xl);
+        }
+        .nav-buttons .btn {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="topic-header">
+            <span class="topic-badge">Theory - Networks</span>
+            <h1>Identifying and Preventing Vulnerabilities</h1>
+            <p class="subtitle">Learn how to protect computer systems from security threats</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Introduction: Defence in Depth</h2>
+            <p>No single security measure can protect against all threats. Effective security uses multiple layers of protection - if one layer fails, others remain. This approach is called <strong>defence in depth</strong>.</p>
+
+            <div class="layer-diagram">
+                <h4>Layers of Security Protection</h4>
+                <div class="layer layer-physical">Physical Security - Locks, CCTV, security guards</div>
+                <div class="layer layer-network">Network Security - Firewalls, encryption, protocols</div>
+                <div class="layer layer-system">System Security - Anti-malware, updates, access controls</div>
+                <div class="layer layer-application">Application Security - Input validation, secure coding</div>
+                <div class="layer layer-user">User Security - Passwords, training, awareness</div>
+            </div>
+
+            <div class="key-point">
+                <strong>Key Principle:</strong> Each prevention method addresses specific threats. Understanding what each method protects against helps you design effective security strategies.
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>1. Penetration Testing</h2>
+
+            <div class="prevention-card">
+                <h3><span class="prevention-icon">🔍</span> What is Penetration Testing?</h3>
+                <p>Penetration testing (pen testing) is the practice of testing a computer system, network, or web application to find security vulnerabilities that an attacker could exploit. It's essentially <strong>ethical hacking</strong> - authorised attempts to break into a system.</p>
+
+                <h4>How It Works</h4>
+                <ol>
+                    <li><strong>Planning</strong> - Define scope and goals of the test</li>
+                    <li><strong>Reconnaissance</strong> - Gather information about the target system</li>
+                    <li><strong>Scanning</strong> - Use tools to identify potential entry points</li>
+                    <li><strong>Exploitation</strong> - Attempt to breach the system using discovered vulnerabilities</li>
+                    <li><strong>Reporting</strong> - Document findings and recommend fixes</li>
+                </ol>
+
+                <h4>What It Prevents/Limits</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Threat</th>
+                        <th>How Pen Testing Helps</th>
+                    </tr>
+                    <tr>
+                        <td>SQL Injection</td>
+                        <td>Identifies vulnerable input fields before attackers do</td>
+                    </tr>
+                    <tr>
+                        <td>Unpatched Systems</td>
+                        <td>Reveals outdated software with known vulnerabilities</td>
+                    </tr>
+                    <tr>
+                        <td>Misconfiguration</td>
+                        <td>Finds security settings that are too permissive</td>
+                    </tr>
+                    <tr>
+                        <td>Weak Passwords</td>
+                        <td>Tests if default or common passwords are in use</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Key Principle:</strong> Penetration testing finds vulnerabilities proactively, allowing organisations to fix them before malicious attackers discover and exploit them.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>2. Anti-Malware Software</h2>
+
+            <div class="prevention-card">
+                <h3><span class="prevention-icon">🛡️</span> What is Anti-Malware Software?</h3>
+                <p>Anti-malware software (including antivirus) detects, prevents, and removes malicious software from computers. Modern solutions protect against viruses, worms, trojans, ransomware, spyware, and other threats.</p>
+
+                <h4>How It Works</h4>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>Signature Detection</h4>
+                        <p>Compares files against a database of known malware "signatures" (unique code patterns)</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Heuristic Analysis</h4>
+                        <p>Analyses code behaviour to detect new, unknown malware based on suspicious patterns</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Real-time Scanning</h4>
+                        <p>Monitors files as they're opened, downloaded, or executed</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Quarantine</h4>
+                        <p>Isolates suspicious files so they cannot harm the system</p>
+                    </div>
+                </div>
+
+                <h4>What It Prevents/Limits</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Threat</th>
+                        <th>Effectiveness</th>
+                        <th>How It Protects</th>
+                    </tr>
+                    <tr>
+                        <td>Viruses</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>Detects and removes infected files, prevents execution</td>
+                    </tr>
+                    <tr>
+                        <td>Worms</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>Blocks network spreading, quarantines infected files</td>
+                    </tr>
+                    <tr>
+                        <td>Trojans</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>Identifies disguised malware before installation</td>
+                    </tr>
+                    <tr>
+                        <td>Ransomware</td>
+                        <td class="effectiveness-medium">Medium</td>
+                        <td>Can detect known variants; new variants may evade detection</td>
+                    </tr>
+                    <tr>
+                        <td>Phishing</td>
+                        <td class="effectiveness-low">Low</td>
+                        <td>Limited - mainly blocks malicious downloads, not fake emails</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Key Principle:</strong> Anti-malware must be kept updated - new malware is created daily, so signature databases need constant updating to remain effective.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>3. Firewalls</h2>
+
+            <div class="prevention-card">
+                <h3><span class="prevention-icon">🧱</span> What is a Firewall?</h3>
+                <p>A firewall monitors and controls incoming and outgoing network traffic based on predetermined security rules. It acts as a barrier between a trusted internal network and untrusted external networks (like the internet).</p>
+
+                <h4>Types of Firewalls</h4>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>Hardware Firewall</h4>
+                        <p>Physical device between network and internet. Protects entire network.</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Software Firewall</h4>
+                        <p>Program installed on individual computers. Protects that specific device.</p>
+                    </div>
+                </div>
+
+                <h4>How It Works</h4>
+                <ul>
+                    <li><strong>Packet Filtering</strong> - Examines packets and blocks based on IP addresses, ports, or protocols</li>
+                    <li><strong>Stateful Inspection</strong> - Tracks active connections and validates packets belong to legitimate sessions</li>
+                    <li><strong>Application Gateway</strong> - Inspects traffic at the application level (e.g., blocking specific websites)</li>
+                    <li><strong>Rules</strong> - Administrator-defined allow/deny rules for traffic types</li>
+                </ul>
+
+                <h4>What It Prevents/Limits</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Threat</th>
+                        <th>Effectiveness</th>
+                        <th>How It Protects</th>
+                    </tr>
+                    <tr>
+                        <td>Unauthorised Access</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>Blocks external connection attempts to internal systems</td>
+                    </tr>
+                    <tr>
+                        <td>DoS Attacks</td>
+                        <td class="effectiveness-medium">Medium</td>
+                        <td>Can limit connection rates; less effective against DDoS</td>
+                    </tr>
+                    <tr>
+                        <td>Worms</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>Blocks network ports worms use to spread</td>
+                    </tr>
+                    <tr>
+                        <td>Data Exfiltration</td>
+                        <td class="effectiveness-medium">Medium</td>
+                        <td>Can block suspicious outbound connections</td>
+                    </tr>
+                    <tr>
+                        <td>Phishing Emails</td>
+                        <td class="effectiveness-low">Low</td>
+                        <td>Cannot inspect email content - emails pass through on allowed ports</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Key Principle:</strong> Firewalls work on a "default deny" principle - block everything, then create rules to allow specific legitimate traffic.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>4. User Access Levels</h2>
+
+            <div class="prevention-card">
+                <h3><span class="prevention-icon">👥</span> What are User Access Levels?</h3>
+                <p>User access levels (access control) ensure users only have permission to access the data and systems they need for their job. This follows the <strong>principle of least privilege</strong> - give users the minimum permissions necessary.</p>
+
+                <h4>Common Access Levels</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Level</th>
+                        <th>Typical Permissions</th>
+                        <th>Example Users</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Administrator</strong></td>
+                        <td>Full access - install software, change settings, manage users</td>
+                        <td>IT staff, system administrators</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Standard User</strong></td>
+                        <td>Run applications, access own files, limited settings</td>
+                        <td>Most employees, students</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Guest</strong></td>
+                        <td>Minimal access - basic browsing, no file storage</td>
+                        <td>Visitors, temporary users</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Read-Only</strong></td>
+                        <td>View files but cannot modify or delete</td>
+                        <td>Auditors, external partners</td>
+                    </tr>
+                </table>
+
+                <h4>What It Prevents/Limits</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Threat</th>
+                        <th>How Access Levels Help</th>
+                    </tr>
+                    <tr>
+                        <td>Malware Installation</td>
+                        <td>Standard users cannot install software, limiting malware spread</td>
+                    </tr>
+                    <tr>
+                        <td>Data Theft (Internal)</td>
+                        <td>Users only see data relevant to their role</td>
+                    </tr>
+                    <tr>
+                        <td>Accidental Damage</td>
+                        <td>Limited permissions prevent accidental deletion of critical files</td>
+                    </tr>
+                    <tr>
+                        <td>Privilege Escalation</td>
+                        <td>Attackers gaining access to one account have limited reach</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Key Principle:</strong> If an attacker compromises a user account with limited permissions, the damage they can cause is also limited. This contains breaches.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>5. Passwords</h2>
+
+            <div class="prevention-card">
+                <h3><span class="prevention-icon">🔑</span> Password Security</h3>
+                <p>Passwords are the most common form of authentication - proving you are who you claim to be. Strong passwords are a critical first line of defence against unauthorised access.</p>
+
+                <h4>Characteristics of Strong Passwords</h4>
+                <ul>
+                    <li><strong>Length</strong> - At least 12 characters (longer is better)</li>
+                    <li><strong>Complexity</strong> - Mix of uppercase, lowercase, numbers, and symbols</li>
+                    <li><strong>Unpredictability</strong> - No dictionary words, names, or dates</li>
+                    <li><strong>Uniqueness</strong> - Different password for each account</li>
+                </ul>
+
+                <h4>Password Policies</h4>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>Minimum Length</h4>
+                        <p>Require passwords of at least 8-12 characters</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Complexity Rules</h4>
+                        <p>Require mix of character types</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Expiry</h4>
+                        <p>Force password changes periodically (though this is debated)</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>History</h4>
+                        <p>Prevent reuse of recent passwords</p>
+                    </div>
+                </div>
+
+                <h4>What Passwords Prevent/Limit</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Threat</th>
+                        <th>How Strong Passwords Help</th>
+                    </tr>
+                    <tr>
+                        <td>Brute-Force Attacks</td>
+                        <td>Longer, complex passwords take exponentially longer to crack</td>
+                    </tr>
+                    <tr>
+                        <td>Dictionary Attacks</td>
+                        <td>Random characters not found in wordlists</td>
+                    </tr>
+                    <tr>
+                        <td>Credential Stuffing</td>
+                        <td>Unique passwords mean one breach doesn't compromise all accounts</td>
+                    </tr>
+                    <tr>
+                        <td>Social Engineering</td>
+                        <td>Random passwords cannot be guessed from personal information</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Key Principle:</strong> Password managers help users maintain unique, complex passwords for every account without needing to remember them all.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>6. Encryption</h2>
+
+            <div class="prevention-card">
+                <h3><span class="prevention-icon">🔐</span> What is Encryption?</h3>
+                <p>Encryption converts readable data (plaintext) into an unreadable format (ciphertext) using a mathematical algorithm and a key. Only those with the correct key can decrypt and read the data.</p>
+
+                <h4>Types of Encryption</h4>
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>Symmetric Encryption</h4>
+                        <p>Same key encrypts and decrypts. Fast, used for large data. Key must be shared securely.</p>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Asymmetric Encryption</h4>
+                        <p>Public key encrypts, private key decrypts. Slower but solves key sharing problem.</p>
+                    </div>
+                </div>
+
+                <h4>Where Encryption is Used</h4>
+                <ul>
+                    <li><strong>Data at Rest</strong> - Encrypting stored files (full disk encryption, file encryption)</li>
+                    <li><strong>Data in Transit</strong> - Encrypting network communications (HTTPS, VPNs)</li>
+                    <li><strong>Emails</strong> - End-to-end email encryption</li>
+                    <li><strong>Databases</strong> - Encrypting sensitive fields like passwords and payment details</li>
+                </ul>
+
+                <h4>What Encryption Prevents/Limits</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Threat</th>
+                        <th>Effectiveness</th>
+                        <th>How Encryption Protects</th>
+                    </tr>
+                    <tr>
+                        <td>Data Interception</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>Intercepted data is unreadable without the key</td>
+                    </tr>
+                    <tr>
+                        <td>Data Theft</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>Stolen encrypted files/devices cannot be read</td>
+                    </tr>
+                    <tr>
+                        <td>Man-in-the-Middle</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>HTTPS ensures attackers cannot read or modify traffic</td>
+                    </tr>
+                    <tr>
+                        <td>Eavesdropping</td>
+                        <td class="effectiveness-high">High</td>
+                        <td>WiFi traffic encrypted even on public networks (with VPN)</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Key Principle:</strong> Encryption protects the confidentiality of data even if other security measures fail - if attackers get the data, they still cannot read it.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>7. Physical Security</h2>
+
+            <div class="prevention-card">
+                <h3><span class="prevention-icon">🏢</span> What is Physical Security?</h3>
+                <p>Physical security protects computer systems, networks, and data from physical threats - theft, damage, or unauthorised physical access. It's often overlooked but is fundamental to overall security.</p>
+
+                <h4>Physical Security Measures</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Measure</th>
+                        <th>What It Protects</th>
+                        <th>How It Works</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Locks</strong></td>
+                        <td>Rooms, cabinets, devices</td>
+                        <td>Physical barriers requiring keys or codes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CCTV</strong></td>
+                        <td>All areas</td>
+                        <td>Deters crime, provides evidence, enables monitoring</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security Guards</strong></td>
+                        <td>Building access</td>
+                        <td>Verify identity, respond to incidents</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Biometrics</strong></td>
+                        <td>Secure areas</td>
+                        <td>Fingerprint, retina, or facial recognition for access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ID Badges</strong></td>
+                        <td>Building/room access</td>
+                        <td>Swipe cards, RFID badges control who enters</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cable Locks</strong></td>
+                        <td>Equipment</td>
+                        <td>Physically secure laptops and equipment to desks</td>
+                    </tr>
+                </table>
+
+                <h4>What Physical Security Prevents/Limits</h4>
+                <table class="threat-table">
+                    <tr>
+                        <th>Threat</th>
+                        <th>How Physical Security Helps</th>
+                    </tr>
+                    <tr>
+                        <td>Hardware Theft</td>
+                        <td>Locks, guards, and tracking prevent stealing computers</td>
+                    </tr>
+                    <tr>
+                        <td>Unauthorised Access</td>
+                        <td>Only authorised personnel can physically access servers</td>
+                    </tr>
+                    <tr>
+                        <td>Social Engineering</td>
+                        <td>ID verification prevents tailgating and impersonation</td>
+                    </tr>
+                    <tr>
+                        <td>Data Theft via USB</td>
+                        <td>Restricted physical access prevents plugging in devices</td>
+                    </tr>
+                    <tr>
+                        <td>Sabotage</td>
+                        <td>CCTV deters deliberate damage to equipment</td>
+                    </tr>
+                </table>
+
+                <div class="key-point">
+                    <strong>Key Principle:</strong> If an attacker has physical access to a device, most software security measures can eventually be bypassed. Physical security is the foundation.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Summary: Matching Prevention to Threats</h2>
+
+            <p>Each prevention method is most effective against specific threats. The table below shows which methods best address each type of attack:</p>
+
+            <table class="threat-table">
+                <tr>
+                    <th>Threat</th>
+                    <th>Most Effective Prevention</th>
+                    <th>Supporting Measures</th>
+                </tr>
+                <tr>
+                    <td>Malware</td>
+                    <td>Anti-malware software</td>
+                    <td>User access levels, firewalls, user training</td>
+                </tr>
+                <tr>
+                    <td>Brute-Force Attacks</td>
+                    <td>Strong passwords, account lockout</td>
+                    <td>Encryption, firewalls (rate limiting)</td>
+                </tr>
+                <tr>
+                    <td>Phishing</td>
+                    <td>User training and awareness</td>
+                    <td>Anti-malware, email filtering</td>
+                </tr>
+                <tr>
+                    <td>Data Interception</td>
+                    <td>Encryption</td>
+                    <td>VPNs, secure protocols (HTTPS)</td>
+                </tr>
+                <tr>
+                    <td>SQL Injection</td>
+                    <td>Penetration testing, secure coding</td>
+                    <td>Firewalls (application layer)</td>
+                </tr>
+                <tr>
+                    <td>DoS/DDoS</td>
+                    <td>Firewalls, traffic filtering</td>
+                    <td>Cloud-based DDoS protection</td>
+                </tr>
+                <tr>
+                    <td>Unauthorised Access</td>
+                    <td>User access levels, passwords</td>
+                    <td>Physical security, firewalls</td>
+                </tr>
+                <tr>
+                    <td>Hardware Theft</td>
+                    <td>Physical security</td>
+                    <td>Encryption (protects data on stolen devices)</td>
+                </tr>
+            </table>
+
+            <div class="key-point">
+                <strong>Remember:</strong> No single security measure is enough on its own. Effective security uses multiple layers working together - defence in depth!
+            </div>
+        </section>
+
+        <section class="activities-section">
+            <h2>Practice Activities</h2>
+            <p>Test your understanding of security prevention methods:</p>
+
+            <div class="nav-buttons">
+                <a href="predict.html" class="btn btn-primary">Predict - Security Scenarios</a>
+                <a href="example.html" class="btn btn-secondary">Worked Examples</a>
+                <a href="trace.html" class="btn btn-secondary">Step-by-Step Exercises</a>
+                <a href="parsons.html" class="btn btn-secondary">Order the Steps</a>
+                <a href="quiz.html" class="btn btn-success">Knowledge Quiz</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        Progress.startTopic('prevention');
+    </script>
+</body>
+</html>
