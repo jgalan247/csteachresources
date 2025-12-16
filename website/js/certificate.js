@@ -30,7 +30,8 @@ const CertificateSystem = {
         'storage': 'Secondary Storage',
         'units': 'Data Units & Capacity',
         'numbers': 'Number Systems',
-        'representation': 'Data Representation'
+        'representation': 'Data Representation',
+        'compression': 'Compression'
     },
 
     /**

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worked Examples - Compression</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Compression</a>
+            <h1>Worked Examples</h1>
+            <p class="subtitle">Real-world compression decisions and calculations</p>
+        </div>
+
+        <div class="formulas-reference">
+            <h2>Key Concepts</h2>
+            <div class="formula-grid">
+                <div class="formula-card">
+                    <h4>Lossless Compression</h4>
+                    <p>Original data can be perfectly restored</p>
+                </div>
+                <div class="formula-card">
+                    <h4>Lossy Compression</h4>
+                    <p>Some data permanently removed</p>
+                </div>
+                <div class="formula-card">
+                    <h4>Compression Ratio</h4>
+                    <p>Lossless: ~20-50%<br>Lossy: ~70-95%</p>
+                </div>
+                <div class="formula-card">
+                    <h4>File Size Reduction</h4>
+                    <p>New size = Original × (1 - ratio)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 1: Choosing Compression Type -->
+        <section class="worked-example" id="example-1">
+            <div class="example-header">
+                <span class="example-number">1</span>
+                <span class="example-category">Choosing Type</span>
+            </div>
+            <h2>Compressing a Software Installation File</h2>
+
+            <div class="problem-box">
+                <h3>Scenario</h3>
+                <p>A software company needs to compress their 500 MB installation package for download from their website.</p>
+                <p><strong>Which type of compression should they use, and why?</strong></p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Identify the file type</h4>
+                        <p>Software installation files contain:</p>
+                        <ul>
+                            <li>Executable code (.exe files)</li>
+                            <li>Configuration files</li>
+                            <li>Libraries and resources</li>
+                        </ul>
+                        <p>These are <strong>program files</strong> - every bit matters!</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Consider the consequences of data loss</h4>
+                        <p>If even one bit is changed or lost:</p>
+                        <ul>
+                            <li>The software might crash</li>
+                            <li>Security could be compromised</li>
+                            <li>Features might not work</li>
+                            <li>The entire installation could fail</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Apply the decision rule</h4>
+                        <p><strong>Rule:</strong> If the file must be exactly the same after decompression, use lossless.</p>
+                        <p>Software files MUST be identical → <strong>Use Lossless</strong></p>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <h4>Answer</h4>
+                    <p><strong>Lossless compression</strong> (e.g., ZIP format)</p>
+                    <p><strong>Reason:</strong> Software files must be bit-perfect to function correctly. Any data loss would corrupt the installation.</p>
+                    <p class="note">This is why software downloads typically come as .zip, .7z, or self-extracting archives.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2: Photo Storage Decision -->
+        <section class="worked-example" id="example-2">
+            <div class="example-header">
+                <span class="example-number">2</span>
+                <span class="example-category">Choosing Type</span>
+            </div>
+            <h2>Storing Holiday Photos</h2>
+
+            <div class="problem-box">
+                <h3>Scenario</h3>
+                <p>You've taken 200 photos on holiday, each 25 MB in RAW format. Your phone has 5 GB of storage space remaining.</p>
+                <p><strong>What compression approach would allow you to keep all photos?</strong></p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Calculate total uncompressed size</h4>
+                        <p>Total size = 200 photos × 25 MB = <strong>5,000 MB (5 GB)</strong></p>
+                        <p>Available space = 5 GB</p>
+                        <p>Problem: Files exactly fill the space with no room left!</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Consider lossless compression</h4>
+                        <p>Lossless typically reduces photos by 20-40%</p>
+                        <p>Best case: 5,000 × 0.6 = 3,000 MB (3 GB)</p>
+                        <p>This might fit, but photos don't compress well with lossless.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Consider lossy compression (JPEG)</h4>
+                        <p>JPEG typically achieves 80-95% compression</p>
+                        <p>At 90% compression: 5,000 × 0.1 = <strong>500 MB</strong></p>
+                        <p>This easily fits with plenty of room to spare!</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Assess acceptability of quality loss</h4>
+                        <p>Holiday photos are for:</p>
+                        <ul>
+                            <li>Viewing on screens</li>
+                            <li>Sharing on social media</li>
+                            <li>Printing at normal sizes</li>
+                        </ul>
+                        <p>Slight quality reduction is not noticeable for these uses.</p>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <h4>Answer</h4>
+                    <p><strong>Lossy compression (JPEG)</strong></p>
+                    <p><strong>Result:</strong> 200 photos at ~2.5 MB each = 500 MB total</p>
+                    <p><strong>Reason:</strong> Photos compress very well with JPEG, and the quality difference is imperceptible for normal viewing and sharing.</p>
+                    <p class="note">Professional photographers might keep RAW files for editing, but JPEGs are fine for personal use.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3: File Size Calculation -->
+        <section class="worked-example" id="example-3">
+            <div class="example-header">
+                <span class="example-number">3</span>
+                <span class="example-category">Calculation</span>
+            </div>
+            <h2>Calculating Compressed File Size</h2>
+
+            <div class="problem-box">
+                <h3>Problem</h3>
+                <p>An uncompressed audio file is 50 MB.</p>
+                <ul>
+                    <li>Lossless compression (FLAC) achieves 40% size reduction</li>
+                    <li>Lossy compression (MP3 at 320kbps) achieves 80% size reduction</li>
+                </ul>
+                <p><strong>Calculate the file size for each compression method.</strong></p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Calculate FLAC (lossless) size</h4>
+                        <p>Size reduction = 40%</p>
+                        <p>Remaining size = 100% - 40% = 60%</p>
+                        <p>FLAC size = 50 MB × 0.6 = <strong>30 MB</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Calculate MP3 (lossy) size</h4>
+                        <p>Size reduction = 80%</p>
+                        <p>Remaining size = 100% - 80% = 20%</p>
+                        <p>MP3 size = 50 MB × 0.2 = <strong>10 MB</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Compare the results</h4>
+                        <p>FLAC: 30 MB (quality preserved perfectly)</p>
+                        <p>MP3: 10 MB (slight quality loss)</p>
+                        <p>MP3 is 3× smaller than FLAC</p>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <h4>Answer</h4>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Format</th>
+                            <th>Type</th>
+                            <th>Size</th>
+                            <th>Quality</th>
+                        </tr>
+                        <tr>
+                            <td>FLAC</td>
+                            <td>Lossless</td>
+                            <td>30 MB</td>
+                            <td>Perfect</td>
+                        </tr>
+                        <tr>
+                            <td>MP3 320kbps</td>
+                            <td>Lossy</td>
+                            <td>10 MB</td>
+                            <td>Near-perfect</td>
+                        </tr>
+                    </table>
+                    <p class="note">For most listeners, MP3 at 320kbps sounds identical to the original, making it the popular choice.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4: Website Optimization -->
+        <section class="worked-example" id="example-4">
+            <div class="example-header">
+                <span class="example-number">4</span>
+                <span class="example-category">Real World</span>
+            </div>
+            <h2>Optimizing Images for a Website</h2>
+
+            <div class="problem-box">
+                <h3>Scenario</h3>
+                <p>A web developer has a product page with 10 images. Each image is currently 2 MB (PNG format).</p>
+                <p>The page takes 8 seconds to load on average mobile data speeds.</p>
+                <p><strong>How can compression improve the user experience?</strong></p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Calculate current total</h4>
+                        <p>Total image data = 10 × 2 MB = <strong>20 MB</strong></p>
+                        <p>This is too large for fast web loading.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Choose compression approach</h4>
+                        <p>Product photos can use lossy compression (JPEG) because:</p>
+                        <ul>
+                            <li>Photos compress very well as JPEG</li>
+                            <li>Slight quality loss is invisible on screens</li>
+                            <li>Faster loading improves sales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Calculate compressed size</h4>
+                        <p>JPEG at 85% quality typically achieves 90% reduction</p>
+                        <p>New size per image = 2 MB × 0.1 = 200 KB</p>
+                        <p>Total = 10 × 200 KB = <strong>2 MB</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Calculate loading time improvement</h4>
+                        <p>Original: 20 MB → 8 seconds</p>
+                        <p>Compressed: 2 MB → approximately <strong>0.8 seconds</strong></p>
+                        <p>That's 10× faster!</p>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <h4>Answer</h4>
+                    <p><strong>Convert images to JPEG at 85% quality</strong></p>
+                    <p><strong>Result:</strong> Page load time reduced from 8 seconds to under 1 second</p>
+                    <p><strong>Impact:</strong> Better user experience, lower bounce rate, and improved SEO rankings</p>
+                    <p class="note">Studies show that 53% of mobile users leave a page that takes longer than 3 seconds to load.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5: Storage Space Planning -->
+        <section class="worked-example" id="example-5">
+            <div class="example-header">
+                <span class="example-number">5</span>
+                <span class="example-category">Calculation</span>
+            </div>
+            <h2>Planning Cloud Storage Needs</h2>
+
+            <div class="problem-box">
+                <h3>Scenario</h3>
+                <p>A small business needs to backup:</p>
+                <ul>
+                    <li>50 GB of documents and spreadsheets</li>
+                    <li>200 GB of photos</li>
+                    <li>100 GB of video footage</li>
+                </ul>
+                <p><strong>How much cloud storage should they purchase, assuming optimal compression?</strong></p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Compress documents (lossless)</h4>
+                        <p>Documents must use lossless (data integrity is critical)</p>
+                        <p>ZIP compression typically achieves 60-70% reduction for text</p>
+                        <p>Compressed size = 50 GB × 0.35 = <strong>17.5 GB</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Compress photos (lossy acceptable)</h4>
+                        <p>For backup purposes, JPEG compression is acceptable</p>
+                        <p>Assuming already compressed at 80% reduction</p>
+                        <p>Compressed size = 200 GB × 0.2 = <strong>40 GB</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Compress video (lossy)</h4>
+                        <p>Video compresses very well with H.264/MP4</p>
+                        <p>Assuming 85% compression</p>
+                        <p>Compressed size = 100 GB × 0.15 = <strong>15 GB</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Calculate total and add buffer</h4>
+                        <p>Total compressed = 17.5 + 40 + 15 = 72.5 GB</p>
+                        <p>Add 30% buffer for growth = 72.5 × 1.3 = <strong>~95 GB</strong></p>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <h4>Answer</h4>
+                    <p><strong>Purchase 100 GB of cloud storage</strong></p>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>File Type</th>
+                            <th>Original</th>
+                            <th>Compressed</th>
+                            <th>Method</th>
+                        </tr>
+                        <tr>
+                            <td>Documents</td>
+                            <td>50 GB</td>
+                            <td>17.5 GB</td>
+                            <td>Lossless (ZIP)</td>
+                        </tr>
+                        <tr>
+                            <td>Photos</td>
+                            <td>200 GB</td>
+                            <td>40 GB</td>
+                            <td>Lossy (JPEG)</td>
+                        </tr>
+                        <tr>
+                            <td>Video</td>
+                            <td>100 GB</td>
+                            <td>15 GB</td>
+                            <td>Lossy (H.264)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>350 GB</strong></td>
+                            <td><strong>72.5 GB</strong></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <p class="note">Compression reduced storage needs by 79%!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 6: Quality vs Size Trade-off -->
+        <section class="worked-example" id="example-6">
+            <div class="example-header">
+                <span class="example-number">6</span>
+                <span class="example-category">Trade-offs</span>
+            </div>
+            <h2>Choosing JPEG Quality Level</h2>
+
+            <div class="problem-box">
+                <h3>Scenario</h3>
+                <p>A photographer is saving a 10 MB RAW image. They have three quality options:</p>
+                <ul>
+                    <li>JPEG 100% quality → 4 MB</li>
+                    <li>JPEG 80% quality → 1 MB</li>
+                    <li>JPEG 50% quality → 250 KB</li>
+                </ul>
+                <p><strong>Which should they choose for: (a) their portfolio website, (b) email attachment, (c) thumbnail preview?</strong></p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Analyze portfolio website needs</h4>
+                        <p>Purpose: Showcase professional work</p>
+                        <p>Requirements: High quality, some loading time acceptable</p>
+                        <p>Best choice: <strong>100% quality (4 MB)</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Analyze email attachment needs</h4>
+                        <p>Purpose: Share image with client</p>
+                        <p>Requirements: Good quality, must fit email limits (often 10-25 MB)</p>
+                        <p>Best choice: <strong>80% quality (1 MB)</strong></p>
+                        <p>Quality difference barely visible, fits easily in email</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Analyze thumbnail needs</h4>
+                        <p>Purpose: Quick preview at small size</p>
+                        <p>Requirements: Tiny file size, displayed at 200×200 pixels or less</p>
+                        <p>Best choice: <strong>50% quality (250 KB)</strong></p>
+                        <p>At thumbnail size, quality loss is invisible</p>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <h4>Answer</h4>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Use Case</th>
+                            <th>Quality</th>
+                            <th>Size</th>
+                            <th>Reason</th>
+                        </tr>
+                        <tr>
+                            <td>Portfolio</td>
+                            <td>100%</td>
+                            <td>4 MB</td>
+                            <td>Quality matters most</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>80%</td>
+                            <td>1 MB</td>
+                            <td>Good balance</td>
+                        </tr>
+                        <tr>
+                            <td>Thumbnail</td>
+                            <td>50%</td>
+                            <td>250 KB</td>
+                            <td>Speed matters most</td>
+                        </tr>
+                    </table>
+                    <p class="note">The "right" compression depends entirely on how the image will be used!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 7: Streaming vs Download -->
+        <section class="worked-example" id="example-7">
+            <div class="example-header">
+                <span class="example-number">7</span>
+                <span class="example-category">Real World</span>
+            </div>
+            <h2>Music Streaming Quality Settings</h2>
+
+            <div class="problem-box">
+                <h3>Scenario</h3>
+                <p>A music streaming service offers different quality levels:</p>
+                <ul>
+                    <li>Low: 96 kbps (0.72 MB per minute)</li>
+                    <li>Normal: 160 kbps (1.2 MB per minute)</li>
+                    <li>High: 320 kbps (2.4 MB per minute)</li>
+                    <li>Lossless: 1,411 kbps (10.6 MB per minute)</li>
+                </ul>
+                <p><strong>How much data would a 3-hour playlist use at each quality?</strong></p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Convert duration to minutes</h4>
+                        <p>3 hours = 3 × 60 = <strong>180 minutes</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Calculate data for each quality</h4>
+                        <p>Low: 180 × 0.72 = <strong>130 MB</strong></p>
+                        <p>Normal: 180 × 1.2 = <strong>216 MB</strong></p>
+                        <p>High: 180 × 2.4 = <strong>432 MB</strong></p>
+                        <p>Lossless: 180 × 10.6 = <strong>1,908 MB (1.9 GB)</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Compare the implications</h4>
+                        <p>If you have 2 GB mobile data per month:</p>
+                        <ul>
+                            <li>Low: Could stream ~46 hours</li>
+                            <li>Normal: Could stream ~27 hours</li>
+                            <li>High: Could stream ~14 hours</li>
+                            <li>Lossless: Could stream ~3 hours</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <h4>Answer</h4>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Quality</th>
+                            <th>3 Hours</th>
+                            <th>Compression</th>
+                            <th>Best For</th>
+                        </tr>
+                        <tr>
+                            <td>Low</td>
+                            <td>130 MB</td>
+                            <td>Lossy (93%)</td>
+                            <td>Saving data</td>
+                        </tr>
+                        <tr>
+                            <td>Normal</td>
+                            <td>216 MB</td>
+                            <td>Lossy (89%)</td>
+                            <td>Casual listening</td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>432 MB</td>
+                            <td>Lossy (77%)</td>
+                            <td>Good headphones</td>
+                        </tr>
+                        <tr>
+                            <td>Lossless</td>
+                            <td>1.9 GB</td>
+                            <td>Lossless</td>
+                            <td>Audiophiles</td>
+                        </tr>
+                    </table>
+                    <p class="note">Most people cannot hear the difference between 320 kbps and lossless, but the file size is 4× different!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 8: Generation Loss -->
+        <section class="worked-example" id="example-8">
+            <div class="example-header">
+                <span class="example-number">8</span>
+                <span class="example-category">Effects</span>
+            </div>
+            <h2>Understanding Generation Loss</h2>
+
+            <div class="problem-box">
+                <h3>Scenario</h3>
+                <p>A student edits a JPEG photo and saves it. Then edits it again and saves it. They repeat this 10 times.</p>
+                <p><strong>What happens to the image quality, and why?</strong></p>
+            </div>
+
+            <div class="solution-steps">
+                <h3>Solution</h3>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Understand the problem</h4>
+                        <p>JPEG is a lossy format. Each time you save:</p>
+                        <ul>
+                            <li>The image is recompressed</li>
+                            <li>More data is discarded</li>
+                            <li>Quality degrades further</li>
+                        </ul>
+                        <p>This is called <strong>generation loss</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Visualize the degradation</h4>
+                        <p>Each save cycle:</p>
+                        <ul>
+                            <li>Save 1: Small quality loss (barely visible)</li>
+                            <li>Save 2-3: Quality loss accumulates</li>
+                            <li>Save 5-6: Visible artifacts appear</li>
+                            <li>Save 10: Significant degradation, blocky areas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>The solution</h4>
+                        <p>To avoid generation loss:</p>
+                        <ul>
+                            <li>Edit in a lossless format (PNG, TIFF)</li>
+                            <li>Only save as JPEG once, at the very end</li>
+                            <li>Keep the original file unedited</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="answer-box">
+                    <h4>Answer</h4>
+                    <p><strong>Effect:</strong> After 10 saves, the image quality will be significantly degraded with visible compression artifacts (blocky areas, colour banding, blurring).</p>
+                    <p><strong>Why:</strong> JPEG compression discards data each time. These losses accumulate with each save cycle.</p>
+                    <p><strong>Prevention:</strong> Always edit in a lossless format and export to JPEG only once as the final step.</p>
+                    <p class="note">This is why professional photographers work with RAW files, not JPEGs!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Problems -->
+        <section class="practice-section">
+            <h2>Practice Problems</h2>
+            <p>Try these on your own, then reveal the answers to check.</p>
+
+            <div class="practice-problem">
+                <h3>Practice 1: Compression Choice</h3>
+                <p>A hospital needs to compress patient medical records (text documents with scanned medical images). Which compression type should they use?</p>
+                <button class="btn btn-secondary reveal-btn" onclick="toggleAnswer('practice1')">Show Answer</button>
+                <div class="practice-answer" id="practice1">
+                    <p><strong>Lossless compression</strong></p>
+                    <p>Medical records must be exact - any data loss could lead to misdiagnosis or legal issues. Even the scanned images should use lossless (PNG) as medical details might be critical.</p>
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h3>Practice 2: File Size Calculation</h3>
+                <p>A 4K video file is 8 GB uncompressed. If lossy compression achieves 95% reduction, what is the compressed size?</p>
+                <button class="btn btn-secondary reveal-btn" onclick="toggleAnswer('practice2')">Show Answer</button>
+                <div class="practice-answer" id="practice2">
+                    <p>Remaining size = 100% - 95% = 5%</p>
+                    <p>Compressed size = 8 GB × 0.05 = <strong>400 MB</strong></p>
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h3>Practice 3: Storage Planning</h3>
+                <p>A YouTube creator uploads 2 videos per week, each 30 minutes long. Uncompressed, each video is 50 GB. After H.264 compression (90% reduction), how much storage is needed for one year's videos?</p>
+                <button class="btn btn-secondary reveal-btn" onclick="toggleAnswer('practice3')">Show Answer</button>
+                <div class="practice-answer" id="practice3">
+                    <p>Videos per year = 2 × 52 = 104 videos</p>
+                    <p>Compressed size per video = 50 GB × 0.1 = 5 GB</p>
+                    <p>Total = 104 × 5 GB = <strong>520 GB</strong></p>
+                    <p>(Compared to 5,200 GB uncompressed!)</p>
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h3>Practice 4: Best Format Choice</h3>
+                <p>A graphic designer creates a logo with flat colours and sharp edges. Should they save it as JPEG or PNG?</p>
+                <button class="btn btn-secondary reveal-btn" onclick="toggleAnswer('practice4')">Show Answer</button>
+                <div class="practice-answer" id="practice4">
+                    <p><strong>PNG (lossless)</strong></p>
+                    <p>Logos with flat colours and sharp edges compress very well with PNG and remain perfectly crisp. JPEG would introduce artifacts around the edges and in solid colour areas.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="activity-nav">
+            <a href="predict.html" class="btn btn-secondary">← Predict</a>
+            <a href="trace.html" class="btn btn-primary">Trace Exercises →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            answer.classList.toggle('revealed');
+        }
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('compression-example');
+        }
+    </script>
+
+    <style>
+        .formulas-reference {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            border: 2px solid #22c55e;
+        }
+
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .formula-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .formula-card h4 {
+            color: #16a34a;
+            margin-bottom: var(--space-xs);
+            font-size: 0.9rem;
+        }
+
+        .formula-card p {
+            margin: 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .worked-example {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .example-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .example-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .example-category {
+            background: var(--gray-200);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .problem-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .problem-box h3 {
+            color: #92400e;
+            margin-bottom: var(--space-sm);
+        }
+
+        .problem-box ul {
+            margin: var(--space-sm) 0;
+            padding-left: var(--space-lg);
+        }
+
+        .solution-steps {
+            margin-top: var(--space-lg);
+        }
+
+        .solution-steps h3 {
+            color: var(--primary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .step {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            background: var(--gray-50);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+
+        .step-content h4 {
+            color: var(--gray-700);
+            margin-bottom: var(--space-sm);
+            font-size: 0.95rem;
+        }
+
+        .step-content p {
+            margin: var(--space-xs) 0;
+        }
+
+        .step-content ul {
+            margin: var(--space-xs) 0;
+            padding-left: var(--space-lg);
+        }
+
+        .answer-box {
+            background: #d4edda;
+            border: 2px solid var(--success);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-lg);
+        }
+
+        .answer-box h4 {
+            color: var(--success);
+            margin-bottom: var(--space-sm);
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            font-style: italic;
+            margin-top: var(--space-sm);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-300);
+            text-align: center;
+        }
+
+        .comparison-table th {
+            background: var(--gray-200);
+        }
+
+        .practice-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .practice-problem {
+            background: var(--gray-50);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .practice-problem h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .reveal-btn {
+            margin-top: var(--space-md);
+        }
+
+        .practice-answer {
+            display: none;
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: #d4edda;
+            border-radius: var(--radius-md);
+        }
+
+        .practice-answer.revealed {
+            display: block;
+        }
+
+        .practice-answer p {
+            margin: var(--space-xs) 0;
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

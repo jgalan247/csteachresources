@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsons Problems - Compression</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/activity.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <a href="index.html" class="back-link">← Back to Compression</a>
+            <h1>Parsons Problems</h1>
+            <p class="subtitle">Drag and drop steps into the correct order</p>
+        </div>
+
+        <div class="activity-intro">
+            <h2>How to Solve Parsons Problems</h2>
+            <p>The steps for each process are shown in the wrong order. Drag them into the correct sequence. This helps you understand the <strong>decision-making process</strong> for compression.</p>
+        </div>
+
+        <!-- Problem 1: Choosing Compression Type -->
+        <section class="parsons-problem" data-problem="1">
+            <h2>Problem 1: Deciding Which Compression to Use</h2>
+            <p class="problem-description">Order these steps to decide between lossy and lossless compression for a file.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-1">
+                    <div class="parsons-block" data-order="3">If data must be exact, choose lossless (ZIP, PNG, FLAC)</div>
+                    <div class="parsons-block" data-order="1">Identify what type of file needs to be compressed</div>
+                    <div class="parsons-block" data-order="4">If quality loss is acceptable, choose lossy (JPEG, MP3, MP4)</div>
+                    <div class="parsons-block" data-order="2">Ask: "Can this file lose any data without problems?"</div>
+                </div>
+                <div class="parsons-target" id="target-1">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="1">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-1"></div>
+        </section>
+
+        <!-- Problem 2: How Lossless Works -->
+        <section class="parsons-problem" data-problem="2">
+            <h2>Problem 2: How Lossless Compression Works</h2>
+            <p class="problem-description">Order these steps to explain the lossless compression process.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-2">
+                    <div class="parsons-block" data-order="4">When decompressed, original data is perfectly restored</div>
+                    <div class="parsons-block" data-order="2">Find patterns and repeated data in the file</div>
+                    <div class="parsons-block" data-order="5">No information is lost - perfect for text, code, and software</div>
+                    <div class="parsons-block" data-order="1">Analyse the original file data</div>
+                    <div class="parsons-block" data-order="3">Replace repeated sections with shorter references</div>
+                </div>
+                <div class="parsons-target" id="target-2">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="2">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-2"></div>
+        </section>
+
+        <!-- Problem 3: How Lossy Works -->
+        <section class="parsons-problem" data-problem="3">
+            <h2>Problem 3: How Lossy Compression Works</h2>
+            <p class="problem-description">Order these steps to explain the lossy compression process.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-3">
+                    <div class="parsons-block" data-order="3">Permanently remove the less important data</div>
+                    <div class="parsons-block" data-order="1">Analyse the file to find data humans won't notice</div>
+                    <div class="parsons-block" data-order="5">Result: Much smaller file with acceptable quality</div>
+                    <div class="parsons-block" data-order="4">Store the remaining data using efficient encoding</div>
+                    <div class="parsons-block" data-order="2">Identify frequencies/colours/details that are less important</div>
+                </div>
+                <div class="parsons-target" id="target-3">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="3">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-3"></div>
+        </section>
+
+        <!-- Problem 4: Compressing Software -->
+        <section class="parsons-problem" data-problem="4">
+            <h2>Problem 4: Compressing a Software Download</h2>
+            <p class="problem-description">Order the steps to correctly compress software for distribution.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-4">
+                    <div class="parsons-block" data-order="3">Use lossless compression (ZIP or 7z format)</div>
+                    <div class="parsons-block" data-order="5">User extracts files - software works perfectly</div>
+                    <div class="parsons-block" data-order="2">Recognise that code must be bit-perfect to work</div>
+                    <div class="parsons-block" data-order="4">Distribute compressed file for download</div>
+                    <div class="parsons-block" data-order="1">Gather all program files that need to be distributed</div>
+                </div>
+                <div class="parsons-target" id="target-4">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="4">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-4"></div>
+        </section>
+
+        <!-- Problem 5: Calculate Compressed Size -->
+        <section class="parsons-problem" data-problem="5">
+            <h2>Problem 5: Calculate Compressed File Size</h2>
+            <p class="problem-description">Order the steps to calculate a compressed file size.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-5">
+                    <div class="parsons-block" data-order="4">Calculate: Compressed size = Original × Remaining percentage</div>
+                    <div class="parsons-block" data-order="2">Identify the compression ratio (e.g., 80% reduction)</div>
+                    <div class="parsons-block" data-order="1">Note the original file size (e.g., 100 MB)</div>
+                    <div class="parsons-block" data-order="5">Example: 100 MB × 0.2 = 20 MB compressed</div>
+                    <div class="parsons-block" data-order="3">Calculate remaining: 100% - 80% = 20% remains</div>
+                </div>
+                <div class="parsons-target" id="target-5">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="5">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-5"></div>
+        </section>
+
+        <!-- Problem 6: Understanding Generation Loss -->
+        <section class="parsons-problem" data-problem="6">
+            <h2>Problem 6: Avoiding Generation Loss</h2>
+            <p class="problem-description">Order the steps for the correct workflow when editing photos.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-6">
+                    <div class="parsons-block" data-order="5">This prevents quality degradation from multiple saves</div>
+                    <div class="parsons-block" data-order="2">Edit using a lossless format (PNG, TIFF, PSD)</div>
+                    <div class="parsons-block" data-order="4">Only export to JPEG once, as the final step</div>
+                    <div class="parsons-block" data-order="1">Keep the original file as a backup</div>
+                    <div class="parsons-block" data-order="3">Save working copies in lossless format throughout editing</div>
+                </div>
+                <div class="parsons-target" id="target-6">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="6">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-6"></div>
+        </section>
+
+        <!-- Problem 7: Website Image Optimization -->
+        <section class="parsons-problem" data-problem="7">
+            <h2>Problem 7: Optimize Website Images</h2>
+            <p class="problem-description">Order the steps to optimize images for a slow-loading website.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-7">
+                    <div class="parsons-block" data-order="2">Images viewed on web don't need maximum quality</div>
+                    <div class="parsons-block" data-order="4">Result: Page loads 10× faster with minimal quality difference</div>
+                    <div class="parsons-block" data-order="1">Identify that large images are causing slow loading</div>
+                    <div class="parsons-block" data-order="3">Convert to JPEG at 80-85% quality (lossy compression)</div>
+                </div>
+                <div class="parsons-target" id="target-7">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="7">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-7"></div>
+        </section>
+
+        <!-- Problem 8: Comparing Compression Types -->
+        <section class="parsons-problem" data-problem="8">
+            <h2>Problem 8: Comparing Lossy and Lossless</h2>
+            <p class="problem-description">Order these facts to explain the key differences between lossy and lossless compression.</p>
+
+            <div class="parsons-container">
+                <div class="parsons-source" id="source-8">
+                    <div class="parsons-block" data-order="4">Lossy achieves much higher compression (80-95%)</div>
+                    <div class="parsons-block" data-order="2">Lossless preserves all original data perfectly</div>
+                    <div class="parsons-block" data-order="5">Choose based on: Is exact data or small file size more important?</div>
+                    <div class="parsons-block" data-order="1">Compression reduces file size by encoding data efficiently</div>
+                    <div class="parsons-block" data-order="3">Lossy permanently removes data humans won't notice</div>
+                </div>
+                <div class="parsons-target" id="target-8">
+                    <p class="target-label">Drop steps here in order:</p>
+                </div>
+            </div>
+            <button class="btn btn-primary check-parsons" data-problem="8">Check Answer</button>
+            <div class="parsons-feedback" id="feedback-8"></div>
+        </section>
+
+        <!-- Progress Summary -->
+        <section class="progress-summary">
+            <h2>Your Progress</h2>
+            <div class="progress-grid" id="parsons-progress">
+                <div class="progress-item" data-problem="1">Problem 1: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="2">Problem 2: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="3">Problem 3: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="4">Problem 4: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="5">Problem 5: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="6">Problem 6: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="7">Problem 7: <span class="status">Not attempted</span></div>
+                <div class="progress-item" data-problem="8">Problem 8: <span class="status">Not attempted</span></div>
+            </div>
+            <p class="completion-message" id="completion-message" style="display: none;">
+                Congratulations! You've completed all Parsons problems!
+            </p>
+        </section>
+
+        <div class="activity-nav">
+            <a href="trace.html" class="btn btn-secondary">← Trace Exercises</a>
+            <a href="quiz.html" class="btn btn-primary">Knowledge Quiz →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Track completed problems
+        let completedProblems = new Set();
+
+        // Initialize drag and drop
+        function initParsons() {
+            document.querySelectorAll('.parsons-source').forEach(source => {
+                // Shuffle the blocks
+                const blocks = Array.from(source.querySelectorAll('.parsons-block'));
+                blocks.sort(() => Math.random() - 0.5);
+                blocks.forEach(block => source.appendChild(block));
+
+                // Make blocks draggable
+                blocks.forEach(block => {
+                    block.draggable = true;
+                    block.addEventListener('dragstart', handleDragStart);
+                    block.addEventListener('dragend', handleDragEnd);
+                });
+            });
+
+            // Set up drop targets
+            document.querySelectorAll('.parsons-target').forEach(target => {
+                target.addEventListener('dragover', handleDragOver);
+                target.addEventListener('drop', handleDrop);
+                target.addEventListener('dragleave', handleDragLeave);
+            });
+
+            // Also allow dropping back to source
+            document.querySelectorAll('.parsons-source').forEach(source => {
+                source.addEventListener('dragover', handleDragOver);
+                source.addEventListener('drop', handleDrop);
+                source.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        let draggedElement = null;
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            document.querySelectorAll('.parsons-target, .parsons-source').forEach(el => {
+                el.classList.remove('drag-over');
+            });
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            e.currentTarget.classList.add('drag-over');
+
+            // Determine where to insert based on mouse position
+            const target = e.currentTarget;
+            const blocks = [...target.querySelectorAll('.parsons-block:not(.dragging)')];
+
+            const afterElement = blocks.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = e.clientY - box.top - box.height / 2;
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+
+            if (afterElement) {
+                target.insertBefore(draggedElement, afterElement);
+            } else {
+                target.appendChild(draggedElement);
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        // Check answer
+        document.querySelectorAll('.check-parsons').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const problemNum = this.dataset.problem;
+                const target = document.getElementById(`target-${problemNum}`);
+                const feedback = document.getElementById(`feedback-${problemNum}`);
+                const blocks = target.querySelectorAll('.parsons-block');
+
+                if (blocks.length === 0) {
+                    feedback.innerHTML = '<p class="incorrect">Drag all steps to the answer area first!</p>';
+                    return;
+                }
+
+                // Check if source still has blocks
+                const source = document.getElementById(`source-${problemNum}`);
+                if (source.querySelectorAll('.parsons-block').length > 0) {
+                    feedback.innerHTML = '<p class="incorrect">Move all steps to the answer area!</p>';
+                    return;
+                }
+
+                let correct = true;
+                let currentOrder = 1;
+
+                blocks.forEach(block => {
+                    const expectedOrder = parseInt(block.dataset.order);
+                    if (expectedOrder !== currentOrder) {
+                        correct = false;
+                        block.classList.add('incorrect-order');
+                        block.classList.remove('correct-order');
+                    } else {
+                        block.classList.add('correct-order');
+                        block.classList.remove('incorrect-order');
+                    }
+                    currentOrder++;
+                });
+
+                if (correct) {
+                    feedback.innerHTML = '<p class="correct">Correct! Well done!</p>';
+                    this.disabled = true;
+
+                    // Update progress
+                    completedProblems.add(problemNum);
+                    updateProgressDisplay(problemNum, true);
+
+                    // Save progress
+                    if (typeof Progress !== 'undefined') {
+                        Progress.complete(`compression-parsons-${problemNum}`);
+                    }
+
+                    // Check if all complete
+                    checkAllComplete();
+                } else {
+                    feedback.innerHTML = '<p class="incorrect">Not quite right. Steps highlighted in red are in the wrong position. Try again!</p>';
+                }
+            });
+        });
+
+        function updateProgressDisplay(problemNum, completed) {
+            const item = document.querySelector(`.progress-item[data-problem="${problemNum}"]`);
+            const status = item.querySelector('.status');
+
+            if (completed) {
+                status.textContent = 'Completed!';
+                status.className = 'status completed';
+                item.classList.add('completed');
+            } else {
+                status.textContent = 'In progress';
+                status.className = 'status in-progress';
+            }
+        }
+
+        function checkAllComplete() {
+            if (completedProblems.size >= 8) {
+                document.getElementById('completion-message').style.display = 'block';
+
+                // Save overall completion
+                if (typeof Progress !== 'undefined') {
+                    Progress.complete('compression-parsons');
+                }
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initParsons);
+
+        // Mark activity as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('compression-parsons');
+        }
+    </script>
+
+    <style>
+        .parsons-problem {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .problem-description {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--primary-light);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary);
+        }
+
+        .parsons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+        }
+
+        @media (max-width: 768px) {
+            .parsons-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .parsons-source,
+        .parsons-target {
+            min-height: 200px;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background: var(--gray-100);
+            border: 2px dashed var(--gray-400);
+        }
+
+        .parsons-target {
+            background: #e8f5e9;
+            border-color: var(--success);
+        }
+
+        .target-label {
+            color: var(--gray-600);
+            font-style: italic;
+            text-align: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .parsons-block {
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-sm);
+            background: white;
+            border: 2px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            cursor: grab;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .parsons-block:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .parsons-block.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+
+        .parsons-block.correct-order {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .parsons-block.incorrect-order {
+            border-color: var(--error);
+            background: #f8d7da;
+        }
+
+        .drag-over {
+            background: var(--primary-light) !important;
+            border-color: var(--primary) !important;
+        }
+
+        .parsons-feedback {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+
+        .parsons-feedback p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .parsons-feedback .correct {
+            color: var(--success);
+        }
+
+        .parsons-feedback .incorrect {
+            color: var(--error);
+        }
+
+        .progress-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .progress-item {
+            padding: var(--space-md);
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+        }
+
+        .progress-item.completed {
+            background: #d4edda;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .status.completed {
+            color: var(--success);
+        }
+
+        .status.in-progress {
+            color: var(--warning);
+        }
+
+        .completion-message {
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: #e8f5e9;
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+
+        .activity-intro {
+            background: var(--primary-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            border-left: 4px solid var(--primary);
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>

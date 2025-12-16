@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compression - Lossy & Lossless</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/components.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <span class="logo">🐍</span>
+            <span class="brand-text">Python Learning</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Topics</a></li>
+            <li><a href="../../progress.html">My Progress</a></li>
+            <li><a href="../../certificates.html">Certificates</a></li>
+            <li><a href="../../help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="topic-header">
+            <span class="topic-icon-large">📦</span>
+            <h1>Compression</h1>
+            <p class="subtitle">Lossy & Lossless</p>
+        </div>
+
+        <div class="learning-objectives">
+            <h2>What You'll Learn</h2>
+            <ul>
+                <li>Why compression is needed and when to use it</li>
+                <li>The difference between lossy and lossless compression</li>
+                <li>Advantages and disadvantages of each type</li>
+                <li>How each type affects the file</li>
+                <li>Which compression type to use in different scenarios</li>
+            </ul>
+        </div>
+
+        <div class="activity-nav-grid">
+            <a href="predict.html" class="activity-card">
+                <span class="activity-icon">🔮</span>
+                <h3>Predict</h3>
+                <p>Test your intuition about compression</p>
+            </a>
+            <a href="example.html" class="activity-card">
+                <span class="activity-icon">📖</span>
+                <h3>Worked Examples</h3>
+                <p>Real-world compression scenarios</p>
+            </a>
+            <a href="trace.html" class="activity-card">
+                <span class="activity-icon">🔍</span>
+                <h3>Trace</h3>
+                <p>Analyse compression decisions</p>
+            </a>
+            <a href="parsons.html" class="activity-card">
+                <span class="activity-icon">🧩</span>
+                <h3>Parsons Problems</h3>
+                <p>Put concepts in order</p>
+            </a>
+            <a href="quiz.html" class="activity-card">
+                <span class="activity-icon">✅</span>
+                <h3>Quiz</h3>
+                <p>Test your knowledge</p>
+            </a>
+        </div>
+
+        <!-- SECTION 1: WHY COMPRESSION? -->
+        <section class="content-section" id="need-for-compression">
+            <h2>1. The Need for Compression</h2>
+
+            <div class="concept-card">
+                <h3>Why Do We Need Compression?</h3>
+                <p>Digital files can be very large. Without compression, many everyday tasks would be impractical or impossible:</p>
+
+                <div class="scenario-grid">
+                    <div class="scenario-card">
+                        <span class="scenario-icon">📧</span>
+                        <h4>Email Attachments</h4>
+                        <p>Most email services limit attachments to 25MB. An uncompressed photo could be 20MB+!</p>
+                    </div>
+                    <div class="scenario-card">
+                        <span class="scenario-icon">🎵</span>
+                        <h4>Music Streaming</h4>
+                        <p>An uncompressed 3-minute song is ~30MB. With compression (MP3), it's only ~3MB.</p>
+                    </div>
+                    <div class="scenario-card">
+                        <span class="scenario-icon">📱</span>
+                        <h4>Limited Storage</h4>
+                        <p>Phones have limited space. Compression lets you store thousands of photos instead of hundreds.</p>
+                    </div>
+                    <div class="scenario-card">
+                        <span class="scenario-icon">🌐</span>
+                        <h4>Web Pages</h4>
+                        <p>Compressed images load faster, saving bandwidth and improving user experience.</p>
+                    </div>
+                    <div class="scenario-card">
+                        <span class="scenario-icon">🎬</span>
+                        <h4>Video Streaming</h4>
+                        <p>A 2-hour 4K movie uncompressed would be ~1TB! Compression makes streaming possible.</p>
+                    </div>
+                    <div class="scenario-card">
+                        <span class="scenario-icon">💾</span>
+                        <h4>Backups</h4>
+                        <p>Compressing backups saves storage space and reduces backup time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>What is Compression?</h3>
+                <p><strong>Compression</strong> is the process of reducing the file size by encoding data more efficiently.</p>
+
+                <div class="key-point">
+                    <strong>Key Idea:</strong> Compression finds patterns and redundancy in data and represents them more efficiently, using fewer bits to store the same (or similar) information.
+                </div>
+
+                <div class="comparison-visual">
+                    <div class="file-comparison">
+                        <div class="file-box original">
+                            <span class="file-icon">📄</span>
+                            <p>Original File</p>
+                            <p class="file-size">100 MB</p>
+                        </div>
+                        <div class="arrow">→ Compress →</div>
+                        <div class="file-box compressed">
+                            <span class="file-icon">📦</span>
+                            <p>Compressed File</p>
+                            <p class="file-size">25 MB</p>
+                        </div>
+                    </div>
+                    <p class="caption">Compression reduces file size, making storage and transmission more efficient</p>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Common Scenarios Requiring Compression</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Why Compression Helps</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sending files via email</td>
+                            <td>Stay within attachment size limits</td>
+                        </tr>
+                        <tr>
+                            <td>Uploading to cloud storage</td>
+                            <td>Faster uploads, use less storage quota</td>
+                        </tr>
+                        <tr>
+                            <td>Streaming music/video</td>
+                            <td>Reduce bandwidth, enable smooth playback</td>
+                        </tr>
+                        <tr>
+                            <td>Website images</td>
+                            <td>Faster page load times</td>
+                        </tr>
+                        <tr>
+                            <td>Archiving old files</td>
+                            <td>Save storage space</td>
+                        </tr>
+                        <tr>
+                            <td>Sending multiple files</td>
+                            <td>Bundle into one smaller file (ZIP)</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile data usage</td>
+                            <td>Reduce data consumption</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TYPES OF COMPRESSION -->
+        <section class="content-section" id="types">
+            <h2>2. Types of Compression</h2>
+
+            <div class="concept-card highlight-card">
+                <h3>Two Main Types</h3>
+                <div class="type-comparison">
+                    <div class="type-card lossless">
+                        <h4>Lossless Compression</h4>
+                        <p class="type-tagline">"Shrink it, but keep everything"</p>
+                        <p>The original data can be <strong>perfectly reconstructed</strong> when decompressed.</p>
+                        <p><strong>No data is lost.</strong></p>
+                    </div>
+                    <div class="type-card lossy">
+                        <h4>Lossy Compression</h4>
+                        <p class="type-tagline">"Shrink it more, lose some detail"</p>
+                        <p>Some data is <strong>permanently removed</strong> to achieve smaller file sizes.</p>
+                        <p><strong>Some data is lost.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: LOSSLESS COMPRESSION -->
+        <section class="content-section" id="lossless">
+            <h2>3. Lossless Compression</h2>
+
+            <div class="concept-card">
+                <h3>How Lossless Works (Simplified)</h3>
+                <p>Lossless compression finds patterns and redundancy in data and encodes them more efficiently.</p>
+
+                <div class="example-box">
+                    <h4>Simple Example: Run-Length Encoding</h4>
+                    <p>Original: <code>AAAAABBBCCCCCCCC</code> (16 characters)</p>
+                    <p>Compressed: <code>5A3B8C</code> (6 characters)</p>
+                    <p>The pattern "5 A's, 3 B's, 8 C's" uses fewer characters but contains the same information!</p>
+                </div>
+
+                <div class="key-point">
+                    <strong>Key Property:</strong> When you decompress a lossless file, you get back <strong>exactly</strong> the original data, bit for bit.
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Common Lossless Formats</h3>
+                <div class="format-grid">
+                    <div class="format-item">
+                        <span class="format-ext">.ZIP</span>
+                        <p>General file compression</p>
+                    </div>
+                    <div class="format-item">
+                        <span class="format-ext">.PNG</span>
+                        <p>Images (graphics, screenshots)</p>
+                    </div>
+                    <div class="format-item">
+                        <span class="format-ext">.FLAC</span>
+                        <p>Audio (music archival)</p>
+                    </div>
+                    <div class="format-item">
+                        <span class="format-ext">.GIF</span>
+                        <p>Simple images, animations</p>
+                    </div>
+                    <div class="format-item">
+                        <span class="format-ext">.RAR</span>
+                        <p>File archives</p>
+                    </div>
+                    <div class="format-item">
+                        <span class="format-ext">.7Z</span>
+                        <p>High-ratio file compression</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>When to Use Lossless</h3>
+                <div class="use-case-list">
+                    <div class="use-case">
+                        <span class="use-icon">📝</span>
+                        <div>
+                            <h4>Text Documents</h4>
+                            <p>Every character matters - you can't lose any text!</p>
+                        </div>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-icon">💻</span>
+                        <div>
+                            <h4>Program Files / Software</h4>
+                            <p>A single bit change could break the program</p>
+                        </div>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-icon">📊</span>
+                        <div>
+                            <h4>Spreadsheets / Databases</h4>
+                            <p>Financial data, records - accuracy is critical</p>
+                        </div>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-icon">🎨</span>
+                        <div>
+                            <h4>Graphics with Sharp Edges</h4>
+                            <p>Logos, diagrams, screenshots - PNG is ideal</p>
+                        </div>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-icon">🏥</span>
+                        <div>
+                            <h4>Medical Images</h4>
+                            <p>Doctors need every detail for accurate diagnosis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Advantages & Disadvantages of Lossless</h3>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h4>Advantages</h4>
+                        <ul>
+                            <li>No quality loss - original perfectly preserved</li>
+                            <li>Can compress and decompress repeatedly</li>
+                            <li>Essential for text, code, and critical data</li>
+                            <li>Reversible - always get original back</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>Disadvantages</h4>
+                        <ul>
+                            <li>Lower compression ratio (files still larger)</li>
+                            <li>Not as effective for photos/video</li>
+                            <li>Files may still be too large for some uses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: LOSSY COMPRESSION -->
+        <section class="content-section" id="lossy">
+            <h2>4. Lossy Compression</h2>
+
+            <div class="concept-card">
+                <h3>How Lossy Works (Simplified)</h3>
+                <p>Lossy compression achieves smaller files by <strong>permanently removing</strong> data that humans are less likely to notice.</p>
+
+                <div class="example-box">
+                    <h4>Examples of What Gets Removed</h4>
+                    <ul>
+                        <li><strong>Images:</strong> Subtle colour variations, fine details</li>
+                        <li><strong>Audio:</strong> Frequencies humans can't hear well (very high/low)</li>
+                        <li><strong>Video:</strong> Details between similar frames</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Important:</strong> Once data is removed by lossy compression, it's gone forever. You cannot get it back by "decompressing" - there's nothing to decompress!
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Common Lossy Formats</h3>
+                <div class="format-grid">
+                    <div class="format-item lossy-format">
+                        <span class="format-ext">.JPEG</span>
+                        <p>Photos, web images</p>
+                    </div>
+                    <div class="format-item lossy-format">
+                        <span class="format-ext">.MP3</span>
+                        <p>Music, podcasts</p>
+                    </div>
+                    <div class="format-item lossy-format">
+                        <span class="format-ext">.MP4</span>
+                        <p>Video files</p>
+                    </div>
+                    <div class="format-item lossy-format">
+                        <span class="format-ext">.AAC</span>
+                        <p>Audio (iTunes, streaming)</p>
+                    </div>
+                    <div class="format-item lossy-format">
+                        <span class="format-ext">.WEBP</span>
+                        <p>Web images</p>
+                    </div>
+                    <div class="format-item lossy-format">
+                        <span class="format-ext">.H.264</span>
+                        <p>Video codec</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Quality Levels</h3>
+                <p>Lossy compression usually lets you choose a <strong>quality level</strong> - a trade-off between file size and quality.</p>
+
+                <div class="quality-slider">
+                    <div class="quality-labels">
+                        <span>Low Quality</span>
+                        <span>High Quality</span>
+                    </div>
+                    <div class="quality-bar">
+                        <div class="quality-marker" style="left: 20%">
+                            <span class="marker-label">Small file<br>Visible artifacts</span>
+                        </div>
+                        <div class="quality-marker" style="left: 50%">
+                            <span class="marker-label">Balanced<br>Good for web</span>
+                        </div>
+                        <div class="quality-marker" style="left: 80%">
+                            <span class="marker-label">Large file<br>Near-original</span>
+                        </div>
+                    </div>
+                    <div class="size-labels">
+                        <span>Smaller File</span>
+                        <span>Larger File</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>When to Use Lossy</h3>
+                <div class="use-case-list">
+                    <div class="use-case">
+                        <span class="use-icon">📸</span>
+                        <div>
+                            <h4>Photographs</h4>
+                            <p>JPEG compression removes details humans don't notice</p>
+                        </div>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-icon">🎵</span>
+                        <div>
+                            <h4>Music for Everyday Listening</h4>
+                            <p>MP3 at 320kbps sounds nearly identical to CD</p>
+                        </div>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-icon">🎬</span>
+                        <div>
+                            <h4>Video Streaming</h4>
+                            <p>Essential - uncompressed video would be impossibly large</p>
+                        </div>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-icon">🌐</span>
+                        <div>
+                            <h4>Web Images</h4>
+                            <p>Fast loading is more important than perfect quality</p>
+                        </div>
+                    </div>
+                    <div class="use-case">
+                        <span class="use-icon">📱</span>
+                        <div>
+                            <h4>Mobile Apps</h4>
+                            <p>Smaller assets = faster downloads, less storage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Advantages & Disadvantages of Lossy</h3>
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h4>Advantages</h4>
+                        <ul>
+                            <li>Much smaller file sizes (often 90%+ reduction)</li>
+                            <li>Makes streaming media practical</li>
+                            <li>Faster uploads/downloads</li>
+                            <li>Saves significant storage space</li>
+                            <li>Quality loss often imperceptible</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>Disadvantages</h4>
+                        <ul>
+                            <li>Quality loss is permanent and irreversible</li>
+                            <li>Re-compressing degrades quality further</li>
+                            <li>Not suitable for text, code, or critical data</li>
+                            <li>Visible/audible artifacts at high compression</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>Compression Artifacts</h3>
+                <p>When lossy compression is too aggressive, you may notice <strong>artifacts</strong> - visible or audible flaws.</p>
+
+                <div class="artifact-examples">
+                    <div class="artifact">
+                        <h4>JPEG Artifacts (Images)</h4>
+                        <ul>
+                            <li><strong>Blockiness:</strong> Visible squares, especially in gradients</li>
+                            <li><strong>Colour banding:</strong> Smooth gradients become stepped</li>
+                            <li><strong>Blurring:</strong> Loss of fine detail</li>
+                            <li><strong>Ringing:</strong> Halos around sharp edges</li>
+                        </ul>
+                    </div>
+                    <div class="artifact">
+                        <h4>MP3 Artifacts (Audio)</h4>
+                        <ul>
+                            <li><strong>Pre-echo:</strong> Ghost sounds before loud notes</li>
+                            <li><strong>Swirling:</strong> Metallic sound on cymbals</li>
+                            <li><strong>Muffled highs:</strong> High frequencies sound dull</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: COMPARISON -->
+        <section class="content-section" id="comparison">
+            <h2>5. Lossless vs Lossy: Side by Side</h2>
+
+            <div class="concept-card">
+                <h3>Complete Comparison</h3>
+                <table class="data-table comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Lossless</th>
+                            <th>Lossy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data lost?</td>
+                            <td class="good">No - original preserved perfectly</td>
+                            <td class="caution">Yes - some data permanently removed</td>
+                        </tr>
+                        <tr>
+                            <td>File size reduction</td>
+                            <td>Moderate (typically 20-50%)</td>
+                            <td class="good">High (typically 70-95%)</td>
+                        </tr>
+                        <tr>
+                            <td>Quality</td>
+                            <td class="good">Identical to original</td>
+                            <td>Reduced (may not be noticeable)</td>
+                        </tr>
+                        <tr>
+                            <td>Reversible?</td>
+                            <td class="good">Yes - fully reversible</td>
+                            <td class="caution">No - changes are permanent</td>
+                        </tr>
+                        <tr>
+                            <td>Re-compression</td>
+                            <td class="good">No quality loss</td>
+                            <td class="caution">Further quality loss each time</td>
+                        </tr>
+                        <tr>
+                            <td>Best for</td>
+                            <td>Text, code, archives, graphics</td>
+                            <td>Photos, music, video, web</td>
+                        </tr>
+                        <tr>
+                            <td>Common formats</td>
+                            <td>ZIP, PNG, FLAC, GIF</td>
+                            <td>JPEG, MP3, MP4, AAC</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="concept-card">
+                <h3>Decision Flowchart</h3>
+                <div class="decision-flow">
+                    <div class="decision-box question">
+                        <p>What type of file?</p>
+                    </div>
+                    <div class="flow-branches">
+                        <div class="branch">
+                            <div class="decision-box">Text, Code, Software, Data</div>
+                            <div class="arrow">↓</div>
+                            <div class="decision-box result lossless-result">Use LOSSLESS</div>
+                            <p class="reason">Every bit matters!</p>
+                        </div>
+                        <div class="branch">
+                            <div class="decision-box">Photo, Music, Video</div>
+                            <div class="arrow">↓</div>
+                            <div class="decision-box question">Need perfect quality?</div>
+                            <div class="sub-branches">
+                                <div class="sub-branch">
+                                    <span>Yes (archival)</span>
+                                    <div class="decision-box result lossless-result">LOSSLESS</div>
+                                </div>
+                                <div class="sub-branch">
+                                    <span>No (everyday use)</span>
+                                    <div class="decision-box result lossy-result">LOSSY</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: SUMMARY -->
+        <section class="content-section" id="summary">
+            <h2>Quick Reference Card</h2>
+
+            <div class="reference-grid">
+                <div class="reference-card">
+                    <h3>Why Compress?</h3>
+                    <ul>
+                        <li>Save storage space</li>
+                        <li>Faster file transfers</li>
+                        <li>Stay within size limits</li>
+                        <li>Enable streaming</li>
+                        <li>Reduce bandwidth costs</li>
+                    </ul>
+                </div>
+
+                <div class="reference-card lossless-ref">
+                    <h3>Lossless</h3>
+                    <ul>
+                        <li>No data lost</li>
+                        <li>Fully reversible</li>
+                        <li>Smaller reduction</li>
+                        <li>ZIP, PNG, FLAC</li>
+                        <li>Use for: text, code, data</li>
+                    </ul>
+                </div>
+
+                <div class="reference-card lossy-ref">
+                    <h3>Lossy</h3>
+                    <ul>
+                        <li>Some data lost forever</li>
+                        <li>Not reversible</li>
+                        <li>Much smaller files</li>
+                        <li>JPEG, MP3, MP4</li>
+                        <li>Use for: photos, music, video</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="key-tradeoff">
+                <h3>The Fundamental Trade-Off</h3>
+                <p><strong>Lossless:</strong> Keep everything, but files are still relatively large</p>
+                <p><strong>Lossy:</strong> Much smaller files, but some quality is permanently lost</p>
+            </div>
+        </section>
+
+        <div class="activity-nav">
+            <a href="../index.html" class="btn btn-secondary">← Back to Topics</a>
+            <a href="predict.html" class="btn btn-primary">Start Activities →</a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>Built on evidence-based teaching methods from computing education research.</p>
+    </footer>
+
+    <script src="../../js/progress.js"></script>
+    <script>
+        // Mark as started
+        if (typeof Progress !== 'undefined') {
+            Progress.start('compression');
+        }
+    </script>
+
+    <style>
+        .topic-icon-large {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: var(--space-md);
+        }
+
+        .learning-objectives {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #e0e7ff 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .learning-objectives ul {
+            margin: 0;
+            padding-left: var(--space-lg);
+        }
+
+        .learning-objectives li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .activity-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-xxl);
+        }
+
+        .activity-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+
+        .activity-card h3 {
+            margin: 0 0 var(--space-xs);
+            font-size: 1rem;
+        }
+
+        .activity-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .content-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .content-section h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .concept-card {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .concept-card h3 {
+            color: var(--gray-800);
+            margin-bottom: var(--space-md);
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+        }
+
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .scenario-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .scenario-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+
+        .scenario-card h4 {
+            margin-bottom: var(--space-xs);
+            font-size: 0.95rem;
+        }
+
+        .scenario-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .key-point {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .example-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin: var(--space-md) 0;
+        }
+
+        .example-box code {
+            background: rgba(0,0,0,0.1);
+            padding: 0.2em 0.4em;
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+        }
+
+        .comparison-visual {
+            text-align: center;
+            margin: var(--space-xl) 0;
+        }
+
+        .file-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .file-box {
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .file-box.original {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+        }
+
+        .file-box.compressed {
+            background: #d4edda;
+            border: 2px solid var(--success);
+        }
+
+        .file-icon {
+            font-size: 2.5rem;
+            display: block;
+        }
+
+        .file-size {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: var(--space-sm);
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            color: var(--gray-500);
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-top: var(--space-md);
+        }
+
+        .type-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .type-card {
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+
+        .type-card.lossless {
+            background: linear-gradient(135deg, #d4edda 0%, #a8e6cf 100%);
+            border: 2px solid var(--success);
+        }
+
+        .type-card.lossy {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border: 2px solid #f39c12;
+        }
+
+        .type-tagline {
+            font-style: italic;
+            color: var(--gray-600);
+            margin-bottom: var(--space-md);
+        }
+
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .format-item {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 2px solid var(--success);
+        }
+
+        .format-item.lossy-format {
+            border-color: #f39c12;
+        }
+
+        .format-ext {
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+
+        .format-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .use-case-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .use-case {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+
+        .use-icon {
+            font-size: 1.5rem;
+        }
+
+        .use-case h4 {
+            margin: 0 0 var(--space-xs);
+        }
+
+        .use-case p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .pros {
+            background: #d4edda;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+
+        .cons {
+            background: #f8d7da;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+        }
+
+        .pros h4 {
+            color: var(--success);
+        }
+
+        .cons h4 {
+            color: var(--error);
+        }
+
+        .pros ul, .cons ul {
+            margin: 0;
+            padding-left: var(--space-md);
+        }
+
+        .quality-slider {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .quality-labels, .size-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .quality-bar {
+            height: 20px;
+            background: linear-gradient(to right, #ef4444, #f59e0b, #22c55e);
+            border-radius: 10px;
+            margin: var(--space-md) 0;
+            position: relative;
+        }
+
+        .quality-marker {
+            position: absolute;
+            top: 30px;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .marker-label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+        }
+
+        .artifact-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .artifact {
+            background: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+        }
+
+        .artifact h4 {
+            color: var(--error);
+            margin-bottom: var(--space-sm);
+        }
+
+        .artifact ul {
+            margin: 0;
+            padding-left: var(--space-md);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-300);
+            text-align: left;
+        }
+
+        .data-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: var(--gray-100);
+        }
+
+        .data-table .good {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .data-table .caution {
+            color: #d97706;
+        }
+
+        .decision-flow {
+            text-align: center;
+            padding: var(--space-lg);
+        }
+
+        .decision-box {
+            display: inline-block;
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            background: var(--gray-200);
+            margin: var(--space-sm);
+        }
+
+        .decision-box.question {
+            background: var(--primary-light);
+            border: 2px solid var(--primary);
+        }
+
+        .decision-box.result {
+            font-weight: bold;
+        }
+
+        .lossless-result {
+            background: #d4edda;
+            border: 2px solid var(--success);
+            color: var(--success);
+        }
+
+        .lossy-result {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            color: #d97706;
+        }
+
+        .flow-branches {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+            margin-top: var(--space-md);
+        }
+
+        .branch {
+            text-align: center;
+        }
+
+        .sub-branches {
+            display: flex;
+            gap: var(--space-lg);
+            margin-top: var(--space-sm);
+        }
+
+        .sub-branch {
+            text-align: center;
+        }
+
+        .sub-branch span {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .reason {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-top: var(--space-xs);
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .reference-card {
+            background: var(--gray-100);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            border-top: 4px solid var(--primary);
+        }
+
+        .reference-card.lossless-ref {
+            border-top-color: var(--success);
+        }
+
+        .reference-card.lossy-ref {
+            border-top-color: #f59e0b;
+        }
+
+        .reference-card h3 {
+            margin-bottom: var(--space-md);
+        }
+
+        .reference-card ul {
+            margin: 0;
+            padding-left: var(--space-md);
+        }
+
+        .reference-card li {
+            margin-bottom: var(--space-xs);
+            font-size: 0.9rem;
+        }
+
+        .key-tradeoff {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        .key-tradeoff h3 {
+            color: #92400e;
+            margin-bottom: var(--space-md);
+        }
+
+        .key-tradeoff p {
+            margin: var(--space-sm) 0;
+            font-size: 1.1rem;
+        }
+
+        .activity-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+    </style>
+</body>
+</html>
